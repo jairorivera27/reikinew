@@ -1,0 +1,523 @@
+---
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
+import SEO from '../../components/SEO.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const servicios = await getCollection('servicios');
+  return servicios.map((servicio) => ({
+    params: { slug: servicio.slug },
+    props: { servicio },
+  }));
+}
+
+type Props = {
+  servicio: CollectionEntry<'servicios'>;
+};
+
+const { servicio } = Astro.props;
+const { Content } = await servicio.render();
+
+// Mapeo de slugs a índices para las imágenes
+const imageMap: Record<string, number> = {
+  'reiki-tradicional': 0,
+  'energia-solar': 1,
+  'meditacion-guiada': 2,
+  'limpieza-energetica': 3,
+};
+
+const imageIndex = imageMap[servicio.slug] ?? 0;
+const imagePaths = [
+  "/energia solar vivienda.png",
+  "/images/Eenergia solar en empresas de medellin.png",
+  "/images/estación de energía solar móvil en Colombia.png",
+  "/images/Bombeo solar en Colombia.png"
+];
+
+const site = 'https://reiki-energia-solar.com';
+const serviceSchema = {
+  "@type": "Service",
+  "serviceType": servicio.data.title,
+  "description": servicio.data.description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Reiki Energía Solar",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Medellín",
+      "addressRegion": "Antioquia",
+      "addressCountry": "CO"
+    }
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Colombia"
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{servicio.data.title} en Medellín | Servicios Energía Solar | Reiki Energía Solar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <SEO 
+      title={`${servicio.data.title} en Medellín | Servicios Energía Solar`}
+      description={`${servicio.data.description} En Medellín y toda Colombia. Cotización gratuita.`}
+      canonical={`/servicios/${servicio.slug}`}
+      keywords={`${servicio.data.title} Medellín, ${servicio.data.title} Colombia, instalación energía solar, servicios solares`}
+      schemaType="Service"
+      schemaData={serviceSchema}
+      ogImage={imagePaths[imageIndex]}
+    />
+  </head>
+  <body>
+    <Header />
+    
+    <main>
+      <section class="service-hero">
+        <div class="container">
+          <div class="breadcrumb">
+            <a href="/">Inicio</a>
+            <span>/</span>
+            <a href="/servicios">Servicios</a>
+            <span>/</span>
+            <span>{servicio.data.title}</span>
+          </div>
+          <h1 class="service-hero-title">{servicio.data.title}</h1>
+          <p class="service-hero-description">{servicio.data.description}</p>
+        </div>
+      </section>
+
+      <section class="service-detail-section">
+        <div class="container">
+          <div class="service-detail-wrapper">
+            <div class="service-main-image">
+              <img 
+                src={imagePaths[imageIndex] || servicio.data.image} 
+                alt={servicio.data.title}
+                loading="eager"
+              >
+            </div>
+
+            <div class="service-info">
+              <div class="service-content-text">
+                <Content />
+              </div>
+
+              <div class="service-benefits-section">
+                <h2 class="benefits-section-title">Beneficios Principales</h2>
+                <ul class="service-benefits-list">
+                  {servicio.data.benefits.map((benefit) => (
+                    <li class="service-benefit-item">
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="service-cta-section">
+                <a href="https://wa.me/573245737413" target="_blank" rel="noopener noreferrer" class="service-cta-button whatsapp">
+                  <i class="fab fa-whatsapp"></i>
+                  Consultar por WhatsApp
+                </a>
+                <a href="#contacto" class="service-cta-button primary">
+                  <i class="fas fa-phone"></i>
+                  {servicio.data.cta.text}
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="related-services-section">
+        <div class="container">
+          <h2 class="related-title">Otros Servicios</h2>
+          <div class="related-services-grid">
+            {(await getCollection('servicios'))
+              .filter(s => s.slug !== servicio.slug)
+              .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
+              .slice(0, 3)
+              .map((relatedService) => {
+                const relatedIndex = imageMap[relatedService.slug] ?? 0;
+                return (
+                  <a href={`/servicios/${relatedService.slug}`} class="related-service-card">
+                    <div class="related-service-image">
+                      <img 
+                        src={imagePaths[relatedIndex] || relatedService.data.image} 
+                        alt={relatedService.data.title}
+                        loading="lazy"
+                      >
+                    </div>
+                    <div class="related-service-content">
+                      <h3 class="related-service-title">{relatedService.data.title}</h3>
+                      <p class="related-service-description">{relatedService.data.description}</p>
+                      <span class="related-service-link">
+                        Ver más <i class="fas fa-arrow-right"></i>
+                      </span>
+                    </div>
+                  </a>
+                );
+              })}
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <Footer />
+    <WhatsAppFloat />
+  </body>
+</html>
+
+<style>
+  .service-hero {
+    padding: 10rem 2rem 4rem;
+    background: linear-gradient(135deg, #6b2181 0%, #8b2a9b 100%);
+    color: white;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .breadcrumb a:hover {
+    color: white;
+  }
+
+  .breadcrumb span {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .service-hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .service-hero-description {
+    font-size: 1.3rem;
+    color: #e5e7eb;
+    line-height: 1.7;
+    max-width: 800px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .service-detail-section {
+    padding: 5rem 2rem;
+    background: #f9fafb;
+  }
+
+  .service-detail-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .service-main-image {
+    position: sticky;
+    top: 120px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .service-main-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .service-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .service-content-text {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  .service-content-text :global(h1),
+  .service-content-text :global(h2),
+  .service-content-text :global(h3),
+  .service-content-text :global(h4) {
+    color: #1f2937;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .service-content-text :global(h1) {
+    font-size: 2.5rem;
+  }
+
+  .service-content-text :global(h2) {
+    font-size: 2rem;
+  }
+
+  .service-content-text :global(h3) {
+    font-size: 1.5rem;
+  }
+
+  .service-content-text :global(p) {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    text-align: justify;
+  }
+
+  .service-content-text :global(ul),
+  .service-content-text :global(ol) {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+  }
+
+  .service-content-text :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .service-content-text :global(strong) {
+    color: #6b2181;
+    font-weight: 600;
+  }
+
+  .service-content-text :global(a) {
+    color: #6b2181;
+    text-decoration: underline;
+  }
+
+  .service-benefits-section {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .benefits-section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 2rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .service-benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .service-benefit-item {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #4b5563;
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    position: relative;
+    text-align: justify;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .service-benefit-item::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #6b2181;
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+
+  .service-cta-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .service-cta-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .service-cta-button.primary {
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+  }
+
+  .service-cta-button.primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(107, 33, 129, 0.4);
+  }
+
+  .service-cta-button.whatsapp {
+    background: #25D366;
+    color: white;
+  }
+
+  .service-cta-button.whatsapp:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    background: #20BA5A;
+  }
+
+  .related-services-section {
+    padding: 5rem 2rem;
+    background: white;
+  }
+
+  .related-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 3rem;
+    text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .related-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .related-service-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: block;
+  }
+
+  .related-service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(107, 33, 129, 0.2);
+  }
+
+  .related-service-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+    background: #f3f4f6;
+  }
+
+  .related-service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .related-service-card:hover .related-service-image img {
+    transform: scale(1.1);
+  }
+
+  .related-service-content {
+    padding: 2rem;
+  }
+
+  .related-service-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .related-service-description {
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .related-service-link {
+    color: #6b2181;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .related-service-card:hover .related-service-link {
+    gap: 0.75rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .service-hero {
+      padding: 8rem 1rem 3rem;
+    }
+
+    .service-hero-title {
+      font-size: 2.5rem;
+    }
+
+    .service-hero-description {
+      font-size: 1.1rem;
+    }
+
+    .service-detail-wrapper {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .service-main-image {
+      position: static;
+    }
+
+    .service-content-text,
+    .service-benefits-section {
+      padding: 2rem;
+    }
+
+    .related-services-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+

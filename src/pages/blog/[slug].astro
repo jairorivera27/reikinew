@@ -1,0 +1,393 @@
+---
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
+import SEO from '../../components/SEO.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection('blog');
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+type Props = {
+  post: CollectionEntry<'blog'>;
+};
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const site = 'https://reiki-energia-solar.com';
+const articleSchema = {
+  "@type": "Article",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "image": post.data.image ? `${site}${post.data.image}` : `${site}/images/og-default.jpg`,
+  "datePublished": post.data.date,
+  "dateModified": post.data.date,
+  "author": {
+    "@type": "Organization",
+    "name": "Reiki Energía Solar"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Reiki Energía Solar",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${site}/images/logo.png`
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `${site}/blog/${post.slug}`
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{post.data.title} | Blog Energía Solar Colombia | Reiki Energía Solar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <SEO 
+      title={`${post.data.title} | Blog Energía Solar Colombia`}
+      description={post.data.description}
+      canonical={`/blog/${post.slug}`}
+      keywords={`${post.data.category}, energía solar Colombia, paneles solares, ${post.data.title}`}
+      schemaType="Article"
+      schemaData={articleSchema}
+      ogImage={post.data.image || '/images/og-default.jpg'}
+      ogType="article"
+    />
+  </head>
+  <body>
+    <Header />
+    
+    <main>
+      <article class="blog-post-page">
+        <div class="container">
+          <!-- Header del Post -->
+          <div class="post-header">
+            <div class="post-category-badge">{post.data.category}</div>
+            <h1 class="post-title">{post.data.title}</h1>
+            <div class="post-meta">
+              <span class="meta-item">
+                <i class="fas fa-calendar"></i>
+                {new Date(post.data.date).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </span>
+              <span class="meta-item">
+                <i class="fas fa-user"></i>
+                {post.data.author}
+              </span>
+            </div>
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div class="post-tags">
+                {post.data.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <!-- Imagen destacada -->
+          <div class="post-featured-image">
+            <img src={post.data.image} alt={post.data.title} loading="eager">
+          </div>
+
+          <!-- Contenido del Post -->
+          <div class="post-content-wrapper">
+            <div class="post-content">
+              <Content />
+            </div>
+
+            <!-- Sidebar -->
+            <aside class="post-sidebar">
+              <div class="sidebar-widget">
+                <h3 class="widget-title">¿Necesitas ayuda?</h3>
+                <p class="widget-text">Contacta con nuestro equipo para una cotización personalizada</p>
+                <a href="#contacto" class="widget-cta">
+                  <i class="fas fa-phone"></i>
+                  Contactar
+                </a>
+              </div>
+            </aside>
+          </div>
+
+          <!-- Navegación -->
+          <div class="post-navigation">
+            <a href="/blog" class="nav-link">
+              <i class="fas fa-arrow-left"></i>
+              Volver al Blog
+            </a>
+          </div>
+        </div>
+      </article>
+    </main>
+    
+    <Footer />
+    <WhatsAppFloat />
+  </body>
+</html>
+
+<style>
+  .blog-post-page {
+    padding: 8rem 2rem 4rem;
+    background: #f9fafb;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+
+  .post-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .post-category-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-meta {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+    color: #6b7280;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .meta-item i {
+    color: #6b2181;
+  }
+
+  .post-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    background: #f3f4f6;
+    color: #6b2181;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-featured-image {
+    width: 100%;
+    height: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .post-featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .post-content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    gap: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .post-content {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  .post-content :global(h1),
+  .post-content :global(h2),
+  .post-content :global(h3),
+  .post-content :global(h4) {
+    color: #1f2937;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-content :global(h1) {
+    font-size: 2.5rem;
+  }
+
+  .post-content :global(h2) {
+    font-size: 2rem;
+  }
+
+  .post-content :global(h3) {
+    font-size: 1.5rem;
+  }
+
+  .post-content :global(p) {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+  }
+
+  .post-content :global(ul),
+  .post-content :global(ol) {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+  }
+
+  .post-content :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .post-content :global(strong) {
+    color: #6b2181;
+    font-weight: 600;
+  }
+
+  .post-content :global(a) {
+    color: #6b2181;
+    text-decoration: underline;
+  }
+
+  .post-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .sidebar-widget {
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .widget-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .widget-text {
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .widget-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .widget-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(107, 33, 129, 0.4);
+  }
+
+  .post-navigation {
+    text-align: center;
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6b2181;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: gap 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .nav-link:hover {
+    gap: 1rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .blog-post-page {
+      padding: 6rem 1rem 3rem;
+    }
+
+    .post-title {
+      font-size: 2rem;
+    }
+
+    .post-meta {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .post-featured-image {
+      height: 300px;
+    }
+
+    .post-content-wrapper {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .post-content {
+      padding: 2rem;
+    }
+
+    .post-sidebar {
+      order: -1;
+    }
+  }
+</style>
+

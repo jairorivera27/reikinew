@@ -1,0 +1,2593 @@
+---
+import { getCollection } from 'astro:content';
+
+// Obtener todos los productos ordenados
+const productos = await getCollection('productos');
+const productosOrdenados = productos.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+
+// Filtrar por categoría
+const paneles = productosOrdenados.filter(p => p.data.category === 'paneles');
+const inversores = productosOrdenados.filter(p => p.data.category === 'inversores');
+const baterias = productosOrdenados.filter(p => p.data.category === 'baterias');
+const reflectores = productosOrdenados.filter(p => p.data.category === 'reflectores');
+const controladores = productosOrdenados.filter(p => p.data.category === 'controladores');
+const protecciones = productosOrdenados.filter(p => p.data.category === 'protecciones');
+const cargadores = productosOrdenados.filter(p => p.data.category === 'cargadores');
+
+// Convertir productos a JSON para JavaScript
+const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
+  id: p.slug,
+  title: p.data.title,
+  description: p.data.description,
+  price: p.data.price,
+  image: p.data.image,
+  brand: p.data.brand || '',
+  model: p.data.model || '',
+  stock: p.data.stock || 'disponible'
+})));
+
+// Función auxiliar para obtener especificaciones tipadas
+function getSpecs(specifications: string[]) {
+  return specifications;
+}
+---
+
+<section id="tienda" class="tienda-section">
+  <div class="container">
+    <div class="tienda-header">
+      <h1 class="tienda-title">Tienda de Equipos Solares</h1>
+      <p class="tienda-subtitle">Encuentra los mejores equipos solares para tu proyecto</p>
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="tienda-layout">
+      <!-- Menú lateral de categorías -->
+      <aside class="categories-sidebar">
+        <div class="sidebar-content">
+          <h3 class="sidebar-title">
+            <i class="fas fa-list"></i>
+            Categorías
+          </h3>
+          <nav class="categories-menu">
+            <a href="#paneles" class="category-link" data-category="paneles">
+              <i class="fas fa-solar-panel"></i>
+              <span>Paneles Solares</span>
+              <span class="category-count">({paneles.length})</span>
+            </a>
+            <a href="#inversores" class="category-link" data-category="inversores">
+              <i class="fas fa-bolt"></i>
+              <span>Inversores</span>
+              <span class="category-count">({inversores.length})</span>
+            </a>
+            <a href="#baterias" class="category-link" data-category="baterias">
+              <i class="fas fa-battery-full"></i>
+              <span>Baterías de Litio</span>
+              <span class="category-count">({baterias.length})</span>
+            </a>
+            <a href="#reflectores" class="category-link" data-category="reflectores">
+              <i class="fas fa-lightbulb"></i>
+              <span>Reflectores Solares</span>
+              <span class="category-count">({reflectores.length})</span>
+            </a>
+            <a href="#controladores" class="category-link" data-category="controladores">
+              <i class="fas fa-microchip"></i>
+              <span>Controladores de Carga</span>
+              <span class="category-count">({controladores.length})</span>
+            </a>
+            <a href="#protecciones" class="category-link" data-category="protecciones">
+              <i class="fas fa-shield-alt"></i>
+              <span>Protecciones Eléctricas</span>
+              <span class="category-count">({protecciones.length})</span>
+            </a>
+            <a href="#cargadores" class="category-link" data-category="cargadores">
+              <i class="fas fa-car-battery"></i>
+              <span>Cargadores para Carro</span>
+              <span class="category-count">({cargadores.length})</span>
+            </a>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Contenido principal -->
+      <div class="tienda-content">
+    <!-- Paneles Solares -->
+    <div id="paneles" class="categoria-section">
+      <div class="categoria-header">
+        <h2 class="categoria-title">
+          <i class="fas fa-solar-panel"></i>
+          Paneles Solares
+        </h2>
+        <div class="carousel-controls">
+          <button class="carousel-btn prev-btn" data-category="paneles" aria-label="Anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-btn next-btn" data-category="paneles" aria-label="Siguiente">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      <div class="productos-carousel-wrapper">
+        <div class="productos-carousel" data-category="paneles">
+          <div class="productos-track" data-category="paneles">
+        {paneles.map((producto) => (
+          <div class="producto-card">
+            <div class="producto-image-container">
+              <img 
+                src={producto.data.image} 
+                alt={producto.data.title}
+                class="producto-image"
+                loading="lazy"
+              />
+              {producto.data.stock === 'disponible' && (
+                <div class="producto-badge disponible">Disponible</div>
+              )}
+              {producto.data.stock === 'agotado' && (
+                <div class="producto-badge agotado">Agotado</div>
+              )}
+              {producto.data.stock === 'pre-orden' && (
+                <div class="producto-badge pre-orden">Pre-orden</div>
+              )}
+            </div>
+            <div class="producto-content">
+              <div class="producto-header">
+                <h3 class="producto-name">{producto.data.title}</h3>
+                {producto.data.brand && (
+                  <span class="producto-brand">{producto.data.brand}</span>
+                )}
+              </div>
+              {producto.data.model && (
+                <p class="producto-model">Modelo: {producto.data.model}</p>
+              )}
+              <p class="producto-description">{producto.data.description}</p>
+              
+              <div class="producto-specs">
+                <h4 class="specs-title">Especificaciones:</h4>
+                <ul class="specs-list">
+                  {getSpecs(producto.data.specifications).map((spec) => (
+                    <li class="spec-item">{spec}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="producto-footer">
+                <div class="producto-price">{producto.data.price}</div>
+                <div class="producto-actions">
+                  <div class="quantity-controls" data-product-id={producto.slug}>
+                    <button class="qty-btn minus" type="button">-</button>
+                    <input type="number" class="qty-input" value="1" min="1" readonly>
+                    <button class="qty-btn plus" type="button">+</button>
+                  </div>
+                  <button class="producto-btn add-to-cart" 
+                          data-product-id={producto.slug}
+                          data-product-title={producto.data.title}
+                          data-product-description={producto.data.description}
+                          data-product-price={producto.data.price}
+                          data-product-image={producto.data.image}
+                          data-product-brand={producto.data.brand || ''}
+                          data-product-model={producto.data.model || ''}>
+                    <i class="fas fa-shopping-cart"></i>
+                    Agregar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Inversores -->
+    <div id="inversores" class="categoria-section">
+      <div class="categoria-header">
+        <h2 class="categoria-title">
+          <i class="fas fa-bolt"></i>
+          Inversores
+        </h2>
+        <div class="carousel-controls">
+          <button class="carousel-btn prev-btn" data-category="inversores" aria-label="Anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-btn next-btn" data-category="inversores" aria-label="Siguiente">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      <div class="productos-carousel-wrapper">
+        <div class="productos-carousel" data-category="inversores">
+          <div class="productos-track" data-category="inversores">
+        {inversores.map((producto) => (
+          <div class="producto-card">
+            <div class="producto-image-container">
+              <img 
+                src={producto.data.image} 
+                alt={producto.data.title}
+                class="producto-image"
+                loading="lazy"
+              />
+              {producto.data.stock === 'disponible' && (
+                <div class="producto-badge disponible">Disponible</div>
+              )}
+              {producto.data.stock === 'agotado' && (
+                <div class="producto-badge agotado">Agotado</div>
+              )}
+              {producto.data.stock === 'pre-orden' && (
+                <div class="producto-badge pre-orden">Pre-orden</div>
+              )}
+            </div>
+            <div class="producto-content">
+              <div class="producto-header">
+                <h3 class="producto-name">{producto.data.title}</h3>
+                {producto.data.brand && (
+                  <span class="producto-brand">{producto.data.brand}</span>
+                )}
+              </div>
+              {producto.data.model && (
+                <p class="producto-model">Modelo: {producto.data.model}</p>
+              )}
+              <p class="producto-description">{producto.data.description}</p>
+              
+              <div class="producto-specs">
+                <h4 class="specs-title">Especificaciones:</h4>
+                <ul class="specs-list">
+                  {getSpecs(producto.data.specifications).map((spec) => (
+                    <li class="spec-item">{spec}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="producto-footer">
+                <div class="producto-price">{producto.data.price}</div>
+                <div class="producto-actions">
+                  <div class="quantity-controls" data-product-id={producto.slug}>
+                    <button class="qty-btn minus" type="button">-</button>
+                    <input type="number" class="qty-input" value="1" min="1" readonly>
+                    <button class="qty-btn plus" type="button">+</button>
+                  </div>
+                  <button class="producto-btn add-to-cart" 
+                          data-product-id={producto.slug}
+                          data-product-title={producto.data.title}
+                          data-product-description={producto.data.description}
+                          data-product-price={producto.data.price}
+                          data-product-image={producto.data.image}
+                          data-product-brand={producto.data.brand || ''}
+                          data-product-model={producto.data.model || ''}>
+                    <i class="fas fa-shopping-cart"></i>
+                    Agregar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Baterías -->
+    <div id="baterias" class="categoria-section">
+      <div class="categoria-header">
+        <h2 class="categoria-title">
+          <i class="fas fa-battery-full"></i>
+          Baterías de Litio
+        </h2>
+        <div class="carousel-controls">
+          <button class="carousel-btn prev-btn" data-category="baterias" aria-label="Anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-btn next-btn" data-category="baterias" aria-label="Siguiente">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      <div class="productos-carousel-wrapper">
+        <div class="productos-carousel" data-category="baterias">
+          <div class="productos-track" data-category="baterias">
+        {baterias.map((producto) => (
+          <div class="producto-card">
+            <div class="producto-image-container">
+              <img 
+                src={producto.data.image} 
+                alt={producto.data.title}
+                class="producto-image"
+                loading="lazy"
+              />
+              {producto.data.stock === 'disponible' && (
+                <div class="producto-badge disponible">Disponible</div>
+              )}
+              {producto.data.stock === 'agotado' && (
+                <div class="producto-badge agotado">Agotado</div>
+              )}
+              {producto.data.stock === 'pre-orden' && (
+                <div class="producto-badge pre-orden">Pre-orden</div>
+              )}
+            </div>
+            <div class="producto-content">
+              <div class="producto-header">
+                <h3 class="producto-name">{producto.data.title}</h3>
+                {producto.data.brand && (
+                  <span class="producto-brand">{producto.data.brand}</span>
+                )}
+              </div>
+              {producto.data.model && (
+                <p class="producto-model">Modelo: {producto.data.model}</p>
+              )}
+              <p class="producto-description">{producto.data.description}</p>
+              
+              <div class="producto-specs">
+                <h4 class="specs-title">Especificaciones:</h4>
+                <ul class="specs-list">
+                  {getSpecs(producto.data.specifications).map((spec) => (
+                    <li class="spec-item">{spec}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="producto-footer">
+                <div class="producto-price">{producto.data.price}</div>
+                <div class="producto-actions">
+                  <div class="quantity-controls" data-product-id={producto.slug}>
+                    <button class="qty-btn minus" type="button">-</button>
+                    <input type="number" class="qty-input" value="1" min="1" readonly>
+                    <button class="qty-btn plus" type="button">+</button>
+                  </div>
+                  <button class="producto-btn add-to-cart" 
+                          data-product-id={producto.slug}
+                          data-product-title={producto.data.title}
+                          data-product-description={producto.data.description}
+                          data-product-price={producto.data.price}
+                          data-product-image={producto.data.image}
+                          data-product-brand={producto.data.brand || ''}
+                          data-product-model={producto.data.model || ''}>
+                    <i class="fas fa-shopping-cart"></i>
+                    Agregar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Reflectores Solares -->
+    <div id="reflectores" class="categoria-section">
+      <div class="categoria-header">
+        <h2 class="categoria-title">
+          <i class="fas fa-lightbulb"></i>
+          Reflectores Solares
+        </h2>
+        <div class="carousel-controls">
+          <button class="carousel-btn prev-btn" data-category="reflectores" aria-label="Anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-btn next-btn" data-category="reflectores" aria-label="Siguiente">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      <div class="productos-carousel-wrapper">
+        <div class="productos-carousel" data-category="reflectores">
+          <div class="productos-track" data-category="reflectores">
+        {reflectores.map((producto) => (
+          <div class="producto-card">
+            <div class="producto-image-container">
+              <img 
+                src={producto.data.image} 
+                alt={producto.data.title}
+                class="producto-image"
+                loading="lazy"
+              />
+              {producto.data.stock === 'disponible' && (
+                <div class="producto-badge disponible">Disponible</div>
+              )}
+              {producto.data.stock === 'agotado' && (
+                <div class="producto-badge agotado">Agotado</div>
+              )}
+              {producto.data.stock === 'pre-orden' && (
+                <div class="producto-badge pre-orden">Pre-orden</div>
+              )}
+            </div>
+            <div class="producto-content">
+              <div class="producto-header">
+                <h3 class="producto-name">{producto.data.title}</h3>
+                {producto.data.brand && (
+                  <span class="producto-brand">{producto.data.brand}</span>
+                )}
+              </div>
+              {producto.data.model && (
+                <p class="producto-model">Modelo: {producto.data.model}</p>
+              )}
+              <p class="producto-description">{producto.data.description}</p>
+              
+              <div class="producto-specs">
+                <h4 class="specs-title">Especificaciones:</h4>
+                <ul class="specs-list">
+                  {getSpecs(producto.data.specifications).map((spec) => (
+                    <li class="spec-item">{spec}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="producto-footer">
+                <div class="producto-price">{producto.data.price}</div>
+                <div class="producto-actions">
+                  <div class="quantity-controls" data-product-id={producto.slug}>
+                    <button class="qty-btn minus" type="button">-</button>
+                    <input type="number" class="qty-input" value="1" min="1" readonly>
+                    <button class="qty-btn plus" type="button">+</button>
+                  </div>
+                  <button class="producto-btn add-to-cart" 
+                          data-product-id={producto.slug}
+                          data-product-title={producto.data.title}
+                          data-product-description={producto.data.description}
+                          data-product-price={producto.data.price}
+                          data-product-image={producto.data.image}
+                          data-product-brand={producto.data.brand || ''}
+                          data-product-model={producto.data.model || ''}>
+                    <i class="fas fa-shopping-cart"></i>
+                    Agregar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Controladores de Carga -->
+    <div id="controladores" class="categoria-section">
+      <div class="categoria-header">
+        <h2 class="categoria-title">
+          <i class="fas fa-microchip"></i>
+          Controladores de Carga
+        </h2>
+        <div class="carousel-controls">
+          <button class="carousel-btn prev-btn" data-category="controladores" aria-label="Anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-btn next-btn" data-category="controladores" aria-label="Siguiente">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      <div class="productos-carousel-wrapper">
+        <div class="productos-carousel" data-category="controladores">
+          <div class="productos-track" data-category="controladores">
+        {controladores.map((producto) => (
+          <div class="producto-card">
+            <div class="producto-image-container">
+              <img 
+                src={producto.data.image} 
+                alt={producto.data.title}
+                class="producto-image"
+                loading="lazy"
+              />
+              {producto.data.stock === 'disponible' && (
+                <div class="producto-badge disponible">Disponible</div>
+              )}
+              {producto.data.stock === 'agotado' && (
+                <div class="producto-badge agotado">Agotado</div>
+              )}
+              {producto.data.stock === 'pre-orden' && (
+                <div class="producto-badge pre-orden">Pre-orden</div>
+              )}
+            </div>
+            <div class="producto-content">
+              <div class="producto-header">
+                <h3 class="producto-name">{producto.data.title}</h3>
+                {producto.data.brand && (
+                  <span class="producto-brand">{producto.data.brand}</span>
+                )}
+              </div>
+              {producto.data.model && (
+                <p class="producto-model">Modelo: {producto.data.model}</p>
+              )}
+              <p class="producto-description">{producto.data.description}</p>
+              
+              <div class="producto-specs">
+                <h4 class="specs-title">Especificaciones:</h4>
+                <ul class="specs-list">
+                  {getSpecs(producto.data.specifications).map((spec) => (
+                    <li class="spec-item">{spec}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="producto-footer">
+                <div class="producto-price">{producto.data.price}</div>
+                <div class="producto-actions">
+                  <div class="quantity-controls" data-product-id={producto.slug}>
+                    <button class="qty-btn minus" type="button">-</button>
+                    <input type="number" class="qty-input" value="1" min="1" readonly>
+                    <button class="qty-btn plus" type="button">+</button>
+                  </div>
+                  <button class="producto-btn add-to-cart" 
+                          data-product-id={producto.slug}
+                          data-product-title={producto.data.title}
+                          data-product-description={producto.data.description}
+                          data-product-price={producto.data.price}
+                          data-product-image={producto.data.image}
+                          data-product-brand={producto.data.brand || ''}
+                          data-product-model={producto.data.model || ''}>
+                    <i class="fas fa-shopping-cart"></i>
+                    Agregar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Protecciones Eléctricas -->
+    <div id="protecciones" class="categoria-section">
+      <div class="categoria-header">
+        <h2 class="categoria-title">
+          <i class="fas fa-shield-alt"></i>
+          Protecciones Eléctricas
+        </h2>
+        <div class="carousel-controls">
+          <button class="carousel-btn prev-btn" data-category="protecciones" aria-label="Anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-btn next-btn" data-category="protecciones" aria-label="Siguiente">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      <div class="productos-carousel-wrapper">
+        <div class="productos-carousel" data-category="protecciones">
+          <div class="productos-track" data-category="protecciones">
+        {protecciones.map((producto) => (
+          <div class="producto-card">
+            <div class="producto-image-container">
+              <img 
+                src={producto.data.image} 
+                alt={producto.data.title}
+                class="producto-image"
+                loading="lazy"
+              />
+              {producto.data.stock === 'disponible' && (
+                <div class="producto-badge disponible">Disponible</div>
+              )}
+              {producto.data.stock === 'agotado' && (
+                <div class="producto-badge agotado">Agotado</div>
+              )}
+              {producto.data.stock === 'pre-orden' && (
+                <div class="producto-badge pre-orden">Pre-orden</div>
+              )}
+            </div>
+            <div class="producto-content">
+              <div class="producto-header">
+                <h3 class="producto-name">{producto.data.title}</h3>
+                {producto.data.brand && (
+                  <span class="producto-brand">{producto.data.brand}</span>
+                )}
+              </div>
+              {producto.data.model && (
+                <p class="producto-model">Modelo: {producto.data.model}</p>
+              )}
+              <p class="producto-description">{producto.data.description}</p>
+              
+              <div class="producto-specs">
+                <h4 class="specs-title">Especificaciones:</h4>
+                <ul class="specs-list">
+                  {getSpecs(producto.data.specifications).map((spec) => (
+                    <li class="spec-item">{spec}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="producto-footer">
+                <div class="producto-price">{producto.data.price}</div>
+                <div class="producto-actions">
+                  <div class="quantity-controls" data-product-id={producto.slug}>
+                    <button class="qty-btn minus" type="button">-</button>
+                    <input type="number" class="qty-input" value="1" min="1" readonly>
+                    <button class="qty-btn plus" type="button">+</button>
+                  </div>
+                  <button class="producto-btn add-to-cart" 
+                          data-product-id={producto.slug}
+                          data-product-title={producto.data.title}
+                          data-product-description={producto.data.description}
+                          data-product-price={producto.data.price}
+                          data-product-image={producto.data.image}
+                          data-product-brand={producto.data.brand || ''}
+                          data-product-model={producto.data.model || ''}>
+                    <i class="fas fa-shopping-cart"></i>
+                    Agregar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cargadores para Carro -->
+    <div id="cargadores" class="categoria-section">
+      <div class="categoria-header">
+        <h2 class="categoria-title">
+          <i class="fas fa-car-battery"></i>
+          Cargadores para Carro
+        </h2>
+        <div class="carousel-controls">
+          <button class="carousel-btn prev-btn" data-category="cargadores" aria-label="Anterior">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="carousel-btn next-btn" data-category="cargadores" aria-label="Siguiente">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+      </div>
+      <div class="productos-carousel-wrapper">
+        <div class="productos-carousel" data-category="cargadores">
+          <div class="productos-track" data-category="cargadores">
+        {cargadores.map((producto) => (
+          <div class="producto-card">
+            <div class="producto-image-container">
+              <img 
+                src={producto.data.image} 
+                alt={producto.data.title}
+                class="producto-image"
+                loading="lazy"
+              />
+              {producto.data.stock === 'disponible' && (
+                <div class="producto-badge disponible">Disponible</div>
+              )}
+              {producto.data.stock === 'agotado' && (
+                <div class="producto-badge agotado">Agotado</div>
+              )}
+              {producto.data.stock === 'pre-orden' && (
+                <div class="producto-badge pre-orden">Pre-orden</div>
+              )}
+            </div>
+            <div class="producto-content">
+              <div class="producto-header">
+                <h3 class="producto-name">{producto.data.title}</h3>
+                {producto.data.brand && (
+                  <span class="producto-brand">{producto.data.brand}</span>
+                )}
+              </div>
+              {producto.data.model && (
+                <p class="producto-model">Modelo: {producto.data.model}</p>
+              )}
+              <p class="producto-description">{producto.data.description}</p>
+              
+              <div class="producto-specs">
+                <h4 class="specs-title">Especificaciones:</h4>
+                <ul class="specs-list">
+                  {getSpecs(producto.data.specifications).map((spec) => (
+                    <li class="spec-item">{spec}</li>
+                  ))}
+                </ul>
+              </div>
+
+              <div class="producto-footer">
+                <div class="producto-price">{producto.data.price}</div>
+                <div class="producto-actions">
+                  <div class="quantity-controls" data-product-id={producto.slug}>
+                    <button class="qty-btn minus" type="button">-</button>
+                    <input type="number" class="qty-input" value="1" min="1" readonly>
+                    <button class="qty-btn plus" type="button">+</button>
+                  </div>
+                  <button class="producto-btn add-to-cart" 
+                          data-product-id={producto.slug}
+                          data-product-title={producto.data.title}
+                          data-product-description={producto.data.description}
+                          data-product-price={producto.data.price}
+                          data-product-image={producto.data.image}
+                          data-product-brand={producto.data.brand || ''}
+                          data-product-model={producto.data.model || ''}>
+                    <i class="fas fa-shopping-cart"></i>
+                    Agregar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Nuestras Marcas -->
+    <div id="marcas" class="marcas-section">
+      <div class="marcas-header">
+        <h2 class="marcas-title">
+          <i class="fas fa-certificate"></i>
+          Nuestras Marcas
+        </h2>
+      </div>
+      <div class="marcas-carousel-wrapper">
+        <div class="marcas-carousel">
+          <div class="marcas-track">
+            <div class="marca-item">
+              <img src="/images/astroenergy.png" alt="Astroenergy" class="marca-logo">
+            </div>
+            <div class="marca-item">
+              <img src="/images/growatt.png" alt="Growatt" class="marca-logo">
+            </div>
+            <div class="marca-item">
+              <img src="/images/huawei.png" alt="Huawei" class="marca-logo">
+            </div>
+            <div class="marca-item">
+              <img src="/images/JA_Solar_Logo.svg.png" alt="JA Solar" class="marca-logo">
+            </div>
+            <div class="marca-item">
+              <img src="/images/livoltek.png" alt="Livoltek" class="marca-logo">
+            </div>
+            <div class="marca-item">
+              <img src="/images/logo-Victron-Energy-Ecogreensolar-1.jpg" alt="Victron Energy" class="marca-logo">
+            </div>
+            <div class="marca-item">
+              <img src="/images/Longi.png" alt="Longi" class="marca-logo">
+            </div>
+            <div class="marca-item">
+              <img src="/images/Must.png" alt="Must" class="marca-logo">
+            </div>
+            <!-- Duplicar para efecto infinito -->
+            <div class="marca-item">
+              <img src="/images/astroenergy.png" alt="Astroenergy" class="marca-logo">
+            </div>
+            <div class="marca-item">
+              <img src="/images/growatt.png" alt="Growatt" class="marca-logo">
+            </div>
+            <div class="marca-item">
+              <img src="/images/huawei.png" alt="Huawei" class="marca-logo">
+            </div>
+            <div class="marca-item">
+              <img src="/images/JA_Solar_Logo.svg.png" alt="JA Solar" class="marca-logo">
+            </div>
+            <div class="marca-item">
+              <img src="/images/livoltek.png" alt="Livoltek" class="marca-logo">
+            </div>
+            <div class="marca-item">
+              <img src="/images/logo-Victron-Energy-Ecogreensolar-1.jpg" alt="Victron Energy" class="marca-logo">
+            </div>
+            <div class="marca-item">
+              <img src="/images/Longi.png" alt="Longi" class="marca-logo">
+            </div>
+            <div class="marca-item">
+              <img src="/images/Must.png" alt="Must" class="marca-logo">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA Section -->
+  <div class="cta-section">
+    <div class="container">
+      <div class="cta-content">
+        <p class="cta-description">Contáctanos y recibe asesoría personalizada para tu instalación de energía solar</p>
+        <div class="cta-buttons">
+          <a href="/contacto" class="cta-btn-primary">
+            <i class="fas fa-envelope"></i>
+            Contáctanos
+          </a>
+          <a href="https://wa.me/573245737413" target="_blank" class="cta-btn-secondary">
+            <i class="fab fa-whatsapp"></i>
+            WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carrito de Compras -->
+  <div id="cart-sidebar" class="cart-sidebar">
+    <div class="cart-header">
+      <h2 class="cart-title">
+        <i class="fas fa-shopping-cart"></i>
+        Carrito de Compras
+      </h2>
+      <button class="cart-close" id="cart-close">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    
+    <div class="cart-content">
+      <!-- Forma de Pago -->
+      <div class="payment-section">
+        <div class="section-header">
+          <div class="section-number">3</div>
+          <h3 class="section-title">Forma de pago</h3>
+        </div>
+        <div class="payment-options">
+          <label class="payment-option">
+            <input type="radio" name="payment" value="transferencia" checked>
+            <span>Transferencia bancaria</span>
+          </label>
+          <label class="payment-option">
+            <input type="radio" name="payment" value="tarjeta">
+            <span>Tarjeta de crédito</span>
+          </label>
+          <label class="payment-option">
+            <input type="radio" name="payment" value="nequi">
+            <span>Nequi</span>
+          </label>
+          <label class="payment-option">
+            <input type="radio" name="payment" value="daviplata">
+            <span>Daviplata</span>
+          </label>
+          <label class="payment-option">
+            <input type="radio" name="payment" value="efectivo">
+            <span>Efectivo</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- Detalles del Pedido -->
+      <div class="order-details-section">
+        <div class="section-header">
+          <div class="section-number cart-icon">🛒</div>
+          <h3 class="section-title">Detalles del pedido</h3>
+        </div>
+        
+        <div id="cart-items" class="cart-items-table">
+          <div class="cart-empty">
+            <i class="fas fa-shopping-cart"></i>
+            <p>Tu carrito está vacío</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Resumen del Pedido -->
+      <div class="order-summary" id="order-summary" style="display: none;">
+        <div class="summary-row">
+          <span>Subtotal gravado:</span>
+          <span id="cart-subtotal-gravado">$0</span>
+        </div>
+        <div class="summary-row">
+          <span>Subtotal exento:</span>
+          <span id="cart-subtotal-exento">$0</span>
+        </div>
+        <div class="summary-row">
+          <span>IVA:</span>
+          <span id="cart-iva">$0</span>
+        </div>
+        <div class="summary-row total-row">
+          <span>Total:</span>
+          <span id="cart-total" class="cart-total">$0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cart-footer">
+      <button class="cart-checkout-btn" id="checkout-btn" disabled>
+        <i class="fab fa-whatsapp"></i>
+        Comprar por WhatsApp
+      </button>
+    </div>
+  </div>
+
+</section>
+
+<style>
+  .tienda-section {
+    padding: 4rem 0;
+    background: linear-gradient(135deg, #6b2181 0%, #8b2a9b 50%, #6b2181 100%);
+    min-height: 100vh;
+    background-attachment: fixed;
+  }
+
+  .container {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Layout con sidebar */
+  .tienda-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  /* Sidebar de categorías */
+  .categories-sidebar {
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+  }
+
+  .sidebar-content {
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+  }
+
+  .sidebar-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #6b2181;
+    margin: 0 0 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+  }
+
+  .sidebar-title i {
+    font-size: 1.2rem;
+  }
+
+  .categories-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .category-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.875rem 1rem;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #4b5563;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    border: 2px solid transparent;
+  }
+
+  .category-link:hover {
+    background: #f9fafb;
+    color: #6b2181;
+    border-color: #e5e7eb;
+  }
+
+  .category-link.active {
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+    border-color: #6b2181;
+    box-shadow: 0 4px 12px rgba(107, 33, 129, 0.3);
+  }
+
+  .category-link i {
+    font-size: 1.1rem;
+    width: 20px;
+    text-align: center;
+  }
+
+  .category-link span:first-of-type {
+    flex: 1;
+  }
+
+  .category-count {
+    font-size: 0.85rem;
+    opacity: 0.8;
+    font-weight: 600;
+  }
+
+  .category-link.active .category-count {
+    opacity: 1;
+  }
+
+  /* Contenido principal */
+  .tienda-content {
+    min-width: 0;
+  }
+
+  .tienda-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    width: 100%;
+  }
+
+  .tienda-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-align: center;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .tienda-subtitle {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .categoria-section {
+    margin-bottom: 5rem;
+    background: rgba(255, 255, 255, 0.6);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(10px);
+  }
+
+  .categoria-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    gap: 2rem;
+  }
+
+  .categoria-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .carousel-controls {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  .carousel-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 2px solid #e5e7eb;
+    background: white;
+    color: #6b2181;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .carousel-btn:hover {
+    background: #6b2181;
+    color: white;
+    border-color: #6b2181;
+    transform: scale(1.1);
+  }
+
+  .carousel-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    transform: none;
+  }
+
+  .categoria-title i {
+    color: #6b2181;
+    font-size: 2rem;
+  }
+
+  /* Carrusel de productos */
+  .productos-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    margin: 0 -1rem;
+    padding: 0 1rem;
+    /* Ancho para mostrar 7 tarjetas: 306px * 7 + 2rem * 6 = ~2334px */
+    max-width: calc(306px * 7 + 2rem * 6);
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .productos-carousel {
+    overflow: hidden;
+    scroll-behavior: smooth;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+    padding-bottom: 1rem;
+    width: 100%;
+  }
+
+  .productos-carousel::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+  }
+
+  .productos-track {
+    display: flex;
+    gap: 2rem;
+    padding: 0.5rem 0;
+    animation: scroll-infinite 60s linear infinite;
+  }
+
+  /* Animaciones para diferentes direcciones por categoría */
+  .productos-track[data-category="paneles"] {
+    animation: scroll-left 60s linear infinite;
+  }
+
+  .productos-track[data-category="inversores"] {
+    animation: scroll-right 60s linear infinite;
+  }
+
+  .productos-track[data-category="baterias"] {
+    animation: scroll-left 60s linear infinite;
+  }
+
+  .productos-track[data-category="reflectores"] {
+    animation: scroll-right 60s linear infinite;
+  }
+
+  .productos-track[data-category="controladores"] {
+    animation: scroll-left 60s linear infinite;
+  }
+
+  .productos-track[data-category="protecciones"] {
+    animation: scroll-right 60s linear infinite;
+  }
+
+  .productos-track[data-category="cargadores"] {
+    animation: scroll-left 60s linear infinite;
+  }
+
+  @keyframes scroll-left {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes scroll-right {
+    0% {
+      transform: translateX(-50%);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  /* Sección de Marcas */
+  .marcas-section {
+    margin-top: 5rem;
+    margin-bottom: 3rem;
+    background: transparent;
+    border-radius: 24px;
+    padding: 2.5rem;
+  }
+
+  .marcas-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .marcas-title {
+    font-size: 2.2rem;
+    font-weight: 600;
+    color: white;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .marcas-title i {
+    color: #ffc107;
+    font-size: 2rem;
+    filter: drop-shadow(0 2px 8px rgba(255, 193, 7, 0.5));
+  }
+
+  .marcas-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    margin: 0 -1rem;
+    padding: 0 1rem;
+  }
+
+  .marcas-carousel {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .marcas-track {
+    display: flex;
+    gap: 3rem;
+    padding: 1rem 0;
+    animation: scroll-marcas 40s linear infinite;
+  }
+
+  @keyframes scroll-marcas {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .marca-item {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 2rem;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 120px;
+    width: 200px;
+  }
+
+  .marca-item:hover {
+    transform: translateY(-5px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(107, 33, 129, 0.2);
+  }
+
+  .marca-logo {
+    max-width: 100%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(20%);
+    transition: filter 0.3s ease;
+  }
+
+  .marca-item:hover .marca-logo {
+    filter: grayscale(0%);
+  }
+
+  /* CTA Section */
+  .cta-section {
+    padding: 3rem 0;
+    background: linear-gradient(135deg, rgba(107, 33, 129, 0.9), rgba(139, 42, 155, 0.9));
+    margin-top: 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
+    opacity: 0.3;
+  }
+
+  .cta-content {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .cta-description {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 2rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-btn-primary,
+  .cta-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.25rem 2.5rem;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cta-btn-primary {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1f2937;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  }
+
+  .cta-btn-primary::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .cta-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+    background: linear-gradient(135deg, #FFA500, #FFD700);
+  }
+
+  .cta-btn-primary:hover::before {
+    left: 100%;
+  }
+
+  .cta-btn-secondary {
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    border: 2px solid transparent;
+  }
+
+  .cta-btn-secondary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(37, 211, 102, 0.4);
+    background: linear-gradient(135deg, #128C7E, #25D366);
+  }
+
+  .cta-btn-primary i,
+  .cta-btn-secondary i {
+    font-size: 1.3rem;
+  }
+
+  .productos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .producto-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    min-width: 306px;
+    max-width: 306px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    border: 2px solid transparent;
+  }
+
+  .producto-card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 12px 40px rgba(107, 33, 129, 0.4), 0 0 0 1px rgba(107, 33, 129, 0.1);
+    border-color: transparent;
+    background: white;
+  }
+
+  .producto-card:hover .producto-content {
+    transform: scale(1.02);
+  }
+
+  .producto-image-container {
+    position: relative;
+    width: 100%;
+    height: 163px;
+    overflow: hidden;
+    background: #f3f4f6;
+  }
+
+  .producto-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .producto-card:hover .producto-image {
+    transform: scale(1.15);
+  }
+
+  .producto-card:hover .producto-name {
+    color: #6b2181;
+    text-shadow: 0 2px 8px rgba(107, 33, 129, 0.2);
+  }
+
+  .producto-card:hover .producto-price {
+    color: #8b2a9b;
+    transform: scale(1.05);
+    text-shadow: 0 2px 8px rgba(139, 42, 155, 0.3);
+  }
+
+  .producto-card:hover .producto-description {
+    color: #6b2181;
+    text-shadow: 0 1px 4px rgba(107, 33, 129, 0.15);
+  }
+
+  .producto-card:hover .producto-brand {
+    color: #6b2181;
+    background: rgba(107, 33, 129, 0.1);
+  }
+
+  .producto-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .producto-badge.disponible {
+    background: #10b981;
+    color: white;
+  }
+
+  .producto-badge.agotado {
+    background: #ef4444;
+    color: white;
+  }
+
+  .producto-badge.pre-orden {
+    background: #f59e0b;
+    color: white;
+  }
+
+  .producto-content {
+    padding: 1.05rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .producto-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.3rem;
+    gap: 0.65rem;
+  }
+
+  .producto-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+    flex: 1;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.3;
+    transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1), text-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .producto-brand {
+    font-size: 0.9rem;
+    color: #6b7280;
+    background: #f3f4f6;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1), background 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .producto-model {
+    font-size: 0.8rem;
+    color: #6b7280;
+    margin: 0 0 0.65rem 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .producto-description {
+    font-size: 0.9rem;
+    color: #4b5563;
+    line-height: 1.4;
+    margin-bottom: 0.65rem;
+    flex: 1;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1), text-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .producto-specs {
+    margin-bottom: 0.65rem;
+    display: none; /* Ocultar especificaciones para ahorrar espacio */
+  }
+
+  .specs-title {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.35rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .specs-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .spec-item {
+    font-size: 0.7rem;
+    color: #6b7280;
+    padding: 0.18rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .spec-item::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #6b2181;
+    font-weight: bold;
+  }
+
+  .producto-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    margin-top: auto;
+    padding-top: 0.55rem;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .producto-price {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #6b2181;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .producto-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    border: 2px solid #e5e7eb;
+    border-radius: 50px;
+    overflow: hidden;
+  }
+
+  .qty-btn {
+    background: #f3f4f6;
+    border: none;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #6b2181;
+    transition: all 0.2s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .qty-btn:hover {
+    background: #6b2181;
+    color: white;
+  }
+
+  .qty-input {
+    width: 45px;
+    height: 32px;
+    border: none;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1f2937;
+    background: white;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .producto-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    border: none;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(107, 33, 129, 0.3);
+    white-space: nowrap;
+    cursor: pointer;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .producto-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(107, 33, 129, 0.4);
+    background: linear-gradient(135deg, #8b2a9b, #6b2181);
+  }
+
+  .producto-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1024px) {
+    .tienda-layout {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .categories-sidebar {
+      position: static;
+      order: -1;
+    }
+
+    .sidebar-content {
+      position: sticky;
+      top: 1rem;
+      z-index: 10;
+    }
+
+    .categories-menu {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.5rem;
+    }
+
+    .producto-card {
+      min-width: 263px;
+      max-width: 263px;
+    }
+
+    .categoria-header {
+      flex-wrap: wrap;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .tienda-section {
+      padding: 3rem 0;
+    }
+
+    .tienda-title {
+      font-size: 2.2rem;
+    }
+
+    .tienda-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .categoria-title {
+      font-size: 1.8rem;
+    }
+
+    .categoria-header {
+      margin-bottom: 1.5rem;
+    }
+
+    .carousel-btn {
+      width: 40px;
+      height: 40px;
+      font-size: 1rem;
+    }
+
+    .producto-card {
+      min-width: 245px;
+      max-width: 245px;
+    }
+
+    .productos-track {
+      gap: 1.5rem;
+    }
+
+    .producto-image-container {
+      height: 199px;
+    }
+
+    .producto-footer {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .producto-btn {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .marcas-title {
+      font-size: 1.8rem;
+    }
+
+    .marca-item {
+      height: 100px;
+      width: 160px;
+      padding: 1rem 1.5rem;
+    }
+
+    .marcas-track {
+      gap: 2rem;
+    }
+
+    .cta-title {
+      font-size: 2rem;
+    }
+
+    .cta-description {
+      font-size: 1.1rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .cta-btn-primary,
+    .cta-btn-secondary {
+      width: 100%;
+      max-width: 300px;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .tienda-title {
+      font-size: 1.8rem;
+    }
+
+    .categoria-title {
+      font-size: 1.5rem;
+    }
+
+    .producto-content {
+      padding: 1.5rem;
+    }
+
+    .producto-name {
+      font-size: 1.2rem;
+    }
+  }
+
+  /* Carrito de Compras */
+  .cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -450px;
+    width: 450px;
+    height: 100vh;
+    background: white;
+    box-shadow: -4px 0 20px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.3s ease;
+  }
+
+  .cart-sidebar.open {
+    right: 0;
+  }
+
+  .cart-header {
+    padding: 2rem;
+    border-bottom: 2px solid #e5e7eb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .cart-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cart-title i {
+    color: #6b2181;
+  }
+
+  .cart-close {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #6b7280;
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.2s ease;
+  }
+
+  .cart-close:hover {
+    color: #1f2937;
+  }
+
+  .cart-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    background: #f9fafb;
+  }
+
+  /* Secciones */
+  .payment-section,
+  .order-details-section {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-number {
+    width: 32px;
+    height: 32px;
+    background: #10b981;
+    color: white;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1rem;
+    flex-shrink: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .section-number.cart-icon {
+    background: #f59e0b;
+    font-size: 1.2rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .payment-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .payment-option:hover {
+    background: #f9fafb;
+    border-color: #6b2181;
+  }
+
+  .payment-option input[type="radio"] {
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+  }
+
+  .payment-option input[type="radio"]:checked + span {
+    font-weight: 600;
+    color: #6b2181;
+  }
+
+  /* Tabla del carrito */
+  .cart-items-table {
+    width: 100%;
+  }
+
+  .cart-table-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    border-bottom: 2px solid #e5e7eb;
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 0.9rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cart-table-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+    border-bottom: 1px solid #e5e7eb;
+    align-items: center;
+  }
+
+  .cart-table-row:last-child {
+    border-bottom: none;
+  }
+
+  .cart-col-product {
+    display: flex;
+    align-items: center;
+  }
+
+  .product-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+  }
+
+  .product-image-small {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid #e5e7eb;
+    flex-shrink: 0;
+  }
+
+  .product-details {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .product-name {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1f2937;
+    line-height: 1.4;
+    margin-bottom: 0.25rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .product-brand {
+    font-size: 0.85rem;
+    color: #6b7280;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cart-col-price,
+  .cart-col-subtotal {
+    display: flex;
+    justify-content: center;
+  }
+
+  .price-box,
+  .subtotal-box {
+    background: #d1fae5;
+    color: #065f46;
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    white-space: nowrap;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cart-col-qty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .qty-btn-small {
+    background: white;
+    border: 1px solid #e5e7eb;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6b2181;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .qty-btn-small:hover {
+    background: #6b2181;
+    color: white;
+    border-color: #6b2181;
+  }
+
+  .qty-input-small {
+    width: 50px;
+    height: 32px;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1f2937;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .remove-item-btn {
+    background: none;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-size: 0.9rem;
+    padding: 0.25rem;
+    transition: all 0.2s ease;
+  }
+
+  .remove-item-btn:hover {
+    transform: scale(1.2);
+  }
+
+  .cart-empty {
+    text-align: center;
+    padding: 3rem 1rem;
+    color: #6b7280;
+  }
+
+  .cart-empty i {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+  }
+
+  /* Resumen del pedido */
+  .order-summary {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .cart-footer {
+    padding: 2rem;
+    border-top: 2px solid #e5e7eb;
+    background: white;
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    font-size: 0.95rem;
+    color: #4b5563;
+    border-bottom: 1px solid #e5e7eb;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .summary-row:last-child {
+    border-bottom: none;
+  }
+
+  .summary-row.total-row {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #1f2937;
+    padding-top: 1rem;
+    margin-top: 0.5rem;
+    border-top: 2px solid #e5e7eb;
+  }
+
+  .cart-total {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #6b2181;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cart-checkout-btn {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  }
+
+  .cart-checkout-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+  }
+
+  .cart-checkout-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 768px) {
+    .cart-sidebar {
+      width: 100%;
+      right: -100%;
+    }
+
+    .cart-table-header,
+    .cart-table-row {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+
+    .cart-table-header {
+      display: none;
+    }
+
+    .cart-col-product,
+    .cart-col-price,
+    .cart-col-qty,
+    .cart-col-subtotal {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+    }
+
+    .cart-col-product::before {
+      content: "Producto: ";
+      font-weight: 600;
+      color: #6b7280;
+    }
+
+    .cart-col-price::before {
+      content: "Precio: ";
+      font-weight: 600;
+      color: #6b7280;
+    }
+
+    .cart-col-qty::before {
+      content: "Cantidad: ";
+      font-weight: 600;
+      color: #6b7280;
+    }
+
+    .cart-col-subtotal::before {
+      content: "Subtotal: ";
+      font-weight: 600;
+      color: #6b7280;
+    }
+
+    .product-info {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .product-image-small {
+      width: 60px;
+      height: 60px;
+    }
+  }
+</style>
+
+<script define:vars={{ productosJSON }}>
+  // Número de WhatsApp - +573245737413
+  const WHATSAPP_NUMBER = '573245737413';
+  
+  // Carrito de compras
+  let cart = [];
+  const productos = JSON.parse(productosJSON);
+  const CART_STORAGE_KEY = 'reiki_cart';
+
+  // Funciones para localStorage
+  function saveCartToStorage() {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+    updateCartBadgeGlobal();
+  }
+
+  function loadCartFromStorage() {
+    const savedCart = localStorage.getItem(CART_STORAGE_KEY);
+    if (savedCart) {
+      try {
+        cart = JSON.parse(savedCart);
+      } catch (e) {
+        cart = [];
+      }
+    }
+  }
+
+  function updateCartBadgeGlobal() {
+    const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+    const badge = document.getElementById('cart-badge');
+    if (badge) {
+      badge.textContent = totalItems;
+      badge.style.display = totalItems > 0 ? 'flex' : 'none';
+    }
+    // Actualizar badge en otras páginas también
+    window.dispatchEvent(new CustomEvent('cartUpdated', { detail: { totalItems } }));
+  }
+
+  // Función para extraer número del precio
+  function extractPrice(priceString) {
+    const cleaned = priceString.replace(/[^0-9]/g, '');
+    return parseInt(cleaned) || 0;
+  }
+
+  // Función para formatear precio
+  function formatPrice(price) {
+    return new Intl.NumberFormat('es-CO', {
+      style: 'currency',
+      currency: 'COP',
+      minimumFractionDigits: 0
+    }).format(price);
+  }
+
+  // Actualizar UI del carrito
+  function updateCartUI() {
+    const cartItems = document.getElementById('cart-items');
+    const cartSubtotal = document.getElementById('cart-subtotal');
+    const cartTotal = document.getElementById('cart-total');
+    const checkoutBtn = document.getElementById('checkout-btn');
+
+    // Actualizar badge global (el botón flotante está en otro componente)
+    updateCartBadgeGlobal();
+
+    // Actualizar items
+    if (cart.length === 0) {
+      cartItems.innerHTML = `
+        <div class="cart-empty">
+          <i class="fas fa-shopping-cart"></i>
+          <p>Tu carrito está vacío</p>
+        </div>
+      `;
+      checkoutBtn.disabled = true;
+      document.getElementById('order-summary').style.display = 'none';
+    } else {
+      // Mostrar resumen
+      document.getElementById('order-summary').style.display = 'block';
+      
+      cartItems.innerHTML = `
+        <div class="cart-table-header">
+          <div class="cart-col-product">Nombre del producto</div>
+          <div class="cart-col-price">Precio</div>
+          <div class="cart-col-qty">Cantidad</div>
+          <div class="cart-col-subtotal">Subtotal</div>
+        </div>
+        ${cart.map((item, index) => {
+          const producto = productos.find(p => p.id === item.id);
+          const itemTotal = extractPrice(item.price) * item.quantity;
+          return `
+            <div class="cart-table-row">
+              <div class="cart-col-product">
+                <div class="product-info">
+                  <img src="${item.image}" alt="${item.title}" class="product-image-small">
+                  <div class="product-details">
+                    <div class="product-name">${item.title}</div>
+                    ${item.brand ? `<div class="product-brand">${item.brand}</div>` : ''}
+                  </div>
+                </div>
+              </div>
+              <div class="cart-col-price">
+                <div class="price-box">${item.price}</div>
+              </div>
+              <div class="cart-col-qty">
+                <div class="qty-controls">
+                  <button onclick="updateCartQuantity(${index}, -1)" class="qty-btn-small">-</button>
+                  <input type="number" value="${item.quantity}" min="1" readonly class="qty-input-small">
+                  <button onclick="updateCartQuantity(${index}, 1)" class="qty-btn-small">+</button>
+                </div>
+                <button class="remove-item-btn" onclick="removeFromCart(${index})" title="Eliminar">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+              <div class="cart-col-subtotal">
+                <div class="subtotal-box">${formatPrice(itemTotal)}</div>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      `;
+      checkoutBtn.disabled = false;
+    }
+
+    // Calcular totales
+    const subtotal = cart.reduce((sum, item) => {
+      return sum + (extractPrice(item.price) * item.quantity);
+    }, 0);
+    
+    // Calcular IVA (19% en Colombia)
+    // Asumiendo que todos los productos tienen IVA incluido
+    const subtotalGravado = subtotal / 1.19; // Base gravable (sin IVA)
+    const iva = subtotalGravado * 0.19; // IVA del 19%
+    const subtotalExento = 0; // Productos exentos (puedes ajustar esto según tus productos)
+    const total = subtotal; // El precio ya incluye IVA
+
+    document.getElementById('cart-subtotal-gravado').textContent = formatPrice(subtotalGravado);
+    document.getElementById('cart-subtotal-exento').textContent = formatPrice(subtotalExento);
+    document.getElementById('cart-iva').textContent = formatPrice(iva);
+    cartTotal.textContent = formatPrice(total);
+  }
+
+  // Agregar al carrito
+  function addToCart(productId, quantity = 1) {
+    const producto = productos.find(p => p.id === productId);
+    if (!producto) return;
+
+    const existingItem = cart.find(item => item.id === productId);
+    if (existingItem) {
+      existingItem.quantity += quantity;
+    } else {
+      cart.push({
+        id: producto.id,
+        title: producto.title,
+        description: producto.description || '',
+        price: producto.price,
+        image: producto.image,
+        brand: producto.brand,
+        model: producto.model,
+        quantity: quantity
+      });
+    }
+
+    saveCartToStorage();
+    updateCartUI();
+    // No abrir sidebar automáticamente, solo actualizar badge
+  }
+
+  // Actualizar cantidad
+  window.updateCartQuantity = function(index, change) {
+    cart[index].quantity += change;
+    if (cart[index].quantity <= 0) {
+      cart.splice(index, 1);
+    }
+    saveCartToStorage();
+    updateCartUI();
+  };
+
+  // Eliminar del carrito
+  window.removeFromCart = function(index) {
+    cart.splice(index, 1);
+    saveCartToStorage();
+    updateCartUI();
+  };
+
+  // Navegación del sidebar
+  function initCategoryNavigation() {
+    const categoryLinks = document.querySelectorAll('.category-link');
+    const categorySections = document.querySelectorAll('.categoria-section');
+
+    // Función para actualizar el link activo
+    function updateActiveLink() {
+      const scrollPosition = window.scrollY + 150;
+
+      categorySections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const sectionBottom = sectionTop + section.offsetHeight;
+        const sectionId = section.id;
+
+        if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
+          categoryLinks.forEach(link => link.classList.remove('active'));
+          const activeLink = document.querySelector(`[data-category="${sectionId}"]`);
+          if (activeLink) {
+            activeLink.classList.add('active');
+          }
+        }
+      });
+    }
+
+    // Smooth scroll al hacer click
+    categoryLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('data-category');
+        const targetSection = document.getElementById(targetId);
+        
+        if (targetSection) {
+          const offsetTop = targetSection.offsetTop - 100;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Actualizar link activo al hacer scroll
+    window.addEventListener('scroll', updateActiveLink);
+    updateActiveLink(); // Inicializar
+  }
+
+  // Control de carruseles con movimiento automático infinito
+  function initCarousels() {
+    const tracks = document.querySelectorAll('.productos-track');
+    
+    tracks.forEach(track => {
+      const category = track.getAttribute('data-category');
+      const carousel = track.closest('.productos-carousel');
+      const prevBtn = document.querySelector(`.prev-btn[data-category="${category}"]`);
+      const nextBtn = document.querySelector(`.next-btn[data-category="${category}"]`);
+      
+      if (!track || !carousel) return;
+      
+      // Duplicar productos para efecto infinito
+      const productos = Array.from(track.children);
+      productos.forEach(producto => {
+        const clone = producto.cloneNode(true);
+        track.appendChild(clone);
+      });
+      
+      // Pausar animación al hacer hover
+      track.addEventListener('mouseenter', () => {
+        track.style.animationPlayState = 'paused';
+      });
+      
+      track.addEventListener('mouseleave', () => {
+        track.style.animationPlayState = 'running';
+      });
+      
+      // Ocultar botones de navegación ya que el movimiento es automático
+      if (prevBtn && nextBtn) {
+        prevBtn.style.display = 'none';
+        nextBtn.style.display = 'none';
+      }
+    });
+  }
+
+  // Controladores de cantidad en productos
+  document.addEventListener('DOMContentLoaded', function() {
+    initCategoryNavigation();
+    initCarousels();
+    
+    // Botones de cantidad
+    document.querySelectorAll('.qty-btn').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const controls = this.closest('.quantity-controls');
+        const input = controls.querySelector('.qty-input');
+        const isPlus = this.classList.contains('plus');
+        
+        let value = parseInt(input.value) || 1;
+        if (isPlus) {
+          value++;
+        } else {
+          value = Math.max(1, value - 1);
+        }
+        input.value = value;
+      });
+    });
+
+    // Botones agregar al carrito
+    document.querySelectorAll('.add-to-cart').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const productId = this.dataset.productId;
+        const controls = this.closest('.producto-actions').querySelector('.quantity-controls');
+        const quantity = parseInt(controls.querySelector('.qty-input').value) || 1;
+        addToCart(productId, quantity);
+        // Resetear cantidad a 1 después de agregar
+        controls.querySelector('.qty-input').value = 1;
+      });
+    });
+
+    // El botón flotante del carrito está en el componente CartFloatButton
+    // que redirige a /carrito
+
+    // Checkout
+    document.getElementById('checkout-btn').addEventListener('click', function() {
+      const paymentMethod = document.querySelector('input[name="payment"]:checked').value;
+      const paymentNames = {
+        'transferencia': 'Transferencia bancaria',
+        'tarjeta': 'Tarjeta de crédito',
+        'nequi': 'Nequi',
+        'daviplata': 'Daviplata',
+        'efectivo': 'Efectivo'
+      };
+
+      let message = '🛒 *PEDIDO DE PRODUCTOS SOLARES*\n\n';
+      message += '*Productos:*\n';
+      
+      cart.forEach((item, index) => {
+        const itemTotal = extractPrice(item.price) * item.quantity;
+        message += `${index + 1}. ${item.title}\n`;
+        if (item.brand) message += `   Marca: ${item.brand}\n`;
+        if (item.model) message += `   Modelo: ${item.model}\n`;
+        message += `   Cantidad: ${item.quantity}\n`;
+        message += `   Precio unitario: ${item.price}\n`;
+        message += `   Subtotal: ${formatPrice(itemTotal)}\n\n`;
+      });
+
+      const total = cart.reduce((sum, item) => {
+        return sum + (extractPrice(item.price) * item.quantity);
+      }, 0);
+
+      message += `*Subtotal:* ${formatPrice(total)}\n`;
+      message += `*Total:* ${formatPrice(total)}\n\n`;
+      message += `*Método de pago:* ${paymentNames[paymentMethod]}\n\n`;
+      message += 'Por favor, confirma la disponibilidad y el proceso de pago.';
+
+      const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+      window.open(whatsappUrl, '_blank');
+    });
+
+    // Cargar carrito al iniciar
+    loadCartFromStorage();
+    updateCartUI();
+    
+    // Escuchar actualizaciones del carrito desde otras páginas
+    window.addEventListener('cartUpdated', function(event) {
+      const totalItems = event.detail.totalItems;
+      const badge = document.getElementById('cart-badge');
+      if (badge) {
+        badge.textContent = totalItems;
+        badge.style.display = totalItems > 0 ? 'flex' : 'none';
+      }
+    });
+  });
+</script>
+

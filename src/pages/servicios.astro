@@ -1,0 +1,390 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import SEO from '../components/SEO.astro';
+import { getCollection } from 'astro:content';
+
+// Obtener todos los servicios ordenados
+const servicios = await getCollection('servicios');
+const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Servicios de Energía Solar en Medellín | Instalación Paneles Solares | Reiki Energía Solar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <SEO 
+      title="Servicios de Energía Solar en Medellín | Instalación Paneles Solares"
+      description="Servicios profesionales de instalación de energía solar en Medellín y Colombia. Sistemas fotovoltaicos para hogares, empresas, bombeo solar y estaciones móviles. Cotización gratuita."
+      canonical="/servicios"
+      keywords="instalación paneles solares Medellín, servicios energía solar Colombia, sistemas fotovoltaicos, energía solar empresas, bombeo solar, estación energía móvil, instalación solar profesional, cotización energía solar"
+      schemaType="WebPage"
+    />
+  </head>
+  <body>
+    <Header />
+    
+    <main>
+      <section class="services-hero">
+        <div class="container">
+          <h1 class="hero-title">Nuestros Servicios</h1>
+          <p class="hero-subtitle">Soluciones integrales de energía solar para hogares, empresas y proyectos especiales</p>
+        </div>
+      </section>
+
+      <section class="services-section">
+        <div class="container">
+          <div class="services-grid">
+            {serviciosOrdenados.map((servicio, index) => (
+              <div class="service-card">
+                <div class="service-image-container">
+                  <img 
+                    src={index === 0 ? "/energia solar vivienda.png" : index === 1 ? "/images/Eenergia solar en empresas de medellin.png" : index === 2 ? "/images/estación de energía solar móvil en Colombia.png" : index === 3 ? "/images/Bombeo solar en Colombia.png" : servicio.data.image} 
+                    alt={servicio.data.title}
+                    class="service-image"
+                    loading="lazy"
+                  >
+                  <div class="service-overlay">
+                    <a href={`/servicios/${servicio.slug}`} class="service-link">
+                      <i class="fas fa-arrow-right"></i>
+                    </a>
+                  </div>
+                </div>
+                <div class="service-content">
+                  <h3 class="service-title">{servicio.data.title}</h3>
+                  <p class="service-description">{servicio.data.description}</p>
+                  
+                  <div class="service-benefits">
+                    <h4 class="benefits-title">Beneficios principales:</h4>
+                    <ul class="benefits-list">
+                      {servicio.data.benefits.slice(0, 4).map((benefit) => (
+                        <li class="benefit-item">
+                          <i class="fas fa-check"></i>
+                          <span>{benefit}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  <a href={`/servicios/${servicio.slug}`} class="service-cta">
+                    {servicio.data.cta.text}
+                    <i class="fas fa-arrow-right"></i>
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      <section class="services-cta-section">
+        <div class="container">
+          <div class="services-cta-content">
+            <h2 class="services-cta-title">¿Necesitas una Solución Personalizada?</h2>
+            <p class="services-cta-description">
+              Nuestro equipo de expertos está listo para diseñar la solución perfecta para tus necesidades
+            </p>
+            <div class="services-cta-buttons">
+              <a href="https://wa.me/573245737413" target="_blank" rel="noopener noreferrer" class="services-cta-button whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                Contactar por WhatsApp
+              </a>
+              <a href="#contacto" class="services-cta-button primary">
+                <i class="fas fa-envelope"></i>
+                Solicitar Cotización
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <Footer />
+    <WhatsAppFloat />
+  </body>
+</html>
+
+<style>
+  .services-hero {
+    padding: 10rem 2rem 4rem;
+    background: linear-gradient(135deg, #6b2181 0%, #8b2a9b 100%);
+    text-align: center;
+    color: white;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    color: #e5e7eb;
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .services-section {
+    padding: 5rem 2rem;
+    background: #f9fafb;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .service-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(107, 33, 129, 0.2);
+  }
+
+  .service-image-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: #f3f4f6;
+  }
+
+  .service-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .service-card:hover .service-image {
+    transform: scale(1.1);
+  }
+
+  .service-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(107, 33, 129, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .service-card:hover .service-overlay {
+    opacity: 1;
+  }
+
+  .service-link {
+    width: 60px;
+    height: 60px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6b2181;
+    font-size: 1.5rem;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
+
+  .service-link:hover {
+    transform: scale(1.1);
+  }
+
+  .service-content {
+    padding: 2rem;
+  }
+
+  .service-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .service-description {
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #6b7280;
+    margin-bottom: 1.5rem;
+    text-align: justify;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .service-benefits {
+    margin-bottom: 1.5rem;
+  }
+
+  .benefits-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #4b5563;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .benefit-item i {
+    color: #6b2181;
+    margin-top: 0.2rem;
+    flex-shrink: 0;
+  }
+
+  .service-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .service-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(107, 33, 129, 0.4);
+    gap: 0.75rem;
+  }
+
+  .services-cta-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, #6b2181 0%, #8b2a9b 100%);
+    color: white;
+    text-align: center;
+  }
+
+  .services-cta-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .services-cta-description {
+    font-size: 1.2rem;
+    color: #e5e7eb;
+    margin-bottom: 2.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .services-cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .services-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .services-cta-button.primary {
+    background: white;
+    color: #6b2181;
+  }
+
+  .services-cta-button.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+  }
+
+  .services-cta-button.whatsapp {
+    background: #25D366;
+    color: white;
+  }
+
+  .services-cta-button.whatsapp:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+    background: #20BA5A;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .services-hero {
+      padding: 8rem 1rem 3rem;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+    }
+
+    .services-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+
+    .services-cta-buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .services-cta-button {
+      width: 100%;
+      max-width: 300px;
+      justify-content: center;
+    }
+  }
+</style>
+

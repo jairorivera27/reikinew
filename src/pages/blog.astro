@@ -1,0 +1,337 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import SEO from '../components/SEO.astro';
+import { getCollection } from 'astro:content';
+
+// Obtener todos los posts del blog ordenados por fecha
+const blogPosts = await getCollection('blog');
+const sortedPosts = blogPosts.sort((a, b) => {
+  const dateA = new Date(a.data.date);
+  const dateB = new Date(b.data.date);
+  return dateB.getTime() - dateA.getTime();
+});
+
+// Separar posts destacados
+const featuredPosts = sortedPosts.filter(post => post.data.featured);
+const regularPosts = sortedPosts.filter(post => !post.data.featured);
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Blog de Energía Solar en Colombia | Noticias y Guías | Reiki Energía Solar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <SEO 
+      title="Blog de Energía Solar en Colombia | Noticias y Guías"
+      description="Blog especializado en energía solar en Colombia. Noticias, consejos, guías y artículos sobre paneles solares, instalación solar, sistemas fotovoltaicos y energía renovable en Medellín y Colombia."
+      canonical="/blog"
+      keywords="blog energía solar Colombia, noticias paneles solares, guías energía solar, consejos instalación solar, artículos energía renovable, información paneles solares Medellín"
+      schemaType="WebPage"
+    />
+  </head>
+  <body>
+    <Header />
+    
+    <main>
+      <section class="blog-page-section">
+        <div class="container">
+          <div class="blog-page-header">
+            <h1 class="blog-page-title">Blog de Energía Solar</h1>
+            <p class="blog-page-subtitle">Mantente informado sobre las últimas tendencias, consejos y noticias en energía solar</p>
+          </div>
+
+          <!-- Posts Destacados -->
+          {featuredPosts.length > 0 && (
+            <div class="featured-posts-section">
+              <h2 class="section-title">Artículos Destacados</h2>
+              <div class="featured-posts-grid">
+                {featuredPosts.map((post) => (
+                  <article class="featured-post-card">
+                    <a href={`/blog/${post.slug}`} class="post-link">
+                      <div class="post-image-container">
+                        <img src={post.data.image} alt={post.data.title} class="post-image" loading="lazy">
+                        <div class="post-category">{post.data.category}</div>
+                      </div>
+                      <div class="post-content">
+                        <div class="post-meta">
+                          <span class="post-date">
+                            <i class="fas fa-calendar"></i>
+                            {new Date(post.data.date).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}
+                          </span>
+                          <span class="post-author">
+                            <i class="fas fa-user"></i>
+                            {post.data.author}
+                          </span>
+                        </div>
+                        <h3 class="post-title">{post.data.title}</h3>
+                        <p class="post-description">{post.data.description}</p>
+                        {post.data.tags && post.data.tags.length > 0 && (
+                          <div class="post-tags">
+                            {post.data.tags.map((tag) => (
+                              <span class="tag">{tag}</span>
+                            ))}
+                          </div>
+                        )}
+                        <span class="read-more">Leer más <i class="fas fa-arrow-right"></i></span>
+                      </div>
+                    </a>
+                  </article>
+                ))}
+              </div>
+            </div>
+          )}
+
+          <!-- Todos los Posts -->
+          <div class="all-posts-section">
+            <h2 class="section-title">Todos los Artículos</h2>
+            <div class="posts-grid">
+              {sortedPosts.map((post) => (
+                <article class="post-card">
+                  <a href={`/blog/${post.slug}`} class="post-link">
+                    <div class="post-image-container">
+                      <img src={post.data.image} alt={post.data.title} class="post-image" loading="lazy">
+                      <div class="post-category">{post.data.category}</div>
+                    </div>
+                    <div class="post-content">
+                      <div class="post-meta">
+                        <span class="post-date">
+                          <i class="fas fa-calendar"></i>
+                          {new Date(post.data.date).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}
+                        </span>
+                      </div>
+                      <h3 class="post-title">{post.data.title}</h3>
+                      <p class="post-description">{post.data.description}</p>
+                      {post.data.tags && post.data.tags.length > 0 && (
+                        <div class="post-tags">
+                          {post.data.tags.slice(0, 3).map((tag) => (
+                            <span class="tag">{tag}</span>
+                          ))}
+                        </div>
+                      )}
+                      <span class="read-more">Leer más <i class="fas fa-arrow-right"></i></span>
+                    </div>
+                  </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <Footer />
+    <WhatsAppFloat />
+  </body>
+</html>
+
+<style>
+  .blog-page-section {
+    padding: 8rem 2rem 4rem;
+    background: #f9fafb;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .blog-page-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .blog-page-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #6b2181;
+    margin-bottom: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .blog-page-subtitle {
+    font-size: 1.3rem;
+    color: #6b7280;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 2rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .featured-posts-section {
+    margin-bottom: 4rem;
+  }
+
+  .featured-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .featured-post-card,
+  .post-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .featured-post-card:hover,
+  .post-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(107, 33, 129, 0.2);
+  }
+
+  .post-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .post-image-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: #f3f4f6;
+  }
+
+  .post-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .featured-post-card:hover .post-image,
+  .post-card:hover .post-image {
+    transform: scale(1.1);
+  }
+
+  .post-category {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-content {
+    padding: 2rem;
+  }
+
+  .post-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: #6b7280;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-meta i {
+    margin-right: 0.5rem;
+    color: #6b2181;
+  }
+
+  .post-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .featured-post-card .post-title {
+    font-size: 1.8rem;
+  }
+
+  .post-description {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .tag {
+    background: #f3f4f6;
+    color: #6b2181;
+    padding: 0.25rem 0.75rem;
+    border-radius: 12px;
+    font-size: 0.85rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .read-more {
+    color: #6b2181;
+    font-weight: 600;
+    font-size: 1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-link:hover .read-more {
+    gap: 1rem;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .blog-page-section {
+      padding: 6rem 1rem 3rem;
+    }
+
+    .blog-page-title {
+      font-size: 2.2rem;
+    }
+
+    .blog-page-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .featured-posts-grid,
+    .posts-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+
+    .post-image-container {
+      height: 200px;
+    }
+  }
+</style>
+

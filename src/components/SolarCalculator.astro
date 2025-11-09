@@ -1,0 +1,1266 @@
+---
+// SolarCalculator.astro
+---
+
+<div class="solar-calculator">
+  <div class="calculator-wrapper">
+    <!-- Formulario y Mapa en dos columnas -->
+    <div class="calculator-layout">
+      <!-- Formulario -->
+      <div class="form-section">
+        <h2 class="calculator-title">
+          <i class="fas fa-calculator"></i>
+          Calculadora Solar – Colombia
+        </h2>
+
+        <form id="solar-form" class="calculator-form">
+          <!-- Campos de Contacto -->
+          <div class="contact-section">
+            <h3 class="section-title">
+              <i class="fas fa-user"></i>
+              Datos de Contacto
+            </h3>
+            
+            <div class="form-group">
+              <label for="nombre" class="form-label">
+                <i class="fas fa-user-circle"></i>
+                Nombre completo
+              </label>
+              <input 
+                type="text" 
+                id="nombre" 
+                name="nombre" 
+                class="form-input" 
+                placeholder="Ej: Juan Pérez"
+                required
+              >
+            </div>
+
+            <div class="form-group">
+              <label for="telefono" class="form-label">
+                <i class="fas fa-phone"></i>
+                Teléfono
+              </label>
+              <input 
+                type="tel" 
+                id="telefono" 
+                name="telefono" 
+                class="form-input" 
+                placeholder="Ej: 3001234567"
+                pattern="[0-9]{7,10}"
+                required
+              >
+              <small class="form-hint">7-10 dígitos</small>
+            </div>
+
+            <div class="form-group">
+              <label for="email" class="form-label">
+                <i class="fas fa-envelope"></i>
+                Correo electrónico
+              </label>
+              <input 
+                type="email" 
+                id="email" 
+                name="email" 
+                class="form-input" 
+                placeholder="Ej: juan@mail.com"
+                required
+              >
+            </div>
+          </div>
+
+          <!-- Separador -->
+          <div class="form-divider"></div>
+
+          <!-- Campos de Cálculo -->
+          <div class="form-group">
+            <label for="departamento" class="form-label">
+              <i class="fas fa-map-marker-alt"></i>
+              Departamento
+            </label>
+            <select id="departamento" name="departamento" class="form-select" required>
+              <option value="Bogotá D.C." selected>Bogotá D.C.</option>
+              <option value="Antioquia">Antioquia</option>
+              <option value="Atlántico">Atlántico</option>
+              <option value="Bolívar">Bolívar</option>
+              <option value="Magdalena">Magdalena</option>
+              <option value="Córdoba">Córdoba</option>
+              <option value="La Guajira">La Guajira</option>
+              <option value="Cesar">Cesar</option>
+              <option value="Norte de Santander">Norte de Santander</option>
+              <option value="Santander">Santander</option>
+              <option value="Risaralda">Risaralda</option>
+              <option value="Caldas">Caldas</option>
+              <option value="Quindío">Quindío</option>
+              <option value="Tolima">Tolima</option>
+              <option value="Huila">Huila</option>
+              <option value="Cauca">Cauca</option>
+              <option value="Nariño">Nariño</option>
+              <option value="Chocó">Chocó</option>
+              <option value="Meta">Meta</option>
+              <option value="Caquetá">Caquetá</option>
+              <option value="San Andrés y Providencia">San Andrés y Providencia</option>
+              <option value="Vichada">Vichada</option>
+              <option value="Guainía">Guainía</option>
+              <option value="Vaupés">Vaupés</option>
+              <option value="Putumayo">Putumayo</option>
+              <option value="Guaviare">Guaviare</option>
+              <option value="Casanare">Casanare</option>
+              <option value="Boyacá">Boyacá</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="municipio" class="form-label">
+              <i class="fas fa-city"></i>
+              Ciudad / Municipio
+            </label>
+            <select id="municipio" name="municipio" class="form-select" required>
+              <option value="Bogotá" selected>Bogotá</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="consumo" class="form-label">
+              <i class="fas fa-bolt"></i>
+              Consumo mensual (kWh/mes)
+            </label>
+            <input 
+              type="number" 
+              id="consumo" 
+              name="consumo" 
+              class="form-input" 
+              placeholder="Ej: 120"
+              min="0"
+              step="0.1"
+              required
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="tarifa" class="form-label">
+              <i class="fas fa-dollar-sign"></i>
+              Tarifa (COP/kWh)
+            </label>
+            <input 
+              type="number" 
+              id="tarifa" 
+              name="tarifa" 
+              class="form-input" 
+              placeholder="800"
+              value="800"
+              min="0"
+              step="1"
+              required
+            >
+          </div>
+
+          <button type="submit" class="calculate-button">
+            <i class="fas fa-calculator"></i>
+            Calcular
+          </button>
+
+          <div id="error-message" class="error-message" style="display: none;"></div>
+        </form>
+      </div>
+
+      <!-- Mapa -->
+      <div class="map-section">
+        <div id="solar-map" class="solar-map"></div>
+      </div>
+    </div>
+
+    <!-- Resultados -->
+    <div id="results" class="results-container" style="display: none;">
+      <h3 class="results-title">
+        <i class="fas fa-chart-line"></i>
+        Resultados del Cálculo
+      </h3>
+      <div class="results-grid">
+        <div class="result-card">
+          <div class="result-icon">
+            <i class="fas fa-map-marker-alt"></i>
+          </div>
+          <div class="result-content">
+            <p class="result-label">Ubicación</p>
+            <p class="result-value" id="result-ciudad">-</p>
+            <p class="result-subtext">HSP: <span id="result-hsp">-</span> h/día</p>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-icon">
+            <i class="fas fa-bolt"></i>
+          </div>
+          <div class="result-content">
+            <p class="result-label">Consumo mensual</p>
+            <p class="result-value" id="result-consumo-mensual">-</p>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-icon">
+            <i class="fas fa-solar-panel"></i>
+          </div>
+          <div class="result-content">
+            <p class="result-label">Paneles requeridos</p>
+            <p class="result-value" id="result-paneles">-</p>
+            <p class="result-subtext">Potencia: <span id="result-potencia">-</span> kW</p>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-icon">
+            <i class="fas fa-ruler-combined"></i>
+          </div>
+          <div class="result-content">
+            <p class="result-label">Área requerida</p>
+            <p class="result-value" id="result-area">-</p>
+            <p class="result-subtext">Según dimensiones estimadas de panel</p>
+          </div>
+        </div>
+
+        <div class="result-card highlight">
+          <div class="result-icon">
+            <i class="fas fa-piggy-bank"></i>
+          </div>
+          <div class="result-content">
+            <p class="result-label">Ahorro mensual</p>
+            <p class="result-value highlight-value" id="result-ahorro-mensual">-</p>
+            <p class="result-subtext">con cobertura del 100%</p>
+          </div>
+        </div>
+
+        <div class="result-card highlight">
+          <div class="result-icon">
+            <i class="fas fa-calendar-alt"></i>
+          </div>
+          <div class="result-content">
+            <p class="result-label">Ahorro anual</p>
+            <p class="result-value highlight-value" id="result-ahorro-anual">-</p>
+          </div>
+        </div>
+
+        <div class="result-card">
+          <div class="result-icon">
+            <i class="fas fa-leaf"></i>
+          </div>
+          <div class="result-content">
+            <p class="result-label">CO₂ evitado</p>
+            <p class="result-value" id="result-co2">-</p>
+            <p class="result-subtext">factor 0,25 kg CO₂/kWh</p>
+          </div>
+        </div>
+
+        <div class="result-card highlight">
+          <div class="result-icon">
+            <i class="fas fa-dollar-sign"></i>
+          </div>
+          <div class="result-content">
+            <p class="result-label">Valor aproximado del sistema</p>
+            <p class="result-value highlight-value" id="result-valor-sistema">-</p>
+            <p class="result-subtext">Incluye instalación y equipos</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tarjeta de Contacto -->
+      <div class="contact-card">
+        <div class="contact-card-header">
+          <i class="fas fa-user-check"></i>
+          <h4>Estimación para:</h4>
+        </div>
+        <div class="contact-card-content">
+          <p class="contact-info">
+            <i class="fas fa-user"></i>
+            <span id="result-nombre">-</span>
+          </p>
+          <p class="contact-info">
+            <i class="fas fa-phone"></i>
+            <span id="result-telefono">-</span>
+          </p>
+          <p class="contact-info">
+            <i class="fas fa-envelope"></i>
+            <span id="result-email">-</span>
+          </p>
+        </div>
+      </div>
+
+      <!-- Advertencia -->
+      <div class="warning-message">
+        <i class="fas fa-exclamation-triangle"></i>
+        <p>Esto es un estimado aproximado, no es valor exacto y real del valor del sistema, para obtenerlo contacta con un asesor.</p>
+      </div>
+
+      <div class="results-cta">
+        <div class="cta-buttons">
+          <button id="whatsapp-button" class="cta-button" style="display: none;">
+            <i class="fab fa-whatsapp"></i>
+            Solicitar Cotización Personalizada
+          </button>
+          <button id="download-pdf-button" class="cta-button secondary" style="display: none;">
+            <i class="fas fa-download"></i>
+            Descargar PDF
+          </button>
+        </div>
+        <div id="pdf-loading" class="pdf-loading" style="display: none;">
+          <i class="fas fa-spinner fa-spin"></i>
+          <span>Generando precotización PDF...</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .solar-calculator {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .calculator-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .calculator-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .form-section {
+    background: white;
+    border-radius: 20px;
+    padding: 2rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+  }
+
+  .calculator-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .calculator-title i {
+    color: #6b2181;
+  }
+
+  .calculator-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .contact-section {
+    background: #f9fafb;
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid #e5e7eb;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .section-title i {
+    color: #6b2181;
+  }
+
+  .form-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+    margin: 1rem 0;
+  }
+
+  .form-hint {
+    font-size: 0.75rem;
+    color: #6b7280;
+    margin-top: 0.25rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1f2937;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .form-label i {
+    color: #6b2181;
+    font-size: 0.9rem;
+  }
+
+  .form-select,
+  .form-input {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: border-color 0.3s ease;
+    background: white;
+  }
+
+  .form-select:focus,
+  .form-input:focus {
+    outline: none;
+    border-color: #6b2181;
+  }
+
+  .calculate-button {
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin-top: 0.5rem;
+  }
+
+  .calculate-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(107, 33, 129, 0.4);
+  }
+
+  .error-message {
+    background: #fee2e2;
+    color: #dc2626;
+    padding: 1rem;
+    border-radius: 10px;
+    border-left: 4px solid #dc2626;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+  }
+
+  .map-section {
+    background: white;
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e5e7eb;
+    overflow: hidden;
+  }
+
+  .solar-map {
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    z-index: 0;
+  }
+
+  .results-container {
+    background: #f9fafb;
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid #e5e7eb;
+  }
+
+  .results-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .results-title i {
+    color: #6b2181;
+  }
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .result-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    border: 2px solid #e5e7eb;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .result-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  .result-card.highlight {
+    background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+    border-color: #6b2181;
+  }
+
+  .result-icon {
+    background: #6b2181;
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .result-card.highlight .result-icon {
+    background: #6b2181;
+  }
+
+  .result-content {
+    flex: 1;
+  }
+
+  .result-label {
+    font-size: 0.85rem;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .result-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.25rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .result-value.highlight-value {
+    color: #6b2181;
+    font-size: 1.75rem;
+  }
+
+  .result-subtext {
+    font-size: 0.75rem;
+    color: #9ca3af;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .results-cta {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 2px solid #e5e7eb;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #25D366;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+    background: #20BA5A;
+  }
+
+  .contact-card {
+    background: white;
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 2px solid #6b2181;
+    margin-top: 2rem;
+    box-shadow: 0 4px 15px rgba(107, 33, 129, 0.1);
+  }
+
+  .contact-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 2px solid #e5e7eb;
+  }
+
+  .contact-card-header i {
+    color: #6b2181;
+    font-size: 1.25rem;
+  }
+
+  .contact-card-header h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .contact-card-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .contact-info {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    color: #4b5563;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .contact-info i {
+    color: #6b2181;
+    width: 20px;
+    text-align: center;
+  }
+
+  .contact-info span {
+    font-weight: 500;
+    color: #1f2937;
+  }
+
+  .warning-message {
+    background: #fef3c7;
+    border: 2px solid #f59e0b;
+    border-radius: 15px;
+    padding: 1rem 1.5rem;
+    margin-top: 2rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .warning-message i {
+    color: #f59e0b;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .warning-message p {
+    color: #92400e;
+    font-size: 0.9rem;
+    margin: 0;
+    line-height: 1.5;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .pdf-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    color: #6b7280;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .pdf-loading i {
+    color: #6b2181;
+  }
+
+  .cta-button {
+    border: none;
+    cursor: pointer;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-button.secondary {
+    background: linear-gradient(135deg, #4b5563, #6b7280);
+  }
+
+  .cta-button.secondary:hover {
+    background: linear-gradient(135deg, #374151, #4b5563);
+    box-shadow: 0 8px 25px rgba(75, 85, 99, 0.4);
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .calculator-layout {
+      grid-template-columns: 1fr;
+    }
+
+    .solar-map {
+      min-height: 400px;
+    }
+
+    .results-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .form-section {
+      padding: 1.5rem;
+    }
+
+    .results-container {
+      padding: 1.5rem;
+    }
+
+    .calculator-title {
+      font-size: 1.25rem;
+    }
+
+    .result-card {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .result-icon {
+      margin: 0 auto;
+    }
+  }
+</style>
+
+<script>
+  // HSP aproximadas por ciudad (IDEAM/UPME, valores promedio)
+  const HSP: Record<string, number> = {
+    "Bogotá": 3.5,
+    "Medellín": 4.3,
+    "Cali": 4.5,
+    "Barranquilla": 5.7,
+    "Cartagena": 5.5,
+    "Santa Marta": 5.5,
+    "Montería": 5.5,
+    "Riohacha": 6.0,
+    "Valledupar": 5.8,
+    "Cúcuta": 4.5,
+    "Bucaramanga": 3.5,
+    "Pereira": 4.0,
+    "Manizales": 4.0,
+    "Armenia": 4.3,
+    "Ibagué": 4.0,
+    "Neiva": 4.5,
+    "Popayán": 4.0,
+    "Pasto": 4.0,
+    "Quibdó": 3.5,
+    "Villavicencio": 4.5,
+    "Florencia": 4.5,
+    "San Andrés": 5.0,
+    "Puerto Carreño": 5.0,
+    "Inírida": 4.0,
+    "Mitú": 4.0,
+    "Mocoa": 3.5,
+    "San José del Guaviare": 4.2,
+    "Yopal": 4.5,
+    "Tunja": 3.8,
+  };
+
+  // Coordenadas de las ciudades
+  const COORDS: Record<string, [number, number]> = {
+    "Bogotá": [4.711, -74.072],
+    "Medellín": [6.2442, -75.5812],
+    "Cali": [3.4516, -76.532],
+    "Barranquilla": [10.963, -74.796],
+    "Cartagena": [10.391, -75.479],
+    "Santa Marta": [11.241, -74.205],
+    "Sincelejo": [9.3047, -75.3978],
+    "Montería": [8.7575, -75.89],
+    "Riohacha": [11.544, -72.907],
+    "Valledupar": [10.463, -73.253],
+    "Cúcuta": [7.8939, -72.5078],
+    "Bucaramanga": [7.1193, -73.1227],
+    "Pereira": [4.8133, -75.6961],
+    "Manizales": [5.07, -75.52],
+    "Armenia": [4.535, -75.675],
+    "Ibagué": [4.4389, -75.2322],
+    "Neiva": [2.9345, -75.2809],
+    "Popayán": [2.4448, -76.614],
+    "Pasto": [1.2136, -77.2811],
+    "Quibdó": [5.6947, -76.6611],
+    "Villavicencio": [4.142, -73.6266],
+    "Florencia": [1.6144, -75.6062],
+    "San Andrés": [12.5847, -81.7006],
+    "Puerto Carreño": [6.187, -67.4859],
+    "Inírida": [3.8653, -67.9235],
+    "Mitú": [1.254, -70.235],
+    "Mocoa": [1.1476, -76.6479],
+    "Leticia": [-4.215, -69.941],
+    "Tunja": [5.5353, -73.3678],
+    "Yopal": [5.3378, -72.3959],
+    "San José del Guaviare": [2.57, -72.64],
+  };
+
+  // Mapeo de departamentos a ciudades
+  const departamentos: Record<string, string[]> = {
+    "Bogotá D.C.": ["Bogotá"],
+    "Antioquia": ["Medellín"],
+    "Atlántico": ["Barranquilla"],
+    "Bolívar": ["Cartagena"],
+    "Magdalena": ["Santa Marta"],
+    "Córdoba": ["Montería"],
+    "La Guajira": ["Riohacha"],
+    "Cesar": ["Valledupar"],
+    "Norte de Santander": ["Cúcuta"],
+    "Santander": ["Bucaramanga"],
+    "Risaralda": ["Pereira"],
+    "Caldas": ["Manizales"],
+    "Quindío": ["Armenia"],
+    "Tolima": ["Ibagué"],
+    "Huila": ["Neiva"],
+    "Cauca": ["Popayán"],
+    "Nariño": ["Pasto"],
+    "Chocó": ["Quibdó"],
+    "Meta": ["Villavicencio"],
+    "Caquetá": ["Florencia"],
+    "San Andrés y Providencia": ["San Andrés"],
+    "Vichada": ["Puerto Carreño"],
+    "Guainía": ["Inírida"],
+    "Vaupés": ["Mitú"],
+    "Putumayo": ["Mocoa"],
+    "Guaviare": ["San José del Guaviare"],
+    "Casanare": ["Yopal"],
+    "Boyacá": ["Tunja"],
+  };
+
+  // Panel fijo 620 Wp
+  const PANEL_WP = 620;
+  // Área típica de un panel 620 Wp
+  const PANEL_AREA_M2 = 2.4;
+  // Costo fijo por kW
+  const COSTO_FIJO_KW = 3700000;
+
+  let map: L.Map | null = null;
+  let selectedMarker: L.Marker | null = null;
+  let currentMapCenter: [number, number] = [4.711, -74.072];
+  let pdfBase64: string | null = null;
+  let pdfUrl: string | null = null;
+  let currentResultado: {
+    nombre: string;
+    telefono: string;
+    email: string;
+    ciudad: string;
+    paneles: number;
+    potenciaSistema: number;
+    ahorroMensual: number;
+    ahorroAnual: number;
+    valorSistema: number;
+    consumoMensual: number;
+  } | null = null;
+
+  document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('solar-form') as HTMLFormElement;
+    const departamentoSelect = document.getElementById('departamento') as HTMLSelectElement;
+    const municipioSelect = document.getElementById('municipio') as HTMLSelectElement;
+    const errorMessage = document.getElementById('error-message') as HTMLElement;
+    const resultsContainer = document.getElementById('results') as HTMLElement;
+
+    // Inicializar mapa
+    initMap();
+
+    // Actualizar municipios cuando cambia el departamento
+    departamentoSelect.addEventListener('change', function() {
+      const departamento = this.value;
+      const municipios = departamentos[departamento] || [];
+      
+      municipioSelect.innerHTML = '';
+      municipios.forEach(municipio => {
+        const option = document.createElement('option');
+        option.value = municipio;
+        option.textContent = municipio;
+        municipioSelect.appendChild(option);
+      });
+
+      // Actualizar mapa al cambiar departamento
+      if (municipios.length > 0) {
+        const primerMunicipio = municipios[0];
+        municipioSelect.value = primerMunicipio;
+        updateMapCenter(primerMunicipio);
+      }
+    });
+
+    // Centrar mapa cuando se selecciona un municipio
+    municipioSelect.addEventListener('change', function() {
+      const ciudad = this.value;
+      if (ciudad) {
+        updateMapCenter(ciudad);
+      }
+    });
+
+    // Manejar el envío del formulario
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      // Obtener datos de contacto
+      const nombre = (document.getElementById('nombre') as HTMLInputElement).value.trim();
+      const telefono = (document.getElementById('telefono') as HTMLInputElement).value.trim();
+      const email = (document.getElementById('email') as HTMLInputElement).value.trim();
+
+      // Validación de campos de contacto
+      if (!nombre || nombre.length < 2) {
+        showError('Por favor ingresa tu nombre completo');
+        return;
+      }
+
+      if (!telefono || !/^[0-9]{7,10}$/.test(telefono)) {
+        showError('Por favor ingresa un teléfono válido (7-10 dígitos)');
+        return;
+      }
+
+      if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+        showError('Por favor ingresa un correo electrónico válido');
+        return;
+      }
+
+      const consumoMensualNum = parseFloat((document.getElementById('consumo') as HTMLInputElement).value);
+      const tarifa = parseFloat((document.getElementById('tarifa') as HTMLInputElement).value);
+      const ciudad = municipioSelect.value;
+
+      // Validación de campos de cálculo
+      if (isNaN(consumoMensualNum) || consumoMensualNum <= 0) {
+        showError('Ingresa un consumo mensual válido mayor a 0');
+        return;
+      }
+
+      if (isNaN(tarifa) || tarifa <= 0) {
+        showError('Ingresa una tarifa válida mayor a 0');
+        return;
+      }
+
+      if (!ciudad) {
+        showError('Por favor selecciona un municipio');
+        return;
+      }
+
+      // Ocultar error
+      errorMessage.style.display = 'none';
+
+      // Calcular (usar HSP de la ciudad o valor por defecto 4.5)
+      const hsp = HSP[ciudad] || 4.5;
+      const consumoAnual = consumoMensualNum * 12;
+
+      const panelkW = PANEL_WP / 1000;
+      const PR = 0.75;
+
+      // Producción anual de 1 panel
+      const energiaAnualPorPanel = panelkW * hsp * 365 * PR;
+
+      const paneles = Math.ceil(consumoAnual / energiaAnualPorPanel);
+      const potenciaSistema = (paneles * PANEL_WP) / 1000;
+      const ahorroMensual = consumoMensualNum * tarifa;
+      const ahorroAnual = ahorroMensual * 12;
+
+      // Área total requerida
+      const areaTotal = paneles * PANEL_AREA_M2;
+
+      // CO2 evitado: consumo anual (kWh) * factor(kg/kWh) -> ton
+      const FACTOR_CO2_KG = 0.25; // kg CO2 por kWh
+      const co2Ton = (consumoAnual * FACTOR_CO2_KG) / 1000; // a toneladas
+
+      // Valor aproximado del sistema
+      const valorSistema = potenciaSistema * COSTO_FIJO_KW;
+
+      // Mostrar resultados
+      try {
+        const resultCiudad = document.getElementById('result-ciudad');
+        const resultHsp = document.getElementById('result-hsp');
+        const resultConsumoMensual = document.getElementById('result-consumo-mensual');
+        const resultPaneles = document.getElementById('result-paneles');
+        const resultPotencia = document.getElementById('result-potencia');
+        const resultArea = document.getElementById('result-area');
+        const resultAhorroMensual = document.getElementById('result-ahorro-mensual');
+        const resultAhorroAnual = document.getElementById('result-ahorro-anual');
+        const resultCo2 = document.getElementById('result-co2');
+        const resultValorSistema = document.getElementById('result-valor-sistema');
+        const resultNombre = document.getElementById('result-nombre');
+        const resultTelefono = document.getElementById('result-telefono');
+        const resultEmail = document.getElementById('result-email');
+
+        if (resultCiudad) resultCiudad.textContent = ciudad;
+        if (resultHsp) resultHsp.textContent = hsp.toFixed(1);
+        if (resultConsumoMensual) resultConsumoMensual.textContent = `${consumoMensualNum.toFixed(1)} kWh/mes`;
+        if (resultPaneles) resultPaneles.textContent = `${paneles}`;
+        if (resultPotencia) resultPotencia.textContent = `${potenciaSistema.toFixed(2)}`;
+        if (resultArea) resultArea.textContent = `${areaTotal.toFixed(2)} m²`;
+        if (resultAhorroMensual) resultAhorroMensual.textContent = formatCOP(ahorroMensual);
+        if (resultAhorroAnual) resultAhorroAnual.textContent = formatCOP(ahorroAnual);
+        if (resultCo2) resultCo2.textContent = `${co2Ton.toFixed(2)} ton/año`;
+        if (resultValorSistema) resultValorSistema.textContent = formatCOP(valorSistema);
+        if (resultNombre) resultNombre.textContent = nombre;
+        if (resultTelefono) resultTelefono.textContent = telefono;
+        if (resultEmail) resultEmail.textContent = email;
+      } catch (err) {
+        console.error('Error actualizando resultados:', err);
+      }
+
+      // Guardar resultado actual
+      currentResultado = {
+        nombre,
+        telefono,
+        email,
+        ciudad,
+        paneles,
+        potenciaSistema,
+        ahorroMensual,
+        ahorroAnual,
+        valorSistema,
+        consumoMensual: consumoMensualNum,
+      };
+
+      // Actualizar marcador en el mapa
+      if (ciudad && COORDS[ciudad] && map) {
+        updateCityMarker(ciudad, hsp, potenciaSistema);
+      }
+
+      // Generar PDF
+      generarPDF(currentResultado);
+
+      resultsContainer.style.display = 'block';
+      resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    function showError(message: string) {
+      errorMessage.textContent = message;
+      errorMessage.style.display = 'block';
+      resultsContainer.style.display = 'none';
+    }
+
+    function formatCOP(num: number): string {
+      return num.toLocaleString('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        maximumFractionDigits: 0,
+      });
+    }
+
+    function initMap() {
+      // Verificar que Leaflet esté cargado
+      if (typeof L === 'undefined') {
+        setTimeout(initMap, 100);
+        return;
+      }
+
+      const mapElement = document.getElementById('solar-map');
+      if (!mapElement) return;
+
+      // Crear mapa centrado en Colombia
+      map = L.map('solar-map').setView([4.5709, -74.2973], 6);
+
+      // Agregar capa de OpenStreetMap
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors',
+        maxZoom: 19,
+      }).addTo(map);
+
+      // Agregar marcador inicial si hay una ciudad seleccionada
+      const ciudadInicial = (document.getElementById('municipio') as HTMLSelectElement)?.value;
+      if (ciudadInicial && COORDS[ciudadInicial]) {
+        currentMapCenter = COORDS[ciudadInicial];
+        map.setView(currentMapCenter, 10);
+        updateCityMarker(ciudadInicial, HSP[ciudadInicial] || 4.5, null);
+      } else {
+        // Si no hay ciudad inicial, centrar en Bogotá
+        currentMapCenter = [4.711, -74.072];
+        map.setView(currentMapCenter, 10);
+        updateCityMarker('Bogotá', HSP['Bogotá'] || 3.5, null);
+      }
+    }
+
+    function updateMapCenter(ciudad: string) {
+      if (!map || !COORDS[ciudad]) return;
+
+      const coordenadas = COORDS[ciudad];
+      currentMapCenter = coordenadas;
+      map.setView(coordenadas as L.LatLngExpression, 10, {
+        animate: true,
+        duration: 0.5
+      });
+
+      // Actualizar marcador
+      const hsp = HSP[ciudad] || 4.5;
+      updateCityMarker(ciudad, hsp, null);
+    }
+
+    function updateCityMarker(ciudad: string, hsp: number, potencia: number | null) {
+      if (!map || !COORDS[ciudad]) return;
+
+      // Remover marcador anterior si existe
+      if (selectedMarker) {
+        map.removeLayer(selectedMarker);
+      }
+
+      // Crear popup con información
+      let popupContent = `
+        <div style="text-align: center; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; min-width: 200px;">
+          <strong style="color: #6b2181; font-size: 1.2rem;">${ciudad}</strong><br>
+          <span style="color: #4b5563;">HSP: <strong>${hsp} h/día</strong></span>
+      `;
+
+      if (potencia !== null) {
+        popupContent += `<br><span style="color: #6b2181; font-weight: 600;">Potencia calculada: ${potencia.toFixed(2)} kW</span>`;
+      }
+
+      popupContent += `</div>`;
+
+      const icon = L.divIcon({
+        className: 'selected-city-marker',
+        html: `<div style="background: #6b2181; color: white; border-radius: 50%; width: 35px; height: 35px; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 3px solid white; box-shadow: 0 2px 10px rgba(107,33,129,0.5);">📍</div>`,
+        iconSize: [35, 35],
+        iconAnchor: [17.5, 17.5]
+      });
+
+      selectedMarker = L.marker(COORDS[ciudad] as L.LatLngExpression, { icon }).addTo(map);
+      selectedMarker.bindPopup(popupContent).openPopup();
+    }
+
+    async function generarPDF(resultado: typeof currentResultado) {
+      if (!resultado) return;
+
+      const pdfLoading = document.getElementById('pdf-loading') as HTMLElement;
+      const whatsappButton = document.getElementById('whatsapp-button') as HTMLButtonElement;
+      const downloadButton = document.getElementById('download-pdf-button') as HTMLButtonElement;
+
+      pdfLoading.style.display = 'flex';
+      whatsappButton.style.display = 'none';
+      if (downloadButton) downloadButton.style.display = 'none';
+      pdfBase64 = null;
+      pdfUrl = null;
+
+      try {
+        const response = await fetch('/api/precotizacion', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nombre: resultado.nombre,
+            telefono: resultado.telefono,
+            email: resultado.email,
+            ciudad: resultado.ciudad,
+            paneles: resultado.paneles,
+            potenciaSistema: resultado.potenciaSistema,
+            ahorroMensual: resultado.ahorroMensual,
+            ahorroAnual: resultado.ahorroAnual,
+            valorSistema: resultado.valorSistema,
+          }),
+        });
+
+        const data = await response.json();
+
+        if (data.ok && data.base64) {
+          pdfBase64 = data.base64;
+          pdfUrl = `data:application/pdf;base64,${pdfBase64}`;
+          
+          pdfLoading.style.display = 'none';
+          whatsappButton.style.display = 'inline-flex';
+          if (downloadButton) downloadButton.style.display = 'inline-flex';
+        } else {
+          // Si pdfkit no está instalado o hay error
+          console.warn('PDF no disponible:', data.message || 'Error desconocido');
+          pdfLoading.style.display = 'none';
+          whatsappButton.style.display = 'inline-flex';
+          pdfBase64 = null;
+          pdfUrl = null;
+        }
+      } catch (error) {
+        console.error('Error generando PDF:', error);
+        pdfLoading.style.display = 'none';
+        whatsappButton.style.display = 'inline-flex';
+        pdfBase64 = null;
+        pdfUrl = null;
+      }
+    }
+
+    function descargarPDF() {
+      if (pdfBase64) {
+        const link = document.createElement('a');
+        link.href = `data:application/pdf;base64,${pdfBase64}`;
+        link.download = 'precotizacion.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    }
+
+    function handleWhatsApp() {
+      if (!currentResultado) return;
+
+      const numero = '573245737413';
+      const valorFormateado = formatCOP(currentResultado.valorSistema);
+      let mensaje = `Hola, quiero una cotización personalizada.\n` +
+        `Nombre: ${currentResultado.nombre}\n` +
+        `Teléfono: ${currentResultado.telefono}\n` +
+        `Correo: ${currentResultado.email}\n` +
+        `Ciudad: ${currentResultado.ciudad}\n` +
+        `Consumo mensual: ${currentResultado.consumoMensual} kWh/mes\n` +
+        `Paneles estimados: ${currentResultado.paneles}\n` +
+        `Potencia sistema: ${currentResultado.potenciaSistema.toFixed(2)} kWp\n` +
+        `Valor estimado: ${valorFormateado}\n` +
+        `Nota: Esto es un estimado aproximado generado desde la web.`;
+
+      const mensajeEncoded = encodeURIComponent(mensaje);
+      window.open(`https://wa.me/${numero}?text=${mensajeEncoded}`, '_blank');
+    }
+
+    // Agregar event listeners (usando delegación de eventos)
+    document.addEventListener('click', function(e) {
+      const target = e.target as HTMLElement;
+      if (target.id === 'whatsapp-button' || target.closest('#whatsapp-button')) {
+        handleWhatsApp();
+      }
+      if (target.id === 'download-pdf-button' || target.closest('#download-pdf-button')) {
+        descargarPDF();
+      }
+    });
+  });
+</script>
+
+<style>
+  .selected-city-marker {
+    background: transparent !important;
+    border: none !important;
+  }
+</style>

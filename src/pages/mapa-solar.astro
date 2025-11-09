@@ -1,0 +1,98 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import SEO from '../components/SEO.astro';
+import SolarCalculator from '../components/SolarCalculator.astro';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Calculadora Solar Colombia | Cuántos Paneles Necesitas | Reiki Energía Solar</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <SEO 
+      title="Calculadora Solar Colombia | Cuántos Paneles Necesitas"
+      description="Calculadora solar gratuita para Colombia. Calcula cuántos paneles solares necesitas según tu consumo eléctrico y ubicación. Herramienta interactiva con mapa solar de Colombia. Cotización instantánea."
+      canonical="/mapa-solar"
+      keywords="calculadora solar Colombia, cuántos paneles solares necesito, calculadora energía solar, mapa solar Colombia, calcular paneles solares, herramienta solar, cotización paneles solares"
+      schemaType="WebPage"
+    />
+  </head>
+  <body>
+    <Header />
+    
+    <main>
+      <section class="mapa-solar-hero">
+        <div class="container">
+          <h1 class="hero-title">Mapa Solar</h1>
+          <p class="hero-subtitle">Calcula cuántos paneles solares necesitas según tu consumo y ubicación en Colombia</p>
+        </div>
+      </section>
+
+      <section class="calculator-section">
+        <div class="container">
+          <SolarCalculator />
+        </div>
+      </section>
+    </main>
+    
+    <Footer />
+    <WhatsAppFloat />
+  </body>
+</html>
+
+<style>
+  .mapa-solar-hero {
+    padding: 10rem 2rem 4rem;
+    background: linear-gradient(135deg, #6b2181 0%, #8b2a9b 100%);
+    text-align: center;
+    color: white;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    color: #e5e7eb;
+    max-width: 700px;
+    margin: 0 auto;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .calculator-section {
+    padding: 5rem 2rem;
+    background: #f9fafb;
+    min-height: 60vh;
+  }
+
+  @media (max-width: 768px) {
+    .mapa-solar-hero {
+      padding: 8rem 1rem 3rem;
+    }
+
+    .hero-title {
+      font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+    }
+  }
+</style>
+
