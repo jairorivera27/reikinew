@@ -15,7 +15,7 @@ import type { APIRoute } from 'astro';
  *   Disallow: /api/
  */
 
-const site = 'https://reiki-energia-solar.com'; // Cambia esto por tu dominio real
+const site = 'https://reikisolar.com.co';
 
 export const GET: APIRoute = () => {
   const robotsTxt = `User-agent: *

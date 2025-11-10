@@ -5,7 +5,7 @@
 <section class="hero">
   <!-- Video de fondo -->
   <div class="hero-video">
-    <video autoplay muted loop playsinline preload="auto">
+    <video autoplay muted loop playsinline preload="metadata" poster="/energia solar vivienda.png">
       <source src="/Diseño hero.mp4" type="video/mp4">
       Tu navegador no soporta videos HTML5.
     </video>
@@ -65,41 +65,40 @@
 
 </style>
 
-<script>
-  // Asegurar que el video se reproduzca
-  document.addEventListener('DOMContentLoaded', function() {
-    const video = document.querySelector('.hero-video video') as HTMLVideoElement;
-    if (video) {
-      console.log('Video encontrado:', video);
-      console.log('Src del video:', video.src);
+<script is:inline>
+  // Optimizado: usar requestIdleCallback para no bloquear el renderizado
+  (function() {
+    function initVideo() {
+      const video = document.querySelector('.hero-video video');
+      if (!video) return;
       
-      video.addEventListener('loadstart', function() {
-        console.log('Iniciando carga del video');
-      });
-      
+      // Mostrar video cuando esté listo
       video.addEventListener('loadeddata', function() {
-        console.log('Video cargado correctamente');
         video.style.opacity = '1';
-      });
+      }, { once: true });
       
+      // Intentar reproducir
       video.addEventListener('canplay', function() {
-        console.log('Video puede reproducirse');
-        video.play().catch(function(error: any) {
-          console.log('Autoplay bloqueado:', error);
+        video.play().catch(function() {
+          // Autoplay bloqueado, no es crítico
         });
-      });
+      }, { once: true });
       
-      video.addEventListener('error', function(e) {
-        console.error('Error al cargar el video:', e);
-        console.error('Error details:', video.error);
-        // Mostrar fallback
+      // Manejar errores silenciosamente
+      video.addEventListener('error', function() {
         video.style.display = 'none';
-      });
-      
-      // Intentar cargar el video manualmente
-      video.load();
-    } else {
-      console.error('No se encontró el elemento video');
+      }, { once: true });
     }
-  });
+    
+    // Usar requestIdleCallback si está disponible, sino DOMContentLoaded
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(initVideo, { timeout: 2000 });
+    } else {
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initVideo);
+      } else {
+        initVideo();
+      }
+    }
+  })();
 </script>

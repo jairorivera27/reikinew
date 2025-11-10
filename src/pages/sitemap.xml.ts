@@ -21,7 +21,7 @@ import { getCollection } from 'astro:content';
  *    });
  */
 
-const site = 'https://reiki-energia-solar.com'; // Cambia esto por tu dominio real
+const site = 'https://reikisolar.com.co';
 
 export const GET: APIRoute = async () => {
   // Obtener todas las entradas de colecciones dinámicas

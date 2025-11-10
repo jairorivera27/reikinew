@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import SEO from '../components/SEO.astro';
+import FontAwesome from '../components/FontAwesome.astro';
 import { getCollection } from 'astro:content';
 
 // Obtener todos los servicios ordenados
@@ -17,7 +18,7 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <title>Servicios de Energía Solar en Medellín | Instalación Paneles Solares | Reiki Energía Solar</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <FontAwesome />
     <SEO 
       title="Servicios de Energía Solar en Medellín | Instalación Paneles Solares"
       description="Servicios profesionales de instalación de energía solar en Medellín y Colombia. Sistemas fotovoltaicos para hogares, empresas, bombeo solar y estaciones móviles. Cotización gratuita."
@@ -140,7 +141,8 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
 
   .services-section {
     padding: 5rem 2rem;
-    background: #f9fafb;
+    background: linear-gradient(135deg, #6b2181 0%, #8b2a9b 100%);
+    min-height: 100vh;
   }
 
   .services-grid {
@@ -150,15 +152,25 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
   }
 
   .service-card {
-    background: white;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
     border-radius: 20px;
     overflow: hidden;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateX(-50px);
   }
 
-  .service-card:hover {
-    transform: translateY(-8px);
+  .service-card.visible {
+    opacity: 1;
+    transform: translateX(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .service-card.visible:hover {
+    transform: translateY(-8px) translateX(0);
     box-shadow: 0 12px 40px rgba(107, 33, 129, 0.2);
   }
 
@@ -387,4 +399,32 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
     }
   }
 </style>
+
+<script>
+  // Efecto de scroll para las tarjetas de servicios
+  document.addEventListener('DOMContentLoaded', function() {
+    const serviceCards = Array.from(document.querySelectorAll('.service-card'));
+    
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const cardIndex = serviceCards.indexOf(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, cardIndex * 100); // Delay escalonado para efecto cascada
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    serviceCards.forEach(card => {
+      observer.observe(card);
+    });
+  });
+</script>
 

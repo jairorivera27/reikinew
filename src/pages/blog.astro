@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import SEO from '../components/SEO.astro';
+import FontAwesome from '../components/FontAwesome.astro';
 import { getCollection } from 'astro:content';
 
 // Obtener todos los posts del blog ordenados por fecha
@@ -25,7 +26,7 @@ const regularPosts = sortedPosts.filter(post => !post.data.featured);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <title>Blog de Energía Solar en Colombia | Noticias y Guías | Reiki Energía Solar</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <FontAwesome />
     <SEO 
       title="Blog de Energía Solar en Colombia | Noticias y Guías"
       description="Blog especializado en energía solar en Colombia. Noticias, consejos, guías y artículos sobre paneles solares, instalación solar, sistemas fotovoltaicos y energía renovable en Medellín y Colombia."

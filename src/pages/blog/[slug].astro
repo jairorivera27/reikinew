@@ -3,6 +3,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
 import SEO from '../../components/SEO.astro';
+import FontAwesome from '../../components/FontAwesome.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
@@ -21,7 +22,7 @@ type Props = {
 const { post } = Astro.props;
 const { Content } = await post.render();
 
-const site = 'https://reiki-energia-solar.com';
+const site = 'https://reikisolar.com.co';
 const articleSchema = {
   "@type": "Article",
   "headline": post.data.title,
@@ -55,7 +56,7 @@ const articleSchema = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <title>{post.data.title} | Blog Energía Solar Colombia | Reiki Energía Solar</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <FontAwesome />
     <SEO 
       title={`${post.data.title} | Blog Energía Solar Colombia`}
       description={post.data.description}

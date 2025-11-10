@@ -3,6 +3,7 @@ import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
 import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
 import SEO from '../../components/SEO.astro';
+import FontAwesome from '../../components/FontAwesome.astro';
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
@@ -37,7 +38,7 @@ const imagePaths = [
   "/images/Bombeo solar en Colombia.png"
 ];
 
-const site = 'https://reiki-energia-solar.com';
+const site = 'https://reikisolar.com.co';
 const serviceSchema = {
   "@type": "Service",
   "serviceType": servicio.data.title,
@@ -66,7 +67,7 @@ const serviceSchema = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
     <title>{servicio.data.title} en Medellín | Servicios Energía Solar | Reiki Energía Solar</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <FontAwesome />
     <SEO 
       title={`${servicio.data.title} en Medellín | Servicios Energía Solar`}
       description={`${servicio.data.description} En Medellín y toda Colombia. Cotización gratuita.`}

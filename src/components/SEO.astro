@@ -37,7 +37,7 @@ const {
   schemaData = {}
 } = Astro.props;
 
-const site = 'https://reiki-energia-solar.com';
+const site = 'https://reikisolar.com.co';
 const fullTitle = title.includes('|') ? title : `${title} | Reiki Energía Solar - Energía Solar en Medellín`;
 const canonicalUrl = canonical ? `${site}${canonical}` : `${site}${Astro.url.pathname}`;
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${site}${ogImage}`;
