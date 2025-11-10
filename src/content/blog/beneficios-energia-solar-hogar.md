@@ -3,10 +3,10 @@ title: "Los Beneficios de la Energía Solar para tu Hogar"
 description: "Descubre cómo la energía solar puede reducir tus facturas de electricidad y contribuir al medio ambiente mientras aumentas el valor de tu propiedad."
 image: "/images/beneficios casa.png"
 author: "Equipo Reiki Solar"
-date: "2024-11-15"
+date: "2024-12-15"
 category: "Energía Solar"
 tags: ["energía solar", "hogar", "ahorro", "sostenibilidad"]
-featured: true
+featured: false
 ---
 
 # Los Beneficios de la Energía Solar para tu Hogar

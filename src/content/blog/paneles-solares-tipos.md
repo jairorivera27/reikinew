@@ -6,7 +6,7 @@ author: "Equipo Reiki Solar"
 date: "2024-10-28"
 category: "Tecnología"
 tags: ["paneles solares", "tecnología", "guía", "comparación", "tipos de paneles"]
-featured: false
+featured: true
 ---
 
 # Tipos de Paneles Solares: Guía Completa para Elegir el Mejor para tu Proyecto
