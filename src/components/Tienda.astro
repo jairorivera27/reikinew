@@ -716,6 +716,12 @@ function getSpecs(specifications: string[]) {
         </h2>
       </div>
       <div class="marcas-carousel-wrapper">
+        <button class="carousel-btn prev-btn marcas-prev" aria-label="Anterior">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-btn next-btn marcas-next" aria-label="Siguiente">
+          <i class="fas fa-chevron-right"></i>
+        </button>
         <div class="marcas-carousel">
           <div class="marcas-track">
             <div class="marca-item">
@@ -2493,10 +2499,84 @@ function getSpecs(specifications: string[]) {
         track.style.animationPlayState = 'running';
       });
       
-      // Ocultar botones de navegación ya que el movimiento es automático
+      // Habilitar botones de navegación para control manual
       if (prevBtn && nextBtn) {
-        prevBtn.style.display = 'none';
-        nextBtn.style.display = 'none';
+        prevBtn.style.display = 'flex';
+        nextBtn.style.display = 'flex';
+        
+        // Control manual con botones
+        let isManualControl = false;
+        let manualScrollPosition = 0;
+        
+        function moveCarousel(direction) {
+          isManualControl = true;
+          track.style.animationPlayState = 'paused';
+          
+          const cardWidth = 306; // Ancho de tarjeta + gap
+          const moveDistance = cardWidth + 32; // 2rem gap
+          
+          if (direction === 'next') {
+            manualScrollPosition -= moveDistance;
+          } else {
+            manualScrollPosition += moveDistance;
+          }
+          
+          // Ajustar posición si se sale de los límites
+          const totalWidth = track.scrollWidth / 2; // Dividido por 2 porque está duplicado
+          if (Math.abs(manualScrollPosition) >= totalWidth) {
+            manualScrollPosition = 0;
+          } else if (manualScrollPosition > 0) {
+            manualScrollPosition = -totalWidth + moveDistance;
+          }
+          
+          track.style.transform = `translateX(${manualScrollPosition}px)`;
+          track.style.transition = 'transform 0.5s ease';
+          
+          // Reanudar animación automática después de un tiempo
+          setTimeout(() => {
+            isManualControl = false;
+            track.style.animationPlayState = 'running';
+            track.style.transition = '';
+          }, 2000);
+        }
+        
+        prevBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          moveCarousel('prev');
+        });
+        
+        nextBtn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          moveCarousel('next');
+        });
+        
+        // Touch events para móviles
+        let touchStartX = 0;
+        let touchEndX = 0;
+        
+        track.addEventListener('touchstart', (e) => {
+          touchStartX = e.changedTouches[0].screenX;
+        }, { passive: true });
+        
+        track.addEventListener('touchend', (e) => {
+          touchEndX = e.changedTouches[0].screenX;
+          handleSwipe();
+        }, { passive: true });
+        
+        function handleSwipe() {
+          const swipeThreshold = 50;
+          const diff = touchStartX - touchEndX;
+          
+          if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+              moveCarousel('next');
+            } else {
+              moveCarousel('prev');
+            }
+          }
+        }
       }
     });
   }

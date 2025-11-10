@@ -269,6 +269,12 @@ const organizationSchema = {
           <p class="allies-description">Trabajamos con organizaciones e instituciones que comparten nuestra visión de un futuro sostenible</p>
           
           <div class="allies-carousel-wrapper">
+            <button class="carousel-btn prev-btn allies-prev" aria-label="Anterior">
+              <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn next-btn allies-next" aria-label="Siguiente">
+              <i class="fas fa-chevron-right"></i>
+            </button>
             <div class="allies-carousel">
               <div class="allies-track">
                 <!-- Primera fila de logos -->
@@ -668,6 +674,63 @@ const organizationSchema = {
     padding: 2rem 0;
   }
 
+  .allies-carousel-wrapper .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #6b2181;
+    color: #6b2181;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .allies-carousel-wrapper .carousel-btn:hover {
+    background: #6b2181;
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(107, 33, 129, 0.4);
+  }
+
+  .allies-carousel-wrapper .carousel-btn:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .allies-carousel-wrapper .prev-btn {
+    left: 1rem;
+  }
+
+  .allies-carousel-wrapper .next-btn {
+    right: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .allies-carousel-wrapper .carousel-btn {
+      width: 45px;
+      height: 45px;
+      font-size: 1rem;
+    }
+
+    .allies-carousel-wrapper .prev-btn {
+      left: 0.5rem;
+    }
+
+    .allies-carousel-wrapper .next-btn {
+      right: 0.5rem;
+    }
+  }
+
   .allies-carousel {
     width: 100%;
     position: relative;
@@ -786,4 +849,98 @@ const organizationSchema = {
     }
   }
 </style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const alliesTrack = document.querySelector('.allies-track');
+    const prevBtn = document.querySelector('.allies-prev');
+    const nextBtn = document.querySelector('.allies-next');
+    
+    if (!alliesTrack || !prevBtn || !nextBtn) return;
+    
+    let manualScrollPosition = 0;
+    let isManualControl = false;
+    const itemWidth = 200; // Ancho del item
+    const gap = 48; // 3rem = 48px
+    const moveDistance = itemWidth + gap;
+    
+    function moveCarousel(direction) {
+      isManualControl = true;
+      alliesTrack.style.animationPlayState = 'paused';
+      
+      if (direction === 'next') {
+        manualScrollPosition -= moveDistance;
+      } else {
+        manualScrollPosition += moveDistance;
+      }
+      
+      // Ajustar posición si se sale de los límites
+      const totalWidth = alliesTrack.scrollWidth / 2; // Dividido por 2 porque está duplicado
+      if (Math.abs(manualScrollPosition) >= totalWidth) {
+        manualScrollPosition = 0;
+      } else if (manualScrollPosition > 0) {
+        manualScrollPosition = -totalWidth + moveDistance;
+      }
+      
+      alliesTrack.style.transform = `translateX(${manualScrollPosition}px)`;
+      alliesTrack.style.transition = 'transform 0.5s ease';
+      
+      // Reanudar animación automática después de un tiempo
+      setTimeout(() => {
+        isManualControl = false;
+        alliesTrack.style.animationPlayState = 'running';
+        alliesTrack.style.transition = '';
+      }, 2000);
+    }
+    
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      moveCarousel('prev');
+    });
+    
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      moveCarousel('next');
+    });
+    
+    // Pausar animación al hacer hover
+    alliesTrack.addEventListener('mouseenter', () => {
+      alliesTrack.style.animationPlayState = 'paused';
+    });
+    
+    alliesTrack.addEventListener('mouseleave', () => {
+      if (!isManualControl) {
+        alliesTrack.style.animationPlayState = 'running';
+      }
+    });
+    
+    // Touch events para móviles
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    alliesTrack.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    alliesTrack.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+    
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          moveCarousel('next');
+        } else {
+          moveCarousel('prev');
+        }
+      }
+    }
+  });
+</script>
 

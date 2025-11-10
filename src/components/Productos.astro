@@ -16,6 +16,12 @@ const productosMasVendidos = productos
     </div>
 
     <div class="productos-carousel-wrapper">
+      <button class="carousel-btn prev-btn" aria-label="Anterior">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <button class="carousel-btn next-btn" aria-label="Siguiente">
+        <i class="fas fa-chevron-right"></i>
+      </button>
       <div class="productos-carousel">
         <div class="productos-track">
           {productosMasVendidos.map((producto) => (
@@ -110,6 +116,63 @@ const productosMasVendidos = productos
     position: relative;
     overflow: hidden;
     padding: 2rem 0;
+  }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    border: 2px solid #6b2181;
+    color: #6b2181;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .carousel-btn:hover {
+    background: #6b2181;
+    color: white;
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: 0 6px 20px rgba(107, 33, 129, 0.4);
+  }
+
+  .carousel-btn:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .prev-btn {
+    left: 1rem;
+  }
+
+  .next-btn {
+    right: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .carousel-btn {
+      width: 45px;
+      height: 45px;
+      font-size: 1rem;
+    }
+
+    .prev-btn {
+      left: 0.5rem;
+    }
+
+    .next-btn {
+      right: 0.5rem;
+    }
   }
 
   .productos-carousel {
@@ -342,6 +405,59 @@ const productosMasVendidos = productos
 
       carouselWrapper.addEventListener('mouseleave', () => {
         isPaused = false;
+      });
+    }
+
+    // Control manual con botones
+    const prevBtn = document.querySelector('.prev-btn') as HTMLElement;
+    const nextBtn = document.querySelector('.next-btn') as HTMLElement;
+
+    function moveCarousel(direction: 'prev' | 'next') {
+      const cardWidth = getCardWidth();
+      const moveDistance = cardWidth + gap;
+      
+      if (direction === 'next') {
+        currentPosition -= moveDistance;
+      } else {
+        currentPosition += moveDistance;
+      }
+
+      // Ajustar posición si se sale de los límites
+      const totalWidth = getTotalWidth();
+      if (Math.abs(currentPosition) >= totalWidth) {
+        currentPosition = 0;
+      } else if (currentPosition > 0) {
+        currentPosition = -totalWidth + moveDistance;
+      }
+
+      track.style.transition = 'transform 0.5s ease';
+      track.style.transform = `translateX(${currentPosition}px)`;
+      
+      // Restaurar transición después de la animación
+      setTimeout(() => {
+        track.style.transition = 'transform 0.5s linear';
+      }, 500);
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        isPaused = true;
+        moveCarousel('prev');
+        setTimeout(() => {
+          isPaused = false;
+        }, 500);
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        isPaused = true;
+        moveCarousel('next');
+        setTimeout(() => {
+          isPaused = false;
+        }, 500);
       });
     }
 
