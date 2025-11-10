@@ -1,7 +1,7 @@
 ---
 title: "Guía Completa: Instalación de Paneles Solares en tu Hogar en Colombia"
 description: "Todo lo que necesitas saber sobre la instalación de paneles solares residenciales en Colombia. Pasos, costos, requisitos legales y beneficios. Guía práctica 2024."
-image: "/energia solar vivienda.png"
+image: "/images/guia completa.png"
 author: "Equipo Reiki Solar"
 date: "2024-12-01"
 category: "Energía Solar"
