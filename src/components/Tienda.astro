@@ -2581,10 +2581,104 @@ function getSpecs(specifications: string[]) {
     });
   }
 
+  // Control del carrusel de marcas
+  function initMarcasCarousel() {
+    const marcasTrack = document.querySelector('.marcas-track');
+    const prevBtn = document.querySelector('.marcas-prev');
+    const nextBtn = document.querySelector('.marcas-next');
+    
+    if (!marcasTrack || !prevBtn || !nextBtn) return;
+    
+    let manualScrollPosition = 0;
+    let isManualControl = false;
+    const itemWidth = 150; // Ancho aproximado del item
+    const gap = 48; // 3rem = 48px
+    const moveDistance = itemWidth + gap;
+    
+    function moveCarousel(direction) {
+      isManualControl = true;
+      marcasTrack.style.animationPlayState = 'paused';
+      
+      if (direction === 'next') {
+        manualScrollPosition -= moveDistance;
+      } else {
+        manualScrollPosition += moveDistance;
+      }
+      
+      // Ajustar posición si se sale de los límites
+      const totalWidth = marcasTrack.scrollWidth / 2; // Dividido por 2 porque está duplicado
+      if (Math.abs(manualScrollPosition) >= totalWidth) {
+        manualScrollPosition = 0;
+      } else if (manualScrollPosition > 0) {
+        manualScrollPosition = -totalWidth + moveDistance;
+      }
+      
+      marcasTrack.style.transform = `translateX(${manualScrollPosition}px)`;
+      marcasTrack.style.transition = 'transform 0.5s ease';
+      
+      // Reanudar animación automática después de un tiempo
+      setTimeout(() => {
+        isManualControl = false;
+        marcasTrack.style.animationPlayState = 'running';
+        marcasTrack.style.transition = '';
+      }, 2000);
+    }
+    
+    prevBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      moveCarousel('prev');
+    });
+    
+    nextBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      moveCarousel('next');
+    });
+    
+    // Pausar animación al hacer hover
+    marcasTrack.addEventListener('mouseenter', () => {
+      marcasTrack.style.animationPlayState = 'paused';
+    });
+    
+    marcasTrack.addEventListener('mouseleave', () => {
+      if (!isManualControl) {
+        marcasTrack.style.animationPlayState = 'running';
+      }
+    });
+    
+    // Touch events para móviles
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    marcasTrack.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    marcasTrack.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+    }, { passive: true });
+    
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          moveCarousel('next');
+        } else {
+          moveCarousel('prev');
+        }
+      }
+    }
+  }
+
   // Controladores de cantidad en productos
   document.addEventListener('DOMContentLoaded', function() {
     initCategoryNavigation();
     initCarousels();
+    initMarcasCarousel();
     
     // Botones de cantidad
     document.querySelectorAll('.qty-btn').forEach(btn => {
