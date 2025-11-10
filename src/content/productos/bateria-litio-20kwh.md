@@ -1,7 +1,7 @@
 ---
 title: "Batería de Litio 20kWh"
 description: "Batería de litio de gran capacidad 20kWh para sistemas comerciales e industriales. Máxima autonomía y confiabilidad."
-image: "/images/estación de energía solar móvil en Colombia.png"
+image: "/images/baterias de litio.jpg"
 category: "baterias"
 price: "$38.000.000"
 specifications:

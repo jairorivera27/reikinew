@@ -1,7 +1,7 @@
 ---
 title: "Batería de Litio 3kWh"
 description: "Batería de litio compacta de 3kWh con tecnología LiFePO4. Perfecta para sistemas residenciales pequeños y portátiles."
-image: "/images/estación de energía solar móvil en Colombia.png"
+image: "/images/baterias de litio.jpg"
 category: "baterias"
 price: "$8.500.000"
 specifications:
