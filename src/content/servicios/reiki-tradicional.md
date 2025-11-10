@@ -1,84 +1,86 @@
 ---
-title: "Energía Solar Residencial en Colombia"
-description: "Instala un sistema de energía solar fotovoltaico para ser más eficiente, sostenible y producir hasta el 100% del consumo de tu energía. Soluciones solares para hogares en Colombia."
-image: "/images/energia solar vivienda.png"
+title: "Bombeo Solar en Colombia"
+description: "Sistemas de bombeo solar en Colombia para agricultura, ganadería y uso doméstico. Ahorra energía y costos con soluciones fotovoltaicas de Reiki Energía Solar."
+image: "/images/Bombeo solar en Colombia.png"
 benefits:
-  - "Ahorra hasta un 99% en tu factura de energía eléctrica"
-  - "🌞 Aprovecha los beneficios tributarios vigentes en Colombia, como la deducción del impuesto de renta, exclusión de IVA y exención de aranceles en equipos solares (Ley 1715 y 2099)"
-  - "🏡 Aumenta el valor de tu propiedad con un sistema moderno y sostenible"
-  - "🔋 Sistema de respaldo automático que te protege ante cortes de energía"
-  - "♻️ Energía 100% limpia y renovable, ideal para hogares comprometidos con el medio ambiente"
-  - "🛠️ Servicio de mantenimiento y monitoreo de paneles solares incluido"
+  - "🚜 Bombeo de agua sin conexión eléctrica, usando solo energía solar"
+  - "🌞 Ideal para zonas rurales, agrícolas y ganaderas"
+  - "💰 Ahorro significativo en costos operativos frente a sistemas tradicionales"
+  - "🛠️ Bajo costo de mantenimiento y larga vida útil"
+  - "⚙️ Sistema automático y confiable, con control inteligente de nivel y presión"
+  - "💧 Disponible en versiones sumergibles o superficiales, según caudal y profundidad del pozo"
 cta:
-  text: "Cotizar Sistema"
+  text: "Cotizar Bombeo"
   link: "#contacto"
-order: 1
+order: 4
 ---
 
-# Energía Solar Residencial en Colombia
+# Bombeo Solar para Agricultura y Ganadería
 
-## Una solución para cada necesidad
+**Bombea agua sin conexión eléctrica** usando únicamente energía solar. La solución perfecta para zonas rurales, fincas, cultivos y ganadería en Colombia.
 
-Instala un sistema de energía solar fotovoltaico para ser más eficiente, sostenible y producir hasta el 100% del consumo de tu energía. En Reiki Energía Solar, especialistas en energía solar en Colombia, ofrecemos soluciones solares fotovoltaicas adaptadas a las necesidades de tu hogar.
+## ¿Cómo Funciona?
 
-## Sistema Interconectado (On-Grid)
+El sistema de bombeo solar utiliza paneles fotovoltaicos para alimentar una bomba de agua, extrayendo agua de pozos, ríos o estanques sin necesidad de conexión a la red eléctrica.
 
-### ¿Quieres ahorrar hasta el 100% de tu factura de energía?
+## Aplicaciones
 
-Los sistemas solares interconectados son la solución perfecta para hogares que buscan maximizar su ahorro energético. Este tipo de sistema de energía solar fotovoltaica funciona en paralelo con la red eléctrica convencional, proporcionando un flujo de energía constante y eficiente.
+### Agricultura
+- Riego de cultivos
+- Sistemas de aspersión
+- Invernaderos
+- Huertas y jardines
 
-**Características principales:**
+### Ganadería
+- Abastecimiento de agua para ganado
+- Sistemas de bebederos automáticos
+- Estanques y reservorios
 
-- **Función en paralelo con la red eléctrica convencional**: El sistema trabaja junto con la red, inyectando el excedente de energía generada
-- **Flujo de energía constante**: Garantiza un suministro continuo sin interrupciones
-- **No es un respaldo, por lo que no necesita baterías**: Reduce costos iniciales y mantenimiento
-- **Disminución de emisiones de CO₂**: Contribuye significativamente a la reducción de huella de carbono
-- **Autogeneración de energía eléctrica**: Produce tu propia energía limpia y renovable
+### Uso Doméstico Rural
+- Agua potable para viviendas
+- Sistemas de almacenamiento
+- Presión constante de agua
 
-## Sistema Híbrido
+## Tipos de Sistemas
 
-### ¿Quieres tener un respaldo de energía para tus equipos?
+### Bombeo Sumergible
+**Ideal para pozos profundos** (más de 7 metros)
+- Bomba sumergible en el pozo
+- Mayor presión y caudal
+- Instalación profesional requerida
 
-Los sistemas híbridos combinan lo mejor de ambos mundos: ahorro energético y respaldo de energía. Perfectos para cuando la energía convencional es inestable o cuando necesitas garantizar el funcionamiento de equipos críticos.
+### Bombeo Superficial
+**Perfecto para pozos someros** (menos de 7 metros)
+- Bomba en superficie
+- Fácil mantenimiento
+- Instalación más sencilla
 
-**Características principales:**
+## Ventajas del Bombeo Solar
 
-- **Perfectos para cuando la energía convencional es inestable**: Ideal para zonas con cortes frecuentes
-- **Combinación entre un sistema interconectado y de baterías**: Aprovecha la energía solar y almacena el excedente
-- **Es necesaria la red convencional para su funcionamiento**: Funciona de manera inteligente entre la red y las baterías
-- **Respaldo automático**: Protege tus equipos esenciales durante cortes de energía
-- **Máxima eficiencia energética y sostenibilidad**: Optimiza el uso de energía solar y convencional
+**Ahorro significativo:** Elimina costos de electricidad o combustible diésel.
 
-## Toma el control de tu energía
+**Sistema automático:** Control inteligente de nivel y presión, funciona sin supervisión constante.
 
-### 5 pasos para tener un sistema de energía solar
+**Bajo mantenimiento:** Menos piezas móviles que sistemas tradicionales, mayor durabilidad.
 
-#### 1. Diseño de propuesta
+**Ecológico:** Energía 100% limpia, sin emisiones contaminantes.
 
-Programamos una visita de ingeniería de detalle y realizamos la compra de tus equipos. Nuestro equipo de expertos en energía renovable analiza tu consumo, orientación del techo y condiciones específicas para diseñar la solución perfecta.
+**Confiable:** Funciona incluso en días nublados gracias a baterías de respaldo.
 
-#### 2. Firma de contrato
+## Componentes del Sistema
 
-Entrega de documentos, firma de contrato e introducción a nuestro sistema de monitoreo. Te proporcionamos toda la documentación necesaria y te guiamos en cada paso del proceso.
+- Paneles solares fotovoltaicos
+- Bomba de agua (sumergible o superficial)
+- Controlador inteligente
+- Baterías de respaldo (opcional)
+- Sistema de almacenamiento
 
-#### 3. Instalación de proyecto
+## ¿Qué Necesitas Saber?
 
-Construimos tu proyecto siguiendo los cronogramas con personal propio y calificado. Nuestros técnicos certificados realizan la instalación de paneles solares con los más altos estándares de calidad y seguridad.
+Para cotizar tu sistema necesitamos:
+- Profundidad del pozo o fuente de agua
+- Caudal requerido (litros por hora)
+- Distancia y altura de bombeo
+- Uso previsto (riego, consumo, etc.)
 
-#### 4. Certificación del sistema
-
-Enviamos documentación y programamos visita para la legalización y la certificación RETIE. Cumplimos con todas las certificaciones y normativas (CREG 174 de 2021, Ley 1715 de 2014) para garantizar la legalidad de tu sistema.
-
-#### 5. ¡Tu primer kilovatio solar!
-
-Te entregamos tu sistema solar y te capacitamos en nuestra aplicación de monitoreo. Disfruta de tu autogeneración de energía eléctrica y monitorea el rendimiento de tu sistema en tiempo real.
-
-## Beneficios de la energía solar residencial
-
-Con nuestros sistemas de paneles solares para hogares, no solo ahorras dinero, sino que también contribuyes a la transición energética en Colombia. Nuestras soluciones solares fotovoltaicas están diseñadas específicamente para el clima colombiano, garantizando máxima eficiencia y durabilidad.
-
-## ¿Por qué elegir Reiki Energía Solar?
-
-Somos una empresa colombiana de energía solar con experiencia en proyectos solares en Antioquia, Medellín, Bogotá, Cali, Barranquilla y con cobertura nacional. Ofrecemos acompañamiento técnico y financiero integral, desde el diseño hasta el mantenimiento y monitoreo solar continuo.
-
-Nuestro compromiso es proporcionar soluciones de energía solar en Colombia que transformen tu hogar en una fuente de energía limpia y sostenible, contribuyendo a la eficiencia energética y sostenibilidad del país.
+**Nuestros expertos te asesoran** para encontrar la solución perfecta para tu proyecto.

@@ -135,8 +135,16 @@ import logoBlanco from '../assets/logo_blanco.png';
     width: 100%;
     z-index: 1000;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 2px 10px rgba(107, 33, 129, 0.1);
-    animation: fadeInDown 0.6s ease-out;
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .header {
+      animation: fadeInDown 0.4s ease-out;
+    }
   }
 
   .nav {
@@ -220,16 +228,21 @@ import logoBlanco from '../assets/logo_blanco.png';
 
   .nav-item {
     position: relative;
-    animation: slideInRight 0.6s ease-out;
-    animation-fill-mode: both;
   }
 
-  .nav-item:nth-child(1) { animation-delay: 0.1s; }
-  .nav-item:nth-child(2) { animation-delay: 0.2s; }
-  .nav-item:nth-child(3) { animation-delay: 0.3s; }
-  .nav-item:nth-child(4) { animation-delay: 0.4s; }
-  .nav-item:nth-child(5) { animation-delay: 0.5s; }
-  .nav-item:nth-child(6) { animation-delay: 0.6s; }
+  /* Reduce animations for better performance */
+  @media (prefers-reduced-motion: no-preference) {
+    .nav-item {
+      animation: slideInRight 0.4s ease-out;
+      animation-fill-mode: both;
+    }
+    .nav-item:nth-child(1) { animation-delay: 0.05s; }
+    .nav-item:nth-child(2) { animation-delay: 0.1s; }
+    .nav-item:nth-child(3) { animation-delay: 0.15s; }
+    .nav-item:nth-child(4) { animation-delay: 0.2s; }
+    .nav-item:nth-child(5) { animation-delay: 0.25s; }
+    .nav-item:nth-child(6) { animation-delay: 0.3s; }
+  }
 
   .nav-link {
     color: white;
@@ -357,15 +370,22 @@ import logoBlanco from '../assets/logo_blanco.png';
       width: 80%;
       max-width: 300px;
       height: 100vh;
-      background: linear-gradient(180deg, rgba(107, 33, 129, 1) 0%, rgba(107, 33, 129, 0) 100%);
+      height: 100dvh; /* Dynamic viewport height for mobile */
+      background: linear-gradient(180deg, rgba(107, 33, 129, 0.98) 0%, rgba(107, 33, 129, 0.95) 100%);
       backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
-      transition: all 0.3s ease;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       z-index: 1000;
       padding-top: 80px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      transform: translateX(0);
+      will-change: transform;
     }
 
     .nav-menu.active {
+      transform: translateX(0);
       right: 0;
     }
 
@@ -378,16 +398,20 @@ import logoBlanco from '../assets/logo_blanco.png';
 
     .nav-item {
       width: 100%;
-      animation: slideInRight 0.4s ease-out;
-      animation-fill-mode: both;
     }
 
-    .nav-item:nth-child(1) { animation-delay: 0.1s; }
-    .nav-item:nth-child(2) { animation-delay: 0.2s; }
-    .nav-item:nth-child(3) { animation-delay: 0.3s; }
-    .nav-item:nth-child(4) { animation-delay: 0.4s; }
-    .nav-item:nth-child(5) { animation-delay: 0.5s; }
-    .nav-item:nth-child(6) { animation-delay: 0.6s; }
+    @media (prefers-reduced-motion: no-preference) {
+      .nav-item {
+        animation: slideInRight 0.3s ease-out;
+        animation-fill-mode: both;
+      }
+      .nav-item:nth-child(1) { animation-delay: 0.05s; }
+      .nav-item:nth-child(2) { animation-delay: 0.1s; }
+      .nav-item:nth-child(3) { animation-delay: 0.15s; }
+      .nav-item:nth-child(4) { animation-delay: 0.2s; }
+      .nav-item:nth-child(5) { animation-delay: 0.25s; }
+      .nav-item:nth-child(6) { animation-delay: 0.3s; }
+    }
 
     .nav-link {
       display: block;
@@ -437,8 +461,16 @@ import logoBlanco from '../assets/logo_blanco.png';
     }
 
     .nav-link {
-      font-size: 1rem;
-      padding: 0.6rem 1rem;
+      font-size: 0.95rem;
+      padding: 0.6rem 0.8rem;
+    }
+  }
+
+  /* Medium devices */
+  @media (max-width: 900px) {
+    .nav-link {
+      font-size: 0.9rem;
+      padding: 0.6rem 0.7rem;
     }
   }
 
@@ -526,12 +558,7 @@ import logoBlanco from '../assets/logo_blanco.png';
         mobileOverlay.classList.add('active');
         navToggle.classList.add('active');
         document.body.style.overflow = 'hidden';
-        
-        // Animate menu items
-        const navItems = document.querySelectorAll('.nav-item');
-        navItems.forEach((item, index) => {
-          item.style.animationDelay = `${index * 0.1}s`;
-        });
+        document.documentElement.style.overflow = 'hidden';
       }
 
       function closeMobileMenu() {
@@ -539,13 +566,15 @@ import logoBlanco from '../assets/logo_blanco.png';
         mobileOverlay.classList.remove('active');
         navToggle.classList.remove('active');
         document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
       }
     }
 
-    // Header scroll effect
+    // Header scroll effect - Optimized with throttling
+    let ticking = false;
     let lastScrollY = window.scrollY;
     
-    window.addEventListener('scroll', function() {
+    function updateHeader() {
       const currentScrollY = window.scrollY;
       
       if (currentScrollY > 50) {
@@ -555,7 +584,15 @@ import logoBlanco from '../assets/logo_blanco.png';
       }
       
       lastScrollY = currentScrollY;
-    });
+      ticking = false;
+    }
+    
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    }, { passive: true });
 
     // Smooth scroll for anchor links
     const anchorLinks = document.querySelectorAll('a[href^="#"]');
@@ -578,10 +615,6 @@ import logoBlanco from '../assets/logo_blanco.png';
       });
     });
 
-    // Add loading animation
-    const navItems = document.querySelectorAll('.nav-item');
-    navItems.forEach((item, index) => {
-      item.style.animationDelay = `${index * 0.1}s`;
-    });
+    // Optimize: Remove redundant animation setup
   });
 </script>

@@ -42,7 +42,7 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
         <div class="container">
           <div class="services-grid">
             {serviciosOrdenados.map((servicio, index) => (
-              <div class="service-card">
+              <a href={`/servicios/${servicio.slug}`} class="service-card">
                 <div class="service-image-container">
                   <img 
                     src={index === 0 ? "/energia solar vivienda.png" : index === 1 ? "/images/Eenergia solar en empresas de medellin.png" : index === 2 ? "/images/estación de energía solar móvil en Colombia.png" : index === 3 ? "/images/Bombeo solar en Colombia.png" : servicio.data.image} 
@@ -51,9 +51,9 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
                     loading="lazy"
                   >
                   <div class="service-overlay">
-                    <a href={`/servicios/${servicio.slug}`} class="service-link">
+                    <div class="service-link">
                       <i class="fas fa-arrow-right"></i>
-                    </a>
+                    </div>
                   </div>
                 </div>
                 <div class="service-content">
@@ -72,12 +72,12 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
                     </ul>
                   </div>
 
-                  <a href={`/servicios/${servicio.slug}`} class="service-cta">
+                  <div class="service-cta">
                     {servicio.data.cta.text}
                     <i class="fas fa-arrow-right"></i>
-                  </a>
+                  </div>
                 </div>
-              </div>
+              </a>
             ))}
           </div>
         </div>
@@ -147,8 +147,10 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
 
   .services-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: 1fr;
     gap: 2.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
   }
 
   .service-card {
@@ -161,6 +163,12 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     opacity: 0;
     transform: translateX(-50px);
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
   }
 
   .service-card.visible {
@@ -170,27 +178,29 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
   }
 
   .service-card.visible:hover {
-    transform: translateY(-8px) translateX(0);
-    box-shadow: 0 12px 40px rgba(107, 33, 129, 0.2);
+    transform: translateY(-15px) translateX(0) scale(1.02);
+    box-shadow: 0 20px 60px rgba(255, 255, 255, 0.4), 0 0 0 1px rgba(255, 255, 255, 0.2);
   }
 
   .service-image-container {
     position: relative;
-    width: 100%;
-    height: 250px;
+    width: 40%;
+    min-width: 300px;
+    height: auto;
     overflow: hidden;
     background: #f3f4f6;
+    flex-shrink: 0;
   }
 
   .service-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.5s ease;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  .service-card:hover .service-image {
-    transform: scale(1.1);
+  .service-card.visible:hover .service-image {
+    transform: scale(1.15);
   }
 
   .service-overlay {
@@ -199,16 +209,16 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(107, 33, 129, 0.8);
     display: flex;
     align-items: center;
     justify-content: center;
     opacity: 0;
     transition: opacity 0.3s ease;
+    pointer-events: none;
   }
 
   .service-card:hover .service-overlay {
-    opacity: 1;
+    opacity: 0;
   }
 
   .service-link {
@@ -221,16 +231,15 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
     justify-content: center;
     color: #6b2181;
     font-size: 1.5rem;
-    text-decoration: none;
     transition: transform 0.3s ease;
-  }
-
-  .service-link:hover {
-    transform: scale(1.1);
   }
 
   .service-content {
     padding: 2rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
   .service-title {
@@ -239,6 +248,13 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
     color: #1f2937;
     margin-bottom: 1rem;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: color 0.3s ease, text-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .service-card.visible:hover .service-title {
+    color: #6b2181;
+    text-shadow: 0 2px 8px rgba(107, 33, 129, 0.3);
+    transform: translateX(5px);
   }
 
   .service-description {
@@ -248,6 +264,11 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
     margin-bottom: 1.5rem;
     text-align: justify;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: color 0.3s ease;
+  }
+
+  .service-card.visible:hover .service-description {
+    color: #4b5563;
   }
 
   .service-benefits {
@@ -260,6 +281,11 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
     color: #1f2937;
     margin-bottom: 0.75rem;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: color 0.3s ease;
+  }
+
+  .service-card.visible:hover .benefits-title {
+    color: #6b2181;
   }
 
   .benefits-list {
@@ -276,12 +302,24 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
     font-size: 0.95rem;
     color: #4b5563;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .service-card.visible:hover .benefit-item {
+    color: #374151;
+    transform: translateX(3px);
   }
 
   .benefit-item i {
     color: #6b2181;
     margin-top: 0.2rem;
     flex-shrink: 0;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .service-card.visible:hover .benefit-item i {
+    color: #8b2a9b;
+    transform: scale(1.2);
   }
 
   .service-cta {
@@ -292,16 +330,17 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
     color: white;
     padding: 0.75rem 1.5rem;
     border-radius: 50px;
-    text-decoration: none;
     font-weight: 600;
     font-size: 1rem;
     transition: all 0.3s ease;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    pointer-events: none;
   }
 
-  .service-cta:hover {
+  .service-card.visible:hover .service-cta {
+    background: linear-gradient(135deg, #8b2a9b, #6b2181);
+    box-shadow: 0 8px 25px rgba(107, 33, 129, 0.5);
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(107, 33, 129, 0.4);
     gap: 0.75rem;
   }
 
@@ -347,24 +386,27 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
   }
 
   .services-cta-button.primary {
-    background: white;
-    color: #6b2181;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1f2937;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
   }
 
   .services-cta-button.primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+    background: linear-gradient(135deg, #FFA500, #FFD700);
   }
 
   .services-cta-button.whatsapp {
-    background: #25D366;
-    color: white;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1f2937;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
   }
 
   .services-cta-button.whatsapp:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
-    background: #20BA5A;
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+    background: linear-gradient(135deg, #FFA500, #FFD700);
   }
 
   /* Responsive */
@@ -384,6 +426,16 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
     .services-grid {
       grid-template-columns: 1fr;
       gap: 2rem;
+    }
+
+    .service-card {
+      flex-direction: column;
+    }
+
+    .service-image-container {
+      width: 100%;
+      min-width: unset;
+      height: 250px;
     }
 
 
@@ -411,18 +463,18 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
     };
 
     const observer = new IntersectionObserver(function(entries) {
-      entries.forEach((entry) => {
+      entries.forEach(function(entry) {
         if (entry.isIntersecting) {
           const cardIndex = serviceCards.indexOf(entry.target);
-          setTimeout(() => {
+          setTimeout(function() {
             entry.target.classList.add('visible');
-          }, cardIndex * 100); // Delay escalonado para efecto cascada
+          }, cardIndex * 100);
           observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    serviceCards.forEach(card => {
+    serviceCards.forEach(function(card) {
       observer.observe(card);
     });
   });

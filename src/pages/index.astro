@@ -102,8 +102,58 @@ const localBusinessSchema = {
 </html>
 
 <style is:global>
+  /* Reset y base responsive */
+  * {
+    box-sizing: border-box;
+  }
+
   html {
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  /* Mejoras de rendimiento */
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Touch improvements para móviles */
+  a, button {
+    -webkit-tap-highlight-color: rgba(107, 33, 129, 0.2);
+    touch-action: manipulation;
+  }
+
+  /* Smooth scrolling mejorado */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Responsive base */
+  @media (max-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    html {
+      font-size: 15px;
+    }
   }
   
   body {
