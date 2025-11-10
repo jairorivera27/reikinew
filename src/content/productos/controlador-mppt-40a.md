@@ -1,7 +1,7 @@
 ---
 title: "Controlador MPPT 40A"
 description: "Controlador de carga solar MPPT de 40 amperios con pantalla LCD. Máxima eficiencia de carga y protección completa del sistema."
-image: "/energia solar vivienda.png"
+image: "/images/controlador de carga solar.jpg"
 category: "controladores"
 price: "$450.000"
 specifications:

@@ -1,7 +1,7 @@
 ---
 title: "Reflector Solar LED 30W"
 description: "Reflector solar LED compacto de 30W con sensor de movimiento. Ideal para iluminación de seguridad en exteriores pequeños."
-image: "/energia solar vivienda.png"
+image: "/images/Reflector-solar.png"
 category: "reflectores"
 price: "$250.000"
 specifications:

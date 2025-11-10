@@ -1,7 +1,7 @@
 ---
 title: "Panel Solar Monocristalino 550W"
 description: "Panel solar de alta eficiencia con tecnología monocristalina, ideal para instalaciones residenciales y comerciales. Garantía de 25 años."
-image: "/energia solar vivienda.png"
+image: "/images/panel.jpg"
 category: "paneles"
 price: "$1.200.000"
 specifications:

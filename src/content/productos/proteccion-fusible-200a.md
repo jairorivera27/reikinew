@@ -1,7 +1,7 @@
 ---
 title: "Fusible DC 200A con Portafusible"
 description: "Fusible DC de 200 amperios con portafusible para protección de sistemas solares industriales de muy alta potencia."
-image: "/energia solar vivienda.png"
+image: "/images/breaker.jpg"
 category: "protecciones"
 price: "$220.000"
 specifications:

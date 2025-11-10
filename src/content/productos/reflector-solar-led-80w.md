@@ -1,7 +1,7 @@
 ---
 title: "Reflector Solar LED 80W"
 description: "Reflector solar LED de 80W con sensor de movimiento y control remoto. Ideal para iluminación de áreas medianas exteriores."
-image: "/energia solar vivienda.png"
+image: "/images/Reflector-solar.png"
 category: "reflectores"
 price: "$480.000"
 specifications:

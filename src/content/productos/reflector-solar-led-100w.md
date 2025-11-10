@@ -1,7 +1,7 @@
 ---
 title: "Reflector Solar LED 100W"
 description: "Reflector solar LED de alta potencia 100W con sensor de movimiento y control remoto. Ideal para iluminación de grandes áreas exteriores."
-image: "/energia solar vivienda.png"
+image: "/images/Reflector-solar.png"
 category: "reflectores"
 price: "$580.000"
 specifications:

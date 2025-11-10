@@ -1,7 +1,7 @@
 ---
 title: "Panel Solar Monocristalino 500W"
 description: "Panel solar monocristalino de 500W con tecnología PERC, ideal para instalaciones residenciales. Alta eficiencia y durabilidad garantizada."
-image: "/energia solar vivienda.png"
+image: "/images/panel.jpg"
 category: "paneles"
 price: "$1.050.000"
 specifications:

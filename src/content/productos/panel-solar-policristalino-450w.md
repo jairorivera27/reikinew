@@ -1,7 +1,7 @@
 ---
 title: "Panel Solar Policristalino 450W"
 description: "Panel solar policristalino de excelente relación calidad-precio, perfecto para proyectos de gran escala y presupuestos ajustados."
-image: "/energia solar vivienda.png"
+image: "/images/panel.jpg"
 category: "paneles"
 price: "$950.000"
 specifications:

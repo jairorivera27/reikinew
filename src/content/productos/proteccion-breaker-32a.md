@@ -1,7 +1,7 @@
 ---
 title: "Breaker DC 32A"
 description: "Interruptor termomagnético DC de 32 amperios para protección de sistemas solares pequeños y medianos. Certificado y confiable."
-image: "/energia solar vivienda.png"
+image: "/images/breaker.jpg"
 category: "protecciones"
 price: "$65.000"
 specifications:

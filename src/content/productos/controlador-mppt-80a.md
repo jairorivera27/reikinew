@@ -1,7 +1,7 @@
 ---
 title: "Controlador MPPT 80A"
 description: "Controlador de carga solar MPPT de alta capacidad 80 amperios. Para sistemas solares de gran potencia con comunicación Bluetooth."
-image: "/energia solar vivienda.png"
+image: "/images/controlador de carga solar.jpg"
 category: "controladores"
 price: "$950.000"
 specifications:

@@ -1,7 +1,7 @@
 ---
 title: "Inversor Híbrido 8kW"
 description: "Inversor híbrido de alta potencia 8kW para sistemas residenciales grandes y comerciales. Máxima eficiencia y confiabilidad."
-image: "/images/Eenergia solar en empresas de medellin.png"
+image: "/images/Inversor solar.jpg"
 category: "inversores"
 price: "$6.500.000"
 specifications:

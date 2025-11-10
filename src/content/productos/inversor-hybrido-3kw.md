@@ -1,7 +1,7 @@
 ---
 title: "Inversor Híbrido 3kW"
 description: "Inversor híbrido compacto de 3kW, perfecto para sistemas residenciales pequeños. Compatible con baterías y conexión a red."
-image: "/images/Eenergia solar en empresas de medellin.png"
+image: "/images/Inversor solar.jpg"
 category: "inversores"
 price: "$3.200.000"
 specifications:

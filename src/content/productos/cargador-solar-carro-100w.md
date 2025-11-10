@@ -1,7 +1,7 @@
 ---
 title: "Cargador Solar para Carro 100W"
 description: "Cargador solar profesional de máxima potencia 100W para baterías de carro y vehículos recreativos. Panel plegable de alta eficiencia."
-image: "/energia solar vivienda.png"
+image: "/images/cargador de carros.jpg"
 category: "cargadores"
 price: "$950.000"
 specifications:

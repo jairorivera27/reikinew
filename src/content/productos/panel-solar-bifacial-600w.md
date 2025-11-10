@@ -1,7 +1,7 @@
 ---
 title: "Panel Solar Bifacial 600W"
 description: "Panel solar bifacial de última generación que captura energía solar por ambas caras, aumentando la producción hasta un 30% adicional."
-image: "/energia solar vivienda.png"
+image: "/images/panel.jpg"
 category: "paneles"
 price: "$1.650.000"
 specifications:

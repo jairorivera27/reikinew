@@ -1,7 +1,7 @@
 ---
 title: "Controlador MPPT 20A"
 description: "Controlador de carga solar MPPT compacto de 20 amperios. Ideal para sistemas solares pequeños y portátiles."
-image: "/energia solar vivienda.png"
+image: "/images/controlador de carga solar.jpg"
 category: "controladores"
 price: "$280.000"
 specifications:

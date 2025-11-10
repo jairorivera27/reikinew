@@ -1,7 +1,7 @@
 ---
 title: "Cargador Solar para Carro 60W"
 description: "Cargador solar de alta potencia 60W para baterías de carro 12V/24V. Panel solar plegable con controlador MPPT avanzado."
-image: "/energia solar vivienda.png"
+image: "/images/cargador de carros.jpg"
 category: "cargadores"
 price: "$650.000"
 specifications:

@@ -1,7 +1,7 @@
 ---
 title: "Reflector Solar LED 150W"
 description: "Reflector solar LED de máxima potencia 150W para iluminación profesional de grandes áreas. Sensor de movimiento y control remoto."
-image: "/energia solar vivienda.png"
+image: "/images/Reflector-solar.png"
 category: "reflectores"
 price: "$750.000"
 specifications:

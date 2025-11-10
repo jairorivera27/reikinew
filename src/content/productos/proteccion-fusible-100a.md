@@ -1,7 +1,7 @@
 ---
 title: "Fusible DC 100A con Portafusible"
 description: "Fusible DC de 100 amperios con portafusible para protección de sistemas solares de alta potencia."
-image: "/energia solar vivienda.png"
+image: "/images/breaker.jpg"
 category: "protecciones"
 price: "$120.000"
 specifications:

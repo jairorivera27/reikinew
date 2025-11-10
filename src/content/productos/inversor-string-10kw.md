@@ -1,7 +1,7 @@
 ---
 title: "Inversor String 10kW"
 description: "Inversor string de 10kW para instalaciones comerciales y residenciales grandes. Máxima eficiencia y monitoreo inteligente."
-image: "/images/Eenergia solar en empresas de medellin.png"
+image: "/images/Inversor solar.jpg"
 category: "inversores"
 price: "$8.500.000"
 specifications:

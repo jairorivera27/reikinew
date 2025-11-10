@@ -1,7 +1,7 @@
 ---
 title: "Panel Solar Monocristalino 600W"
 description: "Panel solar de máxima potencia 600W con tecnología de células de medio corte. Ideal para instalaciones comerciales e industriales."
-image: "/energia solar vivienda.png"
+image: "/images/panel.jpg"
 category: "paneles"
 price: "$1.350.000"
 specifications:

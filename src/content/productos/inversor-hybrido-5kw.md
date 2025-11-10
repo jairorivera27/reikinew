@@ -1,7 +1,7 @@
 ---
 title: "Inversor Híbrido 5kW"
 description: "Inversor híbrido de 5kW con tecnología de onda sinusoidal pura, compatible con baterías y conexión a red. Ideal para sistemas residenciales."
-image: "/images/Eenergia solar en empresas de medellin.png"
+image: "/images/Inversor solar.jpg"
 category: "inversores"
 price: "$4.500.000"
 specifications:

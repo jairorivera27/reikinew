@@ -1,7 +1,7 @@
 ---
 title: "Cargador Solar para Carro 12V"
 description: "Cargador solar portátil para batería de carro 12V con panel solar plegable. Ideal para emergencias y viajes."
-image: "/energia solar vivienda.png"
+image: "/images/cargador de carros.jpg"
 category: "cargadores"
 price: "$280.000"
 specifications:

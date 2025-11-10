@@ -1,7 +1,7 @@
 ---
 title: "Inversor Micro con Optimizadores"
 description: "Sistema de inversión con optimizadores de potencia individuales para cada panel, maximizando la producción incluso con sombras parciales."
-image: "/images/Eenergia solar en empresas de medellin.png"
+image: "/images/Inversor solar.jpg"
 category: "inversores"
 price: "$6.200.000"
 specifications:
