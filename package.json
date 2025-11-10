@@ -19,6 +19,7 @@
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
-    "@types/pdfkit": "^0.13.0"
+    "@types/pdfkit": "^0.13.0",
+    "terser": "^5.44.1"
   }
 }
