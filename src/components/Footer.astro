@@ -43,14 +43,28 @@ import logoBlanco from '../assets/logo_blanco.png';
         </ul>
       </div>
 
+      <!-- Categorías de Productos -->
+      <div class="footer-section">
+        <h4 class="footer-title">Categorías de Productos</h4>
+        <ul class="footer-links">
+          <li><a href="/tienda#paneles">Paneles Solares</a></li>
+          <li><a href="/tienda#inversores">Inversores</a></li>
+          <li><a href="/tienda#baterias">Baterías de Litio</a></li>
+          <li><a href="/tienda#reflectores">Reflectores Solares</a></li>
+          <li><a href="/tienda#controladores">Controladores de Carga</a></li>
+          <li><a href="/tienda#protecciones">Protecciones Eléctricas</a></li>
+          <li><a href="/tienda#cargadores">Cargadores para Carro</a></li>
+        </ul>
+      </div>
+
       <!-- Servicios -->
       <div class="footer-section">
         <h4 class="footer-title">Nuestros Servicios</h4>
         <ul class="footer-links">
-          <li><a href="#servicio-1">Energía Solar Hogar</a></li>
-          <li><a href="#servicio-2">Energía Solar Empresas</a></li>
-          <li><a href="#servicio-3">Bombeo Solar</a></li>
-          <li><a href="#servicio-4">Energía Solar Móvil</a></li>
+          <li><a href="/servicios/energia-solar">Energía Solar Hogar</a></li>
+          <li><a href="/servicios/meditacion-guiada">Energía Solar Empresas</a></li>
+          <li><a href="/servicios/reiki-tradicional">Bombeo Solar</a></li>
+          <li><a href="/servicios/limpieza-energetica">Energía Solar Móvil</a></li>
         </ul>
       </div>
 
@@ -123,8 +137,8 @@ import logoBlanco from '../assets/logo_blanco.png';
 
   .footer-content {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1.5fr;
-    gap: 3rem;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1.5fr;
+    gap: 2rem;
     margin-bottom: 3rem;
   }
 
@@ -270,6 +284,13 @@ import logoBlanco from '../assets/logo_blanco.png';
   }
 
   /* Responsive Design */
+  @media (max-width: 1024px) {
+    .footer-content {
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 2rem;
+    }
+  }
+
   @media (max-width: 768px) {
     .footer {
       padding: 3rem 0 2rem;
