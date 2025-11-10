@@ -2522,8 +2522,18 @@ function getSpecs(specifications: string[]) {
           const containerWidth = carouselWrapper.offsetWidth;
           const containerCenter = containerWidth / 2;
           
+          // Obtener la posición actual real del track (puede estar en movimiento)
+          const currentTransform = track.style.transform;
+          let actualPosition = manualScrollPosition;
+          if (currentTransform) {
+            const match = currentTransform.match(/translateX\((-?\d+(?:\.\d+)?)px\)/);
+            if (match) {
+              actualPosition = parseFloat(match[1]);
+            }
+          }
+          
           // Calcular qué tarjeta está más cerca del centro actualmente
-          const currentCardIndex = Math.round(Math.abs(manualScrollPosition) / cardTotalWidth);
+          const currentCardIndex = Math.round(Math.abs(actualPosition) / cardTotalWidth);
           
           // Determinar el índice de la tarjeta objetivo
           let targetCardIndex;
