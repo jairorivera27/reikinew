@@ -414,20 +414,37 @@ const productosMasVendidos = productos
 
     function moveCarousel(direction: 'prev' | 'next') {
       const cardWidth = getCardWidth();
-      const moveDistance = cardWidth + gap;
+      const cardTotalWidth = cardWidth + gap;
+      const carouselWrapper = document.querySelector('.productos-carousel-wrapper') as HTMLElement;
+      if (!carouselWrapper) return;
       
+      const containerWidth = carouselWrapper.offsetWidth;
+      const containerCenter = containerWidth / 2;
+      
+      // Calcular qué tarjeta está más cerca del centro actualmente
+      const currentCardIndex = Math.round(Math.abs(currentPosition) / cardTotalWidth);
+      
+      // Determinar el índice de la tarjeta objetivo
+      let targetCardIndex: number;
       if (direction === 'next') {
-        currentPosition -= moveDistance;
+        targetCardIndex = currentCardIndex + 1;
       } else {
-        currentPosition += moveDistance;
+        targetCardIndex = Math.max(0, currentCardIndex - 1);
       }
-
+      
+      // Calcular la posición para centrar la tarjeta objetivo
+      // La posición debe ser: centro del contenedor - (posición de la tarjeta + mitad de su ancho)
+      const targetPosition = containerCenter - (targetCardIndex * cardTotalWidth + cardWidth / 2);
+      
+      // Ajustar para que sea negativo (movimiento hacia la izquierda)
+      currentPosition = -targetCardIndex * cardTotalWidth + (containerCenter - cardWidth / 2);
+      
       // Ajustar posición si se sale de los límites
       const totalWidth = getTotalWidth();
       if (Math.abs(currentPosition) >= totalWidth) {
         currentPosition = 0;
       } else if (currentPosition > 0) {
-        currentPosition = -totalWidth + moveDistance;
+        currentPosition = -totalWidth + cardTotalWidth;
       }
 
       track.style.transition = 'transform 0.5s ease';

@@ -868,18 +868,34 @@ const organizationSchema = {
       isManualControl = true;
       alliesTrack.style.animationPlayState = 'paused';
       
+      const itemTotalWidth = itemWidth + gap;
+      const carouselWrapper = alliesTrack.closest('.allies-carousel-wrapper');
+      
+      if (!carouselWrapper) return;
+      
+      const containerWidth = carouselWrapper.offsetWidth;
+      const containerCenter = containerWidth / 2;
+      
+      // Calcular qué item está más cerca del centro actualmente
+      const currentItemIndex = Math.round(Math.abs(manualScrollPosition) / itemTotalWidth);
+      
+      // Determinar el índice del item objetivo
+      let targetItemIndex;
       if (direction === 'next') {
-        manualScrollPosition -= moveDistance;
+        targetItemIndex = currentItemIndex + 1;
       } else {
-        manualScrollPosition += moveDistance;
+        targetItemIndex = Math.max(0, currentItemIndex - 1);
       }
+      
+      // Calcular la posición para centrar el item objetivo
+      manualScrollPosition = -targetItemIndex * itemTotalWidth + (containerCenter - itemWidth / 2);
       
       // Ajustar posición si se sale de los límites
       const totalWidth = alliesTrack.scrollWidth / 2; // Dividido por 2 porque está duplicado
       if (Math.abs(manualScrollPosition) >= totalWidth) {
         manualScrollPosition = 0;
       } else if (manualScrollPosition > 0) {
-        manualScrollPosition = -totalWidth + moveDistance;
+        manualScrollPosition = -totalWidth + itemTotalWidth;
       }
       
       alliesTrack.style.transform = `translateX(${manualScrollPosition}px)`;

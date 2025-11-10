@@ -2512,21 +2512,37 @@ function getSpecs(specifications: string[]) {
           isManualControl = true;
           track.style.animationPlayState = 'paused';
           
-          const cardWidth = 306; // Ancho de tarjeta + gap
-          const moveDistance = cardWidth + 32; // 2rem gap
+          const cardWidth = 306; // Ancho de tarjeta
+          const gap = 32; // 2rem gap
+          const cardTotalWidth = cardWidth + gap;
+          const carouselWrapper = track.closest('.productos-carousel-wrapper');
           
+          if (!carouselWrapper) return;
+          
+          const containerWidth = carouselWrapper.offsetWidth;
+          const containerCenter = containerWidth / 2;
+          
+          // Calcular qué tarjeta está más cerca del centro actualmente
+          const currentCardIndex = Math.round(Math.abs(manualScrollPosition) / cardTotalWidth);
+          
+          // Determinar el índice de la tarjeta objetivo
+          let targetCardIndex;
           if (direction === 'next') {
-            manualScrollPosition -= moveDistance;
+            targetCardIndex = currentCardIndex + 1;
           } else {
-            manualScrollPosition += moveDistance;
+            targetCardIndex = Math.max(0, currentCardIndex - 1);
           }
+          
+          // Calcular la posición para centrar la tarjeta objetivo
+          // La posición debe centrar la tarjeta en el contenedor
+          manualScrollPosition = -targetCardIndex * cardTotalWidth + (containerCenter - cardWidth / 2);
           
           // Ajustar posición si se sale de los límites
           const totalWidth = track.scrollWidth / 2; // Dividido por 2 porque está duplicado
           if (Math.abs(manualScrollPosition) >= totalWidth) {
             manualScrollPosition = 0;
           } else if (manualScrollPosition > 0) {
-            manualScrollPosition = -totalWidth + moveDistance;
+            manualScrollPosition = -totalWidth + cardTotalWidth;
           }
           
           track.style.transform = `translateX(${manualScrollPosition}px)`;
@@ -2599,18 +2615,34 @@ function getSpecs(specifications: string[]) {
       isManualControl = true;
       marcasTrack.style.animationPlayState = 'paused';
       
+      const itemTotalWidth = itemWidth + gap;
+      const carouselWrapper = marcasTrack.closest('.marcas-carousel-wrapper');
+      
+      if (!carouselWrapper) return;
+      
+      const containerWidth = carouselWrapper.offsetWidth;
+      const containerCenter = containerWidth / 2;
+      
+      // Calcular qué item está más cerca del centro actualmente
+      const currentItemIndex = Math.round(Math.abs(manualScrollPosition) / itemTotalWidth);
+      
+      // Determinar el índice del item objetivo
+      let targetItemIndex;
       if (direction === 'next') {
-        manualScrollPosition -= moveDistance;
+        targetItemIndex = currentItemIndex + 1;
       } else {
-        manualScrollPosition += moveDistance;
+        targetItemIndex = Math.max(0, currentItemIndex - 1);
       }
+      
+      // Calcular la posición para centrar el item objetivo
+      manualScrollPosition = -targetItemIndex * itemTotalWidth + (containerCenter - itemWidth / 2);
       
       // Ajustar posición si se sale de los límites
       const totalWidth = marcasTrack.scrollWidth / 2; // Dividido por 2 porque está duplicado
       if (Math.abs(manualScrollPosition) >= totalWidth) {
         manualScrollPosition = 0;
       } else if (manualScrollPosition > 0) {
-        manualScrollPosition = -totalWidth + moveDistance;
+        manualScrollPosition = -totalWidth + itemTotalWidth;
       }
       
       marcasTrack.style.transform = `translateX(${manualScrollPosition}px)`;
