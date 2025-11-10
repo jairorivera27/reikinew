@@ -1,7 +1,7 @@
 ---
 title: "Tipos de Paneles Solares: Guía Completa para Elegir el Mejor para tu Proyecto"
 description: "Descubre los diferentes tipos de paneles solares disponibles en el mercado, sus características, ventajas, desventajas y cuál es el más adecuado para tu proyecto específico en Colombia."
-image: "/energia solar vivienda.png"
+image: "/images/tipos de paneles.png"
 author: "Equipo Reiki Solar"
 date: "2024-10-28"
 category: "Tecnología"
