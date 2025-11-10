@@ -421,8 +421,18 @@ const productosMasVendidos = productos
       const containerWidth = carouselWrapper.offsetWidth;
       const containerCenter = containerWidth / 2;
       
+      // Obtener la posición actual real del track (puede estar en movimiento)
+      const currentTransform = track.style.transform;
+      let actualPosition = currentPosition;
+      if (currentTransform) {
+        const match = currentTransform.match(/translateX\((-?\d+(?:\.\d+)?)px\)/);
+        if (match) {
+          actualPosition = parseFloat(match[1]);
+        }
+      }
+      
       // Calcular qué tarjeta está más cerca del centro actualmente
-      const currentCardIndex = Math.round(Math.abs(currentPosition) / cardTotalWidth);
+      const currentCardIndex = Math.round(Math.abs(actualPosition) / cardTotalWidth);
       
       // Determinar el índice de la tarjeta objetivo
       let targetCardIndex: number;
@@ -433,10 +443,7 @@ const productosMasVendidos = productos
       }
       
       // Calcular la posición para centrar la tarjeta objetivo
-      // La posición debe ser: centro del contenedor - (posición de la tarjeta + mitad de su ancho)
-      const targetPosition = containerCenter - (targetCardIndex * cardTotalWidth + cardWidth / 2);
-      
-      // Ajustar para que sea negativo (movimiento hacia la izquierda)
+      // La posición debe centrar la tarjeta en el contenedor
       currentPosition = -targetCardIndex * cardTotalWidth + (containerCenter - cardWidth / 2);
       
       // Ajustar posición si se sale de los límites

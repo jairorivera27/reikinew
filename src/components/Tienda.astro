@@ -2623,8 +2623,18 @@ function getSpecs(specifications: string[]) {
       const containerWidth = carouselWrapper.offsetWidth;
       const containerCenter = containerWidth / 2;
       
+      // Obtener la posición actual real del track (puede estar en movimiento)
+      const currentTransform = marcasTrack.style.transform;
+      let actualPosition = manualScrollPosition;
+      if (currentTransform) {
+        const match = currentTransform.match(/translateX\((-?\d+(?:\.\d+)?)px\)/);
+        if (match) {
+          actualPosition = parseFloat(match[1]);
+        }
+      }
+      
       // Calcular qué item está más cerca del centro actualmente
-      const currentItemIndex = Math.round(Math.abs(manualScrollPosition) / itemTotalWidth);
+      const currentItemIndex = Math.round(Math.abs(actualPosition) / itemTotalWidth);
       
       // Determinar el índice del item objetivo
       let targetItemIndex;
