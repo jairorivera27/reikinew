@@ -262,6 +262,28 @@
             <p class="result-subtext">Incluye instalación y equipos</p>
           </div>
         </div>
+
+        <div class="result-card highlight">
+          <div class="result-icon">
+            <i class="fas fa-hourglass-half"></i>
+          </div>
+          <div class="result-content">
+            <p class="result-label">Años de recuperación</p>
+            <p class="result-value highlight-value" id="result-anos-recuperacion">-</p>
+            <p class="result-subtext">Con beneficios tributarios incluidos</p>
+          </div>
+        </div>
+
+        <div class="result-card highlight">
+          <div class="result-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <div class="result-content">
+            <p class="result-label">TIR (Tasa Interna de Retorno)</p>
+            <p class="result-value highlight-value" id="result-tir">-</p>
+            <p class="result-subtext">Con depreciación acelerada</p>
+          </div>
+        </div>
       </div>
 
       <!-- Tarjeta de Contacto -->
@@ -1006,6 +1028,10 @@
       // Valor aproximado del sistema
       const valorSistema = potenciaSistema * COSTO_FIJO_KW;
 
+      // Calcular años de recuperación y TIR con beneficios tributarios
+      const anosRecuperacion = calcularAnosRecuperacion(valorSistema, ahorroAnual);
+      const tir = calcularTIR(valorSistema, ahorroAnual);
+
       // Mostrar resultados
       try {
         const resultCiudad = document.getElementById('result-ciudad');
@@ -1018,6 +1044,8 @@
         const resultAhorroAnual = document.getElementById('result-ahorro-anual');
         const resultCo2 = document.getElementById('result-co2');
         const resultValorSistema = document.getElementById('result-valor-sistema');
+        const resultAnosRecuperacion = document.getElementById('result-anos-recuperacion');
+        const resultTir = document.getElementById('result-tir');
         const resultNombre = document.getElementById('result-nombre');
         const resultTelefono = document.getElementById('result-telefono');
         const resultEmail = document.getElementById('result-email');
@@ -1032,6 +1060,20 @@
         if (resultAhorroAnual) resultAhorroAnual.textContent = formatCOP(ahorroAnual);
         if (resultCo2) resultCo2.textContent = `${co2Ton.toFixed(2)} ton/año`;
         if (resultValorSistema) resultValorSistema.textContent = formatCOP(valorSistema);
+        if (resultAnosRecuperacion) {
+          if (isFinite(anosRecuperacion)) {
+            resultAnosRecuperacion.textContent = `${anosRecuperacion.toFixed(1)} años`;
+          } else {
+            resultAnosRecuperacion.textContent = '> 30 años';
+          }
+        }
+        if (resultTir) {
+          if (tir > 0 && isFinite(tir)) {
+            resultTir.textContent = `${(tir * 100).toFixed(2)}%`;
+          } else {
+            resultTir.textContent = 'N/A';
+          }
+        }
         if (resultNombre) resultNombre.textContent = nombre;
         if (resultTelefono) resultTelefono.textContent = telefono;
         if (resultEmail) resultEmail.textContent = email;
@@ -1064,6 +1106,173 @@
       resultsContainer.style.display = 'block';
       resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
+
+    /**
+     * Calcula los años de recuperación de inversión considerando:
+     * - Ahorro energético anual
+     * - Deducción del 50% del valor del proyecto en la renta líquida
+     * - Depreciación acelerada (5 años)
+     */
+    function calcularAnosRecuperacion(inversionInicial: number, ahorroAnual: number): number {
+      // Parámetros tributarios
+      const TASA_IMPUESTO = 0.35; // 35% tasa de impuesto a la renta en Colombia
+      const DEDUCCION_PORCENTAJE = 0.50; // 50% de deducción del valor del proyecto
+      const ANOS_DEPRECIACION = 5; // Depreciación acelerada en 5 años
+      
+      // Beneficio tributario por deducción del 50%
+      // La deducción reduce la renta líquida, por lo que el ahorro fiscal es:
+      // deducción * tasa_impuesto
+      const beneficioDeduccion = inversionInicial * DEDUCCION_PORCENTAJE * TASA_IMPUESTO;
+      
+      // Depreciación anual
+      const depreciacionAnual = inversionInicial / ANOS_DEPRECIACION;
+      
+      // Ahorro fiscal por depreciación (reduce la base gravable)
+      const ahorroFiscalDepreciacion = depreciacionAnual * TASA_IMPUESTO;
+      
+      // Flujo de caja anual con depreciación (años 2-5)
+      const flujoCajaConDepreciacion = ahorroAnual + ahorroFiscalDepreciacion;
+      
+      // Flujo de caja anual sin depreciación (años 6+)
+      const flujoCajaSinDepreciacion = ahorroAnual;
+      
+      // Calcular años de recuperación
+      // La inversión inicial se reduce por el beneficio de la deducción (efectivamente)
+      const inversionEfectiva = inversionInicial - beneficioDeduccion;
+      
+      if (inversionEfectiva <= 0) {
+        return 0; // Ya se recuperó con la deducción
+      }
+      
+      // Año 1: flujo incluye el beneficio de la deducción + ahorro + depreciación
+      const flujoAno1 = ahorroAnual + beneficioDeduccion + ahorroFiscalDepreciacion;
+      
+      if (flujoAno1 >= inversionEfectiva) {
+        // Se recupera en el primer año
+        return inversionEfectiva / flujoAno1;
+      }
+      
+      // Años siguientes
+      let inversionRestante = inversionEfectiva - flujoAno1;
+      let anos = 1;
+      const maxAnos = 30; // Límite razonable
+      
+      // Años 2-5: con depreciación
+      for (let ano = 2; ano <= ANOS_DEPRECIACION && inversionRestante > 0 && anos < maxAnos; ano++) {
+        anos++;
+        inversionRestante -= flujoCajaConDepreciacion;
+      }
+      
+      // Años 6+: sin depreciación
+      while (inversionRestante > 0 && anos < maxAnos) {
+        anos++;
+        inversionRestante -= flujoCajaSinDepreciacion;
+      }
+      
+      if (anos >= maxAnos && inversionRestante > 0) {
+        return Infinity; // No se recupera en el plazo considerado
+      }
+      
+      // Ajuste para el último año parcial
+      if (inversionRestante < 0) {
+        // Determinar qué tipo de flujo se usó en el último año
+        const flujoUltimoAno = anos <= ANOS_DEPRECIACION ? flujoCajaConDepreciacion : flujoCajaSinDepreciacion;
+        const fraccionAno = 1 - (Math.abs(inversionRestante) / flujoUltimoAno);
+        anos = anos - 1 + fraccionAno;
+      }
+      
+      return anos;
+    }
+
+    /**
+     * Calcula la TIR (Tasa Interna de Retorno) considerando:
+     * - Ahorro energético anual
+     * - Deducción del 50% del valor del proyecto en la renta líquida
+     * - Depreciación acelerada (5 años)
+     * - Vida útil del sistema: 25 años
+     */
+    function calcularTIR(inversionInicial: number, ahorroAnual: number): number {
+      // Parámetros tributarios
+      const TASA_IMPUESTO = 0.35;
+      const DEDUCCION_PORCENTAJE = 0.50;
+      const ANOS_DEPRECIACION = 5;
+      const VIDA_UTIL = 25; // Años de vida útil del sistema
+      
+      // Beneficio tributario por deducción del 50%
+      const beneficioDeduccion = inversionInicial * DEDUCCION_PORCENTAJE * TASA_IMPUESTO;
+      
+      // Depreciación anual
+      const depreciacionAnual = inversionInicial / ANOS_DEPRECIACION;
+      
+      // Ahorro fiscal por depreciación
+      const ahorroFiscalDepreciacion = depreciacionAnual * TASA_IMPUESTO;
+      
+      // Flujo de caja anual (años 2-5 con depreciación, años 6-25 sin depreciación)
+      const flujoCajaConDepreciacion = ahorroAnual + ahorroFiscalDepreciacion;
+      const flujoCajaSinDepreciacion = ahorroAnual;
+      
+      // Función para calcular el VAN (Valor Actual Neto) para una tasa dada
+      function calcularVAN(tasa: number): number {
+        // Año 0: Inversión inicial (negativa)
+        let van = -inversionInicial;
+        
+        // Año 1: Ahorro + beneficio deducción + ahorro fiscal depreciación
+        const flujoAno1 = ahorroAnual + beneficioDeduccion + ahorroFiscalDepreciacion;
+        van += flujoAno1 / Math.pow(1 + tasa, 1);
+        
+        // Años 2-5: Con depreciación
+        for (let ano = 2; ano <= ANOS_DEPRECIACION; ano++) {
+          van += flujoCajaConDepreciacion / Math.pow(1 + tasa, ano);
+        }
+        
+        // Años 6-25: Sin depreciación
+        for (let ano = ANOS_DEPRECIACION + 1; ano <= VIDA_UTIL; ano++) {
+          van += flujoCajaSinDepreciacion / Math.pow(1 + tasa, ano);
+        }
+        
+        return van;
+      }
+      
+      // Método de bisección para encontrar la TIR
+      // La TIR es la tasa que hace VAN = 0
+      let tasaBaja = 0.0;
+      let tasaAlta = 1.0; // 100%
+      const tolerancia = 0.0001;
+      const maxIteraciones = 100;
+      
+      // Verificar si hay solución
+      if (calcularVAN(tasaBaja) < 0) {
+        return 0; // No hay TIR positiva
+      }
+      
+      // Buscar rango inicial
+      while (calcularVAN(tasaAlta) > 0 && tasaAlta < 5.0) {
+        tasaAlta *= 2;
+      }
+      
+      if (calcularVAN(tasaAlta) > 0) {
+        return tasaAlta; // TIR muy alta
+      }
+      
+      // Bisección
+      for (let i = 0; i < maxIteraciones; i++) {
+        const tasaMedia = (tasaBaja + tasaAlta) / 2;
+        const van = calcularVAN(tasaMedia);
+        
+        if (Math.abs(van) < tolerancia) {
+          return tasaMedia;
+        }
+        
+        if (van > 0) {
+          tasaBaja = tasaMedia;
+        } else {
+          tasaAlta = tasaMedia;
+        }
+      }
+      
+      // Retornar el promedio final
+      return (tasaBaja + tasaAlta) / 2;
+    }
 
     function showError(message: string) {
       errorMessage.textContent = message;
