@@ -1,5 +1,5 @@
 ---
-title: "Colombia ya tiene fecha para la Ventanilla Única de proyectos solares: Un paso histórico para la energía solar"
+title: "⚡ ¡Victoria histórica! Colombia tendrá Ventanilla Única para energía solar en 5 meses: Los trámites serán 10 veces más fáciles"
 description: "El Tribunal Administrativo de Cundinamarca ordenó la implementación de la Ventanilla Única para proyectos de autogeneración y generación distribuida. Descubre qué significa esto para el futuro de la energía solar en Colombia."
 image: "/images/UPME.png"
 author: "Equipo Reiki Solar"
@@ -9,7 +9,7 @@ tags: ["energía solar", "ventanilla única", "AGPE", "generación distribuida",
 featured: true
 ---
 
-# Colombia ya tiene fecha para la Ventanilla Única de proyectos solares: Un paso histórico para la energía solar
+# ⚡ ¡Victoria histórica! Colombia tendrá Ventanilla Única para energía solar en 5 meses: Los trámites serán 10 veces más fáciles
 
 **¡Excelentes noticias para el sector solar en Colombia!** El Tribunal Administrativo de Cundinamarca acaba de tomar una decisión histórica que marcará un antes y un después en cómo se tramitan los proyectos de energía solar en nuestro país. Te explicamos de manera sencilla qué significa esto y por qué es tan importante.
 
@@ -21,7 +21,7 @@ La **Ventanilla Única** es como tener una sola ventanilla donde puedes hacer to
 
 ## ¿Qué decidió el Tribunal?
 
-El Tribunal Administrativo de Cundinamarca falló a favor de **ACOSOL** (Asociación Colombiana de Energía Solar), reconociendo que la **UPME** (Unidad de Planeación Minero Energética) no había cumplido con su obligación de implementar esta Ventanilla Única, que estaba establecida desde 2021 en la Resolución CREG 174.
+El Tribunal Administrativo de Cundinamarca falló a favor de **ACOSOL** (Asociación Colombiana de Energía Solar), reconociendo que la **UPME** (Unidad de Planeación Minero Energética) no había cumplido con su obligación de implementar esta Ventanilla Única, que estaba establecida desde 2021 en la Resolución CREG 174. Este importante logro fue liderado por **Miguel Ángel Borrero**, presidente de ACOSOL, quien ha trabajado incansablemente para hacer realidad esta herramienta que beneficiará a todo el sector solar colombiano.
 
 ### La orden del Tribunal es clara:
 
@@ -72,13 +72,17 @@ Si estás pensando en instalar paneles solares en tu casa o negocio, esta es una
 
 ## El compromiso de ACOSOL
 
-ACOSOL, la asociación que logró este importante triunfo, celebra esta decisión porque beneficiará a todo el ecosistema de la energía solar en Colombia. Su compromiso es seguir trabajando por una **transición energética ordenada, regulada y sostenible** para nuestro país.
+ACOSOL, la asociación que logró este importante triunfo, celebra esta decisión porque beneficiará a todo el ecosistema de la energía solar en Colombia. **Miguel Ángel Borrero**, presidente de ACOSOL, ha expresado su satisfacción por este logro histórico que representa años de trabajo y esfuerzo del sector.
+
+Bajo el liderazgo de Borrero, ACOSOL ha mantenido un compromiso firme de seguir trabajando por una **transición energética ordenada, regulada y sostenible** para nuestro país.
 
 Esto significa que seguirán luchando para que:
 - Las reglas sean claras y justas
 - Los procesos sean eficientes
 - La energía solar sea accesible para todos
 - Colombia avance hacia un futuro más sostenible
+
+Como lo ha señalado el presidente Borrero, esta victoria no solo beneficia a las empresas del sector, sino que abre las puertas para que más colombianos puedan acceder fácilmente a la energía solar, contribuyendo así a un país más sostenible y con mayor independencia energética.
 
 ## ¿Cuándo estará lista la Ventanilla Única?
 
