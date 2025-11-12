@@ -26,7 +26,7 @@ El Tribunal Administrativo de Cundinamarca falló a favor de **ACOSOL** (Asociac
 ### La orden del Tribunal es clara:
 
 - La UPME tiene **máximo 5 meses** para implementar y poner en funcionamiento completo la Ventanilla Única
-- Esto significa que, a más tardar en **abril de 2025**, Colombia contará con esta herramienta digital unificada
+- Esto significa que, a más tardar en **abril de 2026**, Colombia contará con esta herramienta digital unificada
 
 ## ¿Qué son AGPE y GD? (Explicado de forma sencilla)
 
@@ -86,7 +86,7 @@ Como lo ha señalado el presidente Borrero, esta victoria no solo beneficia a la
 
 ## ¿Cuándo estará lista la Ventanilla Única?
 
-Según la sentencia del Tribunal, la UPME tiene **máximo 5 meses** para implementar completamente la Ventanilla Única. Esto significa que, si todo va según lo planeado, **para abril de 2025** ya debería estar funcionando.
+Según la sentencia del Tribunal, la UPME tiene **máximo 5 meses** para implementar completamente la Ventanilla Única. Esto significa que, si todo va según lo planeado, **para abril de 2026** ya debería estar funcionando.
 
 ## ¿Qué sigue ahora?
 
