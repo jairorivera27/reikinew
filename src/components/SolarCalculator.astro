@@ -1032,6 +1032,23 @@
       const anosRecuperacion = calcularAnosRecuperacion(valorSistema, ahorroAnual);
       const tir = calcularTIR(valorSistema, ahorroAnual);
 
+      // Enviar notificación silenciosa a WhatsApp (sin que el usuario lo note)
+      enviarNotificacionWhatsApp({
+        nombre,
+        telefono,
+        email,
+        ciudad,
+        consumoMensual: consumoMensualNum,
+        tarifa,
+        paneles,
+        potenciaSistema,
+        ahorroMensual,
+        ahorroAnual,
+        valorSistema,
+        anosRecuperacion,
+        tir,
+      });
+
       // Mostrar resultados
       try {
         const resultCiudad = document.getElementById('result-ciudad');
@@ -1106,6 +1123,41 @@
       resultsContainer.style.display = 'block';
       resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
+
+    /**
+     * Envía una notificación silenciosa a WhatsApp con los datos del cálculo
+     * Esta función se ejecuta en segundo plano sin que el usuario lo note
+     */
+    async function enviarNotificacionWhatsApp(datos: {
+      nombre: string;
+      telefono: string;
+      email: string;
+      ciudad: string;
+      consumoMensual: number;
+      tarifa: number;
+      paneles: number;
+      potenciaSistema: number;
+      ahorroMensual: number;
+      ahorroAnual: number;
+      valorSistema: number;
+      anosRecuperacion: number;
+      tir: number;
+    }) {
+      try {
+        // Llamar al endpoint de forma silenciosa (sin await para no bloquear)
+        fetch('/api/whatsapp-notify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(datos),
+        }).catch((err) => {
+          // Silenciar errores para que el usuario no se dé cuenta
+          console.error('Error enviando notificación (silencioso):', err);
+        });
+      } catch (err) {
+        // Silenciar errores completamente
+        // No mostrar nada al usuario
+      }
+    }
 
     /**
      * Calcula los años de recuperación de inversión considerando:

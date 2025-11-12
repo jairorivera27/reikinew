@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 
 export default defineConfig({
-  output: 'static',
+  output: 'static', // Mantener static - los endpoints API funcionan en desarrollo
   site: 'https://reikisolar.com.co',
   integrations: [react()],
   compressHTML: true,
