@@ -5,6 +5,8 @@ import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import SEO from '../components/SEO.astro';
 import FontAwesome from '../components/FontAwesome.astro';
 import { getCollection } from 'astro:content';
+import fs from 'fs';
+import path from 'path';
 
 // Obtener todos los posts del blog ordenados por fecha
 const blogPosts = await getCollection('blog');
@@ -14,9 +16,36 @@ const sortedPosts = blogPosts.sort((a, b) => {
   return dateB.getTime() - dateA.getTime();
 });
 
-// Separar posts: último (más reciente), destacados, y resto
+// Obtener fecha de modificación de cada archivo y ordenar por fecha de modificación
+const postsWithModDate = blogPosts.map((post) => {
+  const filePath = path.join(process.cwd(), 'src', 'content', 'blog', `${post.slug}.md`);
+  let modDate = new Date(0); // Fecha por defecto si no se puede obtener
+  
+  try {
+    const stats = fs.statSync(filePath);
+    modDate = stats.mtime; // Fecha de modificación del archivo
+  } catch (error) {
+    // Si no se puede obtener la fecha, usar la fecha del post
+    modDate = new Date(post.data.date);
+  }
+  
+  return {
+    ...post,
+    modDate: modDate
+  };
+});
+
+// Ordenar por fecha de modificación (más recientes primero)
+const sortedByModDate = postsWithModDate.sort((a, b) => {
+  return b.modDate.getTime() - a.modDate.getTime();
+});
+
+// Separar posts: último (más reciente por fecha de publicación), destacados (más recientemente modificados), y resto
 const latestPost = sortedPosts[0];
-const featuredPosts = sortedPosts.filter(post => post.data.featured && post.slug !== latestPost.slug).slice(0, 3);
+// Obtener los 3 artículos más recientemente modificados, excluyendo el último post
+const featuredPosts = sortedByModDate
+  .filter(post => post.slug !== latestPost.slug)
+  .slice(0, 3);
 const regularPosts = sortedPosts.filter(post => post.slug !== latestPost.slug && !featuredPosts.some(fp => fp.slug === post.slug));
 
 // Obtener todas las categorías únicas
@@ -170,7 +199,7 @@ const allCategories = [...new Set(sortedPosts.map(post => post.data.category))];
                 </span>
                 <h2 class="section-title">Artículos Destacados</h2>
               </div>
-              <p class="section-subtitle">Los mejores contenidos seleccionados para ti</p>
+              <p class="section-subtitle">Artículos actualizados recientemente</p>
             </div>
             <div class="featured-posts-grid">
               {featuredPosts.map((post) => (

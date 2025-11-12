@@ -1,0 +1,18 @@
+{
+  "nombre": "Cliente Prueba",
+  "telefono": "3001234567",
+  "email": "prueba@ejemplo.com",
+  "ciudad": "Bogota",
+  "consumoMensual": 150,
+  "tarifa": 800,
+  "paneles": 8,
+  "potenciaSistema": 4.96,
+  "ahorroMensual": 120000,
+  "ahorroAnual": 1440000,
+  "valorSistema": 18352000,
+  "anosRecuperacion": 8.5,
+  "tir": 0.12
+}
+
+
+
