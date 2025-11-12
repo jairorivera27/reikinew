@@ -3,7 +3,7 @@ title: "⚡ ¡Victoria histórica! Colombia tendrá Ventanilla Única para energ
 description: "El Tribunal Administrativo de Cundinamarca ordenó la implementación de la Ventanilla Única para proyectos de autogeneración y generación distribuida. Descubre qué significa esto para el futuro de la energía solar en Colombia."
 image: "/images/UPME.png"
 author: "Equipo Reiki Solar"
-date: "2024-11-11"
+date: "2025-11-12"
 category: "Noticias"
 tags: ["energía solar", "ventanilla única", "AGPE", "generación distribuida", "regulación", "Colombia", "UPME"]
 featured: true
