@@ -141,18 +141,151 @@ const equiposJSON = JSON.stringify(EQUIPOS);
 </html>
 
 <script define:vars={{ equiposJSON }}>
-  // Sistema de autenticación
-  const CREDENCIALES = {
-    usuario: 'Jairo Alexander Rivera',
-    password: 'Reiki99193*'
+  // ============================================
+  // FUNCIONES DE SEGURIDAD
+  // ============================================
+  
+  /**
+   * Sanitiza texto para prevenir XSS
+   */
+  function escapeHTML(text) {
+    if (!text) return '';
+    const div = document.createElement('div');
+    div.textContent = String(text);
+    return div.innerHTML;
+  }
+  
+  /**
+   * Sanitiza HTML permitiendo solo tags seguros (para iconos, etc.)
+   */
+  function sanitizeHTML(html) {
+    if (!html) return '';
+    const temp = document.createElement('div');
+    temp.innerHTML = String(html);
+    
+    // Remover scripts y eventos
+    const scripts = temp.querySelectorAll('script');
+    scripts.forEach(s => s.remove());
+    
+    const allElements = temp.querySelectorAll('*');
+    allElements.forEach(el => {
+      // Remover atributos de eventos
+      Array.from(el.attributes).forEach(attr => {
+        if (attr.name.startsWith('on')) {
+          el.removeAttribute(attr.name);
+        }
+        // Remover javascript: en href/src
+        if (attr.name === 'href' || attr.name === 'src') {
+          if (attr.value && attr.value.toLowerCase().startsWith('javascript:')) {
+            el.removeAttribute(attr.name);
+          }
+        }
+      });
+    });
+    
+    return temp.innerHTML;
+  }
+  
+  /**
+   * Valida que un string no contenga scripts
+   */
+  function containsScript(input) {
+    if (!input) return false;
+    const scriptPatterns = [
+      /<script/gi,
+      /javascript:/gi,
+      /on\w+\s*=/gi,
+      /eval\(/gi,
+      /expression\(/gi,
+    ];
+    return scriptPatterns.some(pattern => pattern.test(input));
+  }
+  
+  /**
+   * Sanitiza string para prevenir inyección
+   */
+  function sanitizeString(input, maxLength = 500) {
+    if (!input) return '';
+    let sanitized = String(input)
+      .trim()
+      .replace(/[<>]/g, '')
+      .replace(/javascript:/gi, '')
+      .replace(/on\w+=/gi, '')
+      .substring(0, maxLength);
+    return sanitized;
+  }
+  
+  /**
+   * Valida email
+   */
+  function validateEmail(email) {
+    if (!email) return false;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email.trim());
+  }
+  
+  /**
+   * Valida teléfono
+   */
+  function validatePhone(phone) {
+    if (!phone) return false;
+    const phoneRegex = /^[0-9]{7,15}$/;
+    return phoneRegex.test(phone.replace(/\s+/g, ''));
+  }
+  
+  /**
+   * Valida número positivo
+   */
+  function validatePositiveNumber(value) {
+    const num = typeof value === 'string' ? parseFloat(value) : value;
+    return !isNaN(num) && num > 0 && isFinite(num);
+  }
+  
+  /**
+   * Rate limiting simple en cliente
+   */
+  const loginAttempts = {
+    count: 0,
+    lastAttempt: 0,
+    maxAttempts: 5,
+    lockoutTime: 15 * 60 * 1000, // 15 minutos
   };
+  
+  function checkRateLimit() {
+    const now = Date.now();
+    if (now - loginAttempts.lastAttempt > loginAttempts.lockoutTime) {
+      loginAttempts.count = 0;
+      return true;
+    }
+    return loginAttempts.count < loginAttempts.maxAttempts;
+  }
+  
+  function recordLoginAttempt(success) {
+    if (success) {
+      loginAttempts.count = 0;
+    } else {
+      loginAttempts.count += 1;
+      loginAttempts.lastAttempt = Date.now();
+    }
+  }
 
+  // ============================================
+  // SISTEMA DE AUTENTICACIÓN SEGURO
+  // ============================================
+  
   // Verificar si ya hay sesión activa
   function verificarSesion() {
-    const sesionActiva = sessionStorage.getItem('cotizador_autenticado');
+    const sesionToken = sessionStorage.getItem('cotizador_token');
     const nombreUsuario = sessionStorage.getItem('cotizador_usuario');
+    const expiresAt = sessionStorage.getItem('cotizador_expires');
     
-    if (sesionActiva === 'true' && nombreUsuario) {
+    // Verificar si la sesión expiró
+    if (expiresAt && Date.now() > parseInt(expiresAt)) {
+      cerrarSesion();
+      return;
+    }
+    
+    if (sesionToken && nombreUsuario) {
       mostrarCotizador(nombreUsuario);
     } else {
       mostrarLogin();
@@ -183,49 +316,118 @@ const equiposJSON = JSON.stringify(EQUIPOS);
     if (nombreUsuarioSpan) nombreUsuarioSpan.textContent = nombreUsuario;
   }
 
-  // Manejar login
-  function manejarLogin(event) {
+  // Manejar login con endpoint seguro
+  async function manejarLogin(event) {
     event.preventDefault();
     
     const usuarioInput = document.getElementById('usuario');
     const passwordInput = document.getElementById('password');
     const errorDiv = document.getElementById('loginError');
+    const submitBtn = event.target.querySelector('button[type="submit"]');
     
-    const usuario = usuarioInput.value.trim();
+    // Verificar rate limiting
+    if (!checkRateLimit()) {
+      if (errorDiv) {
+        errorDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i><span>Demasiados intentos fallidos. Intente nuevamente en 15 minutos.</span>';
+        errorDiv.style.display = 'flex';
+      }
+      return;
+    }
+    
+    const usuario = sanitizeString(usuarioInput.value.trim(), 100);
     const password = passwordInput.value;
     
-    // Validar credenciales
-    if (usuario === CREDENCIALES.usuario && password === CREDENCIALES.password) {
-      // Guardar sesión
-      sessionStorage.setItem('cotizador_autenticado', 'true');
-      sessionStorage.setItem('cotizador_usuario', usuario);
-      
-      // Ocultar error si existe
-      if (errorDiv) errorDiv.style.display = 'none';
-      
-      // Mostrar cotizador
-      mostrarCotizador(usuario);
-      
-      // Limpiar formulario
-      usuarioInput.value = '';
-      passwordInput.value = '';
-    } else {
-      // Mostrar error
+    // Validar inputs
+    if (!usuario || usuario.length < 2) {
       if (errorDiv) {
+        errorDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i><span>Usuario inválido</span>';
         errorDiv.style.display = 'flex';
-        errorDiv.style.animation = 'shake 0.5s';
       }
+      return;
+    }
+    
+    if (!password || password.length < 3) {
+      if (errorDiv) {
+        errorDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i><span>Contraseña inválida</span>';
+        errorDiv.style.display = 'flex';
+      }
+      return;
+    }
+    
+    // Deshabilitar botón durante la petición
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verificando...';
+    }
+    
+    try {
+      // Llamar al endpoint de autenticación
+      const response = await fetch('/api/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: usuario,
+          password: password,
+        }),
+      });
       
-      // Limpiar contraseña
-      passwordInput.value = '';
-      passwordInput.focus();
+      const data = await response.json();
+      
+      if (data.success && data.token) {
+        // Guardar sesión segura
+        sessionStorage.setItem('cotizador_token', data.token);
+        sessionStorage.setItem('cotizador_usuario', escapeHTML(data.username));
+        sessionStorage.setItem('cotizador_expires', String(data.expiresAt));
+        
+        recordLoginAttempt(true);
+        
+        // Ocultar error si existe
+        if (errorDiv) errorDiv.style.display = 'none';
+        
+        // Mostrar cotizador
+        mostrarCotizador(data.username);
+        
+        // Limpiar formulario
+        usuarioInput.value = '';
+        passwordInput.value = '';
+      } else {
+        recordLoginAttempt(false);
+        
+        // Mostrar error
+        if (errorDiv) {
+          errorDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i><span>' + escapeHTML(data.error || 'Usuario o contraseña incorrectos') + '</span>';
+          errorDiv.style.display = 'flex';
+          errorDiv.style.animation = 'shake 0.5s';
+        }
+        
+        // Limpiar contraseña
+        passwordInput.value = '';
+        passwordInput.focus();
+      }
+    } catch (error) {
+      console.error('Error en autenticación:', error);
+      recordLoginAttempt(false);
+      
+      if (errorDiv) {
+        errorDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i><span>Error de conexión. Intente nuevamente.</span>';
+        errorDiv.style.display = 'flex';
+      }
+    } finally {
+      // Rehabilitar botón
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = '<i class="fas fa-sign-in-alt"></i> Iniciar Sesión';
+      }
     }
   }
 
   // Cerrar sesión
   function cerrarSesion() {
-    sessionStorage.removeItem('cotizador_autenticado');
+    sessionStorage.removeItem('cotizador_token');
     sessionStorage.removeItem('cotizador_usuario');
+    sessionStorage.removeItem('cotizador_expires');
     mostrarLogin();
   }
 
@@ -1224,7 +1426,8 @@ const equiposJSON = JSON.stringify(EQUIPOS);
       return;
     }
     
-    listaHistorico.innerHTML = historico.map(cot => {
+    // Generar HTML sanitizado
+    const htmlSeguro = historico.map(cot => {
       const fecha = new Date(cot.fecha);
       const fechaFormateada = fecha.toLocaleDateString('es-CO', {
         year: 'numeric',
@@ -1234,36 +1437,181 @@ const equiposJSON = JSON.stringify(EQUIPOS);
         minute: '2-digit',
       });
       
+      // Sanitizar datos del usuario
+      const nombreCliente = escapeHTML(cot.cliente.nombre || 'Sin nombre');
+      const cotId = escapeHTML(cot.id);
+      const fechaEscapada = escapeHTML(fechaFormateada);
+      const tipoSistemaEscapado = escapeHTML(cot.tipoSistema);
+      const tipoSistemaLabel = cot.tipoSistema === 'on-grid' ? 'On-Grid' : cot.tipoSistema === 'off-grid' ? 'Off-Grid' : 'Híbrido';
+      const totalEscapado = escapeHTML(formatCOP(cot.cotizacion.total));
+      const ahorroEscapado = cot.calculos.ahorroAnual ? escapeHTML(formatCOP(cot.calculos.ahorroAnual)) : '';
+      
       return `
         <div class="cotizacion-historico-item">
           <div class="cotizacion-historico-header">
             <div>
-              <h4>${cot.cliente.nombre || 'Sin nombre'}</h4>
-              <p class="cotizacion-fecha">${fechaFormateada}</p>
+              <h4>${nombreCliente}</h4>
+              <p class="cotizacion-fecha">${fechaEscapada}</p>
             </div>
             <div class="cotizacion-historico-actions">
-              <button class="btn-ver-cotizacion" onclick="verCotizacion('${cot.id}')">
+              <button class="btn-ver-cotizacion" data-cot-id="${cotId}">
                 <i class="fas fa-eye"></i>
               </button>
-              <button class="btn-eliminar-cotizacion" onclick="eliminarCotizacion('${cot.id}')">
+              <button class="btn-eliminar-cotizacion" data-cot-id="${cotId}">
                 <i class="fas fa-trash"></i>
               </button>
             </div>
           </div>
           <div class="cotizacion-historico-info">
-            <span class="badge badge-${cot.tipoSistema}">${cot.tipoSistema === 'on-grid' ? 'On-Grid' : cot.tipoSistema === 'off-grid' ? 'Off-Grid' : 'Híbrido'}</span>
-            <span class="cotizacion-total">Total: ${formatCOP(cot.cotizacion.total)}</span>
-            ${cot.calculos.ahorroAnual ? `<span class="cotizacion-ahorro">Ahorro anual: ${formatCOP(cot.calculos.ahorroAnual)}</span>` : ''}
+            <span class="badge badge-${tipoSistemaEscapado}">${escapeHTML(tipoSistemaLabel)}</span>
+            <span class="cotizacion-total">Total: ${totalEscapado}</span>
+            ${ahorroEscapado ? `<span class="cotizacion-ahorro">Ahorro anual: ${ahorroEscapado}</span>` : ''}
           </div>
         </div>
       `;
     }).join('');
+    
+    // Sanitizar HTML completo antes de insertar
+    listaHistorico.innerHTML = sanitizeHTML(htmlSeguro);
+    
+    // Agregar event listeners de forma segura (evitar onclick inline)
+    listaHistorico.querySelectorAll('.btn-ver-cotizacion').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const cotId = this.getAttribute('data-cot-id');
+        if (cotId && !containsScript(cotId)) {
+          verCotizacion(cotId);
+        }
+      });
+    });
+    
+    listaHistorico.querySelectorAll('.btn-eliminar-cotizacion').forEach(btn => {
+      btn.addEventListener('click', function() {
+        const cotId = this.getAttribute('data-cot-id');
+        if (cotId && !containsScript(cotId)) {
+          eliminarCotizacion(cotId);
+        }
+      });
+    });
+  }
+  
+  // Función para obtener histórico de cotizaciones
+  function obtenerHistoricoCotizaciones() {
+    try {
+      const historicoStr = localStorage.getItem('cotizaciones_historico');
+      if (!historicoStr) return [];
+      const historico = JSON.parse(historicoStr);
+      // Sanitizar datos al leer
+      return historico.map(cot => ({
+        ...cot,
+        id: sanitizeString(cot.id || '', 100),
+        cliente: {
+          ...cot.cliente,
+          nombre: sanitizeString(cot.cliente?.nombre || '', 100),
+          email: sanitizeString(cot.cliente?.email || '', 200),
+          telefono: sanitizeString(cot.cliente?.telefono || '', 20),
+        }
+      }));
+    } catch (error) {
+      console.error('Error al leer histórico:', error);
+      return [];
+    }
+  }
+  
+  // Función para guardar cotización
+  function guardarCotizacion(datos) {
+    try {
+      const historico = obtenerHistoricoCotizaciones();
+      const nuevaCotizacion = {
+        id: Date.now().toString() + Math.random().toString(36).substr(2, 9),
+        fecha: new Date().toISOString(),
+        tipoSistema: sanitizeString(datos.tipoSistema || '', 20),
+        cliente: {
+          nombre: sanitizeString(datos.cliente?.nombre || '', 100),
+          telefono: sanitizeString(datos.cliente?.telefono || '', 20),
+          email: sanitizeString(datos.cliente?.email || '', 200),
+          ciudad: sanitizeString(datos.cliente?.ciudad || '', 100),
+          departamento: sanitizeString(datos.cliente?.departamento || '', 100),
+        },
+        calculos: datos.calculos || {},
+        cotizacion: datos.cotizacion || {},
+      };
+      
+      historico.unshift(nuevaCotizacion);
+      // Mantener solo las últimas 50 cotizaciones
+      if (historico.length > 50) {
+        historico.splice(50);
+      }
+      
+      localStorage.setItem('cotizaciones_historico', JSON.stringify(historico));
+      mostrarNotificacion('Cotización guardada exitosamente', 'success');
+      actualizarListaHistorico();
+    } catch (error) {
+      console.error('Error al guardar cotización:', error);
+      mostrarNotificacion('Error al guardar la cotización', 'error');
+    }
+  }
+  
+  // Función para eliminar cotización
+  window.eliminarCotizacion = function(id) {
+    // Sanitizar ID antes de usar
+    if (!id || containsScript(id)) {
+      mostrarNotificacion('ID de cotización inválido', 'error');
+      return;
+    }
+    
+    const idSanitizado = sanitizeString(id, 100);
+    
+    if (!confirm('¿Está seguro de que desea eliminar esta cotización?')) {
+      return;
+    }
+    
+    try {
+      const historico = obtenerHistoricoCotizaciones();
+      const nuevoHistorico = historico.filter(c => c.id !== idSanitizado);
+      localStorage.setItem('cotizaciones_historico', JSON.stringify(nuevoHistorico));
+      mostrarNotificacion('Cotización eliminada exitosamente', 'success');
+      actualizarListaHistorico();
+    } catch (error) {
+      console.error('Error al eliminar cotización:', error);
+      mostrarNotificacion('Error al eliminar la cotización', 'error');
+    }
+  };
+  
+  // Función para mostrar notificaciones
+  function mostrarNotificacion(mensaje, tipo = 'info') {
+    const notificacion = document.createElement('div');
+    notificacion.style.cssText = `
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 1rem 1.5rem;
+      background: ${tipo === 'success' ? '#10b981' : tipo === 'error' ? '#ef4444' : '#3b82f6'};
+      color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      z-index: 10000;
+      animation: slideIn 0.3s ease-out;
+    `;
+    notificacion.textContent = sanitizeString(mensaje, 200);
+    document.body.appendChild(notificacion);
+    
+    setTimeout(() => {
+      notificacion.style.animation = 'slideOut 0.3s ease-out';
+      setTimeout(() => notificacion.remove(), 300);
+    }, 3000);
   }
   
   // Función para ver cotización del histórico
   window.verCotizacion = function(id) {
+    // Sanitizar ID antes de usar
+    if (!id || containsScript(id)) {
+      mostrarNotificacion('ID de cotización inválido', 'error');
+      return;
+    }
+    
+    const idSanitizado = sanitizeString(id, 100);
     const historico = obtenerHistoricoCotizaciones();
-    const cotizacion = historico.find(c => c.id === id);
+    const cotizacion = historico.find(c => c.id === idSanitizado);
     
     if (!cotizacion) {
       mostrarNotificacion('Cotización no encontrada', 'error');
@@ -1443,23 +1791,27 @@ const equiposJSON = JSON.stringify(EQUIPOS);
       }
       
       try {
+        // ============================================
+        // VALIDACIÓN DE SEGURIDAD Y DATOS
+        // ============================================
+        
+        // Verificar sesión activa
+        const sesionToken = sessionStorage.getItem('cotizador_token');
+        if (!sesionToken) {
+          alert('Sesión expirada. Por favor inicie sesión nuevamente.');
+          cerrarSesion();
+          return;
+        }
+        
         // Obtener datos del formulario
         const modeloNegocio = document.querySelector('input[name="modeloNegocio"]:checked')?.value || 'epc';
         const tipoSistema = document.querySelector('input[name="tipoSistema"]:checked')?.value;
         const departamento = document.getElementById('clienteDepartamento')?.value;
         const ciudad = document.getElementById('clienteCiudad')?.value;
         
-        console.log('Datos obtenidos:', { modeloNegocio, tipoSistema, departamento, ciudad });
-        
-        // Estación Meteorológica = Ciudad seleccionada
-        const estacionMeteorologica = ciudad;
-        const estacionMeteorologicaInput = document.getElementById('estacionMeteorologica');
-        if (estacionMeteorologicaInput) {
-          estacionMeteorologicaInput.value = ciudad;
-        }
-        
-        if (!tipoSistema) {
-          alert('Por favor seleccione el tipo de sistema (On-Grid, Off-Grid o Híbrido)');
+        // Validar y sanitizar inputs
+        if (!tipoSistema || !['on-grid', 'off-grid', 'hibrido'].includes(tipoSistema)) {
+          alert('Por favor seleccione un tipo de sistema válido');
           resultadosPanel.style.display = 'none';
           return;
         }
@@ -1468,6 +1820,26 @@ const equiposJSON = JSON.stringify(EQUIPOS);
           alert('Por favor seleccione el departamento y la ciudad');
           resultadosPanel.style.display = 'none';
           return;
+        }
+        
+        // Sanitizar ciudad y departamento
+        const ciudadSanitizada = sanitizeString(ciudad, 100);
+        const departamentoSanitizado = sanitizeString(departamento, 100);
+        
+        // Validar que no contengan scripts
+        if (containsScript(ciudadSanitizada) || containsScript(departamentoSanitizado)) {
+          alert('Datos inválidos detectados. Por favor verifique la información ingresada.');
+          resultadosPanel.style.display = 'none';
+          return;
+        }
+        
+        console.log('Datos obtenidos:', { modeloNegocio, tipoSistema, departamento: departamentoSanitizado, ciudad: ciudadSanitizada });
+        
+        // Estación Meteorológica = Ciudad seleccionada
+        const estacionMeteorologica = ciudadSanitizada;
+        const estacionMeteorologicaInput = document.getElementById('estacionMeteorologica');
+        if (estacionMeteorologicaInput) {
+          estacionMeteorologicaInput.value = ciudadSanitizada;
         }
       
       // Mostrar selector de equipos si está oculto
