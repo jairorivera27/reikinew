@@ -320,14 +320,6 @@
             <i class="fab fa-whatsapp"></i>
             Solicitar Cotización Personalizada
           </button>
-          <button id="download-pdf-button" class="cta-button secondary" style="display: none;">
-            <i class="fas fa-download"></i>
-            Descargar PDF
-          </button>
-        </div>
-        <div id="pdf-loading" class="pdf-loading" style="display: none;">
-          <i class="fas fa-spinner fa-spin"></i>
-          <span>Generando precotización PDF...</span>
         </div>
       </div>
     </div>
@@ -716,20 +708,6 @@
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
-  .pdf-loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.75rem;
-    padding: 1rem;
-    color: #6b7280;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  }
-
-  .pdf-loading i {
-    color: #6b2181;
-  }
-
   .cta-button {
     border: none;
     cursor: pointer;
@@ -901,8 +879,6 @@
   let map: L.Map | null = null;
   let selectedMarker: L.Marker | null = null;
   let currentMapCenter: [number, number] = [4.711, -74.072];
-  let pdfBase64: string | null = null;
-  let pdfUrl: string | null = null;
   let currentResultado: {
     nombre: string;
     telefono: string;
@@ -1117,8 +1093,11 @@
         updateCityMarker(ciudad, hsp, potenciaSistema);
       }
 
-      // Generar PDF
-      generarPDF(currentResultado);
+      // Mostrar botón de WhatsApp
+      const whatsappButton = document.getElementById('whatsapp-button') as HTMLButtonElement;
+      if (whatsappButton) {
+        whatsappButton.style.display = 'inline-flex';
+      }
 
       resultsContainer.style.display = 'block';
       resultsContainer.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
@@ -1127,6 +1106,9 @@
     /**
      * Envía una notificación silenciosa a WhatsApp con los datos del cálculo
      * Esta función se ejecuta en segundo plano sin que el usuario lo note
+     * 
+     * NOTA: En modo estático, llamamos directamente a CallMeBot desde el cliente
+     * En modo desarrollo, intentamos usar el endpoint primero
      */
     async function enviarNotificacionWhatsApp(datos: {
       nombre: string;
@@ -1144,18 +1126,89 @@
       tir: number;
     }) {
       try {
-        // Llamar al endpoint de forma silenciosa (sin await para no bloquear)
-        fetch('/api/whatsapp-notify', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(datos),
-        }).catch((err) => {
-          // Silenciar errores para que el usuario no se dé cuenta
-          console.error('Error enviando notificación (silencioso):', err);
+        // Construir mensaje para WhatsApp
+        const formatCOP = (num: number) => {
+          return num.toLocaleString('es-CO', {
+            style: 'currency',
+            currency: 'COP',
+            maximumFractionDigits: 0,
+          });
+        };
+
+        let mensaje = `🔋 *NUEVA CONSULTA - CALCULADORA SOLAR*\n\n`;
+        mensaje += `*👤 DATOS DEL CLIENTE:*\n`;
+        mensaje += `Nombre: ${datos.nombre}\n`;
+        mensaje += `Teléfono: ${datos.telefono}\n`;
+        mensaje += `Email: ${datos.email}\n`;
+        mensaje += `Ciudad: ${datos.ciudad}\n\n`;
+        mensaje += `*⚡ CONSUMO:*\n`;
+        mensaje += `Consumo mensual: ${datos.consumoMensual.toFixed(1)} kWh/mes\n`;
+        mensaje += `Tarifa: ${formatCOP(datos.tarifa)}/kWh\n\n`;
+        mensaje += `*☀️ SISTEMA SOLAR:*\n`;
+        mensaje += `Paneles requeridos: ${datos.paneles}\n`;
+        mensaje += `Potencia del sistema: ${datos.potenciaSistema.toFixed(2)} kWp\n\n`;
+        mensaje += `*💰 AHORRO ESTIMADO:*\n`;
+        mensaje += `Ahorro mensual: ${formatCOP(datos.ahorroMensual)}\n`;
+        mensaje += `Ahorro anual: ${formatCOP(datos.ahorroAnual)}\n\n`;
+        mensaje += `*💵 INVERSIÓN:*\n`;
+        mensaje += `Valor aproximado: ${formatCOP(datos.valorSistema)}\n\n`;
+        if (isFinite(datos.anosRecuperacion)) {
+          mensaje += `*📊 ANÁLISIS FINANCIERO:*\n`;
+          mensaje += `Años de recuperación: ${datos.anosRecuperacion.toFixed(1)} años\n`;
+          if (datos.tir > 0 && isFinite(datos.tir)) {
+            mensaje += `TIR: ${(datos.tir * 100).toFixed(2)}%\n`;
+          }
+          mensaje += `\n`;
+        }
+        mensaje += `_Consulta generada desde la calculadora solar web_`;
+
+        // Configuración de CallMeBot
+        const CALLMEBOT_API_KEY = '5415200';
+        const WHATSAPP_NUMBER = '573245737413';
+        
+        // Intentar primero el endpoint (solo funciona en desarrollo)
+        // En producción estática, saltamos directamente a CallMeBot
+        const isDevelopment = window.location.hostname === 'localhost' || 
+                             window.location.hostname === '127.0.0.1' ||
+                             window.location.hostname.includes('localhost');
+        
+        if (isDevelopment) {
+          try {
+            const response = await fetch('/api/whatsapp-notify', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(datos),
+            });
+            if (response.ok) {
+              const data = await response.json();
+              console.log('✅ Notificación enviada vía endpoint:', data);
+              return;
+            }
+          } catch (err) {
+            // Silenciar error, continuar con CallMeBot directo
+          }
+        }
+
+        // Llamar directamente a CallMeBot (funciona en producción estática)
+        const callmebotUrl = `https://api.callmebot.com/whatsapp.php?phone=${WHATSAPP_NUMBER}&text=${encodeURIComponent(mensaje)}&apikey=${CALLMEBOT_API_KEY}`;
+        
+        console.log('📤 Enviando notificación WhatsApp vía CallMeBot...');
+        const response = await fetch(callmebotUrl, {
+          method: 'GET',
+          headers: { 'User-Agent': 'Mozilla/5.0' },
         });
+        
+        const responseText = await response.text();
+        console.log('📥 Respuesta de CallMeBot:', responseText.substring(0, 200));
+        
+        if (response.ok || responseText.includes('Message queued') || responseText.includes('Message sent')) {
+          console.log('✅ Mensaje enviado exitosamente a WhatsApp');
+        } else {
+          console.warn('⚠️ CallMeBot respondió pero puede haber un error:', responseText);
+        }
       } catch (err) {
-        // Silenciar errores completamente
-        // No mostrar nada al usuario
+        // Silenciar errores para que el usuario no se dé cuenta
+        console.error('❌ Error enviando notificación (silencioso):', err);
       }
     }
 
@@ -1420,88 +1473,47 @@
       selectedMarker.bindPopup(popupContent).openPopup();
     }
 
-    async function generarPDF(resultado: typeof currentResultado) {
-      if (!resultado) return;
-
-      const pdfLoading = document.getElementById('pdf-loading') as HTMLElement;
-      const whatsappButton = document.getElementById('whatsapp-button') as HTMLButtonElement;
-      const downloadButton = document.getElementById('download-pdf-button') as HTMLButtonElement;
-
-      pdfLoading.style.display = 'flex';
-      whatsappButton.style.display = 'none';
-      if (downloadButton) downloadButton.style.display = 'none';
-      pdfBase64 = null;
-      pdfUrl = null;
-
-      try {
-        const response = await fetch('/api/precotizacion', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            nombre: resultado.nombre,
-            telefono: resultado.telefono,
-            email: resultado.email,
-            ciudad: resultado.ciudad,
-            paneles: resultado.paneles,
-            potenciaSistema: resultado.potenciaSistema,
-            ahorroMensual: resultado.ahorroMensual,
-            ahorroAnual: resultado.ahorroAnual,
-            valorSistema: resultado.valorSistema,
-          }),
-        });
-
-        const data = await response.json();
-
-        if (data.ok && data.base64) {
-          pdfBase64 = data.base64;
-          pdfUrl = `data:application/pdf;base64,${pdfBase64}`;
-          
-          pdfLoading.style.display = 'none';
-          whatsappButton.style.display = 'inline-flex';
-          if (downloadButton) downloadButton.style.display = 'inline-flex';
-        } else {
-          // Si pdfkit no está instalado o hay error
-          console.warn('PDF no disponible:', data.message || 'Error desconocido');
-          pdfLoading.style.display = 'none';
-          whatsappButton.style.display = 'inline-flex';
-          pdfBase64 = null;
-          pdfUrl = null;
-        }
-      } catch (error) {
-        console.error('Error generando PDF:', error);
-        pdfLoading.style.display = 'none';
-        whatsappButton.style.display = 'inline-flex';
-        pdfBase64 = null;
-        pdfUrl = null;
-      }
-    }
-
-    function descargarPDF() {
-      if (pdfBase64) {
-        const link = document.createElement('a');
-        link.href = `data:application/pdf;base64,${pdfBase64}`;
-        link.download = 'precotizacion.pdf';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      }
-    }
-
     function handleWhatsApp() {
       if (!currentResultado) return;
 
       const numero = '573245737413';
-      const valorFormateado = formatCOP(currentResultado.valorSistema);
-      let mensaje = `Hola, quiero una cotización personalizada.\n` +
-        `Nombre: ${currentResultado.nombre}\n` +
-        `Teléfono: ${currentResultado.telefono}\n` +
-        `Correo: ${currentResultado.email}\n` +
-        `Ciudad: ${currentResultado.ciudad}\n` +
-        `Consumo mensual: ${currentResultado.consumoMensual} kWh/mes\n` +
-        `Paneles estimados: ${currentResultado.paneles}\n` +
-        `Potencia sistema: ${currentResultado.potenciaSistema.toFixed(2)} kWp\n` +
-        `Valor estimado: ${valorFormateado}\n` +
-        `Nota: Esto es un estimado aproximado generado desde la web.`;
+      const formatCOP = (num: number) => {
+        return num.toLocaleString('es-CO', {
+          style: 'currency',
+          currency: 'COP',
+          maximumFractionDigits: 0,
+        });
+      };
+
+      // Calcular años de recuperación y TIR para el mensaje
+      const anosRecuperacion = calcularAnosRecuperacion(currentResultado.valorSistema, currentResultado.ahorroAnual);
+      const tir = calcularTIR(currentResultado.valorSistema, currentResultado.ahorroAnual);
+
+      let mensaje = `🔋 *SOLICITUD DE COTIZACIÓN - SISTEMA SOLAR*\n\n`;
+      mensaje += `*👤 DATOS DEL CLIENTE:*\n`;
+      mensaje += `Nombre: ${currentResultado.nombre}\n`;
+      mensaje += `Teléfono: ${currentResultado.telefono}\n`;
+      mensaje += `Correo: ${currentResultado.email}\n`;
+      mensaje += `Ciudad: ${currentResultado.ciudad}\n\n`;
+      mensaje += `*⚡ CONSUMO:*\n`;
+      mensaje += `Consumo mensual: ${currentResultado.consumoMensual.toFixed(1)} kWh/mes\n\n`;
+      mensaje += `*☀️ SISTEMA SOLAR ESTIMADO:*\n`;
+      mensaje += `Paneles requeridos: ${currentResultado.paneles}\n`;
+      mensaje += `Potencia del sistema: ${currentResultado.potenciaSistema.toFixed(2)} kWp\n\n`;
+      mensaje += `*💰 AHORRO ESTIMADO:*\n`;
+      mensaje += `Ahorro mensual: ${formatCOP(currentResultado.ahorroMensual)}\n`;
+      mensaje += `Ahorro anual: ${formatCOP(currentResultado.ahorroAnual)}\n\n`;
+      mensaje += `*💵 INVERSIÓN ESTIMADA:*\n`;
+      mensaje += `Valor aproximado: ${formatCOP(currentResultado.valorSistema)}\n\n`;
+      if (isFinite(anosRecuperacion)) {
+        mensaje += `*📊 ANÁLISIS FINANCIERO:*\n`;
+        mensaje += `Años de recuperación: ${anosRecuperacion.toFixed(1)} años\n`;
+        if (tir > 0 && isFinite(tir)) {
+          mensaje += `TIR: ${(tir * 100).toFixed(2)}%\n`;
+        }
+        mensaje += `\n`;
+      }
+      mensaje += `_Nota: Estos son valores estimados. Quiero una cotización personalizada con un asesor._`;
 
       const mensajeEncoded = encodeURIComponent(mensaje);
       window.open(`https://wa.me/${numero}?text=${mensajeEncoded}`, '_blank');
@@ -1512,9 +1524,6 @@
       const target = e.target as HTMLElement;
       if (target.id === 'whatsapp-button' || target.closest('#whatsapp-button')) {
         handleWhatsApp();
-      }
-      if (target.id === 'download-pdf-button' || target.closest('#download-pdf-button')) {
-        descargarPDF();
       }
     });
   });

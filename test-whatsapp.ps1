@@ -32,9 +32,8 @@ try {
     Write-Host $jsonBody.Substring(0, [Math]::Min(200, $jsonBody.Length)) -ForegroundColor Gray
     Write-Host ""
     
-    # Usar Invoke-WebRequest en lugar de Invoke-RestMethod para mejor control
-    $response = Invoke-WebRequest -Uri $endpoint -Method POST -Body $jsonBody -ContentType "application/json" -UseBasicParsing -ErrorAction Stop
-    $responseBody = $response.Content | ConvertFrom-Json
+    # Usar Invoke-RestMethod que maneja mejor el JSON
+    $responseBody = Invoke-RestMethod -Uri $endpoint -Method POST -Body $jsonBody -ContentType "application/json; charset=utf-8" -ErrorAction Stop
     
     Write-Host "Respuesta del servidor:" -ForegroundColor Green
     $responseBody | ConvertTo-Json -Depth 5 | Write-Host
@@ -63,3 +62,4 @@ try {
         Write-Host "Revisa los logs del servidor para mas detalles." -ForegroundColor Yellow
     }
 }
+

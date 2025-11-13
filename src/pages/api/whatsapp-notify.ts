@@ -1,9 +1,8 @@
 import type { APIRoute } from 'astro';
 
 // Número de WhatsApp de destino (Colombia) - Este es el número final donde quieres recibir los mensajes
+// IMPORTANTE: Este debe ser el mismo número que usaste para obtener la API key de CallMeBot
 const WHATSAPP_NUMBER_COLOMBIA = '573245737413';
-// Número registrado en CallMeBot - Este es el número habilitado que puede recibir mensajes
-const WHATSAPP_NUMBER_CALLMEBOT = '34644179464';
 
 // Helper para formatear moneda colombiana
 function formatCOP(num?: number): string {
@@ -17,7 +16,22 @@ function formatCOP(num?: number): string {
 
 export const POST: APIRoute = async ({ request }) => {
   try {
-    const body = await request.json();
+    // Parsear el body directamente como JSON (igual que el endpoint de precotizacion)
+    let body: any;
+    try {
+      body = await request.json();
+      console.log('✅ Body recibido y parseado correctamente');
+    } catch (jsonError: any) {
+      console.error('❌ Error parseando JSON:', jsonError);
+      return new Response(
+        JSON.stringify({ 
+          ok: false, 
+          error: 'Error parseando JSON del request', 
+          details: jsonError?.message 
+        }),
+        { status: 400, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
     const {
       nombre,
       telefono,
@@ -134,11 +148,14 @@ export const POST: APIRoute = async ({ request }) => {
     if (callmebotApiKey && String(callmebotApiKey) !== 'tu_api_key_aqui' && String(callmebotApiKey).trim() !== '') {
       try {
         const apiKeyStr = String(callmebotApiKey);
-        // CallMeBot requiere el número registrado con la API key
+        // CallMeBot requiere el número de destino (donde quieres recibir el mensaje)
         // IMPORTANTE: El número debe ser el mismo que usaste para obtener la API key
-        const callmebotUrl = `https://api.callmebot.com/whatsapp.php?phone=${WHATSAPP_NUMBER_CALLMEBOT}&text=${encodeURIComponent(mensaje)}&apikey=${apiKeyStr}`;
+        // Formato: código de país + número sin espacios ni guiones (ej: 573245737413)
+        const phoneNumber = WHATSAPP_NUMBER_COLOMBIA.replace(/[^0-9]/g, ''); // Limpiar cualquier carácter no numérico
+        const callmebotUrl = `https://api.callmebot.com/whatsapp.php?phone=${phoneNumber}&text=${encodeURIComponent(mensaje)}&apikey=${apiKeyStr}`;
         console.log('📤 Enviando a CallMeBot...');
-        console.log('📱 Número CallMeBot:', WHATSAPP_NUMBER_CALLMEBOT);
+        console.log('📱 Número destino:', phoneNumber);
+        console.log('🔑 API Key:', apiKeyStr.substring(0, 4) + '...' + apiKeyStr.substring(apiKeyStr.length - 4));
         const response = await fetch(callmebotUrl, {
           method: 'GET',
           headers: {
@@ -149,10 +166,22 @@ export const POST: APIRoute = async ({ request }) => {
         const responseText = await response.text();
         console.log('📥 Respuesta de CallMeBot:', responseText.substring(0, 200));
         
-        if (response.ok || responseText.includes('Message sent') || responseText.includes('OK')) {
+        // CallMeBot puede responder con diferentes mensajes de éxito
+        const successIndicators = [
+          'Message sent',
+          'Message queued',
+          'OK',
+          'queued'
+        ];
+        
+        const isSuccess = response.ok && successIndicators.some(indicator => 
+          responseText.toLowerCase().includes(indicator.toLowerCase())
+        );
+        
+        if (isSuccess) {
           console.log('✅ Mensaje enviado exitosamente a WhatsApp vía CallMeBot');
           return new Response(
-            JSON.stringify({ ok: true, method: 'callmebot' }),
+            JSON.stringify({ ok: true, method: 'callmebot', message: 'Mensaje en cola, llegará en unos segundos' }),
             { status: 200, headers: { 'Content-Type': 'application/json' } }
           );
         } else {
@@ -222,11 +251,13 @@ export const POST: APIRoute = async ({ request }) => {
   } catch (err: any) {
     console.error('❌ Error en API de notificación WhatsApp:', err);
     console.error('Stack trace:', err?.stack);
+    console.error('Error completo:', JSON.stringify(err, Object.getOwnPropertyNames(err)));
     return new Response(
       JSON.stringify({ 
         ok: false, 
         message: 'Error procesando notificación',
-        error: err?.message || 'Error desconocido'
+        error: err?.message || 'Error desconocido',
+        details: process.env.NODE_ENV === 'development' ? err?.stack : undefined
       }),
       { status: 500, headers: { 'Content-Type': 'application/json' } }
     );
