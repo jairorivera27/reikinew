@@ -1,0 +1,1000 @@
+
+
+Lista de precios noviembre 2025
+Precios noviembre 2025
+
+P.V.P. sin IVA
+ICM-1024Controlador Olmo MPPT 10A 12V/24V Inti56,00 USD
+ICM-2024Controlador Olmo MPPT 20A 12V/24V Inti68,00 USD
+ICM-3024Controlador Olmo MPPT 30A 12V/24V Inti100,00 USD
+ICC-4024150+Controlador Cedro Plus MPPT 40A 150Voc 12/24V199 USD
+ICC-6048150+Controlador Cedro 60A Plus 12/24/48V 150Voc MPPT Inti281,93 USD
+P.V.P. sin IVA
+SCC145110510SmartSolar MPPT RS 450/100-MC4 *If 0, order SCC145110512* Victron Energy1.172,74 USD               
+SCC145110512SmartSolar MPPT RS 450/100-MC4 Victron Energy1.172,74 USD               
+SCC145120510SmartSolar MPPT RS 450/200-MC4 Victron Energy2.053,48 USD               
+SCC145120512SmartSolar MPPT RS 450/200-MC4 Victron Energy2.053,48 USD               
+SCC010005000BlueSolar PWM-Light Charge Controller 12/24V-5A Victron Energy18,90 USD                     
+SCC010010000BlueSolar PWM-Light Charge Controller 12/24V-10A Victron Energy21,74 USD                     
+SCC010020020BlueSolar PWM-Light Charge Controller 12/24V-20A Victron Energy29,30 USD                     
+SCC010030020BlueSolar PWM-Light Charge Controller 12/24V-30A Victron Energy40,64 USD                     
+SCC040020020BlueSolar PWM-Light Contr 48V-20A*If 0, order SCC040020050* Victron Energy56,70 USD                     
+SCC040030020BlueSolar PWM-Light Contr 48V-30A*If 0, order SCC040030050* Victron Energy65,20 USD                     
+SCC010005050BlueSolar PWM-LCD&USB 12/24V-5A Victron Energy25,52 USD                     
+SCC010010050BlueSolar PWM-LCD&USB 12/24V-10A Victron Energy29,30 USD                     
+SCC010020050BlueSolar PWM-LCD&USB 12/24V-20A Victron Energy36,86 USD                     
+SCC010020060BlueSolar PWM DUO-LCD&USB 12/24V-20A Victron Energy59,54 USD                     
+SCC010030050BlueSolar PWM-LCD&USB 12/24V-30A Victron Energy47,25 USD                     
+SCC040010050BlueSolar PWM-LCD&USB 48V-10A Victron Energy32,13 USD                     
+SCC040020050BlueSolar PWM-LCD&USB 48V-20A Victron Energy38,74 USD                     
+SCC040030050BlueSolar PWM-LCD&USB 48V-30A Victron Energy43,47 USD                     
+SCC010005010BlueSolar PWM-Pro Charge Controller 12/24V-5A Victron Energy25,52 USD                     
+SCC010010010BlueSolar PWM-Pro Charge Controller 12/24V-10A Victron Energy29,30 USD                     
+SCC010020110BlueSolar PWM-Pro Charge Controller 12/24V-20A Victron Energy51,03 USD                     
+SCC010030010BlueSolar PWM-Pro Charge Controller 12/24V-30A Victron Energy80,32 USD                     
+SCC900300000Remote panel for BlueSolar PWM-Pro Charge Controller Victron Energy43,47 USD                     
+SCC940100100Temp. sensor for BlueSolar PWM-Pro Charge Controller Victron Energy11,34 USD                     
+SCC940100200BlueSolar PWM-Pro to USB interface cable Victron Energy11,34 USD                     
+SCC010010050RBlueSolar MPPT 75/10 Retail Victron Energy48,20 USD                     
+SCC010015050RBlueSolar MPPT 75/15 Retail Victron Energy52,92 USD                     
+SCC010015200RBlueSolar MPPT 100/15 Retail Victron Energy65,20 USD                     
+SCC110020170RBlueSolar MPPT 100/20 (up to 48V) Retail Victron Energy77,49 USD                     
+SCC020030200BlueSolar MPPT 100/30 Victron Energy118,12 USD                  
+SCC020035000BlueSolar MPPT 150/35 Victron Energy177,66 USD                  
+SCC020050200BlueSolar MPPT 100/50 Victron Energy177,66 USD                  
+SCC115045222BlueSolar MPPT 150/45 Victron Energy213,57 USD                  
+SCC010060200BlueSolar MPPT 150/60-Tr Victron Energy338,31 USD                  
+SCC010060300BlueSolar MPPT 150/60-MC4 Victron Energy338,31 USD                  
+SCC010070200BlueSolar MPPT 150/70-Tr Victron Energy371,38 USD                  
+SCC010070300BlueSolar MPPT 150/70-MC4 Victron Energy372,33 USD                  
+SCC115110420BlueSolar MPPT 150/100-Tr VE.Can Victron Energy527,31 USD                  
+SCC125070441BlueSolar MPPT 250/70-Tr VE.Can Victron Energy527,31 USD                  
+SCC125110441BlueSolar MPPT 250/100-Tr VE.Can Victron Energy645,44 USD                  
+SCC075010060RSmartSolar MPPT 75/10 Retail Victron Energy66,15 USD                     
+SCC075015060RSmartSolar MPPT 75/15 Retail Victron Energy70,88 USD                     
+SCC110015060RSmartSolar MPPT 100/15 Retail Victron Energy83,16 USD                     
+SCC110020160RSmartSolar MPPT 100/20 (up to 48V) Retail Victron Energy94,50 USD                     
+SCC110030210SmartSolar MPPT 100/30 Victron Energy136,08 USD                  
+SCC110050210SmartSolar MPPT 100/50 Victron Energy195,62 USD                  
+SCC115035210SmartSolar MPPT 150/35 Victron Energy195,62 USD                  
+SCC115045212SmartSolar MPPT 150/45 Victron Energy231,52 USD                  
+SCC115060211SmartSolar MPPT 150/60-Tr Victron Energy371,38 USD                  
+SCC115060311SmartSolar MPPT 150/60-MC4 Victron Energy371,38 USD                  
+SCC115070211SmartSolar MPPT 150/70-Tr Victron Energy405,40 USD                  
+SCC115070411SmartSolar MPPT 150/70-Tr VE.Can Victron Energy439,42 USD                  
+SCC115070511SmartSolar MPPT 150/70-MC4 VE.Can Victron Energy439,42 USD                  
+Controladores 
+Lista de precios noviembre 2025
+Precios noviembre 2025
+
+SCC115085411SmartSolar MPPT 150/85-Tr VE.Can Victron Energy480,06 USD                  
+SCC115085511SmartSolar MPPT 150/85-MC4 VE.Can Victron Energy490,46 USD                  
+SCC115110411SmartSolar MPPT 150/100-Tr VE.Can Victron Energy547,16 USD                  
+SCC115110511SmartSolar MPPT 150/100-MC4 VE.Can Victron Energy557,55 USD                  
+SCC125060221SmartSolar MPPT 250/60-Tr Victron Energy439,42 USD                  
+SCC125060321SmartSolar MPPT 250/60-MC4 Victron Energy439,42 USD                  
+SCC125070221SmartSolar MPPT 250/70-Tr Victron Energy506,52 USD                  
+SCC125070421SmartSolar MPPT 250/70-Tr VE.Can Victron Energy540,54 USD                  
+SCC125070521SmartSolar MPPT 250/70-MC4 VE.Can Victron Energy540,54 USD                  
+SCC125085411SmartSolar MPPT 250/85-Tr VE.Can Victron Energy581,18 USD                  
+SCC125085511SmartSolar MPPT 250/85-MC4 VE.Can Victron Energy591,57 USD                  
+SCC125110412SmartSolar MPPT 250/100-Tr VE.Can Victron Energy648,27 USD                  
+SCC125110512SmartSolar MPPT 250/100-MC4 VE.Can Victron Energy658,66 USD                  
+SCC900650010SmartSolar Pluggable Display Victron Energy34,02 USD                     
+P.V.P. sin IVA
+IIP-12300Inversor onda pura Palma 300VA - 12V Inti99,45 USD
+IIP-24300Inversor onda pura Palma 300VA - 24V Inti104,60 USD
+IIP-12500Inversor onda pura Palma 500VA - 12V Inti148,94 USD
+IIP-24500Inversor onda pura Palma 500VA - 24V Inti152,13 USD
+IIP-241000Inversor onda pura Palma 1000VA - 24V Inti208,00 USD
+IIP-241500Inversor onda pura Palma 1500VA - 24V Inti339,14 USD
+IIP-121500Inversor onda pura Palma 1500VA - 12V Inti339,14 USD
+IIP-242000Inversor onda pura Palma 2000VA - 24V Inti479,57 USD
+IIP-482000Inversor onda pura Palma 2000VA - 48V Inti479,57 USD
+IIP-243000Inversor onda pura Palma 3000VA - 24V Inti539,00 USD
+IIP-483000Inversor onda pura Palma 3000VA - 48V Inti542,00 USD
+IM-24401000Inversor Multifuncional Álamo 24V 40A 1000VA Inti431,24 USD
+IM-60483000+Inversor Multifuncional Álamo 120V 3Kw offgrid Inti798,6 USD
+IIP-24500BFLInversor onda pura baja frecuencia Teca Litio 24V 500VA Inti216,30 USD
+IIP-241000BFLInversor onda pura baja frecuencia Teca Litio 24V 1000VA Inti423,2 USD
+IIP-242000BFLInversor onda pura baja frecuencia Teca Litio 24V 2000VA Inti423,2 USD
+IIP-2482000BFLInversor onda pura baja frecuencia Teca Litio 24V 2000VA Inti423,2 USD
+IIP-243000BFLInversor onda pura baja frecuencia Teca Litio 24V 3000VA Inti752,27 USD
+IIP-484000BFLInversor onda pura baja frecuencia Teca Litio 48V 4000VA Inti984,73 USD
+IIP-485000BFLInversor onda pura baja frecuencia Teca Litio 48V 5000VA Inti1.375,50 USD
+IIP-488000BFLInversor onda pura baja frecuencia Teca Litio 48V 8000VA Inti2.184,00 USD
+ICPPS-1200Portable power station Caoba 1200W Inti699 USD
+P.V.P. sin IVA
+PIN122510500Inverter 12/250 120V VE.Direct NEMA 5-15R Victron Energy91,66 USD                     
+PIN123750500Inverter 12/375 120V VE.Direct NEMA 5-15R Victron Energy112,46 USD                  
+PIN125010500Phoenix Inverter 12/500 120V VE.Direct NEMA 5-15R Victron Energy140,80 USD                  
+PIN121800500Phoenix Inverter 12/800 120V VE.Direct NEMA 5-15R Victron Energy240,98 USD                  
+PIN122122500Phoenix Inverter 12/1200 120V VE.Direct NEMA 5-15R Victron Energy282,56 USD                  
+PIN122510510Phoenix Inverter 12/250 120V VE.Direct NEMA GFCI (UL 458) Victron Energy100,17 USD                  
+PIN123750510Phoenix Inverter 12/375 120V VE.Direct NEMA GFCI (UL 458) Victron Energy121,90 USD                  
+PIN125010510Phoenix Inverter 12/500 120V VE.Direct NEMA GFCI (UL 458) Victron Energy152,14 USD                  
+PIN121800510Phoenix Inverter 12/800 120V VE.Direct NEMA GFCI (UL 458) Victron Energy248,54 USD                  
+PIN122122510Phoenix Inverter 12/1200 120V VE.Direct NEMA GFCI (UL 458) Victron Energy290,12 USD                  
+PIN243020100Inverter 24/3000 120V VE.Bus Victron Energy1.161,40 USD               
+PIN242510500Inverter 24/250 120V VE.Direct NEMA 5-15R Victron Energy102,06 USD                  
+PIN243750500Phoenix Inverter 24/375 120V VE.Direct NEMA 5-15R Victron Energy124,74 USD                  
+PIN245010500Inverter 24/500 120V VE.Direct NEMA 5-15R Victron Energy156,87 USD                  
+PIN241800500Phoenix Inverter 24/800 120V VE.Direct NEMA 5-15R Victron Energy216,40 USD                  
+PIN242122500Phoenix Inverter 24/1200 120V VE.Direct NEMA 5-15R Victron Energy336,42 USD                  
+PIN242510510Phoenix Inverter 24/250 120V VE.Direct NEMA GFCI (UL 458) Victron Energy100,17 USD                  
+PIN243750510PhInv24/375 120V VE.DirectNEMA GFCI*Available until stock 0* Victron Energy121,90 USD                  
+PIN245010510Inverter 24/500 120V VE.Direct NEMA GFCI (UL 458) Victron Energy152,14 USD                  
+PIN241800510Phoenix Inverter 24/800 120V VE.Direct NEMA GFCI (UL 458) Victron Energy210,74 USD                  
+PIN242122510Phoenix Inverter 24/1200 120V VE.Direct NEMA GFCI (UL 458) Victron Energy348,70 USD                  
+PIN482510500Phoenix Inverter 48/250 120V VE.Direct NEMA 5-15R Victron Energy102,06 USD                  
+PIN483750500Phoenix Inverter 48/375 120V VE.Direct NEMA 5-15R Victron Energy124,74 USD                  
+Inversores aislados, híbridos y de conexión a red
+Precios noviembre 2025
+
+PIN485010500Phoenix Inverter 48/500 120V VE.Direct NEMA 5-15R Victron Energy156,87 USD                  
+PIN481800500Inverter 48/800 120V VE.Direct NEMA 5-15R Victron Energy267,44 USD                  
+PIN482122500Phoenix Inverter 48/1200 120V VE.Direct NEMA 5-15R Victron Energy336,42 USD                  
+PIN482510510PhInv48/250 120V VE.DirectNEMA GFCI*Available until stock 0* Victron Energy100,17 USD                  
+PIN482122510Inverter 48/1200 120V VE.Direct NEMA GFCI (UL 458) Victron Energy348,70 USD                  
+PMP121500100MultiPlus 12/500/20-16 120V VE.Bus Victron Energy310,90 USD                  
+PMP121800100MultiPlus 12/800/35-16 120V VE.Bus Victron Energy400,68 USD                  
+PMP122120100MultiPlus 12/1200/50-16 120V VE.Bus Victron Energy490,46 USD                  
+CMP122200102MultiPlus Compact 12/2000/80-50 120V VE.Bus (UL 458) Victron Energy957,28 USD                  
+PMP122200102MultiPlus 12/2000/80-50 120V VE.Bus (UL 458) Victron Energy912,87 USD                  
+PMP122301102MultiPlus 12/3000/120-50 120V VE.Bus (UL 1741 & 458) Victron Energy1.237,00 USD               
+PMP122305120MultiPlus-II 12/3000/120-50 120V *If 0, order PMP122305122* Victron Energy1.055,56 USD               
+PMP122305122MultiPlus-II 12/3000/120-50 120V (UL 458) Victron Energy1.013,04 USD               
+PMP122305100MultiPlus-II 12/3000/120-50 2x120V*If 0, order PMP122305102* Victron Energy1.151,96 USD               
+PMP122305102MultiPlus-II 12/3000/120-50 2x120V (UL 458) Victron Energy1.094,31 USD               
+QUA122305130Quattro-II 12/3000/120-50/50 2x120V Victron Energy1.385,37 USD               
+QUA125021100Quattro 12/5000/220-100/100 120V VE.Bus Victron Energy2.851,06 USD               
+QUA125021102Quattro 12/5000/220-100/100 120V VE.Bus (UL 458) Victron Energy3.160,08 USD               
+CMP242200100MultiPlus Compact 24/2000/50-50 120V VE.Bus Victron Energy818,37 USD                  
+PMP242200100MultiPlus24/2000/50-50 120V VE.Bus*If 0, order PMP242200102* Victron Energy821,20 USD                  
+PMP242200102MultiPlus 24/2000/50-50 120V VE.Bus (UL 458) Victron Energy831,60 USD                  
+PMP243021102MultiPlus24/3000/70-50 120V VE.Bus*If 0, order PMP242301102* Victron Energy1.237,00 USD               
+PMP242301102MultiPlus 24/3000/70-50 120V VE.Bus (UL 1741 & 458) Victron Energy1.254,96 USD               
+PMP242305100MultiPl-II24/3000/70-50 120V*If stock 0, order PMP242305102* Victron Energy945,00 USD                  
+PMP242305102MultiPlus-II 24/3000/70-50 120V (UL 458) Victron Energy1.055,56 USD               
+PMP242305130MultiPlus-II 24/3000/70-50 2x120V *If 0, order PMP242305132* Victron Energy1.134,00 USD               
+PMP242305132MultiPlus-II 24/3000/70-50 2x120V (UL 458) Victron Energy1.213,38 USD               
+PMP242505110MultiPlus-II 24/5000/120-95 120V Victron Energy1.716,12 USD               
+QUA242305130Quattro-II 24/3000/70-50/50 2x120V Victron Energy1.316,38 USD               
+QUA245023110Quattro 24/5000/120-100/100 120V VE.Bus Victron Energy2.508,98 USD               
+PMP482200100MultiPlus 48/2000/25-50 120V VE.Bus Victron Energy626,54 USD                  
+PMP482305100MultiPlus-II 48/3000/35-50 120V Victron Energy661,50 USD                  
+PMP482305102MultiPlus-II 48/3000/35-50 120V (UL 1741) Victron Energy690,80 USD                  
+PMP482505110MultiPlus-II 48/5000/70-95 120V Victron Energy1.077,30 USD               
+PMP482505300MultiPlus-II 48/5000/70-95 120V 50/60Hz Victron Energy1.077,30 USD               
+QUA483021100Quattro 48/3000/35-50/50 120V VE.Bus Victron Energy1.397,66 USD               
+QUA485021100Quattro 48/5000/70-100/100 120V VE.Bus Victron Energy1.515,78 USD               
+QUA482501102Quattro 48/5000/70-100/100 120V VE.Bus (UL) Victron Energy1.768,10 USD               
+QUA483100100Quat.48/10k/140-100/100 120V VEBus*If 0, order QUA483100102* Victron Energy2.732,00 USD               
+QUA483100102Quattro 48/10000/140-100/100 120V VE.Bus UL Victron Energy2.783,02 USD               
+QUA483150100Quattro 48/15000/200-100/100 277V VE.Bus Victron Energy3.444,52 USD               
+ASS030064900RJ45 UTP Cable 0,3 m *If 0, order ASS030064901* Victron Energy8,50 USD                       
+ASS030064901RJ45 UTP Cable 0,3 m Victron Energy8,50 USD                       
+ASS030064920RJ45 UTP Cable 0,9 m *If 0, order ASS030064921* Victron Energy8,50 USD                       
+ASS030064921RJ45 UTP Cable 0,9 m Victron Energy8,50 USD                       
+ASS030064950RJ45 UTP Cable 1,8 m *If 0, order ASS030064951* Victron Energy11,34 USD                     
+ASS030064951RJ45 UTP Cable 1,8 m Victron Energy11,34 USD                     
+ASS030064980RJ45 UTP Cable 3 m *If 0, order ASS030064981* Victron Energy13,23 USD                     
+ASS030064981RJ45 UTP Cable 3 m Victron Energy13,23 USD                     
+ASS030065000RJ45 UTP Cable 5 m *If 0, order ASS030065001* Victron Energy17,01 USD                     
+ASS030065001RJ45 UTP Cable 5 m Victron Energy17,01 USD                     
+ASS030530203VE.Direct Cable 0,3m Victron Energy14,18 USD                     
+ASS030530209VE.Direct Cable 0,9m Victron Energy14,18 USD                     
+ASS030530218VE.Direct Cable 1,8m Victron Energy14,18 USD                     
+ASS030530230VE.Direct Cable 3m Victron Energy16,06 USD                     
+ASS030530250VE.Direct Cable 5m Victron Energy17,96 USD                     
+ASS030530310VE.Direct Cable 10m Victron Energy21,74 USD                     
+ASS030710018VECan-CAN-busBMS typeA Cable 1,8 m*If 0, order ASS030710118* Victron Energy15,12 USD                     
+ASS030710118VE.Can to CAN-bus BMS type A Cable 1,8 m Victron Energy15,12 USD                     
+ASS030710050VE.Can-CAN-bus BMS type A Cable 5m*If 0, order ASS030710150* Victron Energy15,12 USD                     
+ASS030720018VECan-CANbus BMS typeB Cable 1,8 m*If 0, order ASS030720118* Victron Energy15,12 USD                     
+ASS030720118VE.Can to CAN-bus BMS type B Cable 1,8 m Victron Energy17,01 USD                     
+ASS030720050VECan-CAN-bus BMS type B Cable 5 m*If 0, order ASS030720150* Victron Energy15,12 USD                     
+ASS030520115VE.Bus to VE.Can interface *Available until stock 0* Victron Energy149,31 USD                  
+SHU500050100Shunt 500A/50mV Victron Energy23,62 USD                     
+SHU102050200Shunt 1000A/50mV-0,5 / 2xM10 Victron Energy78,44 USD                     
+SHU202050200Shunt 2000A/50mV-0,5 / 3xM10 Victron Energy122,85 USD                  
+Precios noviembre 2025
+
+SHU602050200Shunt 6000A/50mV-0,5 / 5xM10 Victron Energy216,40 USD                  
+CIP000050001Fuse holder for MIDI-fuse Victron Energy9,45 USD                       
+CIP132060010MIDI-fuse 60A/32V (pack of 5 pcs)*If 0, order CIP134060020* Victron Energy10,40 USD                     
+CIP132080010MIDI-fuse 80A/32V (package of 5 pcs) Victron Energy9,45 USD                       
+CIP132100010MIDI-fuse 100A/32V (package of 5 pcs) Victron Energy9,45 USD                       
+CIP132125010MIDI-fuse 125A/32V (package of 5 pcs) Victron Energy9,45 USD                       
+CIP132150010MIDI-fuse 150A/32V (pack of 5 pcs) *Available until stock 0* Victron Energy10,40 USD                     
+CIP132200010MIDI-fuse 200A/32V (package of 5 pcs) Victron Energy9,45 USD                       
+CIP133030010MIDI-fuse 30A/58V (1 pc) *If 0, order CIP134030020* Victron Energy10,40 USD                     
+CIP134030020MIDI-fuse 30A/58V-M6 (package of 5 pcs) Victron Energy12,28 USD                     
+CIP133040010MIDI-fuse 40A/58V (1 pc) *If 0, order CIP134040020* Victron Energy10,40 USD                     
+CIP134040020MIDI-fuse 40A/58V-M6 (package of 5 pcs) Victron Energy12,28 USD                     
+CIP133050010MIDI-fuse 50A/58V for 48V products (1 pc) Victron Energy4,72 USD                       
+CIP134050020MIDI-fuse 50A/58V-M6 (package of 5 pcs) Victron Energy12,28 USD                     
+CIP133060010MIDI-fuse 60A/58V (1 pc) *If 0, order CIP134060020* Victron Energy4,72 USD                       
+CIP134060020MIDI-fuse 60A/58V-M6 (package of 5 pcs) Victron Energy12,28 USD                     
+CIP133080010MIDI-fuse 80A/58V (1 pc) *If 0, order CIP134080020* Victron Energy4,72 USD                       
+CIP134080020MIDI-fuse 80A/58V-M6 (package of 5 pcs) Victron Energy12,28 USD                     
+CIP133100010MIDI-fuse 100A/58V (1 pc) *If 0, order CIP134100020* Victron Energy4,72 USD                       
+CIP134100020MIDI-fuse 100A/58V-M6 (package of 5 pcs) Victron Energy12,28 USD                     
+CIP000100001Fuse holder for MEGA-fuse Victron Energy12,28 USD                     
+CIP136080010MEGA-fuse 80A/32V (pack of 5 pcs)*If 0, order CIP138080020* Victron Energy16,06 USD                     
+CIP136100010MEGA-fuse 100A/32V (pack of 5 pcs)*If 0, order CIP138100020* Victron Energy16,06 USD                     
+CIP136125010MEGA-fuse 125A/32V(packof 5 pcs) *If 0, order CIP138125020* Victron Energy16,06 USD                     
+CIP136150010MEGA-fuse 150A/32V (pack of 5 pcs)*If 0, order CIP138150020* Victron Energy16,06 USD                     
+CIP136175010MEGA-fuse 175A/32V (pack of 5 pcs)*If 0, order CIP138175020* Victron Energy16,06 USD                     
+CIP136200010MEGA-fuse 200A/32V (pack of 5 pcs)*If 0, order CIP138200020* Victron Energy16,06 USD                     
+CIP136225010MEGA-fuse 225A/32V (pack of 5 pcs)*If 0, order CIP138225020* Victron Energy16,06 USD                     
+CIP136250010MEGA-fuse 250A/32V (pack of 5 pcs)*If 0, order CIP138250020* Victron Energy16,06 USD                     
+CIP136300010MEGA-fuse 300A/32V (pack of 5 pcs)*IF 0, order CIP138300020* Victron Energy16,06 USD                     
+CIP136400010MEGA-fuse 400A/32V (package of 5 pcs) Victron Energy16,06 USD                     
+CIP136500010MEGA-fuse 500A/32V (package of 5 pcs) Victron Energy16,06 USD                     
+CIP137125010MEGA-fuse 125A/58V-48Vprod(1 pc)*If 0, order CIP138125020* Victron Energy31,18 USD                     
+CIP137200010MEGA-fuse 200A/58V-48Vprod(1 pc) *If 0, order CIP138200020* Victron Energy31,18 USD                     
+CIP137250010MEGA-fuse 250A/58V for 48V products (1 pc) Victron Energy31,18 USD                     
+CIP137300010MEGA-fuse 300A/58V-48Vprod.(1 pc) *If 0, order CIP138300020* Victron Energy31,18 USD                     
+CIP138040020MEGA-fuse 40A/80V (package of 5 pcs) Victron Energy37,80 USD                     
+CIP138060020MEGA-fuse 60A/80V (package of 5 pcs) Victron Energy37,80 USD                     
+CIP138080020MEGA-fuse 80A/80V (package of 5 pcs) Victron Energy37,80 USD                     
+CIP138100020MEGA-fuse 100A/80V (package of 5 pcs) Victron Energy37,80 USD                     
+CIP138125020MEGA-fuse 125A/80V (package of 5 pcs) Victron Energy37,80 USD                     
+CIP138150020MEGA-fuse 150A/80V (package of 5 pcs) Victron Energy37,80 USD                     
+CIP138175020MEGA-fuse 175A/80V (package of 5 pcs) Victron Energy37,80 USD                     
+CIP138200020MEGA-fuse 200A/80V (package of 5 pcs) Victron Energy37,80 USD                     
+CIP138225020MEGA-fuse 225A/80V (package of 5 pcs) Victron Energy37,80 USD                     
+CIP138250020MEGA-fuse 250A/80V (package of 5 pcs) Victron Energy37,80 USD                     
+CIP138300020MEGA-fuse 300A/80V (package of 5 pcs) Victron Energy37,80 USD                     
+CIP138400020MEGA-fuse 400A/80V (package of 5 pcs) Victron Energy37,80 USD                     
+CIP138500020MEGA-fuse 500A/80V (package of 5 pcs) Victron Energy37,80 USD                     
+BPP900451100Cerbo GX MK2 Victron Energy262,71 USD                  
+BPP900450120Cerbo-S GX *If 0, order Cerbo GX MK2* Victron Energy230,58 USD                  
+BPP900455050GX Touch 50 Victron Energy233,42 USD                  
+BPP900455150GX Touch 50 flush Victron Energy259,88 USD                  
+BPP900460050GX Touch 50 adapter for CCGX cut-out Victron Energy26,46 USD                     
+BPP900465050GX Touch 50 Wall Mount Victron Energy16,06 USD                     
+BPP900462050GX Touch 50 protection cover Victron Energy17,96 USD                     
+BPP900455070GX Touch 70 Victron Energy343,04 USD                  
+BPP900455170GX Touch 70 flush Victron Energy382,72 USD                  
+BPP900465070GX Touch 70 Wall Mount Victron Energy21,74 USD                     
+BPP900462070GX Touch 70 protection cover Victron Energy17,96 USD                     
+BPP900800150GX IO-Extender 150 Victron Energy132,30 USD                  
+BPP010300100RColor Control GX Retail *If 0, order BPP900480100* Victron Energy217,35 USD                  
+BPP900480100Ekrano GX Victron Energy597,24 USD                  
+BPP900400100Venus GX Victron Energy189,00 USD                  
+BPP900495100Ekrano GX Wall Mount Victron Energy22,68 USD                     
+BPP900100200CCGX WiFi module simple (Nano USB) Victron Energy23,62 USD                     
+BPP900200400GX WiFi module long range (Netgear AC1200) Victron Energy140,80 USD                  
+Precios noviembre 2025
+
+P.V.P. sin IVA
+QT2-MXMicroinversor Trifásico 120/208V AC-60Hz -Max Outpt 1728W Apsystems413,6 USD
+DS3-LVMicroinversor monofásico 120V AC 60Hz 900VA APsystems272,60 USD
+ECU-R-MXSistema de monitoreo para microinversores, Zigbee, Wifi  (sin control de inyección) APsystems244,40 USD
+ECU-C-NAUnidad de comunicación ‐ C ZigBee (Wifi, anti reflux, para todos los modelos) inversor Apsystems376,00 USD
+2322600403Split Phase Bus Cable (10AWG, TC, 2.4m) para microinversor serie DS3 APsystems39,48 USD 
+23226092023-phase 5C Bus Cable (10AWG, TC, 2.4m) para microinversor QT2 versión 5 hilos Apsystems56,40 USD 
+20607000173/4‐wire Bus Cable End Cap para microinversor DS3 Apsystems9,40 USD 
+2061702007Bus Cable Y‐CONN Cap para microinversor DS3 Apsystems5,64 USD 
+2352000001Y Bus Cable Unlock Tool para microinversor DS3 Apsystems2,82 USD 
+230053103225A AC Male Connector (EN,3‐wire) para microinversor Apsystems6,58 USD 
+230053203225A AC Female Connector (EN,3‐wire) para microinversor Apsystems8,46 USD 
+20620500055‐wire Bus Cable End Cap para microinversor APSystems9,40 USD 
+20612520325-wire bus cable T-CONN cap para microinversor QT2APsystems5,64 USD 
+2060401006DC Male Connector Cap (MC4) para microinversores Apsystems0,94 USD 
+2060402006DC Female Connector Cap (MC4) para inversores Apsystems0,94 USD 
+18083020112Current Transformer(80A/26.6mA) para inversor Apsystems13,16 USD 
+18083020012Current Transformer(200A/66.6mA) para inversor Apsystems28,20 USD 
+23530000025-wire Bus Cable Unlock Tool para microinversor QT2 Apsystems 2,82 USD 
+23223013033 wire bus cable (12AWG, TC,2m). AC bus cable for DS3 series Apsystems28,20 USD 
+20620500125-wire Bus Cable end cap para microinversor QT2 Apsystems 9,40 USD 
+230093121232A AC Male connector for 3-wire extension cable Apsystems8,46 USD 
+230093221232A AC Female connector for 3-wire extension cable Apsystems10,34 USD 
+2301511002AC Male Connector for 5-wire bus cable extension Apsystems11,28 USD 
+2301512002AC Female Connector for 5-wire bus cable extension Apsystems13,16 USD 
+P.V.P. sin IVA
+4,210,052,840Fronius Symo 15.0-3 208 WLAN/LAN/web server2.962,78 USD
+4,210,052,841Fronius Symo 15.0-3 208 Lite2.836,75 USD
+4,210,060,800Fronius Primo 8.2-1 208-240 WLAN/LAN/web server1.948,38 USD
+4,210,060,801Fronius Primo 8.2-1 208-240 Lite1.825,43 USD
+4,210,061,800Fronius Primo 7.6-1 208-240 WLAN/LAN/web server1.837,62 USD
+4,210,061,801Fronius Primo 7.6-1 208-240 Lite1.715,78 USD
+4,210,062,800Fronius Primo 6.0-1 208-240 WLAN/LAN/web server1.509,74 USD
+4,210,062,801Fronius Primo 6.0-1 208-240 Lite1.390,13 USD
+4,210,063,800Fronius Primo 5.0-1 208-240 WLAN/LAN/web server1.407,84 USD
+4,210,063,801Fronius Primo 5.0-1 208-240 Lite1.284,89 USD
+4,210,064,800Fronius Primo 3.8-1 208-240 WLAN/LAN/web server1.325,88 USD
+4,210,064,801Fronius Primo 3.8-1 208-240 Lite1.194,07 USD
+4,210,075,800Fronius Primo 10.0-1 208-240 WLAN/LAN/web server2.433,54 USD
+4,210,075,801Fronius Primo 10.0-1 208-240 Lite2.308,38 USD
+4,210,076,800Fronius Primo 11.4-1 208-240 WLAN/LAN/web server2.710,46 USD
+4,210,076,801Fronius Primo 11.4-1 208-240 Lite2.585,30 USD
+4,210,077,800Fronius Primo 12.5-1 208-240 WLAN/LAN/web server2.861,10 USD
+4,210,077,801Fronius Primo 12.5-1 208-240 Lite2.739,26 USD
+4,210,078,800Fronius Primo 15.0-1 208-240 WLAN/LAN/web server3.354,02 USD
+4,210,078,801Fronius Primo 15.0-1 208-240 Lite3.232,17 USD
+4,210,090,800Symo Advanced 10.0-3 208-240 WLAN/LAN/web server Fronius2.832,25 USD
+4,210,090,801Symo Advanced 10.0-3 208-240 Lite Fronius2.708,48 USD
+4,210,091,800Symo Advanced 12.0-3 208-240 WLAN/LAN/web server Fronius3.163,08 USD
+4,210,091,801Symo Advanced 12.0-3 208-240 Lite Fronius3.038,17 USD
+4,210,092,800Symo Advanced 15.0-3 480 WLAN/LAN/web server Fronius2.923,39 USD
+4,210,092,801Symo Advanced 15.0-3 480 Lite Fronius2.800,74 USD
+4,210,093,800Symo Advanced 20.0-3 480 WLAN/LAN/web server Fronius2.957,16 USD
+4,210,093,801Symo Advanced 20.0-3 480 Lite Fronius2.840,12 USD
+4,210,094,800Symo Advanced 22.7-3 480 WLAN/LAN/web server Fronius2.962,78 USD
+4,210,094,801Symo Advanced 22.7-3 480 Lite Fronius2.846,88 USD
+4,210,095,800Symo Advanced 24.0-3 480 WLAN/LAN/web server Fronius2.995,41 USD
+4,210,095,801Symo Advanced 24.0-3 480 Lite Fronius2.880,63 USD
+4,210,140,800Primo GEN24 3.8 208-240 Fronius1.441,90 USD
+4,210,140,802Primo GEN24 3.8 208-240 Plus Fronius1.925,23 USD
+4,210,141,800Primo GEN24 5.0 208-240 Fronius1.768,66 USD
+4,210,141,802Primo GEN24 5.0 208-240 Plus Fronius2.363,02 USD
+4,210,142,800Primo GEN24 6.0 208-240 Fronius1.939,82 USD
+4,210,142,802Primo GEN24 6.0 208-240 Plus Fronius2.589,83 USD
+Precios noviembre 2025
+
+4,210,143,800Primo GEN24 7.7 208-240 Fronius2.365,14 USD
+4,210,143,802Primo GEN24 7.7 208-240 Plus Fronius3.143,66 USD
+4,210,144,800Primo GEN24 10.0 208-240 Fronius3.003,10 USD
+4,210,144,802Primo GEN24 10.0 208-240 Plus Fronius4.008,70 USD
+4,210,308Tauro ECO 50-3-D 208-220 Fronius8.293,68 USD
+4,210,308,001Tauro ECO 50-3-D 208-220 Fronius7.613,50 USD
+4,210,309Tauro ECO 50-3-P 208-220 Fronius7.517,65 USD
+4,210,309,001Tauro ECO 50-3-P 208-220 Fronius7.014,91 USD
+4,210,310Tauro ECO 50-3-D 208-220 AFCI Fronius8.579,21 USD
+4,210,408Verto 15.0 208-240 SPD 1+2 Fronius3.722,11 USD
+4,210,409Verto 15.0 208-240 SPD 2 Fronius3.640,53 USD
+4,210,410Verto 18.0 208-240 SPD 1+2 Fronius3.926,06 USD
+4,210,411Verto 18.0 208-240 SPD 2 Fronius3.844,48 USD
+4,210,412Verto 36.0 480 SPD 1+2 Fronius4.425,75 USD
+4,210,413Verto 36.0 480 SPD 2 Fronius4.333,96 USD
+4,210,300Tauro 50-3-D Fronius7.058,07 USD
+4,210,300,001Tauro 50-3-D Fronius7.126,06 USD
+4,210,301Tauro 50-3-P Fronius7.397,31 USD
+4,210,301,001Tauro 50-3-P Fronius6.859,90 USD
+4,210,302Tauro ECO 100-3-D Fronius7517,19 USD
+4,210,302,001Tauro ECO 100-3-D Fronius7.613,50 USD
+4,210,303Tauro ECO 100-3-P Fronius7.517,65 USD
+4,210,303,001Tauro ECO 100-3-P Fronius7.033,26 USD
+4,210,304Tauro ECO 99-3-D Fronius7517,19 USD
+4,210,304,001Tauro ECO 99-3-D Fronius7.613,50 USD
+4,210,305Tauro ECO 99-3-P Fronius6814,16 USD
+4,210,305,001Tauro ECO 99-3-P Fronius7.033,26 USD
+4,210,306Tauro ECO 50-3-D Fronius5.471,23 USD
+4,210,306,001Tauro ECO 50-3-D Fronius5.429,19 USD
+4,210,307Tauro ECO 50-3-P Fronius5.621,92 USD
+4,210,307,001Tauro ECO 50-3-P Fronius5.137,53 USD
+4,251,015DC Connector Kit 10-27KVA for Symo 10-20kw Fronius45,89 USD
+4,251,029DC Connector kit 10-27 35mm2 for Symo 10-20kw Fronius52,00 USD
+41,0010,0104Smart Meter CT V 100/333mV for Smart Meter IP Fronius45,45 USD
+41,0010,0105Smart Meter CT V 250/333mV for Smart Meter IP Fronius45,45 USD
+41,0010,0232Smart Meter CT V 400/333mV for Smart Meter IP Fronius97,67 USD
+4,240,038,ZDatamanager2.0 WLAN GalSymPrim for inverter Fronius282,37 USD 
+4,240,125Datamanager 2.0 Box WLAN for inverter Fronius439,03 USD 
+42,0411,0027Anemómetro para inversor Fronius55,12 USD
+43,0001,1188Sensor de temperatura ambiente para inversor Fronius32,88 USD
+43,0001,1189Sensor de irradiación para inversor Fronius159,56 USD
+4,240,004,ZSensor-Card retrofit IG para inversor Fronius365,53 USD 
+4,240,104Sensor Box IG para inversor Fronius385,84 USD 
+P.V.P. sin IVA
+GW250K-HT Inversor trifásico 250kW On-grid 800V DC Switch SPD/DPS: II MPPTs / ENT por MPPT: 12/2 (5 años) Goodwe8.603,20 USD               
+GW350K-UT Inversor trifásico 350kW On-grid 800V DC Switch SPD/DPS: II MPPTs / ENT por MPPT: 15/2 (5 años) Goodwe9.024,00 USD 
+GW350KH-UTInversor trifásico 350kW On-grid 800V DC Switch SPD/DPS: II MPPTs / ENT por MPPT: 12/2 (5 años) Goodwe9.371,20 USD 
+GW320K-UT Inversor trifásico 320kW On-grid 800V DC Switch SPD/DPS: II MPPTs / ENT por MPPT: 15/2 (5 años) Goodwe9.409,60 USD 
+GW320KH-UTInversor trifásico 320kW On-grid 800V DC Switch SPD/DPS: II MPPTs / ENT por MPPT: 12/2 (5 años) Goodwe9.097,60 USD 
+GW10K-SDT-30 Inversor trifásico 10kW On-grid 380V/400V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 2/1 (10 años) Goodwe956,80 USD 
+GW8000-SDT-30 Inversor trifásico 8kW On-grid 380V/400V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 2/1 (10 años) Goodwe891,20 USD 
+GW12K-SDT-30 Inversor trifásico 12kW On-grid 380V/400V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 2/1 (10 años) Goodwe953,60 USD 
+GW75K-SMT Inversor trifásico 75kW On-grid 380V/400V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 6/2 (10 años 5+*5) Goodwe2.507,20 USD 
+GW80K-SMT Inversor trifásico 80kW On-grid 380V/400V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 6/2 (10 años 5+*5) Goodwe2.806,40 USD 
+GW110K-GT Inversor trifásico 110kW On-grid 380V/400V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 10/2 (10 años 5+*5) Goodwe4.126,40 USD 
+GW125K-GT Inversor trifásico 125kW On-grid 380V/400V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 10/2 (10 años 5+*5) Goodwe4.152,00 USD 
+GW100K-GT Inversor trifásico 100kW On-grid 380V/400V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 8/2 (10 años 5+*5) Goodwe3.974,40 USD 
+GW33K-SDT-C30 Inversor trifásico 33kW On-grid 380V/400V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 3/2 (10 años 5+*5) Goodwe1.244,80 USD 
+GW36K-SDT-C30 Inversor trifásico 36kW On-grid 380V/400V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 3/2 (10 años 5+*5) Goodwe1.310,40 USD 
+GW40K-SDT-C30 Inversor trifásico 40kW On-grid 380V/400V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 3/2 (10 años 5+*5) Goodwe1.494,40 USD 
+GW20K-SDT-30 Inversor trifásico 20kW On-grid 380V/400V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 2/2-1 (10 años 5+*5) Goodwe1.140,80 USD 
+GW17K-SDT-30 Inversor trifásico 17kW On-grid 380V/400V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 2/2-1 (10 años 5+*5) Goodwe1.094,40 USD 
+GW30K-SDT-C30 Inversor trifásico 30kW On-grid 380V/400V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 2/2 (10 años 5+*5) Goodwe1.209,60 USD 
+GW15K-SDT-30 Inversor trifásico 15kW On-grid 380V/400V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 2/1 (10 años 5+*5) Goodwe1.022,40 USD 
+GW25K-SDT-C30 Inversor trifásico 25kW On-grid 380V/400V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 2/2-1 (10 años 5+*5) Goodwe1.110,40 USD 
+Precios noviembre 2025
+
+GW136K-HTH Inversor trifásico 136KW, 12 MPPT 1100Vdc, 500Vac (425Vac-550Vac) with DC switch & WIFI Goodwe 5.902,40 USD               
+GW25K-MT Inversor trifásico 25kw 400Vac 3 MPPT Goodwe 1.022,40 USD 
+GW60K-SMT-USInversor trifásico 60kw 480Vac con Switch DC y Wifi Goodwe3.315,20 USD 
+GW20K-ET Híbrido FLEXInevrsor trifásico híbrido 20kw WI-FI DC Switch SPD/DPS: II AFCI MPPT: 2/2 (10 años 5+*5) hasta 230kwh Lynx F G2 Goodwe2.132,80 USD 
+GW20K-ETInversor trifásico híbrido 20kW 380/400V WI-FI DC Switch SPD/DPS: II AFCI MPPT: 2/2 (10 años 5+*5) hasta 230 kWh usando Lynx F G2 Goodwe2.480,00 USD 
+GW15K-ETInversor trifásico híbrido 15kW 380/400V WI-FI DC Switch SPD/DPS: II AFCI MPPT: 2/2 (10 años 5+*5) hasta 230 kWh usando Lynx F G2 Goodwe2.433,60 USD 
+GW20K-ETInversor trifásico híbrido 20kW 380/400V WI-FI DC Switch SPD/DPS: II AFCI MPPT: 2/2 (10 años 5+*5) hasta 230 kWh usando Lynx F G2 Goodwe2.480,00 USD 
+GW25K-ETInversor trifásico híbrido 25kW 380/400V WI-FI DC Switch SPD/DPS: II AFCI MPPT: 2/2 (10 años 5+*5) hasta 230 kWh usando Lynx F G2 Goodwe2.780,80 USD 
+GW30K-ETInversor trifásico híbrido 30kW 380/400V WI-FI DC Switch SPD/DPS: II AFCI MPPT: 2/2 (10 años 5+*5) hasta 230 kWh usando Lynx F G2 Goodwe2.892,80 USD 
+GW12KL-ETinversor trifásico híbrido 12kw 208/220V WI-FI DC Switch DPS: II AFCI MPPT: 2/2 (10 años 5+*5) hasta 230 kWh Lynx F G2 Goodwe2.617,60 USD 
+GW18KL-ETinversor trifásico híbrido 18kw 208/220V WI-FI DC Switch DPS: II AFCI MPPT: 2/2 (10 años 5+*5) hasta 230 kWh Lynx F G2 Goodwe3.014,40 USD 
+GW30KLV-SDT-C30Inversor trifásico 30kw on grid 208/220V WI-FI DC Switch SPD/DPS: II AFCI MPPT: 4/2 (Garantia: 10 años (5+*5) Goodwe1.444,80 USD 
+GW12KLV-SDT-C30 Inversor trifásico 12kW On-grid 208V/220V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 2/2-1 (10 años 5+*5) Goodwe883,20 USD 
+GW12KLV-MT Inversor trifásico 12kW On-grid 208V/220V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 3/2 (10 años 5+*5) Goodwe1.250,00 USD 
+GW15KLV-MT Inversor trifásico 15kW On-grid 208V/220V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 3/2 (10 años 5+*5) Goodwe2.598,00 USD 
+GW73KLV-HT Inversor trifásico 73kW On-grid 208V/220V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 12/2 (10 años 5+*5) Goodwe4.820,20 USD 
+GW23KLV-SDT-BR30 Inversor trifásico 23kW On-grid 208V/220V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 3/2 (10 años 5+*5) Goodwe1.302,40 USD 
+GW30KLS-MT Inversor trifásico 30kW On-grid 208V/220V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 5/2 (10 años 5+*5) Goodwe2.284,80 USD 
+GW50K-SMT-L-G10 Inversor trifasico 50kW On-grid 208/220V WI-FI DC Switch SPD/DPS: II AFCI MPPTs / ENT por MPPT: 6/2 (10 años) Goodwe2.774,40 USD 
+GW75K-GT-LV-G10 Inversor trifásico 75kW On-grid 208V/220V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 8/2 (10 años 5+*5) Goodwe4.171,20 USD 
+GW17KLV-SDT-C30 Inversor trifásico 17kW On-grid 208V/220V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 2/2 (10 años 5+*5) Goodwe990,40 USD 
+GW35KLS-MT Inversor trifásico 35kW On-grid 208V/220V DC Switch Wifi SPD/DPS: II ACFI MPPTs / ENT por MPPT: 6/2 (10 años 5+*5) Goodwe2.291,20 USD 
+GW1000-XS-30 Inversor monofásico 1kW On-grid 220V DC Switch Wifi SPD/DPS: II MPPTs / ENT por MPPT: 1/1 (10 años) Goodwe264,00 USD 
+GW700-XS-30 Inversor monofásico 0,7kW On-grid 220V DC Switch Wifi SPD/DPS: II MPPTs / ENT por MPPT: 1/1 (10 años) Goodwe246,40 USD 
+GW1500-XS-30 Inversor monofásico 1,5kW On-grid 220V DC Switch Wifi SPD/DPS: II MPPTs / ENT por MPPT: 1/1 (10 años) Goodwe272,00 USD 
+GW2000-XS-30 Inversor monofásico 2kW On-grid 220V DC Switch Wifi SPD/DPS: II MPPTs / ENT por MPPT: 1/1 (10 años) Goodwe281,60 USD 
+GW3000-XS-30 Inversor monofásico 3kW On-grid 220V DC Switch Wifi SPD/DPS: II MPPTs / ENT por MPPT: 1/1 (10 años) Goodwe292,80 USD 
+GW2500-XS-30 Inversor monofásico 2,5kW On-grid 220V DC Switch Wifi SPD/DPS: II MPPTs / ENT por MPPT: 1/1 (10 años) Goodwe286,40 USD 
+GW8500-MS-30 Inversor monofásico 8,5kW On-grid 220V DC Switch Wifi SPD/DPS: II MPPTs / ENT por MPPT: 3/1 (10 años) Goodwe787,20 USD 
+GW5000-MS-30 Inversor monofásico 5kW On-grid 220V DC Switch Wifi SPD/DPS: II MPPTs / ENT por MPPT: 3/1 (10 años) Goodwe672,00 USD 
+GW3300-XS-30 Inversor monofásico 3,3kW On-grid 220V DC Switch Wifi SPD/DPS: II MPPTs / ENT por MPPT: 1/1 (10 años) Goodwe300,80 USD 
+GW7000-MS-30 Inversor monofásico 7kW On-grid 220V DC Switch Wifi SPD/DPS: II MPPTs / ENT por MPPT: 3/1 (10 años) Goodwe710,40 USD 
+GW3600-DNS-30 Inversor monofásico 3,6kW On-grid 220V DC Switch Wifi SPD/DPS: III MPPTs / ENT por MPPT: 2/1 (10 años) Goodwe440,00 USD 
+GW6000-MS-30 Inversor monofásico 6kW On-grid 220V DC Switch Wifi SPD/DPS: II MPPTs / ENT por MPPT: 3/1 (10 años) Goodwe681,60 USD 
+GW6000-DNS-30 Inversor monofásico 6kW On-grid 220V DC Switch Wifi SPD/DPS: III MPPTs / ENT por MPPT: 2/1 (10 años) Goodwe532,80 USD 
+GW10K-MS-30 Inversor monofásico 10kW On-grid 220V DC Switch Wifi SPD/DPS: II MPPTs / ENT por MPPT: 3/1 (10 años) Goodwe838,40 USD 
+GW5000-DNS-30 Inversor monofásico 5kW On-grid 220V DC Switch Wifi SPD/DPS: III MPPTs / ENT por MPPT: 2/1 (10 años) Goodwe492,80 USD 
+GW3500L-ES-BR20 Inversor monofásico 3,5kW híbrido 127V WI-FI DC Switch SPD/DPS: II MPPTs / ENT por MPPT: 2/1 (10 años 5+*5) Goodwe974,40 USD 
+GW5000-MS-US30 Inversor split-phase 5kW On-grid 240/120V Goodwe945,60 USD 
+GW9600-MS-US30 Inversor split-phase 9,6kW On-grid 240/120V Goodwe1.036,80 USD 
+GW11K4-MS-US30 Inversor split-phase 11,4kW On-grid 240/120V Goodwe1.054,40 USD 
+GW5000-ES-20 Inversor híbrido IEC monofásico 220Vac compatible con baterías de baja tensión (48Vdc) Goodwe 1.014,40 USD 
+GW5000-ES-US20 Inversor split-phase 5kW híbrido 240/120V WI-FI: Yes DC Switch SPD/DPS: II MPPTs / ENT por MPPT: 2/1 (10 años 5+*5) Goodwe1.483,20 USD 
+GW6000-ES-US20 Inversor split-phase 6kW híbrido 240/120V WI-FI: Yes DC Switch SPD/DPS: II MPPTs / ENT por MPPT: 2/1 (10 años 5+*5) Goodwe1.516,80 USD 
+GW7600-ES-US20 Inversor split-phase 7,6kW híbrido 240/120V WI-FI: Yes DC Switch SPD/DPS: II MPPTs / ENT por MPPT: 4/1 (10 años 5+*5) Goodwe1.577,60 USD 
+GW9600-ES-US20 Inversor split-phase 9,6kW híbrido 240/120V WI-FI: Yes DC Switch SPD/DPS: II MPPTs / ENT por MPPT: 4/1 (10 años 5+*5) Goodwe1.689,60 USD 
+GW11K4-ES-US20 Inversor split-phase 11,4kW híbrido 240/120V WI-FI: Yes DC Switch SPD/DPS: II MPPTs / ENT por MPPT: 4/1 (10 años 5+*5) Goodwe1.787,20 USD 
+GW3500L-EO Inversor monofásico 3,5kW Off-grid 127V DC Switch Wifi SPD/DPS: III MPPTs / ENT por MPPT: 1/2 (2 años) Goodwe644,80 USD 
+GW2000-MIS Microinversor monofásico 2kw On-grid 220V WI-FI MPPTs / ENT por MPPT: 4/1 (12 años) Goodwe256,00 USD 
+BWT-G4/088A Panel Galaxy Plus 355W ultra liviano Goodwe139,20 USD 
+EzLogger 3000R Smart DataLogger EzLogger3000R Goodwe156,80 USD 
+CT90/45-5 Transformador de corriente 90A goodwe para inversores monofasicos Goodwe36,80 USD 
+Wi-Fi/LAN 2.0 Kit WIFI/LAN 2.0 Módulo de Comunicación Goodwe36,80 USD 
+4G module 4G communication module Goodwe89,60 USD 
+SEC1000S Control de energía inteligente ongrid para inversores híbridos Goodwe579,20 USD 
+SEC 1000 Control de energía inteligente ongrid para inversores trifásicos Goodwe515,20 USD 
+EzLogger 3000U-A Smart DataLogger EzLogger3000U (Utility Scale) GoodWe504,00 USD 
+GM 3000 Smart Meter trifásico con CTs 16mm 40mA 120A GoodWe139,20 USD 
+GM 3000C Smart Meter Ezmeter Goodwe126,40 USD 
+GMK330 Smart Meter trifásico con CTs 200A 50mA GoodWe196,80 USD 
+GM330 Smart Meter trifásico sin CTs nA:5A GoodWe105,60 USD 
+HK 3000 HomeKit trifásico (16mm,120A) Goodwe121,60 USD 
+EzLogger 3000C SmartLogger 3000C Goodwe310,40 USD 
+CT250-6040CT AKH-0.66-K-60*40-250/5 Goodwe134,40 USD 
+SCU3000A-SUnidad de comunicación solar (Utility Scale) [1xHPLC] GoodWe1.832,00 USD 
+SCU3000ASolar Communication Unit [2xHPLC] Goodwe2.115,20 USD 
+EZLinkEZLink (Dongle for ES G2 & ES Uniq parallel) Goodwe83,20 USD 
+Precios noviembre 2025
+
+SG20s 2 Adhesivo Sika SG20s 600ml para Panel Galaxy Plus Goodwe 24,00 USD 
+Ezlogger Pro Dispositivo de monitoreo remoto Ethernet conexión RS485 GoodWe 179,20 USD 
+EZ_LinkDongle Wi-Fi para paralelismo e monitoramento de até 4 inversores híbridos trifásicos da linha ET 15-30K Goodwe83,20 USD 
+STS200-80-10Transferencia automática para inversores ET 40-50K Goodwe1.139,20 USD 
+GW50K-SMT-USInversor trifásico 50kW on-grid 480V WI-FI DC Switch SPD/DPS: II AFCI MPPT: 5/2 (10 años 5+*5) Goodwe3.192,00 USD 
+GW7K-HCA-20Cargador de vehículo monofásico, 220/230Vca, 32A, 7kW, cable 6m, Bluetooth, Wi-fi DPS II Goodwe480,00 USD 
+GW5K-DNS-G40Inversor monofásico 5kw 220/230Vac con AFCI, Switch DC y Wifi Goodwe400,00 USD 
+GW8.5K-MS-G40Inversor monofásico 8,5kw 220/230Vac con AFCI, Switch DC y Wifi Goodwe556,80 USD 
+GW10K-MS-G40Inversor monofásico 10kw 220/230Vac con AFCI, Switch DC y Wifi Goodwe593,60 USD 
+GW6K-DNS-G40Inversor monofásico 6kw 220/230Vac con AFCI, Switch DC y Wifi Goodwe427,20 USD 
+GW14.3-BAT-LV-G10Batería LFP(LiFePO4) 51.2 Vdc 280 Ah [with aerosol] Goodwe 2.267,20 USD 
+LX D5.0-10Bateria 435/380Vdc LiFePO4 IP66 5.0kWh. Compatible con GW6000-ET-20 hastaGW15K-ET-20 max 4 baterías Goodwe1.345,60 USD 
+GW12K-ET-LL-G10Inversor híbrido trifásico LV 12kw 208/220V Wifi DPS II, AFCI DC Switch Goodwe 2.603,20 USD 
+HK 3000-2HomeKit trifásico (24mm,200A) Goodwe148,80 USD 
+GW5K-ES-LD-G10Inversor híbrido split phase 5kW 120V/208V Wifi DC Switch DPS II AFCI Goodwe 1.395,20 USD 
+GW-BBP11WW0LYNX D Base de piso para Lynx D Goodwe54,40 USD 
+GW-BBB11WW0LYNX D Hanger de pared para Lynx D Goodwe 113,60 USD 
+GW7.5K-ES-LD-G10Inversor híbrido split phase 7,5kw 220/110Vac WIFI DPS II AFCI Goodwe1.478,40 USD 
+GW10K-ES-LD-G10Inversor híbrido split phase 10kw 220/110Vac WIFI DPS II AFCI Goodwe1.572,80 USD 
+LX A5.0/30Bateria 51,2Vd LiFePO4 IP21 5.0kWh. Compatible GW3500L-ES-BR20 hasta GW6000-ES-BR20, GW3600-SBP-20, GW5000-SBP-20, GW6000-SBP-20, GEH6.0-1LU-BR20 [220Vca], max 15, 1.5C Goodwe790,40 USD 
+LX U5.0-30Bateria 51,2Vdc LiFePO4 IP65 5.0kWh Compatible: GW3500L-ES-BR20 hasta GW6000-ES-BR20, GW3600-SBP-20, GW5000-SBP-20, GW6000-SBP-20, GEH6.0-1LU-BR20. Max 6 1C Goodwe988,80 USD 
+P.V.P. sin IVA
+ SUN 8K SG01LP1 US Inversor híbrido 8kW split phase 120/240Vac 48Vdc Deye2.164,80 USD
+ SUN-6K-SG04LP3-EU-LV Inversor híbrido 6kW trifásico 127/220Vac 48Vdc Deye2.428,84 USD
+ SUN-12K-SG04LP3-EU-LV Inversor híbrido 12kW trifásico 127/220Vac 48Vdc Deye2.678,12 USD
+ SUN-12K-SG02LP2-US-AM3 Inversor híbrido 12kW split phase 120/240Vac 48Vdc Deye2.870,00 USD
+ 3U-LP Cable Cable de comunicación y de potencia entre batería e inversor híbrido Deye64,00 USD
+ SUN-6K-SG04LP3-EU-AM2-LV Inversor híbrido 6kW trifásico 127/220Vac 48Vdc Deye2.428,84 USD
+ SUN-12K-SG04LP3-EU-AM2-LV Inversor híbrido 12kW trifásico 127/220Vac 48Vdc Deye2.678,12 USD
+ SUN-10K-SG01HP3-US-AM2 Inversor híbrido 10kW trifásico 120/208Vac 500Vdc Deye2.507,56 USD
+ SUN-15K-SG01HP3-US-AM2 Inversor híbrido 15kW trifásico 120/208Vac 500Vdc Deye2.919,20 USD
+ SUN-25K-SG01HP3-US-BM3-208V Inversor híbrido 25kW trifásico 120/208Vac 500Vdc Deye5.316,88 USD
+ SUN- 10K-SG04LP3-EU-AM2-LV Inversor híbrido 10kW trifásico 127/220Vac 48Vdc Deye2.578,08 USD
+P.V.P. sin IVA
+SNA3KW120V Single Phase offgrid solar inverter LuxPower565,8
+LXP-LB-US-12KSplit phase hybrid solar inverterLimited LuxPower2820,8
+SNA-US 6000Split phase off grid solar inverter 6kw120V/240V Luxpower1156,2
+P.V.P. sin IVA
+129078-001Empalme interior FlatGrid (2 piezas por conexión) Schletter7,56 €                            
+169004-003Estera de caucho 330*110*20mm Schletter4,31 €                            
+163000-301FixGrid18 sur Kit 6° Kit p. 2 filas Schletter48,95 €                          
+163000-302FixGrid18 sur Kit 6° Kit p. 3 filas Schletter70,21 €                          
+163900-011FixZ-7 Systempro.18 ob.96mm m. Verbinder Schletter7,10 €                            
+163900-002FixZ-15 Systempro.18 un.96mm m.Verbinder Schletter5,50 €                            
+163900-003FixZ-15 Systempro.18 mi.96mm m.Verbinder Schletter13,51 €                          
+169018-170FixZ-7 Windsafe 18 bis 1700mm Modul Schletter22,58 €                          
+169018-210FixZ-7 Windsafe 18 bis 2067mm Modul Schletter28,18 €                          
+110010-200Kit espárragos doble rosca10x200 montado Schletter3,55 €                            
+113009-103SingleFix-V Solo 20 kit pareja Schletter4,42 €                            
+120005-06200Soporte para módulos Solo0,5 6,2 mts Schletter70,68 €                          
+120005-006Soporte para módulos Solo0,5 6,0 mts Schletter68,34 €                          
+120005-04400Soporte de módulos Solo - 4400mm Schletter50,14 €                          
+943410-025Tornillo M10*25 cuadrado A2 Schletter0,62 €                            
+943912-010Tuerca tapón dientes M10 DIN6923 A4 Schletter0,32 €                            
+943308-055Tornillo héxagono int.M8x55 DIN912 GMB Schletter0,36 €                            
+943000-360Tornillo autorroscante 6,0*25mm junta A2 Schletter0,48 €                            
+943911-008Tuerca M8 hexag.autobloq. DIN985 A4 Scheletter0,14 €                            
+131101-001Pinza lateral Rapid16 30 - 40 Schletter2,00 €                            
+131121-001Pinza intermedia Rapid16 30 - 40 Schletter2,00 €                            
+Estructuras
+Precios noviembre 2025
+
+135003-001Pinza interm.tierra. Grounding Rapid2+ 40-50mm mont Schletter2,62 €                            
+129011-000Tapa de plástico para terminal Schletter0,52 €                            
+112001-000Pinza junta 503 VA para teja Schletter10,10 €                          
+129002-002Unión E Solo Profi Plus 0,5 Schletter5,24 €                            
+112004-000Falzkl.522 Al f. Zambeli RibRoof500 Schletter6,10 €                            
+112004-002Pinza 522 Rapid Zamb.RibRoof 500 y sim. Schletter5,38 €                            
+100001-000Gancho Universal Schletter20,78 €                          
+101001-000Gancho Rapid2+ 45 Schletter11,19 €                          
+119033-001Universal-Adapter M10/M12 Schletter3,02 €                            
+119015-002Cinta perf.mont.6 - 50m Schletter78,74 €                          
+120011-00450Perfil portante módulos EcoLight -450mm Schletter4,78 €                            
+128039-006Perfil base para FlatGrid 6000mm Schletter73,32 €                          
+129063-000Empalme cruzado Rapid Schletter4,90 €                            
+129078-000Kit empalme interior FlatGrid Schletter5,16 €                            
+130004-200Clamp Fit Schletter5,20 €                            
+943208-080Tornillo 8x80 TX VA cabeza plana madera Schletter0,81 €                            
+150001-130Soporte Light U07 cub. plana 1,3 m Schletter40,56 €                          
+119026-101Rapid2+ SML Schletter3,29 €                            
+135003-000Pinza protectora contra rayos para 8mm Schletter3,47 €                            
+121010-202FixZ-7 System bottom rail18 450mm Schletter11,53 €                          
+121001-202FixZ-7 perfil de sistema sup. 450mm Schletter16,29 €                          
+135003-002Pinza a tierra et prot.contra rayosVA M8 Schletter5,83 €                            
+120001-04300Perfil portante de módulos Eco05 -4300mm Schletter28,73 €                          
+119033-002Universal-Adapter M8 Schletter3,10 €                            
+943763-200Tornillo enroscado 6,3 * 200 Schletter1,29 €                            
+119005-000Goma sellado chapa ondulada 5/6/8 Schletter1,77 €                            
+119004-003Spacer aluminium 995 * 20 (para otras alturas, cortar en sitio) Schletter15,32 €                          
+163900-001FixZ-15 Systempr.18 ob. 96mm m.Verbinder Schletter9,66 €                            
+169017-000FlatGrid bandeja contrapeso p.perfil base Schletter15,18 €                          
+119001-020Fijador KlickTop para espárragos Schletter4,78 €                            
+163900-012FixZ-7 Systempro.18 un.96mm m.Verbinder Schletter5,12 €                            
+128039-214Perfil base para FlatGrid 4200mm Schletter48,89 €                          
+128039-203Perfil base para FlatGrid 2150mm29,07 €                          
+128039-215 Perfil base para FlatGrid 6300mm Schletter 56,79 €                          
+163900-022FixZ-10 Systempro.18 un.96mm m.Verbinder Schletter5,85 €                            
+163900-023 FixZ-10 Systempro.18 mi.96mm m.Verbinder Schletter12,20 €                          
+119005-001 Universalkalotte mit EPDM Schletter 2,62 €                            
+943763-150 SCHRAUBE 6,3X150 AB1,5MM SELBSTFURCHE A2 Schletter 0,58 €                            
+146003-040PVMAX-S kit 2Vx 11 Schletter2.519,78 €                     
+159005-001Strut with end cap 338 mm Schletter8,75 €                            
+113009-003SingleFix Pro Schletter2,20 €                            
+943922-010Arandela M10 DIN9021 A2 Schletter0,18 €                            
+150002-150Flat roof support Light 1.5m beam Kit Schletter49,88 €                          
+120006-04400Module bearing rail Solo05 Plus 4400mm63,87 €                          
+120006-05500Module bearing rail Solo05 Plus 5500mm79,81 €                          
+129001-007Solo05 Plus Interior connector6,89 €                            
+139004-000Chapa para pinza intermedia Eco Schletter1,25 €                            
+943001-232Tornillo de metal para chapa fina 6.0 x 22 A2 con junta oz Schletter0,50 €                            
+943000-022NUT FL LS EN1661 M10 A4-70 Schletter0,36 €                            
+169117-240FixZ-10-S Windsafe hasta 2400 mm Modul Schletter100,80 €                        
+943718-150Screw 8x150 min.1.5mm self-tapping A2 Schletter1,47 €                            
+112001-005Seam clamp 503 Rapid f. stand.seam roof Schletter5,34 €                            
+119026-102Rapid2+Pro SML5,73 €                            
+943000-700Self-tapping screw 5,5x25A2 w.seal.wash Schletter0,50 €                            
+101001-020Roof hook Rapid2+Pro 45 Schletter19,82 €                          
+163900-021FixZ-10 Systempr.18 ob.96mm m. Verbinder Schletter8,65 €                            
+943914-008NUT SQ DIN557 M8 WS13 A4-70 Schletter0,91 €                            
+943000-043WASHER ISO7093-1 8 200HV A2-70 Schletter0,85 €                            
+943000-025BOLT SH LS ISO4762 M8X20 A2-70 DL Schletter1,01 €                            
+129010-008Componente KlickIn para tuerca M8 Schletter0,87 €                            
+119026-122RapidPro L Schletter8,16 €                            
+165001-04500Base Rail Pro 4500mm Schletter79,45 €                          
+131020-000End clamp RapidPro 30-47mm Schletter1,98 €                            
+169008-006Installation tool FixGrid Pro89,45 €                          
+131020-001Middle clamp RapidPro 30-47mm Schletter1,98 €                            
+165005-004Module Support Pro Schletter4,96 €                            
+165005-002Screw-In Elevation Pro Schletter5,14 €                            
+Precios noviembre 2025
+
+165005-001Screw-In Module Support Pro Schletter5,69 €                            
+FSDUO-3VX18FS DUO Mesa de acero 3Vx18 Schletter2013,94 USD
+FSDUO-3VX20FS DUO Mesa de acero 3Vx20 Schletter2238,16 USD
+ P.V.P. sin IVA
+GM-R56-474700mm R56 Rail Goomax27,03USD
+GM-R56-252500mm R56 Rail Goomax14,47USD
+GM-RS-56-AZ-DRail splice Goomax 1,59USD
+GM-AS-B01-DForefeet components Goomax 3,63USD
+GM-AS-200-DRear feet components Goomax6,79USD
+GM-MRH-LDS-06-DL feet+hanger bolt Goomax3,50USD
+GM-MRH-LDS-08-DL feet+Hanger Bolt (for steel) Goomax3,54USD
+GM-MRH-L5-DL-feet Goomax1,63USD
+GM-MC-30(40)-AZ-1Middle clamp Goomax0,81USD
+GM-EC-30(40)-AZEnd clamp Goomax1,04USD
+GM-EK-DGround lug Goomax0,87USD
+JG-GMTYN-128-01L feet+hanger bolt Goomax1,59USD
+GM-E-EL-04Rail earthing clip Goomax1,84USD
+GM-MRH-T6-250-STMini Rail Goomax2,12USD
+GM-MRH-01Metal roof hook Goomax4,14USD
+GM-MRH-02Metal roof hook Goomax4,14USD
+GM-BR-02Rail clamp Goomax0,76USD
+GM-MRH-04Metal roof hook Goomax2,30USD
+GM-MRH-05Metal roof hook Goomax1,89USD
+GM-R596200mm beam Goomax104,69USD
+GM-FG3-S2-23422342mm column Goomax39,86USD
+GM-FG3-S2-20102010mm column Goomax55,21USD
+GM-FG-T70-03-19551955mm bracing 70*70 Goomax29,15USD
+GM-FG-T70-03-17861786mm Bracing 70*70 Goomax26,63USD
+GM-FG-T70-03-13321332mm bracing 70*70 Goomax19,87USD
+GM-FG3-CH02Conector H Goomax5,54USD
+GM-FG-U02Conector en forma de U 02 Goomax3,95USD
+GM-FS-M8X120M8*120 Bolt Goomax0,75USD
+GM-FG-B05Base de acero en carbono Goomax18,90USD
+GM-R06-54505450mm #6 Rail Goomax103,89USD
+GM-R06-29502950mm #6 Rail Goomax58,34USD
+GM-BR-01-QRail clamp para carpot Goomax0,74USD
+GM-RS-05-400Rail splice Goomax 8,40USD
+GM-MC-40-FXMiddle clamp Goomax1,74USD
+GM-EC-40-FXEnd Clamp 40mm Goomax1,85USD
+GM-R71-68106810mm rail Goomax58,44USD
+GM-FS-SCCanalón impermeable Goomax6,32USD
+GM-BR-01Rail clamp para carpot Goomax0,74USD
+GM-EKGround lug Goomax0,86USD
+GM-BN-25Clicknuts Goomax0,40USD
+[GM-R87-XJD-01] Mini Rail Vertical Goomax3,21USD
+GM-MRH-LDS-03Hanger Bolt (C4) Goomax2,23USD
+GM-MRH-LDS-08-01-DL feet+Hanger Bolt (C4) Goomax3,70USD
+GM-DS-M8X194-03Hangel Bolt C4 Goomax2,23USD
+GM-GZ-KZXControl Box Goomax408,62USD
+GM-GZ-ZLYCXExtension Cable Box30,68USD
+GM-GZ-JSJSlewing Drive Goomax551,71USD
+ST-TB3*11Portrait steel table 3*11 Goomax1.011,34USD
+STCARPORT-3*5EUWaterproof steel Carport 3*5 Extension Unit Goomax1.780,74USD
+STCARPORT-3*6MUWaterproof steel Carport 3*6 Main Unit Goomax2.508,18USD
+P.V.P. sin IVA
+32.0012P0001-URConector MC4 hembra PV-KBT4 2,5mm2 Multicontact/Staubli1,85 €                            
+32.0013P0001-URConector MC4 macho PV-KST4 2,5mm2 Multicontact/Staubli1,40 €                            
+32.0016P0001-URConector MC4 hembra PV-KBT4 6mm2 Multicontact/Staubli1,90 €                            
+32.0017P0001-URConector MC4 macho PV-KST4 6mm2 Multicontact/Staubli1,44 €                            
+32.0088P0001-URConector MC4 PV-KBT4-EVO 2/6II-UR 1500V Multicontact/Staubli2,09 €                            
+32.0089P0001-URConector MC4 PV-KST4-EVO 2/6II-UR 1500V Multicontact/Staubli1,58 €                            
+Conectores
+Precios noviembre 2025
+
+32.0092P0001-URConector MC4 hembra PV-KBT4-EVO 2/10II-UR 1500V Multicontact/Staubli2,22 €                            
+32.0093P0001-URConector MC4 macho PV-KST4-EVO 2/10II-UR 1500V Multicontact/Staubli1,68 €                            
+32.0143P0001-URConector MC4 macho PV-KST4/6X- UR Multicontact/Staubli1,45 €                            
+32.0142P0001-URConector MC4 hembra PV-KBT4-6X- UR Multicontact/Staubli1,91 €                            
+32.0318P0001Conector MC4 hembra PV-KBT4-EVO 2A/6X Multicontact/Staubli2,09 €                            
+32.0319P0001Conector MC4 macho PV-KST4-EVO 2A/6X Multicontact/Staubli1,59 €                            
+32.0324P0001Conector MC4 hembra PV-KBT4-EVO 2A/10II Multicontact/Staubli2,78 €                            
+32.0325P0001Conector MC4 macho PV-KST4-EVO 2A/10II Multicontact/Staubli2,09 €                            
+320.018Conector MC4 paralelo Hembra PV-AZB4 Multicontact / Staubli6,49 €                            
+32.0019Conector MC4 paralelo Macho PV-AZS4 Multicontact / Staubli6,38 €                            
+326.024PV-MS Llave para conector MC4 Multicontact/Staubli4,87 €                            
+3260.25PV-CSM-BS Crimpadora MC4 Multicontact/Staubli130,00 €                        
+32.0065PV-WS Toque set Multicontact/Staubli150,00 €                        
+32.6080PV-WZ-KS Cable shears Multicontact/Staubli40,00 €                          
+326.058PV-MS-PLS Open end spanner set Multicontact/Staubli37,54 €                          
+32.0076P0001-URConector hembra PV-ADBP4 2,5mm2para gabinete MC4 Multicontact/Staubli3,13 €                            
+32.0077P0001-URConector macho PV-ADSP4 2,5mm2 para gabinete MC4 Multicontact/Staubli2,51 €                            
+320.029PV-KST-EVO READY. Male cable couple MC4 Evo Ready1,72 €                            
+320.030PV-KBT-EVO READY. female cable couple MC4 Evo Ready2,10 €                            
+326.073MC4 EVO-2 PLUG TEST PV-EVO-PST12,37 USD
+32,6020-41200MC4 EVO-2 CRIMPING PLIERS FOR 10MM² CABLES PV691,7 USD
+P.V.P. sin IVA
+QCConector QC4 4mm (Pareja) Jasolar1,90 USD
+P.V.P. sin IVA
+62.7434-91021Cable solar flexible 2,5mm2 Multicontact / Staubli0,97 €                            
+62.7435-91021Cable solar flexible 4,0mm2 Multicontact / Staubli1,45 €                            
+62.7436-91021Cable solar flexible 6,0mm2 Multicontact / Staubli1,73 €                            
+P.V.P. sin IVA
+SC 4mmSOLAR CABLE 1*4mm 1500VDC Suntree1,04 USD
+SC 6mmSOLAR CABLE 1*6mm 1500VDC Suntree1,56 USD
+SC 10mmSOLAR CABLE 1*10mm 1500VDC Suntree2,83 USD
+P.V.P. sin IVA
+SRF-30-8AFusible DC 8A Suntree2,23 USD 
+SRF-30-12AFusible DC 12A Suntree2,23 USD 
+SRF-30-20AFusible DC 20A Suntree2,23 USD 
+SRF-30-15AFusible DC 15A Suntree2,23 USD 
+SRF-30-25AFusible DC 25A Suntree2,23 USD 
+SRF-30-30AFusible DC 30A Suntree2,79 USD 
+SRF-30-32AFusible DC 32A Suntree2,79 USD 
+SRD-30Portafusibles 1P 1000VDC Suntree3,86 USD 
+SRF-35H-20AFusible DC 20A 1500VDC Suntree6,19 USD 
+SRF-35H-25AFusible DC 25A 1500VDC Suntree6,19 USD 
+SRD-50HPortafusibles 1P 1500VDC Suntree7,93 USD 
+SL7-63-10A1P ACBreaker AC 1P 250VAC 10A Suntree2,89 USD 
+SL7-63-16A1P ACBreaker AC 1P 250VAC 16A Suntree2,89 USD 
+SL7-63-20A1P ACBreaker AC 1P 250VAC 20A Suntree2,88 USD 
+SL7-63-32A1P ACBreaker AC 1P 250VAC 32A Suntree3,15 USD 
+SL7-63-40A1P ACBreaker AC 1P 250VAC 40A Suntree3,15 USD 
+SL7-63-50A1P ACBreaker AC 1P 250VAC 50A Suntree3,15 USD 
+SL7-63-63A1P ACBreaker AC 1P 250VAC 63A Suntree3,15 USD 
+SL7-63-20A2P ACBreaker AC 2P 400Vac 20A Suntree 6,29 USD 
+SCB8-63-16A1P ACBreaker AC 1P 230VAC/6KA 16A Suntree 2,62 USD 
+SCB8-63-20A1P ACBreaker AC 1P 230VAC/6KA 20A Suntree 2,62 USD 
+SL7N-63-16A1PBreaker DC 1P 250VDC 16A Suntree8,13 USD 
+SL7N-63-25A1PBreaker DC 1P 250VDC 25A Suntree8,13 USD 
+SL7N-63-32A1PBreaker DC 1P 250VDC 32A Suntree8,13 USD 
+Cables
+Protecciones
+Precios noviembre 2025
+
+SL7N-63-40A1PBreaker DC 1P 250VDC 40A Suntree8,13 USD 
+SL7N-63-50A1PBreaker DC 1P 250VDC 50A Suntree8,13 USD 
+SL7N-63-63A1PBreaker DC 1P 250VDC 63A Suntree8,13 USD 
+SL7N-63-10A2PBreaker DC 2P 550VDC 10A Suntree16,52 USD 
+SL7N-63-16A2PBreaker DC 2P 500VAC 16A Suntree16,52 USD 
+SL7N-63-20A2PBreaker DC 2P 550VDC 20A Suntree16,52 USD 
+SL7N-63-25A2PBreaker DC 2P 550VDC 25A Suntree16,52 USD 
+SL7N-63-32A2PBreaker DC 2P 550VDC 32A Suntree16,52 USD 
+SL7N-63-40A2PBreaker DC 2P 550VDC 40A Suntree16,52 USD 
+SL7N-63-50A2PBreaker DC 2P 550VDC 50A Suntree16,52 USD 
+SL7N-63-32A2PBreaker DC 2P 550VDC 63A Suntree16,52 USD 
+SL7N-63-16A4PBreaker DC 4P 1000VDC 16A Suntree35,79 USD 
+SL7N-63-20A4PBreaker DC 4P 1200VDC 20A Suntree35,79 USD 
+SL7N-63-25A4PBreaker DC 4P 1200VDC 25A Suntree35,79 USD 
+SL7N-63-32A4PBreaker DC 4P 1000VDC 32A Suntree35,79 USD 
+SL7N-63-40A4PBreaker DC 4P 1200VDC 40A Suntree35,79 USD 
+SL7N-63-50A4PBreaker DC 4P 1200VDC 50A Suntree35,79 USD 
+SL7N-63-32A4P-1200Breaker DC 4P 1200VDC 32A Suntree35,79 USD 
+SL7N-125D-125A1PBreaker DC 125A 1P 250VDC Suntree13,11 USD 
+SL7N-125D-125A2PBreaker DC 125A 2P 600VDC Suntree 26,22 USD 
+SL7N-125D-20A3PBreaker DC 20A 3P 1500V Suntree49,82 USD 
+SL7N-125D-25A3PBreaker DC 25A 3P 1500V Suntree49,82 USD 
+SL7N-125D-80A2PBreaker DC 80A 2P 600VDC Suntree 26,22 USD 
+SCB8-125-80A1PBreaker DC 1P 250VDC 80A Suntree13,11 USD 
+SCB8-125-100A1PBreaker DC 1P 250VDC 100A Suntree13,11 USD 
+SCB8-125-125A1PBreaker DC 1P 250VDC 125A Suntree13,11 USD 
+SCB8-125-80A2PBreaker DC 2P 550VDC 80A Suntree26,22 USD 
+SCB8-125-100A2PBreaker DC 2P 550VDC 100A Suntree26,22 USD 
+SCB8-125-125A2PBreaker DC 2P 550VDC 125A Suntree26,22 USD 
+SUP2H-PV-220VDCDPS Protección contra sobre voltajes 2P 220VDC 20-40KA Suntree28,91 USD 
+SUP2H-PV 220VDC 30-60kADPS Protección contra sobre voltajes 2P 220VDC 30-60KA Suntree34,72 USD 
+SUP2H-PV-500VDCDPS Protección contra sobre voltajes 2P 500VDC 20-40KA Suntree28,84 USD 
+SUP2H-PV-500VDC 30-60KADPS Protección contra sobre voltajes 2P 500VDC 30-60KA Suntree34,72 USD 
+SUP2H-PV-800VDCDPS Protección contra sobre voltajes 2P 800VDC 20-40KA Suntree28,84 USD 
+SUP2H-PV-600VDCDPS Protección contra sobre voltaje 2P 600VDC 20-40KA Suntree28,84 USD 
+SUP2H6-PV-600VDCDPS Protección contra sobre voltaje 2P 600VDC 20-40KA Suntree28,84 USD 
+SUP2-PV-500VDC T1+T2DPS Protección contra sobre voltaje 2P 500VDC 20-40KA Suntree50,73 USD 
+SUP2-PV-1000VDC T1+T2DPS Protección contra sobre voltaje 3P 1000VDC 20-40KA Suntree81,87 USD 
+SUP2-PV-1000VDCDPS Protección contra sobre voltajes 3P 1000VDC 20-40KA Suntree44,12 USD 
+SUP2H1-PV-1000VDCDPS Protección contra sobre voltajes 3P 1000VDC 20-40KA Suntree44,12 USD 
+SUP2-DC-1000VDC T1+T2 DPS Protección contra sobre voltaje 3P 1000VDC 20-50KA Suntree70,28 USD 
+SUP2-DC-1200VDC DPS Protección contra sobre voltaje 3P 1200VDC 20-40KA Suntree73,90 USD 
+SUP2-PV-1200VDCDPS Protección contra sobre voltaje 3P 1200VDC 20-50KA Suntree73,90 USD 
+SUP2-DC-1200VDC T1+ T2DPS Protección contra sobre voltaje 3P 1200VDC 40KA T1 + T2 Suntree 75,43 USD 
+SUP2H-PV-1200VDCDPS Protección contra sobre voltajes 3P 1200VDC 20-40KA Suntree 73,90 USD 
+SUP2-PV-1500VDCDPS Protección contra sobre voltajes 3P 1500VDC 20-40KA Suntree63,76 USD 
+SUP1H-40-2P-275VACDPS Protección contra sobre voltaje AC 2P 275VAC 20-40KA T2 Suntree12,17 USD 
+SUP1H-40-3PN-275VACDPS Protección contra sobre voltaje AC 3P+N 275VAC 20-40KA T2 Suntree25,50 USD 
+SISO-40PV-16ASwitch de aislamiento DC 4P 16A 1000VDC Suntree37,67 USD 
+SISO-40PV-32ASwitch de aislamiento DC 4P 32A 1000VDC Suntree37,67 USD 
+SISO-40PV-32A DINRSwitch de aislamiento DC 4P 32A 1000VDC Din Rail Suntree28,98 USD 
+SISO-40PV-16A DINRSwitch de aislamiento DC 4P 16A 1000VDC Din Rail Suntree26,08 USD 
+SISO-40MD-32A4PSwitch de aislamiento DC 4P 32A 1000VDC Din Rail Suntree28,98 USD 
+SGL8N-2-250A4PSwitch de aislamiento 250A 4P 1500VDC Suntree238,97 USD 
+SC 4mmSOLAR CABLE 1*4mm 1500VDC1,04 USD 
+SC 6mmSOLAR CABLE 1*6mm 1500VDC1,56 USD 
+SC 10mmSOLAR CABLE 1*10mm 1500VDC2,83 USD 
+SL7N-63-32A2P-800VDCBreaker DC 2P 800VDC 32A Suntree27,00 USD 
+SM8-250HU-3P-125Breaker de caja moldeada 250A AC 800V / 1000V / 1140V 3P 125A Suntree128,58 USD 
+SM8-250HU-3P-140Breaker de caja moldeada 250A AC 800V / 1000V / 1140V 3P 140A Suntree128,58 USD 
+SM8-250HU-3P-160Breaker de caja moldeada 250A AC 800V / 1000V / 1140V 3P 160A Suntree128,58 USD 
+SM8-250HU-3P-180Breaker de caja moldeada 250A AC 800V / 1000V / 1140V 3P 180A Suntree128,58 USD 
+SM8-250HU-3P-200Breaker de caja moldeada 250A AC 800V / 1000V / 1140V 3P 200A Suntree128,58 USD 
+SM8-250HU-3P-225Breaker de caja moldeada 250A AC 800V / 1000V / 1140V 3P 225A Suntree128,58 USD 
+SM8-250HU-3P-250Breaker de caja moldeada 250A AC 800V / 1000V / 1140V 3P 250A Suntree128,58 USD 
+SM8-320HU-3P-280Breaker de caja moldeada 320A AC 800V / 1000V / 1140V 3P 280A Suntree136,13 USD 
+SM8-320HU-3P-315Breaker de caja moldeada 320A AC 800V / 1000V / 1140V 3P 315A Suntree136,13 USD 
+Precios noviembre 2025
+
+SM8-320HU-3P-320Breaker de caja moldeada 320A AC 800V / 1000V / 1140V 3P 320A Suntree136,13 USD 
+SM8-400HU 3P-320Breaker de caja moldeada 400A AC 800V / 1000V / 1140V 3P 320A Suntree242,04 USD 
+SM8-400HU 3P-350Breaker de caja moldeada 400A AC 800V / 1000V / 1140V 3P 350A Suntree242,04 USD 
+SM8-400HU 3P-400Breaker de caja moldeada 400A AC 800V / 1000V / 1140V 3P 400A Suntree242,04 USD 
+SM8-630HU 3P-500Breaker de caja moldeada 630A AC 800V / 1000V / 1140V 3P 500A Suntree327,75 USD 
+SM8-630HU 3P-630Breaker de caja moldeada 630A AC 800V / 1000V / 1140V 3P 630A Suntree327,75 USD 
+SM8-800HU 3P-630Breaker de caja moldeada 800A AC 800V / 1000V / 1140V 3P 630A Suntree428,59 USD 
+SM8-800HU 3P-800Breaker de caja moldeada 800A AC 800V / 1000V / 1140V 3P 800A Suntree428,59 USD 
+SL7N-125D 20A2P 1000VDCBreaker DC 2P 20A 1000VDC Suntree 26,22 USD 
+SL7N-125D-100A1P 6kABreaker DC 1P 100A 6kA Suntree15,73 USD 
+SL7N-125D-125A1P 6kABreaker DC 1P 125A 6kA Suntree15,73 USD 
+SL7N-125D-100A2P 6kABreaker DC 2P 100A 6kA Suntree31,46 USD 
+SL7N-63 2P 16A 600VDCBreaker DC 2P 16A 600VDC Suntree 16,52 USD 
+SL7N-125D 2P 20A 1000VDCBreaker DC 2P 20A 1000VDC Suntree 26,22 USD 
+SL7N-63 2P 20A 600VDCBreaker DC 2P 20A 600VDC Suntree 16,52 USD 
+SL7N-63 2P 25A 600VDCBreaker DC 2P 25A 600VDC Suntree 16,52 USD 
+SL7N-63 2P 32A 600VDCBreaker DC 2P 32A 600VDC Suntree16,52 USD 
+SL7N-125D 2P 40A 1000VDCBreaker DC 2P 40A 1000VDC Suntree26,22 USD 
+SL7N-63 2P 40A 600VDCBreaker DC 2P 40A 600VDC Suntree16,52 USD 
+SL7N-125D 2P 50A 1000VDCBreaker DC 2P 50A 1000VDC Suntree26,22 USD 
+SL7N-63 2P 50A 600VDCBreaker DC 2P 50A 600VDC Suntree16,52 USD 
+SL7N-63 2P 63A 600VDCBreaker DC 2P 63A 600VDC Suntree16,52 USD 
+SL7N-125D-80A2P 6kABreaker DC 2P 80A 6kA Suntree31,46 USD 
+SL7N-125D-80A2PBreaker DC 2P 80A DC600V 2kA Suntree 26,22 USD 
+SL7N-63 DC MCB 2P 63ABreaker DC MCB 2P 63A 550VDC Suntree16,52 USD 
+SL7N-125D 2P 25A 1000VDCBreaker DC 2P 25A 1000VDC Suntree26,22 USD 
+SCB8-63 1P 50A 230VACBreaker AC 1P 230VAC 50A Suntree2,62 USD 
+SCB8-63-32A1P ACBreaker AC 1P 230VAC/6KA 32A Suntree2,62 USD 
+SL7N-125D-100A2P Breaker DC 100A 2P 600VDC Suntree26,22 USD 
+SL7N-63-63A2P 600VDCBreaker DC 2P 600VDC 63A Suntree16,52 USD 
+SL7N-125D-80A2PBreaker DC 80A 2P 600VDC Suntree 26,22 USD 
+SL7N-63 DC MCB 2P 20ABreaker DC MCB 2P 20A 550VDC Suntree16,52 USD 
+SL7N-63 DC MCB 2P 25ABreaker DC MCB 2P 25A 550VDC Suntree16,52 USD 
+SL7N-63 DC MCB 2P 32ABreaker DC MCB 2P 32A 550VDC Suntree16,52 USD 
+SUP2H8-PV 2P 800VDCDPS Protección contra sobre voltaje 2P 800VDC 20-40KA Suntree2,49 USD 
+SL7-63-25A1P ACBreaker AC 1P 250VAC 25A Suntree2,62 USD 
+SCB8-63 1P 20A 230VACBreaker 63 1P 20A 230 VAC Suntree 2,62 USD 
+SL7N-63 DC 180V 1P 40ABreaker DC 180V 1P 40A Suntree 8,13 USD 
+SCB8-63 1P 25A 230VACBreaker 63 1P 25A 230 VAC Suntree 2,62 USD 
+SCB8-63 1P 25A 230VACBreaker 63 1P 25A 230 VAC Suntree 2,62 USD 
+SCB8-63 1P 32A 230VACBreaker 63 1P 32A 230 VAC Suntree 2,62 USD 
+SCB8-63 1P 16A 230VACBreaker AC 1P 230VAC 16A Suntree 2,62 USD 
+SL7N-125D 2P 80A 600VDCBreaker DC 2P 80A 600VDC Suntree 12,06 USD                     
+SUP2-DC-500VDC T1+T2DPS Protección contra sobre voltaje 2P 500VDC 20-40KA Suntree 45,89 USD                     
+P.V.P. sin IVA
+AcuCT-075-100:333Transformadores para Smart Meter 100A:333mV Split Core CT 0,75"*0,75" Window Size Accuenergy45,05 USD
+AcuCT-075-200:333200A:333mV Split Core CT, 0,75" Window Diameter Accuenergy45,05 USD
+AcuCT-125-300:333300A:333mV Split Core CT, 1.25" Window Diameter Accuenergy62,28 USD
+AcuCT-125-400:333400A:333mV Split Core CT, 1,25" Window Diameter Accuenergy62,28 USD
+AcuCT-125-600:333600A:333mV Split Core CT, 1,25" Window Diameter Accuenergy62,28 USD
+AcuCT-0812-250:5250:5A Split Core CT 0,8"x1,2" Window Accuenergy71,02 USD
+AcuCT-2031-400:5400:5A Split Core CT 2,0"x3,1" Window Accuenergy111,04 USD
+AcuCT-2031-1000:51000:5A Split Core CT 2,0"x3,1" Window Accuenergy111,04 USD
+AcuCT-3050-1000:3331000A:333mV Split Core CT, 3"*5" Window Size Accuenergy165,63 USD
+AcuCT-H100-200:333200A:333mV Hinged CR, 1" Window Diameter Accuenergy51,68 USD
+AcuCT-H063-50:333Transformador de corriente con bisagra 50A:333mV 0,63"*0,63"Accuenergy39,75 USD
+AcuCT-H100-250:333250 A:333mV Split Core CT, 1" Window Diameter Accuenergy51,68 USD
+RCT16-100016" Long Rogowski Coil CT with 4" Window 120mV 1000A 60Hz Accuenergy166,95 USD
+P.V.P. sin IVA
+ILFPOSL-3072Batería de litio Sauco Light 3072Wh 25,6V inti630 USD
+Baterías 
+Precios noviembre 2025
+
+ILFPOS-3840Batería de litio Sauco 3840Wh 25,6V Inti799,50 USD
+ILFPOS-5120Batería de litio Sauco 5120Wh 25,6V inti1.127,50 USD
+ILFPOSL-3840Batería de litio Sauco Light 3840Wh 25,6V inti650 USD
+ILFPOSL-5120Batería de litio Sauco Light 5120Wh 25,6V inti950 USD
+ILFPOSL-6144Batería de litio Sauco Light 6144Wh 51,2V inti990 USD
+ILFPOSL-512048Batería de litio Sauco Light 5120Wh 51,2V inti960 USD
+P.V.P. sin IVA
+TB-PLUS12-3Batería AGM 12V 3Ah Tb-Plus49.623,00 COP
+TB-PLUS12-4Batería AGM 12V 4Ah Tb-Plus40.698,00 COP
+TB-PLUS12-55Batería AGM 12V 5Ah Tb-Plus47.719,00 COP
+TB-PLUS 12-7Batería AGM 12V 7Ah Tb-Plus50.813,00 COP
+TB-PLUS12-9Batería AGM 12V 9Ah Tb-Plus68.901,00 COP
+TB-PLUS12-12Batería AGM 12V 12Ah Tb-Plus88.893,00 COP
+TB-PLUS12-18Batería AGM 12V 18Ah Tb-Plus122.927,00 COP
+TB-PLUS12-26Batería AGM 12V 26Ah Tb-Plus197.659,00 COP
+TB-PLUS12-35Batería AGM 12V 35Ah Tb-Plus271.201,00 COP
+TB-PLUS12-40Batería AGM 12V 40Ah Tb-Plus297.024,00 COP
+TB-PLUS12-55 GELBatería GEL 12V 55Ah Tb-Plus444.941,00 COP
+TB-PLUS12-75 GELBatería GEL 12V 75Ah Tb-Plus585.718,00 COP
+TB-PLUS12-100 GELBatería GEL 12V 100Ah Tb-Plus822.171,00 COP
+TB-PLUS12-120 GELBatería GEL 12V 120Ah Tb-Plus951.167,00 COP
+TB-PLUS12-150 GELBatería GEL 12V 150Ah Tb-Plus1.097.061,00 COP
+TB-PLUS12-200 GELBatería GEL 12V 200Ah Tb-Plus1.464.295,00 COP
+TB-PLUS12-250 GELBatería GEL 12V 250Ah Tb-Plus1.839.978,00 COP
+TB-PLUS LIFEPO4 12-75Batería Litio 12V 75Ah Tb-Plus1.908.641,00 COP
+TB-PLUS LIFEPO4 12-100Batería Litio 12V 100Ah Tb-Plus2.201.500,00 COP
+TB-PLUS LIFEPO4 12-150Batería Litio 12V 150Ah Tb-Plus2.623.950,00 COP
+TB-PLUS LIFEPO4 51,6-100Batería Litio 51,6V 100Ah Tb-Plus5.622.750,00 COP
+TB-PLUS LIFEPO4 24-120Batería Litio 24V 120Ah Tb-Plus3.372.460,00 COP
+P.V.P. sin IVA
+UP5000Batería de Ion litio 48V 4,8Kwh 4500 ciclos Pylontech897,6 USD
+UF5000Batería de Ion litio 51.2V 5120Wh Pylontech848,64 USD                  
+US5000Batería de Ion litio 48V 4,8Kwh 6000 ciclos Pylontech1289,28 USD
+PylonCableKitCables de conexión entre baterías Pylontech8,16 USD
+LV-HUBUP5000Communication Hub for LV energy system Pylontech522,24 USD
+RT12100G31Batería de litio 100Wh 12V con comunciación Pylontech417,79 USD
+FidusBatería de litio residencial 5,12kwh Pylontech897,6 USD
+LV-HUBUF5000Communication Hub for LV UF5000 energy system Pylontech522,24 USD
+P.V.P. sin IVA
+SDC10-Box5Batería de litio 5,12kWh 51V 100Ah Shoto680 USD
+3.2V314AHBatería de litio 3.2V 314AH  Shoto100,8 USD
+HP-B10Batería de litio 10,24kWh 100Ah 6000 Ciclos Shoto2041,6 USD
+HP10-Box5 ProBatería de litio 5,12kWh 51V  Shoto1008 USD
+SDC48150Bateria de litio 48V 150AH 7,2kwh Shoto1019,2 USD
+HP-SG40Batería de litio 40.96kWh 409.6V Shoto7676,8 USD
+HP-SG60Batería e litio 61,44kWh 614,4V Shoto11256 USD
+RACK-SDC10-BOX5Rack para SDC10-BOX5159,2 USD
+HVC051100M02 Módulo de batería de litio 5,12kWh para HP-SG40 409,6V Shoto817,6 USD
+HP-SGHUBHub para HV batteries Shoto1112 USD
+HP-SGMódulo de batería para sistema HV HP-SG Shoto817,6 USD
+P.V.P. sin IVA
+JAM66D45LB 620Panel solar BIfacial Tipo N 620W JASolar77,5 USD
+JAM66D46-710LBPanel solar n-type double glass bifacial 710W JASolar  82,5 USD
+RS7-630N-E2Panel solar 630W  Mono-facial Renesola69,3 USD
+Paneles
+Precios noviembre 2025
+
+P.V.P. sin IVA
+Wind13+Aerogenerador Bornay Wind 13 +: 2 palas, 13 m2, Pot. Nom. 1 kW - 12 m/s, 220 vac Bornay6.225,00 €                     
+Wind25,2+Aerogenerador Bornay Wind 25,2 +: 2 palas, 25 m2, Pot. Nom. 3 kW - 12 m/s, 220 vac Bornay8.595,00 €                     
+Wind25,3+Aerogenerador Bornay Wind 25,3 +: 3 palas, 25 m2, Pot. Nom. 5 kW - 12 m/s, 220 vac Bornay12.412,50 €                  
+MPPT Wind13+Regulador de carga MPPT Wind 13 +: 220vac s: 12, 24, 48v. Inom: 125 Amp, Inc. Resistencia frenado Bornay2.475,00 €                     
+MPPT Wind 25+Regulador de carga MPPT Wind 25,2+: 220vac s: 12, 24, 48v. Inom: 125 Amp, Inc. Resistencia frenado Bornay2.587,50 €                     
+I Wind 13+ CredInterface Wind 13 + Conexión Red: 220 vac s: 50-350 vdc. Inc. Resistencia frenado. Com. ModBus Bornay2.025,00 €                     
+I Wind 25+ CredInterface Wind 25,2+ Conexión Red: 220 vac s: 50-350 vdc. Inc. Resistencia frenado. Com. ModBus Bornay2.175,00 €                     
+Anem-BornAnemómetro Wind + para monitorización aerogenerador Bornay300,00 €                        
+Clsuter-AnemAnemómetr Cluster Anemómetro, 1 entrada / 10 salidas Bornay255,00 €                        
+Wind+ DongleAccesorio de comunicación Wind + para monitorización aerogenerador Bornay187,50 €                        
+ P.V.P. sin IVA
+DTSD422-D3-WIFISmart Meter Three phase power meter, wifh 6 CTs SolarMan305,50 USD
+DDZY422-D2-WSmart Meter Single phase power meterSolarMan211,50 USD
+WP-2SWeather station, including 6 sensors and a wifi logger SolarMan3.760,00 USD
+LSW-3Stick logger for a unit of Deye inverter, wifi version SolarMan51,70 USD
+LSE-3Stick logger for a unit of Deye inverter, ethernet version SolarMan70,50 USD
+LS4G-3Stick logger for a unit of Deye inverter, 4G version SolarMan282,00 USD
+WP-2S+Weather station, including 6 sensors + Ambient pressure sensor and a wifi logger SolarMan4.230,00 USD               
+WP-2S++Estación meteorológica con 6 sensores + piranómetro + sensor temperatura módulo PV + sensor de polvo + wifi logger Solarman9.400,00 USD               
+ P.V.P. sin IVA
+9001105ECcube2 Logger3.570,00 €                     
+9001101ECcube2 Solar3.780,00 €                     
+9001102ECcube2 S4.200,00 €                     
+9001103ECcube2 M4.620,00 €                     
+9001104ECcube2 L5.040,00 €                     
+1001104ECpv2 Logger1.260,00 €                     
+1001100ECpv2 Solar1.470,00 €                     
+1001101ECpv2 S1.890,00 €                     
+1001102ECpv2 M2.310,00 €                     
+1001103ECpv2 L2.730,00 €                     
+2001000Pilot SPM32420,00 €                        
+2002000Pilot SPM33420,00 €                        
+3002000ECpanel7966,00 €                        
+60010014G Modem630,00 €                        
+60010024G Modem - Dual Sim840,00 €                        
+500100116 Digital Input Module472,50 €                        
+50010028 Digital Output Module537,60 €                        
+500100416 Digital Input + 8 Digital Output Module602,70 €                        
+50010054 x 10A relay outputs - 24V PNP/NPN coils136,08 €                        
+50010068 x 10A relay outputs - 24V PNP/NPN coils158,76 €                        
+6003001LiteMeter Pro Irradiation and Module temp.588,00 €                        
+6003002EnvMeter Pro588,00 €                        
+6003003Windmeter693,00 €                        
+9001005ECcubeX Logger3.990,00 €                     
+9003001ECcubeX Solar4.200,00 €                     
+9003002ECcubeX S4.620,00 €                     
+9003003ECcubeX M5.040,00 €                     
+9003004ECcubeX L5.460,00 €                     
+9001012ECmeas (power meter not included - must be added at price below)3.465,00 €                     
+4001005ECcube/ECpv Logger420,00 €                        
+4001001ECcube/ECpv Solar420,00 €                        
+4001002ECcube/ECpv S630,00 €                        
+4001003ECcube/ECpv M840,00 €                        
+4001004ECcube/ECpv L1.050,00 €                     
+P7ECpanel71.050,00 €                     
+Aerogeneradores
+Estaciones meteorológicas
+Accesorios 
+Precios noviembre 2025
+
+G44G Modem (SIM not included)630,00 €                        
+G54G Modem - dual SIM (SIM not included)840,00 €                        
+S1Surge Protection COM2525,00 €                        
+S2Surge Protection COM3525,00 €                        
+S3Surge Protection Ethernet525,00 €                        
+M1Modbus Multiplexer693,00 €                        
+I0Additional one time cost for build in of any extras: I1-I5210,00 €                        
+I116 x Digital Inputs471,87 €                        
+I28 x Digital Outputs538,02 €                        
+I316 x Digital Inputs + 8 x Digital Outputs604,17 €                        
+I4DIN rail interface with 4 x 10A relay outputs – 24V PNP/NPN coils136,08 €                        
+I5DIN rail interface with 8 x 10A relay outputs – 24V PNP/NPN coils158,76 €                        
+4002002Eclink 10 years Encombi1.008,00 €                     
+4002001Eclink 1 years Encombi126,00 €                        
+D3DNP3 Converter Encombi1.260,00 €                     
+Se comercializan todos los equipos del portafolio de las marcas representadas.
+Energía & Movilidad se reserva el derecho de modificar los precios sin previo aviso.
+Los precios no incluyen IVA.
+La entrega de los equipos es en la Carrera 48 # 163B - 73, Bogotá a menos de llegar a un acuerdo diferente con el asesor comercial.
+Antes de solicitar cotización / compra del equipo, asegúrese de que el equipo tenga existencia en inventario. Es responsabilidad del cliente mantenerse informado acerca de la 
+disponibilidad y existencia de los equipos.
+Precios noviembre 2025

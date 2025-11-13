@@ -1,0 +1,250 @@
+{
+  "fecha": "2025-11-13T02:05:12.992Z",
+  "trm": 4200,
+  "equiposNoviembre": [
+    {
+      "codigo": "Ezlogger",
+      "descripcion": "Pro Dispositivo de monitoreo remoto Ethernet conexión RS485 GoodWe",
+      "precioUSD": 17920,
+      "categoria": "SG20s 2 Adhesivo Sika SG20s 600ml para Panel Galaxy Plus Goodwe 24,00 USD"
+    },
+    {
+      "codigo": "GW-BBB11WW0LYNX",
+      "descripcion": "D Hanger de pared para Lynx D Goodwe",
+      "precioUSD": 11360,
+      "categoria": "GW5K-ES-LD-G10Inversor híbrido split phase 5kW 120V/208V Wifi DC Switch DPS II AFCI Goodwe 1.395,20 USD"
+    },
+    {
+      "codigo": "GM-RS-56-AZ-DRail",
+      "descripcion": "splice Goomax",
+      "precioUSD": 159,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "GM-AS-B01-DForefeet",
+      "descripcion": "components Goomax",
+      "precioUSD": 363,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "GM-RS-05-400Rail",
+      "descripcion": "splice Goomax",
+      "precioUSD": 840,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SL7-63-20A2P",
+      "descripcion": "ACBreaker AC 2P 400Vac 20A Suntree",
+      "precioUSD": 629,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SCB8-63-16A1P",
+      "descripcion": "ACBreaker AC 1P 230VAC/6KA 16A Suntree",
+      "precioUSD": 262,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SCB8-63-20A1P",
+      "descripcion": "ACBreaker AC 1P 230VAC/6KA 20A Suntree",
+      "precioUSD": 262,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SL7N-125D-125A2PBreaker",
+      "descripcion": "DC 125A 2P 600VDC Suntree",
+      "precioUSD": 2622,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SL7N-125D-80A2PBreaker",
+      "descripcion": "DC 80A 2P 600VDC Suntree",
+      "precioUSD": 2622,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SUP2-DC-1200VDC",
+      "descripcion": "T1+ T2DPS Protección contra sobre voltaje 3P 1200VDC 40KA T1 + T2 Suntree",
+      "precioUSD": 7543,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SUP2H-PV-1200VDCDPS",
+      "descripcion": "Protección contra sobre voltajes 3P 1200VDC 20-40KA Suntree",
+      "precioUSD": 7390,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SL7N-125D",
+      "descripcion": "20A2P 1000VDCBreaker DC 2P 20A 1000VDC Suntree",
+      "precioUSD": 2622,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SL7N-63",
+      "descripcion": "2P 16A 600VDCBreaker DC 2P 16A 600VDC Suntree",
+      "precioUSD": 1652,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SL7N-125D",
+      "descripcion": "2P 20A 1000VDCBreaker DC 2P 20A 1000VDC Suntree",
+      "precioUSD": 2622,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SL7N-63",
+      "descripcion": "2P 20A 600VDCBreaker DC 2P 20A 600VDC Suntree",
+      "precioUSD": 1652,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SL7N-63",
+      "descripcion": "2P 25A 600VDCBreaker DC 2P 25A 600VDC Suntree",
+      "precioUSD": 1652,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SL7N-125D-80A2PBreaker",
+      "descripcion": "DC 2P 80A DC600V 2kA Suntree",
+      "precioUSD": 2622,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SL7N-125D-80A2PBreaker",
+      "descripcion": "DC 80A 2P 600VDC Suntree",
+      "precioUSD": 2622,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SCB8-63",
+      "descripcion": "1P 20A 230VACBreaker 63 1P 20A 230 VAC Suntree",
+      "precioUSD": 262,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SL7N-63",
+      "descripcion": "DC 180V 1P 40ABreaker DC 180V 1P 40A Suntree",
+      "precioUSD": 813,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SCB8-63",
+      "descripcion": "1P 25A 230VACBreaker 63 1P 25A 230 VAC Suntree",
+      "precioUSD": 262,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SCB8-63",
+      "descripcion": "1P 25A 230VACBreaker 63 1P 25A 230 VAC Suntree",
+      "precioUSD": 262,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SCB8-63",
+      "descripcion": "1P 32A 230VACBreaker 63 1P 32A 230 VAC Suntree",
+      "precioUSD": 262,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SCB8-63",
+      "descripcion": "1P 16A 230VACBreaker AC 1P 230VAC 16A Suntree",
+      "precioUSD": 262,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SL7N-125D",
+      "descripcion": "2P 80A 600VDCBreaker DC 2P 80A 600VDC Suntree",
+      "precioUSD": 1206,
+      "categoria": "P.V.P. sin IVA"
+    },
+    {
+      "codigo": "SUP2-DC-500VDC",
+      "descripcion": "T1+T2DPS Protección contra sobre voltaje 2P 500VDC 20-40KA Suntree",
+      "precioUSD": 4589,
+      "categoria": "P.V.P. sin IVA"
+    }
+  ],
+  "equiposOctubre": [
+    {
+      "descripcion": "SmartPS-250A-T0301.000$",
+      "precioCOP": 294000
+    },
+    {
+      "descripcion": "3P -3XCT CLAMP 1000 (CTS 1000A)680.000$",
+      "precioCOP": 555000
+    },
+    {
+      "descripcion": "SOLIS-3P-3xCT CLAMP",
+      "precioCOP": 20001480000
+    },
+    {
+      "descripcion": "INVERSOR FRONIUS SYMO 10.0-3 208 /",
+      "precioCOP": 24010680000
+    },
+    {
+      "descripcion": "INVERSOR FRONIUS SYMO 12.0-3 208 /",
+      "precioCOP": 24011800000
+    },
+    {
+      "descripcion": "TORNILLO DE FIJACIÓN 125/70",
+      "precioCOP": 40000
+    },
+    {
+      "descripcion": "ESTRUCTURA ALURACK TORNILLO M8 X",
+      "precioCOP": 20825
+    },
+    {
+      "descripcion": "ESTRUCTURA ALURACK TORNILLO M8 X",
+      "precioCOP": 25900
+    },
+    {
+      "descripcion": "ESTRUCTURA ALURACK TORNILLO M8 X",
+      "precioCOP": 30990
+    },
+    {
+      "descripcion": "K2 ESTRUCTURA RAIL CONNECTOR UL 2703 SET CR48-S, MILL, 1/2\"",
+      "precioCOP": 400038516323
+    },
+    {
+      "descripcion": "K2 ESTRUCTURA CROSSRAIL 48-S TILT CONNECTOR SET 1/2\"\"",
+      "precioCOP": 400050514953
+    },
+    {
+      "descripcion": "K2 ESTRUCTURA L-FOOT BRACKET W/T-BOLT & NUT, CR48 MIL, 1/2\"\"",
+      "precioCOP": 400063012200
+    },
+    {
+      "descripcion": "K2 ESTRUCTURA CrossRail 48-X, 4.70m, Mill",
+      "precioCOP": 4000669135000
+    },
+    {
+      "descripcion": "K2 ESTRUCTURA CrossRail 44-X Max 4.60m,Â Mill",
+      "precioCOP": 4000223120000
+    },
+    {
+      "descripcion": "K2 ESTRUCTURA SIMPLE TILT KNEE SET",
+      "precioCOP": 400011617000
+    },
+    {
+      "descripcion": "K2 ESTRUCTURA CROSSRAIL 48-X, 4.60m Rail, Mill",
+      "precioCOP": 4000199128755
+    },
+    {
+      "descripcion": "K2 ESTRUCTURA MINIRAIL BASE SET",
+      "precioCOP": 400007337900
+    },
+    {
+      "descripcion": "K2 ESTRUCTURA MicroRail TR, 2 Holes w/EPDM",
+      "precioCOP": 400018521500
+    },
+    {
+      "descripcion": "K2 ESTRUCTURA SS PowerClamp Railless, Kit",
+      "precioCOP": 400053223343
+    },
+    {
+      "descripcion": "K2 ESTRUCTURA Universal Standard Hook+2, 5.5\" Base",
+      "precioCOP": 400014243000
+    }
+  ]
+}
