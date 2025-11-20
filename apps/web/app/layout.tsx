@@ -17,6 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
+      <head>
+        <base href={process.env.NEXT_PUBLIC_BASE_PATH || '/OKR'} />
+      </head>
       <body className={inter.className}>
         <Providers>{children}</Providers>
       </body>

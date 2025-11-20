@@ -1,1 +1,12 @@
-{}
+{
+  "/_not-found/page": "app/_not-found/page.js",
+  "/(auth)/login/page": "app/(auth)/login/page.js",
+  "/(dashboard)/admin/page": "app/(dashboard)/admin/page.js",
+  "/(dashboard)/crm/companies/new/page": "app/(dashboard)/crm/companies/new/page.js",
+  "/(dashboard)/crm/opportunities/new/page": "app/(dashboard)/crm/opportunities/new/page.js",
+  "/(dashboard)/crm/page": "app/(dashboard)/crm/page.js",
+  "/(dashboard)/marketing/page": "app/(dashboard)/marketing/page.js",
+  "/(dashboard)/dashboard/page": "app/(dashboard)/dashboard/page.js",
+  "/(dashboard)/okr/page": "app/(dashboard)/okr/page.js",
+  "/page": "app/page.js"
+}
