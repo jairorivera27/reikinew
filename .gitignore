@@ -1,5 +1,7 @@
 # build output
 dist/
+.next/
+out/
 
 # generated types
 .astro/
@@ -15,10 +17,20 @@ pnpm-debug.log*
 
 # environment variables
 .env
+.env.local
 .env.production
+.env*.local
 
 # macOS-specific files
 .DS_Store
 
 # jetbrains setting folder
 .idea/
+
+# database
+*.db
+*.db-journal
+prisma/dev.db*
+
+# OS
+Thumbs.db
