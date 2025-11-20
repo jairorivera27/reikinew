@@ -1,0 +1,11 @@
+# Configuración para Next.js en subdirectorio /OKR
+RewriteEngine On
+RewriteBase /OKR/
+
+# Redirigir todas las solicitudes a Next.js
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ /OKR/$1 [L]
+
+
+
