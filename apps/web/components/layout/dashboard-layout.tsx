@@ -12,7 +12,8 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (!token) {
-      router.push('/login');
+      const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/OKR';
+      window.location.href = `${basePath}/login`;
     } else {
       setIsLoading(false);
     }

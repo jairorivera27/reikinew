@@ -1,15 +1,15 @@
 /** @type {import('next').NextConfig} */
-const isProduction = process.env.NODE_ENV === 'production';
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH || (isProduction ? '/OKR' : '');
+// La plataforma siempre se despliega en /OKR
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/OKR';
 
 const nextConfig = {
   reactStrictMode: true,
-  ...(basePath && {
-    basePath: basePath,
-    assetPrefix: basePath,
-  }),
-  // En desarrollo, puedes usar NEXT_PUBLIC_BASE_PATH=/OKR para probar
-  // En producción, se usará automáticamente /OKR
+  basePath: basePath,
+  assetPrefix: basePath,
+  // Configuración para producción en reikisolar.com.co/OKR
+  output: 'standalone',
+  // Asegurar que las rutas funcionen correctamente con el basePath
+  trailingSlash: false,
 };
 
 module.exports = nextConfig;
