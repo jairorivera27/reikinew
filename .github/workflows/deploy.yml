@@ -1,4 +1,4 @@
-name: Deploy to GitHub Pages
+name: Deploy Next.js to GitHub Pages
 
 on:
   push:
@@ -28,16 +28,24 @@ jobs:
           node-version: '20'
           cache: 'npm'
       
-      - name: Install dependencies
+      - name: Install root dependencies
         run: npm ci
+        working-directory: .
       
-      - name: Build Astro
+      - name: Install web dependencies
+        run: npm ci
+        working-directory: ./apps/web
+      
+      - name: Build Next.js
         run: npm run build
+        working-directory: ./apps/web
         env:
-          ASTRO_TELEMETRY_DISABLED: 1
+          GITHUB_PAGES: 'true'
+          NEXT_PUBLIC_BASE_PATH: '/OKR'
+          NEXT_PUBLIC_API_URL: 'https://reikisolar.com.co/api'
       
       - name: Create .nojekyll file
-        run: touch dist/.nojekyll
+        run: touch apps/web/out/.nojekyll
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
@@ -45,7 +53,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./dist
+          path: ./apps/web/out
 
   deploy:
     environment:

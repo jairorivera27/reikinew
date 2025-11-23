@@ -1,15 +1,20 @@
 /** @type {import('next').NextConfig} */
 // La plataforma siempre se despliega en /OKR
 const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/OKR';
+const isGitHubPages = process.env.GITHUB_PAGES === 'true';
 
 const nextConfig = {
   reactStrictMode: true,
   basePath: basePath,
   assetPrefix: basePath,
-  // Configuración para producción en reikisolar.com.co/OKR
-  output: 'standalone',
+  // Para GitHub Pages, usar export estático; para servidor, usar standalone
+  output: isGitHubPages ? 'export' : 'standalone',
   // Asegurar que las rutas funcionen correctamente con el basePath
   trailingSlash: false,
+  // Configuración para export estático
+  images: {
+    unoptimized: true, // Necesario para export estático
+  },
 };
 
 module.exports = nextConfig;
