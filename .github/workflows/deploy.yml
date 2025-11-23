@@ -33,14 +33,21 @@ jobs:
       # ============================================
       - name: Install root dependencies (Astro)
         run: |
-          # Intentar npm ci, si falla usar npm install para sincronizar
-          npm ci --prefer-offline --no-audit || npm install --no-audit
+          echo "📦 Instalando dependencias de Astro..."
+          # Limpiar cache si hay problemas
+          npm cache clean --force || true
+          # Regenerar package-lock.json si está desincronizado
+          if ! npm ci --prefer-offline --no-audit 2>&1 | tee install.log; then
+            echo "⚠️ npm ci falló, regenerando package-lock.json..."
+            rm -f package-lock.json
+            npm install --no-audit
+          fi
           echo "✅ Dependencias de Astro instaladas"
       
       - name: Build Astro (sitio principal)
         run: |
           echo "🔨 Construyendo sitio principal con Astro..."
-          npm run build
+          npm run build || (echo "❌ Error en build de Astro" && exit 1)
           echo "✅ Build de Astro completado"
         env:
           ASTRO_TELEMETRY_DISABLED: 1
@@ -51,8 +58,15 @@ jobs:
       - name: Install Next.js dependencies
         run: |
           cd apps/web
-          # Intentar npm ci, si falla usar npm install para sincronizar
-          npm ci --prefer-offline --no-audit || npm install --no-audit
+          echo "📦 Instalando dependencias de Next.js..."
+          # Limpiar cache si hay problemas
+          npm cache clean --force || true
+          # Regenerar package-lock.json si está desincronizado
+          if ! npm ci --prefer-offline --no-audit 2>&1 | tee install.log; then
+            echo "⚠️ npm ci falló, regenerando package-lock.json..."
+            rm -f package-lock.json
+            npm install --no-audit
+          fi
           echo "✅ Dependencias de Next.js instaladas"
       
       - name: Disable middleware for static export
