@@ -1,10 +1,11 @@
 name: Deploy Astro + Next.js to GitHub Pages
 
+# TEMPORALMENTE DESHABILITADO - Solo desplegar sitio Astro principal
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
+  workflow_dispatch:  # Solo manual, no automático
+  # push:
+  #   branches:
+  #     - main
 
 permissions:
   contents: read
@@ -53,59 +54,14 @@ jobs:
           ASTRO_TELEMETRY_DISABLED: 1
       
       # ============================================
-      # BUILD PLATAFORMA OKR/CRM (NEXT.JS)
+      # SOLO SITIO ASTRO POR AHORA
+      # Next.js OKR/CRM se despliega en servidor propio
       # ============================================
-      - name: Install Next.js dependencies
+      - name: Prepare output
         run: |
-          cd apps/web
-          echo "📦 Instalando dependencias de Next.js..."
-          # Limpiar cache si hay problemas
-          npm cache clean --force || true
-          # Regenerar package-lock.json si está desincronizado
-          if ! npm ci --prefer-offline --no-audit 2>&1 | tee install.log; then
-            echo "⚠️ npm ci falló, regenerando package-lock.json..."
-            rm -f package-lock.json
-            npm install --no-audit
-          fi
-          echo "✅ Dependencias de Next.js instaladas"
-      
-      - name: Disable middleware for static export
-        run: |
-          if [ -f apps/web/middleware.ts ]; then
-            mv apps/web/middleware.ts apps/web/middleware.ts.bak
-            echo "Middleware deshabilitado para export estático"
-          fi
-      
-      - name: Build Next.js (plataforma OKR/CRM)
-        run: |
-          cd apps/web
-          echo "🔨 Construyendo plataforma OKR/CRM con Next.js..."
-          echo "GITHUB_PAGES: $GITHUB_PAGES"
-          echo "NEXT_PUBLIC_BASE_PATH: $NEXT_PUBLIC_BASE_PATH"
-          npm run build 2>&1 | tee build.log || (cat build.log && exit 1)
-          echo "✅ Build de Next.js completado"
-        env:
-          GITHUB_PAGES: 'true'
-          NEXT_PUBLIC_BASE_PATH: '/OKR'
-          NEXT_PUBLIC_API_URL: 'https://reikisolar.com.co/api'
-        continue-on-error: false
-      
-      - name: Restore middleware
-        run: |
-          if [ -f apps/web/middleware.ts.bak ]; then
-            mv apps/web/middleware.ts.bak apps/web/middleware.ts
-            echo "✅ Middleware restaurado"
-          fi
-        if: always()
-      
-      # ============================================
-      # COMBINAR AMBOS BUILDS
-      # ============================================
-      - name: Combine builds
-        run: |
-          echo "🔗 Combinando sitio Astro y plataforma Next.js..."
+          echo "📦 Preparando output del sitio Astro..."
           
-          # Crear directorio de output combinado
+          # Crear directorio de output
           mkdir -p _site
           
           # Copiar sitio Astro (sitio principal)
@@ -113,16 +69,7 @@ jobs:
             cp -r dist/* _site/
             echo "✅ Sitio Astro copiado"
           else
-            echo "⚠️ Advertencia: No se encontró dist/ de Astro"
-          fi
-          
-          # Copiar plataforma Next.js a /OKR
-          if [ -d apps/web/out ]; then
-            mkdir -p _site/OKR
-            cp -r apps/web/out/* _site/OKR/
-            echo "✅ Plataforma Next.js copiada a /OKR"
-          else
-            echo "❌ ERROR: No se encontró apps/web/out/"
+            echo "❌ ERROR: No se encontró dist/ de Astro"
             exit 1
           fi
           
@@ -133,10 +80,6 @@ jobs:
           # Verificar estructura
           echo "📁 Estructura final:"
           ls -la _site/ | head -20
-          if [ -d _site/OKR ]; then
-            echo "✅ Directorio /OKR existe"
-            ls -la _site/OKR/ | head -10
-          fi
       
       - name: Setup Pages
         uses: actions/configure-pages@v4
