@@ -1,4 +1,5 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete, Query, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Query, UseGuards, Res } from '@nestjs/common';
+import { Response } from 'express';
 import { CrmService } from '../crm.service';
 import { CreateContactDto } from '../dto/create-contact.dto';
 import { UpdateContactDto } from '../dto/update-contact.dto';
@@ -32,6 +33,14 @@ export class ContactsController {
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateContactDto: UpdateContactDto) {
     return this.crmService.updateContact(id, updateContactDto);
+  }
+
+  @Get('export/csv')
+  async exportToCSV(@Query('companyId') companyId: string | undefined, @Res() res: Response) {
+    const csv = await this.crmService.exportContactsToCSV(companyId);
+    res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+    res.setHeader('Content-Disposition', `attachment; filename=contacts-${new Date().toISOString().split('T')[0]}.csv`);
+    return res.send(csv);
   }
 
   @Delete(':id')

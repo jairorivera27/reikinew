@@ -13,9 +13,10 @@ import { Plus, Target, TrendingUp } from 'lucide-react';
 
 export default function OKRPage() {
   const [showCreateForm, setShowCreateForm] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const queryClient = useQueryClient();
 
-  const { data: okrs, isLoading } = useQuery({
+  const { data: okrs, isLoading, error: okrsError } = useQuery({
     queryKey: ['okrs'],
     queryFn: async () => {
       const res = await api.get('/okr');
@@ -23,7 +24,7 @@ export default function OKRPage() {
     },
   });
 
-  const { data: metrics } = useQuery({
+  const { data: metrics, error: metricsError } = useQuery({
     queryKey: ['okr-dashboard'],
     queryFn: async () => {
       const res = await api.get('/okr/dashboard');
@@ -38,22 +39,51 @@ export default function OKRPage() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['okrs'] });
+      queryClient.invalidateQueries({ queryKey: ['okr-dashboard'] });
       setShowCreateForm(false);
+      setError(null);
+    },
+    onError: (err: any) => {
+      setError(err.response?.data?.message || 'Error al crear el OKR');
     },
   });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setError(null);
     const formData = new FormData(e.currentTarget);
     const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+    const startDate = formData.get('startDate');
+    const endDate = formData.get('endDate');
+
+    // Validar que las fechas no sean null o vacías
+    if (!startDate || !endDate || typeof startDate !== 'string' || typeof endDate !== 'string') {
+      setError('Las fechas de inicio y fin son requeridas');
+      return;
+    }
+
+    // Validar que la fecha fin sea posterior a la fecha inicio
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    
+    if (isNaN(start.getTime()) || isNaN(end.getTime())) {
+      setError('Las fechas proporcionadas no son válidas');
+      return;
+    }
+
+    if (end <= start) {
+      setError('La fecha de fin debe ser posterior a la fecha de inicio');
+      return;
+    }
 
     createMutation.mutate({
       title: formData.get('title'),
       description: formData.get('description'),
       area: formData.get('area'),
       period: formData.get('period'),
-      startDate: formData.get('startDate'),
-      endDate: formData.get('endDate'),
+      startDate,
+      endDate,
       ownerId: user.id,
     });
   };
@@ -65,6 +95,21 @@ export default function OKRPage() {
           <div className="text-center">
             <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary-700 border-r-transparent"></div>
             <p className="mt-2 text-gray-600">Cargando OKRs...</p>
+          </div>
+        </div>
+      </DashboardLayout>
+    );
+  }
+
+  if (okrsError || metricsError) {
+    return (
+      <DashboardLayout>
+        <div className="flex items-center justify-center h-64">
+          <div className="text-center">
+            <p className="text-red-600">Error al cargar los datos</p>
+            <p className="mt-2 text-sm text-gray-500">
+              {okrsError?.message || metricsError?.message || 'Por favor, intenta recargar la página'}
+            </p>
           </div>
         </div>
       </DashboardLayout>
@@ -127,6 +172,11 @@ export default function OKRPage() {
               <CardTitle>Crear Nuevo OKR</CardTitle>
             </CardHeader>
             <CardContent>
+              {error && (
+                <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-md text-red-700 text-sm">
+                  {error}
+                </div>
+              )}
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div>
                   <Label htmlFor="title">Título del Objetivo</Label>

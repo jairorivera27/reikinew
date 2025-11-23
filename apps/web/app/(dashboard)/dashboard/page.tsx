@@ -7,29 +7,63 @@ import api from '@/lib/api';
 import { Target, Users, TrendingUp, FileText, DollarSign, ArrowUp, ArrowDown } from 'lucide-react';
 
 export default function DashboardPage() {
-  const { data: okrMetrics } = useQuery({
+  const { data: okrMetrics, error: okrError, isLoading: okrLoading } = useQuery({
     queryKey: ['okr-dashboard'],
     queryFn: async () => {
       const res = await api.get('/okr/dashboard');
       return res.data;
     },
+    retry: 1,
   });
 
-  const { data: pipelineMetrics } = useQuery({
+  const { data: pipelineMetrics, error: pipelineError, isLoading: pipelineLoading } = useQuery({
     queryKey: ['pipeline-metrics'],
     queryFn: async () => {
       const res = await api.get('/opportunities/pipeline/metrics');
       return res.data;
     },
+    retry: 1,
   });
 
-  const { data: marketingMetrics } = useQuery({
+  const { data: marketingMetrics, error: marketingError, isLoading: marketingLoading } = useQuery({
     queryKey: ['marketing-dashboard'],
     queryFn: async () => {
       const res = await api.get('/marketing/dashboard');
       return res.data;
     },
+    retry: 1,
   });
+
+  const isLoading = okrLoading || pipelineLoading || marketingLoading;
+  const hasError = okrError || pipelineError || marketingError;
+
+  if (isLoading) {
+    return (
+      <DashboardLayout>
+        <div className="flex items-center justify-center h-64">
+          <div className="text-center">
+            <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary-700 border-r-transparent"></div>
+            <p className="mt-2 text-gray-600">Cargando métricas...</p>
+          </div>
+        </div>
+      </DashboardLayout>
+    );
+  }
+
+  if (hasError) {
+    return (
+      <DashboardLayout>
+        <div className="flex items-center justify-center h-64">
+          <div className="text-center">
+            <p className="text-red-600">Error al cargar las métricas</p>
+            <p className="mt-2 text-sm text-gray-500">
+              Por favor, intenta recargar la página
+            </p>
+          </div>
+        </div>
+      </DashboardLayout>
+    );
+  }
 
   return (
     <DashboardLayout>

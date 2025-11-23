@@ -16,20 +16,22 @@ export default function MarketingPage() {
   const [showCreateForm, setShowCreateForm] = useState(false);
   const queryClient = useQueryClient();
 
-  const { data: campaigns, isLoading } = useQuery({
+  const { data: campaigns, isLoading, error: campaignsError } = useQuery({
     queryKey: ['campaigns'],
     queryFn: async () => {
       const res = await api.get('/marketing/campaigns');
       return res.data;
     },
+    retry: 1,
   });
 
-  const { data: metrics } = useQuery({
+  const { data: metrics, error: metricsError } = useQuery({
     queryKey: ['marketing-dashboard'],
     queryFn: async () => {
       const res = await api.get('/marketing/dashboard');
       return res.data;
     },
+    retry: 1,
   });
 
   const createMutation = useMutation({
@@ -39,7 +41,12 @@ export default function MarketingPage() {
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['campaigns'] });
+      queryClient.invalidateQueries({ queryKey: ['marketing-dashboard'] });
       setShowCreateForm(false);
+    },
+    onError: (err: any) => {
+      console.error('Error al crear campaña:', err);
+      alert(err.response?.data?.message || 'Error al crear la campaña');
     },
   });
 
@@ -66,6 +73,21 @@ export default function MarketingPage() {
           <div className="text-center">
             <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary-700 border-r-transparent"></div>
             <p className="mt-2 text-gray-600">Cargando...</p>
+          </div>
+        </div>
+      </DashboardLayout>
+    );
+  }
+
+  if (campaignsError || metricsError) {
+    return (
+      <DashboardLayout>
+        <div className="flex items-center justify-center h-64">
+          <div className="text-center">
+            <p className="text-red-600">Error al cargar los datos</p>
+            <p className="mt-2 text-sm text-gray-500">
+              {campaignsError?.message || metricsError?.message || 'Por favor, intenta recargar la página'}
+            </p>
           </div>
         </div>
       </DashboardLayout>

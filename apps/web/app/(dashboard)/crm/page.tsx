@@ -1,12 +1,13 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { DashboardLayout } from '@/components/layout/dashboard-layout';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import api from '@/lib/api';
-import { Plus, Building2, Users, Briefcase } from 'lucide-react';
+import { Plus, Building2, Users, Briefcase, Search, Download } from 'lucide-react';
 import Link from 'next/link';
 
 const stages = [
@@ -31,6 +32,7 @@ const stageLabels: Record<string, string> = {
 
 export default function CRMPage() {
   const [activeTab, setActiveTab] = useState<'pipeline' | 'companies' | 'contacts'>('pipeline');
+  const [searchQuery, setSearchQuery] = useState('');
   const queryClient = useQueryClient();
 
   const { data: opportunities, isLoading: loadingOpps } = useQuery({
@@ -57,13 +59,6 @@ export default function CRMPage() {
     },
   });
 
-  const { data: pipelineMetrics } = useQuery({
-    queryKey: ['pipeline-metrics'],
-    queryFn: async () => {
-      const res = await api.get('/opportunities/pipeline/metrics');
-      return res.data;
-    },
-  });
 
   const updateStageMutation = useMutation({
     mutationFn: async ({ id, stage }: { id: string; stage: string }) => {
@@ -75,10 +70,99 @@ export default function CRMPage() {
     },
   });
 
-  const opportunitiesByStage = stages.reduce((acc, stage) => {
-    acc[stage] = opportunities?.filter((opp: any) => opp.stage === stage) || [];
-    return acc;
-  }, {} as Record<string, any[]>);
+  // Búsqueda global
+  const { data: searchResults } = useQuery({
+    queryKey: ['crm-search', searchQuery],
+    queryFn: async () => {
+      if (!searchQuery.trim()) return null;
+      const res = await api.get(`/search?q=${encodeURIComponent(searchQuery)}`);
+      return res.data;
+    },
+    enabled: searchQuery.trim().length > 0,
+  });
+
+  // Filtrar datos según búsqueda
+  const filteredOpportunities = useMemo(() => {
+    if (!opportunities) return [];
+    if (!searchQuery.trim()) return opportunities;
+    const query = searchQuery.toLowerCase();
+    return opportunities.filter(
+      (opp: any) =>
+        opp.name.toLowerCase().includes(query) ||
+        opp.company?.name?.toLowerCase().includes(query) ||
+        opp.description?.toLowerCase().includes(query),
+    );
+  }, [opportunities, searchQuery]);
+
+  const filteredCompanies = useMemo(() => {
+    if (!companies) return [];
+    if (!searchQuery.trim()) return companies;
+    const query = searchQuery.toLowerCase();
+    return companies.filter(
+      (company: any) =>
+        company.name.toLowerCase().includes(query) ||
+        company.nit?.toLowerCase().includes(query) ||
+        company.email?.toLowerCase().includes(query),
+    );
+  }, [companies, searchQuery]);
+
+  const filteredContacts = useMemo(() => {
+    if (!contacts) return [];
+    if (!searchQuery.trim()) return contacts;
+    const query = searchQuery.toLowerCase();
+    return contacts.filter(
+      (contact: any) =>
+        contact.firstName.toLowerCase().includes(query) ||
+        contact.lastName.toLowerCase().includes(query) ||
+        contact.email?.toLowerCase().includes(query),
+    );
+  }, [contacts, searchQuery]);
+
+  const opportunitiesByStage = useMemo(() => {
+    return stages.reduce((acc, stage) => {
+      acc[stage] = filteredOpportunities?.filter((opp: any) => opp.stage === stage) || [];
+      return acc;
+    }, {} as Record<string, any[]>);
+  }, [filteredOpportunities]);
+
+  // Exportar a CSV
+  const handleExport = async (type: 'opportunities' | 'companies' | 'contacts') => {
+    try {
+      const endpoint = type === 'opportunities' 
+        ? '/opportunities/export/csv'
+        : type === 'companies'
+        ? '/companies/export/csv'
+        : '/contacts/export/csv';
+      
+      const res = await api.get(endpoint, { 
+        responseType: 'blob',
+        headers: {
+          Accept: 'text/csv',
+        },
+      });
+      const blob = new Blob([res.data], { type: 'text/csv;charset=utf-8;' });
+      const url = window.URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `${type}-${new Date().toISOString().split('T')[0]}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      window.URL.revokeObjectURL(url);
+      document.body.removeChild(a);
+    } catch (error: any) {
+      console.error('Error al exportar:', error);
+      alert(error.response?.data?.message || 'Error al exportar los datos');
+    }
+  };
+
+  const { data: pipelineMetrics, error: metricsError } = useQuery({
+    queryKey: ['pipeline-metrics'],
+    queryFn: async () => {
+      const res = await api.get('/opportunities/pipeline/metrics');
+      return res.data;
+    },
+    retry: 1,
+  });
 
   if (loadingOpps || loadingCompanies || loadingContacts) {
     return (
@@ -87,6 +171,21 @@ export default function CRMPage() {
           <div className="text-center">
             <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary-700 border-r-transparent"></div>
             <p className="mt-2 text-gray-600">Cargando...</p>
+          </div>
+        </div>
+      </DashboardLayout>
+    );
+  }
+
+  if (metricsError) {
+    return (
+      <DashboardLayout>
+        <div className="flex items-center justify-center h-64">
+          <div className="text-center">
+            <p className="text-red-600">Error al cargar las métricas</p>
+            <p className="mt-2 text-sm text-gray-500">
+              Por favor, intenta recargar la página
+            </p>
           </div>
         </div>
       </DashboardLayout>
@@ -116,6 +215,22 @@ export default function CRMPage() {
             </Link>
           </div>
         </div>
+
+        {/* Búsqueda */}
+        <Card>
+          <CardContent className="pt-6">
+            <div className="relative">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-gray-400" />
+              <Input
+                type="text"
+                placeholder="Buscar empresas, contactos, oportunidades..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="pl-10"
+              />
+            </div>
+          </CardContent>
+        </Card>
 
         {/* Métricas */}
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
@@ -156,38 +271,52 @@ export default function CRMPage() {
 
         {/* Tabs */}
         <div className="border-b border-gray-200">
-          <nav className="-mb-px flex space-x-8">
-            <button
-              onClick={() => setActiveTab('pipeline')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm ${
-                activeTab === 'pipeline'
-                  ? 'border-primary-500 text-primary-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              }`}
+          <div className="flex items-center justify-between">
+            <nav className="-mb-px flex space-x-8">
+              <button
+                onClick={() => setActiveTab('pipeline')}
+                className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                  activeTab === 'pipeline'
+                    ? 'border-primary-500 text-primary-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
+              >
+                Pipeline
+              </button>
+              <button
+                onClick={() => setActiveTab('companies')}
+                className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                  activeTab === 'companies'
+                    ? 'border-primary-500 text-primary-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
+              >
+                Empresas ({filteredCompanies?.length || 0})
+              </button>
+              <button
+                onClick={() => setActiveTab('contacts')}
+                className={`py-4 px-1 border-b-2 font-medium text-sm ${
+                  activeTab === 'contacts'
+                    ? 'border-primary-500 text-primary-600'
+                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
+                }`}
+              >
+                Contactos ({filteredContacts?.length || 0})
+              </button>
+            </nav>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => {
+                if (activeTab === 'pipeline') handleExport('opportunities');
+                else if (activeTab === 'companies') handleExport('companies');
+                else handleExport('contacts');
+              }}
             >
-              Pipeline
-            </button>
-            <button
-              onClick={() => setActiveTab('companies')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm ${
-                activeTab === 'companies'
-                  ? 'border-primary-500 text-primary-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              }`}
-            >
-              Empresas ({companies?.length || 0})
-            </button>
-            <button
-              onClick={() => setActiveTab('contacts')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm ${
-                activeTab === 'contacts'
-                  ? 'border-primary-500 text-primary-600'
-                  : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              }`}
-            >
-              Contactos ({contacts?.length || 0})
-            </button>
-          </nav>
+              <Download className="mr-2 h-4 w-4" />
+              Exportar CSV
+            </Button>
+          </div>
         </div>
 
         {/* Pipeline Kanban */}
@@ -203,7 +332,9 @@ export default function CRMPage() {
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="space-y-2 max-h-[600px] overflow-y-auto">
-                      {opportunitiesByStage[stage]?.map((opp: any) => (
+                      {opportunitiesByStage[stage]?.map((opp: any) => {
+                        const progress = opp.probability || 0;
+                        return (
                         <div
                           key={opp.id}
                           className="p-3 bg-gray-50 rounded-lg border border-gray-200 hover:shadow-md transition cursor-pointer"
@@ -217,8 +348,15 @@ export default function CRMPage() {
                           <div className="text-xs text-gray-500 mt-1">
                             Probabilidad: {opp.probability}%
                           </div>
+                          <div className="w-full bg-gray-200 rounded-full h-1 mt-2">
+                            <div
+                              className="bg-primary-600 h-1 rounded-full transition-all"
+                              style={{ width: `${Math.min(progress, 100)}%` }}
+                            ></div>
+                          </div>
                         </div>
-                      ))}
+                      );
+                      })}
                       {(!opportunitiesByStage[stage] || opportunitiesByStage[stage].length === 0) && (
                         <div className="text-center text-sm text-gray-400 py-8">
                           Sin oportunidades
@@ -235,7 +373,7 @@ export default function CRMPage() {
         {/* Lista de Empresas */}
         {activeTab === 'companies' && (
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {companies?.map((company: any) => (
+            {filteredCompanies?.map((company: any) => (
               <Card
                 key={company.id}
                 className="cursor-pointer hover:shadow-lg transition"
@@ -257,7 +395,7 @@ export default function CRMPage() {
               </Card>
             ))}
 
-            {(!companies || companies.length === 0) && (
+            {(!filteredCompanies || filteredCompanies.length === 0) && (
               <Card className="col-span-full">
                 <CardContent className="py-8 text-center text-gray-500">
                   No hay empresas registradas. Crea tu primera empresa para comenzar.
@@ -270,7 +408,7 @@ export default function CRMPage() {
         {/* Lista de Contactos */}
         {activeTab === 'contacts' && (
           <div className="space-y-4">
-            {contacts?.map((contact: any) => (
+            {filteredContacts?.map((contact: any) => (
               <Card
                 key={contact.id}
                 className="cursor-pointer hover:shadow-lg transition"
@@ -296,7 +434,7 @@ export default function CRMPage() {
               </Card>
             ))}
 
-            {(!contacts || contacts.length === 0) && (
+            {(!filteredContacts || filteredContacts.length === 0) && (
               <Card>
                 <CardContent className="py-8 text-center text-gray-500">
                   No hay contactos registrados.

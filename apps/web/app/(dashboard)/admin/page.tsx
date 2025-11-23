@@ -8,12 +8,13 @@ import { FileText, DollarSign, Clock, CheckCircle } from 'lucide-react';
 import Link from 'next/link';
 
 export default function AdminPage() {
-  const { data: contracts, isLoading } = useQuery({
+  const { data: contracts, isLoading, error } = useQuery({
     queryKey: ['contracts'],
     queryFn: async () => {
       const res = await api.get('/contracts');
       return res.data;
     },
+    retry: 1,
   });
 
   if (isLoading) {
@@ -23,6 +24,21 @@ export default function AdminPage() {
           <div className="text-center">
             <div className="inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-primary-700 border-r-transparent"></div>
             <p className="mt-2 text-gray-600">Cargando...</p>
+          </div>
+        </div>
+      </DashboardLayout>
+    );
+  }
+
+  if (error) {
+    return (
+      <DashboardLayout>
+        <div className="flex items-center justify-center h-64">
+          <div className="text-center">
+            <p className="text-red-600">Error al cargar los contratos</p>
+            <p className="mt-2 text-sm text-gray-500">
+              Por favor, intenta recargar la página
+            </p>
           </div>
         </div>
       </DashboardLayout>

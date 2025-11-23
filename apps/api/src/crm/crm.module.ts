@@ -8,6 +8,8 @@ import { ActivitiesController } from './controllers/activities.controller';
 import { NotesController } from './controllers/notes.controller';
 import { RemindersController } from './controllers/reminders.controller';
 import { CrmTemplatesController } from './controllers/crm-templates.controller';
+import { TagsController } from './controllers/tags.controller';
+import { SearchController } from './controllers/search.controller';
 
 @Module({
   controllers: [
@@ -18,6 +20,8 @@ import { CrmTemplatesController } from './controllers/crm-templates.controller';
     NotesController,
     RemindersController,
     CrmTemplatesController,
+    TagsController,
+    SearchController,
   ],
   providers: [CrmService, CrmTemplatesService],
   exports: [CrmService, CrmTemplatesService],

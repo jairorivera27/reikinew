@@ -9,7 +9,9 @@ import {
   Query,
   UseGuards,
   Request,
+  Res,
 } from '@nestjs/common';
+import { Response } from 'express';
 import { CrmService } from '../crm.service';
 import { CreateOpportunityDto } from '../dto/create-opportunity.dto';
 import { UpdateOpportunityDto } from '../dto/update-opportunity.dto';
@@ -87,6 +89,19 @@ export class OpportunitiesController {
   @Get(':id/audit-log')
   getAuditLog(@Param('id') id: string) {
     return this.crmService.getAuditLog('OPPORTUNITY', id);
+  }
+
+  @Get('export/csv')
+  async exportToCSV(
+    @Query('stage') stage?: string,
+    @Query('ownerId') ownerId?: string,
+    @Query('companyId') companyId?: string,
+    @Res() res: Response,
+  ) {
+    const csv = await this.crmService.exportOpportunitiesToCSV({ stage, ownerId, companyId });
+    res.setHeader('Content-Type', 'text/csv; charset=utf-8');
+    res.setHeader('Content-Disposition', `attachment; filename=opportunities-${new Date().toISOString().split('T')[0]}.csv`);
+    return res.send(csv);
   }
 
   @Delete(':id')

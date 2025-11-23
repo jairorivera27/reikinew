@@ -888,6 +888,356 @@ export class CrmService {
       orderBy: { createdAt: 'desc' },
     });
   }
+
+  // Tags
+  async createTag(data: { name: string; color?: string }) {
+    return this.prisma.tag.create({
+      data,
+    });
+  }
+
+  async findAllTags() {
+    return this.prisma.tag.findMany({
+      include: {
+        opportunities: {
+          include: {
+            opportunity: true,
+          },
+        },
+        companies: {
+          include: {
+            company: true,
+          },
+        },
+        contacts: {
+          include: {
+            contact: true,
+          },
+        },
+      },
+      orderBy: { name: 'asc' },
+    });
+  }
+
+  async findTagById(id: string) {
+    const tag = await this.prisma.tag.findUnique({
+      where: { id },
+      include: {
+        opportunities: {
+          include: {
+            opportunity: true,
+          },
+        },
+        companies: {
+          include: {
+            company: true,
+          },
+        },
+        contacts: {
+          include: {
+            contact: true,
+          },
+        },
+      },
+    });
+
+    if (!tag) {
+      throw new NotFoundException(`Tag con ID ${id} no encontrado`);
+    }
+
+    return tag;
+  }
+
+  async updateTag(id: string, data: { name?: string; color?: string }) {
+    await this.findTagById(id);
+    return this.prisma.tag.update({
+      where: { id },
+      data,
+    });
+  }
+
+  async deleteTag(id: string) {
+    await this.findTagById(id);
+    return this.prisma.tag.delete({
+      where: { id },
+    });
+  }
+
+  async assignTagToOpportunity(tagId: string, opportunityId: string) {
+    // Verificar que no exista ya
+    const existing = await this.prisma.opportunityTag.findUnique({
+      where: {
+        opportunityId_tagId: {
+          opportunityId,
+          tagId,
+        },
+      },
+    });
+
+    if (existing) {
+      return existing;
+    }
+
+    return this.prisma.opportunityTag.create({
+      data: {
+        tagId,
+        opportunityId,
+      },
+      include: {
+        tag: true,
+        opportunity: true,
+      },
+    });
+  }
+
+  async assignTagToCompany(tagId: string, companyId: string) {
+    const existing = await this.prisma.companyTag.findUnique({
+      where: {
+        companyId_tagId: {
+          companyId,
+          tagId,
+        },
+      },
+    });
+
+    if (existing) {
+      return existing;
+    }
+
+    return this.prisma.companyTag.create({
+      data: {
+        tagId,
+        companyId,
+      },
+      include: {
+        tag: true,
+        company: true,
+      },
+    });
+  }
+
+  async assignTagToContact(tagId: string, contactId: string) {
+    const existing = await this.prisma.contactTag.findUnique({
+      where: {
+        contactId_tagId: {
+          contactId,
+          tagId,
+        },
+      },
+    });
+
+    if (existing) {
+      return existing;
+    }
+
+    return this.prisma.contactTag.create({
+      data: {
+        tagId,
+        contactId,
+      },
+      include: {
+        tag: true,
+        contact: true,
+      },
+    });
+  }
+
+  async unassignTagFromOpportunity(tagId: string, opportunityId: string) {
+    return this.prisma.opportunityTag.delete({
+      where: {
+        opportunityId_tagId: {
+          opportunityId,
+          tagId,
+        },
+      },
+    });
+  }
+
+  async unassignTagFromCompany(tagId: string, companyId: string) {
+    return this.prisma.companyTag.delete({
+      where: {
+        companyId_tagId: {
+          companyId,
+          tagId,
+        },
+      },
+    });
+  }
+
+  async unassignTagFromContact(tagId: string, contactId: string) {
+    return this.prisma.contactTag.delete({
+      where: {
+        contactId_tagId: {
+          contactId,
+          tagId,
+        },
+      },
+    });
+  }
+
+  // Búsqueda global (compatible con SQLite)
+  async globalSearch(query: string) {
+    const searchTerm = query.toLowerCase();
+    
+    // Obtener todos y filtrar en memoria (SQLite no tiene búsqueda case-insensitive nativa)
+    const [allCompanies, allContacts, allOpportunities] = await Promise.all([
+      this.prisma.company.findMany({
+        take: 100, // Limitar para no sobrecargar
+      }),
+      this.prisma.contact.findMany({
+        include: {
+          company: true,
+        },
+        take: 100,
+      }),
+      this.prisma.opportunity.findMany({
+        include: {
+          company: true,
+        },
+        take: 100,
+      }),
+    ]);
+
+    // Filtrar en memoria
+    const companies = allCompanies
+      .filter(
+        (c) =>
+          c.name.toLowerCase().includes(searchTerm) ||
+          (c.nit && c.nit.toLowerCase().includes(searchTerm)) ||
+          (c.email && c.email.toLowerCase().includes(searchTerm)),
+      )
+      .slice(0, 10);
+
+    const contacts = allContacts
+      .filter(
+        (c) =>
+          c.firstName.toLowerCase().includes(searchTerm) ||
+          c.lastName.toLowerCase().includes(searchTerm) ||
+          (c.email && c.email.toLowerCase().includes(searchTerm)),
+      )
+      .slice(0, 10);
+
+    const opportunities = allOpportunities
+      .filter(
+        (o) =>
+          o.name.toLowerCase().includes(searchTerm) ||
+          (o.description && o.description.toLowerCase().includes(searchTerm)),
+      )
+      .slice(0, 10);
+
+    return {
+      companies,
+      contacts,
+      opportunities,
+      total: companies.length + contacts.length + opportunities.length,
+    };
+  }
+
+  // Exportación a CSV (formato simple)
+  async exportOpportunitiesToCSV(filters?: {
+    stage?: string;
+    ownerId?: string;
+    companyId?: string;
+  }) {
+    const opportunities = await this.findAllOpportunities(filters);
+    
+    // Encabezados CSV
+    const headers = [
+      'ID',
+      'Nombre',
+      'Empresa',
+      'Valor Estimado',
+      'Probabilidad',
+      'Etapa',
+      'Fecha Creación',
+      'Fecha Cierre Esperada',
+    ];
+
+    // Filas CSV
+    const rows = opportunities.map((opp) => [
+      opp.id,
+      opp.name,
+      opp.company?.name || '',
+      opp.estimatedValue.toString(),
+      opp.probability.toString(),
+      opp.stage,
+      new Date(opp.createdAt).toISOString(),
+      opp.expectedCloseDate ? new Date(opp.expectedCloseDate).toISOString() : '',
+    ]);
+
+    const csvContent = [
+      headers.join(','),
+      ...rows.map((row) => row.map((cell) => `"${cell}"`).join(',')),
+    ].join('\n');
+
+    return csvContent;
+  }
+
+  async exportCompaniesToCSV() {
+    const companies = await this.findAllCompanies();
+    
+    const headers = [
+      'ID',
+      'Nombre',
+      'NIT',
+      'Sector',
+      'Ciudad',
+      'Email',
+      'Teléfono',
+      'Fecha Creación',
+    ];
+
+    const rows = companies.map((company) => [
+      company.id,
+      company.name,
+      company.nit || '',
+      company.sector || '',
+      company.city || '',
+      company.email || '',
+      company.phone || '',
+      new Date(company.createdAt).toISOString(),
+    ]);
+
+    const csvContent = [
+      headers.join(','),
+      ...rows.map((row) => row.map((cell) => `"${cell}"`).join(',')),
+    ].join('\n');
+
+    return csvContent;
+  }
+
+  async exportContactsToCSV(companyId?: string) {
+    const contacts = await this.findAllContacts(companyId);
+    
+    const headers = [
+      'ID',
+      'Nombre',
+      'Apellido',
+      'Empresa',
+      'Cargo',
+      'Email',
+      'Teléfono',
+      'Fecha Creación',
+    ];
+
+    const rows = contacts.map((contact) => [
+      contact.id,
+      contact.firstName,
+      contact.lastName,
+      contact.company?.name || '',
+      contact.position || '',
+      contact.email || '',
+      contact.phone || '',
+      new Date(contact.createdAt).toISOString(),
+    ]);
+
+    const csvContent = [
+      headers.join(','),
+      ...rows.map((row) => row.map((cell) => `"${cell}"`).join(',')),
+    ].join('\n');
+
+    return csvContent;
+  }
 }
 
 
