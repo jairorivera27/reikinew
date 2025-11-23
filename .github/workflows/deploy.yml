@@ -1,4 +1,4 @@
-name: Deploy Next.js to GitHub Pages
+name: Deploy Astro + Next.js to GitHub Pages
 
 on:
   push:
@@ -27,13 +27,31 @@ jobs:
         with:
           node-version: '20'
           cache: 'npm'
-          cache-dependency-path: './apps/web/package-lock.json'
       
-      - name: Install web dependencies
+      # ============================================
+      # BUILD SITIO PRINCIPAL (ASTRO)
+      # ============================================
+      - name: Install root dependencies (Astro)
+        run: |
+          npm ci --prefer-offline --no-audit
+          echo "✅ Dependencias de Astro instaladas"
+      
+      - name: Build Astro (sitio principal)
+        run: |
+          echo "🔨 Construyendo sitio principal con Astro..."
+          npm run build
+          echo "✅ Build de Astro completado"
+        env:
+          ASTRO_TELEMETRY_DISABLED: 1
+      
+      # ============================================
+      # BUILD PLATAFORMA OKR/CRM (NEXT.JS)
+      # ============================================
+      - name: Install Next.js dependencies
         run: |
           cd apps/web
           npm ci --prefer-offline --no-audit
-          echo "✅ Dependencias instaladas"
+          echo "✅ Dependencias de Next.js instaladas"
       
       - name: Disable middleware for static export
         run: |
@@ -42,40 +60,19 @@ jobs:
             echo "Middleware deshabilitado para export estático"
           fi
       
-      - name: Verify TypeScript
-        run: npx tsc --noEmit
-        working-directory: ./apps/web
-        continue-on-error: true
-      
-      - name: Build Next.js
+      - name: Build Next.js (plataforma OKR/CRM)
         run: |
           cd apps/web
-          echo "🔨 Iniciando build de Next.js..."
+          echo "🔨 Construyendo plataforma OKR/CRM con Next.js..."
           echo "GITHUB_PAGES: $GITHUB_PAGES"
           echo "NEXT_PUBLIC_BASE_PATH: $NEXT_PUBLIC_BASE_PATH"
           npm run build 2>&1 | tee build.log || (cat build.log && exit 1)
-          echo "✅ Build completado"
+          echo "✅ Build de Next.js completado"
         env:
           GITHUB_PAGES: 'true'
           NEXT_PUBLIC_BASE_PATH: '/OKR'
           NEXT_PUBLIC_API_URL: 'https://reikisolar.com.co/api'
         continue-on-error: false
-      
-      - name: Verify build output
-        run: |
-          if [ ! -d apps/web/out ]; then
-            echo "❌ ERROR: Build output directory not found!"
-            echo "Contenido de apps/web:"
-            ls -la apps/web/
-            exit 1
-          fi
-          echo "✅ Build output encontrado:"
-          ls -la apps/web/out | head -20
-      
-      - name: Create .nojekyll file
-        run: |
-          touch apps/web/out/.nojekyll
-          echo "✅ Archivo .nojekyll creado"
       
       - name: Restore middleware
         run: |
@@ -85,13 +82,53 @@ jobs:
           fi
         if: always()
       
+      # ============================================
+      # COMBINAR AMBOS BUILDS
+      # ============================================
+      - name: Combine builds
+        run: |
+          echo "🔗 Combinando sitio Astro y plataforma Next.js..."
+          
+          # Crear directorio de output combinado
+          mkdir -p _site
+          
+          # Copiar sitio Astro (sitio principal)
+          if [ -d dist ]; then
+            cp -r dist/* _site/
+            echo "✅ Sitio Astro copiado"
+          else
+            echo "⚠️ Advertencia: No se encontró dist/ de Astro"
+          fi
+          
+          # Copiar plataforma Next.js a /OKR
+          if [ -d apps/web/out ]; then
+            mkdir -p _site/OKR
+            cp -r apps/web/out/* _site/OKR/
+            echo "✅ Plataforma Next.js copiada a /OKR"
+          else
+            echo "❌ ERROR: No se encontró apps/web/out/"
+            exit 1
+          fi
+          
+          # Crear .nojekyll en la raíz
+          touch _site/.nojekyll
+          echo "✅ Archivo .nojekyll creado"
+          
+          # Verificar estructura
+          echo "📁 Estructura final:"
+          ls -la _site/ | head -20
+          if [ -d _site/OKR ]; then
+            echo "✅ Directorio /OKR existe"
+            ls -la _site/OKR/ | head -10
+          fi
+      
       - name: Setup Pages
         uses: actions/configure-pages@v4
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./apps/web/out
+          path: ./_site
 
   deploy:
     environment:
