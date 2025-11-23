@@ -33,7 +33,8 @@ jobs:
       # ============================================
       - name: Install root dependencies (Astro)
         run: |
-          npm ci --prefer-offline --no-audit
+          # Intentar npm ci, si falla usar npm install para sincronizar
+          npm ci --prefer-offline --no-audit || npm install --no-audit
           echo "✅ Dependencias de Astro instaladas"
       
       - name: Build Astro (sitio principal)
@@ -50,7 +51,8 @@ jobs:
       - name: Install Next.js dependencies
         run: |
           cd apps/web
-          npm ci --prefer-offline --no-audit
+          # Intentar npm ci, si falla usar npm install para sincronizar
+          npm ci --prefer-offline --no-audit || npm install --no-audit
           echo "✅ Dependencias de Next.js instaladas"
       
       - name: Disable middleware for static export
