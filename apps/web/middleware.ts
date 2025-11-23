@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/OKR';
+  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/okr';
 
   // Si la ruta no comienza con el basePath, redirigir
   if (!pathname.startsWith(basePath) && pathname !== '/') {

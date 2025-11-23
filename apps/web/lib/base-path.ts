@@ -1,15 +1,15 @@
 /**
  * Helper para obtener el basePath de la aplicación
- * En producción: /OKR
- * En desarrollo: puede ser /OKR o vacío según NEXT_PUBLIC_BASE_PATH
+ * En producción: /okr
+ * En desarrollo: puede ser /okr o vacío según NEXT_PUBLIC_BASE_PATH
  */
 export function getBasePath(): string {
   if (typeof window !== 'undefined') {
     // En el cliente, usar la variable de entorno o el path actual
-    return process.env.NEXT_PUBLIC_BASE_PATH || '/OKR';
+    return process.env.NEXT_PUBLIC_BASE_PATH || '/okr';
   }
   // En el servidor
-  return process.env.NEXT_PUBLIC_BASE_PATH || '/OKR';
+  return process.env.NEXT_PUBLIC_BASE_PATH || '/okr';
 }
 
 /**

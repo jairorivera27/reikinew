@@ -5,11 +5,14 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "npm run build:astro && npm run build:okr && npm run combine",
+    "build:astro": "astro build",
+    "build:okr": "node scripts/build-okr.js",
+    "combine": "node scripts/combine-builds.js",
     "preview": "astro preview",
     "astro": "astro"
   },
-  "description": "Sitio web principal (Astro). La plataforma Next.js OKR/CRM en apps/web se despliega en servidor propio o proyecto Vercel separado.",
+  "description": "Sitio web principal (Astro) con plataforma OKR/CRM integrada en /okr (oculta, solo accesible por URL directa).",
   "dependencies": {
     "@astrojs/react": "^4.4.2",
     "@types/react": "^19.2.2",

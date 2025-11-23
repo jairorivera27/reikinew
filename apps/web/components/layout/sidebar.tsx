@@ -27,7 +27,7 @@ export function Sidebar() {
   const handleLogout = () => {
     localStorage.removeItem('token');
     localStorage.removeItem('user');
-    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/OKR';
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/okr';
     window.location.href = `${basePath}/login`;
   };
 

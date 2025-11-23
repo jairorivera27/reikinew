@@ -26,7 +26,7 @@ api.interceptors.response.use(
     if (error.response?.status === 401) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
-      const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/OKR';
+      const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '/okr';
       window.location.href = `${basePath}/login`;
     }
     return Promise.reject(error);
