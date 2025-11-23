@@ -28,13 +28,15 @@ jobs:
           node-version: '20'
           cache: 'npm'
       
-      - name: Install root dependencies
-        run: npm ci
-        working-directory: .
-      
       - name: Install web dependencies
         run: npm ci
         working-directory: ./apps/web
+      
+      - name: Disable middleware for static export
+        run: |
+          if [ -f apps/web/middleware.ts ]; then
+            mv apps/web/middleware.ts apps/web/middleware.ts.bak
+          fi
       
       - name: Build Next.js
         run: npm run build
@@ -43,6 +45,14 @@ jobs:
           GITHUB_PAGES: 'true'
           NEXT_PUBLIC_BASE_PATH: '/OKR'
           NEXT_PUBLIC_API_URL: 'https://reikisolar.com.co/api'
+        continue-on-error: false
+      
+      - name: Restore middleware
+        run: |
+          if [ -f apps/web/middleware.ts.bak ]; then
+            mv apps/web/middleware.ts.bak apps/web/middleware.ts
+          fi
+        if: always()
       
       - name: Create .nojekyll file
         run: touch apps/web/out/.nojekyll
