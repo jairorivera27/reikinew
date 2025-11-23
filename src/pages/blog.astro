@@ -1,0 +1,1308 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import SEO from '../components/SEO.astro';
+import FontAwesome from '../components/FontAwesome.astro';
+import { getCollection } from 'astro:content';
+import fs from 'fs';
+import path from 'path';
+
+// Obtener todos los posts del blog ordenados por fecha
+const blogPosts = await getCollection('blog');
+const sortedPosts = blogPosts.sort((a, b) => {
+  const dateA = new Date(a.data.date);
+  const dateB = new Date(b.data.date);
+  return dateB.getTime() - dateA.getTime();
+});
+
+// Obtener fecha de modificación de cada archivo y ordenar por fecha de modificación
+const postsWithModDate = blogPosts.map((post) => {
+  const filePath = path.join(process.cwd(), 'src', 'content', 'blog', `${post.slug}.md`);
+  let modDate = new Date(0); // Fecha por defecto si no se puede obtener
+  
+  try {
+    const stats = fs.statSync(filePath);
+    modDate = stats.mtime; // Fecha de modificación del archivo
+  } catch (error) {
+    // Si no se puede obtener la fecha, usar la fecha del post
+    modDate = new Date(post.data.date);
+  }
+  
+  return {
+    ...post,
+    modDate: modDate
+  };
+});
+
+// Ordenar por fecha de modificación (más recientes primero)
+const sortedByModDate = postsWithModDate.sort((a, b) => {
+  return b.modDate.getTime() - a.modDate.getTime();
+});
+
+// Separar posts: último (más reciente por fecha de publicación), destacados (más recientemente modificados), y resto
+const latestPost = sortedPosts[0];
+// Obtener los 3 artículos más recientemente modificados, excluyendo el último post
+const featuredPosts = sortedByModDate
+  .filter(post => post.slug !== latestPost.slug)
+  .slice(0, 3);
+const regularPosts = sortedPosts.filter(post => post.slug !== latestPost.slug && !featuredPosts.some(fp => fp.slug === post.slug));
+
+// Obtener todas las categorías únicas
+const allCategories = [...new Set(sortedPosts.map(post => post.data.category))];
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Blog de Energía Solar en Colombia | Noticias y Guías | Reiki Energía Solar</title>
+    <FontAwesome />
+    <SEO 
+      title="Blog de Energía Solar en Colombia | Noticias y Guías"
+      description="Blog especializado en energía solar en Colombia. Noticias, consejos, guías y artículos sobre paneles solares, instalación solar, sistemas fotovoltaicos y energía renovable en Medellín y Colombia."
+      canonical="/blog"
+      keywords="blog energía solar Colombia, noticias paneles solares, guías energía solar, consejos instalación solar, artículos energía renovable, información paneles solares Medellín"
+      schemaType="Blog"
+    />
+  </head>
+  <body>
+    <Header />
+    
+    <main>
+      <!-- Hero Section -->
+      <section class="blog-hero">
+        <div class="hero-background-overlay"></div>
+        <div class="container hero-content">
+          <div class="hero-text">
+            <h1 class="hero-title">
+              <span class="title-highlight">Blog de Energía Solar</span>
+            </h1>
+            <p class="hero-subtitle">
+              Descubre las últimas tendencias, consejos prácticos y noticias sobre energía solar en Colombia
+            </p>
+            <div class="hero-stats">
+              <div class="stat-item">
+                <span class="stat-number">{sortedPosts.length}+</span>
+                <span class="stat-label">Artículos</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">{allCategories.length}</span>
+                <span class="stat-label">Categorías</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Gratuito</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Búsqueda y Filtros -->
+      <section class="blog-filters-section">
+        <div class="container">
+          <div class="filters-wrapper">
+            <div class="search-box">
+              <i class="fas fa-search"></i>
+              <input type="text" id="searchInput" placeholder="Buscar artículos..." class="search-input">
+              <button class="search-clear" id="clearSearch" style="display: none;">
+                <i class="fas fa-times"></i>
+              </button>
+            </div>
+            <div class="category-filters">
+              <button class="filter-btn active" data-category="all">
+                <i class="fas fa-th"></i>
+                Todos
+              </button>
+              {allCategories.map((category) => (
+                <button class="filter-btn" data-category={category.toLowerCase().replace(/\s+/g, '-')}>
+                  {category}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Último Artículo Destacado (Horizontal) -->
+      {latestPost && (
+        <section class="latest-post-section">
+          <div class="container">
+            <div class="section-header">
+              <div class="section-title-wrapper">
+                <span class="section-badge">
+                  <i class="fas fa-fire"></i>
+                  Último Artículo
+                </span>
+                <h2 class="section-title">Lo Más Reciente</h2>
+              </div>
+            </div>
+            <article class="latest-post-card">
+              <a href={`/blog/${latestPost.slug}`} class="latest-post-link">
+                <div class="latest-post-image">
+                  <img 
+                    src={latestPost.data.image} 
+                    alt={latestPost.data.title}
+                    loading="eager"
+                  >
+                  <div class="latest-post-overlay">
+                    <div class="read-indicator">
+                      <i class="fas fa-book-open"></i>
+                      <span>Leer artículo</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="latest-post-content">
+                  <div class="latest-post-meta">
+                    <span class="post-category-badge">{latestPost.data.category}</span>
+                    <span class="post-date">
+                      <i class="fas fa-calendar-alt"></i>
+                      {new Date(latestPost.data.date).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}
+                    </span>
+                    <span class="post-author">
+                      <i class="fas fa-user"></i>
+                      {latestPost.data.author}
+                    </span>
+                  </div>
+                  <h3 class="latest-post-title">{latestPost.data.title}</h3>
+                  <p class="latest-post-description">{latestPost.data.description}</p>
+                  {latestPost.data.tags && latestPost.data.tags.length > 0 && (
+                    <div class="latest-post-tags">
+                      {latestPost.data.tags.map((tag) => (
+                        <span class="tag">{tag}</span>
+                      ))}
+                    </div>
+                  )}
+                  <div class="latest-post-cta">
+                    <span class="cta-text">Leer artículo completo</span>
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                </div>
+              </a>
+            </article>
+          </div>
+        </section>
+      )}
+
+      <!-- Artículos Destacados -->
+      {featuredPosts.length > 0 && (
+        <section class="featured-posts-section">
+          <div class="container">
+            <div class="section-header">
+              <div class="section-title-wrapper">
+                <span class="section-badge">
+                  <i class="fas fa-star"></i>
+                  Destacados
+                </span>
+                <h2 class="section-title">Artículos Destacados</h2>
+              </div>
+              <p class="section-subtitle">Artículos actualizados recientemente</p>
+            </div>
+            <div class="featured-posts-grid">
+              {featuredPosts.map((post) => (
+                <article class="featured-post-card" data-category={post.data.category.toLowerCase().replace(/\s+/g, '-')}>
+                  <a href={`/blog/${post.slug}`} class="featured-post-link">
+                    <div class="featured-post-image">
+                      <img 
+                        src={post.data.image} 
+                        alt={post.data.title}
+                        loading="lazy"
+                      >
+                      <div class="featured-post-overlay">
+                        <div class="read-time">
+                          <i class="fas fa-clock"></i>
+                          <span>5 min</span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="featured-post-content">
+                      <div class="featured-post-meta">
+                        <span class="post-category-badge">{post.data.category}</span>
+                        <span class="post-date">
+                          <i class="fas fa-calendar-alt"></i>
+                          {new Date(post.data.date).toLocaleDateString('es-CO', { month: 'short', day: 'numeric' })}
+                        </span>
+                      </div>
+                      <h3 class="featured-post-title">{post.data.title}</h3>
+                      <p class="featured-post-description">{post.data.description}</p>
+                      <div class="featured-post-footer">
+                        <div class="post-author-small">
+                          <i class="fas fa-user-circle"></i>
+                          <span>{post.data.author}</span>
+                        </div>
+                        <span class="read-more-link">
+                          Leer más <i class="fas fa-arrow-right"></i>
+                        </span>
+                      </div>
+                    </div>
+                  </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      <!-- Todos los Artículos -->
+      <section class="all-posts-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">Todos los Artículos</h2>
+            <p class="section-subtitle">Explora nuestro contenido completo</p>
+          </div>
+          <div id="postsContainer" class="posts-grid">
+            {regularPosts.map((post) => (
+              <article class="post-card" data-category={post.data.category.toLowerCase().replace(/\s+/g, '-')} data-title={post.data.title.toLowerCase()} data-tags={post.data.tags?.join(' ').toLowerCase() || ''}>
+                <a href={`/blog/${post.slug}`} class="post-link">
+                  <div class="post-image-container">
+                    <img 
+                      src={post.data.image} 
+                      alt={post.data.title}
+                      class="post-image"
+                      loading="lazy"
+                    >
+                    <div class="post-category">{post.data.category}</div>
+                    <div class="post-hover-overlay">
+                      <i class="fas fa-arrow-right"></i>
+                    </div>
+                  </div>
+                  <div class="post-content">
+                    <div class="post-meta">
+                      <span class="post-date">
+                        <i class="fas fa-calendar"></i>
+                        {new Date(post.data.date).toLocaleDateString('es-CO', { month: 'short', day: 'numeric', year: 'numeric' })}
+                      </span>
+                      <span class="post-author">
+                        <i class="fas fa-user"></i>
+                        {post.data.author}
+                      </span>
+                    </div>
+                    <h3 class="post-title">{post.data.title}</h3>
+                    <p class="post-description">{post.data.description}</p>
+                    {post.data.tags && post.data.tags.length > 0 && (
+                      <div class="post-tags">
+                        {post.data.tags.slice(0, 3).map((tag) => (
+                          <span class="tag">{tag}</span>
+                        ))}
+                      </div>
+                    )}
+                    <span class="read-more">Leer más <i class="fas fa-arrow-right"></i></span>
+                  </div>
+                </a>
+              </article>
+            ))}
+          </div>
+          <div id="noResults" class="no-results" style="display: none;">
+            <i class="fas fa-search"></i>
+            <h3>No se encontraron artículos</h3>
+            <p>Intenta con otros términos de búsqueda o filtros</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Newsletter CTA -->
+      <section class="newsletter-section">
+        <div class="container">
+          <div class="newsletter-content">
+            <div class="newsletter-icon">
+              <i class="fas fa-envelope-open-text"></i>
+            </div>
+            <h2 class="newsletter-title">Mantente Actualizado</h2>
+            <p class="newsletter-description">
+              Recibe los últimos artículos y noticias sobre energía solar directamente en tu correo
+            </p>
+            <form class="newsletter-form" id="newsletterForm">
+              <div class="form-group">
+                <input 
+                  type="email" 
+                  placeholder="Tu correo electrónico" 
+                  class="newsletter-input"
+                  required
+                >
+                <button type="submit" class="newsletter-button">
+                  <span>Suscribirse</span>
+                  <i class="fas fa-paper-plane"></i>
+                </button>
+              </div>
+            </form>
+            <p class="newsletter-note">
+              <i class="fas fa-shield-alt"></i>
+              No compartimos tu información. Cancela cuando quieras.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <Footer />
+    <WhatsAppFloat />
+  </body>
+</html>
+
+<style>
+  /* Hero Section */
+  .blog-hero {
+    position: relative;
+    padding: 6rem 2rem 3rem;
+    background: linear-gradient(135deg, #6b2181 0%, #8b2a9b 100%);
+    color: white;
+    overflow: hidden;
+    min-height: 300px;
+    display: flex;
+    align-items: center;
+  }
+
+  .hero-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="pattern" width="40" height="40" patternUnits="userSpaceOnUse"><circle cx="20" cy="20" r="2" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23pattern)"/></svg>');
+    pointer-events: none;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .title-highlight {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .hero-stats {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .stat-item {
+    text-align: center;
+  }
+
+  .stat-number {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #FFD700;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .stat-label {
+    display: block;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 0.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  /* Filters Section */
+  .blog-filters-section {
+    padding: 2rem;
+    background: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 80px;
+    z-index: 100;
+  }
+
+  .filters-wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .search-box {
+    position: relative;
+    max-width: 500px;
+    margin: 0 auto 1.5rem;
+  }
+
+  .search-box i {
+    position: absolute;
+    left: 1.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #6b7280;
+    font-size: 1.2rem;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 1rem 1rem 1rem 3.5rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 50px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: #6b2181;
+    box-shadow: 0 0 0 3px rgba(107, 33, 129, 0.1);
+  }
+
+  .search-clear {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    padding: 0.5rem;
+    font-size: 1rem;
+  }
+
+  .category-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #e5e7eb;
+    background: white;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #6b7280;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .filter-btn:hover {
+    border-color: #6b2181;
+    color: #6b2181;
+    transform: translateY(-2px);
+  }
+
+  .filter-btn.active {
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+    border-color: transparent;
+  }
+
+  /* Latest Post Section */
+  .latest-post-section {
+    padding: 4rem 2rem;
+    background: #f9fafb;
+  }
+
+  .section-header {
+    margin-bottom: 3rem;
+  }
+
+  .section-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .section-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1f2937;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .section-subtitle {
+    font-size: 1.1rem;
+    color: #6b7280;
+    margin-top: 0.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .latest-post-card {
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .latest-post-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(107, 33, 129, 0.2);
+  }
+
+  .latest-post-link {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .latest-post-image {
+    width: 45%;
+    min-width: 400px;
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    background: #f3f4f6;
+  }
+
+  .latest-post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .latest-post-card:hover .latest-post-image img {
+    transform: scale(1.1);
+  }
+
+  .latest-post-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(107, 33, 129, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .latest-post-card:hover .latest-post-overlay {
+    opacity: 1;
+  }
+
+  .read-indicator {
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .latest-post-content {
+    flex: 1;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .latest-post-meta {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .post-category-badge {
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-date,
+  .post-author {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6b7280;
+    font-size: 0.9rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-date i,
+  .post-author i {
+    color: #6b2181;
+  }
+
+  .latest-post-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .latest-post-description {
+    font-size: 1.2rem;
+    color: #6b7280;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .latest-post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+  }
+
+  .tag {
+    background: #f3f4f6;
+    color: #6b2181;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .latest-post-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: #6b2181;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: gap 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .latest-post-card:hover .latest-post-cta {
+    gap: 1rem;
+  }
+
+  /* Featured Posts Section */
+  .featured-posts-section {
+    padding: 4rem 2rem;
+    background: white;
+  }
+
+  .featured-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .featured-post-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .featured-post-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .featured-post-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(107, 33, 129, 0.15);
+  }
+
+  .featured-post-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .featured-post-image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: #f3f4f6;
+  }
+
+  .featured-post-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .featured-post-card:hover .featured-post-image img {
+    transform: scale(1.15);
+  }
+
+  .featured-post-overlay {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .read-time {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1f2937;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .featured-post-content {
+    padding: 2rem;
+  }
+
+  .featured-post-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .featured-post-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .featured-post-description {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .featured-post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .post-author-small {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6b7280;
+    font-size: 0.9rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-author-small i {
+    color: #6b2181;
+    font-size: 1.2rem;
+  }
+
+  .read-more-link {
+    color: #6b2181;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .featured-post-card:hover .read-more-link {
+    gap: 0.75rem;
+  }
+
+  /* All Posts Section */
+  .all-posts-section {
+    padding: 4rem 2rem;
+    background: #f9fafb;
+  }
+
+  .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 2rem;
+  }
+
+  .post-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  .post-card.visible {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .post-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(107, 33, 129, 0.15);
+  }
+
+  .post-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+  }
+
+  .post-image-container {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background: #f3f4f6;
+  }
+
+  .post-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .post-card:hover .post-image {
+    transform: scale(1.15);
+  }
+
+  .post-category {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-hover-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(107, 33, 129, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .post-card:hover .post-hover-overlay {
+    opacity: 1;
+  }
+
+  .post-hover-overlay i {
+    color: white;
+    font-size: 2rem;
+  }
+
+  .post-content {
+    padding: 1.5rem;
+  }
+
+  .post-meta {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    font-size: 0.85rem;
+    color: #6b7280;
+    flex-wrap: wrap;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-meta i {
+    margin-right: 0.25rem;
+    color: #6b2181;
+  }
+
+  .post-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+    line-height: 1.3;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-description {
+    font-size: 0.95rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+
+  .read-more {
+    color: #6b2181;
+    font-weight: 600;
+    font-size: 0.95rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-card:hover .read-more {
+    gap: 0.75rem;
+  }
+
+  .no-results {
+    text-align: center;
+    padding: 4rem 2rem;
+    color: #6b7280;
+  }
+
+  .no-results i {
+    font-size: 4rem;
+    color: #d1d5db;
+    margin-bottom: 1rem;
+  }
+
+  .no-results h3 {
+    font-size: 1.5rem;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  /* Newsletter Section */
+  .newsletter-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, #6b2181 0%, #8b2a9b 100%);
+    color: white;
+  }
+
+  .newsletter-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .newsletter-icon {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: #FFD700;
+  }
+
+  .newsletter-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .newsletter-description {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .newsletter-form {
+    margin-bottom: 1rem;
+  }
+
+  .form-group {
+    display: flex;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+  .newsletter-input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .newsletter-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(255, 215, 0, 0.3);
+  }
+
+  .newsletter-button {
+    padding: 1rem 2rem;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1f2937;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .newsletter-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.4);
+  }
+
+  .newsletter-note {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .latest-post-link {
+      flex-direction: column;
+    }
+
+    .latest-post-image {
+      width: 100%;
+      min-width: unset;
+      height: 300px;
+    }
+
+    .latest-post-content {
+      padding: 2rem;
+    }
+
+    .latest-post-title {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .blog-hero {
+      padding: 5rem 1rem 2rem;
+      min-height: 250px;
+    }
+
+    .hero-title {
+      font-size: 2rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-stats {
+      gap: 1.5rem;
+    }
+
+    .stat-number {
+      font-size: 1.8rem;
+    }
+
+    .blog-filters-section {
+      padding: 1.5rem 1rem;
+    }
+
+    .search-box {
+      margin-bottom: 1rem;
+    }
+
+    .category-filters {
+      gap: 0.5rem;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .featured-posts-grid,
+    .posts-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .form-group {
+      flex-direction: column;
+    }
+
+    .newsletter-button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Filtros y búsqueda
+    const searchInput = document.getElementById('searchInput');
+    const clearSearch = document.getElementById('clearSearch');
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const postCards = document.querySelectorAll('.post-card, .featured-post-card');
+    const postsContainer = document.getElementById('postsContainer');
+    const noResults = document.getElementById('noResults');
+
+    let currentCategory = 'all';
+    let currentSearch = '';
+
+    // Mostrar/ocultar botón de limpiar búsqueda
+    searchInput.addEventListener('input', function() {
+      clearSearch.style.display = this.value ? 'block' : 'none';
+      currentSearch = this.value.toLowerCase();
+      filterPosts();
+    });
+
+    clearSearch.addEventListener('click', function() {
+      searchInput.value = '';
+      currentSearch = '';
+      this.style.display = 'none';
+      filterPosts();
+    });
+
+    // Filtros por categoría
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', function() {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        currentCategory = this.dataset.category;
+        filterPosts();
+      });
+    });
+
+    // Función de filtrado
+    function filterPosts() {
+      let visibleCount = 0;
+
+      postCards.forEach(card => {
+        const category = card.dataset.category || '';
+        const title = card.dataset.title || '';
+        const tags = card.dataset.tags || '';
+        const searchText = title + ' ' + tags;
+
+        const matchesCategory = currentCategory === 'all' || category === currentCategory;
+        const matchesSearch = !currentSearch || searchText.includes(currentSearch);
+
+        if (matchesCategory && matchesSearch) {
+          card.style.display = 'block';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Mostrar mensaje si no hay resultados
+      if (visibleCount === 0) {
+        noResults.style.display = 'block';
+        if (postsContainer) postsContainer.style.display = 'none';
+      } else {
+        noResults.style.display = 'none';
+        if (postsContainer) postsContainer.style.display = 'grid';
+      }
+    }
+
+    // Animaciones de entrada
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    postCards.forEach(card => {
+      observer.observe(card);
+    });
+
+    // Newsletter form
+    const newsletterForm = document.getElementById('newsletterForm');
+    if (newsletterForm) {
+      newsletterForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = this.querySelector('.newsletter-input').value;
+        // Aquí puedes agregar la lógica para enviar el email
+        alert('¡Gracias por suscribirte! Te mantendremos informado sobre nuestros últimos artículos.');
+        this.reset();
+      });
+    }
+  });
+</script>

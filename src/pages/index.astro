@@ -1,0 +1,205 @@
+---
+import Header from '../components/Header.astro';
+import Hero from '../components/Hero.astro';
+import Servicios from '../components/Servicios.astro';
+import Productos from '../components/Productos.astro';
+import Blog from '../components/Blog.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import SEO from '../components/SEO.astro';
+import FontAwesome from '../components/FontAwesome.astro';
+
+const site = 'https://reikisolar.com.co';
+const localBusinessSchema = {
+  "@type": "LocalBusiness",
+  "name": "Reiki Energía Solar",
+  "image": `${site}/images/logo.png`,
+  "priceRange": "$$",
+  "telephone": "+57-324-573-7413",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Medellín",
+    "addressLocality": "Medellín",
+    "addressRegion": "Antioquia",
+    "postalCode": "050001",
+    "addressCountry": "CO"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 6.2476,
+    "longitude": -75.5658
+  },
+  "openingHoursSpecification": {
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": [
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "opens": "08:00",
+    "closes": "18:00"
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Colombia"
+  },
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Productos y Servicios de Energía Solar",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Instalación de Paneles Solares"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Sistemas Fotovoltaicos"
+        }
+      }
+    ]
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Energía Solar en Medellín y Colombia | Paneles Solares | Reiki Energía Solar</title>
+    <FontAwesome />
+    <SEO 
+      title="Energía Solar en Medellín y Colombia | Paneles Solares"
+      description="Empresa líder en energía solar en Medellín y Colombia. Instalación de paneles solares, sistemas fotovoltaicos, inversores y baterías. Soluciones de energía renovable para hogares y empresas. Cotiza tu proyecto solar hoy."
+      canonical="/"
+      keywords="energía solar Medellín, paneles solares Medellín, energía solar Colombia, instalación paneles solares, sistemas fotovoltaicos Colombia, energía renovable Medellín, paneles solares precio, instalación solar, inversores solares, baterías solares"
+      schemaType="LocalBusiness"
+      schemaData={localBusinessSchema}
+    />
+  </head>
+  <body>
+    <Header />
+    
+    <main>
+      <Hero />
+      <Servicios />
+      <Productos />
+      <Blog />
+    </main>
+    
+    <Footer />
+    <WhatsAppFloat />
+  </body>
+</html>
+
+<style is:global>
+  /* Reset y base responsive */
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+    position: relative;
+  }
+
+  /* Mejoras de rendimiento */
+  img, video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* Touch improvements para móviles */
+  a, button {
+    -webkit-tap-highlight-color: rgba(107, 33, 129, 0.2);
+    touch-action: manipulation;
+  }
+
+  /* Smooth scrolling mejorado */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+
+  /* Responsive base */
+  @media (max-width: 768px) {
+    html {
+      font-size: 16px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    html {
+      font-size: 15px;
+    }
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  
+  h1 {
+    color: #6b2181;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+  
+  p {
+    font-size: 1.1rem;
+    color: #333;
+    max-width: 800px;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  
+  a {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  
+  button {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  
+  input, textarea, select {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+    
+    p {
+      font-size: 1rem;
+    }
+  }
+</style>

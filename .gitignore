@@ -6,11 +6,6 @@ out/
 # generated types
 .astro/
 
-# Astro project files (not part of OKR/CRM platform)
-src/
-astro.config.mjs
-public/
-
 # dependencies
 node_modules/
 

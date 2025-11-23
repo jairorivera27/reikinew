@@ -1,0 +1,620 @@
+---
+// Header.astro
+import logoBlanco from '../assets/logo_blanco.png';
+---
+
+<header class="header">
+  <nav class="nav">
+    <div class="nav-container">
+      <!-- Logo -->
+      <div class="logo-container">
+        <a href="/" class="logo-link">
+          <div class="logo-wrapper">
+            <img 
+              src={logoBlanco.src} 
+              alt="Reiki Energía Solar" 
+              class="logo"
+            />
+            <div class="logo-glow"></div>
+          </div>
+        </a>
+      </div>
+      
+      <!-- Navigation Menu -->
+      <div class="nav-menu" id="nav-menu">
+        <ul class="nav-list">
+          <li class="nav-item">
+            <a href="/quienes-somos" class="nav-link">
+              <span class="nav-text">Quienes somos</span>
+              <div class="nav-underline"></div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/servicios" class="nav-link">
+              <span class="nav-text">Servicios</span>
+              <div class="nav-underline"></div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/tienda" class="nav-link">
+              <span class="nav-text">Tienda</span>
+              <div class="nav-underline"></div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/mapa-solar" class="nav-link">
+              <span class="nav-text">Mapa Solar</span>
+              <div class="nav-underline"></div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/blog" class="nav-link">
+              <span class="nav-text">Blog</span>
+              <div class="nav-underline"></div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/contacto" class="nav-link">
+              <span class="nav-text">Contacto</span>
+              <div class="nav-underline"></div>
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <!-- Mobile Menu Toggle -->
+      <div class="nav-toggle" id="nav-toggle">
+        <span class="bar bar-1"></span>
+        <span class="bar bar-2"></span>
+        <span class="bar bar-3"></span>
+      </div>
+    </div>
+  </nav>
+  
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-overlay" id="mobile-overlay"></div>
+</header>
+
+<style>
+  /* Keyframes para animaciones */
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes slideInRight {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.05);
+    }
+  }
+
+  @keyframes glow {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.6), 0 0 30px rgba(255, 255, 255, 0.4);
+    }
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: -200% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+
+  /* Header principal */
+  .header {
+    background: linear-gradient(180deg, rgba(107, 33, 129, 1) 0%, rgba(107, 33, 129, 0) 100%);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 2px 10px rgba(107, 33, 129, 0.1);
+    will-change: transform;
+    transform: translateZ(0);
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .header {
+      animation: fadeInDown 0.4s ease-out;
+    }
+  }
+
+  .nav {
+    padding: 0;
+    position: relative;
+  }
+
+  .nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 2rem;
+    position: relative;
+  }
+
+  /* Logo mejorado */
+  .logo-container {
+    flex-shrink: 0;
+    position: relative;
+  }
+
+  .logo-link {
+    display: block;
+    text-decoration: none;
+    position: relative;
+  }
+
+  .logo-wrapper {
+    position: relative;
+    display: inline-block;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .logo {
+    height: 70px;
+    width: auto;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+  }
+
+  .logo-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.3) 0%, transparent 70%);
+    border-radius: 50%;
+    transform: translate(-50%, -50%) scale(0);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+  }
+
+  .logo-wrapper:hover {
+    transform: translateY(-1px);
+  }
+
+  .logo-wrapper:hover .logo-glow {
+    transform: translate(-50%, -50%) scale(1.1);
+  }
+
+  .logo-wrapper:hover .logo {
+    filter: drop-shadow(0 2px 4px rgba(255, 255, 255, 0.2));
+  }
+
+  /* Navegación mejorada */
+  .nav-menu {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 0.5rem;
+  }
+
+  .nav-item {
+    position: relative;
+  }
+
+  /* Reduce animations for better performance */
+  @media (prefers-reduced-motion: no-preference) {
+    .nav-item {
+      animation: slideInRight 0.4s ease-out;
+      animation-fill-mode: both;
+    }
+    .nav-item:nth-child(1) { animation-delay: 0.05s; }
+    .nav-item:nth-child(2) { animation-delay: 0.1s; }
+    .nav-item:nth-child(3) { animation-delay: 0.15s; }
+    .nav-item:nth-child(4) { animation-delay: 0.2s; }
+    .nav-item:nth-child(5) { animation-delay: 0.25s; }
+    .nav-item:nth-child(6) { animation-delay: 0.3s; }
+  }
+
+  .nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    padding: 0.8rem 1.2rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    position: relative;
+    display: block;
+  }
+
+  .nav-text {
+    position: relative;
+    z-index: 2;
+    transition: color 0.2s ease;
+  }
+
+  .nav-underline {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 1px;
+    background: white;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+  }
+
+  .nav-link:hover {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .nav-link:hover .nav-underline {
+    width: 100%;
+  }
+
+  .nav-link:active {
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  /* Mobile Menu Toggle mejorado */
+  .nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0.8rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    position: relative;
+    z-index: 1001;
+  }
+
+  .nav-toggle:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .bar {
+    width: 28px;
+    height: 3px;
+    background: linear-gradient(90deg, white, rgba(255, 255, 255, 0.8));
+    margin: 3px 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 2px;
+    position: relative;
+  }
+
+  .bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    border-radius: 2px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-toggle:hover .bar::before {
+    transform: translateX(100%);
+  }
+
+  /* Overlay para móvil */
+  .mobile-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+
+  .mobile-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Mobile Styles */
+  @media (max-width: 768px) {
+    .nav-container {
+      padding: 1rem;
+    }
+
+    .logo {
+      height: 55px;
+    }
+
+    .nav-toggle {
+      display: flex;
+    }
+
+    .nav-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 300px;
+      height: 100vh;
+      height: 100dvh; /* Dynamic viewport height for mobile */
+      background: linear-gradient(180deg, rgba(107, 33, 129, 0.98) 0%, rgba(107, 33, 129, 0.95) 100%);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      z-index: 1000;
+      padding-top: 80px;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      transform: translateX(0);
+      will-change: transform;
+    }
+
+    .nav-menu.active {
+      transform: translateX(0);
+      right: 0;
+    }
+
+    .nav-list {
+      flex-direction: column;
+      gap: 0;
+      padding: 0;
+      height: 100%;
+    }
+
+    .nav-item {
+      width: 100%;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .nav-item {
+        animation: slideInRight 0.3s ease-out;
+        animation-fill-mode: both;
+      }
+      .nav-item:nth-child(1) { animation-delay: 0.05s; }
+      .nav-item:nth-child(2) { animation-delay: 0.1s; }
+      .nav-item:nth-child(3) { animation-delay: 0.15s; }
+      .nav-item:nth-child(4) { animation-delay: 0.2s; }
+      .nav-item:nth-child(5) { animation-delay: 0.25s; }
+      .nav-item:nth-child(6) { animation-delay: 0.3s; }
+    }
+
+    .nav-link {
+      display: block;
+      padding: 1.5rem 2rem;
+      font-size: 1.3rem;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0;
+      background: none;
+      position: relative;
+    }
+
+    .nav-link:hover {
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .nav-link:hover .nav-text {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .nav-underline {
+      display: none;
+    }
+
+    /* Animación del menú hamburguesa */
+    .nav-toggle.active .bar-1 {
+      transform: rotate(45deg) translate(6px, 6px);
+    }
+
+    .nav-toggle.active .bar-2 {
+      opacity: 0;
+      transform: translateX(20px);
+    }
+
+    .nav-toggle.active .bar-3 {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
+  }
+
+  /* Tablet Styles */
+  @media (max-width: 1024px) and (min-width: 769px) {
+    .nav-container {
+      padding: 1rem 1.5rem;
+    }
+
+    .nav-list {
+      gap: 0.3rem;
+    }
+
+    .nav-link {
+      font-size: 0.95rem;
+      padding: 0.6rem 0.8rem;
+    }
+  }
+
+  /* Medium devices */
+  @media (max-width: 900px) {
+    .nav-link {
+      font-size: 0.9rem;
+      padding: 0.6rem 0.7rem;
+    }
+  }
+
+  /* Extra small devices */
+  @media (max-width: 480px) {
+    .nav-container {
+      padding: 0.8rem;
+    }
+
+    .logo {
+      height: 50px;
+    }
+
+    .nav-link {
+      font-size: 1.2rem;
+      padding: 1.2rem 1.5rem;
+    }
+
+    .nav-menu {
+      width: 85%;
+    }
+  }
+
+  /* Animaciones de entrada */
+  .header {
+    animation: fadeInDown 0.8s ease-out;
+  }
+
+  /* Efectos de scroll */
+  .header.scrolled {
+    background: linear-gradient(180deg, rgba(107, 33, 129, 1) 0%, rgba(107, 33, 129, 0) 100%);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 2px 15px rgba(107, 33, 129, 0.2);
+  }
+</style>
+
+<script>
+  // Enhanced mobile menu functionality with animations
+  document.addEventListener('DOMContentLoaded', function() {
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    const mobileOverlay = document.getElementById('mobile-overlay');
+    const header = document.querySelector('.header');
+    
+    // Mobile menu toggle
+    if (navToggle && navMenu && mobileOverlay) {
+      navToggle.addEventListener('click', function(e) {
+        e.stopPropagation();
+        toggleMobileMenu();
+      });
+
+      // Close menu when clicking on overlay
+      mobileOverlay.addEventListener('click', function() {
+        closeMobileMenu();
+      });
+
+      // Close menu when clicking on a link
+      const navLinks = document.querySelectorAll('.nav-link');
+      navLinks.forEach(link => {
+        link.addEventListener('click', function() {
+          closeMobileMenu();
+        });
+      });
+
+      // Close menu with Escape key
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+          closeMobileMenu();
+        }
+      });
+
+      // Prevent body scroll when menu is open
+      function toggleMobileMenu() {
+        const isActive = navMenu.classList.contains('active');
+        
+        if (isActive) {
+          closeMobileMenu();
+        } else {
+          openMobileMenu();
+        }
+      }
+
+      function openMobileMenu() {
+        navMenu.classList.add('active');
+        mobileOverlay.classList.add('active');
+        navToggle.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        document.documentElement.style.overflow = 'hidden';
+      }
+
+      function closeMobileMenu() {
+        navMenu.classList.remove('active');
+        mobileOverlay.classList.remove('active');
+        navToggle.classList.remove('active');
+        document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
+      }
+    }
+
+    // Header scroll effect - Optimized with throttling
+    let ticking = false;
+    let lastScrollY = window.scrollY;
+    
+    function updateHeader() {
+      const currentScrollY = window.scrollY;
+      
+      if (currentScrollY > 50) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+      
+      lastScrollY = currentScrollY;
+      ticking = false;
+    }
+    
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        window.requestAnimationFrame(updateHeader);
+        ticking = true;
+      }
+    }, { passive: true });
+
+    // Smooth scroll for anchor links
+    const anchorLinks = document.querySelectorAll('a[href^="#"]');
+    anchorLinks.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const headerHeight = header.offsetHeight;
+          const targetPosition = target.offsetTop - headerHeight;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Optimize: Remove redundant animation setup
+  });
+</script>
