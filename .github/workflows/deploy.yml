@@ -1,11 +1,12 @@
-name: Deploy Astro + Next.js to GitHub Pages
+name: Deploy Astro Site to GitHub Pages
 
-# TEMPORALMENTE DESHABILITADO - Solo desplegar sitio Astro principal
+# Solo desplegar sitio Astro principal
+# Next.js OKR/CRM se despliega en servidor propio (ver CONFIGURACION_10_USUARIOS.md)
 on:
-  workflow_dispatch:  # Solo manual, no automático
-  # push:
-  #   branches:
-  #     - main
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # También permite ejecución manual
 
 permissions:
   contents: read
