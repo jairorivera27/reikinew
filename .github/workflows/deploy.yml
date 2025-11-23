@@ -38,6 +38,11 @@ jobs:
             mv apps/web/middleware.ts apps/web/middleware.ts.bak
           fi
       
+      - name: Verify TypeScript
+        run: npx tsc --noEmit
+        working-directory: ./apps/web
+        continue-on-error: true
+      
       - name: Build Next.js
         run: npm run build
         working-directory: ./apps/web
@@ -53,6 +58,16 @@ jobs:
             mv apps/web/middleware.ts.bak apps/web/middleware.ts
           fi
         if: always()
+      
+      - name: List build output
+        run: |
+          if [ -d apps/web/out ]; then
+            ls -la apps/web/out
+          else
+            echo "Build output directory not found!"
+            exit 1
+          fi
+        continue-on-error: true
       
       - name: Create .nojekyll file
         run: touch apps/web/out/.nojekyll

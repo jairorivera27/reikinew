@@ -15,11 +15,6 @@ const nextConfig = {
   images: {
     unoptimized: true, // Necesario para export estático
   },
-  // Deshabilitar middleware cuando se usa export estático
-  ...(isGitHubPages && {
-    // No se puede usar middleware con export estático
-    // La redirección se manejará en el cliente
-  }),
 };
 
 module.exports = nextConfig;
