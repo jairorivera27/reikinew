@@ -8,6 +8,7 @@ out/
 
 # dependencies
 node_modules/
+okr-platform/
 
 # logs
 npm-debug.log*
@@ -34,3 +35,8 @@ prisma/dev.db*
 
 # OS
 Thumbs.db
+
+# OKR platform (separada del sitio Astro)
+apps/
+okr-platform/
+reiki-api-key.pem
