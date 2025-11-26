@@ -170,3 +170,4 @@ Una vez configurado, verifica:
 - [ ] Sitio carga correctamente en https://reikisolar.com.co
 - [ ] Redirección www configurada (opcional)
 
+

@@ -14,6 +14,22 @@ function formatCOP(num?: number): string {
   });
 }
 
+export const GET: APIRoute = async () => {
+  return new Response(
+    JSON.stringify({
+      ok: false,
+      error: 'Usa el método POST para enviar notificaciones.',
+    }),
+    {
+      status: 405,
+      headers: {
+        'Content-Type': 'application/json',
+        'Allow': 'POST',
+      },
+    }
+  );
+};
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     // Parsear el body directamente como JSON (igual que el endpoint de precotizacion)

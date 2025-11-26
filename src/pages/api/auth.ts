@@ -64,6 +64,22 @@ function recordLoginAttempt(ip: string, success: boolean) {
   loginAttempts.set(ip, attempts);
 }
 
+export const GET: APIRoute = async () => {
+  return new Response(
+    JSON.stringify({
+      success: false,
+      error: 'Esta ruta solo acepta solicitudes POST.',
+    }),
+    {
+      status: 405,
+      headers: {
+        'Content-Type': 'application/json',
+        'Allow': 'POST',
+      },
+    }
+  );
+};
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     // Obtener IP del cliente

@@ -92,3 +92,4 @@ Después de confirmar la transferencia:
 - El `basePath` configurado en Next.js (`/okr`)
 - Las rutas que no coinciden con el `basePath` van al proyecto Astro
 
+

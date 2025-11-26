@@ -301,3 +301,4 @@ dir dist\           # Windows
 - [ ] **ACCIÓN REQUERIDA**: Hacer nuevo deploy en Vercel
 - [ ] **ACCIÓN REQUERIDA**: Verificar que https://reikinew.vercel.app funciona
 
+

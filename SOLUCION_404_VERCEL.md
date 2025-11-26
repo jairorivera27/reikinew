@@ -192,3 +192,4 @@ Si `vercel.json` no funciona, elimínalo y configura todo en el panel:
 - [Documentación de Vercel - Static Sites](https://vercel.com/docs/concepts/deployments/static-builds)
 - [Vercel - Troubleshooting 404](https://vercel.com/guides/why-is-my-deployed-project-giving-404)
 
+

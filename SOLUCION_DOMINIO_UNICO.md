@@ -109,3 +109,4 @@ Usuario ve la plataforma OKR
 3. **Verifica variables de entorno**: `NEXT_PUBLIC_BASE_PATH=/okr` debe estar configurado
 4. **Limpia cache**: En Vercel, Settings → Clear Build Cache
 
+

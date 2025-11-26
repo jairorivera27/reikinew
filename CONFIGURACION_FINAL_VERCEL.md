@@ -159,3 +159,4 @@ La plataforma Next.js OKR/CRM queda desacoplada del pipeline de Vercel, lista pa
 - Desplegarse en un proyecto Vercel separado, **o**
 - Ejecutarse en un servidor propio, según preferencia.
 
+

@@ -10,6 +10,22 @@ function formatCOP(num?: number): string {
   });
 }
 
+export const GET: APIRoute = async () => {
+  return new Response(
+    JSON.stringify({
+      ok: false,
+      error: 'Esta ruta solo admite solicitudes POST.',
+    }),
+    {
+      status: 405,
+      headers: {
+        'Content-Type': 'application/json',
+        'Allow': 'POST',
+      },
+    }
+  );
+};
+
 export const POST: APIRoute = async ({ request }) => {
   try {
     const body = await request.json();

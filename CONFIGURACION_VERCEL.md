@@ -187,3 +187,4 @@ npm run preview
 - [Documentación de Astro - Deployment](https://docs.astro.build/en/guides/deploy/vercel/)
 - [Documentación de Next.js - Static Exports](https://nextjs.org/docs/app/building-your-application/deploying/static-exports)
 
+
