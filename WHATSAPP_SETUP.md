@@ -59,7 +59,7 @@ Si tienes un webhook configurado (IFTTT, Zapier, Make.com, etc.), puedes usarlo.
    El webhook recibirá un POST con este formato:
    ```json
    {
-     "phone": "573245737413",
+     "phone": "573022357757",
      "message": "Mensaje formateado...",
      "data": {
        "nombre": "...",

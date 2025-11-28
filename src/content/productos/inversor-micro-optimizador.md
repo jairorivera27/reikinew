@@ -1,22 +1,18 @@
 ---
-title: "Inversor Micro con Optimizadores"
-description: "Sistema de inversión con optimizadores de potencia individuales para cada panel, maximizando la producción incluso con sombras parciales."
+title: "Apsystems DS3D"
+description: "Microinversor Apsystems DS3D-MX, máxima potencia para dos paneles de alta capacidad."
 image: "/images/Inversor solar.jpg"
 category: "inversores"
-price: "$6.200.000"
+price: "$1.100.000"
 specifications:
-  - "Potencia: 7.6kW"
-  - "Tipo: Microinversor con optimizadores"
-  - "Optimizadores: 4 unidades incluidas"
-  - "Eficiencia: 97.8%"
-  - "Monitoreo: Panel por panel"
-  - "Garantía: 25 años (optimizadores)"
-  - "Garantía inversor: 10 años"
-brand: "Enphase"
-model: "IQ8+ Microinverter"
+  - "Potencia: 2000W (Dual)"
+  - "Referencia: DS3D-MX"
+  - "Tipo: Microinversor"
+  - "Garantía: 10 años"
+brand: "Apsystems"
+model: "DS3D-MX"
 stock: "disponible"
-order: 6
+order: 5
 ---
 
-Sistema de inversión con optimizadores individuales que maximizan la producción de cada panel, ideal para techos con sombras o orientaciones variadas.
-
+Microinversor dual Apsystems DS3D, ideal para maximizar la producción individual de cada panel y facilitar la expansión.

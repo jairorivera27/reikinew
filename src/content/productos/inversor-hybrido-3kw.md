@@ -1,22 +1,18 @@
 ---
-title: "Inversor Híbrido 3kW"
-description: "Inversor híbrido compacto de 3kW, perfecto para sistemas residenciales pequeños. Compatible con baterías y conexión a red."
+title: "Must PV30-1524"
+description: "Inversor Must PV30-1524 LVHM, eficiente y robusto para sistemas aislados y de respaldo."
 image: "/images/Inversor solar.jpg"
 category: "inversores"
-price: "$3.200.000"
+price: "$1.200.000"
 specifications:
-  - "Potencia: 3kW (3000W)"
-  - "Tipo: Híbrido On-Grid/Off-Grid"
-  - "Voltaje de entrada: 12V/24V/48V"
-  - "Eficiencia: 96%"
-  - "Onda: Sinusoidal pura"
-  - "Protecciones: IP65"
-  - "Garantía: 5 años"
-brand: "Growatt"
-model: "SPH3000"
+  - "Modelo: PV30-1524 LVHM"
+  - "Tipo: Inversor Cargador"
+  - "Voltaje: 24V"
+  - "Garantía: 1 año"
+brand: "Must"
+model: "PV30-1524 LVHM"
 stock: "disponible"
-order: 5
+order: 1
 ---
 
-Inversor híbrido compacto y eficiente, ideal para viviendas pequeñas y sistemas de respaldo. Fácil instalación y mantenimiento.
-
+Inversor Must PV30-1524 LVHM, una solución económica y confiable para tus necesidades de energía solar básica.

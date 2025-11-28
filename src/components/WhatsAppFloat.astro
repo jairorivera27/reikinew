@@ -9,7 +9,9 @@
   class="whatsapp-float"
   aria-label="Contáctanos por WhatsApp"
 >
-  <i class="fab fa-whatsapp"></i>
+  <svg class="whatsapp-icon" viewBox="0 0 32 32" role="img" aria-hidden="true">
+    <path d="M16 3A13 13 0 0 0 5.26 23.25L4 28l4.89-1.3A13 13 0 1 0 16 3zm0 2a11 11 0 0 1 8.78 17.65l-.23.3a11 11 0 0 1-13.42 2.55l-.32-.18-.35.09-2.94.78.79-2.93.09-.36-.19-.33A11 11 0 0 1 16 5zm-3 5.5a1 1 0 0 0-.94.56 7.65 7.65 0 0 0 .39 7.2c1.53 2.51 4.02 4.3 6.55 4.68a1 1 0 0 0 .82-.22l1.32-1.12a1 1 0 0 0 .11-1.4l-1.12-1.32a1 1 0 0 0-1.4-.1l-.9.77a6.21 6.21 0 0 1-2.92-2.08 6.05 6.05 0 0 1-1.12-2.88l1.05-.76a1 1 0 0 0 .1-1.5l-1.24-1.14a1 1 0 0 0-.7-.29z"/>
+  </svg>
   <span class="whatsapp-tooltip">¿Tienes preguntas? Escríbenos</span>
 </a>
 
@@ -26,12 +28,17 @@
     align-items: center;
     justify-content: center;
     color: white;
-    font-size: 2rem;
     box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
     z-index: 999;
     text-decoration: none;
     transition: all 0.3s ease;
     animation: pulse 2s infinite;
+  }
+
+  .whatsapp-icon {
+    width: 26px;
+    height: 26px;
+    fill: white;
   }
 
   .whatsapp-float:hover {
@@ -94,7 +101,6 @@
       height: 55px;
       bottom: 1.5rem;
       right: 1.5rem;
-      font-size: 1.8rem;
     }
 
     .whatsapp-tooltip {
@@ -108,7 +114,6 @@
       height: 50px;
       bottom: 1rem;
       right: 1rem;
-      font-size: 1.6rem;
     }
   }
 </style>

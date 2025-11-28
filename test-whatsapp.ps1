@@ -43,7 +43,7 @@ try {
         Write-Host "Prueba exitosa! El mensaje deberia haberse enviado a tu WhatsApp." -ForegroundColor Green
         Write-Host "Metodo usado: $($responseBody.method)" -ForegroundColor Gray
         Write-Host ""
-        Write-Host "Revisa tu WhatsApp (573245737413) para ver el mensaje de prueba." -ForegroundColor Yellow
+        Write-Host "Revisa tu WhatsApp (573022357757) para ver el mensaje de prueba." -ForegroundColor Yellow
     } else {
         Write-Host ""
         Write-Host "El servidor respondio pero puede haber un problema." -ForegroundColor Yellow

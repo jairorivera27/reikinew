@@ -22,7 +22,7 @@ const latestPosts = blogPosts
     <div class="blog-carousel">
       <div class="blog-track">
         {latestPosts.map((post) => (
-          <a href="/blog" class="blog-card">
+          <a href={`/blog/${post.slug}`} class="blog-card" data-sslug={post.slug}>
             <div class="blog-image">
               <img src={post.data.image} alt={post.data.title} loading="lazy">
               <div class="blog-category">{post.data.category}</div>
@@ -41,7 +41,7 @@ const latestPosts = blogPosts
         
         <!-- Duplicar para efecto infinito -->
         {latestPosts.map((post) => (
-          <a href="/blog" class="blog-card">
+          <a href={`/blog/${post.slug}`} class="blog-card" data-sslug={post.slug}>
             <div class="blog-image">
               <img src={post.data.image} alt={post.data.title} loading="lazy">
               <div class="blog-category">{post.data.category}</div>

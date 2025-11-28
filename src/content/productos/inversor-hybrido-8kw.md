@@ -1,22 +1,18 @@
 ---
-title: "Inversor Híbrido 8kW"
-description: "Inversor híbrido de alta potencia 8kW para sistemas residenciales grandes y comerciales. Máxima eficiencia y confiabilidad."
+title: "Huawei 4KTL-L1"
+description: "Inversor Huawei SUN2000-4KTL-L1, tecnología digital y conectividad avanzada para tu hogar."
 image: "/images/Inversor solar.jpg"
 category: "inversores"
-price: "$6.500.000"
+price: "$3.800.000"
 specifications:
-  - "Potencia: 8kW (8000W)"
-  - "Tipo: Híbrido On-Grid/Off-Grid"
-  - "Voltaje de entrada: 48V"
-  - "Eficiencia: 97%"
-  - "Onda: Sinusoidal pura"
-  - "Protecciones: IP65"
-  - "Garantía: 5 años"
-brand: "Solis"
-model: "S6-GR1P8K-L"
+  - "Potencia: 4kW"
+  - "Referencia: SUN2000-4KTL-L1"
+  - "Tipo: On-Grid Híbrido Ready"
+  - "Garantía: 10 años"
+brand: "Huawei"
+model: "SUN2000-4KTL-L1"
 stock: "disponible"
-order: 6
+order: 3
 ---
 
-Inversor híbrido de alta potencia para sistemas grandes. Ideal para viviendas con alto consumo energético y pequeñas empresas.
-
+Inversor residencial Huawei de 4kW, compacto, silencioso y preparado para baterías (battery ready).

@@ -3,8 +3,10 @@
 ---
 
 <div class="cart-float-wrapper" id="cart-float-wrapper">
-  <button class="cart-float-button" id="cart-float-button">
-    <i class="fas fa-shopping-cart"></i>
+  <button class="cart-float-button" id="cart-float-button" aria-label="Ver carrito">
+    <svg class="cart-float-icon" viewBox="0 0 24 24" role="img" aria-hidden="true">
+      <path d="M7 18a2 2 0 1 0 2 2 2 2 0 0 0-2-2zm10 0a2 2 0 1 0 2 2 2 2 0 0 0-2-2zM6.16 6l-.3-1.5A1.5 1.5 0 0 0 4.39 3.5H2v2h1.67l2.22 11.11A2 2 0 0 0 7.84 18h8.9a2 2 0 0 0 1.95-1.58L20.92 6zm1.68 10l-1.5-7.5h11.32l-1.5 7.5z"/>
+    </svg>
     <span class="cart-badge-global" id="cart-badge-global">0</span>
   </button>
   <div class="cart-speech-bubble" id="cart-speech-bubble">
@@ -243,13 +245,18 @@
     border: 2px solid rgba(255, 193, 7, 0.3);
     border-radius: 50%;
     color: white;
-    font-size: 1.5rem;
     cursor: pointer;
     box-shadow: 0 4px 20px rgba(107, 33, 129, 0.4), 0 0 0 2px rgba(255, 193, 7, 0.2), 0 0 20px rgba(255, 193, 7, 0.3);
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+  }
+
+  .cart-float-icon {
+    width: 26px;
+    height: 26px;
+    fill: white;
   }
 
   .cart-float-button:hover {

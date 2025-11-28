@@ -2,7 +2,7 @@
 # Esto ayuda a verificar si la configuración es correcta
 
 $apiKey = "5415200"
-$phoneNumber = "573245737413"
+$phoneNumber = "573022357757"
 $testMessage = "Prueba de CallMeBot desde la calculadora solar - $(Get-Date -Format 'yyyy-MM-dd HH:mm:ss')"
 
 Write-Host "=== PRUEBA DIRECTA DE CALLMEBOT ===" -ForegroundColor Cyan

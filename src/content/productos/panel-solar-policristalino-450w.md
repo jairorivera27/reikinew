@@ -1,22 +1,18 @@
 ---
-title: "Panel Solar Policristalino 450W"
-description: "Panel solar policristalino de excelente relación calidad-precio, perfecto para proyectos de gran escala y presupuestos ajustados."
+title: "LONGi 545W"
+description: "Panel solar LONGi LR5-72HBD-545M de 545W, eficiencia líder en la industria y tecnología Hi-MO 5."
 image: "/images/panel.jpg"
 category: "paneles"
-price: "$950.000"
+price: "$545.000"
 specifications:
-  - "Potencia: 450W"
-  - "Tecnología: Policristalino"
-  - "Eficiencia: 18.5%"
-  - "Dimensiones: 2100 x 1048 x 35 mm"
-  - "Peso: 24.8 kg"
+  - "Potencia: 545W"
+  - "Referencia: LR5-72HBD-545M"
+  - "Tecnología: Monocristalino Bifacial"
   - "Garantía: 25 años"
-  - "Tolerancia de potencia: 0/+3W"
-brand: "Jinko Solar"
-model: "JKM450M-72HL4-B"
+brand: "LONGi"
+model: "LR5-72HBD-545M"
 stock: "disponible"
-order: 2
+order: 5
 ---
 
-Panel solar policristalino con excelente relación calidad-precio, ideal para proyectos de gran escala donde se requiere optimizar costos sin sacrificar calidad.
-
+Panel LONGi de 545W, reconocido mundialmente por su fiabilidad y excelente coeficiente de temperatura.

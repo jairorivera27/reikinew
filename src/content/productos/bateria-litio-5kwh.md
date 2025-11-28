@@ -1,7 +1,7 @@
 ---
 title: "Batería de Litio 5kWh"
 description: "Batería de litio de 5kWh con tecnología LiFePO4, ideal para sistemas de respaldo y almacenamiento de energía solar residencial."
-image: "/images/baterias de litio.jpg"
+image: "/images/baterias de litio.png"
 category: "baterias"
 price: "$12.000.000"
 specifications:

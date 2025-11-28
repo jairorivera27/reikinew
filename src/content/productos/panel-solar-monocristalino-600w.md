@@ -1,22 +1,18 @@
 ---
-title: "Panel Solar Monocristalino 600W"
-description: "Panel solar de máxima potencia 600W con tecnología de células de medio corte. Ideal para instalaciones comerciales e industriales."
+title: "Trina Solar 650W"
+description: "Panel solar Trina Solar TSM-650DEG21C.20 de 650W de generación de energía, tecnología Vertex para alta potencia."
 image: "/images/panel.jpg"
 category: "paneles"
-price: "$1.350.000"
+price: "$545.000"
 specifications:
-  - "Potencia: 600W"
-  - "Tecnología: Monocristalino PERC Half-Cut"
-  - "Eficiencia: 22.1%"
-  - "Dimensiones: 2384 x 1096 x 35 mm"
-  - "Peso: 30.2 kg"
+  - "Potencia: 650W"
+  - "Referencia: TSM-650DEG21C.20"
+  - "Tecnología: Vertex Bifacial"
   - "Garantía: 25 años"
-  - "Tolerancia de potencia: 0/+5W"
-brand: "Longi Solar"
-model: "LR5-72HTH-600M"
+brand: "Trina Solar"
+model: "TSM-650DEG21C.20"
 stock: "disponible"
 order: 3
 ---
 
-Panel solar de alta potencia con tecnología de células de medio corte para mayor eficiencia y resistencia. Ideal para proyectos comerciales e industriales.
-
+Panel solar Trina Solar de la serie Vertex, capaz de generar 650W, optimizado para grandes proyectos y alta eficiencia.
