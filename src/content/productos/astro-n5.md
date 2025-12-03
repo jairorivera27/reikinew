@@ -1,7 +1,7 @@
 ---
 title: "Astro N5 580W-620W"
 description: "Panel solar Astroenergy serie N5, rango de potencia 580W a 620W, alta eficiencia y confiabilidad."
-image: "/images/panel.jpg"
+image: "/images/productos-tienda/paneles-solares/astro-n5.jpg"
 category: "paneles"
 price: "$545.000"
 specifications:

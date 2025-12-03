@@ -435,12 +435,22 @@ const latestPosts = blogPosts
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-    const track = document.querySelector('.blog-track') as HTMLElement;
-    const cards = document.querySelectorAll('.blog-card');
-    const prevBtn = document.querySelector('.blog-prev') as HTMLButtonElement;
-    const nextBtn = document.querySelector('.blog-next') as HTMLButtonElement;
+    const track = document.querySelector<HTMLElement>('.blog-track');
+    const cards = document.querySelectorAll<HTMLElement>('.blog-card');
+    const prevBtn = document.querySelector<HTMLButtonElement>('.blog-prev');
+    const nextBtn = document.querySelector<HTMLButtonElement>('.blog-next');
     
-    if (!track || !prevBtn || !nextBtn) return;
+    if (
+      track === null ||
+      prevBtn === null ||
+      nextBtn === null
+    ) {
+      return;
+    }
+
+    const trackEl = track;
+    const prevButton = prevBtn;
+    const nextButton = nextBtn;
     
     let currentIndex = 0;
     
@@ -466,8 +476,7 @@ const latestPosts = blogPosts
     });
 
     cards.forEach((card, index) => {
-      const htmlCard = card as HTMLElement;
-      htmlCard.style.transitionDelay = `${index * 0.1}s`;
+      card.style.transitionDelay = `${index * 0.1}s`;
       observer.observe(card);
     });
 
@@ -480,10 +489,10 @@ const latestPosts = blogPosts
     function updateCarousel() {
       const cardWidth = getCardWidth();
       const translateX = -currentIndex * cardWidth;
-      track.style.transform = `translateX(${translateX}px)`;
+      trackEl.style.transform = `translateX(${translateX}px)`;
       
-      prevBtn.disabled = currentIndex === 0;
-      nextBtn.disabled = currentIndex >= maxIndex;
+      prevButton.disabled = currentIndex === 0;
+      nextButton.disabled = currentIndex >= maxIndex;
     }
 
     function nextSlide() {
@@ -500,8 +509,8 @@ const latestPosts = blogPosts
       }
     }
 
-    nextBtn.addEventListener('click', nextSlide);
-    prevBtn.addEventListener('click', prevSlide);
+    nextButton.addEventListener('click', nextSlide);
+    prevButton.addEventListener('click', prevSlide);
 
     // Responsive
     window.addEventListener('resize', () => {

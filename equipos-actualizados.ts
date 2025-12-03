@@ -2,7 +2,7 @@
 // Extraídos de: Precios noviembre 2025 y Lista de precios OCTUBRE 2025
 // Fecha de actualización: 2025-11-13T02:08:36.116Z
 
-import type { Equipo } from './tipos';
+import type { Equipo } from './src/lib/cotizador/tipos';
 
 // Equipos extraídos de los PDFs de precios
 export const EQUIPOS_ACTUALIZADOS: Equipo[] = [

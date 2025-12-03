@@ -1,7 +1,7 @@
 ---
 title: "Sistema de Baterías Stack 15kWh"
 description: "Sistema modular de baterías de litio apilables, permite expandir la capacidad según necesidades. Ideal para instalaciones comerciales."
-image: "/images/baterias de litio.png"
+image: "/images/bateria-litio.svg"
 category: "baterias"
 price: "$35.000.000"
 specifications:

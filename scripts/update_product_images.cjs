@@ -40,12 +40,13 @@ const imageMap = {
   'victron-quattro-48-5000': '/images/Productos tienda/Inversores/Victron Quattro 48-5000 Medellín.png',
 
   // Paneles
-  'jinko-tiger-neo-585w': '/images/Productos tienda/Panel solar/Panel Solar Jinko Tiger Neo 585w medellín.png',
-  'panel-solar-bifacial-600w': '/images/Productos tienda/Panel solar/Panel Solar Trinasolar 700w Medellín.png',
-  'panel-solar-monocristalino-500w': '/images/Productos tienda/Panel solar/Panel Solar Monocristalino 500w JinkoSolar Medellín.png',
-  'panel-solar-monocristalino-550w': '/images/Productos tienda/Panel solar/Panel Solar JAsolar 595w Medellín.png',
-  'panel-solar-monocristalino-600w': '/images/Productos tienda/Panel solar/Trinasolar 650 panel solar medellín.png',
-  'panel-solar-policristalino-450w': '/images/Productos tienda/Panel solar/LONGI 545W Panel solar.webp',
+  'astro-n5': '/images/productos-tienda/paneles-solares/astro-n5.jpg',
+  'jinko-tiger-neo-585w': '/images/productos-tienda/paneles-solares/jinko-tiger-neo-585w.png',
+  'panel-solar-bifacial-600w': '/images/productos-tienda/paneles-solares/trinasolar-700w.png',
+  'panel-solar-monocristalino-500w': '/images/productos-tienda/paneles-solares/jinkosolar-500w.png',
+  'panel-solar-monocristalino-550w': '/images/productos-tienda/paneles-solares/ja-solar-595w.png',
+  'panel-solar-monocristalino-600w': '/images/productos-tienda/paneles-solares/trinasolar-650w.jpg',
+  'panel-solar-policristalino-450w': '/images/productos-tienda/paneles-solares/longi-545w-panel.webp',
 
   // Protecciones
   'proteccion-breaker-32a': '/images/Productos tienda/Protección Electrica/Breaker DC 32a ABB Medellín.png',
