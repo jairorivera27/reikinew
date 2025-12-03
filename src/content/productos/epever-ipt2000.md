@@ -1,7 +1,7 @@
 ---
 title: "Epever IPT2000"
 description: "Inversor Onda Pura Epever IPT2000-41[T], referencia IPT2000-41[T], potencia de ~2kW."
-image: "/images/Inversor solar.jpg"
+image: "/images/Productos tienda/Inversores/Epever IPT2000 Medellín.png"
 category: "inversores"
 price: "$1.800.000"
 specifications:
@@ -16,4 +16,6 @@ order: 9
 ---
 
 Inversor Epever IPT2000 de onda sinusoidal pura, robusto y confiable para aplicaciones fuera de red.
+
+
 

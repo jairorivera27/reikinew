@@ -1,7 +1,7 @@
 ---
 title: "Deye 5kW Híbrido"
 description: "Inversor Deye SUN-5K-SG01LP1-US híbrido de 5kW, la solución todo en uno para gestión inteligente de energía."
-image: "/images/Inversor solar.jpg"
+image: "/images/Productos tienda/Inversores/Deye 5kwh híbrido.jpg"
 category: "inversores"
 price: "$5.500.000"
 specifications:

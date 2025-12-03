@@ -1,7 +1,7 @@
 ---
 title: "Controlador MPPT 60A"
 description: "Controlador de carga solar MPPT de 60 amperios con comunicación Bluetooth. Control desde smartphone y monitoreo avanzado."
-image: "/images/controlador de carga solar.jpg"
+image: "/images/Productos tienda/Controladores/60A.jpg"
 category: "controladores"
 price: "$680.000"
 specifications:

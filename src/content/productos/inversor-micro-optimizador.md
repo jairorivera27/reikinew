@@ -1,7 +1,7 @@
 ---
 title: "Apsystems DS3D"
 description: "Microinversor Apsystems DS3D-MX, máxima potencia para dos paneles de alta capacidad."
-image: "/images/Inversor solar.jpg"
+image: "/images/Productos tienda/Inversores/Apsystems DS3D Medellín.png"
 category: "inversores"
 price: "$1.100.000"
 specifications:

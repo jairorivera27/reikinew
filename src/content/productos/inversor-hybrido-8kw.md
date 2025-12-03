@@ -1,7 +1,7 @@
 ---
 title: "Huawei 4KTL-L1"
 description: "Inversor Huawei SUN2000-4KTL-L1, tecnología digital y conectividad avanzada para tu hogar."
-image: "/images/Inversor solar.jpg"
+image: "/images/Productos tienda/Inversores/Huawei 4KTL-L1 Medellín.png"
 category: "inversores"
 price: "$3.800.000"
 specifications:

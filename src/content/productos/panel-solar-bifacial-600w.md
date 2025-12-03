@@ -1,7 +1,7 @@
 ---
 title: "Trina Solar 700W"
 description: "Panel solar Trina Solar TSM-700NEG21C.20 (Vertex N) de 700W, la máxima potencia para tu sistema solar."
-image: "/images/panel.jpg"
+image: "/images/Productos tienda/Panel solar/Panel Solar Trinasolar 700w Medellín.png"
 category: "paneles"
 price: "$545.000"
 specifications:

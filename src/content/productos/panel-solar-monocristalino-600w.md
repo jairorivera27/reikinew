@@ -1,7 +1,7 @@
 ---
 title: "Trina Solar 650W"
 description: "Panel solar Trina Solar TSM-650DEG21C.20 de 650W de generación de energía, tecnología Vertex para alta potencia."
-image: "/images/panel.jpg"
+image: "/images/Productos tienda/Panel solar/Trinasolar 650 panel solar medellín.png"
 category: "paneles"
 price: "$545.000"
 specifications:

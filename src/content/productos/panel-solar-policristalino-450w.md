@@ -1,7 +1,7 @@
 ---
 title: "LONGi 545W"
 description: "Panel solar LONGi LR5-72HBD-545M de 545W, eficiencia líder en la industria y tecnología Hi-MO 5."
-image: "/images/panel.jpg"
+image: "/images/Productos tienda/Panel solar/LONGI 545W Panel solar.webp"
 category: "paneles"
 price: "$545.000"
 specifications:

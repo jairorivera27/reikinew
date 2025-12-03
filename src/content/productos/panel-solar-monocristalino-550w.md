@@ -1,7 +1,7 @@
 ---
 title: "JA Solar 595W"
 description: "Panel solar JA Solar JAM72D40-595/LB de 595W, diseñado para maximizar la producción de energía en espacios reducidos."
-image: "/images/panel.jpg"
+image: "/images/Productos tienda/Panel solar/Panel Solar JAsolar 595w Medellín.png"
 category: "paneles"
 price: "$545.000"
 specifications:
