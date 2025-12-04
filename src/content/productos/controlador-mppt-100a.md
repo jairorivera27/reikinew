@@ -1,7 +1,7 @@
 ---
 title: "Controlador MPPT 100A"
 description: "Controlador de carga solar MPPT profesional de 100 amperios. Para instalaciones comerciales e industriales de gran escala."
-image: "/images/Productos tienda/Controladores/100A.jpg"
+image: "/images/productos-tienda/controladores/controlador-mppt-100a-medellin.png"
 category: "controladores"
 price: "$1.200.000"
 specifications:
