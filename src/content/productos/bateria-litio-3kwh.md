@@ -1,7 +1,7 @@
 ---
 title: "Batería de Litio 3kWh"
 description: "Batería de litio compacta de 3kWh con tecnología LiFePO4. Perfecta para sistemas residenciales pequeños y portátiles."
-image: "/images/bateria-litio.svg"
+image: "/images/productos-tienda/baterias/pylontech-3kwh-medellin.png"
 category: "baterias"
 price: "$8.500.000"
 specifications:
