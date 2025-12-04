@@ -1,7 +1,7 @@
 ---
 title: "Retorno de la inversión en energía solar para hogares en Colombia"
 description: "Calcula en cuántos años se paga un sistema solar residencial en Colombia. Analizamos tarifas, radiación, incentivos de la Ley 1715 y venta de excedentes para estimar el ROI."
-image: "/images/beneficios casa.png"
+image: "/images/ENERGIA SOLAR EN MEDELLIN COLOMBIA PANELES.png"
 author: "Equipo Reiki Solar"
 date: "2025-12-04"
 category: "Finanzas Solares"

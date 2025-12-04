@@ -1,7 +1,7 @@
 ---
 title: "Cómo financiar un sistema de energía solar en Colombia y pagarlo con el ahorro"
 description: "Aprende a financiar paneles solares en Colombia con créditos verdes, leasing y PPA residenciales, usando el ahorro mensual de tu factura para cubrir la cuota."
-image: "/images/energia solar en empresas.png"
+image: "/images/SOLUCIONES FINANCIERAS ENERGIA SOLAR EN MEDELLIN COLOMBIA PANELES.png"
 author: "Equipo Reiki Solar"
 date: "2025-12-04"
 category: "Finanzas Solares"
