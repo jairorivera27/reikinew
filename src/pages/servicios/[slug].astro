@@ -1,0 +1,1179 @@
+---
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
+import SEO from '../../components/SEO.astro';
+import FontAwesome from '../../components/FontAwesome.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const servicios = await getCollection('servicios');
+  return servicios.map((servicio) => ({
+    params: { slug: servicio.slug },
+    props: { servicio },
+  }));
+}
+
+type Props = {
+  servicio: CollectionEntry<'servicios'>;
+};
+
+const { servicio } = Astro.props;
+const { Content } = await servicio.render();
+
+// Obtener todos los servicios para la sección de relacionados
+const allServicios = await getCollection('servicios');
+const relatedServicios = allServicios
+  .filter(s => s.slug !== servicio.slug)
+  .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
+  .slice(0, 3);
+
+const site = 'https://reikisolar.com.co';
+const serviceImage = servicio.data.image;
+const serviceSchema = {
+  "@type": "Service",
+  "serviceType": servicio.data.title,
+  "description": servicio.data.description,
+  "provider": {
+    "@type": "LocalBusiness",
+    "name": "Reiki Energía Solar",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Medellín",
+      "addressRegion": "Antioquia",
+      "addressCountry": "CO"
+    }
+  },
+  "areaServed": {
+    "@type": "Country",
+    "name": "Colombia"
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{servicio.data.title} en Medellín | Servicios Energía Solar | Reiki Energía Solar</title>
+    <FontAwesome />
+    <SEO 
+      title={`${servicio.data.title} en Medellín | Servicios Energía Solar`}
+      description={`${servicio.data.description} En Medellín y toda Colombia. Cotización gratuita.`}
+      canonical={`/servicios/${servicio.slug}`}
+      keywords={`${servicio.data.title} Medellín, ${servicio.data.title} Colombia, instalación energía solar, servicios solares`}
+      schemaType="Service"
+      schemaData={serviceSchema}
+      ogImage={serviceImage}
+    />
+  </head>
+  <body>
+    <Header />
+    
+    <main>
+      <!-- Hero Section Mejorado -->
+      <section class="service-hero">
+        <div class="hero-background-overlay"></div>
+        <div class="hero-image-container">
+          <img 
+            src={serviceImage} 
+            alt={servicio.data.title}
+            class="hero-background-image"
+            loading="eager"
+          >
+        </div>
+        <div class="container hero-content">
+          <div class="breadcrumb">
+            <a href="/">
+              <i class="fas fa-home"></i> Inicio
+            </a>
+            <span>/</span>
+            <a href="/servicios">Servicios</a>
+            <span>/</span>
+            <span>{servicio.data.title}</span>
+          </div>
+          <div class="hero-text-content">
+            <h1 class="service-hero-title">{servicio.data.title}</h1>
+            <p class="service-hero-description">{servicio.data.description}</p>
+            <div class="hero-cta-buttons">
+              <a href="https://wa.me/573245737413" target="_blank" rel="noopener noreferrer" class="hero-cta-button whatsapp">
+                <i class="fab fa-whatsapp"></i>
+                Consultar Ahora
+              </a>
+              <a href="#informacion" class="hero-cta-button secondary">
+                <i class="fas fa-info-circle"></i>
+                Más Información
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección de Estadísticas/Features Destacadas -->
+      <section class="features-highlight-section">
+        <div class="container">
+          <div class="features-grid">
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-dollar-sign"></i>
+              </div>
+              <h3 class="feature-title">Ahorro Garantizado</h3>
+              <p class="feature-description">Reduce tus costos energéticos hasta en un 99%</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <h3 class="feature-title">100% Sostenible</h3>
+              <p class="feature-description">Energía limpia y renovable para el planeta</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3 class="feature-title">Garantía Total</h3>
+              <p class="feature-description">Soporte técnico y mantenimiento incluido</p>
+            </div>
+            <div class="feature-card">
+              <div class="feature-icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <h3 class="feature-title">ROI Rápido</h3>
+              <p class="feature-description">Retorno de inversión en 3-5 años</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección Principal de Información -->
+      <section id="informacion" class="service-detail-section">
+        <div class="container">
+          <div class="service-detail-wrapper">
+            <!-- Imagen Principal -->
+            <div class="service-main-image-wrapper">
+              <div class="service-main-image">
+                <img 
+                  src={serviceImage} 
+                  alt={servicio.data.title}
+                  loading="lazy"
+                >
+                <div class="image-badge">
+                  <i class="fas fa-check-circle"></i>
+                  <span>Certificado RETIE</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Contenido Principal -->
+            <div class="service-info">
+              <!-- Contenido del Markdown -->
+              <div class="service-content-text">
+                <Content />
+              </div>
+
+              <!-- Beneficios Mejorados -->
+              <div class="service-benefits-section">
+                <div class="benefits-header">
+                  <h2 class="benefits-section-title">
+                    <i class="fas fa-star"></i>
+                    Beneficios Principales
+                  </h2>
+                  <p class="benefits-subtitle">Descubre todas las ventajas de este servicio</p>
+                </div>
+                <div class="service-benefits-grid">
+                  {servicio.data.benefits.map((benefit, index) => (
+                    <div class="service-benefit-card">
+                      <div class="benefit-icon-wrapper">
+                        <i class="fas fa-check-circle"></i>
+                      </div>
+                      <p class="benefit-text">{benefit}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <!-- CTA Section Mejorada -->
+              <div class="service-cta-section">
+                <div class="cta-content">
+                  <h3 class="cta-title">¿Listo para comenzar?</h3>
+                  <p class="cta-description">Obtén una cotización personalizada y sin compromiso</p>
+                  <div class="cta-buttons-group">
+                    <a href="https://wa.me/573245737413" target="_blank" rel="noopener noreferrer" class="service-cta-button whatsapp">
+                      <i class="fab fa-whatsapp"></i>
+                      Consultar por WhatsApp
+                    </a>
+                    <a href="/contacto" class="service-cta-button primary">
+                      <i class="fas fa-envelope"></i>
+                      {servicio.data.cta.text}
+                    </a>
+                    <a href="/mapa-solar" class="service-cta-button secondary">
+                      <i class="fas fa-calculator"></i>
+                      Calculadora Solar
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Sección de Proceso (Solo si hay contenido suficiente) -->
+      {servicio.slug === 'energia-solar' && (
+        <section class="process-section">
+          <div class="container">
+            <div class="section-header">
+              <h2 class="section-title">Nuestro Proceso</h2>
+              <p class="section-subtitle">5 pasos simples para tener tu sistema solar</p>
+            </div>
+            <div class="process-steps">
+              <div class="process-step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                  <h3 class="step-title">Diseño de Propuesta</h3>
+                  <p class="step-description">Visita de ingeniería y análisis de tu consumo para diseñar la solución perfecta</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                  <h3 class="step-title">Firma de Contrato</h3>
+                  <p class="step-description">Documentación completa e introducción a nuestro sistema de monitoreo</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                  <h3 class="step-title">Instalación</h3>
+                  <p class="step-description">Instalación profesional con personal calificado y certificado</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                  <h3 class="step-title">Certificación</h3>
+                  <p class="step-description">Legalización y certificación RETIE según normativas vigentes</p>
+                </div>
+              </div>
+              <div class="process-step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                  <h3 class="step-title">¡Primer Kilovatio!</h3>
+                  <p class="step-description">Entrega del sistema y capacitación en monitoreo en tiempo real</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <!-- Servicios Relacionados Mejorados -->
+      <section class="related-services-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="related-title">Otros Servicios que te pueden interesar</h2>
+            <p class="related-subtitle">Descubre más soluciones de energía solar</p>
+          </div>
+          <div class="related-services-grid">
+            {relatedServicios.map((relatedService) => (
+              <a href={`/servicios/${relatedService.slug}`} class="related-service-card">
+                <div class="related-service-image">
+                  <img 
+                    src={relatedService.data.image} 
+                    alt={relatedService.data.title}
+                    loading="lazy"
+                  >
+                  <div class="related-overlay">
+                    <i class="fas fa-arrow-right"></i>
+                  </div>
+                </div>
+                <div class="related-service-content">
+                  <h3 class="related-service-title">{relatedService.data.title}</h3>
+                  <p class="related-service-description">{relatedService.data.description}</p>
+                  <span class="related-service-link">
+                    Ver detalles <i class="fas fa-arrow-right"></i>
+                  </span>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+    
+    <Footer />
+    <WhatsAppFloat />
+  </body>
+</html>
+
+<style>
+  /* Hero Section Mejorado */
+  .service-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding: 10rem 2rem 5rem;
+    overflow: hidden;
+    color: white;
+  }
+
+  .hero-background-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(107, 33, 129, 0.95) 0%, rgba(139, 42, 155, 0.9) 100%);
+    z-index: 1;
+  }
+
+  .hero-image-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+  }
+
+  .hero-background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.2;
+    filter: blur(2px);
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .breadcrumb a {
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: none;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .breadcrumb a:hover {
+    color: #FFD700;
+  }
+
+  .breadcrumb span {
+    color: rgba(255, 255, 255, 0.6);
+  }
+
+  .hero-text-content {
+    max-width: 800px;
+  }
+
+  .service-hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    line-height: 1.2;
+  }
+
+  .service-hero-description {
+    font-size: 1.4rem;
+    color: #e5e7eb;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .hero-cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .hero-cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .hero-cta-button.whatsapp {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1f2937;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  }
+
+  .hero-cta-button.whatsapp:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+    background: linear-gradient(135deg, #FFA500, #FFD700);
+  }
+
+  .hero-cta-button.secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .hero-cta-button.secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+  }
+
+  /* Features Highlight Section */
+  .features-highlight-section {
+    padding: 4rem 2rem;
+    background: linear-gradient(135deg, #6b2181 0%, #8b2a9b 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .features-highlight-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="pattern" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23pattern)"/></svg>');
+    pointer-events: none;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+  }
+
+  .feature-card {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.25);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  }
+
+  .feature-icon {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.5rem;
+    font-size: 2rem;
+    color: #1f2937;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  }
+
+  .feature-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.75rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .feature-description {
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  /* Service Detail Section */
+  .service-detail-section {
+    padding: 5rem 2rem;
+    background: #f9fafb;
+  }
+
+  .service-detail-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 4rem;
+    align-items: start;
+  }
+
+  .service-main-image-wrapper {
+    position: sticky;
+    top: 120px;
+  }
+
+  .service-main-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    background: white;
+    padding: 1rem;
+  }
+
+  .service-main-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px;
+    transition: transform 0.5s ease;
+  }
+
+  .service-main-image:hover img {
+    transform: scale(1.05);
+  }
+
+  .image-badge {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1f2937;
+    padding: 0.75rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .service-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+  }
+
+  .service-content-text {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  .service-content-text :global(h1),
+  .service-content-text :global(h2),
+  .service-content-text :global(h3),
+  .service-content-text :global(h4) {
+    color: #1f2937;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .service-content-text :global(h1) {
+    font-size: 2.5rem;
+    color: #6b2181;
+  }
+
+  .service-content-text :global(h2) {
+    font-size: 2rem;
+    color: #6b2181;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.5rem;
+  }
+
+  .service-content-text :global(h3) {
+    font-size: 1.5rem;
+  }
+
+  .service-content-text :global(p) {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+    text-align: justify;
+  }
+
+  .service-content-text :global(ul),
+  .service-content-text :global(ol) {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+  }
+
+  .service-content-text :global(li) {
+    margin-bottom: 0.75rem;
+    font-size: 1.05rem;
+  }
+
+  .service-content-text :global(strong) {
+    color: #6b2181;
+    font-weight: 600;
+  }
+
+  .service-content-text :global(a) {
+    color: #6b2181;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+
+  .service-content-text :global(a:hover) {
+    color: #8b2a9b;
+  }
+
+  /* Benefits Section Mejorada */
+  .service-benefits-section {
+    background: white;
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .benefits-header {
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .benefits-section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .benefits-section-title i {
+    color: #FFD700;
+    font-size: 2rem;
+  }
+
+  .benefits-subtitle {
+    font-size: 1.1rem;
+    color: #6b7280;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .service-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .service-benefit-card {
+    background: linear-gradient(135deg, #f9fafb 0%, #ffffff 100%);
+    border: 2px solid #e5e7eb;
+    border-radius: 15px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  .service-benefit-card:hover {
+    transform: translateY(-5px);
+    border-color: #6b2181;
+    box-shadow: 0 8px 25px rgba(107, 33, 129, 0.15);
+    background: linear-gradient(135deg, #ffffff 0%, #f3e8ff 100%);
+  }
+
+  .benefit-icon-wrapper {
+    flex-shrink: 0;
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+  }
+
+  .benefit-text {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #374151;
+    margin: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  /* CTA Section Mejorada */
+  .service-cta-section {
+    background: linear-gradient(135deg, #6b2181 0%, #8b2a9b 100%);
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 10px 40px rgba(107, 33, 129, 0.3);
+  }
+
+  .cta-content {
+    text-align: center;
+  }
+
+  .cta-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 0.75rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cta-description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cta-buttons-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .service-cta-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1.2rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .service-cta-button.primary {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1f2937;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  }
+
+  .service-cta-button.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+    background: linear-gradient(135deg, #FFA500, #FFD700);
+  }
+
+  .service-cta-button.whatsapp {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1f2937;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  }
+
+  .service-cta-button.whatsapp:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+    background: linear-gradient(135deg, #FFA500, #FFD700);
+  }
+
+  .service-cta-button.secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .service-cta-button.secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+  }
+
+  /* Process Section */
+  .process-section {
+    padding: 5rem 2rem;
+    background: linear-gradient(135deg, #6b2181 0%, #8b2a9b 100%);
+    color: white;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .section-subtitle {
+    font-size: 1.3rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .process-steps {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .process-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .process-step:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(10px);
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #1f2937;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .step-content {
+    flex: 1;
+  }
+
+  .step-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 0.75rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .step-description {
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  /* Related Services Mejorados */
+  .related-services-section {
+    padding: 5rem 2rem;
+    background: #f9fafb;
+  }
+
+  .related-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+    text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .related-subtitle {
+    font-size: 1.2rem;
+    color: #6b7280;
+    text-align: center;
+    margin-bottom: 3rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .related-services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+  }
+
+  .related-service-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: block;
+    border: 2px solid transparent;
+  }
+
+  .related-service-card:hover {
+    transform: translateY(-12px) scale(1.02);
+    box-shadow: 0 20px 60px rgba(107, 33, 129, 0.3);
+    border-color: #6b2181;
+  }
+
+  .related-service-image {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    background: #f3f4f6;
+  }
+
+  .related-service-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .related-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(107, 33, 129, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .related-overlay i {
+    font-size: 3rem;
+    color: white;
+  }
+
+  .related-service-card:hover .related-service-image img {
+    transform: scale(1.15);
+  }
+
+  .related-service-card:hover .related-overlay {
+    opacity: 1;
+  }
+
+  .related-service-content {
+    padding: 2rem;
+  }
+
+  .related-service-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.75rem;
+    transition: color 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .related-service-card:hover .related-service-title {
+    color: #6b2181;
+  }
+
+  .related-service-description {
+    font-size: 1rem;
+    color: #6b7280;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .related-service-link {
+    color: #6b2181;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: gap 0.3s ease, color 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .related-service-card:hover .related-service-link {
+    gap: 0.75rem;
+    color: #8b2a9b;
+  }
+
+  /* Responsive */
+  @media (max-width: 968px) {
+    .service-detail-wrapper {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+
+    .service-main-image-wrapper {
+      position: static;
+    }
+
+    .service-benefits-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .service-hero {
+      min-height: 60vh;
+      padding: 8rem 1rem 3rem;
+    }
+
+    .service-hero-title {
+      font-size: 2.5rem;
+    }
+
+    .service-hero-description {
+      font-size: 1.2rem;
+    }
+
+    .hero-cta-buttons {
+      flex-direction: column;
+    }
+
+    .hero-cta-button {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+
+    .section-subtitle {
+      font-size: 1.1rem;
+    }
+
+    .process-step {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .step-number {
+      margin: 0 auto;
+    }
+
+    .service-content-text,
+    .service-benefits-section {
+      padding: 2rem;
+    }
+
+    .related-services-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .cta-buttons-group {
+      gap: 0.75rem;
+    }
+
+    .service-cta-button {
+      width: 100%;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .service-hero-title {
+      font-size: 2rem;
+    }
+
+    .benefits-section-title {
+      font-size: 2rem;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .related-title {
+      font-size: 2rem;
+    }
+  }
+</style>
+
+<script>
+  // Smooth scroll para enlaces internos
+  document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('a[href^="#"]');
+    links.forEach(link => {
+      link.addEventListener('click', function(e) {
+        const href = this.getAttribute('href');
+        if (href === '#') return;
+        
+        const target = document.querySelector(href);
+        if (target) {
+          e.preventDefault();
+          const headerHeight = document.querySelector('.header')?.offsetHeight || 80;
+          const targetPosition = target.offsetTop - headerHeight;
+          
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Animación de entrada para las tarjetas de beneficios
+    const benefitCards = document.querySelectorAll('.service-benefit-card');
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => {
+            entry.target.style.opacity = '1';
+            entry.target.style.transform = 'translateY(0)';
+          }, index * 50);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    benefitCards.forEach(card => {
+      card.style.opacity = '0';
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(card);
+    });
+  });
+</script>

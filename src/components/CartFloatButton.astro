@@ -1,0 +1,374 @@
+---
+// Componente global del botón flotante del carrito
+---
+
+<div class="cart-float-wrapper" id="cart-float-wrapper">
+  <button class="cart-float-button" id="cart-float-button">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="cart-badge-global" id="cart-badge-global">0</span>
+  </button>
+  <div class="cart-speech-bubble" id="cart-speech-bubble">
+    <div class="speech-bubble-content">
+      <p id="cart-speech-text">¿Qué más se te antoja?</p>
+    </div>
+    <div class="speech-bubble-tail"></div>
+  </div>
+</div>
+
+<script>
+  const CART_STORAGE_KEY = 'reiki_cart';
+
+  function updateCartBadge() {
+    const savedCart = localStorage.getItem(CART_STORAGE_KEY);
+    let totalItems = 0;
+    
+    if (savedCart) {
+      try {
+        const cart = JSON.parse(savedCart);
+        totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+      } catch (e) {
+        totalItems = 0;
+      }
+    }
+    
+    const badge = document.getElementById('cart-badge-global');
+    if (badge) {
+      badge.textContent = totalItems;
+      badge.style.display = totalItems > 0 ? 'flex' : 'none';
+    }
+  }
+
+  // Frases para el carrito
+  const cartPhrases = [
+    "¿Qué más se te antoja?",
+    "¿Qué más va a llevar?",
+    "¿Ya viste los nuevos paneles?",
+    "Lleve más que sí hay",
+    "Acuérdate del cable y las protecciones",
+    "Me llegaron nuevas estructuras",
+    "Si vieras la batería que llegó tan bacana"
+  ];
+
+  // Función para obtener una frase aleatoria
+  function getRandomPhrase() {
+    return cartPhrases[Math.floor(Math.random() * cartPhrases.length)];
+  }
+
+  // Sistema de movimiento interactivo y nube de diálogo
+  if (typeof window !== 'undefined') {
+    updateCartBadge();
+    
+    // Escuchar eventos de actualización del carrito
+    window.addEventListener('cartUpdated', () => {
+      updateCartBadge();
+    });
+    
+    // Actualizar periódicamente (por si se actualiza desde otra pestaña)
+    setInterval(updateCartBadge, 1000);
+    
+    // Click en el botón - redirige a /carrito
+    const cartButton = document.getElementById('cart-float-button');
+    if (cartButton) {
+      cartButton.addEventListener('click', function() {
+        window.location.href = '/carrito';
+      });
+    }
+
+    // Sistema de movimiento interactivo
+    const cartWrapper = document.getElementById('cart-float-wrapper');
+    const speechBubble = document.getElementById('cart-speech-bubble');
+    
+    if (cartWrapper && speechBubble) {
+      let lastScrollY = window.scrollY;
+      let scrollTimeout = null;
+      let isScrolling = false;
+      let targetY = 0;
+      let currentY = 0;
+      let animationFrame = null;
+      let speechBubbleTimeout = null;
+      let hasShownBubble = false;
+
+      // Función para animar el movimiento con vibración
+      function animate() {
+        const diff = targetY - currentY;
+        currentY += diff * 0.15; // Suavizado con easing más rápido
+        
+        // Aplicar vibración si está haciendo scroll
+        let finalY = currentY;
+        if (isScrolling) {
+          finalY = currentY + vibrationOffset;
+        }
+        
+        if (Math.abs(diff) > 0.5 || isScrolling) {
+          cartWrapper.style.transform = `translateY(${finalY}px)`;
+          animationFrame = requestAnimationFrame(animate);
+        } else {
+          currentY = targetY;
+          cartWrapper.style.transform = `translateY(${currentY}px)`;
+        }
+      }
+
+      // Detectar scroll con efecto de vibración
+      let vibrationOffset = 0;
+      let vibrationDirection = 1;
+      let vibrationFrame = null;
+      
+      function updateVibration() {
+        if (isScrolling) {
+          vibrationOffset += 3 * vibrationDirection;
+          if (Math.abs(vibrationOffset) > 6) {
+            vibrationDirection *= -1;
+          }
+          vibrationFrame = requestAnimationFrame(updateVibration);
+        } else {
+          vibrationOffset = 0;
+        }
+      }
+      
+      function handleScroll() {
+        const currentScrollY = window.scrollY;
+        const scrollDelta = currentScrollY - lastScrollY;
+        
+        // Mover el botón en dirección opuesta al scroll con más intensidad
+        if (Math.abs(scrollDelta) > 1) {
+          isScrolling = true;
+          targetY = -scrollDelta * 0.8; // Movimiento más pronunciado
+          targetY = Math.max(-60, Math.min(60, targetY)); // Rango más amplio
+          
+          // Iniciar vibración
+          if (!vibrationFrame) {
+            updateVibration();
+          }
+          
+          if (!animationFrame) {
+            animationFrame = requestAnimationFrame(animate);
+          }
+          
+          // Ocultar nube mientras se hace scroll
+          speechBubble.classList.remove('show');
+          cartWrapper.classList.remove('bubble-visible');
+          clearTimeout(speechBubbleTimeout);
+          hasShownBubble = false;
+        }
+        
+        lastScrollY = currentScrollY;
+        
+        // Detectar cuando se detiene el scroll
+        clearTimeout(scrollTimeout);
+        scrollTimeout = setTimeout(() => {
+          isScrolling = false;
+          vibrationOffset = 0; // Detener vibración
+          vibrationFrame = null;
+          // Volver a la posición original
+          targetY = 0;
+          if (!animationFrame) {
+            animationFrame = requestAnimationFrame(animate);
+          }
+          
+          // Mostrar nube después de 1.5 segundos sin scroll
+          speechBubbleTimeout = setTimeout(() => {
+            if (!isScrolling && !hasShownBubble) {
+              // Cambiar la frase aleatoriamente
+              const speechText = document.getElementById('cart-speech-text');
+              if (speechText) {
+                speechText.textContent = getRandomPhrase();
+              }
+              
+              speechBubble.classList.add('show');
+              cartWrapper.classList.add('bubble-visible');
+              hasShownBubble = true;
+              
+              // Ocultar después de 15 segundos
+              setTimeout(() => {
+                speechBubble.classList.remove('show');
+                cartWrapper.classList.remove('bubble-visible');
+                hasShownBubble = false;
+              }, 15000);
+            }
+          }, 1500);
+        }, 150);
+      }
+
+      // Agregar movimiento flotante suave cuando no hay scroll
+      let floatOffset = 0;
+      let floatDirection = 1;
+      let lastTime = performance.now();
+      
+      function floatAnimation(currentTime) {
+        const deltaTime = currentTime - lastTime;
+        lastTime = currentTime;
+        
+        if (!isScrolling && Math.abs(targetY) < 1) {
+          floatOffset += 0.02 * floatDirection;
+          if (floatOffset > 5 || floatOffset < -5) {
+            floatDirection *= -1;
+          }
+          cartWrapper.style.transform = `translateY(${currentY + floatOffset}px)`;
+        }
+        requestAnimationFrame(floatAnimation);
+      }
+      
+      // Iniciar animaciones
+      window.addEventListener('scroll', handleScroll, { passive: true });
+      floatAnimation();
+      
+      // Ocultar nube al hacer click
+      if (cartButton) {
+        cartButton.addEventListener('click', () => {
+          speechBubble.classList.remove('show');
+          cartWrapper.classList.remove('bubble-visible');
+          hasShownBubble = false;
+        });
+      }
+    }
+  }
+</script>
+
+<style>
+  .cart-float-wrapper {
+    position: fixed;
+    bottom: 8rem;
+    right: 2rem;
+    z-index: 998;
+    transition: transform 0.05s ease-out;
+    will-change: transform;
+    filter: drop-shadow(0 4px 16px rgba(255, 193, 7, 0.5)) drop-shadow(0 2px 8px rgba(255, 193, 7, 0.3));
+  }
+
+  .cart-float-button {
+    position: relative;
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    border: 2px solid rgba(255, 193, 7, 0.3);
+    border-radius: 50%;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(107, 33, 129, 0.4), 0 0 0 2px rgba(255, 193, 7, 0.2), 0 0 20px rgba(255, 193, 7, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+  }
+
+  .cart-float-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(107, 33, 129, 0.6);
+  }
+
+  .cart-badge-global {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #ef4444;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  /* Nube de diálogo */
+  .cart-speech-bubble {
+    position: absolute;
+    bottom: 75px;
+    right: 0;
+    opacity: 0;
+    transform: translateY(10px) scale(0.8);
+    pointer-events: none;
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  }
+
+  .cart-speech-bubble.show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .speech-bubble-content {
+    background: white;
+    padding: 1rem 1.25rem;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    position: relative;
+    min-width: 180px;
+    max-width: 220px;
+  }
+
+  .speech-bubble-content p {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1f2937;
+    text-align: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.4;
+  }
+
+  .speech-bubble-tail {
+    position: absolute;
+    bottom: -8px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 12px solid transparent;
+    border-right: 12px solid transparent;
+    border-top: 12px solid white;
+    filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+  }
+
+  /* Animación de pulso para llamar la atención */
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 4px 20px rgba(107, 33, 129, 0.4);
+    }
+    50% {
+      box-shadow: 0 4px 30px rgba(107, 33, 129, 0.6), 0 0 0 8px rgba(107, 33, 129, 0.1);
+    }
+  }
+
+  .cart-float-wrapper.bubble-visible .cart-float-button {
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @media (max-width: 768px) {
+    .cart-float-wrapper {
+      bottom: 7.5rem;
+      right: 1.5rem;
+    }
+
+    .cart-float-button {
+      width: 55px;
+      height: 55px;
+      font-size: 1.3rem;
+    }
+
+    .cart-speech-bubble {
+      bottom: 70px;
+    }
+
+    .speech-bubble-content {
+      min-width: 160px;
+      max-width: 180px;
+      padding: 0.875rem 1rem;
+    }
+
+    .speech-bubble-content p {
+      font-size: 0.85rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .cart-float-wrapper {
+      bottom: 6.5rem;
+      right: 1rem;
+    }
+  }
+</style>
+

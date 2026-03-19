@@ -1,0 +1,259 @@
+---
+import { getCollection } from 'astro:content';
+
+// Obtener solo el servicio de Energía Solar Hogar
+const servicios = await getCollection('servicios');
+const servicioDestacado = servicios.find(s => s.data.title === 'Energía Solar Hogar');
+---
+
+<section class="servicio-destacado">
+  <div class="container">
+    <div class="servicio-destacado-content">
+      <div class="servicio-destacado-image">
+        <img 
+          src={servicioDestacado?.data.image || '/images/energia-solar-hogar.jpg'} 
+          alt={servicioDestacado?.data.title || 'Energía Solar Hogar'}
+          class="destacado-image"
+          loading="lazy"
+        />
+      </div>
+      
+      <div class="servicio-destacado-info">
+        <h2 class="destacado-title">{servicioDestacado?.data.title || 'Energía Solar Hogar'}</h2>
+        <p class="destacado-description">
+          {servicioDestacado?.data.description || 'Sistemas de energía solar residenciales que transforman tu hogar en una fuente de energía limpia y renovable.'}
+        </p>
+        
+        <div class="destacado-benefits">
+          <h3 class="benefits-title">Beneficios Principales:</h3>
+          <ul class="benefits-list">
+            {(servicioDestacado?.data.benefits || [
+              'Reduce hasta 90% tu factura eléctrica',
+              'Aumenta el valor de tu propiedad',
+              'Energía 100% limpia y renovable',
+              'Sistema de respaldo automático',
+              'Garantía de 25 años en paneles'
+            ]).map((benefit) => (
+              <li class="benefit-item">
+                <span class="benefit-icon">⚡</span>
+                {benefit}
+              </li>
+            ))}
+          </ul>
+        </div>
+        
+        <div class="destacado-cta">
+          <a href="#contacto" class="cta-button">
+            {servicioDestacado?.data.cta.text || 'Cotizar Sistema'}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .servicio-destacado {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, #6b2181 0%, #8b2a9b 100%);
+    color: white;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .servicio-destacado::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="destacado-grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="50" cy="50" r="1" fill="white" opacity="0.05"/></pattern></defs><rect width="100" height="100" fill="url(%23destacado-grain)"/></svg>');
+    pointer-events: none;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .servicio-destacado-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .servicio-destacado-image {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+  }
+
+  .destacado-image {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+
+  .servicio-destacado-image:hover .destacado-image {
+    transform: scale(1.05);
+  }
+
+  .servicio-destacado-info {
+    padding: 2rem 0;
+  }
+
+  .destacado-title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.2;
+    color: white;
+  }
+
+  .destacado-description {
+    font-size: 1.3rem;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: #e5e7eb;
+  }
+
+  .destacado-benefits {
+    margin-bottom: 3rem;
+  }
+
+  .benefits-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    color: white;
+  }
+
+  .benefits-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: all 0.3s ease;
+    color: #d1d5db;
+  }
+
+  .benefit-item:hover {
+    transform: translateX(10px);
+    color: white;
+  }
+
+  .benefit-icon {
+    margin-right: 1rem;
+    font-size: 1.5rem;
+  }
+
+  .destacado-cta {
+    margin-top: 2rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.2rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(107, 33, 129, 0.4);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cta-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .cta-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(107, 33, 129, 0.6);
+  }
+
+  .cta-button:hover::before {
+    left: 100%;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .servicio-destacado {
+      padding: 4rem 0;
+      margin-top: -2rem;
+      padding-top: 6rem;
+    }
+
+    .container {
+      padding: 0 1rem;
+    }
+
+    .servicio-destacado-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .destacado-title {
+      font-size: 2.5rem;
+    }
+
+    .destacado-description {
+      font-size: 1.1rem;
+    }
+
+    .destacado-image {
+      height: 300px;
+    }
+
+    .benefit-item {
+      font-size: 1rem;
+    }
+
+    .cta-button {
+      padding: 1rem 2rem;
+      font-size: 1.1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .destacado-title {
+      font-size: 2rem;
+    }
+
+    .destacado-description {
+      font-size: 1rem;
+    }
+
+    .destacado-image {
+      height: 250px;
+    }
+  }
+</style>

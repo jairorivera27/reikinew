@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 120">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6b2181"/>
+      <stop offset="100%" stop-color="#a855f7"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="35" width="200" height="50" rx="12" fill="url(#grad)" opacity="0.9"/>
+  <rect x="210" y="45" width="20" height="30" rx="6" fill="#4c1d95" opacity="0.9"/>
+  <rect x="30" y="50" width="20" height="20" fill="#ffffff" opacity="0.8"/>
+  <rect x="60" y="50" width="20" height="20" fill="#ffffff" opacity="0.8"/>
+  <rect x="90" y="50" width="20" height="20" fill="#ffffff" opacity="0.8"/>
+  <rect x="120" y="50" width="20" height="20" fill="#ffffff" opacity="0.8"/>
+  <rect x="150" y="50" width="20" height="20" fill="#ffffff" opacity="0.8"/>
+  <rect x="180" y="50" width="20" height="20" fill="#ffffff" opacity="0.8"/>
+  <text x="110" y="85" font-family="Helvetica, Arial, sans-serif" font-size="18" fill="#ffffff" text-anchor="middle">
+    Litio
+  </text>
+</svg>
+

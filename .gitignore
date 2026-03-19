@@ -1,0 +1,42 @@
+# build output
+dist/
+.next/
+out/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+okr-platform/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.local
+.env.production
+.env*.local
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/
+
+# database
+*.db
+*.db-journal
+prisma/dev.db*
+
+# OS
+Thumbs.db
+
+# OKR platform (separada del sitio Astro)
+apps/
+okr-platform/
+reiki-api-key.pem

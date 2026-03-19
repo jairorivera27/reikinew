@@ -1,0 +1,103 @@
+name: Deploy Astro Site to GitHub Pages
+
+# Solo desplegar sitio Astro principal
+# Next.js OKR/CRM se despliega en servidor propio (ver CONFIGURACION_10_USUARIOS.md)
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # También permite ejecución manual
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      # ============================================
+      # BUILD SITIO PRINCIPAL (ASTRO)
+      # ============================================
+      - name: Install root dependencies (Astro)
+        run: |
+          echo "📦 Instalando dependencias de Astro..."
+          # Limpiar cache si hay problemas
+          npm cache clean --force || true
+          # Regenerar package-lock.json si está desincronizado
+          if ! npm ci --prefer-offline --no-audit 2>&1 | tee install.log; then
+            echo "⚠️ npm ci falló, regenerando package-lock.json..."
+            rm -f package-lock.json
+            npm install --no-audit
+          fi
+          echo "✅ Dependencias de Astro instaladas"
+      
+      - name: Build Astro (sitio principal)
+        run: |
+          echo "🔨 Construyendo sitio principal con Astro..."
+          npm run build || (echo "❌ Error en build de Astro" && exit 1)
+          echo "✅ Build de Astro completado"
+        env:
+          ASTRO_TELEMETRY_DISABLED: 1
+      
+      # ============================================
+      # SOLO SITIO ASTRO POR AHORA
+      # Next.js OKR/CRM se despliega en servidor propio
+      # ============================================
+      - name: Prepare output
+        run: |
+          echo "📦 Preparando output del sitio Astro..."
+          
+          # Crear directorio de output
+          mkdir -p _site
+          
+          # Copiar sitio Astro (sitio principal)
+          if [ -d dist ]; then
+            cp -r dist/* _site/
+            echo "✅ Sitio Astro copiado"
+          else
+            echo "❌ ERROR: No se encontró dist/ de Astro"
+            exit 1
+          fi
+          
+          # Crear .nojekyll en la raíz
+          touch _site/.nojekyll
+          echo "✅ Archivo .nojekyll creado"
+          
+          # Verificar estructura
+          echo "📁 Estructura final:"
+          ls -la _site/ | head -20
+      
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+      
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+

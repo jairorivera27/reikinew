@@ -1,0 +1,3460 @@
+[
+  {
+    "fila": 1,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A1",
+        "valor": "Prom anual de consumo",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B1",
+        "valor": "10200",
+        "esFormula": true,
+        "formula": "(SUM('Datos de Entrada (On Grid)'!D25:D36)/COUNTA('Datos de Entrada (On Grid)'!D25:D36))*12"
+      },
+      {
+        "col": 3,
+        "celda": "C1",
+        "valor": "kwh/año",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 2,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A2",
+        "valor": "Promedio dia",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B2",
+        "valor": "27.945205479452056",
+        "esFormula": true,
+        "formula": "B1/365"
+      },
+      {
+        "col": 3,
+        "celda": "C2",
+        "valor": "kWh/dia",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 3,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A3",
+        "valor": "Porcentaje de energia generada",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B3",
+        "valor": "1",
+        "esFormula": true,
+        "formula": "'Datos de Entrada (On Grid)'!D37"
+      },
+      {
+        "col": 6,
+        "celda": "F3",
+        "valor": "Versión 2020.05.20",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 4,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A4",
+        "valor": "Consumo a suplir con el sistema",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B4",
+        "valor": "27.945205479452056",
+        "esFormula": true,
+        "formula": "B3*B2"
+      },
+      {
+        "col": 3,
+        "celda": "C4",
+        "valor": "kWh/dia",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 5,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A5",
+        "valor": "Promedio diario de horas de sol pico",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B5",
+        "valor": "4.418483333333333",
+        "esFormula": true,
+        "formula": "VLOOKUP('Datos de Entrada (On Grid)'!G6,'Datos Equipos'!B192:D205,3,FALSE)"
+      }
+    ]
+  },
+  {
+    "fila": 6,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A6",
+        "valor": "Potencia necesaria del arreglo",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B6",
+        "valor": "8.19741203881156",
+        "esFormula": true,
+        "formula": "+B4/B5/B7/B8/B9"
+      },
+      {
+        "col": 3,
+        "celda": "C6",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 7,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A7",
+        "valor": "Perdidas adicionales",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B7",
+        "valor": "0.97",
+        "esFormula": true,
+        "formula": "+'Datos de Entrada (On Grid)'!G29"
+      }
+    ]
+  },
+  {
+    "fila": 8,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A8",
+        "valor": "factor de perdidas",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B8",
+        "valor": "0.82",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 9,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A9",
+        "valor": "eficiencia del inversor",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B9",
+        "valor": "0.97",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 10,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A10",
+        "valor": "Potencia Nominal del panel",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B10",
+        "valor": "585",
+        "esFormula": true,
+        "formula": "VLOOKUP('Datos de Entrada (On Grid)'!G20,'Datos Equipos'!B9:G24,6,FALSE)"
+      },
+      {
+        "col": 3,
+        "celda": "C10",
+        "valor": "W",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E10",
+        "valor": "Area",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F10",
+        "valor": "33.6",
+        "esFormula": true,
+        "formula": "+B23*2*1.2"
+      },
+      {
+        "col": 7,
+        "celda": "G10",
+        "valor": "m2",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 11,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A11",
+        "valor": "Voltaje Batería",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B11",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+VLOOKUP('Datos de Entrada (On Grid)'!G23,'Precios E&M'!A141:H149,7,FALSE)"
+      },
+      {
+        "col": 3,
+        "celda": "C11",
+        "valor": "V",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 12,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A12",
+        "valor": "Capacidad Batería",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B12",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+VLOOKUP('Datos de Entrada (On Grid)'!G23,'Precios E&M'!A141:H149,8,FALSE)"
+      },
+      {
+        "col": 3,
+        "celda": "C12",
+        "valor": "Ah",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 13,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A13",
+        "valor": "Cantidad Baterías",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B13",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+ROUNDUP(IF('Datos de Entrada (On Grid)'!G23=\"No Aplica\",0,('Datos de Entrada (On Grid)'!D25/(30)*'Datos de Entrada (On Grid)'!$G$26)/(VLOOKUP('Datos de Entrada (On Grid)'!G23,'Precios E&M'!A141:H149,3,FALSE)*B11*B12*0.8*0.95/1000)),0)"
+      }
+    ]
+  },
+  {
+    "fila": 14,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A14",
+        "valor": "Voltaje Panel",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B14",
+        "valor": "52.36",
+        "esFormula": true,
+        "formula": "+VLOOKUP('Datos de Entrada (On Grid)'!G20,'Datos Equipos'!B9:N24,7,FALSE)"
+      }
+    ]
+  },
+  {
+    "fila": 15,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A15",
+        "valor": "Isc Panel",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B15",
+        "valor": "14.27",
+        "esFormula": true,
+        "formula": "+VLOOKUP('Datos de Entrada (On Grid)'!G20,'Datos Equipos'!B9:N24,8,FALSE)"
+      }
+    ]
+  },
+  {
+    "fila": 16,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A16",
+        "valor": "Voltaje String",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B16",
+        "valor": "366.52",
+        "esFormula": true,
+        "formula": "+B14*B23/B31"
+      }
+    ]
+  },
+  {
+    "fila": 17,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A17",
+        "valor": "Voltaje Mínimo Inversor",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B17",
+        "valor": "150",
+        "esFormula": true,
+        "formula": "+VLOOKUP('Datos de Entrada (On Grid)'!G22,Tabla102227[#All],15,FALSE)"
+      }
+    ]
+  },
+  {
+    "fila": 18,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A18",
+        "valor": "Voltaje Máx Inversor",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B18",
+        "valor": "600",
+        "esFormula": true,
+        "formula": "+VLOOKUP('Datos de Entrada (On Grid)'!G22,Tabla102227[#All],16,FALSE)"
+      },
+      {
+        "col": 6,
+        "celda": "F18",
+        "valor": "Item",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 7,
+        "celda": "G18",
+        "valor": "Valor Cotizado",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 8,
+        "celda": "H18",
+        "valor": "Valor real",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 9,
+        "celda": "I18",
+        "valor": "Diferencia",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 19,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A19",
+        "valor": "Isc Inversor",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B19",
+        "valor": "34",
+        "esFormula": true,
+        "formula": "+VLOOKUP('Datos de Entrada (On Grid)'!G22,Tabla102227[#All],7,FALSE)"
+      },
+      {
+        "col": 6,
+        "celda": "F19",
+        "valor": "Paneles",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 7,
+        "celda": "G19",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "B35"
+      },
+      {
+        "col": 9,
+        "celda": "I19",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "G19-H19"
+      },
+      {
+        "col": 10,
+        "celda": "J19",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "I19"
+      }
+    ]
+  },
+  {
+    "fila": 20,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A20",
+        "valor": "Cumplimiento Corriente",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B20",
+        "valor": "0.41970588235294115",
+        "esFormula": true,
+        "formula": "+B15/B19"
+      },
+      {
+        "col": 6,
+        "celda": "F20",
+        "valor": "Inversores",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 7,
+        "celda": "G20",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "B36"
+      },
+      {
+        "col": 9,
+        "celda": "I20",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "G20-H20"
+      },
+      {
+        "col": 10,
+        "celda": "J20",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "I20"
+      }
+    ]
+  },
+  {
+    "fila": 21,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A21",
+        "valor": "Cumplimiento Vmax",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B21",
+        "valor": "0.6108666666666667",
+        "esFormula": true,
+        "formula": "+B16/B18"
+      },
+      {
+        "col": 6,
+        "celda": "F21",
+        "valor": "Estructura",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 7,
+        "celda": "G21",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "B48"
+      },
+      {
+        "col": 9,
+        "celda": "I21",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "G21-H21"
+      },
+      {
+        "col": 10,
+        "celda": "J21",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "I21"
+      }
+    ]
+  },
+  {
+    "fila": 22,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A22",
+        "valor": "Cumplimiento Vmin",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B22",
+        "valor": "0.4092546109352832",
+        "esFormula": true,
+        "formula": "+B17/B16"
+      },
+      {
+        "col": 6,
+        "celda": "F22",
+        "valor": "Accesorios",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 7,
+        "celda": "G22",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "B47"
+      },
+      {
+        "col": 9,
+        "celda": "I22",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "G22-H22"
+      },
+      {
+        "col": 10,
+        "celda": "J22",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "I22"
+      }
+    ]
+  },
+  {
+    "fila": 23,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A23",
+        "valor": "# de Paneles",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B23",
+        "valor": "14",
+        "esFormula": true,
+        "formula": "IF('Datos de Entrada (On Grid)'!G21=\"Microinversor\",ROUND(B6*1000/B10,0),ROUND(B6*1000/B10,0))"
+      },
+      {
+        "col": 6,
+        "celda": "F23",
+        "valor": "TOTAL",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 7,
+        "celda": "G23",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "SUM(G19:G22)"
+      },
+      {
+        "col": 8,
+        "celda": "H23",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "SUM(H19:H22)"
+      },
+      {
+        "col": 9,
+        "celda": "I23",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "G23-H23"
+      },
+      {
+        "col": 10,
+        "celda": "J23",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "I23"
+      }
+    ]
+  },
+  {
+    "fila": 24,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A24",
+        "valor": "Potencia Max de los paneles",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B24",
+        "valor": "8190",
+        "esFormula": true,
+        "formula": "B23*B10"
+      },
+      {
+        "col": 3,
+        "celda": "C24",
+        "valor": "8.19",
+        "esFormula": true,
+        "formula": "+B24/1000"
+      },
+      {
+        "col": 4,
+        "celda": "D24",
+        "valor": "8.2",
+        "esFormula": true,
+        "formula": "+ROUND(C24,1)"
+      }
+    ]
+  },
+  {
+    "fila": 25,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A25",
+        "valor": "Potencia del inversor",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B25",
+        "valor": "8000",
+        "esFormula": true,
+        "formula": "VLOOKUP('Datos de Entrada (On Grid)'!G22,'Datos Equipos'!B28:D77,3,FALSE)"
+      },
+      {
+        "col": 3,
+        "celda": "C25",
+        "valor": "W",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 26,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A26",
+        "valor": "# de inversores",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B26",
+        "valor": "1.02375",
+        "esFormula": true,
+        "formula": "IF('Datos de Entrada (On Grid)'!G21=\"Microinversor\",'Calculos (On Grid)'!B23/VLOOKUP('Datos de Entrada (On Grid)'!G22,'Datos Equipos'!B28:L77,4,FALSE),'Calculos (On Grid)'!B24/VLOOKUP('Datos de Entrada (On Grid)'!G22,'Datos Equipos'!B28:D77,3,FALSE))"
+      },
+      {
+        "col": 3,
+        "celda": "C26",
+        "valor": "1",
+        "esFormula": true,
+        "formula": "+IF('Datos de Entrada (On Grid)'!G21=\"Microinversor\",ROUNDUP(B26,0),IF(B26<0.9,1,ROUNDUP(B26/1.38,0)))"
+      }
+    ]
+  },
+  {
+    "fila": 27,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A27",
+        "valor": "Rentabilidad",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B27",
+        "valor": "0.3100615260685756",
+        "esFormula": true,
+        "formula": "+IF('Datos de Entrada (On Grid)'!$G$21=\"Microinversor\",'Historico costos proyectos'!AB25,IF('Datos de Entrada (On Grid)'!$G$21=\"Inversor\",'Historico costos proyectos'!AB26,'Historico costos proyectos'!AB27))"
+      }
+    ]
+  },
+  {
+    "fila": 28,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A28",
+        "valor": "Dias de Instalación",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B28",
+        "valor": "4",
+        "esFormula": true,
+        "formula": "IF('Datos de Entrada (On Grid)'!G25=\"IMC (Exterior)\",'Calculos (On Grid)'!B29,IF('Calculos (On Grid)'!B23<=10,'Calculos (On Grid)'!B29+1,'Calculos (On Grid)'!B29))"
+      }
+    ]
+  },
+  {
+    "fila": 29,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A29",
+        "valor": "Dias de Instalación sin embebido",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B29",
+        "valor": "4",
+        "esFormula": true,
+        "formula": "+(ROUNDUP(IF(B23<=10,2,IF(B23<=20,CEILING((1/3)*B23+(1/3),1),CEILING.MATH(0.15*B23+6)))*(3)/(F47+F48),0))"
+      },
+      {
+        "col": 3,
+        "celda": "C29",
+        "valor": "dia",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 30,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A30",
+        "valor": "Potencia max en inversores",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B30",
+        "valor": "8000",
+        "esFormula": true,
+        "formula": "+C26*B25"
+      }
+    ]
+  },
+  {
+    "fila": 31,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A31",
+        "valor": "# de entradas de paneles a usar",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B31",
+        "valor": "2",
+        "esFormula": true,
+        "formula": "(VLOOKUP('Datos de Entrada (On Grid)'!G22,'Datos Equipos'!B28:L77,4,FALSE)*C26)"
+      }
+    ]
+  },
+  {
+    "fila": 32,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A32",
+        "valor": "Potencia por entrada de paneles a usar",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B32",
+        "valor": "4000",
+        "esFormula": true,
+        "formula": "+B30/B31"
+      }
+    ]
+  },
+  {
+    "fila": 35,
+    "datos": [
+      {
+        "col": 4,
+        "celda": "D35",
+        "valor": "ANTICIPO",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E35",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+(B75+B76+B77)/F96"
+      },
+      {
+        "col": 6,
+        "celda": "F35",
+        "valor": "Para pan,inv,est",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 8,
+        "celda": "H35",
+        "valor": "Valor Accesorios",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 37,
+    "datos": [
+      {
+        "col": 4,
+        "celda": "D37",
+        "valor": "ANTICIPO",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E37",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+(B75+B76)/F96"
+      },
+      {
+        "col": 6,
+        "celda": "F37",
+        "valor": "Para pan, inv",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 38,
+    "datos": [
+      {
+        "col": 8,
+        "celda": "H38",
+        "valor": "Cableado en DC",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 9,
+        "celda": "I38",
+        "valor": "327583.2",
+        "esFormula": true,
+        "formula": "+'Datos Equipos'!C105*4*'Datos de Entrada (On Grid)'!G37*VLOOKUP('Datos de Entrada (On Grid)'!G22,'Datos Equipos'!B28:N77,4,FALSE)*C26/IF('Datos de Entrada (On Grid)'!G21=\"Microinversor\",'Calculos (On Grid)'!C26,1)"
+      }
+    ]
+  },
+  {
+    "fila": 39,
+    "datos": [
+      {
+        "col": 8,
+        "celda": "H39",
+        "valor": "Cableado en AC",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 9,
+        "celda": "I39",
+        "valor": "350000",
+        "esFormula": true,
+        "formula": "+IF(B30>20000,(130000*LN(B30/1000) - 373064),35000)*'Datos de Entrada (On Grid)'!G38"
+      }
+    ]
+  },
+  {
+    "fila": 40,
+    "datos": [
+      {
+        "col": 8,
+        "celda": "H40",
+        "valor": "Accesorios Varios",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 9,
+        "celda": "I40",
+        "valor": "180000",
+        "esFormula": true,
+        "formula": "+IF(B30>10000,IF(B30>60000,67000*'Datos de Entrada (On Grid)'!G38,30000*'Datos de Entrada (On Grid)'!G38),15000*'Datos de Entrada (On Grid)'!G38)*1.2"
+      }
+    ]
+  },
+  {
+    "fila": 41,
+    "datos": [
+      {
+        "col": 8,
+        "celda": "H41",
+        "valor": "Conducción AC",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 9,
+        "celda": "I41",
+        "valor": "500000",
+        "esFormula": true,
+        "formula": "+VLOOKUP('Datos de Entrada (On Grid)'!G25,'Datos Equipos'!B185:C188,2,FALSE)*'Datos de Entrada (On Grid)'!G38"
+      }
+    ]
+  },
+  {
+    "fila": 46,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E46",
+        "valor": "Instalación",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 47,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E47",
+        "valor": "# de Ingenieros",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F47",
+        "valor": "2",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 48,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E48",
+        "valor": "# de Tecnicos",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F48",
+        "valor": "2",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 49,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E49",
+        "valor": "$ de ing/kwp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F49",
+        "valor": "100000",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 50,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E50",
+        "valor": "$ de tecnico/día",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F50",
+        "valor": "80000",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 51,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E51",
+        "valor": "mano de obra",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F51",
+        "valor": "800000",
+        "esFormula": true,
+        "formula": "F49*F48*B28"
+      }
+    ]
+  },
+  {
+    "fila": 52,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E52",
+        "valor": "Salario Ing.",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F52",
+        "valor": "1638000",
+        "esFormula": true,
+        "formula": "F49*C24*F47"
+      },
+      {
+        "col": 7,
+        "celda": "G52",
+        "valor": ".",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 54,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E54",
+        "valor": "Comidas por dia/persona",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F54",
+        "valor": "60000",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 55,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E55",
+        "valor": "hospedaje /persona",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F55",
+        "valor": "70000",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 56,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E56",
+        "valor": "Hidratación día/persona",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F56",
+        "valor": "5000",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 57,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E57",
+        "valor": "Viaticos",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F57",
+        "valor": "80000",
+        "esFormula": true,
+        "formula": "IF('Datos de Entrada (On Grid)'!G13=\"Ida y regreso\",F56*'Calculos (On Grid)'!B28*(F47+F48),(F54+F55+F56)*B28*(F47+F48))"
+      },
+      {
+        "col": 7,
+        "celda": "G57",
+        "valor": "Condicional de ida y regreso o estadia",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 58,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E58",
+        "valor": "TOTAL",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F58",
+        "valor": "2518000",
+        "esFormula": true,
+        "formula": "+F57+F52+F51"
+      }
+    ]
+  },
+  {
+    "fila": 59,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E59",
+        "valor": "Costo de tiquetes promedio",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F59",
+        "valor": "180000",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 60,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A60",
+        "valor": "Trámite beneficios tributarios",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B60",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "IF('Datos de Entrada (On Grid)'!G11=\"Si\",1%*(B58+B45)*1.2,0)"
+      }
+    ]
+  },
+  {
+    "fila": 61,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E61",
+        "valor": "Precio de gasolina y gas por km",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F61",
+        "valor": "500",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 62,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E62",
+        "valor": "Precio del Peaje",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F62",
+        "valor": "12000",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 63,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A63",
+        "valor": "PRECIO",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B63",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F94"
+      },
+      {
+        "col": 5,
+        "celda": "E63",
+        "valor": "Costos en peajes por trayecto",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F63",
+        "valor": "10800",
+        "esFormula": true,
+        "formula": "+'Datos de Entrada (On Grid)'!G14/50*F62"
+      }
+    ]
+  },
+  {
+    "fila": 64,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A64",
+        "valor": "Costo estudio de conexión",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B64",
+        "valor": "5000000",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E64",
+        "valor": "Costos de gasolina por trayecto",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F64",
+        "valor": "22500",
+        "esFormula": true,
+        "formula": "+'Datos de Entrada (On Grid)'!G14*'Calculos (On Grid)'!F61"
+      }
+    ]
+  },
+  {
+    "fila": 65,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E65",
+        "valor": "Costo de peajes del viaje",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F65",
+        "valor": "172800",
+        "esFormula": true,
+        "formula": "IF('Datos de Entrada (On Grid)'!G13=\"Ida y regreso\",F63*(B28+4)*2,F63*2+F59*6)"
+      }
+    ]
+  },
+  {
+    "fila": 66,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A66",
+        "valor": "Comisión",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B66",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+(B58+B45)*'Datos de Entrada (On Grid)'!G10"
+      },
+      {
+        "col": 5,
+        "celda": "E66",
+        "valor": "Costo de gasolina del viaje",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F66",
+        "valor": "360000",
+        "esFormula": true,
+        "formula": "IF('Datos de Entrada (On Grid)'!G13=\"Ida y regreso\",F64*(B28+4)*2,F59*2*5+F59*6)"
+      }
+    ]
+  },
+  {
+    "fila": 67,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A67",
+        "valor": "Precio mas comisión",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B67",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+B66+B63"
+      }
+    ]
+  },
+  {
+    "fila": 68,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E68",
+        "valor": "Costo De Andamio",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F68",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+IF(B28<=5,5,B28)*F69*'Datos de Entrada (On Grid)'!G28"
+      }
+    ]
+  },
+  {
+    "fila": 69,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E69",
+        "valor": "Costo por día por metro",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F69",
+        "valor": "8403.361344537816",
+        "esFormula": true,
+        "formula": "10000/(1.19)"
+      }
+    ]
+  },
+  {
+    "fila": 72,
+    "datos": [
+      {
+        "col": 4,
+        "celda": "D72",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+D87+D80/2"
+      },
+      {
+        "col": 5,
+        "celda": "E72",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+E80/2+E87"
+      },
+      {
+        "col": 6,
+        "celda": "F72",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+D72+E72"
+      }
+    ]
+  },
+  {
+    "fila": 74,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A74",
+        "valor": "Item",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B74",
+        "valor": "Costo",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C74",
+        "valor": "IVA",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 4,
+        "celda": "D74",
+        "valor": "PRECIO",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E74",
+        "valor": "IVA",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F74",
+        "valor": "TOTAL",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 7,
+        "celda": "G74",
+        "valor": "Peso",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 9,
+        "celda": "I74",
+        "valor": "Formulas",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 75,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A75",
+        "valor": "Paneles",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B75",
+        "valor": "5323500",
+        "esFormula": true,
+        "formula": "VLOOKUP('Datos de Entrada (On Grid)'!G20,'Datos Equipos'!B16:N24,13,FALSE)*B23"
+      },
+      {
+        "col": 4,
+        "celda": "D75",
+        "valor": "7715905.404818927",
+        "esFormula": true,
+        "formula": "+B75/(1-$B$27)"
+      },
+      {
+        "col": 6,
+        "celda": "F75",
+        "valor": "7715905.404818927",
+        "esFormula": true,
+        "formula": "+D75+E75:E75"
+      },
+      {
+        "col": 7,
+        "celda": "G75",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F75/$F$94"
+      }
+    ]
+  },
+  {
+    "fila": 76,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A76",
+        "valor": "Inversores",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B76",
+        "valor": "7622000",
+        "esFormula": true,
+        "formula": "VLOOKUP('Datos de Entrada (On Grid)'!G22,Tabla102227[#All],13,FALSE)*C26"
+      },
+      {
+        "col": 4,
+        "celda": "D76",
+        "valor": "11047361.885137573",
+        "esFormula": true,
+        "formula": "+B76/(1-$B$27)"
+      },
+      {
+        "col": 6,
+        "celda": "F76",
+        "valor": "11047361.885137573",
+        "esFormula": true,
+        "formula": "+D76+E76:E76"
+      },
+      {
+        "col": 7,
+        "celda": "G76",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F76/$F$94"
+      },
+      {
+        "col": 9,
+        "celda": "I76",
+        "valor": "7622000",
+        "esFormula": true,
+        "formula": "VLOOKUP('Datos de Entrada (On Grid)'!G22,Tabla102227[#All],13,FALSE)*C26"
+      },
+      {
+        "col": 10,
+        "celda": "J76",
+        "valor": "16653000",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 11,
+        "celda": "K76",
+        "valor": "6077000",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 12,
+        "celda": "L76",
+        "valor": "6077000",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 77,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A77",
+        "valor": "Estructura",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B77",
+        "valor": "1529411.7647058824",
+        "esFormula": true,
+        "formula": "IF(B23>10,VLOOKUP('Datos de Entrada (On Grid)'!G19,'Datos Equipos'!B157:C167,2,FALSE)*'Calculos (On Grid)'!B23/1.19,VLOOKUP('Datos de Entrada (On Grid)'!G19,'Datos Equipos'!B157:D167,3,FALSE)*'Calculos (On Grid)'!B23/1.19)"
+      },
+      {
+        "col": 3,
+        "celda": "C77",
+        "valor": "290588.23529411765",
+        "esFormula": true,
+        "formula": "+B77*19%"
+      },
+      {
+        "col": 4,
+        "celda": "D77",
+        "valor": "2216736.4518620777",
+        "esFormula": true,
+        "formula": "+B77/(1-$B$27)"
+      },
+      {
+        "col": 5,
+        "celda": "E77",
+        "valor": "421179.9258537948",
+        "esFormula": true,
+        "formula": "+D77*19%"
+      },
+      {
+        "col": 6,
+        "celda": "F77",
+        "valor": "2637916.3777158726",
+        "esFormula": true,
+        "formula": "+D77+E77:E77"
+      },
+      {
+        "col": 7,
+        "celda": "G77",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F77/$F$94"
+      },
+      {
+        "col": 9,
+        "celda": "I77",
+        "valor": "1529411.7647058824",
+        "esFormula": true,
+        "formula": "IF(B23>10,VLOOKUP('Datos de Entrada (On Grid)'!G19,'Datos Equipos'!B157:C167,2,FALSE)*'Calculos (On Grid)'!B23/1.19,VLOOKUP('Datos de Entrada (On Grid)'!G19,'Datos Equipos'!B157:D167,3,FALSE)*'Calculos (On Grid)'!B23/1.19)"
+      }
+    ]
+  },
+  {
+    "fila": 78,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A78",
+        "valor": "Accesorios",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B78",
+        "valor": "4192646.471087128",
+        "esFormula": true,
+        "formula": "(+IF('Datos de Entrada (On Grid)'!$G$21=\"Microinversor\",'Historico costos proyectos'!X25*'Calculos (On Grid)'!C24,IF('Datos de Entrada (On Grid)'!$G$21=\"Inversor\",'Historico costos proyectos'!X26*'Calculos (On Grid)'!C24,\"hibr\"))+I38+I39)"
+      },
+      {
+        "col": 3,
+        "celda": "C78",
+        "valor": "796602.8295065543",
+        "esFormula": true,
+        "formula": "+B78*19%"
+      },
+      {
+        "col": 4,
+        "celda": "D78",
+        "valor": "6076841.094534831",
+        "esFormula": true,
+        "formula": "+B78/(1-$B$27)"
+      },
+      {
+        "col": 5,
+        "celda": "E78",
+        "valor": "1154599.8079616178",
+        "esFormula": true,
+        "formula": "+D78*19%"
+      },
+      {
+        "col": 6,
+        "celda": "F78",
+        "valor": "7231440.902496449",
+        "esFormula": true,
+        "formula": "+D78+E78:E78"
+      },
+      {
+        "col": 7,
+        "celda": "G78",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F78/$F$94"
+      },
+      {
+        "col": 9,
+        "celda": "I78",
+        "valor": "4192646.471087128",
+        "esFormula": true,
+        "formula": "(+IF('Datos de Entrada (On Grid)'!$G$21=\"Microinversor\",'Historico costos proyectos'!X25*'Calculos (On Grid)'!C24,IF('Datos de Entrada (On Grid)'!$G$21=\"Inversor\",'Historico costos proyectos'!X26*'Calculos (On Grid)'!C24,\"hibr\"))+I38+I39)"
+      }
+    ]
+  },
+  {
+    "fila": 79,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A79",
+        "valor": "Retie",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B79",
+        "valor": "1111446",
+        "esFormula": true,
+        "formula": "VLOOKUP(D24,A103:E118, 5, TRUE)*IF('Datos de Entrada (On Grid)'!G13=\"Ida y regreso\",1,1.15)"
+      },
+      {
+        "col": 3,
+        "celda": "C79",
+        "valor": "211174.74",
+        "esFormula": true,
+        "formula": "+B79*19%"
+      },
+      {
+        "col": 4,
+        "celda": "D79",
+        "valor": "1610934.9485421954",
+        "esFormula": true,
+        "formula": "+B79/(1-$B$27)"
+      },
+      {
+        "col": 5,
+        "celda": "E79",
+        "valor": "306077.64022301714",
+        "esFormula": true,
+        "formula": "+D79*19%"
+      },
+      {
+        "col": 6,
+        "celda": "F79",
+        "valor": "1917012.5887652126",
+        "esFormula": true,
+        "formula": "+D79+E79:E79"
+      },
+      {
+        "col": 7,
+        "celda": "G79",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F79/$F$94"
+      },
+      {
+        "col": 9,
+        "celda": "I79",
+        "valor": "1111446",
+        "esFormula": true,
+        "formula": "VLOOKUP(D24,A103:E118, 5, TRUE)*IF('Datos de Entrada (On Grid)'!G13=\"Ida y regreso\",1,1.15)"
+      },
+      {
+        "col": 10,
+        "celda": "J79",
+        "valor": "2075000",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 11,
+        "celda": "K79",
+        "valor": "1111500",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 12,
+        "celda": "L79",
+        "valor": "1111500",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 80,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A80",
+        "valor": "Mano de obra y viaticos",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B80",
+        "valor": "2518000",
+        "esFormula": true,
+        "formula": "+F58"
+      },
+      {
+        "col": 3,
+        "celda": "C80",
+        "valor": "478420",
+        "esFormula": true,
+        "formula": "+B80*19%"
+      },
+      {
+        "col": 4,
+        "celda": "D80",
+        "valor": "3649600.790708004",
+        "esFormula": true,
+        "formula": "+B80/(1-$B$27)"
+      },
+      {
+        "col": 5,
+        "celda": "E80",
+        "valor": "693424.1502345208",
+        "esFormula": true,
+        "formula": "+D80*19%"
+      },
+      {
+        "col": 6,
+        "celda": "F80",
+        "valor": "4343024.940942525",
+        "esFormula": true,
+        "formula": "+D80+E80:E80"
+      },
+      {
+        "col": 7,
+        "celda": "G80",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F80/$F$94"
+      }
+    ]
+  },
+  {
+    "fila": 81,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A81",
+        "valor": "Gasolina y peajes",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B81",
+        "valor": "532800",
+        "esFormula": true,
+        "formula": "+F65+F66"
+      },
+      {
+        "col": 4,
+        "celda": "D81",
+        "valor": "772242.772553306",
+        "esFormula": true,
+        "formula": "+B81/(1-$B$27)"
+      },
+      {
+        "col": 6,
+        "celda": "F81",
+        "valor": "772242.772553306",
+        "esFormula": true,
+        "formula": "+D81+E81:E81"
+      },
+      {
+        "col": 7,
+        "celda": "G81",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F81/$F$94"
+      }
+    ]
+  },
+  {
+    "fila": 82,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A82",
+        "valor": "Fletes",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B82",
+        "valor": "337469.98440872034",
+        "esFormula": true,
+        "formula": "+IF('Datos de Entrada (On Grid)'!$G$21=\"Microinversor\",'Historico costos proyectos'!AA25*'Calculos (On Grid)'!C24,IF('Datos de Entrada (On Grid)'!$G$21=\"Inversor\",'Historico costos proyectos'!AA26*'Calculos (On Grid)'!C24,\"hibr\"))"
+      },
+      {
+        "col": 4,
+        "celda": "D82",
+        "valor": "489130.5488237822",
+        "esFormula": true,
+        "formula": "+B82/(1-$B$27)"
+      },
+      {
+        "col": 6,
+        "celda": "F82",
+        "valor": "489130.5488237822",
+        "esFormula": true,
+        "formula": "+D82+E82:E82"
+      },
+      {
+        "col": 7,
+        "celda": "G82",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F82/$F$94"
+      }
+    ]
+  },
+  {
+    "fila": 83,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A83",
+        "valor": "Diseño",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B83",
+        "valor": "400000",
+        "esFormula": true,
+        "formula": "+IF(C24<3,300000,IF(C24<10,400000,700000))"
+      },
+      {
+        "col": 3,
+        "celda": "C83",
+        "valor": "76000",
+        "esFormula": true,
+        "formula": "+B83*19%"
+      },
+      {
+        "col": 4,
+        "celda": "D83",
+        "valor": "579761.8412562357",
+        "esFormula": true,
+        "formula": "+B83/(1-$B$27)"
+      },
+      {
+        "col": 5,
+        "celda": "E83",
+        "valor": "110154.74983868479",
+        "esFormula": true,
+        "formula": "+D83*19%"
+      },
+      {
+        "col": 6,
+        "celda": "F83",
+        "valor": "689916.5910949205",
+        "esFormula": true,
+        "formula": "+D83+E83:E83"
+      },
+      {
+        "col": 7,
+        "celda": "G83",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F83/$F$94"
+      }
+    ]
+  },
+  {
+    "fila": 84,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A84",
+        "valor": "Polizas",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B84",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+IF('Datos de Entrada (On Grid)'!G32=\"Si\",SUM(F75:F83,F85:F93)*0.01,0)"
+      },
+      {
+        "col": 4,
+        "celda": "D84",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+B84/(1-$B$27)"
+      },
+      {
+        "col": 6,
+        "celda": "F84",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+D84+E84:E84"
+      },
+      {
+        "col": 7,
+        "celda": "G84",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F84/$F$94"
+      }
+    ]
+  },
+  {
+    "fila": 85,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A85",
+        "valor": "SST",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B85",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "IF('Datos de Entrada (On Grid)'!G34=\"Si\",150000*B29+IF(B24>50000,2000000,0),0)"
+      },
+      {
+        "col": 3,
+        "celda": "C85",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+B85*19%"
+      },
+      {
+        "col": 4,
+        "celda": "D85",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+B85/(1-$B$27)"
+      },
+      {
+        "col": 5,
+        "celda": "E85",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+D85*19%"
+      },
+      {
+        "col": 6,
+        "celda": "F85",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+D85+E85:E85"
+      },
+      {
+        "col": 7,
+        "celda": "G85",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F85/$F$94"
+      }
+    ]
+  },
+  {
+    "fila": 86,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A86",
+        "valor": "Obras adicionales",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B86",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+'Datos de Entrada (On Grid)'!G33+IF(C24>20,C24*200000)+IF(C24>50,C24*100000)"
+      },
+      {
+        "col": 3,
+        "celda": "C86",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+B86*19%"
+      },
+      {
+        "col": 4,
+        "celda": "D86",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+B86/(1-$B$27)"
+      },
+      {
+        "col": 5,
+        "celda": "E86",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+D86*19%"
+      },
+      {
+        "col": 6,
+        "celda": "F86",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+D86+E86:E86"
+      },
+      {
+        "col": 7,
+        "celda": "G86",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F86/$F$94"
+      }
+    ]
+  },
+  {
+    "fila": 87,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A87",
+        "valor": "Baterías",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B87",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+VLOOKUP('Datos de Entrada (On Grid)'!G23,'Precios E&M'!A141:I149,9,FALSE)*B13"
+      },
+      {
+        "col": 3,
+        "celda": "C87",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+B87*19%"
+      },
+      {
+        "col": 4,
+        "celda": "D87",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+B87/(1-$B$27)"
+      },
+      {
+        "col": 5,
+        "celda": "E87",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+D87*19%"
+      },
+      {
+        "col": 6,
+        "celda": "F87",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+D87+E87:E87"
+      },
+      {
+        "col": 7,
+        "celda": "G87",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F87/$F$94"
+      }
+    ]
+  },
+  {
+    "fila": 88,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A88",
+        "valor": "Estudio de conexión",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B88",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+IF('Datos de Entrada (On Grid)'!G12=\"Si\",'Calculos (On Grid)'!B64,0)"
+      },
+      {
+        "col": 3,
+        "celda": "C88",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+B88*19%"
+      },
+      {
+        "col": 4,
+        "celda": "D88",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+B88/(1-$B$27)"
+      },
+      {
+        "col": 5,
+        "celda": "E88",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+D88*19%"
+      },
+      {
+        "col": 6,
+        "celda": "F88",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+D88+E88:E88"
+      },
+      {
+        "col": 7,
+        "celda": "G88",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F88/$F$94"
+      }
+    ]
+  },
+  {
+    "fila": 89,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A89",
+        "valor": "Medidor",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B89",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "IF('Datos de Entrada (On Grid)'!G24=\"si\",'Datos Equipos'!C188,0)"
+      },
+      {
+        "col": 3,
+        "celda": "C89",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+B89*19%"
+      },
+      {
+        "col": 4,
+        "celda": "D89",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+B89/(1-$B$27)"
+      },
+      {
+        "col": 5,
+        "celda": "E89",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+D89*19%"
+      },
+      {
+        "col": 6,
+        "celda": "F89",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+D89+E89:E89"
+      },
+      {
+        "col": 7,
+        "celda": "G89",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F89/$F$94"
+      }
+    ]
+  },
+  {
+    "fila": 90,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A90",
+        "valor": "Andamios",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B90",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "IF('Datos de Entrada (On Grid)'!G27=\"Si\",F68,0)"
+      },
+      {
+        "col": 3,
+        "celda": "C90",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+B90*19%"
+      },
+      {
+        "col": 4,
+        "celda": "D90",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+B90/(1-$B$27)"
+      },
+      {
+        "col": 5,
+        "celda": "E90",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+D90*19%"
+      },
+      {
+        "col": 6,
+        "celda": "F90",
+        "valor": "0",
+        "esFormula": true,
+        "formula": "+D90+E90:E90"
+      },
+      {
+        "col": 7,
+        "celda": "G90",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F90/$F$94"
+      }
+    ]
+  },
+  {
+    "fila": 91,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A91",
+        "valor": "regalo",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B91",
+        "valor": "50000",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C91",
+        "valor": "9500",
+        "esFormula": true,
+        "formula": "+B91*19%"
+      },
+      {
+        "col": 4,
+        "celda": "D91",
+        "valor": "72470.23015702947",
+        "esFormula": true,
+        "formula": "+B91/(1-$B$27)"
+      },
+      {
+        "col": 5,
+        "celda": "E91",
+        "valor": "13769.343729835598",
+        "esFormula": true,
+        "formula": "+D91*19%"
+      },
+      {
+        "col": 6,
+        "celda": "F91",
+        "valor": "86239.57388686507",
+        "esFormula": true,
+        "formula": "+D91+E91:E91"
+      },
+      {
+        "col": 7,
+        "celda": "G91",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F91/$F$94"
+      }
+    ]
+  },
+  {
+    "fila": 92,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A92",
+        "valor": "mantenimiento",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B92",
+        "valor": "150000",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C92",
+        "valor": "28500",
+        "esFormula": true,
+        "formula": "+B92*19%"
+      },
+      {
+        "col": 4,
+        "celda": "D92",
+        "valor": "217410.6904710884",
+        "esFormula": true,
+        "formula": "+B92/(1-$B$27)"
+      },
+      {
+        "col": 5,
+        "celda": "E92",
+        "valor": "41308.03118950679",
+        "esFormula": true,
+        "formula": "+D92*19%"
+      },
+      {
+        "col": 6,
+        "celda": "F92",
+        "valor": "258718.72166059518",
+        "esFormula": true,
+        "formula": "+D92+E92:E92"
+      },
+      {
+        "col": 7,
+        "celda": "G92",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F92/$F$94"
+      }
+    ]
+  },
+  {
+    "fila": 93,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A93",
+        "valor": "imprevistos",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B93",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "3%*SUM(B75:B83,B85:B92)"
+      },
+      {
+        "col": 3,
+        "celda": "C93",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+B93*19%"
+      },
+      {
+        "col": 4,
+        "celda": "D93",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+B93/(1-$B$27)"
+      },
+      {
+        "col": 5,
+        "celda": "E93",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+D93*19%"
+      },
+      {
+        "col": 6,
+        "celda": "F93",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+D93+E93:E93"
+      },
+      {
+        "col": 7,
+        "celda": "G93",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F93/$F$94"
+      },
+      {
+        "col": 9,
+        "celda": "I93",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "3%*SUM(B75:B83,B85:B92)"
+      }
+    ]
+  },
+  {
+    "fila": 94,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A94",
+        "valor": "TOTAL",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B94",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+SUM(B75:B93)"
+      },
+      {
+        "col": 3,
+        "celda": "C94",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+SUM(C75:C93)"
+      },
+      {
+        "col": 4,
+        "celda": "D94",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+SUM(D75:D93)"
+      },
+      {
+        "col": 5,
+        "celda": "E94",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+SUM(E75:E93)"
+      },
+      {
+        "col": 6,
+        "celda": "F94",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+SUM(F75:F93)"
+      }
+    ]
+  },
+  {
+    "fila": 95,
+    "datos": [
+      {
+        "col": 2,
+        "celda": "B95",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+B94+C94"
+      },
+      {
+        "col": 5,
+        "celda": "E95",
+        "valor": "Comisión o descuento",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F95",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F94*'Datos de Entrada (On Grid)'!G10"
+      }
+    ]
+  },
+  {
+    "fila": 96,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E96",
+        "valor": "TOTAL",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F96",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F95+F94"
+      },
+      {
+        "col": 8,
+        "celda": "H96",
+        "valor": "34008111",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 97,
+    "datos": [
+      {
+        "col": 8,
+        "celda": "H97",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F96-H96"
+      },
+      {
+        "col": 9,
+        "celda": "I97",
+        "valor": "1",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 10,
+        "celda": "J97",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+H97+1500000"
+      }
+    ]
+  },
+  {
+    "fila": 98,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E98",
+        "valor": "Precio kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 6,
+        "celda": "F98",
+        "valor": "Mano de obra/kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 8,
+        "celda": "H98",
+        "valor": "15219660",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 9,
+        "celda": "I98",
+        "valor": "2",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 10,
+        "celda": "J98",
+        "valor": "16719660",
+        "esFormula": true,
+        "formula": "+H98+1500000"
+      }
+    ]
+  },
+  {
+    "fila": 99,
+    "datos": [
+      {
+        "col": 5,
+        "celda": "E99",
+        "valor": "42",
+        "esFormula": true,
+        "formula": "+F96/C24"
+      },
+      {
+        "col": 6,
+        "celda": "F99",
+        "valor": "307448.10744810745",
+        "esFormula": true,
+        "formula": "+B80/C24"
+      }
+    ]
+  },
+  {
+    "fila": 102,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A102",
+        "valor": "Formula costo de RETIE",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 103,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A103",
+        "valor": "Pot minima",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B103",
+        "valor": "Unidad",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E103",
+        "valor": "Subtotal",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 104,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A104",
+        "valor": "0.33",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B104",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C104",
+        "valor": "Pot maxima",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 4,
+        "celda": "D104",
+        "valor": "Unidad",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E104",
+        "valor": "892978",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 105,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A105",
+        "valor": "4.6",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B105",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C105",
+        "valor": "4.5",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 4,
+        "celda": "D105",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E105",
+        "valor": "996754",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 106,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A106",
+        "valor": "6.1",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B106",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C106",
+        "valor": "6",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 4,
+        "celda": "D106",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E106",
+        "valor": "1111446",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 107,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A107",
+        "valor": "8.6",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B107",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C107",
+        "valor": "8.5",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 4,
+        "celda": "D107",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E107",
+        "valor": "1316946",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 108,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A108",
+        "valor": "11.6",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B108",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C108",
+        "valor": "11.5",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 4,
+        "celda": "D108",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E108",
+        "valor": "1532613",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 109,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A109",
+        "valor": "14.1",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B109",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C109",
+        "valor": "14",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 4,
+        "celda": "D109",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E109",
+        "valor": "1610710",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 110,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A110",
+        "valor": "17.6",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B110",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C110",
+        "valor": "17.5",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 4,
+        "celda": "D110",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E110",
+        "valor": "1795394",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 111,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A111",
+        "valor": "20.1",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B111",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C111",
+        "valor": "20",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 4,
+        "celda": "D111",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E111",
+        "valor": "2074668",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 112,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A112",
+        "valor": "25.6",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B112",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C112",
+        "valor": "25.5",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 4,
+        "celda": "D112",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E112",
+        "valor": "2420399",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 113,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A113",
+        "valor": "35.1",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B113",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C113",
+        "valor": "35",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 4,
+        "celda": "D113",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E113",
+        "valor": "2766130",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 114,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A114",
+        "valor": "50.1",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B114",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C114",
+        "valor": "50",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 4,
+        "celda": "D114",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E114",
+        "valor": "3111860",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 115,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A115",
+        "valor": "70.1",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B115",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C115",
+        "valor": "70",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 4,
+        "celda": "D115",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E115",
+        "valor": "3457591",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 116,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A116",
+        "valor": "100.1",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B116",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C116",
+        "valor": "100",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 4,
+        "celda": "D116",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E116",
+        "valor": "3803322",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 117,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A117",
+        "valor": "151.1",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B117",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C117",
+        "valor": "150",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 4,
+        "celda": "D117",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E117",
+        "valor": "4359322",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  },
+  {
+    "fila": 118,
+    "datos": [
+      {
+        "col": 1,
+        "celda": "A118",
+        "valor": "300.1",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 2,
+        "celda": "B118",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 3,
+        "celda": "C118",
+        "valor": "300",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 4,
+        "celda": "D118",
+        "valor": "kWp",
+        "esFormula": false,
+        "formula": null
+      },
+      {
+        "col": 5,
+        "celda": "E118",
+        "valor": "4915322",
+        "esFormula": false,
+        "formula": null
+      }
+    ]
+  }
+]

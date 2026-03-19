@@ -1,0 +1,107 @@
+---
+// Componente selector de equipos para el cotizador
+---
+
+<div class="selector-equipos" id="selectorEquipos" style="display: none;">
+  <h3 class="section-title">
+    <i class="fas fa-cogs"></i>
+    Selección de Equipos
+  </h3>
+
+  <!-- Selector de Panel -->
+  <div class="equipo-selector">
+    <label for="selectorPanel">Panel Solar *</label>
+    <select id="selectorPanel" class="form-input">
+      <option value="">Seleccione un panel...</option>
+    </select>
+    <div id="infoPanel" class="equipo-info"></div>
+  </div>
+
+  <!-- Selector de Inversor (solo On-Grid/Híbrido) -->
+  <div class="equipo-selector" id="selectorInversorContainer">
+    <label for="selectorInversor">Inversor *</label>
+    <select id="selectorInversor" class="form-input">
+      <option value="">Seleccione un inversor...</option>
+    </select>
+    <div id="infoInversor" class="equipo-info"></div>
+  </div>
+
+  <!-- Selector de Batería (solo Off-Grid/Híbrido) -->
+  <div class="equipo-selector" id="selectorBateriaContainer" style="display: none;">
+    <label for="selectorBateria">Batería</label>
+    <select id="selectorBateria" class="form-input">
+      <option value="">Seleccione una batería...</option>
+    </select>
+    <div id="infoBateria" class="equipo-info"></div>
+  </div>
+
+  <!-- Selector de Controlador (solo Off-Grid) -->
+  <div class="equipo-selector" id="selectorControladorContainer" style="display: none;">
+    <label for="selectorControlador">Controlador MPPT</label>
+    <select id="selectorControlador" class="form-input">
+      <option value="">Seleccione un controlador...</option>
+    </select>
+    <div id="infoControlador" class="equipo-info"></div>
+  </div>
+</div>
+
+<style>
+  .selector-equipos {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: #f9fafb;
+    border-radius: 12px;
+  }
+
+  .equipo-selector {
+    margin-bottom: 1.5rem;
+  }
+
+  .equipo-selector label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #6b7280;
+    margin-bottom: 0.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .equipo-info {
+    margin-top: 0.75rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 8px;
+    border: 2px solid #e5e7eb;
+    font-size: 0.85rem;
+    color: #6b7280;
+    display: none;
+  }
+
+  .equipo-info.active {
+    display: block;
+  }
+
+  .equipo-info h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin-bottom: 0.5rem;
+  }
+
+  .equipo-info p {
+    margin: 0.25rem 0;
+  }
+
+  .equipo-info .precio {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #6b2181;
+    margin-top: 0.5rem;
+  }
+</style>
+
+<script>
+  // Este script se ejecutará en el cliente
+  // Los datos de equipos se pasarán desde el componente padre
+</script>
+

@@ -1,0 +1,963 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import CartFloatButton from '../components/CartFloatButton.astro';
+import SEO from '../components/SEO.astro';
+import FontAwesome from '../components/FontAwesome.astro';
+import { getCollection } from 'astro:content';
+
+// Obtener todos los productos para mostrar información completa
+const productos = await getCollection('productos');
+const productosMap = new Map(productos.map(p => [p.slug, p]));
+
+// Convertir productos a JSON para JavaScript
+const productosJSON = JSON.stringify(productos.map(p => ({
+  id: p.slug,
+  title: p.data.title,
+  description: p.data.description,
+  price: p.data.price,
+  image: p.data.image,
+  brand: p.data.brand || '',
+  model: p.data.model || ''
+})));
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Carrito de Compras | Paneles Solares | Reiki Energía Solar</title>
+    <FontAwesome />
+    <SEO 
+      title="Carrito de Compras | Paneles Solares"
+      description="Carrito de compras de equipos solares. Revisa tus productos seleccionados y completa tu compra de paneles solares, inversores y baterías en Medellín y Colombia."
+      canonical="/carrito"
+      keywords="carrito compras paneles solares, comprar equipos solares, checkout energía solar"
+      schemaType="WebPage"
+      noindex={true}
+    />
+  </head>
+  <body>
+    <Header />
+    
+    <main class="carrito-page">
+      <div class="container">
+        <h1 class="page-title">
+          <i class="fas fa-shopping-cart"></i>
+          Carrito de Compras
+        </h1>
+
+        <!-- Información de Facturación -->
+        <div class="billing-section">
+          <div class="section-header">
+            <div class="section-number">1</div>
+            <h2 class="section-title">Información de Facturación</h2>
+          </div>
+          <div class="billing-form">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="billing-name">Nombre completo *</label>
+                <input type="text" id="billing-name" name="billing-name" placeholder="Ej: Juan Pérez" required>
+              </div>
+              <div class="form-group">
+                <label for="billing-document">Documento de identidad *</label>
+                <input type="text" id="billing-document" name="billing-document" placeholder="Ej: 1234567890" required>
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="billing-email">Correo electrónico *</label>
+                <input type="email" id="billing-email" name="billing-email" placeholder="Ej: juan@ejemplo.com" required>
+              </div>
+              <div class="form-group">
+                <label for="billing-phone">Teléfono *</label>
+                <input type="tel" id="billing-phone" name="billing-phone" placeholder="Ej: 3001234567" required>
+              </div>
+            </div>
+            <div class="form-group full-width">
+              <label for="billing-address">Dirección de facturación *</label>
+              <input type="text" id="billing-address" name="billing-address" placeholder="Ej: Calle 123 #45-67, Medellín" required>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="billing-city">Ciudad *</label>
+                <input type="text" id="billing-city" name="billing-city" placeholder="Ej: Medellín" required>
+              </div>
+              <div class="form-group">
+                <label for="billing-department">Departamento *</label>
+                <input type="text" id="billing-department" name="billing-department" placeholder="Ej: Antioquia" required>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Forma de Pago -->
+        <div class="payment-section">
+          <div class="section-header">
+            <div class="section-number">2</div>
+            <h2 class="section-title">Forma de pago</h2>
+          </div>
+          <div class="payment-options">
+            <label class="payment-option">
+              <input type="radio" name="payment" value="transferencia" checked>
+              <span>Transferencia bancaria</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="tarjeta">
+              <span>Tarjeta de crédito</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="nequi">
+              <span>Nequi</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="daviplata">
+              <span>Daviplata</span>
+            </label>
+            <label class="payment-option">
+              <input type="radio" name="payment" value="efectivo">
+              <span>Efectivo</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- Detalles del Pedido -->
+        <div class="order-details-section">
+          <div class="section-header">
+            <div class="section-number cart-icon">🛒</div>
+            <h2 class="section-title">Detalles del pedido</h2>
+          </div>
+          
+          <div id="cart-items" class="cart-items-container">
+            <div class="cart-empty">
+              <i class="fas fa-shopping-cart"></i>
+              <p>Tu carrito está vacío</p>
+              <a href="/tienda" class="btn-continue-shopping">Continuar comprando</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Resumen del Pedido -->
+        <div class="order-summary" id="order-summary" style="display: none;">
+          <div class="summary-row">
+            <span>Subtotal gravado:</span>
+            <span id="cart-subtotal-gravado">$0</span>
+          </div>
+          <div class="summary-row">
+            <span>Subtotal exento:</span>
+            <span id="cart-subtotal-exento">$0</span>
+          </div>
+          <div class="summary-row">
+            <span>IVA:</span>
+            <span id="cart-iva">$0</span>
+          </div>
+          <div class="summary-row total-row">
+            <span>Total:</span>
+            <span id="cart-total" class="cart-total">$0</span>
+          </div>
+        </div>
+
+        <div class="cart-actions" id="cart-actions" style="display: none;">
+          <button class="cart-checkout-btn" id="checkout-btn">
+            <i class="fab fa-whatsapp"></i>
+            Comprar por WhatsApp
+          </button>
+          <div class="cart-secondary-actions">
+            <button class="btn-clear-cart" id="clear-cart-btn">
+              <i class="fas fa-trash-alt"></i>
+              Limpiar carrito
+            </button>
+            <a href="/tienda" class="btn-continue-shopping-secondary">
+              <i class="fas fa-arrow-left"></i>
+              Continuar comprando
+            </a>
+          </div>
+        </div>
+      </div>
+    </main>
+    
+    <Footer />
+    <WhatsAppFloat />
+    <CartFloatButton />
+  </body>
+</html>
+
+<script define:vars={{ productosJSON }}>
+  // Número de WhatsApp - +573245737413
+  const WHATSAPP_NUMBER = '573245737413';
+  const CART_STORAGE_KEY = 'reiki_cart';
+  
+  let cart = [];
+  const productos = JSON.parse(productosJSON);
+
+  // Cargar carrito desde localStorage
+  function loadCartFromStorage() {
+    const savedCart = localStorage.getItem(CART_STORAGE_KEY);
+    if (savedCart) {
+      try {
+        cart = JSON.parse(savedCart);
+      } catch (e) {
+        cart = [];
+      }
+    }
+  }
+
+  // Guardar carrito en localStorage
+  function saveCartToStorage() {
+    localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+    window.dispatchEvent(new CustomEvent('cartUpdated', { detail: { totalItems: cart.reduce((sum, item) => sum + item.quantity, 0) } }));
+  }
+
+  // Función para extraer número del precio
+  function extractPrice(priceString) {
+    const cleaned = priceString.replace(/[^0-9]/g, '');
+    return parseInt(cleaned) || 0;
+  }
+
+  // Función para formatear precio
+  function formatPrice(price) {
+    return new Intl.NumberFormat('es-CO', {
+      style: 'currency',
+      currency: 'COP',
+      minimumFractionDigits: 0
+    }).format(price);
+  }
+
+  // Actualizar UI del carrito
+  function updateCartUI() {
+    const cartItems = document.getElementById('cart-items');
+    const checkoutBtn = document.getElementById('checkout-btn');
+    const orderSummary = document.getElementById('order-summary');
+    const cartActions = document.getElementById('cart-actions');
+
+    if (cart.length === 0) {
+      cartItems.innerHTML = `
+        <div class="cart-empty">
+          <i class="fas fa-shopping-cart"></i>
+          <p>Tu carrito está vacío</p>
+          <a href="/tienda" class="btn-continue-shopping">Continuar comprando</a>
+        </div>
+      `;
+      if (checkoutBtn) checkoutBtn.disabled = true;
+      if (orderSummary) orderSummary.style.display = 'none';
+      if (cartActions) cartActions.style.display = 'none';
+    } else {
+      // Mostrar resumen y acciones
+      if (orderSummary) orderSummary.style.display = 'block';
+      if (cartActions) cartActions.style.display = 'block';
+      
+      cartItems.innerHTML = cart.map((item, index) => {
+        const itemTotal = extractPrice(item.price) * item.quantity;
+        return `
+          <div class="cart-item-card">
+            <div class="cart-item-image">
+              <img src="${item.image}" alt="${item.title}" class="product-thumbnail">
+            </div>
+            <div class="cart-item-content">
+              <div class="cart-item-header">
+                <h3 class="cart-item-name">${item.title}</h3>
+                <button class="remove-item-btn" onclick="removeFromCart(${index})" title="Eliminar producto">
+                  <i class="fas fa-trash"></i>
+                </button>
+              </div>
+              ${item.brand ? `<div class="cart-item-brand">${item.brand}</div>` : ''}
+              ${item.model ? `<div class="cart-item-model">Modelo: ${item.model}</div>` : ''}
+              <div class="cart-item-price">${item.price}</div>
+              <div class="cart-item-controls">
+                <div class="qty-controls-wrapper">
+                  <label class="qty-label">Cantidad:</label>
+                  <div class="qty-controls">
+                    <button onclick="updateCartQuantity(${index}, -1)" class="qty-btn">-</button>
+                    <input type="number" value="${item.quantity}" min="1" readonly class="qty-input">
+                    <button onclick="updateCartQuantity(${index}, 1)" class="qty-btn">+</button>
+                  </div>
+                </div>
+                <div class="cart-item-subtotal">
+                  <span class="subtotal-label">Subtotal:</span>
+                  <span class="subtotal-value">${formatPrice(itemTotal)}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+      if (checkoutBtn) checkoutBtn.disabled = false;
+    }
+
+    // Calcular totales
+    const subtotal = cart.reduce((sum, item) => {
+      return sum + (extractPrice(item.price) * item.quantity);
+    }, 0);
+    
+    // Calcular IVA (19% en Colombia)
+    const subtotalGravado = subtotal / 1.19;
+    const iva = subtotalGravado * 0.19;
+    const subtotalExento = 0;
+    const total = subtotal;
+
+    const subtotalGravadoEl = document.getElementById('cart-subtotal-gravado');
+    const subtotalExentoEl = document.getElementById('cart-subtotal-exento');
+    const ivaEl = document.getElementById('cart-iva');
+    const totalEl = document.getElementById('cart-total');
+
+    if (subtotalGravadoEl) subtotalGravadoEl.textContent = formatPrice(subtotalGravado);
+    if (subtotalExentoEl) subtotalExentoEl.textContent = formatPrice(subtotalExento);
+    if (ivaEl) ivaEl.textContent = formatPrice(iva);
+    if (totalEl) totalEl.textContent = formatPrice(total);
+  }
+
+  // Actualizar cantidad
+  window.updateCartQuantity = function(index, change) {
+    cart[index].quantity += change;
+    if (cart[index].quantity <= 0) {
+      cart.splice(index, 1);
+    }
+    saveCartToStorage();
+    updateCartUI();
+  };
+
+  // Eliminar del carrito
+  window.removeFromCart = function(index) {
+    cart.splice(index, 1);
+    saveCartToStorage();
+    updateCartUI();
+  };
+
+  // Limpiar carrito completo
+  window.clearCart = function() {
+    if (cart.length === 0) return;
+    
+    if (confirm('¿Estás seguro de que deseas limpiar todo el carrito?')) {
+      cart = [];
+      saveCartToStorage();
+      updateCartUI();
+    }
+  };
+
+  // Checkout
+  document.addEventListener('DOMContentLoaded', function() {
+    loadCartFromStorage();
+    updateCartUI();
+
+    // Botón limpiar carrito
+    const clearCartBtn = document.getElementById('clear-cart-btn');
+    if (clearCartBtn) {
+      clearCartBtn.addEventListener('click', function() {
+        clearCart();
+      });
+    }
+
+    const checkoutBtn = document.getElementById('checkout-btn');
+    if (checkoutBtn) {
+      checkoutBtn.addEventListener('click', function() {
+        if (cart.length === 0) return;
+        
+        const paymentMethod = document.querySelector('input[name="payment"]:checked')?.value || 'transferencia';
+        const paymentNames = {
+          'transferencia': 'Transferencia bancaria',
+          'tarjeta': 'Tarjeta de crédito',
+          'nequi': 'Nequi',
+          'daviplata': 'Daviplata',
+          'efectivo': 'Efectivo'
+        };
+
+        // Validar información de facturación
+        const billingName = document.getElementById('billing-name')?.value.trim();
+        const billingDocument = document.getElementById('billing-document')?.value.trim();
+        const billingEmail = document.getElementById('billing-email')?.value.trim();
+        const billingPhone = document.getElementById('billing-phone')?.value.trim();
+        const billingAddress = document.getElementById('billing-address')?.value.trim();
+        const billingCity = document.getElementById('billing-city')?.value.trim();
+        const billingDepartment = document.getElementById('billing-department')?.value.trim();
+
+        if (!billingName || !billingDocument || !billingEmail || !billingPhone || !billingAddress || !billingCity || !billingDepartment) {
+          alert('Por favor completa toda la información de facturación');
+          return;
+        }
+
+        let message = '🛒 *PEDIDO DE PRODUCTOS SOLARES*\n\n';
+        
+        message += '*📋 INFORMACIÓN DE FACTURACIÓN*\n';
+        message += `Nombre: ${billingName}\n`;
+        message += `Documento: ${billingDocument}\n`;
+        message += `Email: ${billingEmail}\n`;
+        message += `Teléfono: ${billingPhone}\n`;
+        message += `Dirección: ${billingAddress}\n`;
+        message += `Ciudad: ${billingCity}\n`;
+        message += `Departamento: ${billingDepartment}\n\n`;
+        
+        message += '*🛍️ PRODUCTOS:*\n';
+        cart.forEach((item, index) => {
+          const itemTotal = extractPrice(item.price) * item.quantity;
+          message += `${index + 1}. ${item.title}\n`;
+          if (item.brand) message += `   Marca: ${item.brand}\n`;
+          if (item.model) message += `   Modelo: ${item.model}\n`;
+          message += `   Cantidad: ${item.quantity}\n`;
+          message += `   Precio unitario: ${item.price}\n`;
+          message += `   Subtotal: ${formatPrice(itemTotal)}\n\n`;
+        });
+
+        const total = cart.reduce((sum, item) => {
+          return sum + (extractPrice(item.price) * item.quantity);
+        }, 0);
+
+        message += `*💰 RESUMEN:*\n`;
+        message += `Subtotal: ${formatPrice(total)}\n`;
+        message += `Total: ${formatPrice(total)}\n\n`;
+        message += `*💳 Método de pago:* ${paymentNames[paymentMethod]}\n\n`;
+        message += 'Por favor, confirma la disponibilidad y el proceso de pago.';
+
+        const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+        window.open(whatsappUrl, '_blank');
+      });
+    }
+  });
+</script>
+
+<style>
+  .carrito-page {
+    padding: 4rem 0;
+    background: #f9fafb;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #6b2181;
+    margin-bottom: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .page-title i {
+    font-size: 2rem;
+  }
+
+  .billing-section,
+  .payment-section,
+  .order-details-section {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Estilos de facturación */
+  .billing-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .form-group.full-width {
+    grid-column: 1 / -1;
+  }
+
+  .form-group label {
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 0.95rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .form-group input {
+    padding: 0.875rem 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: border-color 0.2s ease;
+  }
+
+  .form-group input:focus {
+    outline: none;
+    border-color: #6b2181;
+  }
+
+  .form-group input::placeholder {
+    color: #9ca3af;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .section-number {
+    width: 40px;
+    height: 40px;
+    background: #10b981;
+    color: white;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .section-number.cart-icon {
+    background: #f59e0b;
+    font-size: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .payment-option {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .payment-option:hover {
+    background: #f9fafb;
+    border-color: #6b2181;
+  }
+
+  .payment-option input[type="radio"] {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+  }
+
+  .payment-option input[type="radio"]:checked + span {
+    font-weight: 600;
+    color: #6b2181;
+  }
+
+  /* Diseño mejorado del carrito */
+  .cart-items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .cart-item-card {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+  }
+
+  .cart-item-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #6b2181;
+  }
+
+  .cart-item-image {
+    flex-shrink: 0;
+  }
+
+  .product-thumbnail {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #e5e7eb;
+    background: white;
+  }
+
+  .cart-item-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .cart-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .cart-item-name {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0;
+    line-height: 1.3;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .remove-item-btn {
+    background: none;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-size: 1.1rem;
+    padding: 0.5rem;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  .remove-item-btn:hover {
+    transform: scale(1.2);
+    color: #dc2626;
+  }
+
+  .cart-item-brand {
+    font-size: 1rem;
+    color: #6b7280;
+    font-weight: 500;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cart-item-model {
+    font-size: 0.95rem;
+    color: #6b7280;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cart-item-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #6b2181;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cart-item-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 0.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .qty-controls-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .qty-label {
+    font-weight: 600;
+    color: #1f2937;
+    font-size: 0.95rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border: 2px solid #e5e7eb;
+    border-radius: 8px;
+    padding: 0.25rem;
+    background: white;
+  }
+
+  .qty-btn {
+    background: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #6b2181;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .qty-btn:hover {
+    background: #6b2181;
+    color: white;
+  }
+
+  .qty-input {
+    width: 50px;
+    height: 36px;
+    border: none;
+    text-align: center;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1f2937;
+    background: transparent;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cart-item-subtotal {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.25rem;
+  }
+
+  .subtotal-label {
+    font-size: 0.9rem;
+    color: #6b7280;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .subtotal-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #6b2181;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cart-empty {
+    text-align: center;
+    padding: 4rem 1rem;
+    color: #6b7280;
+  }
+
+  .cart-empty i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    opacity: 0.3;
+  }
+
+  .btn-continue-shopping {
+    display: inline-block;
+    margin-top: 1.5rem;
+    padding: 0.75rem 2rem;
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .btn-continue-shopping:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(107, 33, 129, 0.4);
+  }
+
+  /* Resumen del pedido */
+  .order-summary {
+    background: white;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 0;
+    font-size: 1rem;
+    color: #4b5563;
+    border-bottom: 1px solid #e5e7eb;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .summary-row:last-child {
+    border-bottom: none;
+  }
+
+  .summary-row.total-row {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #1f2937;
+    padding-top: 1.5rem;
+    margin-top: 0.5rem;
+    border-top: 2px solid #e5e7eb;
+  }
+
+  .cart-total {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #6b2181;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cart-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .cart-secondary-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-clear-cart {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: white;
+    color: #ef4444;
+    text-decoration: none;
+    border: 2px solid #ef4444;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    cursor: pointer;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .btn-clear-cart:hover {
+    background: #ef4444;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(239, 68, 68, 0.3);
+  }
+
+  .cart-checkout-btn {
+    width: 100%;
+    padding: 1.25rem 2rem;
+    background: linear-gradient(135deg, #25D366, #128C7E);
+    color: white;
+    border: none;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+  }
+
+  .cart-checkout-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+  }
+
+  .cart-checkout-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .btn-continue-shopping-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 1rem 2rem;
+    background: white;
+    color: #6b2181;
+    text-decoration: none;
+    border: 2px solid #6b2181;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .btn-continue-shopping-secondary:hover {
+    background: #6b2181;
+    color: white;
+  }
+
+  @media (max-width: 768px) {
+    .page-title {
+      font-size: 2rem;
+    }
+
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+
+    .cart-item-card {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .cart-item-image {
+      align-self: center;
+    }
+
+    .product-thumbnail {
+      width: 100px;
+      height: 100px;
+    }
+
+    .cart-item-controls {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .cart-item-subtotal {
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    .cart-secondary-actions {
+      flex-direction: column;
+    }
+
+    .btn-clear-cart,
+    .btn-continue-shopping-secondary {
+      width: 100%;
+      min-width: unset;
+    }
+  }
+</style>
+

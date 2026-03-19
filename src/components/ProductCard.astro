@@ -1,0 +1,414 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  producto: CollectionEntry<'productos'>;
+}
+
+const { producto } = Astro.props;
+const specs = producto.data.specifications ?? [];
+const stockStatus = producto.data.stock ?? 'disponible';
+const isNew = (producto.data.order ?? 0) <= 3;
+
+// Calcular precio con 15% de descuento (Black Friday)
+const rawPrice = parseInt(producto.data.price.replace(/[^0-9]/g, '')) || 0;
+const discountedPrice = rawPrice * 0.85;
+const formattedPrice = new Intl.NumberFormat('es-CO', {
+  style: 'currency',
+  currency: 'COP',
+  minimumFractionDigits: 0,
+  maximumFractionDigits: 0
+}).format(discountedPrice);
+
+function normalizeText(value: string | undefined) {
+  return (value || '')
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase();
+}
+
+function getSearchText() {
+  return [
+    producto.data.title,
+    producto.data.description,
+    producto.data.brand,
+    producto.data.model,
+    producto.data.category,
+    specs.join(' ')
+  ]
+    .map(normalizeText)
+    .filter(Boolean)
+    .join(' ');
+}
+---
+
+<div
+  class="producto-card"
+  data-category={producto.data.category}
+  data-stock={stockStatus}
+  data-brand={producto.data.brand ?? ''}
+  data-model={producto.data.model ?? ''}
+  data-search={getSearchText()}
+  data-new={isNew ? 'true' : 'false'}
+>
+  <div class="producto-image-container">
+    <img
+      src={producto.data.image}
+      alt={producto.data.title}
+      class="producto-image"
+      loading="lazy"
+    />
+    {stockStatus === 'disponible' && (
+      <div class="producto-badge disponible">Disponible</div>
+    )}
+    {stockStatus === 'agotado' && (
+      <div class="producto-badge agotado">Agotado</div>
+    )}
+    {stockStatus === 'pre-orden' && (
+      <div class="producto-badge pre-orden">Pre-orden</div>
+    )}
+    <div class="producto-badge black-friday">Black Friday 🔥</div>
+    {isNew && <div class="producto-pill nouveau">Nuevo</div>}
+  </div>
+
+  <div class="producto-content">
+    <div class="producto-header">
+      <h3 class="producto-name">{producto.data.title}</h3>
+    </div>
+
+    <p class="producto-description">
+      {producto.data.description}
+    </p>
+
+    <div class="producto-footer">
+      <div class="producto-price-row">
+        <div class="producto-price">{formattedPrice}</div>
+        <span class="price-caption">Black Friday (-15%)</span>
+      </div>
+      <div class="producto-actions">
+        <div class="quantity-controls" data-product-id={producto.slug}>
+          <button class="qty-btn minus" type="button">-</button>
+          <input type="number" class="qty-input" value="1" min="1" readonly>
+          <button class="qty-btn plus" type="button">+</button>
+        </div>
+        <button
+          class="producto-btn add-to-cart"
+          data-product-id={producto.slug}
+          data-product-title={producto.data.title}
+          data-product-description={producto.data.description}
+          data-product-price={formattedPrice}
+          data-product-image={producto.data.image}
+          data-product-brand={producto.data.brand || ''}
+          data-product-model={producto.data.model || ''}
+        >
+          <i class="fas fa-shopping-cart"></i>
+          Agregar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .producto-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    min-width: 240px;
+    max-width: 240px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    border: 2px solid transparent;
+  }
+
+  .producto-card.hidden {
+    display: none !important;
+  }
+
+  .producto-card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 12px 40px rgba(107, 33, 129, 0.4), 0 0 0 1px rgba(107, 33, 129, 0.1);
+    border-color: transparent;
+    background: white;
+  }
+
+  .producto-card:hover .producto-content {
+    transform: scale(1.02);
+  }
+
+  .producto-image-container {
+    position: relative;
+    width: 100%;
+    height: 140px;
+    padding: 0.75rem;
+    background: #f8fafc;
+    border-bottom: 1px solid #eef2ff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .producto-image {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.5s ease;
+  }
+
+  .producto-card:hover .producto-image {
+    transform: scale(1.15);
+  }
+
+  .producto-card:hover .producto-name {
+    color: #6b2181;
+    text-shadow: 0 2px 8px rgba(107, 33, 129, 0.2);
+  }
+
+  .producto-card:hover .producto-price {
+    color: #8b2a9b;
+    transform: scale(1.05);
+    text-shadow: 0 2px 8px rgba(139, 42, 155, 0.3);
+  }
+
+  .producto-card:hover .producto-description {
+    color: #6b2181;
+    text-shadow: 0 1px 4px rgba(107, 33, 129, 0.15);
+  }
+
+  .producto-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .producto-badge.disponible {
+    background: #10b981;
+    color: white;
+  }
+
+  .producto-badge.agotado {
+    background: #ef4444;
+    color: white;
+  }
+
+  .producto-badge.pre-orden {
+    background: #f59e0b;
+    color: white;
+  }
+
+  .producto-badge.black-friday {
+    background: #000;
+    color: #ff00de; /* Neon pink or similar striking color */
+    border: 1px solid #ff00de;
+    top: auto;
+    bottom: 0.5rem;
+    right: 0.5rem;
+    box-shadow: 0 0 10px rgba(255, 0, 222, 0.4);
+    z-index: 2;
+  }
+
+  .producto-content {
+    padding: 1.05rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .producto-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 0.3rem;
+    gap: 0.65rem;
+  }
+
+  .producto-pill.nouveau {
+    position: absolute;
+    left: 1rem;
+    top: 1rem;
+    background: linear-gradient(135deg, #f97316, #facc15);
+    color: #1f2937;
+    font-size: 0.75rem;
+    font-weight: 700;
+    border-radius: 999px;
+    padding: 0.2rem 0.7rem;
+  }
+
+  .producto-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: #1f2937;
+    margin: 0;
+    flex: 1;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.3;
+    transition: color 0.4s cubic-bezier(0.4, 0, 0.2, 1), text-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .producto-description {
+    font-size: 0.9rem;
+    color: #4b5563;
+    line-height: 1.4;
+    margin-bottom: 0.75rem;
+    flex: 1;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .producto-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.55rem;
+    margin-top: auto;
+    padding-top: 0.55rem;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .producto-price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .producto-price {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #6b2181;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .price-caption {
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+
+  .producto-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    border: 2px solid #e5e7eb;
+    border-radius: 50px;
+    overflow: hidden;
+  }
+
+  .qty-btn {
+    background: #f3f4f6;
+    border: none;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.1rem;
+    color: #6b2181;
+    transition: all 0.2s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .qty-btn:hover {
+    background: #6b2181;
+    color: white;
+  }
+
+  .qty-input {
+    width: 45px;
+    height: 32px;
+    border: none;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #1f2937;
+    background: white;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .producto-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+    padding: 0.75rem 1.25rem;
+    border-radius: 50px;
+    border: none;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(107, 33, 129, 0.3);
+    white-space: nowrap;
+    cursor: pointer;
+    flex: 1;
+    justify-content: center;
+  }
+
+  .producto-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(107, 33, 129, 0.4);
+    background: linear-gradient(135deg, #8b2a9b, #6b2181);
+  }
+
+  .producto-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  @media (max-width: 1024px) {
+    .producto-card {
+      min-width: 263px;
+      max-width: 263px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .producto-card {
+      min-width: 245px;
+      max-width: 245px;
+    }
+
+    .producto-image-container {
+      height: 199px;
+    }
+
+    .producto-footer {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .producto-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .producto-content {
+      padding: 1.5rem;
+    }
+
+    .producto-name {
+      font-size: 1.2rem;
+    }
+  }
+</style>

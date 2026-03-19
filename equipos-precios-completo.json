@@ -1,0 +1,913 @@
+{
+  "fecha": "2025-11-13T02:05:48.828Z",
+  "trm": 4200,
+  "totalEquipos": 55,
+  "porTipo": {
+    "panel": 1,
+    "inversor": 6,
+    "controlador": 4,
+    "bateria": 1,
+    "estructura": 2,
+    "accesorio": 41
+  },
+  "equipos": [
+    {
+      "codigo": "SCC900300000Remot",
+      "descripcion": "e panel for BlueSolar PWM-Pro Charge Controller Victron Energy",
+      "precioUSD": 43.47,
+      "precioCOP": 182574,
+      "tipo": "panel",
+      "marca": "Victron Energy"
+    },
+    {
+      "codigo": "SCC940100100Tem",
+      "descripcion": "p. sensor for BlueSolar PWM-Pro Charge Controller Victron Energy",
+      "precioUSD": 11.34,
+      "precioCOP": 47628,
+      "tipo": "controlador",
+      "marca": "Victron Energy"
+    },
+    {
+      "codigo": "SCC940100200BlueSola",
+      "descripcion": "r PWM-Pro to USB interface cable Victron Energy",
+      "precioUSD": 11.34,
+      "precioCOP": 47628,
+      "tipo": "controlador",
+      "marca": "Victron Energy"
+    },
+    {
+      "codigo": "SCC900650010SmartSola",
+      "descripcion": "r Pluggable Display Victron Energy",
+      "precioUSD": 34.02,
+      "precioCOP": 142884,
+      "tipo": "controlador",
+      "marca": "Victron Energy"
+    },
+    {
+      "codigo": "CIP000050001Fus",
+      "descripcion": "e holder for MIDI-fuse Victron Energy",
+      "precioUSD": 9.45,
+      "precioCOP": 39690,
+      "tipo": "accesorio",
+      "marca": "Victron Energy"
+    },
+    {
+      "codigo": "CIP000100001Fus",
+      "descripcion": "e holder for MEGA-fuse Victron Energy",
+      "precioUSD": 12.28,
+      "precioCOP": 51576,
+      "tipo": "accesorio",
+      "marca": "Victron Energy"
+    },
+    {
+      "codigo": "BPP900480100Ekran",
+      "descripcion": "o GX Victron Energy",
+      "precioUSD": 597.24,
+      "precioCOP": 2508408,
+      "tipo": "accesorio",
+      "marca": "Victron Energy"
+    },
+    {
+      "codigo": "BPP900400100Venu",
+      "descripcion": "s GX Victron Energy",
+      "precioUSD": 189,
+      "precioCOP": 793800,
+      "tipo": "accesorio",
+      "marca": "Victron Energy"
+    },
+    {
+      "codigo": "BPP900495100Ekran",
+      "descripcion": "o GX Wall Mount Victron Energy",
+      "precioUSD": 22.68,
+      "precioCOP": 95256,
+      "tipo": "accesorio",
+      "marca": "Victron Energy"
+    },
+    {
+      "codigo": "BPP900100200CCG",
+      "descripcion": "X WiFi module simple (Nano USB) Victron Energy",
+      "precioUSD": 23.62,
+      "precioCOP": 99204,
+      "tipo": "accesorio",
+      "marca": "Victron Energy"
+    },
+    {
+      "codigo": "ECU-R-MXSistem",
+      "descripcion": "a de monitoreo para microinversores, Zigbee, Wifi  (sin control de inyección) APsystems",
+      "precioUSD": 244.4,
+      "precioCOP": 1026480,
+      "tipo": "inversor",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "ECU-C-NAUnida",
+      "descripcion": "d de comunicación ‐ C ZigBee (Wifi, anti reflux, para todos los modelos) inversor Apsystems",
+      "precioUSD": 376,
+      "precioCOP": 1579200,
+      "tipo": "inversor",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "SEC1000",
+      "descripcion": "S Control de energía inteligente ongrid para inversores híbridos Goodwe",
+      "precioUSD": 579.2,
+      "precioCOP": 2432640,
+      "tipo": "inversor",
+      "marca": "Goodwe"
+    },
+    {
+      "codigo": "GW-BBP11WW0LYN",
+      "descripcion": "X D Base de piso para Lynx D Goodwe",
+      "precioUSD": 54.4,
+      "precioCOP": 228480,
+      "tipo": "accesorio",
+      "marca": "Goodwe"
+    },
+    {
+      "codigo": "GW-BBB11WW0LYN",
+      "descripcion": "X D Hanger de pared para Lynx D Goodwe",
+      "precioUSD": 113.6,
+      "precioCOP": 477120,
+      "tipo": "accesorio",
+      "marca": "Goodwe"
+    },
+    {
+      "codigo": "3U-L",
+      "descripcion": "P Cable Cable de comunicación y de potencia entre batería e inversor híbrido Deye",
+      "precioUSD": 64,
+      "precioCOP": 268800,
+      "tipo": "inversor",
+      "marca": "Deye"
+    },
+    {
+      "codigo": "GM-RS-56-AZ-DRai",
+      "descripcion": "l splice Goomax",
+      "precioUSD": 1.59,
+      "precioCOP": 6678,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-AS-B01-DForefee",
+      "descripcion": "t components Goomax",
+      "precioUSD": 3.63,
+      "precioCOP": 15246,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-AS-200-DRea",
+      "descripcion": "r feet components Goomax",
+      "precioUSD": 6.79,
+      "precioCOP": 28518,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-MRH-LDS-06-D",
+      "descripcion": "L feet+hanger bolt Goomax",
+      "precioUSD": 3.5,
+      "precioCOP": 14700,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-MRH-LDS-08-D",
+      "descripcion": "L feet+Hanger Bolt (for steel) Goomax",
+      "precioUSD": 3.54,
+      "precioCOP": 14868,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-MRH-L5-DL-fee",
+      "descripcion": "t Goomax",
+      "precioUSD": 1.63,
+      "precioCOP": 6846,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-EK-DGroun",
+      "descripcion": "d lug Goomax",
+      "precioUSD": 0.87,
+      "precioCOP": 3654,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "JG-GMTYN-128-01",
+      "descripcion": "L feet+hanger bolt Goomax",
+      "precioUSD": 1.59,
+      "precioCOP": 6678,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-E-EL-04Rai",
+      "descripcion": "l earthing clip Goomax",
+      "precioUSD": 1.84,
+      "precioCOP": 7728,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-MRH-T6-250-STMin",
+      "descripcion": "i Rail Goomax",
+      "precioUSD": 2.12,
+      "precioCOP": 8904,
+      "tipo": "estructura",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-MRH-01Meta",
+      "descripcion": "l roof hook Goomax",
+      "precioUSD": 4.14,
+      "precioCOP": 17388,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-MRH-02Meta",
+      "descripcion": "l roof hook Goomax",
+      "precioUSD": 4.14,
+      "precioCOP": 17388,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-BR-02Rai",
+      "descripcion": "l clamp Goomax",
+      "precioUSD": 0.76,
+      "precioCOP": 3192,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-MRH-04Meta",
+      "descripcion": "l roof hook Goomax",
+      "precioUSD": 2.3,
+      "precioCOP": 9660,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-MRH-05Meta",
+      "descripcion": "l roof hook Goomax",
+      "precioUSD": 1.89,
+      "precioCOP": 7938,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-R596200m",
+      "descripcion": "m beam Goomax",
+      "precioUSD": 104.69,
+      "precioCOP": 439698,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-FG3-S2-23422342m",
+      "descripcion": "m column Goomax",
+      "precioUSD": 39.86,
+      "precioCOP": 167412,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-FG3-S2-20102010m",
+      "descripcion": "m column Goomax",
+      "precioUSD": 55.21,
+      "precioCOP": 231882,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-FG3-CH02Conecto",
+      "descripcion": "r H Goomax",
+      "precioUSD": 5.54,
+      "precioCOP": 23268,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-FG-B05Bas",
+      "descripcion": "e de acero en carbono Goomax",
+      "precioUSD": 18.9,
+      "precioCOP": 79380,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-BR-01-QRai",
+      "descripcion": "l clamp para carpot Goomax",
+      "precioUSD": 0.74,
+      "precioCOP": 3108,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-RS-05-400Rai",
+      "descripcion": "l splice Goomax",
+      "precioUSD": 8.4,
+      "precioCOP": 35280,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-MC-40-FXMiddl",
+      "descripcion": "e clamp Goomax",
+      "precioUSD": 1.74,
+      "precioCOP": 7308,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-R71-68106810m",
+      "descripcion": "m rail Goomax",
+      "precioUSD": 58.44,
+      "precioCOP": 245448,
+      "tipo": "estructura",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-FS-SCCana",
+      "descripcion": "lón impermeable Goomax",
+      "precioUSD": 6.32,
+      "precioCOP": 26544,
+      "tipo": "controlador",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-BR-01Rai",
+      "descripcion": "l clamp para carpot Goomax",
+      "precioUSD": 0.74,
+      "precioCOP": 3108,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-EKGroun",
+      "descripcion": "d lug Goomax",
+      "precioUSD": 0.86,
+      "precioCOP": 3612,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-BN-25Clicknut",
+      "descripcion": "s Goomax",
+      "precioUSD": 0.4,
+      "precioCOP": 1680,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-GZ-KZXContro",
+      "descripcion": "l Box Goomax",
+      "precioUSD": 408.62,
+      "precioCOP": 1716204,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-GZ-ZLYCXExtensio",
+      "descripcion": "n Cable Box",
+      "precioUSD": 30.68,
+      "precioCOP": 128856,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "GM-GZ-JSJSlewin",
+      "descripcion": "g Drive Goomax",
+      "precioUSD": 551.71,
+      "precioCOP": 2317182,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "PylonCableKitCable",
+      "descripcion": "s de conexión entre baterías Pylontech",
+      "precioUSD": 8.16,
+      "precioCOP": 34272,
+      "tipo": "bateria",
+      "marca": "Pylontech"
+    },
+    {
+      "codigo": "LV-HUBUP5000Communicatio",
+      "descripcion": "n Hub for LV energy system Pylontech",
+      "precioUSD": 522.24,
+      "precioCOP": 2193408,
+      "tipo": "accesorio",
+      "marca": "Pylontech"
+    },
+    {
+      "codigo": "DDZY422-D2-WSmar",
+      "descripcion": "t Meter Single phase power meterSolarMan",
+      "precioUSD": 211.5,
+      "precioCOP": 888300,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    },
+    {
+      "codigo": "LSW-3Stic",
+      "descripcion": "k logger for a unit of Deye inverter, wifi version SolarMan",
+      "precioUSD": 51.7,
+      "precioCOP": 217140,
+      "tipo": "inversor",
+      "marca": "Deye"
+    },
+    {
+      "codigo": "LSE-3Stic",
+      "descripcion": "k logger for a unit of Deye inverter, ethernet version SolarMan",
+      "precioUSD": 70.5,
+      "precioCOP": 296100,
+      "tipo": "inversor",
+      "marca": "Deye"
+    },
+    {
+      "codigo": "S",
+      "descripcion": "SmartPS-250A-T0301.000$",
+      "precioCOP": 294000,
+      "precioUSD": 70,
+      "tipo": "accesorio",
+      "marca": "Genérico",
+      "corriente": 250
+    },
+    {
+      "codigo": "3P",
+      "descripcion": "3P -3XCT CLAMP 1000 (CTS 1000A)680.000$",
+      "precioCOP": 555000,
+      "precioUSD": 132.14,
+      "tipo": "accesorio",
+      "marca": "Genérico",
+      "corriente": 1000
+    },
+    {
+      "codigo": "TORNILLO",
+      "descripcion": "TORNILLO DE FIJACIÓN 125/70",
+      "precioCOP": 40000,
+      "precioUSD": 9.52,
+      "tipo": "accesorio",
+      "marca": "Genérico"
+    }
+  ],
+  "equiposPorTipo": {
+    "panel": [
+      {
+        "codigo": "SCC900300000Remot",
+        "descripcion": "e panel for BlueSolar PWM-Pro Charge Controller Victron Energy",
+        "precioUSD": 43.47,
+        "precioCOP": 182574,
+        "tipo": "panel",
+        "marca": "Victron Energy"
+      }
+    ],
+    "inversor": [
+      {
+        "codigo": "ECU-R-MXSistem",
+        "descripcion": "a de monitoreo para microinversores, Zigbee, Wifi  (sin control de inyección) APsystems",
+        "precioUSD": 244.4,
+        "precioCOP": 1026480,
+        "tipo": "inversor",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "ECU-C-NAUnida",
+        "descripcion": "d de comunicación ‐ C ZigBee (Wifi, anti reflux, para todos los modelos) inversor Apsystems",
+        "precioUSD": 376,
+        "precioCOP": 1579200,
+        "tipo": "inversor",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "SEC1000",
+        "descripcion": "S Control de energía inteligente ongrid para inversores híbridos Goodwe",
+        "precioUSD": 579.2,
+        "precioCOP": 2432640,
+        "tipo": "inversor",
+        "marca": "Goodwe"
+      },
+      {
+        "codigo": "3U-L",
+        "descripcion": "P Cable Cable de comunicación y de potencia entre batería e inversor híbrido Deye",
+        "precioUSD": 64,
+        "precioCOP": 268800,
+        "tipo": "inversor",
+        "marca": "Deye"
+      },
+      {
+        "codigo": "LSW-3Stic",
+        "descripcion": "k logger for a unit of Deye inverter, wifi version SolarMan",
+        "precioUSD": 51.7,
+        "precioCOP": 217140,
+        "tipo": "inversor",
+        "marca": "Deye"
+      },
+      {
+        "codigo": "LSE-3Stic",
+        "descripcion": "k logger for a unit of Deye inverter, ethernet version SolarMan",
+        "precioUSD": 70.5,
+        "precioCOP": 296100,
+        "tipo": "inversor",
+        "marca": "Deye"
+      }
+    ],
+    "controlador": [
+      {
+        "codigo": "SCC940100100Tem",
+        "descripcion": "p. sensor for BlueSolar PWM-Pro Charge Controller Victron Energy",
+        "precioUSD": 11.34,
+        "precioCOP": 47628,
+        "tipo": "controlador",
+        "marca": "Victron Energy"
+      },
+      {
+        "codigo": "SCC940100200BlueSola",
+        "descripcion": "r PWM-Pro to USB interface cable Victron Energy",
+        "precioUSD": 11.34,
+        "precioCOP": 47628,
+        "tipo": "controlador",
+        "marca": "Victron Energy"
+      },
+      {
+        "codigo": "SCC900650010SmartSola",
+        "descripcion": "r Pluggable Display Victron Energy",
+        "precioUSD": 34.02,
+        "precioCOP": 142884,
+        "tipo": "controlador",
+        "marca": "Victron Energy"
+      },
+      {
+        "codigo": "GM-FS-SCCana",
+        "descripcion": "lón impermeable Goomax",
+        "precioUSD": 6.32,
+        "precioCOP": 26544,
+        "tipo": "controlador",
+        "marca": "Genérico"
+      }
+    ],
+    "bateria": [
+      {
+        "codigo": "PylonCableKitCable",
+        "descripcion": "s de conexión entre baterías Pylontech",
+        "precioUSD": 8.16,
+        "precioCOP": 34272,
+        "tipo": "bateria",
+        "marca": "Pylontech"
+      }
+    ],
+    "estructura": [
+      {
+        "codigo": "GM-MRH-T6-250-STMin",
+        "descripcion": "i Rail Goomax",
+        "precioUSD": 2.12,
+        "precioCOP": 8904,
+        "tipo": "estructura",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-R71-68106810m",
+        "descripcion": "m rail Goomax",
+        "precioUSD": 58.44,
+        "precioCOP": 245448,
+        "tipo": "estructura",
+        "marca": "Genérico"
+      }
+    ],
+    "accesorio": [
+      {
+        "codigo": "CIP000050001Fus",
+        "descripcion": "e holder for MIDI-fuse Victron Energy",
+        "precioUSD": 9.45,
+        "precioCOP": 39690,
+        "tipo": "accesorio",
+        "marca": "Victron Energy"
+      },
+      {
+        "codigo": "CIP000100001Fus",
+        "descripcion": "e holder for MEGA-fuse Victron Energy",
+        "precioUSD": 12.28,
+        "precioCOP": 51576,
+        "tipo": "accesorio",
+        "marca": "Victron Energy"
+      },
+      {
+        "codigo": "BPP900480100Ekran",
+        "descripcion": "o GX Victron Energy",
+        "precioUSD": 597.24,
+        "precioCOP": 2508408,
+        "tipo": "accesorio",
+        "marca": "Victron Energy"
+      },
+      {
+        "codigo": "BPP900400100Venu",
+        "descripcion": "s GX Victron Energy",
+        "precioUSD": 189,
+        "precioCOP": 793800,
+        "tipo": "accesorio",
+        "marca": "Victron Energy"
+      },
+      {
+        "codigo": "BPP900495100Ekran",
+        "descripcion": "o GX Wall Mount Victron Energy",
+        "precioUSD": 22.68,
+        "precioCOP": 95256,
+        "tipo": "accesorio",
+        "marca": "Victron Energy"
+      },
+      {
+        "codigo": "BPP900100200CCG",
+        "descripcion": "X WiFi module simple (Nano USB) Victron Energy",
+        "precioUSD": 23.62,
+        "precioCOP": 99204,
+        "tipo": "accesorio",
+        "marca": "Victron Energy"
+      },
+      {
+        "codigo": "GW-BBP11WW0LYN",
+        "descripcion": "X D Base de piso para Lynx D Goodwe",
+        "precioUSD": 54.4,
+        "precioCOP": 228480,
+        "tipo": "accesorio",
+        "marca": "Goodwe"
+      },
+      {
+        "codigo": "GW-BBB11WW0LYN",
+        "descripcion": "X D Hanger de pared para Lynx D Goodwe",
+        "precioUSD": 113.6,
+        "precioCOP": 477120,
+        "tipo": "accesorio",
+        "marca": "Goodwe"
+      },
+      {
+        "codigo": "GM-RS-56-AZ-DRai",
+        "descripcion": "l splice Goomax",
+        "precioUSD": 1.59,
+        "precioCOP": 6678,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-AS-B01-DForefee",
+        "descripcion": "t components Goomax",
+        "precioUSD": 3.63,
+        "precioCOP": 15246,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-AS-200-DRea",
+        "descripcion": "r feet components Goomax",
+        "precioUSD": 6.79,
+        "precioCOP": 28518,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-MRH-LDS-06-D",
+        "descripcion": "L feet+hanger bolt Goomax",
+        "precioUSD": 3.5,
+        "precioCOP": 14700,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-MRH-LDS-08-D",
+        "descripcion": "L feet+Hanger Bolt (for steel) Goomax",
+        "precioUSD": 3.54,
+        "precioCOP": 14868,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-MRH-L5-DL-fee",
+        "descripcion": "t Goomax",
+        "precioUSD": 1.63,
+        "precioCOP": 6846,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-EK-DGroun",
+        "descripcion": "d lug Goomax",
+        "precioUSD": 0.87,
+        "precioCOP": 3654,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "JG-GMTYN-128-01",
+        "descripcion": "L feet+hanger bolt Goomax",
+        "precioUSD": 1.59,
+        "precioCOP": 6678,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-E-EL-04Rai",
+        "descripcion": "l earthing clip Goomax",
+        "precioUSD": 1.84,
+        "precioCOP": 7728,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-MRH-01Meta",
+        "descripcion": "l roof hook Goomax",
+        "precioUSD": 4.14,
+        "precioCOP": 17388,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-MRH-02Meta",
+        "descripcion": "l roof hook Goomax",
+        "precioUSD": 4.14,
+        "precioCOP": 17388,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-BR-02Rai",
+        "descripcion": "l clamp Goomax",
+        "precioUSD": 0.76,
+        "precioCOP": 3192,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-MRH-04Meta",
+        "descripcion": "l roof hook Goomax",
+        "precioUSD": 2.3,
+        "precioCOP": 9660,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-MRH-05Meta",
+        "descripcion": "l roof hook Goomax",
+        "precioUSD": 1.89,
+        "precioCOP": 7938,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-R596200m",
+        "descripcion": "m beam Goomax",
+        "precioUSD": 104.69,
+        "precioCOP": 439698,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-FG3-S2-23422342m",
+        "descripcion": "m column Goomax",
+        "precioUSD": 39.86,
+        "precioCOP": 167412,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-FG3-S2-20102010m",
+        "descripcion": "m column Goomax",
+        "precioUSD": 55.21,
+        "precioCOP": 231882,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-FG3-CH02Conecto",
+        "descripcion": "r H Goomax",
+        "precioUSD": 5.54,
+        "precioCOP": 23268,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-FG-B05Bas",
+        "descripcion": "e de acero en carbono Goomax",
+        "precioUSD": 18.9,
+        "precioCOP": 79380,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-BR-01-QRai",
+        "descripcion": "l clamp para carpot Goomax",
+        "precioUSD": 0.74,
+        "precioCOP": 3108,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-RS-05-400Rai",
+        "descripcion": "l splice Goomax",
+        "precioUSD": 8.4,
+        "precioCOP": 35280,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-MC-40-FXMiddl",
+        "descripcion": "e clamp Goomax",
+        "precioUSD": 1.74,
+        "precioCOP": 7308,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-BR-01Rai",
+        "descripcion": "l clamp para carpot Goomax",
+        "precioUSD": 0.74,
+        "precioCOP": 3108,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-EKGroun",
+        "descripcion": "d lug Goomax",
+        "precioUSD": 0.86,
+        "precioCOP": 3612,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-BN-25Clicknut",
+        "descripcion": "s Goomax",
+        "precioUSD": 0.4,
+        "precioCOP": 1680,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-GZ-KZXContro",
+        "descripcion": "l Box Goomax",
+        "precioUSD": 408.62,
+        "precioCOP": 1716204,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-GZ-ZLYCXExtensio",
+        "descripcion": "n Cable Box",
+        "precioUSD": 30.68,
+        "precioCOP": 128856,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "GM-GZ-JSJSlewin",
+        "descripcion": "g Drive Goomax",
+        "precioUSD": 551.71,
+        "precioCOP": 2317182,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "LV-HUBUP5000Communicatio",
+        "descripcion": "n Hub for LV energy system Pylontech",
+        "precioUSD": 522.24,
+        "precioCOP": 2193408,
+        "tipo": "accesorio",
+        "marca": "Pylontech"
+      },
+      {
+        "codigo": "DDZY422-D2-WSmar",
+        "descripcion": "t Meter Single phase power meterSolarMan",
+        "precioUSD": 211.5,
+        "precioCOP": 888300,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      },
+      {
+        "codigo": "S",
+        "descripcion": "SmartPS-250A-T0301.000$",
+        "precioCOP": 294000,
+        "precioUSD": 70,
+        "tipo": "accesorio",
+        "marca": "Genérico",
+        "corriente": 250
+      },
+      {
+        "codigo": "3P",
+        "descripcion": "3P -3XCT CLAMP 1000 (CTS 1000A)680.000$",
+        "precioCOP": 555000,
+        "precioUSD": 132.14,
+        "tipo": "accesorio",
+        "marca": "Genérico",
+        "corriente": 1000
+      },
+      {
+        "codigo": "TORNILLO",
+        "descripcion": "TORNILLO DE FIJACIÓN 125/70",
+        "precioCOP": 40000,
+        "precioUSD": 9.52,
+        "tipo": "accesorio",
+        "marca": "Genérico"
+      }
+    ]
+  }
+}

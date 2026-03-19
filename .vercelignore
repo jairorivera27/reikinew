@@ -1,0 +1,8 @@
+# Ignorar apps/ para que Vercel solo construya Astro
+apps/
+node_modules/
+.next/
+dist/
+.vercel/
+
+

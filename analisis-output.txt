@@ -1,0 +1,1249 @@
+≠ÉÙË AN+¸LISIS COMPLETO DEL COTIZADOR EXCEL
+
+====================================================================================================
+
+Ruta: C:\Users\usuario\Downloads\reikinew\Cotizador (2.0).xlsm
+Archivo existe: ‘£‡ S+Ï
+
+====================================================================================================
+
+‘£‡ Archivo le+°do correctamente
+
+≠ÉÙÔ TODAS LAS HOJAS DISPONIBLES:
+====================================================================================================
+1. Datos de Entrada (On Grid)
+2. Datos de entrada (Off grid)
+3. Referencias
+4. Historico de ingreso
+5. Precios Meico
+6. Calculos (On Grid)
+7. Calculos (Off Grid)
+8. Precios E&M
+9. Historico costos proyectos
+10. Hoja1
+11. Mejoras Sim+¶n
+12. Datos Equipos
+13. PPA Calculos
+14. PPA inversionista
+15. Datos de Salida (On grid)
+16. PPA Datos Salida
+17. Precios
+18. PPA Flujo de Caja Cliente
+19. PPA Formulario INELCO
+20. PPA Modalidades
+21. Datos de salida (Off Grid)
+22. Historico de Cotizaciones
+23. Graficas
+24. Contrato
+25. Flujo de caja
+26. Var. Financieras
+27. Salida UPME
+28. Datos de Salida (H+°brido)
+
+====================================================================================================
+
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Datos de Entrada (On Grid)"
+====================================================================================================
+Rango: A1:Y1008
+Filas: 1008, Columnas: 25
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: entrada
+  F+¶rmulas encontradas: 15
+  Campos de entrada: 5
+  Campos de salida: 5
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  Cliente                                  C5     = vac+°o
+  Residencial                              D6     = vac+°o
+  Nombre                                   C7     = Henry Ocampo
+  Ciudad                                   C12    = La Ceja
+  Inversor                                 G21    = vac+°o
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  TRM D+¶lar                                D15    = 4000
+  Costo total por kWh                      D22    = 1132.488
+  Generaci+¶n anual promedio (kWh)          D48    = 10190.777236093543
+  +Ïndice de Producci+¶n (kWh/kWp)           D50    = 1244.2951448221665
+  Ahorro Anual Real                        D52    = 10386839.637494193
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  D21    = +IF(D20="Si",D19*0.2,0)
+  G21    = VLOOKUP(G22,Tabla102227[#All],17,FALSE)
+  D22    = +D21+D19
+  D40    = +'Calculos (On Grid)'!B23
+  D41    = +'Calculos (On Grid)'!C24
+  D42    = +'Calculos (On Grid)'!C26
+  D43    = +'Calculos (On Grid)'!B13
+  D44    = +'Calculos (On Grid)'!F96
+  D46    = +'Calculos (On Grid)'!E99
+  D47    = +VLOOKUP(G6,'Datos Equipos'!B192:FR53203,2,)
+  D48    = +'Datos de Salida (On grid)'!D7
+  D49    = +D48/12
+  D50    = +D48/D41
+  D51    = +'Calculos (On Grid)'!B24/'Calculos (On Grid)'!B25/'Calculos (On Grid)'!C26
+  D52    = +D48*((D16)*D22+(1-D16)*(D19*0.9))
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "Calculos (On Grid)"
+  ‘Â∆ "Datos Equipos"
+  ‘Â∆ "Datos de Salida (On grid)"
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Datos de entrada (Off grid)"
+====================================================================================================
+Rango: B1:AK46
+Filas: 46, Columnas: 37
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: entrada
+  F+¶rmulas encontradas: 118
+  Campos de entrada: 9
+  Campos de salida: 4
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  Cliente                                  C5     = vac+°o
+  Residencial                              D6     = vac+°o
+  Nombre                                   C7     = vac+°o
+  Descuento                                F9     = 0.05
+  Inversor                                 Q11    = MultiPlus 12/2000/80-50 120V VE.Bus Victron Energy
+  Ciudad                                   C12    = Cimitarra
+  Voltaje                                  F16    = Potencia Unit
+  Voltaje                                  Y32    = Potencia Unit [W]
+  potencia                                 M45    = 2000
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  TRM                                      K11    = 3900
+  Potencia CA total conectada [W]          R21    = 7393
+  Ppico                                    N43    = 18437.73958333331
+  potencia                                 N45    = 2000
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  O11    = +IF(O8="Litio",0.9,0.5)
+  O12    = +IF(O8="Litio",0.95,0.9)
+  H18    = +G18/F18
+  I18    = +G18*D18
+  N18    = +I18*K18*L18/M18
+  H19    = +G19/F19
+  I19    = +G19*D19
+  N19    = +I19*K19*L19/M19
+  H20    = +G20/F20
+  I20    = +G20*D20
+  N20    = +I20*K20*L20/M20
+  H21    = +G21/F21
+  I21    = +G21*D21
+  N21    = +I21*K21*L21/M21
+  R21    = SUM(I18:I39)
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "Calculos (Off Grid)"
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Referencias"
+====================================================================================================
+Rango: A1:H92
+Filas: 92, Columnas: 8
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: desconocido
+  F+¶rmulas encontradas: 0
+  Campos de entrada: 16
+  Campos de salida: 0
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  Voltaje                                  D1     = Corriente
+  Potencia                                 G1     = vac+°o
+  Voltaje                                  D22    = Corriente
+  Potencia                                 G22    = vac+°o
+  Voltaje                                  D30    = Corriente
+  Potencia                                 G30    = vac+°o
+  Voltaje                                  D48    = Corriente
+  Potencia                                 G48    = vac+°o
+  Voltaje                                  D55    = Corriente
+  Potencia                                 G55    = vac+°o
+  Voltaje                                  D60    = Corriente
+  Potencia                                 G60    = vac+°o
+  Voltaje                                  D74    = Corriente
+  Potencia                                 G74    = vac+°o
+  Voltaje                                  D85    = Corriente
+  Potencia                                 G85    = vac+°o
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Historico de ingreso"
+====================================================================================================
+Rango: A1:D691
+Filas: 691, Columnas: 4
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: historico
+  F+¶rmulas encontradas: 0
+  Campos de entrada: 1
+  Campos de salida: 0
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  Usuario                                  D1     = vac+°o
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Precios Meico"
+====================================================================================================
+Rango: A1:N4
+Filas: 4, Columnas: 14
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: desconocido
+  F+¶rmulas encontradas: 6
+  Campos de entrada: 3
+  Campos de salida: 3
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  Nombre                                   A1     = Referencia
+  Tipo                                     D1     = Potencia
+  Potencia                                 E1     = vac+°o
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  Celdas                                   H2     = 1188
+  Celdas                                   H3     = 1208
+  Celdas                                   H4     = 1270
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  A2     = +C2&D2&"Cristalino "&E2&"W"
+  I2     = +H2*E2
+  A3     = +C3&D3&"Cristalino "&E3&"W"
+  I3     = +H3*E3
+  A4     = +C4&D4&"Cristalino "&E4&"W"
+  I4     = +H4*E4
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Calculos (On Grid)"
+====================================================================================================
+Rango: A1:M119
+Filas: 119, Columnas: 13
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: calculo
+  F+¶rmulas encontradas: 195
+  Campos de entrada: 13
+  Campos de salida: 52
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  Estructura                               F21    = 0
+  TOTAL                                    F23    = 0
+  TOTAL                                    E58    = 2518000
+  PRECIO                                   A63    = 42
+  IVA                                      C74    = PRECIO
+  PRECIO                                   D74    = IVA
+  IVA                                      E74    = TOTAL
+  TOTAL                                    F74    = Peso
+  Estructura                               A77    = 1529411.7647058824
+  Retie                                    A79    = 1111446
+  TOTAL                                    A94    = 42
+  TOTAL                                    E96    = 42
+  Subtotal                                 E103   = vac+°o
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  Prom anual de consumo                    B1     = 10200
+  Potencia Max de los paneles              B24    = 8190
+  Potencia del inversor                    B25    = 8000
+  Potencia max en inversores               B30    = 8000
+  Potencia por entrada de paneles a usar   B32    = 4000
+  Cableado en DC                           I38    = 327583.2
+  Cableado en AC                           I39    = 350000
+  Accesorios Varios                        I40    = 180000
+  Conducci+¶n AC                            I41    = 500000
+  $ de ing/kwp                             F49    = 100000
+  $ de tecnico/d+°a                         F50    = 80000
+  mano de obra                             F51    = 800000
+  Salario Ing.                             F52    = 1638000
+  Comidas por dia/persona                  F54    = 60000
+  hospedaje /persona                       F55    = 70000
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  B1     = (SUM('Datos de Entrada (On Grid)'!D25:D36)/COUNTA('Datos de Entrada (On Grid)'!D...
+  B2     = B1/365
+  B3     = 'Datos de Entrada (On Grid)'!D37
+  B4     = B3*B2
+  B5     = VLOOKUP('Datos de Entrada (On Grid)'!G6,'Datos Equipos'!B192:D205,3,FALSE)
+  B6     = +B4/B5/B7/B8/B9
+  B7     = +'Datos de Entrada (On Grid)'!G29
+  B10    = VLOOKUP('Datos de Entrada (On Grid)'!G20,'Datos Equipos'!B9:G24,6,FALSE)
+  F10    = +B23*2*1.2
+  B11    = +VLOOKUP('Datos de Entrada (On Grid)'!G23,'Precios E&M'!A141:H149,7,FALSE)
+  B12    = +VLOOKUP('Datos de Entrada (On Grid)'!G23,'Precios E&M'!A141:H149,8,FALSE)
+  B13    = +ROUNDUP(IF('Datos de Entrada (On Grid)'!G23="No Aplica",0,('Datos de Entrada (O...
+  B14    = +VLOOKUP('Datos de Entrada (On Grid)'!G20,'Datos Equipos'!B9:N24,7,FALSE)
+  B15    = +VLOOKUP('Datos de Entrada (On Grid)'!G20,'Datos Equipos'!B9:N24,8,FALSE)
+  B16    = +B14*B23/B31
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "Datos de Entrada (On Grid)"
+  ‘Â∆ "Datos Equipos"
+  ‘Â∆ "Precios E&M"
+  ‘Â∆ "Historico costos proyectos"
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Calculos (Off Grid)"
+====================================================================================================
+Rango: A1:AU1048574
+Filas: 1048574, Columnas: 47
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: calculo
+  F+¶rmulas encontradas: 239
+  Campos de entrada: 18
+  Campos de salida: 44
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  Tipo                                     A15    = 42
+  Panel                                    A18    = Panel solar Monocristalino  HalfCell (585W)
+  Controlador                              A26    = BlueSolar MPPT 150/70-MC4 Victron Energy
+  TOTAL                                    F30    = 4426819.71087325
+  Inversor                                 A32    = MultiPlus 12/2000/80-50 120V VE.Bus Victron Energy
+  hsp                                      A39    = 5.56776353686636
+  Controlador                              A45    = 1306878.3
+  Transporte                               A46    = 300000
+  Estructura                               A52    = 1320000
+  IVA                                      A56    = 42
+  TOTAL                                    A70    = 5052000
+  IVA                                      C79    = PRECIO
+  PRECIO                                   D79    = IVA
+  IVA                                      E79    = TOTAL
+  TOTAL                                    F79    = Peso
+  Estructura                               A82    = 3327731.092436975
+  TOTAL                                    A97    = 42
+  TOTAL                                    E99    = 42
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  Potencia CA total conectada              B6     = 5914.400000000001
+  Carga CA total conectada                 B8     = 44437
+  $ de ing/kwp                             G21    = 100000
+  $ de tecnico/d+°a                         G22    = 80000
+  mano de obra                             G23    = 2200000
+  Salario Ing.                             G24    = 2006819.7108732502
+  Comidas por dia/persona                  G26    = 60000
+  hospedaje /persona                       G27    = 70000
+  Hidrataci+¶n d+°a/persona                  G28    = 5000
+  Viaticos                                 G29    = 220000
+  Costo                                    B30    = 1306878.3
+  TOTAL                                    G30    = 4426819.71087325
+  Costo de tiquetes promedio               G31    = 180000
+  Potencia del inversor                    B33    = 3000
+  Precio del Peaje                         G34    = 12000
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  A4     = +B8
+  B4     = +'Datos de entrada (Off grid)'!O7
+  C4     = +'Datos de entrada (Off grid)'!O12
+  D4     = +'Datos de entrada (Off grid)'!O9
+  E4     = +((A4/(B4*C4))/D4)
+  F4     = +'Datos de entrada (Off grid)'!O10
+  G4     = +'Datos de entrada (Off grid)'!O11
+  H4     = +B13
+  I4     = +E4*F4/G4/H4/L4
+  J4     = IF(I4<1,1,ROUND(I4,0))
+  K4     = +B14
+  O4     = +E4
+  P4     = +'Datos de entrada (Off grid)'!O12
+  Q4     = +B39
+  R4     = +O4/P4/Q4
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "Datos de entrada (Off grid)"
+  ‘Â∆ "Precios E&M"
+  ‘Â∆ "Datos Equipos"
+  ‘Â∆ "Datos de Entrada (On Grid)"
+  ‘Â∆ "Calculos (On Grid)"
+  ‘Â∆ "Historico costos proyectos"
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Precios E&M"
+====================================================================================================
+Rango: A1:M149
+Filas: 149, Columnas: 13
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: desconocido
+  F+¶rmulas encontradas: 137
+  Campos de entrada: 4
+  Campos de salida: 156
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  Tipo                                     G1     = Voltaje
+  Voltaje                                  H1     = Amperaje
+  nombre                                   A2     = Columna1
+  Voltaje                                  G56    = Pot
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  SmartSolar MPPT RS 450/100-MC4 Victron Energy B7     = 1172.74
+  USD                                      D7     = 4116317.4
+  SmartSolar MPPT RS 450/200-MC4 Victron Energy B8     = 2053.48
+  USD                                      D8     = 7207714.8
+  USD                                      D9     = 169182
+  USD                                      D10    = 185749.2
+  USD                                      D11    = 228852
+  USD                                      D12    = 271989.9
+  USD                                      D13    = 414601.2
+  USD                                      D14    = 623586.6
+  USD                                      D15    = 623586.6
+  USD                                      D16    = 749630.7000000001
+  USD                                      D17    = 1187468.1
+  USD                                      D18    = 1187468.1
+  USD                                      D19    = 1303543.8
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  D3     = 1297000*1.19
+  J4     = +I4*H4
+  J5     = +I5*H5
+  J6     = +I6*H6
+  D7     = +B7*'Datos de entrada (Off grid)'!$K$11*0.9
+  D8     = +B8*'Datos de entrada (Off grid)'!$K$11*0.9
+  D9     = +B9*'Datos de entrada (Off grid)'!$K$11*0.9
+  D10    = +B10*'Datos de entrada (Off grid)'!$K$11*0.9
+  D11    = +B11*'Datos de entrada (Off grid)'!$K$11*0.9
+  D12    = +B12*'Datos de entrada (Off grid)'!$K$11*0.9
+  D13    = +B13*'Datos de entrada (Off grid)'!$K$11*0.9
+  D14    = +B14*'Datos de entrada (Off grid)'!$K$11*0.9
+  D15    = +B15*'Datos de entrada (Off grid)'!$K$11*0.9
+  D16    = +B16*'Datos de entrada (Off grid)'!$K$11*0.9
+  D17    = +B17*'Datos de entrada (Off grid)'!$K$11*0.9
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Historico costos proyectos"
+====================================================================================================
+Rango: A1:AC33
+Filas: 33, Columnas: 29
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: historico
+  F+¶rmulas encontradas: 244
+  Campos de entrada: 15
+  Campos de salida: 15
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  Nombre                                   A2     = # paneles
+  Potencia                                 C2     = Potencia pico
+  Inversor                                 E2     = Paneles
+  Estructura                               H2     = Accesorios
+  Retie                                    J2     = Mano de obra y viaticos (gasolina, peajes,etc)
+  TOTAL                                    R2     = Precio de venta teorico
+  Estructura                               W2     = Accesorios
+  Retie                                    Y2     = Mano de obra y viaticos (gasolina, peajes,etc)
+  Inversor                                 E3     = 0
+  Inversor                                 E4     = 82079200
+  Inversor                                 E5     = 26893680
+  Inversor                                 E6     = 10133818
+  Inversor                                 E7     = 8754554
+  Hibrido                                  E8     = 7147673
+  Inversor                                 E11    = 3952910
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  Inversor                                 F4     = 82079200
+  Inversor                                 F5     = 26893680
+  $ -                                      P5     = 150000
+  Inversor                                 F6     = 10133818
+  Inversor                                 F7     = 8754554
+  Hibrido                                  F8     = 7147673
+  Microinversor                            F9     = 5796000
+  Microinversor                            F10    = 5043500
+  Inversor                                 F11    = 3952910
+  Microinversor                            F12    = 2860000
+  Microinversor                            F13    = 2860000
+  Microinversor                            F14    = 3154375
+  Promedios micros                         U25    = 1326071.7592592593
+  Promedios inversor                       U26    = 1145160.0695411367
+  Promedios hibridos                       U27    = 1470714.609053498
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  D3     = +B3*C3
+  S3     = +R3/0.75/1000000
+  U3     = +IFERROR(+F3/($D3/1000),0)
+  V3     = +IFERROR(+G3/($D3/1000),0)
+  W3     = +IFERROR(+H3/($D3/1000),0)
+  X3     = +IFERROR(+I3/($D3/1000),0)
+  Y3     = +IFERROR(+J3/($D3/1000),0)
+  Z3     = +IFERROR(+K3/($D3/1000),0)
+  AA3    = +IFERROR(+L3/($D3/1000),0)
+  AB3    = IFERROR((T3-(+R3/1000000))/T3,0)
+  D4     = +B4*C4
+  S4     = +R4/0.75/1000000
+  U4     = +IFERROR(+F4/($D4/1000),0)
+  V4     = +IFERROR(+G4/($D4/1000),0)
+  W4     = +IFERROR(+H4/($D4/1000),0)
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Hoja1"
+====================================================================================================
+Rango: A1:N8
+Filas: 8, Columnas: 14
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: desconocido
+  F+¶rmulas encontradas: 5
+  Campos de entrada: 0
+  Campos de salida: 5
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  Precio total                             B6     = 13322626.954889461
+  Precio total                             E6     = 21216599.727524932
+  Precio total                             H6     = 45311874.773517504
+  Precio total                             K6     = 78123461.15827614
+  Precio total                             N6     = 129422717.01237728
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  B8     = +B7/B3
+  E8     = +E7/E3
+  H8     = +H7/H3
+  K8     = +K7/K3
+  N8     = +N7/N3
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Mejoras Sim+¶n"
+====================================================================================================
+Rango: A1:Q58
+Filas: 58, Columnas: 17
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: desconocido
+  F+¶rmulas encontradas: 82
+  Campos de entrada: 6
+  Campos de salida: 17
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  RETIE                                    A1     = vac+°o
+  Potencia                                 C2     = vac+°o
+  Offgrid                                  C7     = vac+°o
+  Transporte                               C9     = vac+°o
+  Potencia                                 A13    = vac+°o
+  Potencia                                 A19    = vac+°o
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  *Tarifa*                                 M5     = 1132.488
+  *Consumo*                                Q5     = 1333.11
+  *Gen*                                    Q9     = 1333.11
+  *Tarifa2*                                M16    = 1019.2392000000001
+  *$Autocons*                              M17    = -577046.6465274552
+  *$Exp*                                   M18    = -346227.98791647324
+  *$Imp*                                   M19    = 385568.1534725448
+  *Pagoant*                                M20    = 962614.8
+  *Pagoah*                                 M21    = 39340.16555607156
+  *Ahorrofac*                              M22    = 923274.6344439285
+  *AhorroAn*                               Q25    = 15997320
+  *AhorroMes*                              Q26    = 1333110
+  *AhorroAn*                               M31    = 10386839.637494193
+  *AhorroMes*                              M32    = 865569.9697911828
+  *APPA10*                                 M42    = 2767115.367840873
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  M1     = +'Datos de Entrada (On Grid)'!D12
+  Q1     = +'Datos de entrada (Off grid)'!D12
+  M2     = +TODAY()
+  Q2     = +TODAY()
+  C3     = +B3*0.4
+  F3     = +D3/C3
+  M3     = +CONCATENATE('Datos de Entrada (On Grid)'!D7," ",'Datos de Entrada (On Grid)'!D8...
+  Q3     = +'Datos de entrada (Off grid)'!D7
+  C4     = +B4*0.4
+  M4     = +'Datos de Entrada (On Grid)'!D25
+  Q4     = +'Datos de entrada (Off grid)'!D8
+  C5     = +B5*0.4
+  M5     = +'Datos de Entrada (On Grid)'!D22
+  Q5     = +'Datos de entrada (Off grid)'!R23*30
+  M6     = +'Datos de Entrada (On Grid)'!D47
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "Datos de Entrada (On Grid)"
+  ‘Â∆ "Datos de entrada (Off grid)"
+  ‘Â∆ "Calculos (Off Grid)"
+  ‘Â∆ "Datos de Salida (On grid)"
+  ‘Â∆ "Historico de Cotizaciones"
+  ‘Â∆ "Flujo de caja"
+  ‘Â∆ "PPA Datos Salida"
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Datos Equipos"
+====================================================================================================
+Rango: A1:AE1149
+Filas: 1149, Columnas: 31
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: equipos
+  F+¶rmulas encontradas: 469
+  Campos de entrada: 86
+  Campos de salida: 230
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  Residencial                              B2     = Via del cableado 
+  Industrial                               B3     = Si
+  industrial                               H3     = vac+°o
+  Comercial                                B4     = No
+  Comercial                                H4     = vac+°o
+  Inversor                                 C25    = vac+°o
+  Precio                                   K27    = Mondeda
+  total                                    N27    = Marca
+  Tipo                                     R27    = Columna1
+  Inversor                                 R33    = 3250000
+  Inversor                                 R34    = 6625000
+  Inversor                                 R35    = 2837500
+  Inversor                                 R36    = 2777500
+  Inversor                                 R37    = 3672500
+  Inversor                                 R38    = 10087500
+  Inversor                                 R39    = 7862500
+  Inversor                                 R40    = 7875000
+  Inversor                                 R41    = 3987500
+  Inversor                                 R42    = 7375000
+  Inversor                                 R43    = 3437500
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  COP                                      M28    = 1450000
+  Microinversor                            S28    = 1812500
+  Microinversor 1600                       D29    = 1600
+  COP                                      M29    = 1680000
+  Microinversor                            S29    = 2100000
+  Microinversor 2000 Bif+Ìsico              D30    = 2000
+  USD                                      M30    = 2784000
+  Microinversor                            S30    = 3480000
+  Microinversor 2000                       D31    = 2000
+  COP                                      M31    = 1800000
+  Microinversor                            S31    = 2250000
+  Microinversor 1728 Trif+Ìsico             D32    = 2200
+  COP                                      M32    = 1800000
+  Microinversor                            S32    = 2250000
+  Inversor 3000 1F Split phase             D33    = 3000
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  J2     = Graficas!K20
+  J3     = Graficas!M20
+  J4     = Graficas!O20
+  M9     = +Tabla91626[[#This Row],[Ancho (m)]]*Tabla91626[[#This Row],[Largo (m)]]
+  N9     = +Tabla91626[[#This Row],[Costo Wp]]*Tabla91626[[#This Row],[Potencia Pico (W)]]
+  M10    = +Tabla91626[[#This Row],[Ancho (m)]]*Tabla91626[[#This Row],[Largo (m)]]
+  N10    = +Tabla91626[[#This Row],[Costo Wp]]*Tabla91626[[#This Row],[Potencia Pico (W)]]
+  M11    = +Tabla91626[[#This Row],[Ancho (m)]]*Tabla91626[[#This Row],[Largo (m)]]
+  N11    = +Tabla91626[[#This Row],[Costo Wp]]*Tabla91626[[#This Row],[Potencia Pico (W)]]
+  M12    = +Tabla91626[[#This Row],[Ancho (m)]]*Tabla91626[[#This Row],[Largo (m)]]
+  N12    = +Tabla91626[[#This Row],[Costo Wp]]*Tabla91626[[#This Row],[Potencia Pico (W)]]
+  M13    = +Tabla91626[[#This Row],[Ancho (m)]]*Tabla91626[[#This Row],[Largo (m)]]
+  N13    = +Tabla91626[[#This Row],[Costo Wp]]*Tabla91626[[#This Row],[Potencia Pico (W)]]
+  M14    = +Tabla91626[[#This Row],[Ancho (m)]]*Tabla91626[[#This Row],[Largo (m)]]
+  N14    = +Tabla91626[[#This Row],[Costo Wp]]*Tabla91626[[#This Row],[Potencia Pico (W)]]
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "Datos de Entrada (On Grid)"
+  ‘Â∆ "Calculos (On Grid)"
+  ‘Â∆ "Calculos (Off Grid)"
+
+≠ÉÙ‰ ANALIZANDO HOJA: "PPA Calculos"
+====================================================================================================
+Rango: A1:AB142
+Filas: 142, Columnas: 28
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: calculo
+  F+¶rmulas encontradas: 1538
+  Campos de entrada: 1
+  Campos de salida: 6
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  TIR                                      B54    = 15
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  kWh/a+¶o                                  D5     = 10190.777236093543
+  $/kWh                                    D17    = 1132.488
+  Ingreso Anual                            C126   = 11303489.164526341
+  10 a+¶os                                  G133   = 2767115.367840873
+  12 a+¶os                                  G134   = 3243331.1670246017
+  15 a+¶os                                  G135   = 6471564.9085789155
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  D2     = +'Calculos (On Grid)'!C24
+  D3     = +'Calculos (On Grid)'!B30/1000
+  D4     = +'Calculos (On Grid)'!B5
+  D5     = +'Datos de Salida (On grid)'!D7
+  D9     = +D10/D2
+  D10    = +'Datos de Salida (On grid)'!I14
+  D11    = +D10*D13
+  D12    = +D10*0.8
+  D17    = +'Datos de Salida (On grid)'!D12
+  D18    = +'Datos de Entrada (On Grid)'!D16
+  D20    = +'Var. Financieras'!B9
+  D21    = +'Var. Financieras'!B10
+  D22    = +'Var. Financieras'!B9
+  D29    = +(D27*(1+D27)^D28)/(((1+D27)^D28)-1)
+  C34    = -D10
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "Calculos (On Grid)"
+  ‘Â∆ "Datos de Salida (On grid)"
+  ‘Â∆ "Datos de Entrada (On Grid)"
+  ‘Â∆ "Var. Financieras"
+  ‘Â∆ "PPA Datos Salida"
+
+≠ÉÙ‰ ANALIZANDO HOJA: "PPA inversionista"
+====================================================================================================
+Rango: A1:X23
+Filas: 23, Columnas: 24
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: ppa
+  F+¶rmulas encontradas: 85
+  Campos de entrada: 1
+  Campos de salida: 5
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  TIR                                      B22    = 0.16780633934335087
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  Inversi+¶n Inicial                        C4     = -170000000
+  Flujo de Caja                            C16    = -170000000
+  Flujo de Caja Acumulado                  C17    = -170000000
+  Inversi+¶n                                C21    = 170000000
+  Ingreso promedio al a+¶o                  C23    = 32542221.875876807
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  D9     = -D7*0.1
+  E9     = -E7*0.1
+  F9     = -F7*0.1
+  G9     = -G7*0.1
+  H9     = -H7*0.1
+  I9     = -I7*0.1
+  J9     = -J7*0.1
+  K9     = -K7*0.1
+  L9     = -L7*0.1
+  M9     = -M7*0.1
+  N9     = -N7*0.1
+  O9     = -O7*0.1
+  P9     = -P7*0.1
+  Q9     = -Q7*0.1
+  R9     = -R7*0.1
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Datos de Salida (On grid)"
+====================================================================================================
+Rango: B1:M39
+Filas: 39, Columnas: 13
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: salida
+  F+¶rmulas encontradas: 19
+  Campos de entrada: 2
+  Campos de salida: 5
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  Subtotal                                 H12    = 42
+  Total                                    H14    = 42
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  Consumo (kWh/a+¶o)                        D6     = 10200
+  Generaci+¶n (kWh/a+¶o)                     D7     = 10190.777236093543
+  Pago de Energ+°a (COP/a+¶o)                D10    = 11551377.600000001
+  Ahorro econ+¶mico (COP/a+¶o)               D11    = 10386839.637494193
+  Tarifa El+Æctrica Actual                  D12    = 1132.488
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  D6     = (SUM('Datos de Entrada (On Grid)'!D25:D36)/COUNTA('Datos de Entrada (On Grid)'!D...
+  G6     = VLOOKUP('Datos de Entrada (On Grid)'!G20,'Datos Equipos'!B9:L24,2,FALSE)
+  I6     = +'Calculos (On Grid)'!B23
+  D7     = +I6*'Calculos (On Grid)'!B10*'Calculos (On Grid)'!B9*'Calculos (On Grid)'!B8*'Ca...
+  G7     = VLOOKUP('Datos de Entrada (On Grid)'!G22,'Datos Equipos'!B28:K77,2,FALSE)
+  I7     = +'Calculos (On Grid)'!C26
+  D8     = D7/D6
+  D9     = +I6*3
+  D10    = 'Datos de Entrada (On Grid)'!D22*D6
+  D11    = +'Datos de Entrada (On Grid)'!D52
+  D12    = +'Datos de Entrada (On Grid)'!D22
+  I12    = +'Calculos (On Grid)'!D94+'Calculos (On Grid)'!F95
+  I13    = +'Calculos (On Grid)'!E94
+  I14    = +'Calculos (On Grid)'!F96
+  H17    = +'Calculos (On Grid)'!B24/1000
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "Datos de Entrada (On Grid)"
+  ‘Â∆ "Datos Equipos"
+  ‘Â∆ "Calculos (On Grid)"
+
+≠ÉÙ‰ ANALIZANDO HOJA: "PPA Datos Salida"
+====================================================================================================
+Rango: C1:J31
+Filas: 31, Columnas: 10
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: salida
+  F+¶rmulas encontradas: 19
+  Campos de entrada: 0
+  Campos de salida: 3
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  kWh/a+¶o                                  E5     = 10190.777236093543
+  8,19 kWp                                 D17    = 2767115.367840873
+  8,19 kWp                                 D22    = 634977.0224711101
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  E2     = +'PPA Calculos'!D2
+  E3     = +'PPA Calculos'!D3
+  E4     = +'PPA Calculos'!D4
+  E5     = +'PPA Calculos'!D5
+  E6     = +'Datos de Salida (On grid)'!D8
+  E7     = +'PPA Calculos'!D6
+  C12    = +CONCAT(E2," ",D2)
+  D12    = +'PPA Calculos'!G127
+  E12    = +'PPA Calculos'!G128
+  F12    = +'PPA Calculos'!G130
+  C17    = +CONCAT($E$2," ",$D$2)
+  D17    = +'PPA Calculos'!$D$5*(($E$24-D12)*('PPA Calculos'!$D$18)+(1-'PPA Calculos'!$D$18...
+  E17    = +'PPA Calculos'!$D$5*(($E$24-E12)*('PPA Calculos'!$D$18)+(1-'PPA Calculos'!$D$18...
+  F17    = +'PPA Calculos'!$D$5*(($E$24-F12)*('PPA Calculos'!$D$18)+(1-'PPA Calculos'!$D$18...
+  C22    = +CONCAT($E$2," ",$D$2)
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "PPA Calculos"
+  ‘Â∆ "Datos de Salida (On grid)"
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Precios"
+====================================================================================================
+Rango: B1:C9
+Filas: 9, Columnas: 3
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: desconocido
+  F+¶rmulas encontradas: 0
+  Campos de entrada: 0
+  Campos de salida: 0
+
+≠ÉÙ‰ ANALIZANDO HOJA: "PPA Flujo de Caja Cliente"
+====================================================================================================
+Rango: A1:AK48
+Filas: 48, Columnas: 37
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: ppa
+  F+¶rmulas encontradas: 748
+  Campos de entrada: 0
+  Campos de salida: 0
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  D6     = +'PPA Calculos'!D35
+  E6     = +'PPA Calculos'!E35
+  F6     = +'PPA Calculos'!F35
+  G6     = +'PPA Calculos'!G35
+  H6     = +'PPA Calculos'!H35
+  I6     = +'PPA Calculos'!I35
+  J6     = +'PPA Calculos'!J35
+  K6     = +'PPA Calculos'!K35
+  L6     = +'PPA Calculos'!L35
+  M6     = +'PPA Calculos'!M35
+  N6     = +'PPA Calculos'!N35
+  O6     = +'PPA Calculos'!O35
+  P6     = +'PPA Calculos'!P35
+  Q6     = +'PPA Calculos'!Q35
+  R6     = +'PPA Calculos'!R35
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "PPA Calculos"
+
+≠ÉÙ‰ ANALIZANDO HOJA: "PPA Formulario INELCO"
+====================================================================================================
+Rango: A1:L43
+Filas: 43, Columnas: 12
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: ppa
+  F+¶rmulas encontradas: 21
+  Campos de entrada: 3
+  Campos de salida: 0
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  FECHA                                    A9     = vac+°o
+  Residencial                              C10    = vac+°o
+  Ciudad                                   C16    = vac+°o
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  C9     = +TODAY()
+  C10    = +'Datos de Entrada (On Grid)'!D6
+  A12    = +CONCATENATE('Datos de Entrada (On Grid)'!D7," ",'Datos de Entrada (On Grid)'!D8...
+  F16    = +'Datos de Entrada (On Grid)'!D12
+  F17    = +'Datos de Entrada (On Grid)'!D20
+  J17    = +'Datos de Salida (On grid)'!D12
+  F18    = +'Datos de Salida (On grid)'!D6/12
+  F19    = +'Calculos (On Grid)'!B24/1000
+  J19    = +'PPA Calculos'!D3
+  F20    = +'Calculos (On Grid)'!B23
+  J20    = +'Calculos (On Grid)'!C26
+  F21    = +'Calculos (On Grid)'!B10
+  J21    = +'Calculos (On Grid)'!B25/1000
+  J22    = +VLOOKUP('Datos de Entrada (On Grid)'!G22,'Datos Equipos'!B28:O62,14,)
+  F23    = +'Datos de Salida (On grid)'!D7
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "Datos de Entrada (On Grid)"
+  ‘Â∆ "Datos de Salida (On grid)"
+  ‘Â∆ "Calculos (On Grid)"
+  ‘Â∆ "PPA Calculos"
+  ‘Â∆ "Datos Equipos"
+
+≠ÉÙ‰ ANALIZANDO HOJA: "PPA Modalidades"
+====================================================================================================
+Rango: A1:I16
+Filas: 16, Columnas: 9
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: ppa
+  F+¶rmulas encontradas: 0
+  Campos de entrada: 4
+  Campos de salida: 0
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  USUARIO                                  E1     = vac+°o
+  RESIDENCIAL                              E2     = vac+°o
+  COMERCIAL                                E3     = vac+°o
+  INDUSTRIAL                               E4     = vac+°o
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Datos de salida (Off Grid)"
+====================================================================================================
+Rango: B1:F17
+Filas: 17, Columnas: 6
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: salida
+  F+¶rmulas encontradas: 11
+  Campos de entrada: 2
+  Campos de salida: 0
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  Subtotal                                 D13    = 42
+  Total                                    D15    = 42
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  D6     = +'Calculos (Off Grid)'!B18
+  E6     = +'Calculos (Off Grid)'!B111
+  D7     = +'Calculos (Off Grid)'!B26
+  E7     = +'Datos de entrada (Off grid)'!R16
+  D8     = +'Calculos (Off Grid)'!B32
+  E8     = +'Calculos (Off Grid)'!B119
+  D9     = +'Calculos (Off Grid)'!B12
+  E9     = +'Calculos (Off Grid)'!B116
+  E13    = +'Calculos (Off Grid)'!D97+'Calculos (Off Grid)'!F98
+  E14    = +'Calculos (Off Grid)'!E97
+  E15    = E14+E13
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "Calculos (Off Grid)"
+  ‘Â∆ "Datos de entrada (Off grid)"
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Historico de Cotizaciones"
+====================================================================================================
+Rango: A1:S1700
+Filas: 1700, Columnas: 19
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: historico
+  F+¶rmulas encontradas: 2
+  Campos de entrada: 376
+  Campos de salida: 72
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  Nombre                                   D2     = Apellidos
+  Numero                                   G2     = Direcci+¶n
+  Ciudad                                   I2     = Potencia pico [kWp]
+  Comercial                                M2     = Comisi+¶n
+  Comercial                                C3     = Hugo
+  On grid                                  K3     = 0.25
+  Industrial                               C4     = Sara
+  Off grid                                 K4     = 0.25
+  Residencial                              C5     = Herbalife
+  On grid                                  K5     = 0.25
+  Residencial                              C6     = Herbalife
+  On grid                                  K6     = 0.25
+  Residencial                              C7     = Herbalife
+  On grid                                  K7     = 0.25
+  Residencial                              C8     = Herbalife
+  On grid                                  K8     = 0.25
+  Industrial                               C9     = Sara
+  Off grid                                 K9     = 0.25
+  On grid                                  K10    = 0.25
+  On grid                                  K11    = 0.25
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  +‹ltimo Registro                          N1     = 2721
+  hugo.gomez@mundosos.com                  G3     = 3117791515
+  sara.cure                                G4     = 310000000
+  sara.cure                                G9     = 310000000
+  Herbalife.com                            G10    = 3111111
+  Herbalife.com                            G11    = 3111111
+  Herbalife.com                            G12    = 3111111
+  Herbalife.com                            G13    = 3111111
+  sara.cure                                G14    = 310000000
+  sara.cure                                G15    = 310000000
+  sara.cure                                G16    = 310000000
+  sara.cure                                G17    = 310000000
+  sara.cure                                G18    = 310000000
+  sara.cure                                G19    = 310000000
+  sara.cure                                G20    = 310000000
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  N1     = +INDEX(A:A,COUNT(A:A),)+2
+  O1     = +VLOOKUP(N1,A:B,2)
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Graficas"
+====================================================================================================
+Rango: I2:S47
+Filas: 47, Columnas: 19
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: desconocido
+  F+¶rmulas encontradas: 208
+  Campos de entrada: 5
+  Campos de salida: 0
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  Consumo                                  K19    = vac+°o
+  Consumo                                  K21    = vac+°o
+  Consumo                                  M21    = vac+°o
+  Consumo                                  O21    = vac+°o
+  Total                                    J47    = 27.945205479452056
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  J3     = IF('Datos de Entrada (On Grid)'!D25>0,'Datos de Entrada (On Grid)'!D25,SUM('Dato...
+  K3     = +'Calculos (On Grid)'!$B$24/1000*Graficas!M3*30*0.8*'Datos de Entrada (On Grid)'...
+  L3     = K3*'Flujo de caja'!$D$39
+  M3     = VLOOKUP('Datos de Entrada (On Grid)'!G6,'Datos Equipos'!B192:P212,4,FALSE)
+  N3     = +M3*0.8*30*'Datos de Entrada (On Grid)'!$G$29
+  O3     = +M3*16.56*0.8*30
+  Q3     = +ROUNDUP(K3,0)
+  S3     = +CONCATENATE(Q3,";",Q4,";",Q5,";",Q6,";",Q7,";",Q8,";",Q9,";",Q10,";",Q11,";",Q1...
+  J4     = IF('Datos de Entrada (On Grid)'!D26>0,'Datos de Entrada (On Grid)'!D26,SUM('Dato...
+  K4     = +'Calculos (On Grid)'!$B$24/1000*Graficas!M4*30*0.8*'Datos de Entrada (On Grid)'...
+  L4     = K4*'Flujo de caja'!$D$39
+  M4     = VLOOKUP('Datos de Entrada (On Grid)'!G6,'Datos Equipos'!B192:P212,5,FALSE)
+  N4     = +M4*0.8*30*'Datos de Entrada (On Grid)'!$G$29
+  Q4     = +ROUNDUP(K4,0)
+  J5     = IF('Datos de Entrada (On Grid)'!D27>0,'Datos de Entrada (On Grid)'!D27,SUM('Dato...
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "Datos de Entrada (On Grid)"
+  ‘Â∆ "Datos Equipos"
+  ‘Â∆ "Calculos (On Grid)"
+  ‘Â∆ "Datos de Salida (On grid)"
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Contrato"
+====================================================================================================
+Rango: B1:E36
+Filas: 36, Columnas: 5
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: contrato
+  F+¶rmulas encontradas: 36
+  Campos de entrada: 1
+  Campos de salida: 3
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  DEPARTAMENTO                             B11    = *DEPARTAMENTO*
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  *NIT EMPRESA*                            D4     = 901143328
+  *C+ÎDULA RL*                              D7     = 70065479
+  *GENERACI+ÙN ANUAL*                       D29    = 10190.777236093543
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  C3     = +CONCAT("*",B3,"*")
+  C4     = +CONCAT("*",B4,"*")
+  C5     = +CONCAT("*",B5,"*")
+  C6     = +CONCAT("*",B6,"*")
+  C7     = +CONCAT("*",B7,"*")
+  C8     = +CONCAT("*",B8,"*")
+  C9     = +CONCAT("*",B9,"*")
+  C10    = +CONCAT("*",B10,"*")
+  C11    = +CONCAT("*",B11,"*")
+  C12    = +CONCAT("*",B12,"*")
+  C13    = +CONCAT("*",B13,"*")
+  D13    = +'Datos de Entrada (On Grid)'!D44
+  C14    = +CONCAT("*",B14,"*")
+  C15    = +CONCAT("*",B15,"*")
+  C16    = +CONCAT("*",B16,"*")
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "Datos de Entrada (On Grid)"
+  ‘Â∆ "Datos de Salida (On grid)"
+  ‘Â∆ "Mejoras Sim+¶n"
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Flujo de caja"
+====================================================================================================
+Rango: A1:AC99
+Filas: 99, Columnas: 29
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: flujo_caja
+  F+¶rmulas encontradas: 445
+  Campos de entrada: 1
+  Campos de salida: 6
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  Ahorro                                   P6     = 0
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  kWh/a+¶o                                  D3     = 10249.713086339998
+  kWh/kWp                                  D5     = 1251.4912193333332
+  $/kWh                                    D17    = 1132.488
+  $/kWh                                    D18    = 1019.2392000000001
+  Ingreso Anual                            C70    = 25724215.134408012
+  Ahorro Mensual Estimado                  C82    = 918941.1016697384
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  D2     = +'Calculos (On Grid)'!C24
+  D3     = D2*AVERAGE(Graficas!M3:M14)*365*0.8*'Datos de Entrada (On Grid)'!G29
+  D4     = 1-'Datos de Entrada (On Grid)'!G29
+  D5     = +D3/D2
+  V6     = +$D$40/8
+  W6     = +V6*1.005
+  X6     = +W6*1.005
+  Y6     = +X6*1.005
+  Z6     = +Y6*1.005
+  AA6    = +Z6*1.005
+  AB6    = +AA6*1.005
+  AC6    = +AB6*1.005
+  R7     = +IF($C$91="Somos EPM",$C$96/2,IF($C$91="Davivienda",$C$95*$C$93*0.5,0))
+  S7     = +IF($C$91="Somos EPM",$C$96/2,IF($C$91="Davivienda",$C$95*$C$93*0.5,0))
+  T7     = +IF($C$91="Somos EPM",$C$96/2,IF($C$91="Davivienda",$C$95*$C$93*0.5,0))
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "Calculos (On Grid)"
+  ‘Â∆ "Datos de Entrada (On Grid)"
+  ‘Â∆ "Datos de Salida (On grid)"
+  ‘Â∆ "Var. Financieras"
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Var. Financieras"
+====================================================================================================
+Rango: A1:H10
+Filas: 10, Columnas: 8
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: desconocido
+  F+¶rmulas encontradas: 11
+  Campos de entrada: 0
+  Campos de salida: 1
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  D+¶lar                                    B8     = 4000
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  B3     = +'Datos de Salida (On grid)'!I14
+  E3     = +(1+D3)^(0.0833333333333333)-1
+  F3     = +PMT(E3,C3,-B3)
+  G3     = +PMT(D3,C3/12,-B3)
+  H3     = +B3*D3
+  B4     = +'Datos de Salida (On grid)'!I14*1.02
+  D4     = +(1+E4)^(12/1)-1
+  F4     = +PMT(E4,C4,-B4)
+  G4     = +PMT(D4,C4/12,-B4)
+  H4     = +G4
+  B8     = +'Datos de Entrada (On Grid)'!D15
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "Datos de Salida (On grid)"
+  ‘Â∆ "Datos de Entrada (On Grid)"
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Salida UPME"
+====================================================================================================
+Rango: B1:N18
+Filas: 18, Columnas: 14
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: salida
+  F+¶rmulas encontradas: 34
+  Campos de entrada: 5
+  Campos de salida: 0
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  Subtotal                                 G5     = IVA
+  IVA                                      H5     = Total
+  Total                                    I5     = vac+°o
+  Subtotal                                 G15    = vac+°o
+  Total                                    G17    = vac+°o
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  C6     = VLOOKUP('Datos de Entrada (On Grid)'!G20,'Datos Equipos'!B9:L24,2,FALSE)
+  F6     = +'Calculos (On Grid)'!B23
+  G6     = +'Calculos (On Grid)'!F73
+  I6     = +H6+G6
+  C7     = VLOOKUP('Datos de Entrada (On Grid)'!G22,'Datos Equipos'!B28:K77,2,FALSE)
+  F7     = +'Calculos (On Grid)'!C26
+  G7     = +'Calculos (On Grid)'!G74
+  I7     = +H7+G7
+  G8     = +'Calculos (On Grid)'!G75
+  H8     = +G8*0.19
+  I8     = +H8+G8
+  G9     = +'Calculos (On Grid)'!G76
+  H9     = +G9*0.19
+  I9     = +H9+G9
+  G10    = 'Calculos (On Grid)'!G78
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "Datos de Entrada (On Grid)"
+  ‘Â∆ "Datos Equipos"
+  ‘Â∆ "Calculos (On Grid)"
+
+≠ÉÙ‰ ANALIZANDO HOJA: "Datos de Salida (H+°brido)"
+====================================================================================================
+Rango: B1:L22
+Filas: 22, Columnas: 12
+
+≠ÉÙË RESUMEN:
+  Tipo detectado: salida
+  F+¶rmulas encontradas: 18
+  Campos de entrada: 2
+  Campos de salida: 4
+
+≠ÉÙ— CAMPOS DE ENTRADA (primeros 20):
+  Subtotal                                 G13    = 42
+  Total                                    G15    = 42
+
+≠ÉÙÒ CAMPOS DE SALIDA (primeros 15):
+  consumo (kWh/a+¶o)                        D6     = 10200
+  Generaci+¶n (kWh/a+¶o)                     D7     = 10190.777236093543
+  Pago de Energ+°a(COP/a+¶o)                 D10    = 11551377.600000001
+  Ahorro econ+¶mico (COP/a+¶o)               D11    = 11540932.930549106
+
+≠ÉˆÛ F+ÙRMULAS IMPORTANTES (primeras 15):
+  H3     = IF(VLOOKUP('Datos de Entrada (On Grid)'!G20,'Datos Equipos'!B16:M24,11,FALSE)*H6...
+  D6     = (SUM('Datos de Entrada (On Grid)'!D25:D36)/COUNTA('Datos de Entrada (On Grid)'!D...
+  G6     = VLOOKUP('Datos de Entrada (On Grid)'!G20,'Datos Equipos'!B9:L24,2,FALSE)
+  H6     = +'Calculos (On Grid)'!B23
+  D7     = +H6*'Calculos (On Grid)'!B10*'Calculos (On Grid)'!B9*'Calculos (On Grid)'!B8*'Ca...
+  G7     = VLOOKUP('Datos de Entrada (On Grid)'!G22,'Datos Equipos'!B28:K77,2,FALSE)
+  H7     = +'Calculos (On Grid)'!C26
+  D8     = D7/D6
+  G8     = +'Datos de Entrada (On Grid)'!G23
+  H8     = +'Calculos (On Grid)'!B13
+  D9     = +H6*2*1.2
+  D10    = 'Datos de Entrada (On Grid)'!D22*D6
+  D11    = D7*'Datos de Entrada (On Grid)'!D22
+  D12    = D11/D10
+  D13    = 0.000707*D7
+
+≠Éˆ˘ REFERENCIAS A OTRAS HOJAS (primeras 10):
+  ‘Â∆ "Datos de Entrada (On Grid)"
+  ‘Â∆ "Datos Equipos"
+  ‘Â∆ "Calculos (On Grid)"
+
+
+====================================================================================================
+≠ÉˆÏ AN+¸LISIS DE FLUJOS DE DATOS
+====================================================================================================
+
+≠ÉÙ— HOJAS DE ENTRADA (2):
+  - Datos de Entrada (On Grid) (5 campos)
+  - Datos de entrada (Off grid) (9 campos)
+
+‘‹÷¥©≈  HOJAS DE C+¸LCULO (3):
+  - Calculos (On Grid) (195 f+¶rmulas)
+  - Calculos (Off Grid) (239 f+¶rmulas)
+  - PPA Calculos (1538 f+¶rmulas)
+
+≠ÉÙÒ HOJAS DE SALIDA (5):
+  - Datos de Salida (On grid) (5 resultados)
+  - PPA Datos Salida (3 resultados)
+  - Datos de salida (Off Grid) (0 resultados)
+  - Salida UPME (0 resultados)
+  - Datos de Salida (H+°brido) (4 resultados)
+
+≠É∆+ MODELO PPA (4 hojas):
+  - PPA inversionista
+    Entradas: TIR
+    Salidas: Inversi+¶n Inicial, Flujo de Caja, Flujo de Caja Acumulado, Inversi+¶n, Ingreso promedio al a+¶o
+  - PPA Flujo de Caja Cliente
+  - PPA Formulario INELCO
+    Entradas: FECHA, Residencial, Ciudad
+  - PPA Modalidades
+    Entradas: USUARIO, RESIDENCIAL, COMERCIAL, INDUSTRIAL
+
+≠É≈˘¥©≈  MODELO EPC (0 hojas):
+
+
+‘£‡ An+Ìlisis guardado en: analisis-excel-completo.json

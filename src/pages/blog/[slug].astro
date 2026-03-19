@@ -1,0 +1,597 @@
+---
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
+import SEO from '../../components/SEO.astro';
+import FontAwesome from '../../components/FontAwesome.astro';
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const blogPosts = await getCollection('blog');
+  return blogPosts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+type Props = {
+  post: CollectionEntry<'blog'>;
+};
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+
+const site = 'https://reikisolar.com.co';
+const articleSchema = {
+  "@type": "Article",
+  "headline": post.data.title,
+  "description": post.data.description,
+  "image": post.data.image ? `${site}${post.data.image}` : `${site}/images/og-default.jpg`,
+  "datePublished": post.data.date,
+  "dateModified": post.data.date,
+  "author": {
+    "@type": "Organization",
+    "name": "Reiki Energía Solar"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Reiki Energía Solar",
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${site}/images/logo.png`
+    }
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": `${site}/blog/${post.slug}`
+  }
+};
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{post.data.title} | Blog Energía Solar Colombia | Reiki Energía Solar</title>
+    <FontAwesome />
+    <SEO 
+      title={`${post.data.title} | Blog Energía Solar Colombia`}
+      description={post.data.description}
+      canonical={`/blog/${post.slug}`}
+      keywords={`${post.data.category}, energía solar Colombia, paneles solares, ${post.data.title}`}
+      schemaType="Article"
+      schemaData={articleSchema}
+      ogImage={post.data.image || '/images/og-default.jpg'}
+      ogType="article"
+    />
+  </head>
+  <body>
+    <Header />
+    
+    <main>
+      <article class="blog-post-page">
+        <div class="container">
+          <!-- Header del Post -->
+          <div class="post-header">
+            <div class="post-category-badge">{post.data.category}</div>
+            <h1 class="post-title">{post.data.title}</h1>
+            <div class="post-meta">
+              <div class="meta-group">
+                <span class="meta-item">
+                  <i class="fas fa-calendar-alt"></i>
+                  <span class="meta-label">Publicado el</span>
+                  <span class="meta-value">{new Date(post.data.date).toLocaleDateString('es-CO', { year: 'numeric', month: 'long', day: 'numeric' })}</span>
+                </span>
+                <span class="meta-item">
+                  <i class="fas fa-user-circle"></i>
+                  <span class="meta-label">Por</span>
+                  <span class="meta-value">{post.data.author}</span>
+                </span>
+              </div>
+            </div>
+            {post.data.tags && post.data.tags.length > 0 && (
+              <div class="post-tags">
+                {post.data.tags.map((tag) => (
+                  <span class="tag">{tag}</span>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <!-- Imagen destacada -->
+          <div class="post-featured-image">
+            <img src={post.data.image} alt={post.data.title} loading="eager">
+          </div>
+
+          <!-- Contenido del Post - Mismo ancho que la imagen -->
+          <div class="post-content-fullwidth">
+            <div class="post-content">
+              <Content />
+            </div>
+          </div>
+
+          <!-- CTA al Final -->
+          <div class="post-cta-section">
+            <div class="cta-content">
+              <div class="cta-icon">
+                <i class="fas fa-lightbulb"></i>
+              </div>
+              <h2 class="cta-title">¿Necesitas Ayuda con tu Proyecto Solar?</h2>
+              <p class="cta-description">
+                Nuestro equipo de expertos está listo para asesorarte y diseñar la solución perfecta para tus necesidades. Obtén una cotización personalizada y sin compromiso.
+              </p>
+              <div class="cta-buttons">
+                <a href="https://wa.me/573245737413" target="_blank" rel="noopener noreferrer" class="cta-button whatsapp">
+                  <i class="fab fa-whatsapp"></i>
+                  Consultar por WhatsApp
+                </a>
+                <a href="/contacto" class="cta-button primary">
+                  <i class="fas fa-envelope"></i>
+                  Solicitar Cotización
+                </a>
+                <a href="/mapa-solar" class="cta-button secondary">
+                  <i class="fas fa-calculator"></i>
+                  Calculadora Solar
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Navegación -->
+          <div class="post-navigation">
+            <a href="/blog" class="nav-link">
+              <i class="fas fa-arrow-left"></i>
+              Volver al Blog
+            </a>
+          </div>
+        </div>
+      </article>
+    </main>
+    
+    <Footer />
+    <WhatsAppFloat />
+  </body>
+</html>
+
+<style>
+  .blog-post-page {
+    padding: 8rem 2rem 4rem;
+    background: #f9fafb;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .post-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .post-category-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-meta {
+    margin-bottom: 1.5rem;
+  }
+
+  .meta-group {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 1rem;
+    color: #6b7280;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .meta-item i {
+    color: #6b2181;
+    font-size: 1.2rem;
+  }
+
+  .meta-label {
+    color: #9ca3af;
+    font-weight: 500;
+  }
+
+  .meta-value {
+    color: #374151;
+    font-weight: 600;
+  }
+
+  .post-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag {
+    background: #f3f4f6;
+    color: #6b2181;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-featured-image {
+    width: 100%;
+    height: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  .post-featured-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* Contenido con mismo ancho que la imagen */
+  .post-content-fullwidth {
+    width: 100%;
+    margin-bottom: 4rem;
+  }
+
+  .post-content {
+    background: white;
+    padding: 4rem;
+    border-radius: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.8;
+    color: #374151;
+    font-size: 1.1rem;
+  }
+
+  .post-content :global(h1) {
+    font-size: 2.5rem;
+    color: #1f2937;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-content :global(h1:first-child) {
+    margin-top: 0;
+  }
+
+  .post-content :global(h2) {
+    font-size: 2rem;
+    color: #1f2937;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    border-bottom: 2px solid #e5e7eb;
+    padding-bottom: 0.75rem;
+  }
+
+  .post-content :global(h3) {
+    font-size: 1.5rem;
+    color: #1f2937;
+    margin-top: 2.5rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    line-height: 1.4;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-content :global(h4) {
+    font-size: 1.25rem;
+    color: #374151;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+    line-height: 1.5;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .post-content :global(p) {
+    margin-bottom: 1.75rem;
+    font-size: 1.1rem;
+    line-height: 1.85;
+    text-align: justify;
+    color: #374151;
+  }
+
+  .post-content :global(ul),
+  .post-content :global(ol) {
+    margin-bottom: 2rem;
+    padding-left: 2.5rem;
+    line-height: 1.8;
+  }
+
+  .post-content :global(li) {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  .post-content :global(strong) {
+    color: #6b2181;
+    font-weight: 600;
+  }
+
+  .post-content :global(a) {
+    color: #6b2181;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+  }
+
+  .post-content :global(a:hover) {
+    color: #8b2a9b;
+  }
+
+  .post-content :global(blockquote) {
+    border-left: 4px solid #6b2181;
+    padding-left: 2rem;
+    margin: 2rem 0;
+    font-style: italic;
+    color: #6b7280;
+    font-size: 1.15rem;
+    line-height: 1.8;
+  }
+
+  .post-content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+  }
+
+  .post-content :global(th),
+  .post-content :global(td) {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #e5e7eb;
+    line-height: 1.7;
+  }
+
+  .post-content :global(th) {
+    background: #f9fafb;
+    font-weight: 600;
+    color: #1f2937;
+    line-height: 1.6;
+  }
+
+  /* CTA Section al Final */
+  .post-cta-section {
+    background: linear-gradient(135deg, #6b2181 0%, #8b2a9b 100%);
+    border-radius: 24px;
+    padding: 4rem 3rem;
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 40px rgba(107, 33, 129, 0.3);
+    text-align: center;
+  }
+
+  .cta-content {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .cta-icon {
+    font-size: 4rem;
+    color: #FFD700;
+    margin-bottom: 1.5rem;
+  }
+
+  .cta-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cta-description {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cta-buttons {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1.2rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .cta-button.whatsapp {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1f2937;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  }
+
+  .cta-button.whatsapp:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 215, 0, 0.6);
+    background: linear-gradient(135deg, #FFA500, #FFD700);
+  }
+
+  .cta-button.primary {
+    background: white;
+    color: #6b2181;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+  }
+
+  .cta-button.primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+    background: #f9fafb;
+  }
+
+  .cta-button.secondary {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .cta-button.secondary:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: translateY(-3px);
+  }
+
+  .post-navigation {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid #e5e7eb;
+  }
+
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6b2181;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.1rem;
+    transition: gap 0.3s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .nav-link:hover {
+    gap: 1rem;
+    color: #8b2a9b;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .blog-post-page {
+      padding: 6rem 1rem 3rem;
+    }
+
+    .container {
+      max-width: 100%;
+    }
+
+    .post-title {
+      font-size: 2rem;
+    }
+
+    .meta-group {
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .post-featured-image {
+      height: 300px;
+      border-radius: 15px;
+    }
+
+    .post-content {
+      padding: 2rem 1.5rem;
+      border-radius: 15px;
+    }
+
+    .post-content :global(h1) {
+      font-size: 2rem;
+    }
+
+    .post-content :global(h2) {
+      font-size: 1.75rem;
+    }
+
+    .post-content :global(h3) {
+      font-size: 1.35rem;
+    }
+
+    .post-content :global(p) {
+      font-size: 1rem;
+      text-align: left;
+      line-height: 1.8;
+    }
+
+    .post-cta-section {
+      padding: 3rem 2rem;
+      border-radius: 20px;
+    }
+
+    .cta-title {
+      font-size: 2rem;
+    }
+
+    .cta-description {
+      font-size: 1.1rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+    }
+
+    .cta-button {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .post-title {
+      font-size: 1.75rem;
+    }
+
+    .post-content {
+      padding: 1.5rem 1rem;
+    }
+
+    .post-cta-section {
+      padding: 2.5rem 1.5rem;
+    }
+
+    .cta-title {
+      font-size: 1.75rem;
+    }
+  }
+</style>

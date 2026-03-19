@@ -1,0 +1,74 @@
+[
+  {
+    "etiqueta": "Cliente",
+    "fila": 5,
+    "columna": 3,
+    "celda": "C5",
+    "valor": null,
+    "valor2": null,
+    "valor3": "Ubicación del proyecto",
+    "tipo": "vacío",
+    "esFormula": false,
+    "formula": null
+  },
+  {
+    "etiqueta": "Residencial",
+    "fila": 6,
+    "columna": 4,
+    "celda": "D6",
+    "valor": null,
+    "valor2": "Estación meteorológíca ",
+    "valor3": "Rionegro",
+    "tipo": "vacío",
+    "esFormula": false,
+    "formula": null
+  },
+  {
+    "etiqueta": "Nombre",
+    "fila": 7,
+    "columna": 3,
+    "celda": "C7",
+    "valor": "Henry Ocampo",
+    "valor2": null,
+    "valor3": null,
+    "tipo": "string",
+    "esFormula": false,
+    "formula": null
+  },
+  {
+    "etiqueta": "Ciudad",
+    "fila": 12,
+    "columna": 3,
+    "celda": "C12",
+    "valor": "La Ceja",
+    "valor2": null,
+    "valor3": "Estudio de conexión",
+    "tipo": "string",
+    "esFormula": false,
+    "formula": null
+  },
+  {
+    "etiqueta": "Inversor",
+    "fila": 21,
+    "columna": 7,
+    "celda": "G21",
+    "valor": null,
+    "valor2": null,
+    "valor3": null,
+    "tipo": "vacío",
+    "esFormula": false,
+    "formula": null
+  },
+  {
+    "etiqueta": "Tipo Acometida",
+    "fila": 25,
+    "columna": 6,
+    "celda": "F25",
+    "valor": "IMC (Exterior)",
+    "valor2": null,
+    "valor3": null,
+    "tipo": "string",
+    "esFormula": false,
+    "formula": null
+  }
+]

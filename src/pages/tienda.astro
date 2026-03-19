@@ -1,0 +1,52 @@
+---
+import Header from '../components/Header.astro';
+import Tienda from '../components/Tienda.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import CartFloatButton from '../components/CartFloatButton.astro';
+import SEO from '../components/SEO.astro';
+import FontAwesome from '../components/FontAwesome.astro';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Tienda de Paneles Solares en Medellín | Equipos Solares Colombia | Reiki Energía Solar</title>
+    <FontAwesome />
+    <SEO 
+      title="Tienda de Paneles Solares en Medellín | Equipos Solares Colombia"
+      description="Compra paneles solares, inversores, baterías de litio, controladores y equipos solares en Medellín y Colombia. Las mejores marcas: Growatt, Huawei, Longi, JA Solar. Envíos a todo el país."
+      canonical="/tienda"
+      keywords="paneles solares Medellín, comprar paneles solares Colombia, inversores solares, baterías litio, controladores carga solar, equipos solares Medellín, tienda energía solar, paneles solares precio, Growatt, Huawei, Longi"
+      schemaType="WebPage"
+    />
+  </head>
+  <body>
+    <Header />
+    
+    <main>
+      <Tienda />
+    </main>
+    
+    <Footer />
+    <WhatsAppFloat />
+    <CartFloatButton />
+  </body>
+</html>
+
+<style is:global>
+  html {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+</style>
+
