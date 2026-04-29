@@ -6,7 +6,7 @@ import ShoppingCartDrawer from '../components/ShoppingCartDrawer.astro';
 import CartFloatButton from '../components/CartFloatButton.astro';
 import SEO from '../components/SEO.astro';
 import FontAwesome from '../components/FontAwesome.astro';
-const WOMPI_PUBLIC_KEY = import.meta.env.PUBLIC_WOMPI_KEY || '';
+const wompiKey = import.meta.env.PUBLIC_WOMPI_KEY;
 ---
 
 <!DOCTYPE html>
@@ -26,7 +26,7 @@ const WOMPI_PUBLIC_KEY = import.meta.env.PUBLIC_WOMPI_KEY || '';
     />
     <script src="https://checkout.wompi.co/widget.js" defer></script>
   </head>
-  <body class="checkout-page-body" data-wompi-key={WOMPI_PUBLIC_KEY}>
+  <body class="checkout-page-body">
     <Header />
 
     <main class="checkout-main">
@@ -239,10 +239,10 @@ const WOMPI_PUBLIC_KEY = import.meta.env.PUBLIC_WOMPI_KEY || '';
 
     <div id="checkout-pay-toast" class="checkout-pay-toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
 
-<script is:inline>
+<script define:vars={{ wompiKey }}>
   (function () {
     var CART_KEY = 'reiki_cart';
-    var WOMPI_KEY = (document.body && document.body.dataset && document.body.dataset.wompiKey) || '';
+    var WOMPI_KEY = wompiKey || '';
 
     function extractPrice(priceString) {
       var cleaned = String(priceString || '').replace(/[^0-9]/g, '');
@@ -322,6 +322,28 @@ const WOMPI_PUBLIC_KEY = import.meta.env.PUBLIC_WOMPI_KEY || '';
       }, 4200);
     }
 
+    function ensureWompiLoaded() {
+      return new Promise(function (resolve, reject) {
+        if (typeof window.WidgetCheckout === 'function') {
+          resolve();
+          return;
+        }
+        var existing = document.querySelector('script[data-wompi-widget="true"]');
+        if (existing) {
+          existing.addEventListener('load', function () { resolve(); }, { once: true });
+          existing.addEventListener('error', function () { reject(new Error('Wompi script error')); }, { once: true });
+          return;
+        }
+        var s = document.createElement('script');
+        s.src = 'https://checkout.wompi.co/widget.js';
+        s.defer = true;
+        s.setAttribute('data-wompi-widget', 'true');
+        s.onload = function () { resolve(); };
+        s.onerror = function () { reject(new Error('Wompi script error')); };
+        document.head.appendChild(s);
+      });
+    }
+
     /**
      * Construye los datos del checkout y abre el widget de Wompi.
      * @returns {Promise<object>}
@@ -343,8 +365,10 @@ const WOMPI_PUBLIC_KEY = import.meta.env.PUBLIC_WOMPI_KEY || '';
       var telefonoDelFormulario = String(fd.get('phone') || '').trim().replace(/\s+/g, '');
       var referenciaUnica = 'REIKI-' + Date.now();
 
-      if (typeof window.WidgetCheckout !== 'function') {
-        showCheckoutToast('No se pudo cargar Wompi. Recarga la página e intenta de nuevo.');
+      try {
+        await ensureWompiLoaded();
+      } catch (_errLoad) {
+        showCheckoutToast('No se pudo cargar Wompi. Verifica tu conexión e intenta de nuevo.');
         return {};
       }
       if (!WOMPI_KEY) {
@@ -405,7 +429,7 @@ const WOMPI_PUBLIC_KEY = import.meta.env.PUBLIC_WOMPI_KEY || '';
         currency: 'COP',
         amountInCents: totalEnCentavos,
         reference: referenciaUnica,
-        publicKey: WOMPI_KEY,
+        publicKey: wompiKey,
         redirectUrl: 'https://www.reikisolar.com.co/respuesta-pago',
         customerData: {
           email: emailDelFormulario,
