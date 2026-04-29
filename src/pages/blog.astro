@@ -514,10 +514,20 @@ const allCategories = [...new Set(sortedPosts.map(post => post.data.category))];
     transform: translateY(-2px);
   }
 
+  .filter-btn:hover i[class^='fa'],
+  .filter-btn:hover i.fa-solid {
+    color: #6b2181;
+  }
+
   .filter-btn.active {
     background: linear-gradient(135deg, #6b2181, #8b2a9b);
     color: white;
     border-color: transparent;
+  }
+
+  .filter-btn.active i[class^='fa'],
+  .filter-btn.active i.fa-solid {
+    color: #ffffff;
   }
 
   /* Latest Post Section */

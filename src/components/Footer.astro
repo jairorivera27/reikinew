@@ -1,6 +1,5 @@
 ---
-// Footer.astro
-import logoBlanco from '../assets/logo_blanco.png';
+const logoSrc = '/logo_blanco.PNG';
 ---
 
 <footer class="footer">
@@ -9,7 +8,7 @@ import logoBlanco from '../assets/logo_blanco.png';
       <!-- Logo y descripción -->
       <div class="footer-section footer-brand">
         <div class="footer-logo">
-          <img src={logoBlanco.src} alt="Reiki Energía Solar" class="logo">
+          <img src={logoSrc} alt="Reiki Energía Solar" class="logo">
         </div>
         <p class="footer-description">
           Transformamos la energía del sol en soluciones sostenibles para tu hogar, empresa y proyectos.
@@ -78,11 +77,11 @@ import logoBlanco from '../assets/logo_blanco.png';
           </div>
           <div class="contact-item">
             <i class="fas fa-envelope"></i>
-            <span>comercial@reikisolar.energy</span>
+            <span>comercial@reikisolar.com.co</span>
           </div>
           <div class="contact-item">
             <i class="fas fa-map-marker-alt"></i>
-            <span>Calle 57#35-28 Medellín, Colombia</span>
+            <span>Carrera 80 #39-167 Local 105</span>
           </div>
           <div class="contact-item">
             <i class="fas fa-clock"></i>
@@ -156,9 +155,12 @@ import logoBlanco from '../assets/logo_blanco.png';
   }
 
   .footer-logo .logo {
-    height: 90px;
+    /* Igual que header (.logo); −10 % (~111px → ~100px) */
+    height: 100px;
     width: auto;
     transition: transform 0.3s ease;
+    /* Recorte visual del borde negro del PNG */
+    clip-path: inset(6% 6% 6% 6%);
   }
 
   .footer-logo .logo:hover {
@@ -296,6 +298,10 @@ import logoBlanco from '../assets/logo_blanco.png';
       padding: 3rem 0 2rem;
     }
 
+    .footer-logo .logo {
+      height: 39px;
+    }
+
     .footer-content {
       grid-template-columns: 1fr;
       gap: 2rem;
@@ -323,6 +329,10 @@ import logoBlanco from '../assets/logo_blanco.png';
   @media (max-width: 480px) {
     .footer {
       padding: 2rem 0 1.5rem;
+    }
+
+    .footer-logo .logo {
+      height: 34px;
     }
 
     .container {

@@ -173,7 +173,7 @@ export default function CarritoWhatsApp() {
           gap: 0.75rem;
         }
         .qty-btn {
-          background: white;
+          background: #f3f4f6;
           border: 2px solid #e5e7eb;
           width: 36px;
           height: 36px;

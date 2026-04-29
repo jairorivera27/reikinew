@@ -1,6 +1,5 @@
 ---
-// Header.astro
-import logoBlanco from '../assets/logo_blanco.png';
+const logoSrc = '/logo_blanco.PNG';
 ---
 
 <header class="header">
@@ -11,7 +10,7 @@ import logoBlanco from '../assets/logo_blanco.png';
         <a href="/" class="logo-link">
           <div class="logo-wrapper">
             <img 
-              src={logoBlanco.src} 
+              src={logoSrc}
               alt="Reiki Energía Solar" 
               class="logo"
             />
@@ -158,7 +157,7 @@ import logoBlanco from '../assets/logo_blanco.png';
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.2rem 2rem;
+    padding: 0.4rem 2rem;
     position: relative;
   }
 
@@ -181,10 +180,13 @@ import logoBlanco from '../assets/logo_blanco.png';
   }
 
   .logo {
-    height: 70px;
+    /* −10 % adicional sobre ~111px → ~100px (mismo tamaño que footer) */
+    height: 100px;
     width: auto;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+    /* Recorte visual del borde negro del PNG */
+    clip-path: inset(6% 6% 6% 6%);
   }
 
   .logo-glow {
@@ -250,7 +252,7 @@ import logoBlanco from '../assets/logo_blanco.png';
     font-weight: 500;
     font-size: 1.1rem;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    padding: 0.8rem 1.2rem;
+    padding: 0.5rem 1.2rem;
     border-radius: 4px;
     transition: all 0.2s ease;
     position: relative;
@@ -356,7 +358,7 @@ import logoBlanco from '../assets/logo_blanco.png';
     }
 
     .logo {
-      height: 55px;
+      height: 39px;
     }
 
     .nav-toggle {
@@ -481,7 +483,7 @@ import logoBlanco from '../assets/logo_blanco.png';
     }
 
     .logo {
-      height: 50px;
+      height: 34px;
     }
 
     .nav-link {

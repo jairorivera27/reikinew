@@ -1,0 +1,414 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { getAddiInstallmentHint } from '../../utils/addiHint';
+
+interface Props {
+  producto: CollectionEntry<'productos'>;
+}
+
+const { producto } = Astro.props;
+const d = producto.data;
+const slug = producto.slug;
+
+const highlightRaw =
+  Array.isArray(d.specifications) && d.specifications.length > 0
+    ? String(d.specifications[0]).trim()
+    : '';
+
+const showTitleFallback = !d.brand && !d.model;
+
+const addiHint = getAddiInstallmentHint(d.price);
+---
+
+<div class="producto-card" data-product-slug={slug}>
+  <div class="producto-image-container">
+    <img
+      src={d.image}
+      alt={d.title}
+      class="producto-image"
+      loading="lazy"
+    />
+    {d.stock === 'disponible' && (
+      <div class="producto-badge disponible">Disponible</div>
+    )}
+    {d.stock === 'agotado' && (
+      <div class="producto-badge agotado">Agotado</div>
+    )}
+    {d.stock === 'pre-orden' && (
+      <div class="producto-badge pre-orden">Pre-orden</div>
+    )}
+  </div>
+
+  <div class="producto-content">
+    <span class="sr-only">{d.title}</span>
+
+    {!showTitleFallback ? (
+      <div class="producto-meta">
+        {d.brand && <p class="producto-marca">{d.brand}</p>}
+        {d.model && <p class="producto-modelo">Modelo: {d.model}</p>}
+      </div>
+    ) : (
+      <h3 class="producto-name">{d.title}</h3>
+    )}
+
+    {highlightRaw !== '' && <p class="producto-highlight">{highlightRaw}</p>}
+
+    <div class="producto-footer-compact">
+      <div class="producto-price">{d.price}</div>
+      <p class="producto-addi-hint">{addiHint}</p>
+
+      <button type="button" class="producto-ver-detalles" data-product-slug={slug}>
+        Ver detalles
+      </button>
+
+      <div class="producto-actions">
+        <div class="quantity-controls" data-product-id={slug}>
+          <button class="qty-btn minus" type="button" aria-label="Disminuir cantidad">-</button>
+          <input type="number" class="qty-input" value="1" min="1" readonly aria-label="Cantidad" />
+          <button class="qty-btn plus" type="button" aria-label="Aumentar cantidad">+</button>
+        </div>
+        <button
+          class="producto-btn add-to-cart"
+          type="button"
+          data-product-id={slug}
+          data-product-title={d.title}
+          data-product-description={d.description}
+          data-product-price={d.price}
+          data-product-image={d.image}
+          data-product-brand={d.brand || ''}
+          data-product-model={d.model || ''}
+        >
+          <i class="fas fa-shopping-cart"></i>
+          Agregar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style is:global>
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .producto-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    transition:
+      transform 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    min-width: 306px;
+    max-width: 306px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+    border: 2px solid transparent;
+  }
+
+  .producto-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 34px rgba(107, 33, 129, 0.28),
+      0 0 0 1px rgba(107, 33, 129, 0.12);
+  }
+
+  .producto-image-container {
+    position: relative;
+    width: 100%;
+    height: 152px;
+    overflow: hidden;
+    background: #f3f4f6;
+    cursor: pointer;
+  }
+
+  .producto-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.45s ease;
+  }
+
+  .producto-card:hover .producto-image {
+    transform: scale(1.08);
+  }
+
+  .producto-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    padding: 0.35rem 0.65rem;
+    border-radius: 20px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .producto-badge.disponible {
+    background: #10b981;
+    color: white;
+  }
+
+  .producto-badge.agotado {
+    background: #ef4444;
+    color: white;
+  }
+
+  .producto-badge.pre-orden {
+    background: #f59e0b;
+    color: white;
+  }
+
+  .producto-content {
+    padding: 0.95rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    min-height: 0;
+  }
+
+  .producto-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    cursor: pointer;
+  }
+
+  .producto-name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #1f2937;
+    margin: 0;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .producto-marca {
+    margin: 0;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    color: #6b2181;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .producto-modelo {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #4b5563;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .producto-highlight {
+    cursor: pointer;
+    margin: 0;
+    font-size: 0.82rem;
+    line-height: 1.35;
+    color: #374151;
+    font-weight: 500;
+    padding: 0.45rem 0.55rem;
+    background: rgba(107, 33, 129, 0.06);
+    border-radius: 8px;
+    border-left: 3px solid #6b2181;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .producto-footer-compact {
+    margin-top: auto;
+    padding-top: 0.65rem;
+    border-top: 1px solid #e5e7eb;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .producto-addi-hint {
+    margin: 0.35rem 0 0.15rem;
+    font-size: 0.75rem;
+    line-height: 1.35;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+    color: #0066eb;
+  }
+
+  .producto-price {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #6b2181;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.2;
+  }
+
+  .producto-ver-detalles {
+    align-self: flex-start;
+    margin: 0;
+    padding: 0.4rem 0.65rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: #6b2181;
+    background: #f9fafb;
+    border: 1px dashed #cbd5e1;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition:
+      border-color 0.2s ease,
+      background 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .producto-ver-detalles:hover {
+    background: rgba(107, 33, 129, 0.08);
+    border-color: #6b2181;
+  }
+
+  .producto-actions {
+    display: flex;
+    gap: 0.65rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    border: 2px solid #e5e7eb;
+    border-radius: 50px;
+    overflow: hidden;
+  }
+
+  .qty-btn {
+    background: #f3f4f6;
+    border: none;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #6b2181;
+    transition: all 0.2s ease;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .qty-btn i[class^='fa'],
+  .qty-btn i.fa-solid {
+    color: #6b2181;
+  }
+
+  .qty-btn:hover {
+    background: #6b2181;
+    color: white;
+  }
+
+  .qty-btn:hover i[class^='fa'],
+  .qty-btn:hover i.fa-solid {
+    color: #ffffff;
+  }
+
+  .qty-input {
+    width: 42px;
+    height: 32px;
+    border: none;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #1f2937;
+    background: white;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .producto-btn.add-to-cart {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+    padding: 0.65rem 1rem;
+    border-radius: 50px;
+    border: none;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.875rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 4px 15px rgba(107, 33, 129, 0.28);
+    white-space: nowrap;
+    cursor: pointer;
+    flex: 1;
+    justify-content: center;
+    min-width: 0;
+  }
+
+  .producto-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(107, 33, 129, 0.38);
+  }
+
+  .producto-btn.add-to-cart:disabled {
+    opacity: 0.55;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+  }
+
+  @media (max-width: 1024px) {
+    .producto-card {
+      min-width: 263px;
+      max-width: 263px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .producto-card {
+      min-width: 245px;
+      max-width: 245px;
+    }
+
+    .producto-image-container {
+      height: 168px;
+    }
+
+    .producto-btn.add-to-cart {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .producto-actions {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .quantity-controls {
+      align-self: center;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .producto-content {
+      padding: 0.85rem;
+    }
+
+    .producto-name {
+      font-size: 1rem;
+    }
+  }
+</style>

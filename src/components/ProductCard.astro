@@ -1,5 +1,6 @@
 ---
 import type { CollectionEntry } from 'astro:content';
+import { getAddiInstallmentHint } from '../utils/addiHint';
 
 interface Props {
   producto: CollectionEntry<'productos'>;
@@ -19,6 +20,8 @@ const formattedPrice = new Intl.NumberFormat('es-CO', {
   minimumFractionDigits: 0,
   maximumFractionDigits: 0
 }).format(discountedPrice);
+
+const addiHint = getAddiInstallmentHint(formattedPrice);
 
 function normalizeText(value: string | undefined) {
   return (value || '')
@@ -85,6 +88,7 @@ function getSearchText() {
         <div class="producto-price">{formattedPrice}</div>
         <span class="price-caption">Black Friday (-15%)</span>
       </div>
+      <p class="producto-addi-hint">{addiHint}</p>
       <div class="producto-actions">
         <div class="quantity-controls" data-product-id={producto.slug}>
           <button class="qty-btn minus" type="button">-</button>
@@ -296,6 +300,14 @@ function getSearchText() {
     color: #6b7280;
   }
 
+  .producto-addi-hint {
+    margin: 0.05rem 0 0;
+    font-size: 0.74rem;
+    line-height: 1.35;
+    font-weight: 500;
+    color: #0066eb;
+  }
+
   .producto-actions {
     display: flex;
     gap: 0.75rem;
@@ -320,14 +332,25 @@ function getSearchText() {
     justify-content: center;
     cursor: pointer;
     font-size: 1.1rem;
+    font-weight: 600;
     color: #6b2181;
     transition: all 0.2s ease;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
+  .qty-btn i[class^='fa'],
+  .qty-btn i.fa-solid {
+    color: #6b2181;
+  }
+
   .qty-btn:hover {
     background: #6b2181;
     color: white;
+  }
+
+  .qty-btn:hover i[class^='fa'],
+  .qty-btn:hover i.fa-solid {
+    color: #ffffff;
   }
 
   .qty-input {

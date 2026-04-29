@@ -91,26 +91,19 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
     padding: 1.5rem 0;
     position: relative;
     overflow: visible;
+    background: #ffffff;
   }
 
   .servicio-section.servicio-left {
-    background: #6b2181;
     position: relative;
   }
 
   .servicio-section.first-section::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 20%;
-    background: linear-gradient(180deg, #ffffff 0%, #6b2181 100%);
-    z-index: 1;
+    content: none;
   }
 
   .servicio-section.servicio-right {
-    background: #6b2181;
+    background: #ffffff;
   }
 
   .container {
@@ -145,19 +138,17 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
   }
 
   .servicio-left .servicio-content {
-    background: rgba(107, 33, 129, 0.8);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 10px 40px rgba(107, 33, 129, 0.2);
+    background: #6b2181;
+    box-shadow: 0 20px 60px rgba(107, 33, 129, 0.35);
     color: white;
     transform: translateX(-200px);
   }
 
   .servicio-right .servicio-content {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
     color: white;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.3);
+    background: #6b2181;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 20px 60px rgba(107, 33, 129, 0.35);
     transform: translateX(200px);
   }
 

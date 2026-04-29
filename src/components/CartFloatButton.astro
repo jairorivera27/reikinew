@@ -66,11 +66,12 @@
     // Actualizar periódicamente (por si se actualiza desde otra pestaña)
     setInterval(updateCartBadge, 1000);
     
-    // Click en el botón - redirige a /carrito
+    // Abrir el único drawer del carrito (localStorage compartido, sin /carrito)
     const cartButton = document.getElementById('cart-float-button');
     if (cartButton) {
-      cartButton.addEventListener('click', function() {
-        window.location.href = '/carrito';
+      cartButton.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.dispatchEvent(new CustomEvent('reiki-cart-open'));
       });
     }
 

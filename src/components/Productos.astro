@@ -122,7 +122,7 @@ const productosMasVendidos = productos
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255, 255, 255, 0.95);
+    background: #f3f4f6;
     border: 2px solid #6b2181;
     color: #6b2181;
     width: 50px;
@@ -138,6 +138,21 @@ const productosMasVendidos = productos
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
+  }
+
+  .carousel-btn :global(i.fas),
+  .carousel-btn :global(i.fa-solid),
+  .carousel-btn :global(svg.svg-inline--fa) {
+    color: #6b2181 !important;
+    fill: #6b2181;
+    opacity: 1;
+  }
+
+  .carousel-btn:hover:not(:disabled) :global(i.fas),
+  .carousel-btn:hover:not(:disabled) :global(i.fa-solid),
+  .carousel-btn:hover:not(:disabled) :global(svg.svg-inline--fa) {
+    color: #ffffff !important;
+    fill: #ffffff;
   }
 
   .carousel-btn:hover {
