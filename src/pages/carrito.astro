@@ -23,6 +23,7 @@ import FontAwesome from '../components/FontAwesome.astro';
       keywords="checkout, carrito, pago Wompi, Addi, energía solar Colombia"
       schemaType="WebPage"
     />
+    <script src="https://checkout.wompi.co/widget.js" defer></script>
   </head>
   <body class="checkout-page-body">
     <Header />
@@ -230,8 +231,8 @@ import FontAwesome from '../components/FontAwesome.astro';
 
                   <p class="checkout-integration-note" role="note">
                     <i class="fas fa-plug" aria-hidden="true"></i>
-                    Tras hacer clic abajo registramos el pedido; el backend devolverá el enlace seguro Wompi, Addi o datos
-                    bancarios.
+                    Al finalizar, registramos tu pedido y te mostramos el pago seguro (Wompi/Addi) o los datos bancarios según tu
+                    elección.
                   </p>
 
                   <div class="checkout-legal-consent">
@@ -409,10 +410,10 @@ import FontAwesome from '../components/FontAwesome.astro';
     }
 
     /**
-     * Construye el payload preparado para el backend / pasarela (fetch real en siguiente iteración).
+     * Construye los datos del checkout y abre el widget de Wompi.
      * @returns {Promise<object>}
      */
-    async function processCheckout(form) {
+    async function openWompiCheckout(form) {
       var fd = new FormData(form);
       /** @type {ReturnType<loadCart>} */
       var cart = loadCart();
@@ -422,13 +423,23 @@ import FontAwesome from '../components/FontAwesome.astro';
       }
 
       var totalCop = computeCartTotalCop(cart);
-      /** Wompi/integraciones LATAM expresan a veces montos como "centésimos"; en COP práctico coincide con pesos enteros. */
-      var totalMinorUnits = totalCop;
-      /** Equivalente formato "centavo" cuando el proveedor espera menor unidad ISO (COP tiene exponent 2). */
-      var totalScaledBy100MatchingSomeSdkFields = totalCop * 100;
-
+      var totalEnCentavos = totalCop * 100;
       var paymentMethod = String(fd.get('paymentMethod') || '');
       var aceptarTerminos = Boolean(fd.get('aceptarTerminos'));
+      var emailDelFormulario = String(fd.get('email') || '').trim();
+      var nombreDelFormulario = String(fd.get('fullName') || '').trim();
+      var telefonoDelFormulario = String(fd.get('phone') || '').trim().replace(/\s+/g, '');
+      var referenciaUnica = 'REIKI-' + Date.now();
+
+      if (paymentMethod !== 'wompi_cards_pse') {
+        showCheckoutToast('Por ahora el pago en línea está habilitado con Wompi.');
+        return {};
+      }
+
+      if (typeof window.WidgetCheckout !== 'function') {
+        showCheckoutToast('No se pudo cargar Wompi. Recarga la página e intenta de nuevo.');
+        return {};
+      }
 
       var items = cart.map(function (item) {
         var unitCop = extractPrice(item.price);
@@ -448,19 +459,17 @@ import FontAwesome from '../components/FontAwesome.astro';
       });
 
       var payload = {
-        referencePayment: generatePaymentReference(),
+        referencePayment: referenciaUnica,
         createdAt: new Date().toISOString(),
         currency: 'COP',
         totals: {
-          amountTotalMinorUnitsCop: totalMinorUnits,
-          /** Verificar contra documentación: algunos payloads nombran "cents"; en COP usar amountTotalMinorUnitsCop. */
-          amountTotalScaledLikeCentsField: totalScaledBy100MatchingSomeSdkFields,
+          amountInCents: totalEnCentavos,
           amountDisplayedCopFormatted: formatPrice(totalCop),
         },
         customer: {
-          fullName: String(fd.get('fullName') || '').trim(),
-          email: String(fd.get('email') || '').trim(),
-          phone: String(fd.get('phone') || '').trim(),
+          fullName: nombreDelFormulario,
+          email: emailDelFormulario,
+          phone: telefonoDelFormulario,
         },
         shipping: {
           addressLine: String(fd.get('addressLine') || '').trim(),
@@ -482,11 +491,26 @@ import FontAwesome from '../components/FontAwesome.astro';
       console.log('[checkout] processCheckout payload', payload);
       console.log('[checkout] payload JSON:', JSON.stringify(payload, null, 2));
 
-      await new Promise(function (resolve) {
-        window.setTimeout(resolve, 550);
+      var checkout = new window.WidgetCheckout({
+        currency: 'COP',
+        amountInCents: totalEnCentavos,
+        reference: referenciaUnica,
+        publicKey: 'pub_prod_HUL7eb3u7Ezk6yuK5EtmofDjOojxxlap',
+        redirectUrl: 'https://www.reikisolar.com.co/respuesta-pago',
+        customerData: {
+          email: emailDelFormulario,
+          fullName: nombreDelFormulario,
+          phoneNumber: telefonoDelFormulario,
+          phoneNumberPrefix: '+57',
+        },
       });
 
-      showCheckoutToast('Redirigiendo a la pasarela de pagos…');
+      checkout.open(function (result) {
+        var transaction = result && result.transaction ? result.transaction : null;
+        console.log('Transacción terminada', transaction);
+      });
+
+      showCheckoutToast('Abriendo pasarela de pago segura de Wompi…');
       return payload;
     }
 
@@ -664,7 +688,7 @@ import FontAwesome from '../components/FontAwesome.astro';
         var btn = submitBtn instanceof HTMLButtonElement ? submitBtn : null;
         if (btn) btn.disabled = true;
         try {
-          await processCheckout(form);
+          await openWompiCheckout(form);
         } catch (err) {
           console.error('[checkout]', err);
           showCheckoutToast('No se pudo preparar el pago. Intenta de nuevo.');

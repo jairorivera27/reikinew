@@ -1,0 +1,307 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import SEO from '../components/SEO.astro';
+import FontAwesome from '../components/FontAwesome.astro';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Estado de tu pago | Reiki Energía Solar</title>
+    <FontAwesome />
+    <SEO
+      title="Estado de tu pago | Reiki Energía Solar"
+      description="Consulta el estado de tu pago en Reiki Energía Solar."
+      canonical="/respuesta-pago"
+      schemaType="WebPage"
+    />
+  </head>
+  <body class="pay-response-body">
+    <Header />
+
+    <main class="pay-response-main">
+      <section class="pay-response-card" aria-live="polite">
+        <div id="pay-status-icon" class="pay-status-icon pay-status-icon--loading" aria-hidden="true">
+          <span class="pay-spinner"></span>
+        </div>
+        <h1 id="pay-status-title">Verificando tu pago...</h1>
+        <p id="pay-status-message">Estamos consultando el estado de tu transacción con Wompi.</p>
+        <p id="pay-status-reference" class="pay-status-reference" hidden></p>
+        <div id="pay-status-actions" class="pay-status-actions"></div>
+      </section>
+    </main>
+
+    <Footer />
+    <WhatsAppFloat />
+
+    <script is:inline>
+      (function () {
+        var titleEl = document.getElementById('pay-status-title');
+        var messageEl = document.getElementById('pay-status-message');
+        var refEl = document.getElementById('pay-status-reference');
+        var iconEl = document.getElementById('pay-status-icon');
+        var actionsEl = document.getElementById('pay-status-actions');
+
+        function setStatus(type, title, message, referenceText) {
+          if (titleEl) titleEl.textContent = title;
+          if (messageEl) messageEl.textContent = message;
+
+          if (refEl) {
+            if (referenceText) {
+              refEl.textContent = referenceText;
+              refEl.hidden = false;
+            } else {
+              refEl.hidden = true;
+              refEl.textContent = '';
+            }
+          }
+
+          if (iconEl) {
+            iconEl.className = 'pay-status-icon';
+            if (type === 'success') {
+              iconEl.classList.add('pay-status-icon--success');
+              iconEl.innerHTML = '<span>✓</span>';
+            } else if (type === 'error') {
+              iconEl.classList.add('pay-status-icon--error');
+              iconEl.innerHTML = '<span>✕</span>';
+            } else if (type === 'pending') {
+              iconEl.classList.add('pay-status-icon--pending');
+              iconEl.innerHTML = '<span>⏳</span>';
+            } else {
+              iconEl.classList.add('pay-status-icon--loading');
+              iconEl.innerHTML = '<span class="pay-spinner"></span>';
+            }
+          }
+        }
+
+        function setActions(html) {
+          if (actionsEl) actionsEl.innerHTML = html || '';
+        }
+
+        function actionButton(href, text, extraClass) {
+          return '<a class="pay-action-btn ' + (extraClass || '') + '" href="' + href + '">' + text + '</a>';
+        }
+
+        async function run() {
+          var params = new URLSearchParams(window.location.search);
+          var txId = params.get('id');
+
+          if (!txId) {
+            setStatus(
+              'error',
+              'No encontramos la transacción',
+              'No recibimos el identificador de pago en la URL. Vuelve al carrito para intentarlo de nuevo.'
+            );
+            setActions(actionButton('/carrito', 'Volver al carrito e intentar de nuevo', 'pay-action-btn--error'));
+            return;
+          }
+
+          var isSandbox = /localhost|127\\.0\\.0\\.1/i.test(window.location.hostname) || params.get('env') === 'sandbox';
+          var base = isSandbox ? 'https://sandbox.wompi.co/v1/transactions/' : 'https://production.wompi.co/v1/transactions/';
+
+          try {
+            var res = await fetch(base + encodeURIComponent(txId), { method: 'GET' });
+            if (!res.ok) {
+              throw new Error('No fue posible consultar la transacción en Wompi');
+            }
+
+            var json = await res.json();
+            var tx = json && json.data ? json.data : null;
+            var status = tx && tx.status ? String(tx.status).toUpperCase() : 'ERROR';
+            var reference = tx && tx.reference ? tx.reference : txId;
+
+            if (status === 'APPROVED') {
+              localStorage.removeItem('reiki_cart');
+              setStatus(
+                'success',
+                '¡Pago exitoso, gracias por tu compra!',
+                'Tu transacción fue aprobada correctamente.',
+                'Referencia de pago: ' + reference
+              );
+              setActions(actionButton('/tienda', 'Seguir comprando'));
+              return;
+            }
+
+            if (status === 'PENDING') {
+              setStatus(
+                'pending',
+                'Tu pago está en proceso de validación',
+                'Tu pago está en proceso de validación. Te notificaremos pronto.',
+                'Referencia de pago: ' + reference
+              );
+              setActions(actionButton('/tienda', 'Volver a la tienda'));
+              return;
+            }
+
+            if (status === 'DECLINED' || status === 'ERROR') {
+              setStatus(
+                'error',
+                'Tu pago fue rechazado por la entidad bancaria',
+                'Puedes volver al carrito e intentar de nuevo con otro método de pago.',
+                'Referencia de pago: ' + reference
+              );
+              setActions(actionButton('/carrito', 'Volver al carrito e intentar de nuevo', 'pay-action-btn--error'));
+              return;
+            }
+
+            setStatus(
+              'pending',
+              'Estamos validando tu transacción',
+              'Recibimos tu intento de pago y estamos esperando confirmación final.',
+              'Referencia de pago: ' + reference
+            );
+            setActions(actionButton('/carrito', 'Volver al carrito'));
+          } catch (err) {
+            console.error('[respuesta-pago]', err);
+            setStatus(
+              'error',
+              'No pudimos validar el estado del pago',
+              'Intenta de nuevo en unos minutos o contáctanos por WhatsApp para ayudarte.'
+            );
+            setActions(
+              actionButton('/carrito', 'Volver al carrito e intentar de nuevo', 'pay-action-btn--error') +
+                actionButton('https://wa.me/573245737413', 'Contactar soporte', 'pay-action-btn--ghost')
+            );
+          }
+        }
+
+        run();
+      })();
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  .pay-response-body {
+    margin: 0;
+    background: #f8fafc;
+    color: #1f2937;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .pay-response-main {
+    min-height: 60vh;
+    padding-top: calc(100px + 1.25rem + env(safe-area-inset-top, 0px));
+    padding-bottom: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  @media (max-width: 768px) {
+    .pay-response-main {
+      padding-top: calc(39px + 2.5rem + env(safe-area-inset-top, 0px));
+    }
+  }
+
+  .pay-response-card {
+    width: min(640px, 100%);
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 8px 28px rgba(15, 23, 42, 0.08);
+    padding: 2rem 1.25rem;
+    text-align: center;
+  }
+
+  .pay-status-icon {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto 0.9rem;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.8rem;
+    font-weight: 800;
+  }
+
+  .pay-status-icon--loading {
+    background: #eef2ff;
+    color: #4338ca;
+  }
+
+  .pay-status-icon--success {
+    background: #dcfce7;
+    color: #15803d;
+  }
+
+  .pay-status-icon--error {
+    background: #fee2e2;
+    color: #b91c1c;
+  }
+
+  .pay-status-icon--pending {
+    background: #fef3c7;
+    color: #b45309;
+  }
+
+  .pay-spinner {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: 3px solid rgba(67, 56, 202, 0.2);
+    border-top-color: #4338ca;
+    animation: pay-spin 0.8s linear infinite;
+  }
+
+  @keyframes pay-spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  #pay-status-title {
+    margin: 0 0 0.6rem;
+    font-size: clamp(1.3rem, 2.3vw, 1.85rem);
+    color: #111827;
+  }
+
+  #pay-status-message {
+    margin: 0;
+    color: #4b5563;
+    line-height: 1.6;
+  }
+
+  .pay-status-reference {
+    margin: 0.8rem 0 0;
+    color: #6b7280;
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+
+  .pay-status-actions {
+    margin-top: 1.25rem;
+    display: flex;
+    gap: 0.7rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .pay-action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border-radius: 999px;
+    padding: 0.7rem 1.1rem;
+    font-weight: 700;
+    font-size: 0.92rem;
+    background: #6b2181;
+    color: #fff;
+  }
+
+  .pay-action-btn--error {
+    background: #b91c1c;
+  }
+
+  .pay-action-btn--ghost {
+    background: #0f766e;
+  }
+</style>
