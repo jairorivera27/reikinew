@@ -19,7 +19,7 @@ function parseCopFromPriceString(priceString: string): number {
 }
 
 /**
- * Texto corto tipo: "O llévalo en 6 cuotas de $X con Addi".
+ * Texto corto tipo: "O llévalo en 6 cuotas de $X".
  * Si no hay precio válido: mensaje genérico.
  */
 export function getAddiInstallmentHint(
@@ -29,10 +29,10 @@ export function getAddiInstallmentHint(
   const months = options?.months ?? DEFAULT_MONTHS;
   const raw = parseCopFromPriceString(priceString);
   if (!raw) {
-    return 'Paga a cuotas con Addi.';
+    return 'Paga a cuotas.';
   }
   const financedApprox = raw * ESTIMATED_INTEREST_FACTOR;
   const perMonth = Math.ceil(financedApprox / months);
   const fmt = copFormatter.format(perMonth);
-  return `O llévalo en ${months} cuotas de ${fmt} con Addi`;
+  return `O llévalo en ${months} cuotas de ${fmt}`;
 }

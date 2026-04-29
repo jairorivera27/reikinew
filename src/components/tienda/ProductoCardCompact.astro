@@ -55,7 +55,10 @@ const addiHint = getAddiInstallmentHint(d.price);
 
     <div class="producto-footer-compact">
       <div class="producto-price">{d.price}</div>
-      <p class="producto-addi-hint">{addiHint}</p>
+      <p class="producto-addi-hint">
+        <span>{addiHint}</span>
+        <img src="/images/Addi.png" alt="Addi" class="producto-addi-logo" loading="lazy" decoding="async" />
+      </p>
 
       <button type="button" class="producto-ver-detalles" data-product-slug={slug}>
         Ver detalles
@@ -245,6 +248,16 @@ const addiHint = getAddiInstallmentHint(d.price);
     font-weight: 500;
     letter-spacing: 0.01em;
     color: #0066eb;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+  }
+
+  .producto-addi-logo {
+    height: 14px;
+    width: auto;
+    object-fit: contain;
   }
 
   .producto-price {

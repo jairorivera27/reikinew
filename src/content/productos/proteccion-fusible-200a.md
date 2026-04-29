@@ -1,7 +1,7 @@
 ---
 title: "Fusible DC 200A con Portafusible"
 description: "Fusible DC de 200 amperios con portafusible para protección de sistemas solares industriales de muy alta potencia."
-image: "/images/Productos tienda/Protección Electrica/Breaker DC 100a con Portafusible.png"
+image: "/images/Productos tienda/Protección Electrica/Breaker DC 100a con Portafusible ABB Medellín.png"
 category: "protecciones"
 price: "$229.000"
 specifications:

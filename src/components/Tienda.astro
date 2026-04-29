@@ -1415,6 +1415,16 @@ const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
     line-height: 1.38;
     font-weight: 500;
     color: #0066eb;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+  }
+
+  .producto-modal-addi-logo {
+    height: 5px;
+    width: auto;
+    object-fit: contain;
   }
 
   .producto-modal-section {
@@ -1687,7 +1697,7 @@ const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
     'pre-orden': 'Pre-orden'
   };
 
-  /** Texto tipo Addi (coincide con `getAddiInstallmentHint`: 6 meses × ~interés estimado). */
+  /** Texto de cuotas + logo de Addi en la ficha del producto. */
   function fillProductoModalAddiHint(priceDisplay) {
     const el = document.getElementById('producto-modal-addi');
     if (!(el instanceof HTMLElement)) return;
@@ -1695,7 +1705,7 @@ const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
     const months = 6;
     const estimatedFactor = 1.12;
     if (!raw) {
-      el.textContent = 'Paga a cuotas con Addi.';
+      el.innerHTML = 'Paga a cuotas. <img src="/images/Addi.png" alt="Addi" class="producto-modal-addi-logo" loading="lazy" decoding="async" />';
       return;
     }
     const perMonth = Math.ceil((raw * estimatedFactor) / months);
@@ -1704,7 +1714,7 @@ const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
       currency: 'COP',
       minimumFractionDigits: 0,
     }).format(perMonth);
-    el.textContent = `O llévalo en ${months} cuotas de ${formatted} con Addi`;
+    el.innerHTML = `O llévalo en ${months} cuotas de ${formatted} <img src="/images/Addi.png" alt="Addi" class="producto-modal-addi-logo" loading="lazy" decoding="async" />`;
   }
 
   /** @type {HTMLElement | null} */

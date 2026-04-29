@@ -1,7 +1,7 @@
 ---
 title: "Victron Phoenix 24/375"
 description: "Inversor Victron Phoenix 24/375 VE.Direct, referencia PIN243750500, salida sinusoidal pura."
-image: "/images/Productos tienda/Inversores/Victron Phoenix 34-375.webp"
+image: "/images/logo-Victron-Energy-Ecogreensolar-1.jpg"
 category: "inversores"
 price: "$920.000"
 specifications:

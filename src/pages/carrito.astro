@@ -26,7 +26,7 @@ const WOMPI_PUBLIC_KEY = import.meta.env.PUBLIC_WOMPI_KEY || '';
     />
     <script src="https://checkout.wompi.co/widget.js" defer></script>
   </head>
-  <body class="checkout-page-body">
+  <body class="checkout-page-body" data-wompi-key={WOMPI_PUBLIC_KEY}>
     <Header />
 
     <main class="checkout-main">
@@ -158,82 +158,21 @@ const WOMPI_PUBLIC_KEY = import.meta.env.PUBLIC_WOMPI_KEY || '';
 
                 <section class="checkout-card checkout-card--payments" aria-labelledby="step-payment-title">
                   <div class="checkout-step-badge">2</div>
-                  <h2 id="step-payment-title" class="checkout-card-title">Método de pago</h2>
+                  <h2 id="step-payment-title" class="checkout-card-title">Pago seguro</h2>
                   <p class="checkout-card-desc">
-                    Elige una opción. La confirmación creará tu pedido; la cobranza con <strong>Wompi</strong> o
-                    <strong>Addi</strong> se completará cuando integremos la pasarela en el servidor.
+                    Al continuar te abriremos la pasarela oficial de Wompi, donde podrás elegir tu método de pago.
                   </p>
-
-                  <div class="payment-methods" role="radiogroup" aria-labelledby="step-payment-title">
-                    <label
-                      class="payment-option-card payment-option-card--gateway"
-                      title="Tarjeta y PSE mediante Wompi"
-                    >
-                      <input
-                        type="radio"
-                        name="paymentMethod"
-                        value="wompi_cards_pse"
-                        class="payment-option-input"
-                        checked
-                      />
-                      <span class="payment-option-body">
-                        <span class="payment-option-top">
-                          <span class="payment-icon-cluster" aria-hidden="true">
-                            <i class="fas fa-credit-card"></i>
-                            <i class="fas fa-building-columns"></i>
-                            <i class="fas fa-mobile-screen-button"></i>
-                          </span>
-                          <span class="payment-option-title">Tarjeta de crédito / débito y PSE</span>
-                        </span>
-                        <span class="payment-option-hint payment-option-hint--wompi">
-                          Procesado con Wompi. Aceptamos tarjetas nacionales, internacionales y débito a cuenta mediante
-                          PSE.
-                        </span>
-                        <span class="payment-secure-chip">
-                          <i class="fas fa-lock" aria-hidden="true"></i>
-                          <span>Pago protegido y encriptado (TLS).</span>
-                        </span>
-                      </span>
-                    </label>
-
-                    <label class="payment-option-card payment-option-card--addi" title="Financiación con Addi">
-                      <input type="radio" name="paymentMethod" value="addi" class="payment-option-input" />
-                      <span class="payment-option-body">
-                        <span class="payment-option-top">
-                          <span class="payment-option-addi-mark" aria-hidden="true">
-                            <i class="fas fa-calendar-check"></i>
-                          </span>
-                          <span class="payment-option-title">Paga a cuotas con Addi</span>
-                        </span>
-                        <span class="payment-option-hint payment-option-hint--addi">
-                          Compra aplazando en cuotas. Sujeto a estudio de crédito y disponibilidad de Addi para tu orden.
-                        </span>
-                        <span class="payment-option-addi-ribbon">Addi · compra ahora</span>
-                      </span>
-                    </label>
-
-                    <label class="payment-option-card payment-option-card--transfer" title="Nequi y Bancolombia">
-                      <input type="radio" name="paymentMethod" value="nequi_transfer" class="payment-option-input" />
-                      <span class="payment-option-body">
-                        <span class="payment-option-top">
-                          <span class="payment-icon-cluster payment-icon-cluster--transfer" aria-hidden="true">
-                            <i class="fas fa-mobile-screen-button"></i>
-                            <i class="fas fa-building-columns"></i>
-                          </span>
-                          <span class="payment-option-title">Transferencia Nequi / Bancolombia</span>
-                        </span>
-                        <span class="payment-option-hint">
-                          Te daremos número de cuenta, llaves y referencia para completar la transferencia y validar tu
-                          pago.
-                        </span>
-                      </span>
-                    </label>
-                  </div>
+                  <img
+                    src="/images/Pasarale de pago.png"
+                    alt="Medios de pago disponibles en Wompi"
+                    class="checkout-payment-gateway-image"
+                    loading="lazy"
+                    decoding="async"
+                  />
 
                   <p class="checkout-integration-note" role="note">
                     <i class="fas fa-plug" aria-hidden="true"></i>
-                    Al finalizar, registramos tu pedido y te mostramos el pago seguro (Wompi/Addi) o los datos bancarios según tu
-                    elección.
+                    Al finalizar, registramos tu pedido y te llevamos a Wompi para completar el pago de forma segura.
                   </p>
 
                   <div class="checkout-legal-consent">
@@ -248,43 +187,15 @@ const WOMPI_PUBLIC_KEY = import.meta.env.PUBLIC_WOMPI_KEY || '';
 
                   <button type="submit" class="checkout-submit-btn" id="checkout-submit">
                     <i class="fas fa-lock" aria-hidden="true"></i>
-                    Finalizar Compra Segura
+                    Ir al Pago Seguro
                   </button>
 
                   <div class="checkout-trust-block">
                     <p class="checkout-trust-text">
                       <i class="fas fa-shield-halved" aria-hidden="true"></i>
-                      Pagos 100% seguros y encriptados
+                      Pago 100% seguro procesado por
+                      <img src="/images/Wompi_LogoPrincipal.jpg" alt="Wompi" class="checkout-wompi-inline-logo" loading="lazy" decoding="async" />
                     </p>
-                    <ul class="checkout-trust-logos" aria-label="Medios de pago y entidades asociadas">
-                      <li>
-                        <img src="/checkout-trust/wompi.svg" alt="" width="100" height="32" decoding="async" loading="lazy" />
-                        <span class="sr-only">Wompi</span>
-                      </li>
-                      <li>
-                        <img src="/checkout-trust/bold.svg" alt="" width="100" height="32" decoding="async" loading="lazy" />
-                        <span class="sr-only">Bold</span>
-                      </li>
-                      <li>
-                        <img src="/checkout-trust/addi.svg" alt="" width="100" height="32" decoding="async" loading="lazy" />
-                        <span class="sr-only">Addi</span>
-                      </li>
-                      <li>
-                        <img src="/checkout-trust/nequi.svg" alt="" width="100" height="32" decoding="async" loading="lazy" />
-                        <span class="sr-only">Nequi</span>
-                      </li>
-                      <li>
-                        <img
-                          src="/checkout-trust/bancolombia.svg"
-                          alt=""
-                          width="120"
-                          height="32"
-                          decoding="async"
-                          loading="lazy"
-                        />
-                        <span class="sr-only">Bancolombia</span>
-                      </li>
-                    </ul>
                   </div>
                 </section>
               </form>
@@ -331,7 +242,7 @@ const WOMPI_PUBLIC_KEY = import.meta.env.PUBLIC_WOMPI_KEY || '';
 <script is:inline>
   (function () {
     var CART_KEY = 'reiki_cart';
-    var WOMPI_KEY = {JSON.stringify(WOMPI_PUBLIC_KEY)};
+    var WOMPI_KEY = (document.body && document.body.dataset && document.body.dataset.wompiKey) || '';
 
     function extractPrice(priceString) {
       var cleaned = String(priceString || '').replace(/[^0-9]/g, '');
@@ -426,17 +337,11 @@ const WOMPI_PUBLIC_KEY = import.meta.env.PUBLIC_WOMPI_KEY || '';
 
       var totalCop = computeCartTotalCop(cart);
       var totalEnCentavos = totalCop * 100;
-      var paymentMethod = String(fd.get('paymentMethod') || '');
       var aceptarTerminos = Boolean(fd.get('aceptarTerminos'));
       var emailDelFormulario = String(fd.get('email') || '').trim();
       var nombreDelFormulario = String(fd.get('fullName') || '').trim();
       var telefonoDelFormulario = String(fd.get('phone') || '').trim().replace(/\s+/g, '');
       var referenciaUnica = 'REIKI-' + Date.now();
-
-      if (paymentMethod !== 'wompi_cards_pse') {
-        showCheckoutToast('Por ahora el pago en línea está habilitado con Wompi.');
-        return {};
-      }
 
       if (typeof window.WidgetCheckout !== 'function') {
         showCheckoutToast('No se pudo cargar Wompi. Recarga la página e intenta de nuevo.');
@@ -483,7 +388,6 @@ const WOMPI_PUBLIC_KEY = import.meta.env.PUBLIC_WOMPI_KEY || '';
           department: String(fd.get('department') || '').trim(),
           zip: String(fd.get('zip') || '').trim() || undefined,
         },
-        paymentMethod: paymentMethod,
         legal: {
           acceptedTerms: aceptarTerminos,
           acceptedAt: aceptarTerminos ? new Date().toISOString() : null,
@@ -704,23 +608,8 @@ const WOMPI_PUBLIC_KEY = import.meta.env.PUBLIC_WOMPI_KEY || '';
       });
     }
 
-    function highlightPaymentCards() {
-      document.querySelectorAll('.payment-option-card').forEach(function (card) {
-        var input = card.querySelector('.payment-option-input');
-        if (input && input.checked) {
-          card.classList.add('payment-option-card--selected');
-        } else {
-          card.classList.remove('payment-option-card--selected');
-        }
-      });
-    }
-
     function bootCheckoutUi() {
       initView();
-      highlightPaymentCards();
-      document.querySelectorAll('.payment-option-input').forEach(function (radio) {
-        radio.addEventListener('change', highlightPaymentCards);
-      });
     }
 
     if (document.readyState === 'loading') {
@@ -952,6 +841,17 @@ const WOMPI_PUBLIC_KEY = import.meta.env.PUBLIC_WOMPI_KEY || '';
     line-height: 1.5;
   }
 
+  .checkout-payment-gateway-image {
+    display: block;
+    width: min(100%, 280px);
+    height: auto;
+    margin: -0.35rem auto 1rem;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    background: #fff;
+    padding: 0.35rem;
+  }
+
   .checkout-field-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1014,180 +914,6 @@ const WOMPI_PUBLIC_KEY = import.meta.env.PUBLIC_WOMPI_KEY || '';
     border-color: #6b2181;
     box-shadow: 0 0 0 3px rgba(107, 33, 129, 0.12);
     background-color: #fff;
-  }
-
-  .payment-methods {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-  }
-
-  .payment-option-card {
-    display: flex;
-    gap: 0.95rem;
-    align-items: flex-start;
-    padding: 1.05rem 1.15rem 1.15rem;
-    border: 2px solid #e5e7eb;
-    border-radius: 14px;
-    cursor: pointer;
-    transition:
-      border-color 0.22s ease,
-      background 0.22s ease,
-      box-shadow 0.22s ease,
-      transform 0.15s ease;
-    background: #fafafa;
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
-  }
-
-  .payment-option-card:hover {
-    border-color: #cbd5e1;
-    transform: translateY(-1px);
-  }
-
-  .payment-option-card--gateway.payment-option-card--selected {
-    border-color: #6b2181;
-    background: rgba(107, 33, 129, 0.07);
-    box-shadow: 0 0 0 1px rgba(107, 33, 129, 0.1);
-  }
-
-  /** Addi — acento azul distintivo */
-  .payment-option-card--addi {
-    border-color: #93c5fd;
-    background: linear-gradient(158deg, #eff6ff 0%, #f8fafc 55%);
-  }
-
-  .payment-option-card--addi:hover {
-    border-color: #60a5fa;
-  }
-
-  .payment-option-card--addi.payment-option-card--selected {
-    border-color: #0066eb;
-    background: linear-gradient(158deg, rgba(219, 234, 254, 0.85) 0%, rgba(240, 249, 255, 0.9) 100%);
-    box-shadow: 0 0 0 2px rgba(0, 102, 235, 0.2);
-  }
-
-  .payment-option-card--transfer.payment-option-card--selected {
-    border-color: #0891b2;
-    background: rgba(8, 145, 178, 0.06);
-    box-shadow: 0 0 0 1px rgba(8, 145, 178, 0.12);
-  }
-
-  .payment-option-input {
-    margin-top: 6px;
-    accent-color: #6b2181;
-    width: 18px;
-    height: 18px;
-    flex-shrink: 0;
-    cursor: pointer;
-  }
-
-  .payment-option-card--addi .payment-option-input {
-    accent-color: #0066eb;
-  }
-
-  .payment-option-body {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    min-width: 0;
-  }
-
-  .payment-option-top {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 0.65rem;
-  }
-
-  .payment-option-title {
-    font-size: 1.0625rem;
-    font-weight: 700;
-    color: #111827;
-    line-height: 1.35;
-    flex: 1;
-    min-width: 12rem;
-  }
-
-  .payment-icon-cluster {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.65rem;
-    padding: 0.45rem 0.65rem;
-    border-radius: 10px;
-    background: rgba(107, 33, 129, 0.08);
-    border: 1px solid rgba(107, 33, 129, 0.12);
-  }
-
-  .payment-icon-cluster i {
-    color: #6b2181;
-    font-size: 1.2rem;
-  }
-
-  .payment-icon-cluster--transfer {
-    background: rgba(8, 145, 178, 0.1);
-    border-color: rgba(8, 145, 178, 0.15);
-  }
-
-  .payment-icon-cluster--transfer i {
-    color: #0e7490;
-  }
-
-  .payment-option-addi-mark {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    background: linear-gradient(145deg, #0066eb, #0284f5);
-    color: #fff;
-    font-size: 1.25rem;
-    flex-shrink: 0;
-    box-shadow: 0 4px 14px rgba(0, 102, 235, 0.35);
-  }
-
-  .payment-option-hint {
-    font-size: 0.875rem;
-    color: #4b5563;
-    line-height: 1.45;
-    margin-top: -0.1rem;
-  }
-
-  .payment-option-hint--wompi {
-    color: #374151;
-  }
-
-  .payment-option-hint--addi {
-    color: #1e40af;
-  }
-
-  .payment-secure-chip {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: #047857;
-    margin-top: 0.35rem;
-  }
-
-  .payment-secure-chip i {
-    color: #047857;
-  }
-
-  .payment-option-addi-ribbon {
-    display: inline-flex;
-    align-self: flex-start;
-    padding: 0.25rem 0.65rem;
-    border-radius: 999px;
-    font-size: 0.6875rem;
-    font-weight: 800;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: #fff;
-    background: linear-gradient(90deg, #0066eb, #0891fb);
-    margin-top: 0.2rem;
   }
 
   .checkout-integration-note {
@@ -1292,30 +1018,14 @@ const WOMPI_PUBLIC_KEY = import.meta.env.PUBLIC_WOMPI_KEY || '';
     font-size: 1rem;
   }
 
-  .checkout-trust-logos {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 0.65rem 1rem;
-  }
-
-  .checkout-trust-logos li img {
-    display: block;
-    height: 32px;
+  .checkout-wompi-inline-logo {
+    height: 36px;
     width: auto;
-    max-height: 32px;
+    object-fit: contain;
     border-radius: 6px;
-    box-shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
-  }
-
-  @media (max-width: 480px) {
-    .checkout-trust-logos li img {
-      height: 28px;
-    }
+    background: #e5e7eb;
+    padding: 0.1rem 0.35rem;
+    border: 1px solid #d1d5db;
   }
 
   .checkout-summary-card {

@@ -88,7 +88,10 @@ function getSearchText() {
         <div class="producto-price">{formattedPrice}</div>
         <span class="price-caption">Black Friday (-15%)</span>
       </div>
-      <p class="producto-addi-hint">{addiHint}</p>
+      <p class="producto-addi-hint">
+        <span>{addiHint}</span>
+        <img src="/images/Addi.png" alt="Addi" class="producto-addi-logo" loading="lazy" decoding="async" />
+      </p>
       <div class="producto-actions">
         <div class="quantity-controls" data-product-id={producto.slug}>
           <button class="qty-btn minus" type="button">-</button>
@@ -306,6 +309,16 @@ function getSearchText() {
     line-height: 1.35;
     font-weight: 500;
     color: #0066eb;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    flex-wrap: wrap;
+  }
+
+  .producto-addi-logo {
+    height: 14px;
+    width: auto;
+    object-fit: contain;
   }
 
   .producto-actions {
