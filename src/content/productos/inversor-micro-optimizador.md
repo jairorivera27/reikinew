@@ -3,7 +3,7 @@ title: "Apsystems DS3D"
 description: "Microinversor Apsystems DS3D-MX, máxima potencia para dos paneles de alta capacidad."
 image: "/images/Productos tienda/Inversores/Apsystems DS3D Medellín.png"
 category: "inversores"
-price: "$1.100.000"
+price: "$1.290.000"
 specifications:
   - "Potencia: 2000W (Dual)"
   - "Referencia: DS3D-MX"

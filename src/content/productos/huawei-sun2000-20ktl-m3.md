@@ -3,7 +3,7 @@ title: "Huawei SUN2000-20KTL-M3"
 description: "Inversor trifásico Huawei SUN2000-20KTL-M3 de 20 kW para comercios y microredes con monitoreo FusionSolar. Precio no incluye costos de envío."
 image: "/images/productos-tienda/inversores/huawei-4ktl-l1-medellin.png"
 category: "inversores"
-price: "$8.740.000"
+price: "$8.790.000"
 specifications:
   - "Potencia: 20 kW"
   - "Referencia: SUN2000-20KTL-M3"

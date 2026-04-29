@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import ProductoCardCompact from './tienda/ProductoCardCompact.astro';
+import { buildDifferentiator, buildSeoKeywords } from '../utils/productSeo';
 
 // Obtener todos los productos ordenados
 const productos = await getCollection('productos');
@@ -26,7 +27,26 @@ const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
   brand: p.data.brand || '',
   model: p.data.model || '',
   stock: p.data.stock || 'disponible',
-  specifications: p.data.specifications || []
+  specifications: p.data.specifications || [],
+  seoKeywords:
+    p.data.seoKeywords && p.data.seoKeywords.length > 0
+      ? p.data.seoKeywords
+      : buildSeoKeywords({
+          title: p.data.title,
+          brand: p.data.brand,
+          model: p.data.model,
+          category: p.data.category,
+          specifications: p.data.specifications,
+        }),
+  seoDifferentiator:
+    p.data.seoDifferentiator ||
+    buildDifferentiator({
+      title: p.data.title,
+      brand: p.data.brand,
+      model: p.data.model,
+      category: p.data.category,
+      specifications: p.data.specifications,
+    }),
 })));
 
 ---
@@ -297,53 +317,53 @@ const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
         <div class="marcas-carousel">
           <div class="marcas-track">
             <div class="marca-item">
-              <img src="/images/astroenergy.png" alt="Astroenergy" class="marca-logo">
+              <img src="/images/astroenergy.png" alt="Astroenergy" class="marca-logo" loading="lazy" decoding="async">
             </div>
             <div class="marca-item">
-              <img src="/images/growatt.png" alt="Growatt" class="marca-logo">
+              <img src="/images/growatt.png" alt="Growatt" class="marca-logo" loading="lazy" decoding="async">
             </div>
             <div class="marca-item">
-              <img src="/images/huawei.png" alt="Huawei" class="marca-logo">
+              <img src="/images/huawei.png" alt="Huawei" class="marca-logo" loading="lazy" decoding="async">
             </div>
             <div class="marca-item">
-              <img src="/images/JA_Solar_Logo.svg.png" alt="JA Solar" class="marca-logo">
+              <img src="/images/JA_Solar_Logo.svg.png" alt="JA Solar" class="marca-logo" loading="lazy" decoding="async">
             </div>
             <div class="marca-item">
-              <img src="/images/livoltek.png" alt="Livoltek" class="marca-logo">
+              <img src="/images/livoltek.png" alt="Livoltek" class="marca-logo" loading="lazy" decoding="async">
             </div>
             <div class="marca-item">
-              <img src="/images/logo-Victron-Energy-Ecogreensolar-1.jpg" alt="Victron Energy" class="marca-logo">
+              <img src="/images/logo-Victron-Energy-Ecogreensolar-1.jpg" alt="Victron Energy" class="marca-logo" loading="lazy" decoding="async">
             </div>
             <div class="marca-item">
-              <img src="/images/Longi.png" alt="Longi" class="marca-logo">
+              <img src="/images/Longi.png" alt="Longi" class="marca-logo" loading="lazy" decoding="async">
             </div>
             <div class="marca-item">
-              <img src="/images/Must.png" alt="Must" class="marca-logo">
+              <img src="/images/Must.png" alt="Must" class="marca-logo" loading="lazy" decoding="async">
             </div>
             <!-- Duplicar para efecto infinito -->
             <div class="marca-item">
-              <img src="/images/astroenergy.png" alt="Astroenergy" class="marca-logo">
+              <img src="/images/astroenergy.png" alt="Astroenergy" class="marca-logo" loading="lazy" decoding="async">
             </div>
             <div class="marca-item">
-              <img src="/images/growatt.png" alt="Growatt" class="marca-logo">
+              <img src="/images/growatt.png" alt="Growatt" class="marca-logo" loading="lazy" decoding="async">
             </div>
             <div class="marca-item">
-              <img src="/images/huawei.png" alt="Huawei" class="marca-logo">
+              <img src="/images/huawei.png" alt="Huawei" class="marca-logo" loading="lazy" decoding="async">
             </div>
             <div class="marca-item">
-              <img src="/images/JA_Solar_Logo.svg.png" alt="JA Solar" class="marca-logo">
+              <img src="/images/JA_Solar_Logo.svg.png" alt="JA Solar" class="marca-logo" loading="lazy" decoding="async">
             </div>
             <div class="marca-item">
-              <img src="/images/livoltek.png" alt="Livoltek" class="marca-logo">
+              <img src="/images/livoltek.png" alt="Livoltek" class="marca-logo" loading="lazy" decoding="async">
             </div>
             <div class="marca-item">
-              <img src="/images/logo-Victron-Energy-Ecogreensolar-1.jpg" alt="Victron Energy" class="marca-logo">
+              <img src="/images/logo-Victron-Energy-Ecogreensolar-1.jpg" alt="Victron Energy" class="marca-logo" loading="lazy" decoding="async">
             </div>
             <div class="marca-item">
-              <img src="/images/Longi.png" alt="Longi" class="marca-logo">
+              <img src="/images/Longi.png" alt="Longi" class="marca-logo" loading="lazy" decoding="async">
             </div>
             <div class="marca-item">
-              <img src="/images/Must.png" alt="Must" class="marca-logo">
+              <img src="/images/Must.png" alt="Must" class="marca-logo" loading="lazy" decoding="async">
             </div>
           </div>
         </div>
@@ -430,6 +450,11 @@ const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
           <div class="producto-modal-section" id="producto-modal-spec-section">
             <h3 class="producto-modal-section-title">Especificaciones</h3>
             <ul id="producto-modal-specs" class="producto-modal-specs"></ul>
+          </div>
+          <div class="producto-modal-section" id="producto-modal-seo-section">
+            <h3 class="producto-modal-section-title">SEO de ficha</h3>
+            <p id="producto-modal-seo-diff" class="producto-modal-seo-diff"></p>
+            <ul id="producto-modal-seo-keywords" class="producto-modal-seo-keywords"></ul>
           </div>
         </div>
         <div class="producto-modal-footer">
@@ -1435,6 +1460,25 @@ const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
     margin-bottom: 0;
   }
 
+  .producto-modal-seo-diff {
+    margin: 0 0 0.65rem;
+    font-size: 0.8rem;
+    line-height: 1.45;
+    color: #6b7280;
+  }
+
+  .producto-modal-seo-keywords {
+    margin: 0;
+    padding-left: 1.15rem;
+    font-size: 0.75rem;
+    line-height: 1.45;
+    color: #9ca3af;
+  }
+
+  .producto-modal-seo-keywords li {
+    margin-bottom: 0.18rem;
+  }
+
   .producto-modal-footer {
     flex-shrink: 0;
     padding: 1rem 1.35rem 1.25rem;
@@ -1725,6 +1769,9 @@ const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
     const descEl = document.getElementById('producto-modal-desc');
     const specsRoot = document.getElementById('producto-modal-specs');
     const specSection = document.getElementById('producto-modal-spec-section');
+    const seoSection = document.getElementById('producto-modal-seo-section');
+    const seoDiffEl = document.getElementById('producto-modal-seo-diff');
+    const seoKwRoot = document.getElementById('producto-modal-seo-keywords');
 
     if (!(img instanceof HTMLImageElement)) return;
 
@@ -1775,6 +1822,24 @@ const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
           const li = document.createElement('li');
           li.textContent = String(line);
           specsRoot.appendChild(li);
+        });
+      }
+    }
+
+    if (seoSection instanceof HTMLElement && seoKwRoot instanceof HTMLElement && seoDiffEl instanceof HTMLElement) {
+      const kws = Array.isArray(p.seoKeywords) ? p.seoKeywords.filter(Boolean).slice(0, 5) : [];
+      const diff = p.seoDifferentiator ? String(p.seoDifferentiator).trim() : '';
+      seoKwRoot.innerHTML = '';
+      seoDiffEl.textContent = '';
+      if (!kws.length && !diff) {
+        seoSection.style.display = 'none';
+      } else {
+        seoSection.style.display = '';
+        if (diff) seoDiffEl.textContent = diff;
+        kws.forEach((kw) => {
+          const li = document.createElement('li');
+          li.textContent = String(kw);
+          seoKwRoot.appendChild(li);
         });
       }
     }

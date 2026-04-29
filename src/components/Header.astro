@@ -7,12 +7,15 @@ const logoSrc = '/logo_blanco.png';
     <div class="nav-container">
       <!-- Logo -->
       <div class="logo-container">
-        <a href="/" class="logo-link">
+        <a href="/" class="logo-link" data-astro-prefetch>
           <div class="logo-wrapper">
             <img 
               src={logoSrc}
               alt="Reiki Energía Solar" 
               class="logo"
+              loading="eager"
+              decoding="async"
+              fetchpriority="high"
             />
             <div class="logo-glow"></div>
           </div>
@@ -23,37 +26,48 @@ const logoSrc = '/logo_blanco.png';
       <div class="nav-menu" id="nav-menu">
         <ul class="nav-list">
           <li class="nav-item">
-            <a href="/quienes-somos" class="nav-link">
-              <span class="nav-text">Quienes somos</span>
+            <a href="/" class="nav-link" data-astro-prefetch>
+              <span class="nav-text">Inicio</span>
               <div class="nav-underline"></div>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/servicios" class="nav-link">
-              <span class="nav-text">Servicios</span>
+            <a href="/quienes-somos" class="nav-link" data-astro-prefetch>
+              <span class="nav-text">Sobre Nosotros</span>
               <div class="nav-underline"></div>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/tienda" class="nav-link">
+            <a href="/tienda" class="nav-link" data-astro-prefetch>
               <span class="nav-text">Tienda</span>
               <div class="nav-underline"></div>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/mapa-solar" class="nav-link">
+            <a href="/servicios" class="nav-link" data-astro-prefetch>
+              <span class="nav-text">Servicios</span>
+              <div class="nav-underline"></div>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/mapa-solar" class="nav-link" data-astro-prefetch>
               <span class="nav-text">Mapa Solar</span>
               <div class="nav-underline"></div>
             </a>
           </li>
           <li class="nav-item">
-            <a href="/blog" class="nav-link">
+            <a href="/blog" class="nav-link" data-astro-prefetch>
               <span class="nav-text">Blog</span>
               <div class="nav-underline"></div>
             </a>
           </li>
+          <li class="nav-item nav-item-cta">
+            <a href="/contacto" class="nav-link nav-link-cta" data-astro-prefetch>
+              <span class="nav-text">Asesoría Gratis</span>
+            </a>
+          </li>
           <li class="nav-item">
-            <a href="/contacto" class="nav-link">
+            <a href="/contacto" class="nav-link" data-astro-prefetch>
               <span class="nav-text">Contacto</span>
               <div class="nav-underline"></div>
             </a>
@@ -127,17 +141,18 @@ const logoSrc = '/logo_blanco.png';
 
   /* Header principal */
   .header {
-    background: linear-gradient(180deg, rgba(107, 33, 129, 1) 0%, rgba(107, 33, 129, 0) 100%);
-    position: fixed;
+    background: rgba(107, 33, 129, 0.94);
+    position: sticky;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 1000;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 2px 10px rgba(107, 33, 129, 0.1);
+    box-shadow: none;
     will-change: transform;
     transform: translateZ(0);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   }
 
   @media (prefers-reduced-motion: no-preference) {
@@ -225,7 +240,8 @@ const logoSrc = '/logo_blanco.png';
     list-style: none;
     margin: 0;
     padding: 0;
-    gap: 0.5rem;
+    gap: 0.35rem;
+    align-items: center;
   }
 
   .nav-item {
@@ -250,10 +266,10 @@ const logoSrc = '/logo_blanco.png';
     color: white;
     text-decoration: none;
     font-weight: 500;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    padding: 0.5rem 1.2rem;
-    border-radius: 4px;
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
     transition: all 0.2s ease;
     position: relative;
     display: block;
@@ -277,7 +293,8 @@ const logoSrc = '/logo_blanco.png';
   }
 
   .nav-link:hover {
-    color: rgba(255, 255, 255, 0.9);
+    color: #ffffff;
+    background: rgba(255, 255, 255, 0.08);
   }
 
   .nav-link:hover .nav-underline {
@@ -286,6 +303,31 @@ const logoSrc = '/logo_blanco.png';
 
   .nav-link:active {
     color: rgba(255, 255, 255, 0.8);
+  }
+
+  .nav-item-cta {
+    margin-left: 0.4rem;
+    padding-left: 0.6rem;
+    border-left: 1px solid rgba(255, 255, 255, 0.22);
+  }
+
+  .nav-link-cta {
+    background: #0f766e;
+    color: #ffffff;
+    font-weight: 700;
+    padding: 0.6rem 1rem;
+    border-radius: 999px;
+    box-shadow: 0 6px 18px rgba(15, 118, 110, 0.35);
+  }
+
+  .nav-link-cta .nav-underline {
+    display: none;
+  }
+
+  .nav-link-cta:hover {
+    background: #115e59;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(15, 118, 110, 0.45);
   }
 
   /* Mobile Menu Toggle mejorado */
@@ -503,9 +545,9 @@ const logoSrc = '/logo_blanco.png';
 
   /* Efectos de scroll */
   .header.scrolled {
-    background: linear-gradient(180deg, rgba(107, 33, 129, 1) 0%, rgba(107, 33, 129, 0) 100%);
+    background: rgba(107, 33, 129, 0.96);
     backdrop-filter: blur(15px);
-    box-shadow: 0 2px 15px rgba(107, 33, 129, 0.2);
+    box-shadow: 0 8px 22px rgba(15, 23, 42, 0.24);
   }
 </style>
 

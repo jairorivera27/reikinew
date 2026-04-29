@@ -1,18 +1,43 @@
 ---
 import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
 
-// Obtener productos más vendidos (primeros 6 ordenados)
+const MAX_CAROUSEL = 8;
 const productos = await getCollection('productos');
-const productosMasVendidos = productos
-  .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
-  .slice(0, 6);
+
+/** Prioridad: `homeCarouselOrder` en el frontmatter; si faltan cupos, se completan por `order` general. */
+function pickCarouselProductos(entries: CollectionEntry<'productos'>[]): CollectionEntry<'productos'>[] {
+  const destacados = entries
+    .filter((p) => p.data.homeCarouselOrder != null)
+    .sort((a, b) => (a.data.homeCarouselOrder ?? 99) - (b.data.homeCarouselOrder ?? 99));
+
+  const ids = new Set(destacados.map((p) => p.id));
+  const out = [...destacados];
+
+  if (out.length >= MAX_CAROUSEL) {
+    return out.slice(0, MAX_CAROUSEL);
+  }
+
+  const resto = entries
+    .filter((p) => !ids.has(p.id))
+    .sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
+
+  for (const p of resto) {
+    if (out.length >= MAX_CAROUSEL) break;
+    out.push(p);
+  }
+
+  return out;
+}
+
+const productosMasVendidos = pickCarouselProductos(productos);
 ---
 
 <section id="productos" class="productos-section">
   <div class="container">
     <div class="productos-header">
-      <h2 class="productos-title">Nuestros Productos Más Vendidos</h2>
-      <p class="productos-subtitle">Descubre nuestras soluciones solares más populares</p>
+      <h2 class="productos-title">Equipos destacados</h2>
+      <p class="productos-subtitle">Paneles, inversores, baterías y más — los favoritos de nuestra tienda</p>
     </div>
 
     <div class="productos-carousel-wrapper">
@@ -25,7 +50,7 @@ const productosMasVendidos = productos
       <div class="productos-carousel">
         <div class="productos-track">
           {productosMasVendidos.map((producto) => (
-            <a href="/tienda" class="producto-card">
+            <a href={`/tienda#${producto.data.category}`} class="producto-card" data-astro-prefetch>
               <div class="producto-image">
                 <img src={producto.data.image} alt={producto.data.title} loading="lazy">
                 {producto.data.stock === 'disponible' && (
@@ -49,7 +74,7 @@ const productosMasVendidos = productos
           
           <!-- Duplicar productos para efecto infinito -->
           {productosMasVendidos.map((producto) => (
-            <a href="/tienda" class="producto-card">
+            <a href={`/tienda#${producto.data.category}`} class="producto-card" data-astro-prefetch>
               <div class="producto-image">
                 <img src={producto.data.image} alt={producto.data.title} loading="lazy">
                 {producto.data.stock === 'disponible' && (

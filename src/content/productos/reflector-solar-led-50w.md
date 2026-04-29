@@ -3,7 +3,7 @@ title: "Reflector Solar LED 50W"
 description: "Reflector solar LED de alta potencia con sensor de movimiento, ideal para iluminación exterior. Panel solar integrado y batería de litio."
 image: "/images/Productos tienda/Luminarias/LUMIANRIA SOLAR EN MEDELLIN.png"
 category: "reflectores"
-price: "$350.000"
+price: "$189.000"
 specifications:
   - "Potencia: 50W LED"
   - "Panel solar: 20W integrado"

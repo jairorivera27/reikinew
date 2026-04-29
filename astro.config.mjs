@@ -4,6 +4,7 @@ import react from '@astrojs/react';
 export default defineConfig({
   output: 'static', // Mantener static - los endpoints API funcionan en desarrollo
   site: 'https://reikisolar.com.co',
+  prefetch: true,
   integrations: [react()],
   compressHTML: true,
   build: {

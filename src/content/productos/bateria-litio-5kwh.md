@@ -3,7 +3,7 @@ title: "Batería de Litio 5kWh"
 description: "Batería de litio de 5kWh con tecnología LiFePO4, ideal para sistemas de respaldo y almacenamiento de energía solar residencial."
 image: "/images/productos-tienda/baterias/pylontech-5kwh-medellin.png"
 category: "baterias"
-price: "$12.000.000"
+price: "$12.390.000"
 specifications:
   - "Capacidad: 5kWh (5000Wh)"
   - "Tecnología: LiFePO4 (Fosfato de Hierro y Litio)"

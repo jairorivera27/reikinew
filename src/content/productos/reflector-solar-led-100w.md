@@ -3,7 +3,7 @@ title: "Reflector Solar LED 100W"
 description: "Reflector solar LED de alta potencia 100W con sensor de movimiento y control remoto. Ideal para iluminación de grandes áreas exteriores."
 image: "/images/Productos tienda/Luminarias/LUMIANRIA SOLAR EN MEDELLIN.png"
 category: "reflectores"
-price: "$580.000"
+price: "$299.000"
 specifications:
   - "Potencia: 100W LED"
   - "Panel solar: 40W integrado"
@@ -16,6 +16,7 @@ brand: "SolarTech"
 model: "ST-LED100W"
 stock: "disponible"
 order: 2
+homeCarouselOrder: 8
 ---
 
 Reflector solar LED de máxima potencia para iluminación profesional de grandes áreas. Incluye control remoto y sensor de movimiento inteligente.

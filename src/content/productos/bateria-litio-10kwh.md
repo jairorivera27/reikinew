@@ -3,7 +3,7 @@ title: "Batería de Litio 10kWh"
 description: "Batería de litio de 10kWh con tecnología LiFePO4, perfecta para sistemas residenciales y comerciales pequeños que requieren mayor autonomía."
 image: "/images/productos-tienda/baterias/pylontech-10kwh-medellin.png"
 category: "baterias"
-price: "$22.000.000"
+price: "$23.900.000"
 specifications:
   - "Capacidad: 10kWh (10000Wh)"
   - "Tecnología: LiFePO4 (Fosfato de Hierro y Litio)"
@@ -16,6 +16,7 @@ brand: "Pylontech"
 model: "US10000"
 stock: "disponible"
 order: 8
+homeCarouselOrder: 5
 ---
 
 Batería de litio de gran capacidad, ideal para sistemas que requieren mayor autonomía energética. Perfecta para viviendas grandes o pequeños comercios.

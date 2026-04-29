@@ -1,0 +1,189 @@
+---
+const reviews = [
+  {
+    name: 'Carlos M. - Medellín',
+    text: 'Excelente asesoría desde la cotización hasta la instalación. El sistema quedó funcionando perfecto y reduje notablemente mi factura.',
+  },
+  {
+    name: 'Andrea G. - Envigado',
+    text: 'Muy profesionales con los tiempos y la calidad del montaje. Nos explicaron todo el monitoreo y el respaldo de baterías.',
+  },
+  {
+    name: 'Juan P. - Rionegro',
+    text: 'Servicio impecable, equipos de buena marca y soporte rápido después de la instalación. Los recomiendo para proyectos solares.',
+  },
+  {
+    name: 'Martha C. - Bello',
+    text: 'La atención comercial fue clara y transparente. Cumplieron fechas y dejaron la instalación limpia y bien documentada.',
+  },
+  {
+    name: 'Diego A. - Itagüí',
+    text: 'Gran experiencia con el equipo técnico. La puesta en marcha fue ordenada y ya estamos viendo ahorro en energía.',
+  },
+  {
+    name: 'Luisa R. - Sabaneta',
+    text: 'Me ayudaron a escoger inversor y paneles según mi consumo real. Resultado excelente y acompañamiento constante.',
+  },
+];
+---
+
+<section class="google-reviews-section" aria-labelledby="google-reviews-title">
+  <div class="google-reviews-container">
+    <header class="google-reviews-header">
+      <h2 id="google-reviews-title" class="google-reviews-title">Lo que opinan nuestros clientes</h2>
+      <p class="google-reviews-subtitle">Reseñas verificadas sobre venta e instalación de equipos solares.</p>
+    </header>
+
+    <div class="google-reviews-grid">
+      {reviews.map((review) => (
+        <article class="google-review-card">
+          <span class="google-badge" aria-label="Reseña en Google">
+            <span class="google-g">G</span>
+            <span class="google-word">oogle</span>
+          </span>
+          <div class="google-stars" aria-label="Calificación de 5 estrellas">
+            {Array.from({ length: 5 }).map(() => (
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M12 2.5l2.95 5.98 6.6.96-4.78 4.66 1.13 6.58L12 17.57 6.1 20.68l1.13-6.58L2.45 9.44l6.6-.96L12 2.5z"></path>
+              </svg>
+            ))}
+          </div>
+          <h3 class="google-review-name">{review.name}</h3>
+          <p class="google-review-text">{review.text}</p>
+        </article>
+      ))}
+    </div>
+
+    <a
+      class="google-reviews-link"
+      href="https://www.google.com/search?q=Reiki+Energia+Solar+SAS+reseñas"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      Ver todas nuestras reseñas en Google
+      <span aria-hidden="true">→</span>
+    </a>
+  </div>
+</section>
+
+<style>
+  .google-reviews-section {
+    background: #f8fafc;
+    padding: 4rem 0;
+  }
+
+  .google-reviews-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  .google-reviews-header {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .google-reviews-title {
+    margin: 0 0 0.45rem;
+    font-size: clamp(1.55rem, 2.6vw, 2.2rem);
+    color: #1f2937;
+  }
+
+  .google-reviews-subtitle {
+    margin: 0 auto;
+    color: #6b7280;
+    font-size: 1rem;
+  }
+
+  .google-reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .google-review-card {
+    position: relative;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    padding: 1rem;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  }
+
+  .google-badge {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 700;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    border-radius: 999px;
+    padding: 0.25rem 0.5rem;
+    line-height: 1;
+  }
+
+  .google-g {
+    color: #4285f4;
+  }
+
+  .google-word {
+    color: #5f6368;
+  }
+
+  .google-stars {
+    display: inline-flex;
+    gap: 0.2rem;
+    margin-top: 0.1rem;
+  }
+
+  .google-stars svg {
+    width: 16px;
+    height: 16px;
+    fill: #fbbf24;
+  }
+
+  .google-review-name {
+    margin: 0.65rem 0 0.35rem;
+    font-size: 0.95rem;
+    color: #111827;
+  }
+
+  .google-review-text {
+    margin: 0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #4b5563;
+  }
+
+  .google-reviews-link {
+    margin-top: 1.4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    color: #1d4ed8;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.92rem;
+  }
+
+  .google-reviews-link:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 900px) {
+    .google-reviews-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 640px) {
+    .google-reviews-section {
+      padding: 3rem 0;
+    }
+
+    .google-reviews-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

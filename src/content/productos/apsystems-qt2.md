@@ -3,7 +3,7 @@ title: "Apsystems QT2"
 description: "Microinversor Apsystems QT2-MX trifásico para 4 paneles, referencia QT2-MX."
 image: "/images/Productos tienda/Inversores/APSystems QT2 Medellín.png"
 category: "inversores"
-price: "$2.200.000"
+price: "$2.390.000"
 specifications:
   - "Potencia: Trifásico"
   - "Referencia: QT2-MX"

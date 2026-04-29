@@ -3,7 +3,7 @@ title: "Breaker DC 63A"
 description: "Interruptor termomagnético DC de 63 amperios para protección de sistemas solares. Certificado y de alta calidad."
 image: "/images/Productos tienda/Protección Electrica/Breaker DC 63A ABB Medellín.png"
 category: "protecciones"
-price: "$85.000"
+price: "$89.000"
 specifications:
   - "Corriente nominal: 63A"
   - "Voltaje: DC 250V"

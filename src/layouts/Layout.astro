@@ -2,21 +2,71 @@
 import FontAwesome from '../components/FontAwesome.astro';
 
 interface Props {
-	title: string;
+	title?: string;
+	description?: string;
 }
 
-const { title } = Astro.props;
+const {
+	title = 'Reiki Energía Solar | Proyectos Solares y Tienda de Equipos en Colombia',
+	description = 'REIKI ENERGIA SOLAR SAS en Medellín, Colombia. Venta de equipos solares e instalación de proyectos fotovoltaicos para hogares y empresas.',
+} = Astro.props;
+
+const site = 'https://reikisolar.com.co';
+const globalBusinessSchema = {
+	'@context': 'https://schema.org',
+	'@graph': [
+		{
+			'@type': 'Organization',
+			'@id': `${site}/#organization`,
+			name: 'REIKI ENERGIA SOLAR SAS',
+			url: site,
+			logo: `${site}/images/logo.png`,
+			description:
+				'Empresa colombiana especializada en venta de equipos solares e instalación de proyectos fotovoltaicos.',
+			areaServed: {
+				'@type': 'Country',
+				name: 'Colombia',
+			},
+		},
+		{
+			'@type': 'LocalBusiness',
+			'@id': `${site}/#localbusiness`,
+			name: 'REIKI ENERGIA SOLAR SAS',
+			image: `${site}/images/logo.png`,
+			url: site,
+			priceRange: '$$',
+			address: {
+				'@type': 'PostalAddress',
+				addressLocality: 'Medellín',
+				addressRegion: 'Antioquia',
+				addressCountry: 'CO',
+			},
+			areaServed: {
+				'@type': 'Country',
+				name: 'Colombia',
+			},
+			knowsAbout: [
+				'Venta de equipos solares',
+				'Instalación de proyectos fotovoltaicos',
+			],
+			parentOrganization: {
+				'@id': `${site}/#organization`,
+			},
+		},
+	],
+};
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
+		<meta name="description" content={description} />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
+		<script type="application/ld+json" set:html={JSON.stringify(globalBusinessSchema)} />
 		<FontAwesome />
 	</head>
 	<body>

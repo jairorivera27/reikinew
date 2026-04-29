@@ -3,7 +3,7 @@ title: "Reflector Solar LED 30W"
 description: "Reflector solar LED compacto de 30W con sensor de movimiento. Ideal para iluminación de seguridad en exteriores pequeños."
 image: "/images/Productos tienda/Luminarias/LUMIANRIA SOLAR EN MEDELLIN.png"
 category: "reflectores"
-price: "$250.000"
+price: "$149.000"
 specifications:
   - "Potencia: 30W LED"
   - "Panel solar: 15W integrado"

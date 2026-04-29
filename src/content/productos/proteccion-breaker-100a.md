@@ -3,7 +3,7 @@ title: "Breaker DC 100A"
 description: "Interruptor termomagnético DC de 100 amperios para protección de sistemas solares de alta potencia. Certificado y robusto."
 image: "/images/Productos tienda/Protección Electrica/Breaker DC 100A ABB Medellín.png"
 category: "protecciones"
-price: "$150.000"
+price: "$139.000"
 specifications:
   - "Corriente nominal: 100A"
   - "Voltaje: DC 250V"

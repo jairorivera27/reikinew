@@ -3,6 +3,7 @@ import Header from '../components/Header.astro';
 import Hero from '../components/Hero.astro';
 import Servicios from '../components/Servicios.astro';
 import Productos from '../components/Productos.astro';
+import GoogleReviews from '../components/GoogleReviews.astro';
 import Blog from '../components/Blog.astro';
 import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
@@ -90,9 +91,17 @@ const localBusinessSchema = {
     <Header />
     
     <main>
+      <h1 class="sr-only">Energía solar en Colombia con REIKI ENERGIA SOLAR SAS</h1>
       <Hero />
-      <Servicios />
-      <Productos />
+      <section aria-labelledby="proyectos-llave-en-mano">
+        <h2 id="proyectos-llave-en-mano" class="sr-only">Proyectos Llave en Mano</h2>
+        <Servicios />
+      </section>
+      <section aria-labelledby="tienda-productos-solares">
+        <h2 id="tienda-productos-solares" class="sr-only">Tienda de Productos</h2>
+        <Productos />
+      </section>
+      <GoogleReviews />
       <Blog />
     </main>
     
@@ -122,6 +131,18 @@ const localBusinessSchema = {
     width: 100%;
     position: relative;
     background: #ffffff;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
   /* Mejoras de rendimiento */
