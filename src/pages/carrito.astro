@@ -234,6 +234,16 @@ import FontAwesome from '../components/FontAwesome.astro';
                     bancarios.
                   </p>
 
+                  <div class="checkout-legal-consent">
+                    <input type="checkbox" id="aceptar-terminos" name="aceptarTerminos" required class="checkout-legal-checkbox" />
+                    <label for="aceptar-terminos" class="checkout-legal-label">
+                      He leído y acepto la
+                      <a href="/politica-privacidad" target="_blank" rel="noopener noreferrer">Política de Privacidad</a>
+                      y los
+                      <a href="/terminos-condiciones" target="_blank" rel="noopener noreferrer">Términos y Condiciones</a>
+                    </label>
+                  </div>
+
                   <button type="submit" class="checkout-submit-btn" id="checkout-submit">
                     <i class="fas fa-lock" aria-hidden="true"></i>
                     Finalizar Compra Segura
@@ -418,6 +428,7 @@ import FontAwesome from '../components/FontAwesome.astro';
       var totalScaledBy100MatchingSomeSdkFields = totalCop * 100;
 
       var paymentMethod = String(fd.get('paymentMethod') || '');
+      var aceptarTerminos = Boolean(fd.get('aceptarTerminos'));
 
       var items = cart.map(function (item) {
         var unitCop = extractPrice(item.price);
@@ -458,6 +469,10 @@ import FontAwesome from '../components/FontAwesome.astro';
           zip: String(fd.get('zip') || '').trim() || undefined,
         },
         paymentMethod: paymentMethod,
+        legal: {
+          acceptedTerms: aceptarTerminos,
+          acceptedAt: aceptarTerminos ? new Date().toISOString() : null,
+        },
         cart: {
           storageKey: CART_KEY,
           items: items,
@@ -628,10 +643,16 @@ import FontAwesome from '../components/FontAwesome.astro';
 
     var form = document.getElementById('checkout-form');
     var submitBtn = document.getElementById('checkout-submit');
+    var aceptarTerminosEl = document.getElementById('aceptar-terminos');
 
     if (form instanceof HTMLFormElement) {
       form.addEventListener('submit', async function (e) {
         e.preventDefault();
+        if (aceptarTerminosEl instanceof HTMLInputElement && !aceptarTerminosEl.checked) {
+          showCheckoutToast('Debes aceptar los Términos y Condiciones para continuar con tu compra');
+          aceptarTerminosEl.focus();
+          return;
+        }
         if (!form.checkValidity()) {
           form.reportValidity();
           return;
@@ -1183,6 +1204,38 @@ import FontAwesome from '../components/FontAwesome.astro';
   .checkout-submit-btn:hover {
     transform: translateY(-2px);
     box-shadow: 0 10px 30px rgba(107, 33, 129, 0.45);
+  }
+
+  .checkout-legal-consent {
+    margin-top: 1rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.75rem 0.85rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    background: #fafafa;
+  }
+
+  .checkout-legal-checkbox {
+    margin-top: 0.15rem;
+    width: 16px;
+    height: 16px;
+    accent-color: #6b2181;
+    flex-shrink: 0;
+  }
+
+  .checkout-legal-label {
+    font-size: 0.88rem;
+    line-height: 1.45;
+    color: #4b5563;
+  }
+
+  .checkout-legal-label a {
+    color: #6b2181;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 2px;
   }
 
   .checkout-trust-block {

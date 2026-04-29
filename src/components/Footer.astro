@@ -1,5 +1,6 @@
 ---
 const logoSrc = '/logo_blanco.png';
+const currentYear = new Date().getFullYear();
 ---
 
 <footer class="footer">
@@ -33,7 +34,7 @@ const logoSrc = '/logo_blanco.png';
       <div class="footer-section">
         <h4 class="footer-title">Enlaces Rápidos</h4>
         <ul class="footer-links">
-          <li><a href="#inicio">Inicio</a></li>
+          <li><a href="/">Inicio</a></li>
           <li><a href="/servicios">Servicios</a></li>
           <li><a href="/tienda">Tienda</a></li>
           <li><a href="/quienes-somos">Quiénes Somos</a></li>
@@ -95,11 +96,11 @@ const logoSrc = '/logo_blanco.png';
     <div class="footer-bottom">
       <div class="footer-bottom-content">
         <p class="copyright">
-          &copy; 2024 Reiki Energía Solar. Todos los derechos reservados.
+          &copy; {currentYear} Reiki Energía Solar. Todos los derechos reservados.
         </p>
         <div class="footer-bottom-links">
-          <a href="#privacy">Política de Privacidad</a>
-          <a href="#terms">Términos de Servicio</a>
+          <a href="/politica-privacidad">Política de Privacidad</a>
+          <a href="/terminos-condiciones">Términos de Servicio</a>
         </div>
       </div>
     </div>
