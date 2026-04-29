@@ -6,6 +6,7 @@ on:
   push:
     branches:
       - main
+      - master # mismo repo suele usar master como rama principal
   workflow_dispatch:  # También permite ejecución manual
 
 permissions:
