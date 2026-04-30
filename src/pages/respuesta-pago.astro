@@ -255,11 +255,59 @@ const emailjsTemplateId =
           return parts.join(' — ');
         }
 
+        function normalizeCustomerEmail(raw) {
+          var v = String(raw == null ? '' : raw).trim();
+          if (!v || v === 'undefined' || v === 'null') return '';
+          return v;
+        }
+
+        /** Intenta obtener un correo con forma mínima de email (contiene '@'). */
+        function pickBuyerEmail(custSnap, wompiTx) {
+          var cust =
+            custSnap && typeof custSnap === 'object' && !Array.isArray(custSnap) ? custSnap : {};
+          var fromLs = normalizeCustomerEmail(cust.email);
+          if (fromLs.indexOf('@') !== -1) return fromLs;
+
+          var t = wompiTx && typeof wompiTx === 'object' && !Array.isArray(wompiTx) ? wompiTx : {};
+          var c = t.customer && typeof t.customer === 'object' ? t.customer : null;
+          var cd = t.customer_data && typeof t.customer_data === 'object' ? t.customer_data : null;
+          var ps = t.payment_source && typeof t.payment_source === 'object' ? t.payment_source : null;
+          var psEx = ps && ps.extra && typeof ps.extra === 'object' ? ps.extra : null;
+          var pm = t.payment_method && typeof t.payment_method === 'object' ? t.payment_method : null;
+          var pmEx = pm && pm.extra && typeof pm.extra === 'object' ? pm.extra : null;
+          var candidates = [
+            t.customer_email,
+            t.customerEmail,
+            t.email,
+            t.billing_email,
+            t.buyer_email,
+            c ? c.email : undefined,
+            cd ? cd.email : undefined,
+            ps ? ps.customer_email || ps.customerEmail : undefined,
+            psEx ? psEx.customer_email || psEx.email || psEx.payer_email : undefined,
+            pmEx ? pmEx.email || pmEx.customer_email || pmEx.payer_email : undefined,
+          ];
+
+          for (var i = 0; i < candidates.length; i++) {
+            var e = normalizeCustomerEmail(String(candidates[i] == null ? '' : candidates[i]));
+            if (e.indexOf('@') !== -1) return e;
+          }
+          return '';
+        }
+
         /**
          * Notificación de venta (no bloquea la UI si EmailJS falla).
          */
         async function sendEmailSaleApproved(templateParamsSubset) {
           try {
+            var emailClienteNorm = normalizeCustomerEmail(templateParamsSubset && templateParamsSubset.email_cliente);
+            if (!emailClienteNorm || emailClienteNorm.indexOf('@') === -1) {
+              console.warn(
+                '[respuesta-pago][EmailJS] Sin email_cliente válido para el comprador; no se envía el correo hasta tener un correo (localStorage o transacción Wompi).'
+              );
+              return;
+            }
+
             var pub = getEmailJsPublicKeyFromDom();
             if (!pub) {
               console.warn(
@@ -285,7 +333,8 @@ const emailjsTemplateId =
               return;
             }
 
-            var res = await emailjs.send(serviceId, templateId, templateParamsSubset);
+            var payload = Object.assign({}, templateParamsSubset, { email_cliente: emailClienteNorm });
+            var res = await emailjs.send(serviceId, templateId, payload);
             if (typeof res !== 'undefined' && res && typeof console !== 'undefined' && console.info) {
               console.info('[respuesta-pago][EmailJS] Envío solicitado:', res.status, res.text);
             }
@@ -294,15 +343,34 @@ const emailjsTemplateId =
           }
         }
 
-        async function finalizeApprovedSale(wompiTxnId, custSnapshot, cartSnapshot) {
+        async function finalizeApprovedSale(wompiTxnId, custSnapshot, cartSnapshot, wompiTx) {
           try {
             var cust = custSnapshot && typeof custSnapshot === 'object' ? custSnapshot : {};
+            var correoRecuperado = pickBuyerEmail(custSnapshot, wompiTx);
+
+            /** Completamos nombre/tel desde Wompi si faltaran en localStorage (mejor contenido del recibo). */
+            var custFromTx =
+              wompiTx && typeof wompiTx === 'object'
+                ? wompiTx.customer_data && typeof wompiTx.customer_data === 'object'
+                  ? wompiTx.customer_data
+                  : wompiTx.customer && typeof wompiTx.customer === 'object'
+                    ? wompiTx.customer
+                    : {}
+                : {};
+            var nombreLs = String(cust.fullName || '').trim();
+            var nombre =
+              nombreLs ||
+              String((custFromTx.full_name || custFromTx.fullName || custFromTx.name) || '').trim();
+            var tel =
+              String(cust.phone || '').trim() ||
+              String((custFromTx.phone_number || custFromTx.phone || custFromTx.phoneNumber) || '').trim();
+
             var templateParams = {
               id_transaccion: String(wompiTxnId || ''),
-              nombre_cliente: String(cust.fullName || ''),
-              telefono_cliente: String(cust.phone || ''),
-              /** Úsalo en EmailJS: campo "To email" como {{email_cliente}} si quieres que llegue una copia al comprador. */
-              email_cliente: String(cust.email || ''),
+              nombre_cliente: nombre,
+              telefono_cliente: tel,
+              /** En EmailJS: "To Email" puede ser {{email_cliente}} para envío al comprador. */
+              email_cliente: correoRecuperado,
               direccion_envio: formatDireccionEnvio(cust),
               resumen_pedido: buildResumenPedidoField(Array.isArray(cartSnapshot) ? cartSnapshot : []),
             };
@@ -373,7 +441,7 @@ const emailjsTemplateId =
                   'pay-action-btn--ghost'
                 )
             );
-            void finalizeApprovedSale(fakeId, mockCust, mockCart);
+            void finalizeApprovedSale(fakeId, mockCust, mockCart, null);
             return true;
           }
 
@@ -535,7 +603,7 @@ const emailjsTemplateId =
                   actionButton('https://wa.me/573245737413?text=' + encodeURIComponent('Hola, acabo de pagar. Ref: ' + (reference || wompiTxnId)), 'Consultar mi pedido', 'pay-action-btn--ghost')
               );
 
-              await finalizeApprovedSale(wompiTxnId, custSnap, cartSnap);
+              await finalizeApprovedSale(wompiTxnId, custSnap, cartSnap, tx);
               return;
             }
 
