@@ -601,6 +601,18 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
             return;
           }
           console.log('Transacción terminada', transaction.status, transaction);
+          var txStatus = String(transaction.status || '').toUpperCase();
+          var txId = String(transaction.id || '').trim();
+          if (txStatus === 'APPROVED' && txId) {
+            var targetBase =
+              typeof wompiRedirectUrl === 'string' && wompiRedirectUrl.trim()
+                ? wompiRedirectUrl.trim()
+                : '/respuesta-pago';
+            var glue = targetBase.indexOf('?') === -1 ? '?' : '&';
+            var finalUrl = targetBase + glue + 'id=' + encodeURIComponent(txId);
+            console.info('[checkout] Redirección post-pago (fallback local):', finalUrl);
+            window.location.assign(finalUrl);
+          }
         });
       } catch (openErr) {
         console.error('[checkout] WidgetCheckout.open', openErr);
