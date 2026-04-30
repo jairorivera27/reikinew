@@ -430,17 +430,64 @@ const emailjsTemplateId =
           return false;
         }
 
+        function resolveTransactionIdFromUrl(searchParams) {
+          var keys = ['id', 'transactionId', 'transaction_id'];
+          for (var k = 0; k < keys.length; k++) {
+            var raw = searchParams.get(keys[k]);
+            if (raw && String(raw).trim()) return String(raw).trim();
+          }
+          var h = window.location.hash || '';
+          if (h.indexOf('id=') !== -1) {
+            try {
+              var qh = new URLSearchParams(h.replace(/^#/, '').replace(/^\?/, ''));
+              var idh = qh.get('id');
+              if (idh && String(idh).trim()) return String(idh).trim();
+            } catch (_he) {}
+            var mh = /(?:^|[?&#])id=([^&]+)/.exec(h);
+            if (mh && mh[1]) {
+              try {
+                return decodeURIComponent(mh[1].replace(/\+/g, ' ')).trim();
+              } catch (_dec) {
+                return mh[1].trim();
+              }
+            }
+          }
+          return '';
+        }
+
+        async function fetchWompiTransactionJson(txId, isSandbox) {
+          var base = isSandbox
+            ? 'https://sandbox.wompi.co/v1/transactions/'
+            : 'https://production.wompi.co/v1/transactions/';
+          try {
+            var directRes = await fetch(base + encodeURIComponent(txId), { method: 'GET' });
+            if (directRes.ok) return await directRes.json();
+          } catch (_directErr) {
+            /* CORS/red: intentamos proxy serverless */
+          }
+          try {
+            var qs = '?id=' + encodeURIComponent(txId);
+            if (isSandbox) qs += '&env=sandbox';
+            var proxyRes = await fetch('/api/wompi-transaction' + qs, { method: 'GET' });
+            var pj = await proxyRes.json().catch(function () {
+              return null;
+            });
+            if (proxyRes.ok && pj) return pj;
+          } catch (_proxyErr) {}
+          throw new Error('No fue posible consultar la transacción en Wompi');
+        }
+
         async function run() {
           var params = new URLSearchParams(window.location.search);
           if (tryLocalMock(params)) return;
 
-          var txId = params.get('id');
+          var txId = resolveTransactionIdFromUrl(params);
 
           if (!txId) {
             setStatus(
               'error',
               'No pudimos identificar tu pago',
-              'Wompi suele redirigir con un enlace que incluye ?id=… al final. Si abriste esta página directamente, ve al carrito e inicia el pago otra vez.'
+              'Tras pagar, Wompi redirige a esta página con ?id=… en la dirección (misma raíz que en astro.config del sitio: sin cambiar dominio entre carrito y regreso). Si la barra ya no muestra ese parámetro, puede ser un redirect del hosting; en Wompi el comercio debe tener permitida esta URL exacta. Abre esta página desde el enlace tras el cobro o vuelve al carrito.'
             );
             setActions(actionButton('/carrito', 'Ir al carrito', 'pay-action-btn--error'));
             return;
@@ -449,15 +496,9 @@ const emailjsTemplateId =
           var isSandbox =
             /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(window.location.hostname || '') ||
             params.get('env') === 'sandbox';
-          var base = isSandbox ? 'https://sandbox.wompi.co/v1/transactions/' : 'https://production.wompi.co/v1/transactions/';
 
           try {
-            var res = await fetch(base + encodeURIComponent(txId), { method: 'GET' });
-            if (!res.ok) {
-              throw new Error('No fue posible consultar la transacción en Wompi');
-            }
-
-            var json = await res.json();
+            var json = await fetchWompiTransactionJson(txId, isSandbox);
             var tx = json && json.data ? json.data : null;
             var status = tx && tx.status ? String(tx.status).toUpperCase() : 'ERROR';
             var reference = tx && tx.reference ? tx.reference : '';

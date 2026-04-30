@@ -15,6 +15,9 @@ if (typeof rawWompiKey === 'string') {
 if (!wompiPublicKey || wompiPublicKey === 'undefined') {
   wompiPublicKey = '';
 }
+/** Misma raíz que `site` en astro.config (evita www vs apex y pérdida de ?id= en redirects). */
+const siteOrigin = String(import.meta.env.SITE || 'https://reikisolar.com.co').replace(/\/+$/, '');
+const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
 ---
 
 <!DOCTYPE html>
@@ -258,7 +261,7 @@ if (!wompiPublicKey || wompiPublicKey === 'undefined') {
 
     <div id="checkout-pay-toast" class="checkout-pay-toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
 
-<script define:vars={{ wompiPublicKey }}>
+<script define:vars={{ wompiPublicKey, wompiRedirectUrl }}>
   (function () {
     var CART_KEY = 'reiki_cart';
 
@@ -558,7 +561,7 @@ if (!wompiPublicKey || wompiPublicKey === 'undefined') {
         amountInCents: totalEnCentavos,
         reference: referenciaUnica,
         publicKey: wompiKey,
-        redirectUrl: 'https://www.reikisolar.com.co/respuesta-pago',
+        redirectUrl: typeof wompiRedirectUrl === 'string' && wompiRedirectUrl.trim() ? wompiRedirectUrl.trim() : '/respuesta-pago',
         customerData: {
           email: emailDelFormulario,
           fullName: nombreDelFormulario,
