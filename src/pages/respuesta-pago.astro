@@ -130,6 +130,7 @@ const emailjsTemplateId =
 
         var LS_CART_KEY = 'reiki_cart';
         var LS_CUSTOMER_KEY = 'reiki_checkout_customer';
+        var LS_REFERENCE_KEY = 'reiki_checkout_reference';
 
         function resolveEmailJsServiceId() {
           var b = document.body;
@@ -160,7 +161,36 @@ const emailjsTemplateId =
           try {
             localStorage.removeItem(LS_CART_KEY);
             localStorage.removeItem(LS_CUSTOMER_KEY);
+            localStorage.removeItem(LS_REFERENCE_KEY);
           } catch (_e) {}
+        }
+
+        function loadCheckoutReferenceFromLs() {
+          try {
+            return String(localStorage.getItem(LS_REFERENCE_KEY) || '').trim();
+          } catch (_e) {
+            return '';
+          }
+        }
+
+        /** Nunca pasar null/undefined a EmailJS. */
+        function strSafeEmailParam(v) {
+          if (v == null || v === undefined) return '';
+          var s = String(v);
+          return s === 'null' || s === 'undefined' ? '' : s;
+        }
+
+        /** referencia_pedido: referencia guardada al abrir Wompi, luego reference de API, último recurso 4 dígitos. */
+        function resolveReferenciaPedido(wompiTx, refFromLs) {
+          var fromLs = strSafeEmailParam(refFromLs).trim();
+          if (fromLs) return fromLs;
+          var t =
+            wompiTx && typeof wompiTx === 'object' && !Array.isArray(wompiTx)
+              ? wompiTx
+              : {};
+          var refApi = strSafeEmailParam(t.reference).trim();
+          if (refApi) return refApi;
+          return String(Math.floor(1000 + Math.random() * 9000));
         }
 
         function getEmailJsPublicKeyFromDom() {
@@ -200,46 +230,32 @@ const emailjsTemplateId =
           return parseInt(cleaned, 10) || 0;
         }
 
-        function escHtmlLite(s) {
-          return String(s)
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/"/g, '&quot;');
+        function formatLineTotalCopForEmail(lineTotalCop) {
+          var n = Math.max(0, Math.floor(Number(lineTotalCop) || 0));
+          return '$' + n.toLocaleString('es-CO');
         }
 
-        function buildResumenPedidoField(cart) {
+        /** Lista en texto para plantilla EmailJS (\n entre líneas). */
+        function buildResumenPedidoFormateado(cart) {
           if (!Array.isArray(cart) || cart.length === 0) {
-            return '<p>(Sin productos en el carrito guardado.)</p>';
+            return '(Sin productos registrados.)';
           }
-          var formatter = new Intl.NumberFormat('es-CO', {
-            style: 'currency',
-            currency: 'COP',
-            minimumFractionDigits: 0,
-          });
-          var totalCop = 0;
-          var rows = cart
+          return cart
             .map(function (item) {
               var qty = parseInt(item.quantity, 10) || 1;
               var unitCop = extractPriceCop(item.price);
-              totalCop += unitCop * qty;
+              var lineTotal = unitCop * qty;
               return (
-                '<tr><td>' +
-                escHtmlLite(String(qty)) +
-                '</td><td>' +
-                escHtmlLite(String(item.title || 'Producto')) +
-                '</td><td>' +
-                escHtmlLite(String(item.price || '')) +
-                '</td></tr>'
+                '- [' +
+                qty +
+                ']x ' +
+                String(item.title || 'Producto').trim() +
+                ' (' +
+                formatLineTotalCopForEmail(lineTotal) +
+                ')'
               );
             })
-            .join('');
-          return (
-            '<table style="border-collapse:collapse;width:100%;max-width:520px;"><thead><tr><th align="left">Cant.</th><th align="left">Producto</th><th align="left">P. unitario</th></tr></thead><tbody>' +
-            rows +
-            '</tbody></table><p><strong>Total pagado:</strong> ' +
-            formatter.format(totalCop) +
-            ' COP</p>'
-          );
+            .join('\n');
         }
 
         function formatDireccionEnvio(customer) {
@@ -297,6 +313,7 @@ const emailjsTemplateId =
 
         /**
          * Notificación de venta (no bloquea la UI si EmailJS falla).
+         * @returns {Promise<boolean>} true solo si EmailJS confirmó envío OK (para poder limpiar carrito después).
          */
         async function sendEmailSaleApproved(templateParamsSubset) {
           try {
@@ -305,7 +322,7 @@ const emailjsTemplateId =
               console.warn(
                 '[respuesta-pago][EmailJS] Sin email_cliente válido para el comprador; no se envía el correo hasta tener un correo (localStorage o transacción Wompi).'
               );
-              return;
+              return false;
             }
 
             var pub = getEmailJsPublicKeyFromDom();
@@ -313,33 +330,42 @@ const emailjsTemplateId =
               console.warn(
                 '[respuesta-pago][EmailJS] Falta PUBLIC_EMAILJS_KEY en el build del sitio (Vercel → Environment Variables → PUBLIC_EMAILJS_KEY y redeploy). Sin eso no se puede enviar el correo.'
               );
-              return;
+              return false;
             }
             if (!isLikelyEmailJsPublicKey(pub)) {
               console.warn(
                 '[respuesta-pago][EmailJS] PUBLIC_EMAILJS_KEY inválida: parece service/template id. Debe ser la Public Key real de EmailJS (Account → API keys).'
               );
-              return;
+              return false;
             }
             if (!ensureEmailJsInit(pub)) {
               console.warn('[respuesta-pago][EmailJS] No se cargó emailjs desde el CDN o init falló.');
-              return;
+              return false;
             }
 
             var serviceId = resolveEmailJsServiceId();
             var templateId = resolveEmailJsTemplateId();
             if (!serviceId || !templateId) {
               console.warn('[respuesta-pago][EmailJS] Faltan data-emailjs-service-id o template-id en <body>.');
-              return;
+              return false;
             }
 
-            var payload = Object.assign({}, templateParamsSubset, { email_cliente: emailClienteNorm });
+            var payload = {};
+            payload.referencia_pedido = strSafeEmailParam(templateParamsSubset.referencia_pedido);
+            payload.nombre_cliente = strSafeEmailParam(templateParamsSubset.nombre_cliente);
+            payload.email_cliente = emailClienteNorm;
+            payload.telefono_cliente = strSafeEmailParam(templateParamsSubset.telefono_cliente);
+            payload.direccion_envio = strSafeEmailParam(templateParamsSubset.direccion_envio);
+            payload.resumen_pedido = strSafeEmailParam(templateParamsSubset.resumen_pedido);
+
             var res = await emailjs.send(serviceId, templateId, payload);
             if (typeof res !== 'undefined' && res && typeof console !== 'undefined' && console.info) {
               console.info('[respuesta-pago][EmailJS] Envío solicitado:', res.status, res.text);
             }
+            return true;
           } catch (e) {
             console.error('[respuesta-pago][EmailJS] Fallo al enviar:', e);
+            return false;
           }
         }
 
@@ -347,6 +373,11 @@ const emailjsTemplateId =
           try {
             var cust = custSnapshot && typeof custSnapshot === 'object' ? custSnapshot : {};
             var correoRecuperado = pickBuyerEmail(custSnapshot, wompiTx);
+            var refGuardadaLs = loadCheckoutReferenceFromLs();
+            var referencia_pedido = resolveReferenciaPedido(wompiTx, refGuardadaLs);
+            var resumen_pedido_formateado = buildResumenPedidoFormateado(
+              Array.isArray(cartSnapshot) ? cartSnapshot : []
+            );
 
             /** Completamos nombre/tel desde Wompi si faltaran en localStorage (mejor contenido del recibo). */
             var custFromTx =
@@ -365,20 +396,34 @@ const emailjsTemplateId =
               String(cust.phone || '').trim() ||
               String((custFromTx.phone_number || custFromTx.phone || custFromTx.phoneNumber) || '').trim();
 
-            var templateParams = {
-              id_transaccion: String(wompiTxnId || ''),
-              nombre_cliente: nombre,
-              telefono_cliente: tel,
-              /** En EmailJS: "To Email" puede ser {{email_cliente}} para envío al comprador. */
-              email_cliente: correoRecuperado,
-              direccion_envio: formatDireccionEnvio(cust),
-              resumen_pedido: buildResumenPedidoField(Array.isArray(cartSnapshot) ? cartSnapshot : []),
+            /** Coincidencia estricta con plantilla EmailJS — solo strings (ni null ni undefined). */
+            var datosCliente = {
+              nombre: strSafeEmailParam(nombre),
+              email: strSafeEmailParam(correoRecuperado),
+              telefono: strSafeEmailParam(tel),
+              direccion: strSafeEmailParam(formatDireccionEnvio(cust)),
             };
-            await sendEmailSaleApproved(templateParams);
+
+            var templateParams = {
+              referencia_pedido: referencia_pedido,
+              nombre_cliente: datosCliente.nombre,
+              email_cliente: datosCliente.email,
+              telefono_cliente: datosCliente.telefono,
+              direccion_envio: datosCliente.direccion,
+              resumen_pedido: strSafeEmailParam(resumen_pedido_formateado),
+            };
+
+            var enviadoOk = await sendEmailSaleApproved(templateParams);
+            if (enviadoOk) {
+              clearCheckoutStorage();
+            } else {
+              console.warn(
+                '[respuesta-pago][EmailJS] No se limpió el carrito: el correo no se envió (revisa configuración EmailJS / email_cliente o consola anterior). Referencia/transacción: ' +
+                  String(wompiTxnId || referencia_pedido || '')
+              );
+            }
           } catch (e) {
             console.error('[respuesta-pago][finalizeApprovedSale]', e);
-          } finally {
-            clearCheckoutStorage();
           }
         }
 
