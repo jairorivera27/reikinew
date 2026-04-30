@@ -131,6 +131,8 @@ const emailjsTemplateId =
         var LS_CART_KEY = 'reiki_cart';
         var LS_CUSTOMER_KEY = 'reiki_checkout_customer';
         var LS_REFERENCE_KEY = 'reiki_checkout_reference';
+        /** Referencia amigable que mostramos en UI y enviamos a EmailJS. */
+        var numeroOrdenActual = '';
 
         function resolveEmailJsServiceId() {
           var b = document.body;
@@ -190,6 +192,10 @@ const emailjsTemplateId =
               : {};
           var refApi = strSafeEmailParam(t.reference).trim();
           if (refApi) return refApi;
+          return String(Math.floor(1000 + Math.random() * 9000));
+        }
+
+        function generateNumeroCorto() {
           return String(Math.floor(1000 + Math.random() * 9000));
         }
 
@@ -369,12 +375,16 @@ const emailjsTemplateId =
           }
         }
 
-        async function finalizeApprovedSale(wompiTxnId, custSnapshot, cartSnapshot, wompiTx) {
+        async function finalizeApprovedSale(wompiTxnId, custSnapshot, cartSnapshot, wompiTx, numeroCortoOverride) {
           try {
             var cust = custSnapshot && typeof custSnapshot === 'object' ? custSnapshot : {};
             var correoRecuperado = pickBuyerEmail(custSnapshot, wompiTx);
             var refGuardadaLs = loadCheckoutReferenceFromLs();
-            var referencia_pedido = resolveReferenciaPedido(wompiTx, refGuardadaLs);
+            var referencia_pedido = strSafeEmailParam(numeroCortoOverride).trim();
+            if (!referencia_pedido) {
+              referencia_pedido = resolveReferenciaPedido(wompiTx, refGuardadaLs);
+            }
+            numeroOrdenActual = referencia_pedido;
             var resumen_pedido_formateado = buildResumenPedidoFormateado(
               Array.isArray(cartSnapshot) ? cartSnapshot : []
             );
@@ -471,22 +481,25 @@ const emailjsTemplateId =
           if (mock === 'approved') {
             var mockCust = loadLocalJson(LS_CUSTOMER_KEY);
             var mockCart = loadLocalJson(LS_CART_KEY);
+            var numeroCortoMock = generateNumeroCorto();
+            numeroOrdenActual = numeroCortoMock;
             setStatus(
               'success',
               '¡Pago aprobado!',
               'Gracias por tu compra. Confirmaremos tu pedido y enviaremos la factura electrónica al correo con el que pagaste. Para envío o detalle del pedido puedes escribirnos por WhatsApp.',
-              'Referencia de pedido: ' + fakeRef,
-              'ID de transacción (Wompi): ' + fakeId
+              'Número de Orden: #' + numeroCortoMock,
+              ''
             );
             setActions(
               actionButton('/tienda', 'Seguir comprando') +
                 actionButton(
-                  'https://wa.me/573245737413?text=' + encodeURIComponent('Hola, acabo de pagar. Ref: ' + fakeRef),
+                  'https://wa.me/573245737413?text=' +
+                    encodeURIComponent('Hola, acabo de pagar. Orden #' + numeroCortoMock),
                   'Consultar mi pedido',
                   'pay-action-btn--ghost'
                 )
             );
-            void finalizeApprovedSale(fakeId, mockCust, mockCart, null);
+            void finalizeApprovedSale(fakeId, mockCust, mockCart, null, numeroCortoMock);
             return true;
           }
 
@@ -635,20 +648,26 @@ const emailjsTemplateId =
             if (status === 'APPROVED') {
               var custSnap = loadLocalJson(LS_CUSTOMER_KEY);
               var cartSnap = loadLocalJson(LS_CART_KEY);
+              var numeroCorto = generateNumeroCorto();
+              numeroOrdenActual = numeroCorto;
 
               setStatus(
                 'success',
                 '¡Pago aprobado!',
                 'Gracias por tu compra. Confirmaremos tu pedido y enviaremos la factura electrónica al correo con el que pagaste. Para envío o detalle del pedido puedes escribirnos por WhatsApp.',
-                reference ? 'Referencia de pedido: ' + reference : '',
-                idNote
+                'Número de Orden: #' + numeroCorto,
+                ''
               );
               setActions(
                 actionButton('/tienda', 'Seguir comprando') +
-                  actionButton('https://wa.me/573245737413?text=' + encodeURIComponent('Hola, acabo de pagar. Ref: ' + (reference || wompiTxnId)), 'Consultar mi pedido', 'pay-action-btn--ghost')
+                  actionButton(
+                    'https://wa.me/573245737413?text=' + encodeURIComponent('Hola, acabo de pagar. Orden #' + numeroCorto),
+                    'Consultar mi pedido',
+                    'pay-action-btn--ghost'
+                  )
               );
 
-              await finalizeApprovedSale(wompiTxnId, custSnap, cartSnap, tx);
+              await finalizeApprovedSale(wompiTxnId, custSnap, cartSnap, tx, numeroCorto);
               return;
             }
 
