@@ -561,6 +561,23 @@ if (!wompiPublicKey || wompiPublicKey === 'undefined') {
       var checkout = new window.WidgetCheckout(checkoutConfig);
 
       try {
+        try {
+          localStorage.setItem(
+            'reiki_checkout_customer',
+            JSON.stringify({
+              fullName: nombreDelFormulario,
+              email: emailDelFormulario,
+              phone: telefonoDelFormulario,
+              addressLine: String(fd.get('addressLine') || '').trim(),
+              city: String(fd.get('city') || '').trim(),
+              department: String(fd.get('department') || '').trim(),
+              zip: String(fd.get('zip') || '').trim(),
+            })
+          );
+        } catch (_lsErr) {
+          /* opcional para EmailJS tras redirect */
+        }
+
         checkout.open(function (result) {
           var transaction = result && result.transaction ? result.transaction : null;
           console.log('Transacción terminada', transaction);

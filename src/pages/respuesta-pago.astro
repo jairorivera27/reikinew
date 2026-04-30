@@ -4,6 +4,15 @@ import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import SEO from '../components/SEO.astro';
 import FontAwesome from '../components/FontAwesome.astro';
+
+const rawEmailjsKey = import.meta.env.PUBLIC_EMAILJS_KEY;
+let emailjsPublicKey = '';
+if (typeof rawEmailjsKey === 'string') {
+  emailjsPublicKey = rawEmailjsKey.replace(/^['"]|['"]$/g, '').trim();
+}
+if (!emailjsPublicKey || emailjsPublicKey === 'undefined') {
+  emailjsPublicKey = '';
+}
 ---
 
 <!DOCTYPE html>
@@ -20,8 +29,9 @@ import FontAwesome from '../components/FontAwesome.astro';
       canonical="/respuesta-pago"
       schemaType="WebPage"
     />
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" is:inline></script>
   </head>
-  <body class="pay-response-body">
+  <body class="pay-response-body" data-emailjs-public-key={emailjsPublicKey}>
     <Header />
 
     <main class="pay-response-main">
@@ -29,9 +39,12 @@ import FontAwesome from '../components/FontAwesome.astro';
         <div id="pay-status-icon" class="pay-status-icon pay-status-icon--loading" aria-hidden="true">
           <span class="pay-spinner"></span>
         </div>
-        <h1 id="pay-status-title">Verificando tu pago...</h1>
-        <p id="pay-status-message">Estamos consultando el estado de tu transacción con Wompi.</p>
+        <h1 id="pay-status-title">Verificando tu pago…</h1>
+        <p id="pay-status-message">
+          Estamos confirmando el resultado con Wompi. Esto suele tardar unos segundos.
+        </p>
         <p id="pay-status-reference" class="pay-status-reference" hidden></p>
+        <p id="pay-status-id" class="pay-status-id" hidden></p>
         <div id="pay-status-actions" class="pay-status-actions"></div>
       </section>
     </main>
@@ -39,6 +52,7 @@ import FontAwesome from '../components/FontAwesome.astro';
     <Footer />
     <WhatsAppFloat />
 
+    <!-- Pruebas locales: /respuesta-pago?mock=approved (ver comentario dentro del script) -->
     <script is:inline>
       (function () {
         var titleEl = document.getElementById('pay-status-title');
@@ -47,7 +61,9 @@ import FontAwesome from '../components/FontAwesome.astro';
         var iconEl = document.getElementById('pay-status-icon');
         var actionsEl = document.getElementById('pay-status-actions');
 
-        function setStatus(type, title, message, referenceText) {
+        var idEl = document.getElementById('pay-status-id');
+
+        function setStatus(type, title, message, referenceText, transactionIdText) {
           if (titleEl) titleEl.textContent = title;
           if (messageEl) messageEl.textContent = message;
 
@@ -58,6 +74,16 @@ import FontAwesome from '../components/FontAwesome.astro';
             } else {
               refEl.hidden = true;
               refEl.textContent = '';
+            }
+          }
+
+          if (idEl) {
+            if (transactionIdText) {
+              idEl.textContent = transactionIdText;
+              idEl.hidden = false;
+            } else {
+              idEl.hidden = true;
+              idEl.textContent = '';
             }
           }
 
@@ -87,21 +113,290 @@ import FontAwesome from '../components/FontAwesome.astro';
           return '<a class="pay-action-btn ' + (extraClass || '') + '" href="' + href + '">' + text + '</a>';
         }
 
+        var LS_CART_KEY = 'reiki_cart';
+        var LS_CUSTOMER_KEY = 'reiki_checkout_customer';
+
+        /** Reemplaza por los IDs de tu cuenta EmailJS (Dashboard → Email Services / Email Templates). */
+        var EMAILJS_SERVICE_ID = 'service_9q2y8pe';
+        var EMAILJS_TEMPLATE_ID = 'template_f6qba2h';
+
+        function loadLocalJson(key) {
+          try {
+            var raw = localStorage.getItem(key);
+            return raw ? JSON.parse(raw) : null;
+          } catch (_e) {
+            return null;
+          }
+        }
+
+        function clearCheckoutStorage() {
+          try {
+            localStorage.removeItem(LS_CART_KEY);
+            localStorage.removeItem(LS_CUSTOMER_KEY);
+          } catch (_e) {}
+        }
+
+        function getEmailJsPublicKeyFromDom() {
+          var b = document.body;
+          if (!(b instanceof HTMLElement)) return '';
+          var fromDataset = b.dataset && b.dataset.emailjsPublicKey ? String(b.dataset.emailjsPublicKey) : '';
+          var fromAttr = b.getAttribute('data-emailjs-public-key') || '';
+          return (fromDataset || fromAttr).trim();
+        }
+
+        var emailJsLibraryInitialized = false;
+
+        function ensureEmailJsInit(publicKey) {
+          if (!publicKey || typeof emailjs === 'undefined') return false;
+          if (!emailJsLibraryInitialized) {
+            emailjs.init({ publicKey: publicKey });
+            emailJsLibraryInitialized = true;
+          }
+          return true;
+        }
+
+        function extractPriceCop(priceString) {
+          var cleaned = String(priceString || '').replace(/[^0-9]/g, '');
+          return parseInt(cleaned, 10) || 0;
+        }
+
+        function escHtmlLite(s) {
+          return String(s)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/"/g, '&quot;');
+        }
+
+        function buildResumenPedidoField(cart) {
+          if (!Array.isArray(cart) || cart.length === 0) {
+            return '<p>(Sin productos en el carrito guardado.)</p>';
+          }
+          var formatter = new Intl.NumberFormat('es-CO', {
+            style: 'currency',
+            currency: 'COP',
+            minimumFractionDigits: 0,
+          });
+          var totalCop = 0;
+          var rows = cart
+            .map(function (item) {
+              var qty = parseInt(item.quantity, 10) || 1;
+              var unitCop = extractPriceCop(item.price);
+              totalCop += unitCop * qty;
+              return (
+                '<tr><td>' +
+                escHtmlLite(String(qty)) +
+                '</td><td>' +
+                escHtmlLite(String(item.title || 'Producto')) +
+                '</td><td>' +
+                escHtmlLite(String(item.price || '')) +
+                '</td></tr>'
+              );
+            })
+            .join('');
+          return (
+            '<table style="border-collapse:collapse;width:100%;max-width:520px;"><thead><tr><th align="left">Cant.</th><th align="left">Producto</th><th align="left">P. unitario</th></tr></thead><tbody>' +
+            rows +
+            '</tbody></table><p><strong>Total pagado:</strong> ' +
+            formatter.format(totalCop) +
+            ' COP</p>'
+          );
+        }
+
+        function formatDireccionEnvio(customer) {
+          var c = customer && typeof customer === 'object' ? customer : {};
+          var parts = [
+            c.addressLine,
+            [c.city, c.department].filter(Boolean).join(', '),
+            c.zip ? 'Código postal: ' + c.zip : '',
+            'Colombia',
+          ].filter(function (x) {
+            return x && String(x).trim();
+          });
+          return parts.join(' — ');
+        }
+
+        /**
+         * Notificación de venta (no bloquea la UI si EmailJS falla).
+         */
+        async function sendEmailSaleApproved(templateParamsSubset) {
+          try {
+            var pub = getEmailJsPublicKeyFromDom();
+            if (!pub) return;
+            if (!ensureEmailJsInit(pub)) return;
+
+            await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParamsSubset);
+          } catch (e) {
+            console.error('[respuesta-pago][EmailJS]', e);
+          }
+        }
+
+        async function finalizeApprovedSale(wompiTxnId, custSnapshot, cartSnapshot) {
+          try {
+            var cust = custSnapshot && typeof custSnapshot === 'object' ? custSnapshot : {};
+            var templateParams = {
+              id_transaccion: String(wompiTxnId || ''),
+              nombre_cliente: String(cust.fullName || ''),
+              telefono_cliente: String(cust.phone || ''),
+              direccion_envio: formatDireccionEnvio(cust),
+              resumen_pedido: buildResumenPedidoField(Array.isArray(cartSnapshot) ? cartSnapshot : []),
+            };
+            await sendEmailSaleApproved(templateParams);
+          } catch (e) {
+            console.error('[respuesta-pago][finalizeApprovedSale]', e);
+          } finally {
+            clearCheckoutStorage();
+          }
+        }
+
+        /**
+         * Simulación de UI solo en localhost (no corre en dominio producción).
+         * Valores mock: approved, pending, declined, error, voided, unknown, noid, fetch_error
+         * Ej.: /respuesta-pago?mock=approved&id=demo
+         */
+        function tryLocalMock(params) {
+          var mock = (params.get('mock') || '').toLowerCase().trim();
+          if (!mock) return false;
+          var host = window.location.hostname || '';
+          var isLocal =
+            host === 'localhost' || host === '127.0.0.1' || host === '[::1]' || host.endsWith('.local');
+          if (!isLocal) return false;
+
+          if (mock === 'noid') {
+            setStatus(
+              'error',
+              'No pudimos identificar tu pago',
+              'Wompi suele redirigir con un enlace que incluye ?id=… al final. Si abriste esta página directamente, ve al carrito e inicia el pago otra vez.'
+            );
+            setActions(actionButton('/carrito', 'Ir al carrito', 'pay-action-btn--error'));
+            return true;
+          }
+
+          if (mock === 'fetch_error') {
+            setStatus(
+              'error',
+              'No pudimos consultar el resultado ahora',
+              'Puede ser un fallo temporal de red. Tu pago pudo haberse completado igual: revisa el correo de Wompi o el extracto de tu banco. Si necesitas ayuda, escríbenos con la hora aproximada y el monto.',
+              '',
+              'ID en la URL (Wompi): ' + (params.get('id') || '(simulado)')
+            );
+            setActions(
+              actionButton('/carrito', 'Volver al carrito', 'pay-action-btn--error') +
+                actionButton('https://wa.me/573245737413', 'Hablar con soporte', 'pay-action-btn--ghost')
+            );
+            return true;
+          }
+
+          var fakeId = params.get('id') || '01-mock-local-wompi';
+          var fakeRef = 'REIKI-MOCK-' + Date.now().toString(36);
+
+          if (mock === 'approved') {
+            var mockCust = loadLocalJson(LS_CUSTOMER_KEY);
+            var mockCart = loadLocalJson(LS_CART_KEY);
+            setStatus(
+              'success',
+              '¡Pago aprobado!',
+              'Gracias por tu compra. Confirmaremos tu pedido y enviaremos la factura electrónica al correo con el que pagaste. Para envío o detalle del pedido puedes escribirnos por WhatsApp.',
+              'Referencia de pedido: ' + fakeRef,
+              'ID de transacción (Wompi): ' + fakeId
+            );
+            setActions(
+              actionButton('/tienda', 'Seguir comprando') +
+                actionButton(
+                  'https://wa.me/573245737413?text=' + encodeURIComponent('Hola, acabo de pagar. Ref: ' + fakeRef),
+                  'Consultar mi pedido',
+                  'pay-action-btn--ghost'
+                )
+            );
+            void finalizeApprovedSale(fakeId, mockCust, mockCart);
+            return true;
+          }
+
+          if (mock === 'pending') {
+            setStatus(
+              'pending',
+              'Pago en validación',
+              'Tu banco o método de pago aún está procesando el cobro. Suele resolverse en minutos. Conserva esta pantalla o el correo de Wompi; te avisaremos si hace falta algún dato.',
+              'Referencia: ' + fakeRef,
+              'ID de transacción (Wompi): ' + fakeId
+            );
+            setActions(
+              actionButton('/', 'Ir al inicio') + actionButton('/tienda', 'Volver a la tienda', 'pay-action-btn--ghost')
+            );
+            return true;
+          }
+
+          if (mock === 'declined') {
+            setStatus(
+              'error',
+              'No se completó el pago',
+              'El banco o la entidad rechazó la operación. No se hizo ningún cobro. Puedes intentar con otra tarjeta, PSE u otro medio disponible en Wompi.',
+              'Referencia: ' + fakeRef,
+              'ID de transacción (Wompi): ' + fakeId
+            );
+            setActions(actionButton('/carrito', 'Volver al carrito e intentar', 'pay-action-btn--error'));
+            return true;
+          }
+
+          if (mock === 'error') {
+            setStatus(
+              'error',
+              'No se completó el pago',
+              'Ocurrió un error al procesar el pago. Inténtalo de nuevo; si el problema continúa, escríbenos con el ID de transacción.',
+              'Referencia: ' + fakeRef,
+              'ID de transacción (Wompi): ' + fakeId
+            );
+            setActions(actionButton('/carrito', 'Volver al carrito e intentar', 'pay-action-btn--error'));
+            return true;
+          }
+
+          if (mock === 'voided') {
+            setStatus(
+              'error',
+              'Este pago fue anulado',
+              'La transacción quedó anulada. Si ves un cargo pendiente, espera la reversión según tu banco o contáctanos.',
+              'Referencia: ' + fakeRef,
+              'ID de transacción (Wompi): ' + fakeId
+            );
+            setActions(actionButton('/carrito', 'Volver al carrito e intentar', 'pay-action-btn--error'));
+            return true;
+          }
+
+          if (mock === 'unknown') {
+            setStatus(
+              'pending',
+              'Estado en revisión',
+              'Recibimos tu intento de pago (estado: WEIRD_STATUS). Espera un momento o vuelve más tarde; si el cargo aparece en tu cuenta y el pedido no avanza, envíanos el ID de transacción.',
+              'Referencia: ' + fakeRef,
+              'ID de transacción (Wompi): ' + fakeId
+            );
+            setActions(
+              actionButton('/', 'Ir al inicio') + actionButton('/carrito', 'Volver al carrito', 'pay-action-btn--ghost')
+            );
+            return true;
+          }
+
+          return false;
+        }
+
         async function run() {
           var params = new URLSearchParams(window.location.search);
+          if (tryLocalMock(params)) return;
+
           var txId = params.get('id');
 
           if (!txId) {
             setStatus(
               'error',
-              'No encontramos la transacción',
-              'No recibimos el identificador de pago en la URL. Vuelve al carrito para intentarlo de nuevo.'
+              'No pudimos identificar tu pago',
+              'Wompi suele redirigir con un enlace que incluye ?id=… al final. Si abriste esta página directamente, ve al carrito e inicia el pago otra vez.'
             );
-            setActions(actionButton('/carrito', 'Volver al carrito e intentar de nuevo', 'pay-action-btn--error'));
+            setActions(actionButton('/carrito', 'Ir al carrito', 'pay-action-btn--error'));
             return;
           }
 
-          var isSandbox = /localhost|127\\.0\\.0\\.1/i.test(window.location.hostname) || params.get('env') === 'sandbox';
+          var isSandbox =
+            /^(localhost|127\.0\.0\.1|\[::1\])$/i.test(window.location.hostname || '') ||
+            params.get('env') === 'sandbox';
           var base = isSandbox ? 'https://sandbox.wompi.co/v1/transactions/' : 'https://production.wompi.co/v1/transactions/';
 
           try {
@@ -113,59 +408,80 @@ import FontAwesome from '../components/FontAwesome.astro';
             var json = await res.json();
             var tx = json && json.data ? json.data : null;
             var status = tx && tx.status ? String(tx.status).toUpperCase() : 'ERROR';
-            var reference = tx && tx.reference ? tx.reference : txId;
+            var reference = tx && tx.reference ? tx.reference : '';
+            var wompiTxnId = tx && tx.id ? String(tx.id) : String(txId);
+            var idNote = wompiTxnId ? 'ID de transacción (Wompi): ' + wompiTxnId : '';
 
             if (status === 'APPROVED') {
-              localStorage.removeItem('reiki_cart');
+              var custSnap = loadLocalJson(LS_CUSTOMER_KEY);
+              var cartSnap = loadLocalJson(LS_CART_KEY);
+
               setStatus(
                 'success',
-                '¡Pago exitoso, gracias por tu compra!',
-                'Tu transacción fue aprobada correctamente.',
-                'Referencia de pago: ' + reference
+                '¡Pago aprobado!',
+                'Gracias por tu compra. Confirmaremos tu pedido y enviaremos la factura electrónica al correo con el que pagaste. Para envío o detalle del pedido puedes escribirnos por WhatsApp.',
+                reference ? 'Referencia de pedido: ' + reference : '',
+                idNote
               );
-              setActions(actionButton('/tienda', 'Seguir comprando'));
+              setActions(
+                actionButton('/tienda', 'Seguir comprando') +
+                  actionButton('https://wa.me/573245737413?text=' + encodeURIComponent('Hola, acabo de pagar. Ref: ' + (reference || wompiTxnId)), 'Consultar mi pedido', 'pay-action-btn--ghost')
+              );
+
+              await finalizeApprovedSale(wompiTxnId, custSnap, cartSnap);
               return;
             }
 
             if (status === 'PENDING') {
               setStatus(
                 'pending',
-                'Tu pago está en proceso de validación',
-                'Tu pago está en proceso de validación. Te notificaremos pronto.',
-                'Referencia de pago: ' + reference
+                'Pago en validación',
+                'Tu banco o método de pago aún está procesando el cobro. Suele resolverse en minutos. Conserva esta pantalla o el correo de Wompi; te avisaremos si hace falta algún dato.',
+                reference ? 'Referencia: ' + reference : '',
+                idNote
               );
-              setActions(actionButton('/tienda', 'Volver a la tienda'));
+              setActions(
+                actionButton('/', 'Ir al inicio') + actionButton('/tienda', 'Volver a la tienda', 'pay-action-btn--ghost')
+              );
               return;
             }
 
-            if (status === 'DECLINED' || status === 'ERROR') {
-              setStatus(
-                'error',
-                'Tu pago fue rechazado por la entidad bancaria',
-                'Puedes volver al carrito e intentar de nuevo con otro método de pago.',
-                'Referencia de pago: ' + reference
-              );
-              setActions(actionButton('/carrito', 'Volver al carrito e intentar de nuevo', 'pay-action-btn--error'));
+            if (status === 'DECLINED' || status === 'ERROR' || status === 'VOIDED' || status === 'VOID') {
+              var errTitle =
+                status === 'VOIDED' || status === 'VOID' ? 'Este pago fue anulado' : 'No se completó el pago';
+              var errBody =
+                status === 'DECLINED'
+                  ? 'El banco o la entidad rechazó la operación. No se hizo ningún cobro. Puedes intentar con otra tarjeta, PSE u otro medio disponible en Wompi.'
+                  : status === 'VOIDED' || status === 'VOID'
+                    ? 'La transacción quedó anulada. Si ves un cargo pendiente, espera la reversión según tu banco o contáctanos.'
+                    : 'Ocurrió un error al procesar el pago. Inténtalo de nuevo; si el problema continúa, escríbenos con el ID de transacción.';
+              setStatus('error', errTitle, errBody, reference ? 'Referencia: ' + reference : '', idNote);
+              setActions(actionButton('/carrito', 'Volver al carrito e intentar', 'pay-action-btn--error'));
               return;
             }
 
             setStatus(
               'pending',
-              'Estamos validando tu transacción',
-              'Recibimos tu intento de pago y estamos esperando confirmación final.',
-              'Referencia de pago: ' + reference
+              'Estado en revisión',
+              'Recibimos tu intento de pago (estado: ' + status + '). Espera un momento o vuelve más tarde; si el cargo aparece en tu cuenta y el pedido no avanza, envíanos el ID de transacción.',
+              reference ? 'Referencia: ' + reference : '',
+              idNote
             );
-            setActions(actionButton('/carrito', 'Volver al carrito'));
+            setActions(
+              actionButton('/', 'Ir al inicio') + actionButton('/carrito', 'Volver al carrito', 'pay-action-btn--ghost')
+            );
           } catch (err) {
             console.error('[respuesta-pago]', err);
             setStatus(
               'error',
-              'No pudimos validar el estado del pago',
-              'Intenta de nuevo en unos minutos o contáctanos por WhatsApp para ayudarte.'
+              'No pudimos consultar el resultado ahora',
+              'Puede ser un fallo temporal de red. Tu pago pudo haberse completado igual: revisa el correo de Wompi o el extracto de tu banco. Si necesitas ayuda, escríbenos con la hora aproximada y el monto.',
+              '',
+              txId ? 'ID en la URL (Wompi): ' + txId : ''
             );
             setActions(
-              actionButton('/carrito', 'Volver al carrito e intentar de nuevo', 'pay-action-btn--error') +
-                actionButton('https://wa.me/573245737413', 'Contactar soporte', 'pay-action-btn--ghost')
+              actionButton('/carrito', 'Volver al carrito', 'pay-action-btn--error') +
+                actionButton('https://wa.me/573245737413', 'Hablar con soporte', 'pay-action-btn--ghost')
             );
           }
         }
@@ -274,6 +590,14 @@ import FontAwesome from '../components/FontAwesome.astro';
     color: #6b7280;
     font-size: 0.92rem;
     font-weight: 600;
+  }
+
+  .pay-status-id {
+    margin: 0.35rem 0 0;
+    color: #9ca3af;
+    font-size: 0.8rem;
+    font-weight: 500;
+    word-break: break-all;
   }
 
   .pay-status-actions {
