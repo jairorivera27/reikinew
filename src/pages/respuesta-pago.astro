@@ -5,14 +5,21 @@ import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import SEO from '../components/SEO.astro';
 import FontAwesome from '../components/FontAwesome.astro';
 
-const rawEmailjsKey = import.meta.env.PUBLIC_EMAILJS_KEY;
-let emailjsPublicKey = '';
-if (typeof rawEmailjsKey === 'string') {
-  emailjsPublicKey = rawEmailjsKey.replace(/^['"]|['"]$/g, '').trim();
+function strEnv(v: string | undefined): string {
+  return typeof v === 'string' ? v.replace(/^['"]|['"]$/g, '').trim() : '';
 }
+
+const rawEmailjsKey = import.meta.env.PUBLIC_EMAILJS_KEY;
+let emailjsPublicKey = strEnv(rawEmailjsKey);
 if (!emailjsPublicKey || emailjsPublicKey === 'undefined') {
   emailjsPublicKey = '';
 }
+
+/** IDs por defecto; puedes sobreescribir con PUBLIC_EMAILJS_SERVICE_ID / PUBLIC_EMAILJS_TEMPLATE_ID en Vercel. */
+const emailjsServiceId =
+  strEnv(import.meta.env.PUBLIC_EMAILJS_SERVICE_ID) || 'service_9q2y8pe';
+const emailjsTemplateId =
+  strEnv(import.meta.env.PUBLIC_EMAILJS_TEMPLATE_ID) || 'template_f6qba2h';
 ---
 
 <!DOCTYPE html>
@@ -30,8 +37,16 @@ if (!emailjsPublicKey || emailjsPublicKey === 'undefined') {
       schemaType="WebPage"
     />
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" is:inline></script>
+    {emailjsPublicKey ? (
+      <meta name="reiki-emailjs-public-key" content={emailjsPublicKey} />
+    ) : null}
   </head>
-  <body class="pay-response-body" data-emailjs-public-key={emailjsPublicKey}>
+  <body
+    class="pay-response-body"
+    data-emailjs-public-key={emailjsPublicKey}
+    data-emailjs-service-id={emailjsServiceId}
+    data-emailjs-template-id={emailjsTemplateId}
+  >
     <Header />
 
     <main class="pay-response-main">
@@ -116,9 +131,21 @@ if (!emailjsPublicKey || emailjsPublicKey === 'undefined') {
         var LS_CART_KEY = 'reiki_cart';
         var LS_CUSTOMER_KEY = 'reiki_checkout_customer';
 
-        /** Reemplaza por los IDs de tu cuenta EmailJS (Dashboard → Email Services / Email Templates). */
-        var EMAILJS_SERVICE_ID = 'service_9q2y8pe';
-        var EMAILJS_TEMPLATE_ID = 'template_f6qba2h';
+        function resolveEmailJsServiceId() {
+          var b = document.body;
+          if (!(b instanceof HTMLElement)) return '';
+          var ds = b.dataset.emailjsServiceId ? String(b.dataset.emailjsServiceId).trim() : '';
+          var at = (b.getAttribute('data-emailjs-service-id') || '').trim();
+          return ds || at;
+        }
+
+        function resolveEmailJsTemplateId() {
+          var b = document.body;
+          if (!(b instanceof HTMLElement)) return '';
+          var ds = b.dataset.emailjsTemplateId ? String(b.dataset.emailjsTemplateId).trim() : '';
+          var at = (b.getAttribute('data-emailjs-template-id') || '').trim();
+          return ds || at;
+        }
 
         function loadLocalJson(key) {
           try {
@@ -139,9 +166,14 @@ if (!emailjsPublicKey || emailjsPublicKey === 'undefined') {
         function getEmailJsPublicKeyFromDom() {
           var b = document.body;
           if (!(b instanceof HTMLElement)) return '';
-          var fromDataset = b.dataset && b.dataset.emailjsPublicKey ? String(b.dataset.emailjsPublicKey) : '';
-          var fromAttr = b.getAttribute('data-emailjs-public-key') || '';
-          return (fromDataset || fromAttr).trim();
+          var fromDataset =
+            b.dataset && b.dataset.emailjsPublicKey ? String(b.dataset.emailjsPublicKey) : '';
+          var fromAttr = (b.getAttribute('data-emailjs-public-key') || '').trim();
+          var pub = (fromDataset || fromAttr).trim();
+          if (pub) return pub;
+          var meta = document.querySelector('meta[name="reiki-emailjs-public-key"]');
+          if (meta instanceof HTMLMetaElement) return (meta.getAttribute('content') || '').trim();
+          return '';
         }
 
         var emailJsLibraryInitialized = false;
@@ -221,12 +253,30 @@ if (!emailjsPublicKey || emailjsPublicKey === 'undefined') {
         async function sendEmailSaleApproved(templateParamsSubset) {
           try {
             var pub = getEmailJsPublicKeyFromDom();
-            if (!pub) return;
-            if (!ensureEmailJsInit(pub)) return;
+            if (!pub) {
+              console.warn(
+                '[respuesta-pago][EmailJS] Falta PUBLIC_EMAILJS_KEY en el build del sitio (Vercel → Environment Variables → PUBLIC_EMAILJS_KEY y redeploy). Sin eso no se puede enviar el correo.'
+              );
+              return;
+            }
+            if (!ensureEmailJsInit(pub)) {
+              console.warn('[respuesta-pago][EmailJS] No se cargó emailjs desde el CDN o init falló.');
+              return;
+            }
 
-            await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParamsSubset);
+            var serviceId = resolveEmailJsServiceId();
+            var templateId = resolveEmailJsTemplateId();
+            if (!serviceId || !templateId) {
+              console.warn('[respuesta-pago][EmailJS] Faltan data-emailjs-service-id o template-id en <body>.');
+              return;
+            }
+
+            var res = await emailjs.send(serviceId, templateId, templateParamsSubset);
+            if (typeof res !== 'undefined' && res && typeof console !== 'undefined' && console.info) {
+              console.info('[respuesta-pago][EmailJS] Envío solicitado:', res.status, res.text);
+            }
           } catch (e) {
-            console.error('[respuesta-pago][EmailJS]', e);
+            console.error('[respuesta-pago][EmailJS] Fallo al enviar:', e);
           }
         }
 
@@ -237,6 +287,8 @@ if (!emailjsPublicKey || emailjsPublicKey === 'undefined') {
               id_transaccion: String(wompiTxnId || ''),
               nombre_cliente: String(cust.fullName || ''),
               telefono_cliente: String(cust.phone || ''),
+              /** Úsalo en EmailJS: campo "To email" como {{email_cliente}} si quieres que llegue una copia al comprador. */
+              email_cliente: String(cust.email || ''),
               direccion_envio: formatDireccionEnvio(cust),
               resumen_pedido: buildResumenPedidoField(Array.isArray(cartSnapshot) ? cartSnapshot : []),
             };
