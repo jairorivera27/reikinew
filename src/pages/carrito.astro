@@ -33,10 +33,13 @@ if (!wompiPublicKey || wompiPublicKey === 'undefined') {
       keywords="checkout, carrito, pago Wompi, Addi, energía solar Colombia"
       schemaType="WebPage"
     />
-    <!-- Carga temprana del widget (evita carrera con el script del checkout en módulo ES) -->
-    <script src="https://checkout.wompi.co/widget.js" is:inline></script>
+    <!-- widget.js se carga al confirmar el pago (evita init temprano de Wompi v1 con config vacía y reduce choque con bloqueadores). -->
   </head>
-  <body class="checkout-page-body">
+  <body
+    class="checkout-page-body"
+    data-reiki-wompi-public-key={wompiPublicKey}
+    data-wompi-key={wompiPublicKey}
+  >
     <Header />
 
     <main class="checkout-main">
@@ -464,6 +467,13 @@ if (!wompiPublicKey || wompiPublicKey === 'undefined') {
         return {};
       }
       wompiKey = String(wompiKey).trim();
+      if (!isPlausibleWompiPublicKey(wompiKey)) {
+        console.error('[checkout] Llave Wompi con formato inválido (esperado pub_prod_… o pub_test_…).');
+        showCheckoutToast(
+          'La llave pública de Wompi no es válida. Revisa PUBLIC_WOMPI_KEY en Vercel (sin espacios ni comillas) y vuelve a desplegar.'
+        );
+        return {};
+      }
 
       var integrityHex = '';
       try {
@@ -580,7 +590,14 @@ if (!wompiPublicKey || wompiPublicKey === 'undefined') {
 
         checkout.open(function (result) {
           var transaction = result && result.transaction ? result.transaction : null;
-          console.log('Transacción terminada', transaction);
+          if (!transaction) {
+            console.warn(
+              '[checkout] Wompi: sin objeto transaction (cierre sin pago, error de red o bloqueador). ERR_BLOCKED_BY_CLIENT en la consola suele indicar extensión bloqueando api.wompi.co.',
+              result
+            );
+            return;
+          }
+          console.log('Transacción terminada', transaction.status, transaction);
         });
       } catch (openErr) {
         console.error('[checkout] WidgetCheckout.open', openErr);
@@ -743,7 +760,20 @@ if (!wompiPublicKey || wompiPublicKey === 'undefined') {
       else showCheckout();
     });
 
+    function isPlausibleWompiPublicKey(k) {
+      return /^pub_(prod|test)_[A-Za-z0-9_-]+$/.test(String(k || '').trim());
+    }
+
     function resolveStoredWompiKey() {
+      var b = document.body;
+      if (b instanceof HTMLElement) {
+        var fromBody = (
+          b.getAttribute('data-reiki-wompi-public-key') ||
+          b.getAttribute('data-wompi-key') ||
+          ''
+        ).trim();
+        if (fromBody && fromBody !== 'undefined') return fromBody;
+      }
       var fromDom = '';
       var formEl = document.getElementById('checkout-form');
       if (formEl instanceof HTMLFormElement) {
@@ -777,6 +807,13 @@ if (!wompiPublicKey || wompiPublicKey === 'undefined') {
           console.error('Error: PUBLIC_WOMPI_KEY no está en el build (p. ej. falta en Vercel al compilar).');
           showCheckoutToast(
             'Falta la llave pública de Wompi en el sitio. En Vercel: Settings → Environment Variables → agrega PUBLIC_WOMPI_KEY (tu pub_prod_…) para Production y vuelve a desplegar el proyecto.'
+          );
+          return;
+        }
+        if (!isPlausibleWompiPublicKey(activeWompiKey)) {
+          console.error('[checkout] PUBLIC_WOMPI_KEY no tiene formato pub_prod_… / pub_test_…');
+          showCheckoutToast(
+            'La llave Wompi del sitio no es válida. Corrige PUBLIC_WOMPI_KEY en Vercel y redespliega.'
           );
           return;
         }
