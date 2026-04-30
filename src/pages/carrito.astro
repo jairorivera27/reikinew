@@ -6,7 +6,15 @@ import ShoppingCartDrawer from '../components/ShoppingCartDrawer.astro';
 import CartFloatButton from '../components/CartFloatButton.astro';
 import SEO from '../components/SEO.astro';
 import FontAwesome from '../components/FontAwesome.astro';
-const wompiKey = import.meta.env.PUBLIC_WOMPI_KEY;
+/** Vacío aquí ⇒ en el navegador no hay llave: en Vercel define PUBLIC_WOMPI_KEY antes del build y redeploy. */
+const rawWompiKey = import.meta.env.PUBLIC_WOMPI_KEY;
+let wompiPublicKey = '';
+if (typeof rawWompiKey === 'string') {
+  wompiPublicKey = rawWompiKey.replace(/^['"]|['"]$/g, '').trim();
+}
+if (!wompiPublicKey || wompiPublicKey === 'undefined') {
+  wompiPublicKey = '';
+}
 ---
 
 <!DOCTYPE html>
@@ -15,6 +23,7 @@ const wompiKey = import.meta.env.PUBLIC_WOMPI_KEY;
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
+    {wompiPublicKey ? <meta name="reiki-wompi-public-key" content={wompiPublicKey} /> : null}
     <title>Checkout | Carrito | Reiki Energía Solar</title>
     <FontAwesome />
     <SEO
@@ -24,7 +33,8 @@ const wompiKey = import.meta.env.PUBLIC_WOMPI_KEY;
       keywords="checkout, carrito, pago Wompi, Addi, energía solar Colombia"
       schemaType="WebPage"
     />
-    <script src="https://checkout.wompi.co/widget.js" defer></script>
+    <!-- Carga temprana del widget (evita carrera con el script del checkout en módulo ES) -->
+    <script src="https://checkout.wompi.co/widget.js" is:inline></script>
   </head>
   <body class="checkout-page-body">
     <Header />
@@ -56,7 +66,13 @@ const wompiKey = import.meta.env.PUBLIC_WOMPI_KEY;
         <div id="checkout-active" class="checkout-active" hidden>
           <div class="checkout-columns">
             <div class="checkout-col checkout-col--form">
-              <form id="checkout-form" class="checkout-form" novalidate>
+              <form
+                id="checkout-form"
+                class="checkout-form"
+                novalidate
+                data-wompi-key={wompiPublicKey}
+                data-reiki-wompi-public-key={wompiPublicKey}
+              >
                 <section class="checkout-card" aria-labelledby="step-shipping-title">
                   <div class="checkout-step-badge">1</div>
                   <h2 id="step-shipping-title" class="checkout-card-title">Datos de envío</h2>
@@ -239,10 +255,9 @@ const wompiKey = import.meta.env.PUBLIC_WOMPI_KEY;
 
     <div id="checkout-pay-toast" class="checkout-pay-toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
 
-<script define:vars={{ wompiKey }}>
+<script define:vars={{ wompiPublicKey }}>
   (function () {
     var CART_KEY = 'reiki_cart';
-    var WOMPI_KEY = wompiKey || '';
 
     function extractPrice(priceString) {
       var cleaned = String(priceString || '').replace(/[^0-9]/g, '');
@@ -322,24 +337,83 @@ const wompiKey = import.meta.env.PUBLIC_WOMPI_KEY;
       }, 4200);
     }
 
-    function ensureWompiLoaded() {
+    /**
+     * Espera a que checkout.wompi.co deje disponible window.WidgetCheckout (orden de scripts, red lenta, extensión).
+     * @returns {Promise<void>}
+     */
+    function ensureWompiReady() {
+      if (typeof window.WidgetCheckout === 'function') {
+        return Promise.resolve();
+      }
+      var src = 'https://checkout.wompi.co/widget.js';
       return new Promise(function (resolve, reject) {
-        if (typeof window.WidgetCheckout === 'function') {
+        var settled = false;
+        var pollId = 0;
+        var deadlineId = 0;
+        function cleanup() {
+          if (pollId) window.clearInterval(pollId);
+          if (deadlineId) window.clearTimeout(deadlineId);
+        }
+        function succeed() {
+          if (settled) return;
+          if (typeof window.WidgetCheckout !== 'function') return;
+          settled = true;
+          cleanup();
           resolve();
+        }
+        function fail(code) {
+          if (settled) return;
+          settled = true;
+          cleanup();
+          reject(new Error(code));
+        }
+        if (typeof window.WidgetCheckout === 'function') {
+          succeed();
           return;
         }
-        var existing = document.querySelector('script[data-wompi-widget="true"]');
+        var existing = null;
+        var list = document.getElementsByTagName('script');
+        for (var i = 0; i < list.length; i++) {
+          var u = list[i].src || '';
+          if (u.indexOf('checkout.wompi.co/widget.js') !== -1) {
+            existing = list[i];
+            break;
+          }
+        }
+        deadlineId = window.setTimeout(function () {
+          if (typeof window.WidgetCheckout === 'function') succeed();
+          else fail('WOMPI_TIMEOUT');
+        }, 20000);
         if (existing) {
-          existing.addEventListener('load', function () { resolve(); }, { once: true });
-          existing.addEventListener('error', function () { reject(new Error('Wompi script error')); }, { once: true });
+          pollId = window.setInterval(function () {
+            if (typeof window.WidgetCheckout === 'function') succeed();
+          }, 40);
+          existing.addEventListener(
+            'load',
+            function () {
+              if (typeof window.WidgetCheckout === 'function') succeed();
+            },
+            { once: true }
+          );
+          existing.addEventListener(
+            'error',
+            function () {
+              fail('WOMPI_SCRIPT_ERROR');
+            },
+            { once: true }
+          );
           return;
         }
         var s = document.createElement('script');
-        s.src = 'https://checkout.wompi.co/widget.js';
-        s.defer = true;
-        s.setAttribute('data-wompi-widget', 'true');
-        s.onload = function () { resolve(); };
-        s.onerror = function () { reject(new Error('Wompi script error')); };
+        s.src = src;
+        s.async = false;
+        s.onload = function () {
+          if (typeof window.WidgetCheckout === 'function') succeed();
+          else fail('WOMPI_NO_GLOBAL');
+        };
+        s.onerror = function () {
+          fail('WOMPI_SCRIPT_ERROR');
+        };
         document.head.appendChild(s);
       });
     }
@@ -348,7 +422,7 @@ const wompiKey = import.meta.env.PUBLIC_WOMPI_KEY;
      * Construye los datos del checkout y abre el widget de Wompi.
      * @returns {Promise<object>}
      */
-    async function openWompiCheckout(form) {
+    async function openWompiCheckout(form, wompiKey) {
       var fd = new FormData(form);
       /** @type {ReturnType<loadCart>} */
       var cart = loadCart();
@@ -363,16 +437,60 @@ const wompiKey = import.meta.env.PUBLIC_WOMPI_KEY;
       var emailDelFormulario = String(fd.get('email') || '').trim();
       var nombreDelFormulario = String(fd.get('fullName') || '').trim();
       var telefonoDelFormulario = String(fd.get('phone') || '').trim().replace(/\s+/g, '');
-      var referenciaUnica = 'REIKI-' + Date.now();
+      var referenciaUnica = generatePaymentReference();
+
+      if (totalEnCentavos < 1) {
+        showCheckoutToast('El total a pagar no es válido. Revisa los productos en tu carrito.');
+        return {};
+      }
 
       try {
-        await ensureWompiLoaded();
-      } catch (_errLoad) {
+        await ensureWompiReady();
+      } catch (wompiErr) {
+        console.error('[checkout] Wompi', wompiErr);
+        showCheckoutToast(
+          'No se pudo cargar Wompi. Revisa tu conexión, prueba otro navegador o desactiva bloqueadores (p. ej. de anuncios) e intenta de nuevo.'
+        );
+        return {};
+      }
+      if (typeof window.WidgetCheckout !== 'function') {
         showCheckoutToast('No se pudo cargar Wompi. Verifica tu conexión e intenta de nuevo.');
         return {};
       }
-      if (!WOMPI_KEY) {
-        showCheckoutToast('No configuramos la llave pública de Wompi.');
+      if (!wompiKey || String(wompiKey).trim() === '' || String(wompiKey).trim() === 'undefined') {
+        showCheckoutToast(
+          'Falta la llave pública de Wompi. En el hosting (ej. Vercel) define PUBLIC_WOMPI_KEY con tu pub_prod_… antes del build y haz un nuevo despliegue.'
+        );
+        return {};
+      }
+      wompiKey = String(wompiKey).trim();
+
+      var integrityHex = '';
+      try {
+        var sigRes = await fetch('/api/wompi-integrity', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            reference: referenciaUnica,
+            amountInCents: totalEnCentavos,
+            currency: 'COP',
+          }),
+        });
+        var sigJson = await sigRes.json().catch(function () {
+          return {};
+        });
+        if (!sigRes.ok || !sigJson.integrity) {
+          console.error('[checkout] Firma Wompi', sigRes.status, sigJson);
+          showCheckoutToast(
+            sigJson.error ||
+              'No se pudo preparar el pago seguro (firma Wompi). Configura WOMPI_INTEGRITY_SECRET en el servidor o en .env para desarrollo.'
+          );
+          return {};
+        }
+        integrityHex = String(sigJson.integrity);
+      } catch (sigErr) {
+        console.error('[checkout] Firma Wompi fetch', sigErr);
+        showCheckoutToast('No se pudo contactar el servidor de firma de pagos. Intenta de nuevo.');
         return {};
       }
 
@@ -425,7 +543,7 @@ const wompiKey = import.meta.env.PUBLIC_WOMPI_KEY;
       console.log('[checkout] processCheckout payload', payload);
       console.log('[checkout] payload JSON:', JSON.stringify(payload, null, 2));
 
-      var checkout = new window.WidgetCheckout({
+      var checkoutConfig = {
         currency: 'COP',
         amountInCents: totalEnCentavos,
         reference: referenciaUnica,
@@ -437,12 +555,21 @@ const wompiKey = import.meta.env.PUBLIC_WOMPI_KEY;
           phoneNumber: telefonoDelFormulario,
           phoneNumberPrefix: '+57',
         },
-      });
+      };
+      checkoutConfig['signature:integrity'] = integrityHex;
 
-      checkout.open(function (result) {
-        var transaction = result && result.transaction ? result.transaction : null;
-        console.log('Transacción terminada', transaction);
-      });
+      var checkout = new window.WidgetCheckout(checkoutConfig);
+
+      try {
+        checkout.open(function (result) {
+          var transaction = result && result.transaction ? result.transaction : null;
+          console.log('Transacción terminada', transaction);
+        });
+      } catch (openErr) {
+        console.error('[checkout] WidgetCheckout.open', openErr);
+        showCheckoutToast('No se pudo abrir la pasarela de pago. Revisa la consola o intenta de nuevo.');
+        return {};
+      }
 
       showCheckoutToast('Abriendo pasarela de pago segura de Wompi…');
       return payload;
@@ -599,20 +726,50 @@ const wompiKey = import.meta.env.PUBLIC_WOMPI_KEY;
       else showCheckout();
     });
 
-    var form = document.getElementById('checkout-form');
+    function resolveStoredWompiKey() {
+      var fromDom = '';
+      var formEl = document.getElementById('checkout-form');
+      if (formEl instanceof HTMLFormElement) {
+        fromDom = (
+          formEl.getAttribute('data-reiki-wompi-public-key') ||
+          formEl.getAttribute('data-wompi-key') ||
+          ''
+        ).trim();
+      }
+      if (fromDom && fromDom !== 'undefined') return fromDom;
+      if (typeof wompiPublicKey === 'string' && wompiPublicKey.trim() && wompiPublicKey !== 'undefined') {
+        return wompiPublicKey.trim();
+      }
+      var metaPk = document.querySelector('meta[name="reiki-wompi-public-key"]');
+      if (metaPk instanceof HTMLMetaElement) {
+        var c = (metaPk.getAttribute('content') || '').trim();
+        if (c && c !== 'undefined') return c;
+      }
+      return '';
+    }
+
+    var checkoutForm = document.getElementById('checkout-form');
     var submitBtn = document.getElementById('checkout-submit');
     var aceptarTerminosEl = document.getElementById('aceptar-terminos');
 
-    if (form instanceof HTMLFormElement) {
-      form.addEventListener('submit', async function (e) {
+    if (checkoutForm instanceof HTMLFormElement) {
+      checkoutForm.addEventListener('submit', async function (e) {
         e.preventDefault();
+        var activeWompiKey = resolveStoredWompiKey();
+        if (!activeWompiKey) {
+          console.error('Error: PUBLIC_WOMPI_KEY no está en el build (p. ej. falta en Vercel al compilar).');
+          showCheckoutToast(
+            'Falta la llave pública de Wompi en el sitio. En Vercel: Settings → Environment Variables → agrega PUBLIC_WOMPI_KEY (tu pub_prod_…) para Production y vuelve a desplegar el proyecto.'
+          );
+          return;
+        }
         if (aceptarTerminosEl instanceof HTMLInputElement && !aceptarTerminosEl.checked) {
           showCheckoutToast('Debes aceptar los Términos y Condiciones para continuar con tu compra');
           aceptarTerminosEl.focus();
           return;
         }
-        if (!form.checkValidity()) {
-          form.reportValidity();
+        if (!checkoutForm.checkValidity()) {
+          checkoutForm.reportValidity();
           return;
         }
         if (loadCart().length === 0) {
@@ -622,7 +779,7 @@ const wompiKey = import.meta.env.PUBLIC_WOMPI_KEY;
         var btn = submitBtn instanceof HTMLButtonElement ? submitBtn : null;
         if (btn) btn.disabled = true;
         try {
-          await openWompiCheckout(form);
+          await openWompiCheckout(checkoutForm, activeWompiKey);
         } catch (err) {
           console.error('[checkout]', err);
           showCheckoutToast('No se pudo preparar el pago. Intenta de nuevo.');
