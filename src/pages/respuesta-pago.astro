@@ -176,6 +176,14 @@ const emailjsTemplateId =
           return '';
         }
 
+        function isLikelyEmailJsPublicKey(pk) {
+          var v = String(pk || '').trim();
+          if (!v || v === 'undefined') return false;
+          // Evita usar accidentalmente service_*/template_* como "public key".
+          if (/^(service_|template_)/i.test(v)) return false;
+          return true;
+        }
+
         var emailJsLibraryInitialized = false;
 
         function ensureEmailJsInit(publicKey) {
@@ -256,6 +264,12 @@ const emailjsTemplateId =
             if (!pub) {
               console.warn(
                 '[respuesta-pago][EmailJS] Falta PUBLIC_EMAILJS_KEY en el build del sitio (Vercel → Environment Variables → PUBLIC_EMAILJS_KEY y redeploy). Sin eso no se puede enviar el correo.'
+              );
+              return;
+            }
+            if (!isLikelyEmailJsPublicKey(pub)) {
+              console.warn(
+                '[respuesta-pago][EmailJS] PUBLIC_EMAILJS_KEY inválida: parece service/template id. Debe ser la Public Key real de EmailJS (Account → API keys).'
               );
               return;
             }

@@ -264,6 +264,12 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
 <script define:vars={{ wompiPublicKey, wompiRedirectUrl }}>
   (function () {
     var CART_KEY = 'reiki_cart';
+    var wompiKeyFromBuild =
+      typeof wompiPublicKey === 'string' && wompiPublicKey.trim() ? wompiPublicKey.trim() : '';
+    var wompiKeyLooksValid = /^pub_(prod|test)_[A-Za-z0-9_-]+$/.test(wompiKeyFromBuild);
+    if (!wompiKeyLooksValid) {
+      console.error('FALTA LLAVE WOMPI');
+    }
 
     function extractPrice(priceString) {
       var cleaned = String(priceString || '').replace(/[^0-9]/g, '');
@@ -348,6 +354,9 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
      * @returns {Promise<void>}
      */
     function ensureWompiReady() {
+      if (!wompiKeyLooksValid) {
+        return Promise.reject(new Error('WOMPI_KEY_MISSING'));
+      }
       if (typeof window.WidgetCheckout === 'function') {
         return Promise.resolve();
       }
