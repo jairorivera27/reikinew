@@ -1,23 +1,20 @@
 ---
 title: "Reflector Solar LED 100W"
-description: "Reflector solar LED de alta potencia 100W con sensor de movimiento y control remoto. Ideal para iluminación de grandes áreas exteriores."
-image: "/images/Productos tienda/Luminarias/LUMIANRIA SOLAR EN MEDELLIN.png"
+description: "Reflector solar 100W con bateria de 15Ah y funcionamiento autonomo para patios, entradas y zonas comerciales."
+image: "/images/Productos tienda/Luminarias/reflector led solar 100W.jpeg"
 category: "reflectores"
-price: "$299.000"
+price: "$221.000"
 specifications:
-  - "Potencia: 100W LED"
-  - "Panel solar: 40W integrado"
-  - "Batería: Litio 7.4V 8800mAh"
-  - "Sensor de movimiento: PIR"
-  - "Control remoto incluido"
-  - "Ángulo de iluminación: 180°"
-  - "IP66 resistente al agua"
-brand: "SolarTech"
-model: "ST-LED100W"
+  - "Potencia: 100W"
+  - "Bateria: 15Ah"
+  - "Uso recomendado: exterior residencial y comercial"
+  - "Tecnologia: LED solar"
+  - "Instalacion: pared o poste"
+brand: "Reflector solar de 100W"
+model: "RSL-100W-15AH"
 stock: "disponible"
-order: 2
-homeCarouselOrder: 8
+order: 11
 ---
 
-Reflector solar LED de máxima potencia para iluminación profesional de grandes áreas. Incluye control remoto y sensor de movimiento inteligente.
+Reflector solar de 100W con excelente relacion entre potencia y autonomia para seguridad e iluminacion exterior.
 
