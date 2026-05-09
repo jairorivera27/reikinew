@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { getAddiInstallmentHint } from '../../utils/addiHint';
+import { formatTipoPotenciaLine } from '../../utils/productCardCompactMeta';
 
 interface Props {
   producto: CollectionEntry<'productos'>;
@@ -10,12 +11,10 @@ const { producto } = Astro.props;
 const d = producto.data;
 const slug = producto.slug;
 
-const highlightRaw =
-  Array.isArray(d.specifications) && d.specifications.length > 0
-    ? String(d.specifications[0]).trim()
-    : '';
+const tipoPotenciaLine = formatTipoPotenciaLine(String(d.category), d.title);
 
-const showTitleFallback = !d.brand && !d.model;
+const marcaDisplay = String(d.brand ?? '').trim();
+const modeloDisplay = String(d.model ?? '').trim() || d.title.trim();
 
 const addiHint = getAddiInstallmentHint(d.price);
 ---
@@ -42,16 +41,15 @@ const addiHint = getAddiInstallmentHint(d.price);
   <div class="producto-content">
     <span class="sr-only">{d.title}</span>
 
-    {!showTitleFallback ? (
-      <div class="producto-meta">
-        {d.brand && <p class="producto-marca">{d.brand}</p>}
-        {d.model && <p class="producto-modelo">Modelo: {d.model}</p>}
+    <div class="producto-meta-stack">
+      <p class="producto-tipo-potencia">{tipoPotenciaLine}</p>
+      {marcaDisplay !== '' && (
+        <p class="producto-marca-gris">{marcaDisplay}</p>
+      )}
+      <div class="producto-modelo-recuadro" title={d.title}>
+        {modeloDisplay}
       </div>
-    ) : (
-      <h3 class="producto-name">{d.title}</h3>
-    )}
-
-    {highlightRaw !== '' && <p class="producto-highlight">{highlightRaw}</p>}
+    </div>
 
     <div class="producto-footer-compact">
       <div class="producto-price">{d.price}</div>
@@ -174,67 +172,68 @@ const addiHint = getAddiInstallmentHint(d.price);
 
   .producto-content {
     padding: 0.95rem;
-    flex: 1;
     display: flex;
     flex-direction: column;
-    gap: 0.45rem;
+    gap: 0.5rem;
     min-height: 0;
+    flex: 0 0 auto;
   }
 
-  .producto-meta {
+  /** Orden: tipo+potencia (morado negrita) → marca gris → recuadro modelo */
+  .producto-meta-stack {
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.35rem;
     cursor: pointer;
   }
 
-  .producto-name {
-    font-size: 1.05rem;
-    font-weight: 600;
-    cursor: pointer;
-    color: #1f2937;
+  .producto-tipo-potencia {
     margin: 0;
+    font-size: 0.95rem;
+    font-weight: 700;
+    line-height: 1.35;
+    color: #6b2181;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    line-height: 1.3;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
 
-  .producto-marca {
+  .producto-marca-gris {
     margin: 0;
-    font-size: 0.8rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
-    color: #6b2181;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    text-transform: none;
+    letter-spacing: 0.01em;
+    color: #6b7280;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 
-  .producto-modelo {
+  .producto-modelo-recuadro {
     margin: 0;
-    font-size: 0.85rem;
-    color: #4b5563;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  }
-
-  .producto-highlight {
-    cursor: pointer;
-    margin: 0;
-    font-size: 0.82rem;
-    line-height: 1.35;
-    color: #374151;
-    font-weight: 500;
     padding: 0.45rem 0.55rem;
-    background: rgba(107, 33, 129, 0.06);
-    border-radius: 8px;
-    border-left: 3px solid #6b2181;
+    border-radius: 10px;
+    background: #f9fafb;
+    border: 1px solid #e5e7eb;
+    font-size: 0.78rem;
+    font-weight: 500;
+    line-height: 1.38;
+    color: #64748b;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-word;
   }
 
   .producto-footer-compact {
-    margin-top: auto;
     padding-top: 0.65rem;
     border-top: 1px solid #e5e7eb;
     display: flex;
@@ -421,8 +420,8 @@ const addiHint = getAddiInstallmentHint(d.price);
       padding: 0.85rem;
     }
 
-    .producto-name {
-      font-size: 1rem;
+    .producto-tipo-potencia {
+      font-size: 0.9125rem;
     }
   }
 </style>
