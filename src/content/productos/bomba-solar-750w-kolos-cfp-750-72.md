@@ -1,7 +1,7 @@
 ---
 title: "Bomba Solar 750W KOLOS-CFP-750-72"
 description: "Bomba Solar 750W KOLOS-CFP-750-72. Equipo para bombeo de agua en aplicaciones solares, agrícolas o residenciales. Modelo: KOLOS-CFP-750-72; especificación principal: 750W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/bombeo/kolos-bomba-solar.jpg"
+image: "/images/productos-tienda/bombeo/kolos-cfp-horizontal.png"
 category: "bombeo"
 price: "$2.337.606"
 specifications:

@@ -1,7 +1,7 @@
 ---
 title: "Bomba Solar 1300W KOLOS3-155-130-20"
 description: "Bomba Solar 1300W KOLOS3-155-130-20. Equipo para bombeo de agua en aplicaciones solares, agrícolas o residenciales. Modelo: KOLOS3-155-130-20; especificación principal: 1300W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/bombeo/kolos-bomba-solar.jpg"
+image: "/images/productos-tienda/bombeo/kolos3-sumergible.jpg"
 category: "bombeo"
 price: "$3.222.669"
 specifications:

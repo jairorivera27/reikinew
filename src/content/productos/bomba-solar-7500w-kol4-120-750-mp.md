@@ -1,7 +1,7 @@
 ---
 title: "Bomba Solar 7500W KOL4-120-750-MP"
 description: "Bomba Solar 7500W KOL4-120-750-MP. Equipo para bombeo de agua en aplicaciones solares, agrícolas o residenciales. Modelo: KOL4-120-750-MP; especificación principal: 7500W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/bombeo/kolos-bomba-solar.jpg"
+image: "/images/productos-tienda/bombeo/kolos4-sumergible.jpg"
 category: "bombeo"
 price: "$9.281.851"
 specifications:

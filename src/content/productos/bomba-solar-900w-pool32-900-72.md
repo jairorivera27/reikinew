@@ -1,7 +1,7 @@
 ---
 title: "Bomba Solar 900W POOL32-900-72"
 description: "Bomba Solar 900W POOL32-900-72. Equipo para bombeo de agua en aplicaciones solares, agrícolas o residenciales. Modelo: POOL32-900-72; especificación principal: 900W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/bombeo/kolos-bomba-solar.jpg"
+image: "/images/productos-tienda/bombeo/kolos-pool.jpg"
 category: "bombeo"
 price: "$3.517.640"
 specifications:

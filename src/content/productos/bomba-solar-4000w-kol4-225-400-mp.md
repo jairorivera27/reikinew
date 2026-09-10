@@ -1,7 +1,7 @@
 ---
 title: "Bomba Solar 4000W KOL4-225-400-MP"
 description: "Bomba Solar 4000W KOL4-225-400-MP. Equipo para bombeo de agua en aplicaciones solares, agrícolas o residenciales. Modelo: KOL4-225-400-MP; especificación principal: 4000W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/bombeo/kolos-bomba-solar.jpg"
+image: "/images/productos-tienda/bombeo/kolos4-sumergible.jpg"
 category: "bombeo"
 price: "$6.808.288"
 specifications:
