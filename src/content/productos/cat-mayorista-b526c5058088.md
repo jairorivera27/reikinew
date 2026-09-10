@@ -1,7 +1,8 @@
 ---
+draft: true
 title: "s3 logger"
 description: "Componente de balance de sistemas (BOS) para instalaciones fotovoltaicas. Referencia **s3 logger** (Genérico)."
-image: "/images/astroenergy.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$5.206.650"
 specifications:
@@ -9,8 +10,7 @@ specifications:
   - "Marca: Genérico"
   - "Verifique datasheet del fabricante y normativa RETIE / NTC 2050 antes de instalar."
   - "Incluye gestión de garantía según política del importador."
-brand: "Genérico"
-model: "s3 logger"
+brand: "Sin marca"
 stock: "disponible"
 order: 5104
 ---

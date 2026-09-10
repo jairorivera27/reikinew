@@ -1,7 +1,7 @@
 ---
-title: "FRONIUS SENSOR WIND SPEED"
+title: "Fronius Sensor Wind Speed"
 description: "Sensor o periférico de monitorización Fronius (Datamanager, Smart Meter, sonda térmica/anemómetro) para inversores y Solar.web."
-image: "/images/logo-Victron-Energy-Ecogreensolar-1.jpg"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$260.100"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Instalación según manual Fronius"
   - "Fuente: [Fronius](https://www.fronius.com/)"
 brand: "Fronius"
-model: "FRONIUS SENSOR WIND SPEED"
 stock: "disponible"
 order: 5114
 ---

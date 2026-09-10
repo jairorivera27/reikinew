@@ -1,0 +1,140 @@
+{
+  "_instrucciones": "Fuente de verdad de las categorías de la tienda. La consumen el sitio (src/config/categorias-tienda.ts) y el importador (scripts/importar-catalogo-xlsx.mjs). Para agregar una categoría: añádela a 'categorias' y mapea el valor del Excel en 'mapeoDesdeExcel'. El 'id' es el valor que se guarda en el frontmatter y debe existir en el enum de src/content/config.ts.",
+
+  "categorias": [
+    {
+      "id": "paneles",
+      "nombre": "Paneles Solares",
+      "slug": "paneles-solares",
+      "icono": "fas fa-solar-panel",
+      "orden": 1,
+      "tipoSingular": "Panel solar",
+      "imagenPorDefecto": "/images/placeholders/paneles.svg",
+      "descripcionSeo": "Paneles solares monocristalinos y N-Type TOPCon de alta eficiencia para proyectos residenciales, comerciales e industriales en Colombia."
+    },
+    {
+      "id": "inversores",
+      "nombre": "Inversores",
+      "slug": "inversores",
+      "icono": "fas fa-bolt",
+      "orden": 2,
+      "tipoSingular": "Inversor",
+      "imagenPorDefecto": "/images/placeholders/inversores.svg",
+      "descripcionSeo": "Inversores solares on-grid, híbridos, off-grid y microinversores de las principales marcas, con envío nacional y garantía."
+    },
+    {
+      "id": "baterias",
+      "nombre": "Baterías de Litio",
+      "slug": "baterias-de-litio",
+      "icono": "fas fa-battery-full",
+      "orden": 3,
+      "tipoSingular": "Batería",
+      "imagenPorDefecto": "/images/placeholders/baterias.svg",
+      "descripcionSeo": "Baterías de litio LiFePO4 para almacenamiento solar residencial y comercial, en formatos rack, wall-mount y torre."
+    },
+    {
+      "id": "reflectores",
+      "nombre": "Reflectores Solares",
+      "slug": "reflectores-solares",
+      "icono": "fas fa-lightbulb",
+      "orden": 4,
+      "tipoSingular": "Reflector solar",
+      "imagenPorDefecto": "/images/placeholders/reflectores.svg",
+      "descripcionSeo": "Reflectores y luminarias solares LED autónomas para exteriores, parqueaderos, fincas y espacios comerciales."
+    },
+    {
+      "id": "controladores",
+      "nombre": "Controladores de Carga",
+      "slug": "controladores-de-carga",
+      "icono": "fas fa-microchip",
+      "orden": 5,
+      "tipoSingular": "Controlador solar",
+      "imagenPorDefecto": "/images/placeholders/controladores.svg",
+      "descripcionSeo": "Controladores de carga solar MPPT y PWM para sistemas aislados, con seguimiento de máxima potencia y protección de batería."
+    },
+    {
+      "id": "protecciones",
+      "nombre": "Protecciones Eléctricas",
+      "slug": "protecciones-electricas",
+      "icono": "fas fa-shield-alt",
+      "orden": 6,
+      "tipoSingular": "Protección eléctrica",
+      "imagenPorDefecto": "/images/placeholders/protecciones.svg",
+      "descripcionSeo": "Breakers DC y AC, DPS, fusibles, seccionadores y tableros de protección para instalaciones fotovoltaicas seguras."
+    },
+    {
+      "id": "cargadores",
+      "nombre": "Cargadores para Carro",
+      "slug": "cargadores-para-carro",
+      "icono": "fas fa-car-battery",
+      "orden": 7,
+      "tipoSingular": "Cargador",
+      "imagenPorDefecto": "/images/placeholders/cargadores.svg",
+      "descripcionSeo": "Cargadores solares y mantenedores de batería para vehículos, con paneles portátiles y regulador integrado."
+    },
+    {
+      "id": "monitoreo",
+      "nombre": "Monitoreo y Medición",
+      "slug": "monitoreo-medicion",
+      "icono": "fas fa-chart-line",
+      "orden": 8,
+      "tipoSingular": "Equipo de monitoreo",
+      "imagenPorDefecto": "/images/placeholders/monitoreo.svg",
+      "descripcionSeo": "Dataloggers, medidores de energía, transformadores de corriente y sistemas de gestión energética para plantas solares."
+    },
+    {
+      "id": "bombeo",
+      "nombre": "Bombeo Solar",
+      "slug": "bombeo-solar",
+      "icono": "fas fa-water",
+      "orden": 9,
+      "tipoSingular": "Bomba solar",
+      "imagenPorDefecto": "/images/placeholders/bombeo.svg",
+      "descripcionSeo": "Bombas solares sumergibles y de superficie para riego, ganadería y abastecimiento de agua en zonas sin red eléctrica."
+    },
+    {
+      "id": "accesorios",
+      "nombre": "Accesorios",
+      "slug": "accesorios",
+      "icono": "fas fa-puzzle-piece",
+      "orden": 10,
+      "tipoSingular": "Accesorio",
+      "imagenPorDefecto": "/images/placeholders/accesorios.svg",
+      "descripcionSeo": "Accesorios solares: dongles, cables, tapas, sensores, optimizadores y piezas de campo compatibles con inversores y sistemas fotovoltaicos."
+    }
+  ],
+
+  "mapeoDesdeExcel": {
+    "Panel Solar": "paneles",
+    "Inversor": "inversores",
+    "Microinversor": "inversores",
+    "Gestión energética": "inversores",
+    "Batería": "baterias",
+    "Controlador": "controladores",
+    "Protección": "protecciones",
+    "Monitoreo": "monitoreo",
+    "Medidor": "monitoreo",
+    "Bomba": "bombeo",
+    "Accesorio": "accesorios"
+  },
+
+  "_notaImagenes": "El Excel no trae URLs de imagen. El importador usa el logo de la marca cuando existe en logosPorMarca; si no, cae al imagenPorDefecto de la categoría y marca el producto con imagenPendiente: true.",
+
+  "logosPorMarca": {
+    "victron": "/images/logo-Victron-Energy-Ecogreensolar-1.jpg",
+    "growatt": "/images/growatt.png",
+    "huawei": "/images/huawei.png",
+    "must": "/images/Must.png",
+    "solis": "/images/solis.png",
+    "livoltek": "/images/livoltek.png",
+    "longi": "/images/Longi.png",
+    "ja solar": "/images/JA_Solar_Logo.svg.png"
+  },
+
+  "mapeoStock": {
+    "Disponible": "disponible",
+    "Agotado": "agotado",
+    "Pre-orden": "pre-orden",
+    "Preorden": "pre-orden"
+  }
+}

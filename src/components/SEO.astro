@@ -1,4 +1,9 @@
----
+﻿---
+import {
+  CONTACT_PHONE_SCHEMA,
+  CONTACT_WHATSAPP_URL,
+} from '../config/contact';
+
 /**
  * Componente SEO reutilizable para metadatos optimizado para energía solar en Colombia/Medellín
  * 
@@ -58,13 +63,13 @@ const baseSchema = {
   },
   "contactPoint": {
     "@type": "ContactPoint",
-    "telephone": "+57-324-573-7413",
+    "telephone": CONTACT_PHONE_SCHEMA,
     "contactType": "customer service",
     "areaServed": "CO",
     "availableLanguage": "Spanish"
   },
   "sameAs": [
-    "https://wa.me/573245737413"
+    CONTACT_WHATSAPP_URL
   ]
 };
 

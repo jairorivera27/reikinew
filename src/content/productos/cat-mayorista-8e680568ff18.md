@@ -1,7 +1,7 @@
 ---
 title: "PROCABLE REF10 ROJO C PV 6mm Cu(FLEX) XLPE SR 1800V 90°C PVC"
 description: "Cable solar Procable para campo FV: conductor de cobre flexible, doble aislamiento y temperatura nominal 90 °C según referencia REF10/REF12 y sección."
-image: "/images/astroenergy.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$7.880"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Instalación según RETIE / norma local y tablas de corriente"
   - "Fuente: fabricante / hoja técnica Procable"
 brand: "Procable"
-model: "PROCABLE REF10 ROJO C PV 6mm Cu(FLEX) XLPE SR 1800V 90°C PVC"
 stock: "disponible"
 order: 5187
 ---

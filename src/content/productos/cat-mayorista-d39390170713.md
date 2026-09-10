@@ -1,8 +1,8 @@
 ---
-title: "SOLIS MONITOREO S3-WIFI-ST"
+title: "Solis Monitoreo S3-WIFI-ST"
 description: "Equipo de monitorización o medida para inversores Solis (logger Wi‑Fi/LAN, EPM, GPRS, medidor + TC, etc.) según referencia exacta."
 image: "/images/livoltek.png"
-category: "protecciones"
+category: "monitoreo"
 price: "$355.350"
 specifications:
   - "Compatibilidad con modelos Solis indicados en manual del accesorio"
@@ -10,7 +10,6 @@ specifications:
   - "Instalación y cableado según guía Solis"
   - "Fuente: [Solis](https://www.solisinverters.com/)"
 brand: "Solis"
-model: "SOLIS MONITOREO S3-WIFI-ST"
 stock: "disponible"
 order: 5103
 ---

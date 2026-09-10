@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="Baterías de Litio">
+  <rect width="400" height="300" rx="16" fill="#f8fafc"/>
+  <rect x="1" y="1" width="398" height="298" rx="16" fill="none" stroke="#eef2ff" stroke-width="2"/>
+  <g transform="translate(200 130)">
+      <rect x="-78" y="-46" width="146" height="92" rx="12" fill="none" stroke="#6b2181" stroke-width="6"/>
+      <rect x="68" y="-16" width="14" height="32" rx="4" fill="#6b2181"/>
+      <rect x="-60" y="-28" width="30" height="56" rx="4" fill="#c4a0d0"/>
+      <rect x="-22" y="-28" width="30" height="56" rx="4" fill="#c4a0d0"/>
+      <rect x="16" y="-28" width="30" height="56" rx="4" fill="none" stroke="#c4a0d0" stroke-width="4"/>
+    </g>
+  <text x="200" y="256" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="18" font-weight="600" fill="#6b7280">Baterías de Litio</text>
+  <text x="200" y="278" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="13" fill="#9ca3af">Imagen referencial</text>
+</svg>

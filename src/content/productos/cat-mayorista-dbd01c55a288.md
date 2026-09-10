@@ -1,8 +1,8 @@
 ---
-title: "HOYMILES MICROINVERTER HMS-2000-4T"
+title: "Hoymiles Microinverter HMS-2000-4T"
 description: "Microinversor monofásico Hoymiles HMS-2000-4T: cuatro MPPT independientes para hasta cuatro módulos de alta potencia, comunicación inalámbrica con gateway Hoymiles y monitoreo en nube."
-image: "/images/Productos tienda/Inversores/Apsystems DS3D Medellín.png"
-category: "protecciones"
+image: "/images/productos-tienda/inversores/hoymiles-hms.jpg"
+category: "inversores"
 price: "$1.690.650"
 specifications:
   - "Salida nominal típica: 2000 VA (microinversor cuatro entradas / 4 MPPT)"
@@ -13,7 +13,6 @@ specifications:
   - "Carcasa IP67; rango temperatura aprox. −40 °C a +65 °C; refrigeración por convección"
   - "Fuente: [Hoymiles / datasheet HMS serie](https://www.hoymiles.com/)"
 brand: "Hoymiles"
-model: "HOYMILES MICROINVERTER HMS-2000-4T"
 stock: "disponible"
 order: 5017
 ---

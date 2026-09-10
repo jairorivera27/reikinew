@@ -1,7 +1,7 @@
 ---
-title: "SOLIS DLS MONITOREO LAN-$ S3 GPRS MONITOREO CON SIMCARD"
+title: "Solis Dls Monitoreo LAN-$ S3 GPRS Monitoreo con Simcard"
 description: "Equipo de monitorización o medida para inversores Solis (logger Wi‑Fi/LAN, EPM, GPRS, medidor + TC, etc.) según referencia exacta."
-image: "/images/livoltek.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$278.100"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Instalación y cableado según guía Solis"
   - "Fuente: [Solis](https://www.solisinverters.com/)"
 brand: "Solis"
-model: "SOLIS DLS MONITOREO LAN-$ S3 GPRS MONITOREO CON SIMCARD"
 stock: "disponible"
 order: 5105
 ---

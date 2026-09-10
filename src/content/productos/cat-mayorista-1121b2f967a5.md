@@ -1,7 +1,7 @@
 ---
-title: "FRONIUS MODULE TEMPERATURE SENSOR"
+title: "Fronius Module Temperature Sensor"
 description: "Sensor o periférico de monitorización Fronius (Datamanager, Smart Meter, sonda térmica/anemómetro) para inversores y Solar.web."
-image: "/images/logo-Victron-Energy-Ecogreensolar-1.jpg"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$1.103.896"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Instalación según manual Fronius"
   - "Fuente: [Fronius](https://www.fronius.com/)"
 brand: "Fronius"
-model: "FRONIUS MODULE TEMPERATURE SENSOR"
 stock: "disponible"
 order: 5113
 ---

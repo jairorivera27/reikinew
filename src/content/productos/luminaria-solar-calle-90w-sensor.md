@@ -10,7 +10,6 @@ specifications:
   - "Sensor de movimiento: incluido"
   - "Aplicacion: calles internas y parqueaderos"
   - "Instalacion: poste"
-brand: "Luminaria solar de calle 90W"
 model: "LCS-90W-15AH-SM"
 stock: "disponible"
 order: 18

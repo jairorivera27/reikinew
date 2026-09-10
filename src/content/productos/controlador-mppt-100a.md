@@ -12,7 +12,7 @@ specifications:
   - "App móvil y software PC"
   - "Pantalla LCD táctil"
   - "Eficiencia: 99.5%"
-brand: "Victron Energy"
+brand: "Victron"
 model: "SmartSolar MPPT 100/50"
 stock: "disponible"
 order: 5

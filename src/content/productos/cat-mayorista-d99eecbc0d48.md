@@ -1,18 +1,23 @@
 ---
-title: "HOYMILES MICROINVERTER TRIFASICO HMT-2000-4T-208"
+title: "Hoymiles Microinverter Trifasico HMT-2000-4T-208"
 description: "Microinversor trifásico Hoymiles serie HMT para conexión a red trifásica, con seguimiento MPPT por canal y monitoreo remoto vía DTU."
-image: "/images/Productos tienda/Inversores/Apsystems DS3D Medellín.png"
-category: "protecciones"
-price: "$2.004.300"
+image: "/images/productos-tienda/inversores/hoymiles-hms.jpg"
+category: "inversores"
+price: "$1.233.750"
 specifications:
-  - "Salida trifásica; número de MPPT y potencia según referencia HMT del pedido"
-  - "Rango de tensión CC y CA según ficha del modelo (208/220/230 V según región)"
-  - "IP67; supervisión vía DTU Hoymiles"
-  - "Fuente: [Hoymiles](https://www.hoymiles.com/)"
+  - "Tipo: Microinversor"
+  - "Especificación principal: 2kW"
+  - "Aplicación: conversión de energía a nivel de módulo fotovoltaico"
 brand: "Hoymiles"
-model: "HOYMILES MICROINVERTER TRIFASICO HMT-2000-4T-208"
 stock: "disponible"
 order: 5018
+precioAnterior: "$2.004.300"
+descuentoPct: 38
+promocion: "Liquidación"
+promoImagen: "/images/placeholders/promo-liquidacion.svg"
+sku: "2000-4T"
+power: "2kW"
+updatedAt: "2026-09-10"
 ---
 
 **HOYMILES MICROINVERTER TRIFASICO HMT-2000-4T-208** · referencia **Hoymiles** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Retorno de la inversión en energía solar para hogares en Colombia"
 description: "Calcula en cuántos años se paga un sistema solar residencial en Colombia. Analizamos tarifas, radiación, incentivos de la Ley 1715 y venta de excedentes para estimar el ROI."
 image: "/images/ENERGIA SOLAR EN MEDELLIN COLOMBIA PANELES.png"
@@ -59,7 +59,7 @@ Cada kWh inyectado se descuenta a tarifa plena en la factura. Si generas 30 % 
 ## CTA
 
 <div class="blog-cta-section">
-  <a href="https://wa.me/573245737413?text=Quiero%20calcular%20el%20retorno%20de%20mi%20sistema%20solar" target="_blank" rel="noopener noreferrer" class="blog-cta-button">
+  <a href="https://wa.me/573122435627?text=Quiero%20calcular%20el%20retorno%20de%20mi%20sistema%20solar" target="_blank" rel="noopener noreferrer" class="blog-cta-button">
     <i class="fab fa-whatsapp"></i>
     <span>Solicitar análisis gratuito de ROI</span>
     <i class="fas fa-arrow-right"></i>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="Inversores">
+  <rect width="400" height="300" rx="16" fill="#f8fafc"/>
+  <rect x="1" y="1" width="398" height="298" rx="16" fill="none" stroke="#eef2ff" stroke-width="2"/>
+  <g transform="translate(200 130)">
+      <rect x="-70" y="-62" width="140" height="124" rx="14" fill="none" stroke="#6b2181" stroke-width="6"/>
+      <path d="M-42 10 q21 -60 42 0 q21 60 42 0" fill="none" stroke="#6b2181" stroke-width="6" stroke-linecap="round"/>
+      <circle cx="-46" cy="-40" r="6" fill="#c4a0d0"/>
+      <path d="M-40 44 L40 44" stroke="#c4a0d0" stroke-width="6" stroke-linecap="round"/>
+    </g>
+  <text x="200" y="256" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="18" font-weight="600" fill="#6b7280">Inversores</text>
+  <text x="200" y="278" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="13" fill="#9ca3af">Imagen referencial</text>
+</svg>

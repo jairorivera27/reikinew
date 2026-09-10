@@ -1,4 +1,4 @@
-import { useState } from "react";
+﻿import { useState } from "react";
 
 const PRODUCTS = [
   { id: 1, name: "Panel solar 620W", price: 1850000 },
@@ -6,8 +6,9 @@ const PRODUCTS = [
   { id: 3, name: "Controlador MPPT", price: 780000 },
 ];
 
-// Número de WhatsApp - Cambia este número por el de tu negocio
-const WHATSAPP_NUMBER = "573245737413";
+import { CONTACT_PHONE_E164 } from '../config/contact';
+
+const WHATSAPP_NUMBER = CONTACT_PHONE_E164;
 
 export default function CarritoWhatsApp() {
   const [cart, setCart] = useState<{id:number; name:string; price:number; qty:number}[]>([]);

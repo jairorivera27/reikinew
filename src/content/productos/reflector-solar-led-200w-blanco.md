@@ -10,7 +10,6 @@ specifications:
   - "Color de luz: Blanco"
   - "Tecnologia: LED solar"
   - "Uso recomendado: zonas amplias y parqueaderos"
-brand: "Reflector solar de 200W blanco"
 model: "RSL-200W-20AH-BL"
 stock: "disponible"
 order: 12

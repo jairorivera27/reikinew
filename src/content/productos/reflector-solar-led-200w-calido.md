@@ -10,7 +10,6 @@ specifications:
   - "Color de luz: Calido"
   - "Tecnologia: LED solar"
   - "Uso recomendado: terrazas, jardines y zonas sociales"
-brand: "Reflector solar de 200W calido"
 model: "RSL-200W-20AH-CA"
 stock: "disponible"
 order: 14

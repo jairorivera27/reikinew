@@ -10,7 +10,6 @@ specifications:
   - "Tecnologia: LED solar"
   - "Cobertura: gran area"
   - "Uso recomendado: industria, canchas y zonas perimetrales"
-brand: "Reflector solar de 600W"
 model: "RSL-600W-60AH"
 stock: "disponible"
 order: 16

@@ -1,8 +1,8 @@
 ---
-title: "HOYMILES MICROINVERTER HMS-800-2T"
+title: "Hoymiles Microinverter HMS-800-2T"
 description: "Microinversor Hoymiles HMS-800-2T para dos entradas MPPT, ideal para strings cortos o porciones de tejado con sombras diferenciadas."
-image: "/images/Productos tienda/Inversores/Apsystems DS3D Medellín.png"
-category: "protecciones"
+image: "/images/productos-tienda/inversores/hoymiles-hms.jpg"
+category: "inversores"
 price: "$1.147.500"
 specifications:
   - "Dos MPPT; potencia nominal orientativa 800 VA según modelo"
@@ -10,7 +10,6 @@ specifications:
   - "Comunicación con DTU; carcasa para exterior IP67"
   - "Fuente: [Hoymiles](https://www.hoymiles.com/)"
 brand: "Hoymiles"
-model: "HOYMILES MICROINVERTER HMS-800-2T"
 stock: "disponible"
 order: 5024
 ---

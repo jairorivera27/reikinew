@@ -1,7 +1,7 @@
 ---
 title: "SUN2000-3KTL-L1"
 description: "Inversor string monofásico Huawei SUN2000-3KTL-L1 para conexión a red, con doble MPPT, alto rendimiento y protecciones avanzadas (incl. detección de arco según revisión). Compatible con integración de baterías LUNA2000 en configuraciones híbridas admitidas por Huawei."
-image: "/images/huawei.png"
+image: "/images/productos-tienda/inversores/huawei-sun2000.png"
 category: "inversores"
 price: "$2.409.750"
 specifications:
@@ -12,7 +12,6 @@ specifications:
   - "IP66; temperatura de trabajo aprox. −25 °C a +60 °C"
   - "Fuente: [Huawei FusionSolar / SUN2000 L1](https://solar.huawei.com/)"
 brand: "Huawei"
-model: "SUN2000-3KTL-L1"
 stock: "disponible"
 order: 5039
 ---

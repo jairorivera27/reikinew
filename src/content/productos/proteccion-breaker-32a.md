@@ -1,7 +1,7 @@
 ---
 title: "Breaker DC 32A"
 description: "Interruptor termomagnético DC de 32 amperios para protección de sistemas solares pequeños y medianos. Certificado y confiable."
-image: "/images/Productos tienda/Protección Electrica/Breaker DC 32a ABB Medellín.png"
+image: "/images/productos-tienda/protecciones/abb-breaker-dc-32a.png"
 category: "protecciones"
 price: "$69.000"
 specifications:

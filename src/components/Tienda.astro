@@ -1,34 +1,64 @@
----
+﻿---
 import { getCollection } from 'astro:content';
 import ProductoCardCompact from './tienda/ProductoCardCompact.astro';
+import { CATEGORIAS, urlCategoria } from '../config/categorias-tienda';
+import { calcularValor, ordenarPorValor, type ResultadoValor } from '../utils/calidadPrecio';
+import { ordenarInversoresPorTipoYPotencia } from '../utils/productCardCompactMeta';
+import { DESCUENTOS_URL, estaRebajado } from '../utils/descuentos';
 
-// Obtener todos los productos ordenados
-const productos = await getCollection('productos');
-const productosOrdenados = productos.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
+/** Tope de tarjetas por carrusel: el resto se ve en el listado paginado de la categoría. */
+const MAX_POR_CARRUSEL = 12;
 
-// Filtrar por categoría
-const paneles = productosOrdenados.filter(p => p.data.category === 'paneles');
-const inversores = productosOrdenados.filter(p => p.data.category === 'inversores');
-const baterias = productosOrdenados.filter(p => p.data.category === 'baterias');
-const reflectores = productosOrdenados.filter(p => p.data.category === 'reflectores');
-const controladores = productosOrdenados.filter(p => p.data.category === 'controladores');
-const protecciones = productosOrdenados.filter(p => p.data.category === 'protecciones');
-const cargadores = productosOrdenados.filter(p => p.data.category === 'cargadores');
+const productos = await getCollection('productos', ({ data }) => data.draft !== true);
 
-// Convertir productos a JSON para JavaScript
-const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
-  id: p.slug,
-  category: p.data.category,
-  title: p.data.title,
-  description: p.data.description,
-  price: p.data.price,
-  image: p.data.image,
-  brand: p.data.brand || '',
-  model: p.data.model || '',
-  stock: p.data.stock || 'disponible',
-  specifications: p.data.specifications || [],
-})));
+/** Los rebajados tienen su propio listado; acá solo se anuncian. */
+const rebajados = productos
+  .filter((p) => estaRebajado(p.data))
+  .sort((a, b) => (b.data.descuentoPct ?? 0) - (a.data.descuentoPct ?? 0));
+const descuentoMaximo = Math.max(0, ...rebajados.map((p) => p.data.descuentoPct ?? 0));
 
+const valores = new Map<string, ResultadoValor>();
+
+const secciones = CATEGORIAS.map((categoria) => {
+  const todos = productos.filter((p) => p.data.category === categoria.id);
+
+  // Inversores: On-Grid → Off-Grid → Híbrido, potencia ascendente. Resto: calidad-precio.
+  const valoresCategoria = calcularValor(
+    todos.map((p) => ({ slug: p.slug, ...p.data }))
+  );
+  for (const [slug, valor] of valoresCategoria) valores.set(slug, valor);
+
+  const conMeta = todos.map((p) => ({ entry: p, slug: p.slug, ...p.data }));
+  const ordenados =
+    categoria.id === 'inversores'
+      ? ordenarInversoresPorTipoYPotencia(conMeta)
+      : ordenarPorValor(conMeta, valoresCategoria);
+
+  return {
+    categoria,
+    total: todos.length,
+    visibles: ordenados.slice(0, MAX_POR_CARRUSEL).map((p) => p.entry),
+    restantes: Math.max(0, todos.length - MAX_POR_CARRUSEL),
+  };
+}).filter((s) => s.total > 0);
+
+// Solo los productos renderizados alimentan el modal, para no embeber el catálogo entero.
+const productosJSON = JSON.stringify(
+  secciones.flatMap((s) =>
+    s.visibles.map((p) => ({
+      id: p.slug,
+      category: p.data.category,
+      title: p.data.title,
+      description: p.data.description,
+      price: p.data.price,
+      image: p.data.image,
+      brand: p.data.brand || '',
+      model: p.data.model || '',
+      stock: p.data.stock || 'disponible',
+      specifications: p.data.specifications || [],
+    }))
+  )
+);
 ---
 
 <section id="tienda" class="tienda-section">
@@ -48,236 +78,87 @@ const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
             <i class="fas fa-list"></i>
             Categorías
           </h3>
+          {rebajados.length > 0 && (
+            <a href={DESCUENTOS_URL} class="sidebar-descuentos">
+              <i class="fas fa-tags" aria-hidden="true"></i>
+              <span class="sidebar-descuentos-texto">
+                <strong>Descuentos</strong>
+                hasta -{descuentoMaximo}%
+              </span>
+              <span class="sidebar-descuentos-num">{rebajados.length}</span>
+            </a>
+          )}
+
           <nav class="categories-menu">
-            <a href="#paneles" class="category-link" data-category="paneles">
-              <i class="fas fa-solar-panel"></i>
-              <span>Paneles Solares</span>
-              <span class="category-count">({paneles.length})</span>
-            </a>
-            <a href="#inversores" class="category-link" data-category="inversores">
-              <i class="fas fa-bolt"></i>
-              <span>Inversores</span>
-              <span class="category-count">({inversores.length})</span>
-            </a>
-            <a href="#baterias" class="category-link" data-category="baterias">
-              <i class="fas fa-battery-full"></i>
-              <span>Baterías de Litio</span>
-              <span class="category-count">({baterias.length})</span>
-            </a>
-            <a href="#reflectores" class="category-link" data-category="reflectores">
-              <i class="fas fa-lightbulb"></i>
-              <span>Reflectores Solares</span>
-              <span class="category-count">({reflectores.length})</span>
-            </a>
-            <a href="#controladores" class="category-link" data-category="controladores">
-              <i class="fas fa-microchip"></i>
-              <span>Controladores de Carga</span>
-              <span class="category-count">({controladores.length})</span>
-            </a>
-            <a href="#protecciones" class="category-link" data-category="protecciones">
-              <i class="fas fa-shield-alt"></i>
-              <span>Protecciones Eléctricas</span>
-              <span class="category-count">({protecciones.length})</span>
-            </a>
-            <a href="#cargadores" class="category-link" data-category="cargadores">
-              <i class="fas fa-car-battery"></i>
-              <span>Cargadores para Carro</span>
-              <span class="category-count">({cargadores.length})</span>
-            </a>
+            {secciones.map(({ categoria, total }) => (
+              <a href={`#${categoria.id}`} class="category-link" data-category={categoria.id}>
+                <i class={categoria.icono}></i>
+                <span>{categoria.nombre}</span>
+                <span class="category-count">({total})</span>
+              </a>
+            ))}
           </nav>
         </div>
       </aside>
 
       <!-- Contenido principal -->
       <div class="tienda-content">
-    <!-- Paneles Solares -->
-    <div id="paneles" class="categoria-section">
-      <div class="categoria-header">
-        <h2 class="categoria-title">
-          <i class="fas fa-solar-panel"></i>
-          Paneles Solares
-        </h2>
-        <div class="carousel-controls">
-          <button class="carousel-btn prev-btn" data-category="paneles" aria-label="Anterior">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <button class="carousel-btn next-btn" data-category="paneles" aria-label="Siguiente">
-            <i class="fas fa-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-      <div class="productos-carousel-wrapper">
-        <div class="productos-carousel" data-category="paneles">
-          <div class="productos-track" data-category="paneles">
-        {paneles.map((producto) => (
-          <ProductoCardCompact producto={producto} />
-        ))}
-          </div>
-        </div>
-      </div>
-    </div>
+    {rebajados.length > 0 && (
+      <a href={DESCUENTOS_URL} class="banner-descuentos">
+        <span class="banner-descuentos-icono">
+          <i class="fas fa-tags" aria-hidden="true"></i>
+        </span>
+        <span class="banner-descuentos-texto">
+          <strong>Descuentos hasta -{descuentoMaximo}%</strong>
+          {rebajados.length} {rebajados.length === 1 ? 'equipo' : 'equipos'} en liquidación · stock limitado
+        </span>
+        <span class="banner-descuentos-cta">
+          Ver ofertas
+          <i class="fas fa-arrow-right" aria-hidden="true"></i>
+        </span>
+      </a>
+    )}
 
-    <!-- Inversores -->
-    <div id="inversores" class="categoria-section">
-      <div class="categoria-header">
-        <h2 class="categoria-title">
-          <i class="fas fa-bolt"></i>
-          Inversores
-        </h2>
-        <div class="carousel-controls">
-          <button class="carousel-btn prev-btn" data-category="inversores" aria-label="Anterior">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <button class="carousel-btn next-btn" data-category="inversores" aria-label="Siguiente">
-            <i class="fas fa-chevron-right"></i>
-          </button>
+    {secciones.map(({ categoria, total, visibles, restantes }) => (
+      <div id={categoria.id} class="categoria-section">
+        <div class="categoria-header">
+          <h2 class="categoria-title">
+            <i class={categoria.icono}></i>
+            {categoria.nombre}
+          </h2>
+          <div class="categoria-header-acciones">
+            <a class="categoria-ver-todo" href={urlCategoria(categoria.id)}>
+              Ver los {total} productos
+              <i class="fas fa-arrow-right" aria-hidden="true"></i>
+            </a>
+            <div class="carousel-controls">
+              <button class="carousel-btn prev-btn" data-category={categoria.id} aria-label="Anterior">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="carousel-btn next-btn" data-category={categoria.id} aria-label="Siguiente">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div class="productos-carousel-wrapper">
-        <div class="productos-carousel" data-category="inversores">
-          <div class="productos-track" data-category="inversores">
-        {inversores.map((producto) => (
-          <ProductoCardCompact producto={producto} />
-        ))}
+        <div class="productos-carousel-wrapper">
+          <div class="productos-carousel" data-category={categoria.id}>
+            <div class="productos-track" data-category={categoria.id}>
+              {visibles.map((producto) => (
+                <ProductoCardCompact producto={producto} valor={valores.get(producto.slug)} />
+              ))}
+              {restantes > 0 && (
+                <a class="categoria-card-mas" href={urlCategoria(categoria.id)}>
+                  <i class="fas fa-plus-circle" aria-hidden="true"></i>
+                  <span class="categoria-card-mas-num">+{restantes}</span>
+                  <span class="categoria-card-mas-txt">Ver el resto de {categoria.nombre}</span>
+                </a>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
-
-    <!-- Baterías -->
-    <div id="baterias" class="categoria-section">
-      <div class="categoria-header">
-        <h2 class="categoria-title">
-          <i class="fas fa-battery-full"></i>
-          Baterías de Litio
-        </h2>
-        <div class="carousel-controls">
-          <button class="carousel-btn prev-btn" data-category="baterias" aria-label="Anterior">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <button class="carousel-btn next-btn" data-category="baterias" aria-label="Siguiente">
-            <i class="fas fa-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-      <div class="productos-carousel-wrapper">
-        <div class="productos-carousel" data-category="baterias">
-          <div class="productos-track" data-category="baterias">
-        {baterias.map((producto) => (
-          <ProductoCardCompact producto={producto} />
-        ))}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Reflectores Solares -->
-    <div id="reflectores" class="categoria-section">
-      <div class="categoria-header">
-        <h2 class="categoria-title">
-          <i class="fas fa-lightbulb"></i>
-          Reflectores Solares
-        </h2>
-        <div class="carousel-controls">
-          <button class="carousel-btn prev-btn" data-category="reflectores" aria-label="Anterior">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <button class="carousel-btn next-btn" data-category="reflectores" aria-label="Siguiente">
-            <i class="fas fa-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-      <div class="productos-carousel-wrapper">
-        <div class="productos-carousel" data-category="reflectores">
-          <div class="productos-track" data-category="reflectores">
-        {reflectores.map((producto) => (
-          <ProductoCardCompact producto={producto} />
-        ))}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Controladores de Carga -->
-    <div id="controladores" class="categoria-section">
-      <div class="categoria-header">
-        <h2 class="categoria-title">
-          <i class="fas fa-microchip"></i>
-          Controladores de Carga
-        </h2>
-        <div class="carousel-controls">
-          <button class="carousel-btn prev-btn" data-category="controladores" aria-label="Anterior">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <button class="carousel-btn next-btn" data-category="controladores" aria-label="Siguiente">
-            <i class="fas fa-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-      <div class="productos-carousel-wrapper">
-        <div class="productos-carousel" data-category="controladores">
-          <div class="productos-track" data-category="controladores">
-        {controladores.map((producto) => (
-          <ProductoCardCompact producto={producto} />
-        ))}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Protecciones Eléctricas -->
-    <div id="protecciones" class="categoria-section">
-      <div class="categoria-header">
-        <h2 class="categoria-title">
-          <i class="fas fa-shield-alt"></i>
-          Protecciones Eléctricas
-        </h2>
-        <div class="carousel-controls">
-          <button class="carousel-btn prev-btn" data-category="protecciones" aria-label="Anterior">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <button class="carousel-btn next-btn" data-category="protecciones" aria-label="Siguiente">
-            <i class="fas fa-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-      <div class="productos-carousel-wrapper">
-        <div class="productos-carousel" data-category="protecciones">
-          <div class="productos-track" data-category="protecciones">
-        {protecciones.map((producto) => (
-          <ProductoCardCompact producto={producto} />
-        ))}
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Cargadores para Carro -->
-    <div id="cargadores" class="categoria-section">
-      <div class="categoria-header">
-        <h2 class="categoria-title">
-          <i class="fas fa-car-battery"></i>
-          Cargadores para Carro
-        </h2>
-        <div class="carousel-controls">
-          <button class="carousel-btn prev-btn" data-category="cargadores" aria-label="Anterior">
-            <i class="fas fa-chevron-left"></i>
-          </button>
-          <button class="carousel-btn next-btn" data-category="cargadores" aria-label="Siguiente">
-            <i class="fas fa-chevron-right"></i>
-          </button>
-        </div>
-      </div>
-      <div class="productos-carousel-wrapper">
-        <div class="productos-carousel" data-category="cargadores">
-          <div class="productos-track" data-category="cargadores">
-        {cargadores.map((producto) => (
-          <ProductoCardCompact producto={producto} />
-        ))}
-          </div>
-        </div>
-      </div>
-    </div>
+    ))}
 
     <!-- Nuestras Marcas -->
     <div id="marcas" class="marcas-section">
@@ -363,7 +244,7 @@ const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
             <i class="fas fa-envelope"></i>
             Contáctanos
           </a>
-          <a href="https://wa.me/573245737413" target="_blank" class="cta-btn-secondary">
+          <a href="https://wa.me/573122435627" target="_blank" class="cta-btn-secondary">
             <i class="fab fa-whatsapp"></i>
             WhatsApp
           </a>
@@ -431,6 +312,10 @@ const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
             <h3 class="producto-modal-section-title">Especificaciones</h3>
             <ul id="producto-modal-specs" class="producto-modal-specs"></ul>
           </div>
+          <a id="producto-modal-ficha" class="producto-modal-ficha" href="/tienda">
+            Ver ficha completa
+            <i class="fas fa-arrow-right" aria-hidden="true"></i>
+          </a>
         </div>
         <div class="producto-modal-footer">
           <div class="producto-actions" id="producto-modal-actions">
@@ -545,6 +430,122 @@ const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     padding-bottom: 1rem;
     border-bottom: 2px solid #e5e7eb;
+  }
+
+  /* Acceso a las ofertas: va antes de las categorías y con color propio para destacarse. */
+  .sidebar-descuentos {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 1.25rem;
+    padding: 0.85rem 1rem;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #16a34a, #39ff14 55%, #22c55e);
+    color: #052e16;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(57, 255, 20, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .sidebar-descuentos:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(57, 255, 20, 0.45);
+  }
+
+  .sidebar-descuentos > i {
+    font-size: 1.15rem;
+    color: #052e16;
+  }
+
+  .sidebar-descuentos-texto {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.25;
+    font-size: 0.78rem;
+    opacity: 0.92;
+  }
+
+  .sidebar-descuentos-texto strong {
+    font-size: 0.98rem;
+    opacity: 1;
+    color: #052e16;
+  }
+
+  .sidebar-descuentos-num {
+    margin-left: auto;
+    min-width: 24px;
+    height: 24px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 20px;
+    background: rgba(5, 46, 22, 0.18);
+    color: #052e16;
+    font-size: 0.8rem;
+    font-weight: 700;
+  }
+
+  /* Misma llamada en el cuerpo, para quien entra directo al listado sin mirar el menú. */
+  .banner-descuentos {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+    padding: 1.1rem 1.5rem;
+    border-radius: 18px;
+    background: linear-gradient(135deg, #16a34a 0%, #39ff14 50%, #4ade80 100%);
+    color: #052e16;
+    text-decoration: none;
+    box-shadow: 0 10px 28px rgba(57, 255, 20, 0.32);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .banner-descuentos:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(57, 255, 20, 0.42);
+  }
+
+  .banner-descuentos-icono {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
+    border-radius: 12px;
+    background: rgba(5, 46, 22, 0.14);
+    color: #052e16;
+    font-size: 1.2rem;
+  }
+
+  .banner-descuentos-texto {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.35;
+    font-size: 0.86rem;
+    opacity: 0.94;
+    color: #052e16;
+  }
+
+  .banner-descuentos-texto strong {
+    font-size: 1.15rem;
+    font-weight: 700;
+    opacity: 1;
+    color: #052e16;
+  }
+
+  .banner-descuentos-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-left: auto;
+    flex-shrink: 0;
+    padding: 0.55rem 1.15rem;
+    border-radius: 50px;
+    background: white;
+    color: #14532d;
+    font-size: 0.88rem;
+    font-weight: 700;
   }
 
   .sidebar-title i {
@@ -668,6 +669,77 @@ const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
   .carousel-controls {
     display: flex;
     gap: 0.5rem;
+  }
+
+  .categoria-header-acciones {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-shrink: 0;
+  }
+
+  .categoria-ver-todo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 50px;
+    border: 1px solid #e5e7eb;
+    background: white;
+    color: #6b2181;
+    font-size: 0.88rem;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+  }
+
+  .categoria-ver-todo:hover {
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    border-color: transparent;
+    color: white;
+  }
+
+  /* Última tarjeta del carrusel: lleva al listado completo de la categoría */
+  .categoria-card-mas {
+    min-width: 306px;
+    max-width: 306px;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 20px;
+    border: 2px dashed #d8c4e2;
+    background: rgba(255, 255, 255, 0.75);
+    color: #6b2181;
+    text-decoration: none;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .categoria-card-mas:hover {
+    background: white;
+    border-color: #6b2181;
+    transform: translateY(-6px);
+  }
+
+  .categoria-card-mas i {
+    font-size: 2rem;
+  }
+
+  .categoria-card-mas-num {
+    font-size: 1.6rem;
+    font-weight: 700;
+  }
+
+  .categoria-card-mas-txt {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #4b5563;
   }
 
   .carousel-btn {
@@ -1440,6 +1512,21 @@ const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
     margin-bottom: 0;
   }
 
+  .producto-modal-ficha {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #6b2181;
+    text-decoration: none;
+  }
+
+  .producto-modal-ficha:hover {
+    text-decoration: underline;
+  }
+
   :global(.producto-modal-addi-logo) {
     height: 1.73em;
     width: auto;
@@ -1803,6 +1890,11 @@ const productosJSON = JSON.stringify(productosOrdenados.map(p => ({
 
     if (modalQtyInput instanceof HTMLInputElement) {
       modalQtyInput.value = '1';
+    }
+
+    const modalFichaLink = document.getElementById('producto-modal-ficha');
+    if (modalFichaLink instanceof HTMLAnchorElement) {
+      modalFichaLink.href = `/tienda/${slug}`;
     }
 
     if (modalAddBtn instanceof HTMLButtonElement) {

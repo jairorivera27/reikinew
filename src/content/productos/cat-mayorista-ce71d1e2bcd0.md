@@ -1,7 +1,7 @@
 ---
-title: "STUDER REMOTE CONTROL WITH 2 METERS CABLE + SD CARD - RCC02"
+title: "Studer Remote Control With 2 Meters Cable + Sd Card - RCC02"
 description: "Equipo Studer Innotec (BSP, RCC, cables): periféricos para supervisión de batería, control remoto o integración de sistema Xtender/MPPT."
-image: "/images/logo-Victron-Energy-Ecogreensolar-1.jpg"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$1.262.250"
 specifications:
@@ -9,7 +9,6 @@ specifications:
   - "Compatibilidad con familia Xtender / VarioString según manual"
   - "Fuente: [Studer Innotec](https://www.studer-innotec.com/)"
 brand: "Studer"
-model: "STUDER REMOTE CONTROL WITH 2 METERS CABLE + SD CARD - RCC02"
 stock: "disponible"
 order: 5127
 ---

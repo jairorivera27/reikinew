@@ -1,5 +1,6 @@
 ---
-title: "INVERSOR FRONIUS SYMO 10.0-3 208 / 240"
+draft: true
+title: "Inversor Fronius Symo 10.0-3 208 / 240"
 description: "Inversor Fronius (Primo, Symo, Tauro): tecnología SnapINverter o plataforma comercial según familia, MPPT múltiples y monitorización Solar.web."
 image: "/images/logo-Victron-Energy-Ecogreensolar-1.jpg"
 category: "inversores"
@@ -10,8 +11,7 @@ specifications:
   - "Eficiencia europea y máxima según serie"
   - "Protecciones y normativa según manual de instalación"
   - "Fuente: [Fronius](https://www.fronius.com/)"
-brand: "Genérico"
-model: "INVERSOR FRONIUS SYMO 10.0-3 208 / 240"
+brand: "Sin marca"
 stock: "disponible"
 order: 5120
 ---

@@ -1,7 +1,7 @@
 ---
-title: "APS MICROINVERSOR TRIFASICO QT2-208"
+title: "APS Microinversor Trifasico QT2-208"
 description: "Microinversor trifásico APsystems QT2 para tensión 208 V trifásica, con múltiples MPPT y supervisión vía ECU."
-image: "/images/Productos tienda/Inversores/Apsystems DS3D Medellín.png"
+image: "/images/productos-tienda/inversores/apsystems-qt2.png"
 category: "inversores"
 price: "$2.289.600"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Comunicación con ECU APsystems"
   - "Fuente: [APsystems](https://global.apsystems.com/)"
 brand: "APsystems"
-model: "APS MICROINVERSOR TRIFASICO QT2-208"
 stock: "disponible"
 order: 5003
 ---

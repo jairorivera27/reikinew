@@ -1,7 +1,7 @@
 ---
 title: "Must PV30-1524"
 description: "Inversor Must PV30-1524 LVHM, eficiente y robusto para sistemas aislados y de respaldo."
-image: "/images/Productos tienda/Inversores/Must Pv30-1524 Medellín.png"
+image: "/images/productos-tienda/inversores/must-pv.png"
 category: "inversores"
 price: "$1.390.000"
 specifications:

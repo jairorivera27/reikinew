@@ -1,7 +1,7 @@
 ---
-title: "HOYMILES MICROINVERTER HMS-1600-4T-$ HOYMILES TRIFASICO HMT CABLE TERMINAL CONNECTOR"
+title: "Hoymiles Microinverter HMS-1600-4T-$ Hoymiles Trifasico Hmt Cable Terminal Connector"
 description: "Microinversor Hoymiles HMS-1600-4T con arquitectura cuatro MPPT para plantas residenciales y pequeña comercial con monitoreo granular por módulo."
-image: "/images/Productos tienda/Inversores/Apsystems DS3D Medellín.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$53.550"
 specifications:

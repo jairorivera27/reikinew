@@ -1,7 +1,7 @@
 ---
-title: "FRONIUS SMART METER TS 65A-3 TCS INTERNOS"
+title: "Fronius Smart Meter Ts 65A-3 Tcs Internos"
 description: "Sensor o periférico de monitorización Fronius (Datamanager, Smart Meter, sonda térmica/anemómetro) para inversores y Solar.web."
-image: "/images/logo-Victron-Energy-Ecogreensolar-1.jpg"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$1.675.350"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Instalación según manual Fronius"
   - "Fuente: [Fronius](https://www.fronius.com/)"
 brand: "Fronius"
-model: "FRONIUS SMART METER TS 65A-3 TCS INTERNOS"
 stock: "disponible"
 order: 5117
 ---

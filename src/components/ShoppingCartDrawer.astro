@@ -1,21 +1,8 @@
 ---
-import { getCollection } from 'astro:content';
-
-const productos = await getCollection('productos');
-const productosOrdenados = productos.sort((a, b) => (a.data.order || 0) - (b.data.order || 0));
-const productosJSON = JSON.stringify(
-  productosOrdenados.map((p) => ({
-    id: p.slug,
-    title: p.data.title,
-    description: p.data.description,
-    price: p.data.price,
-    image: p.data.image,
-    brand: p.data.brand || '',
-    model: p.data.model || '',
-    stock: p.data.stock || 'disponible',
-    specifications: p.data.specifications || [],
-  }))
-);
+/**
+ * El carrito se arma con los data-* del botón que se pulsa y se persiste completo en
+ * localStorage, así que no hace falta embeber el catálogo en cada página.
+ */
 ---
 
 <div id="cart-sidebar-backdrop" class="cart-sidebar-backdrop" aria-hidden="true"></div>
@@ -80,11 +67,10 @@ const productosJSON = JSON.stringify(
 
 <div id="cart-toast" class="cart-toast" role="status" aria-live="polite" aria-atomic="true" aria-hidden="true"></div>
 
-<script define:vars={{ productosJSON }}>
+<script>
   const CART_STORAGE_KEY = 'reiki_cart';
 
   let cart = [];
-  const productos = JSON.parse(productosJSON);
 
   function dispatchCartBadge() {
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
@@ -254,16 +240,21 @@ const productosJSON = JSON.stringify(
     if (cartTotalEl) cartTotalEl.textContent = formatPrice(total);
   }
 
-  function addToCart(productId, quantity = 1, showToastFlag = true) {
-    const producto = productos.find((p) => p.id === productId);
-    if (!producto) return;
+  /**
+   * @param {string} productId
+   * @param {number} quantity
+   * @param {boolean} showToastFlag
+   * @param {{ title: string, description?: string, price: string, image: string, brand?: string, model?: string } | null} producto
+   */
+  function addToCart(productId, quantity = 1, showToastFlag = true, producto = null) {
+    if (!producto || !producto.title) return;
 
     const existingItem = cart.find((item) => item.id === productId);
     if (existingItem) {
       existingItem.quantity += quantity;
     } else {
       cart.push({
-        id: producto.id,
+        id: productId,
         title: producto.title,
         description: producto.description || '',
         price: producto.price,
@@ -349,7 +340,14 @@ const productosJSON = JSON.stringify(
     const qi = qtyWrap && qtyWrap.querySelector('.qty-input');
     if (qi instanceof HTMLInputElement) qty = parseInt(qi.value, 10) || 1;
 
-    addToCart(btn.dataset.productId, qty, true);
+    addToCart(btn.dataset.productId, qty, true, {
+      title: btn.dataset.productTitle || '',
+      description: btn.dataset.productDescription || '',
+      price: btn.dataset.productPrice || '',
+      image: btn.dataset.productImage || '',
+      brand: btn.dataset.productBrand || '',
+      model: btn.dataset.productModel || '',
+    });
 
     const resetQi = qtyWrap?.querySelector('.qty-input');
     if (resetQi instanceof HTMLInputElement) resetQi.value = '1';

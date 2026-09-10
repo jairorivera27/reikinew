@@ -1,5 +1,6 @@
 ---
-title: "SOLIS INVERSOR S5-GR3P10K-LV"
+draft: true
+title: "Solis Inversor S5-GR3P10K-LV"
 description: "Inversor string on-grid Solis: doble o múltiple MPPT, monitorización y protecciones integradas para instalaciones residenciales, comerciales o grandes según referencia."
 image: "/images/livoltek.png"
 category: "inversores"
@@ -11,7 +12,6 @@ specifications:
   - "Grado IP66 en muchos modelos de campo; rango térmico −25 °C a +60 °C típico"
   - "Fuente: [Solis](https://www.solisinverters.com/)"
 brand: "Solis"
-model: "SOLIS INVERSOR S5-GR3P10K-LV"
 stock: "disponible"
 order: 5079
 ---

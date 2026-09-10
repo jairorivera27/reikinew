@@ -1,21 +1,24 @@
 ---
 title: "Batería de Litio 5kWh"
 description: "Batería de litio de 5kWh con tecnología LiFePO4, ideal para sistemas de respaldo y almacenamiento de energía solar residencial."
-image: "/images/productos-tienda/baterias/pylontech-5kwh-medellin.png"
+image: "/images/productos-tienda/baterias/pylontech-us.png"
 category: "baterias"
-price: "$12.390.000"
+price: "$5.437.824"
 specifications:
-  - "Capacidad: 5kWh (5000Wh)"
-  - "Tecnología: LiFePO4 (Fosfato de Hierro y Litio)"
-  - "Voltaje: 48V"
-  - "Ciclos: 6000+ (80% DOD)"
-  - "Profundidad de descarga: 90%"
-  - "Garantía: 10 años"
-  - "Peso: 45 kg"
+  - "Tipo: Litio"
+  - "Especificación principal: 48V 4,8kWh"
+  - "Aplicación: almacenamiento de energía en sistemas solares y respaldo eléctrico"
 brand: "Pylontech"
 model: "US5000"
 stock: "disponible"
 order: 7
+precioAnterior: "$12.390.000"
+descuentoPct: 56
+promocion: "Liquidación"
+promoImagen: "/images/placeholders/promo-liquidacion.svg"
+sku: "US5000"
+power: "48V 4,8kWh"
+updatedAt: "2026-09-10"
 ---
 
 Batería de litio de alta calidad con tecnología LiFePO4, segura y de larga duración. Ideal para sistemas de respaldo y almacenamiento de energía solar.

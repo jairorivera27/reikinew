@@ -1,7 +1,7 @@
 ---
 title: "SUN2000-100KTL-M2"
 description: "Inversor central / string de gran formato Huawei SUN2000 para plantas de megavatios o grandes comerciales: arquitectura de alta tensión, múltiples MPPT y telemetría con SmartLogger."
-image: "/images/huawei.png"
+image: "/images/productos-tienda/inversores/huawei-sun2000.png"
 category: "inversores"
 price: "$31.143.150"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Protecciones y normativa según manual de campo Huawei"
   - "Fuente: [Huawei FusionSolar](https://solar.huawei.com/)"
 brand: "Huawei"
-model: "SUN2000-100KTL-M2"
 stock: "disponible"
 order: 5052
 ---

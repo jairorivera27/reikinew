@@ -10,7 +10,6 @@ specifications:
   - "Panel solar: externo"
   - "Aplicacion: vias, zonas industriales y parqueaderos"
   - "Instalacion: poste"
-brand: "Luminaria solar de calle 100W panel externo"
 model: "LCS-100W-20AH-PE"
 stock: "disponible"
 order: 20

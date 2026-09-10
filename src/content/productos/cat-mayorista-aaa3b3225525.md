@@ -1,7 +1,8 @@
 ---
-title: "INVERTER HANDLING LIFTING ACCESSORIES BAG"
+draft: true
+title: "Inverter Handling Lifting Accessories Bag"
 description: "Equipo Huawei Smart PV: inversor, optimizador o accesorio de campo para maximizar energía, seguridad y monitorización. Verifique tabla de compatibilidad del fabricante con su inversor y país."
-image: "/images/astroenergy.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$244.800"
 specifications:
@@ -9,8 +10,7 @@ specifications:
   - "Instalación y puesta en servicio sólo personal certificado"
   - "Garantía y homologaciones según región Colombia / importador"
   - "Fuente: [Huawei FusionSolar](https://solar.huawei.com/)"
-brand: "Genérico"
-model: "INVERTER HANDLING LIFTING ACCESSORIES BAG"
+brand: "Sin marca"
 stock: "disponible"
 order: 5069
 ---

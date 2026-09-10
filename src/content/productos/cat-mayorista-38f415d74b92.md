@@ -1,7 +1,7 @@
 ---
-title: "ALTAFOX - BYD BATTERY â€“ BOX ADJUSTABLE LEVELING FEET SET (4 PCS)"
+title: "Altafox - BYD Battery Â€“ Box Adjustable Leveling Feet Set (4 Pcs)"
 description: "Sistema o módulo de almacenamiento en litio (LiFePO₄ típico) para acoplamiento con inversores compatibles; BMS, expansión y cableado según referencia Pytes o BYD."
-image: "/images/astroenergy.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$2.296"
 specifications:
@@ -11,7 +11,6 @@ specifications:
   - "Sólo con inversores en lista de compatibilidad del fabricante"
   - "Fuente: documentación OEM del modelo"
 brand: "BYD"
-model: "ALTAFOX - BYD BATTERY â€“ BOX ADJUSTABLE LEVELING FEET SET (4 PCS)"
 stock: "disponible"
 order: 5202
 ---

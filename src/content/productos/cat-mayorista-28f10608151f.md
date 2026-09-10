@@ -1,7 +1,7 @@
 ---
-title: "HOYMILES TRIFASICO HMT EXTENSION CONNECTOR"
+title: "Hoymiles Trifasico Hmt Extension Connector"
 description: "Microinversor trifásico Hoymiles serie HMT para conexión a red trifásica, con seguimiento MPPT por canal y monitoreo remoto vía DTU."
-image: "/images/Productos tienda/Inversores/Must Pv30-1524 Medellín.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$53.550"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "IP67; supervisión vía DTU Hoymiles"
   - "Fuente: [Hoymiles](https://www.hoymiles.com/)"
 brand: "Hoymiles"
-model: "HOYMILES TRIFASICO HMT EXTENSION CONNECTOR"
 stock: "disponible"
 order: 5020
 ---

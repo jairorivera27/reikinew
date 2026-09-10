@@ -1,0 +1,527 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import type { GetStaticPaths, Page } from 'astro';
+import Header from '../../../../components/Header.astro';
+import Footer from '../../../../components/Footer.astro';
+import WhatsAppFloat from '../../../../components/WhatsAppFloat.astro';
+import ShoppingCartDrawer from '../../../../components/ShoppingCartDrawer.astro';
+import CartFloatButton from '../../../../components/CartFloatButton.astro';
+import SEO from '../../../../components/SEO.astro';
+import FontAwesome from '../../../../components/FontAwesome.astro';
+import ProductoCardCompact from '../../../../components/tienda/ProductoCardCompact.astro';
+import FiltrosCategoria from '../../../../components/tienda/FiltrosCategoria.astro';
+import {
+  CATEGORIAS,
+  PRODUCTOS_POR_PAGINA,
+  urlCategoria,
+  type CategoriaTienda,
+} from '../../../../config/categorias-tienda';
+import { SITE, breadcrumbJsonLd, precioNumerico } from '../../../../utils/productoSeoMeta';
+import { calcularValor, ordenarPorValor, type ResultadoValor } from '../../../../utils/calidadPrecio';
+import { ordenarInversoresPorTipoYPotencia } from '../../../../utils/productCardCompactMeta';
+import { calcularFacetas, type FacetasCategoria } from '../../../../utils/facetasCategoria';
+
+export const getStaticPaths = (async ({ paginate }) => {
+  const productos = await getCollection('productos', ({ data }) => data.draft !== true);
+
+  return CATEGORIAS.flatMap((categoria) => {
+    const items = productos.filter((p) => p.data.category === categoria.id);
+
+    // Una categoría sin productos no debe generar una página vacía indexable.
+    if (items.length === 0) return [];
+
+    const valores = calcularValor(items.map((p) => ({ slug: p.slug, ...p.data })));
+    const conMeta = items.map((p) => ({ entry: p, slug: p.slug, ...p.data }));
+    // Inversores: On-Grid → Off-Grid → Híbrido, cada bloque por potencia ascendente.
+    const ordenados =
+      categoria.id === 'inversores'
+        ? ordenarInversoresPorTipoYPotencia(conMeta).map((p) => p.entry)
+        : ordenarPorValor(conMeta, valores).map((p) => p.entry);
+
+    const facetas = calcularFacetas(items, valores);
+
+    return paginate(ordenados, {
+      params: { categoria: categoria.slug },
+      pageSize: PRODUCTOS_POR_PAGINA,
+      props: { categoria, facetas, valores: Object.fromEntries(valores) },
+    });
+  });
+}) satisfies GetStaticPaths;
+
+type Props = {
+  categoria: CategoriaTienda;
+  facetas: FacetasCategoria;
+  valores: Record<string, ResultadoValor>;
+  page: Page<CollectionEntry<'productos'>>;
+};
+
+const { categoria, facetas, valores, page } = Astro.props;
+
+const base = urlCategoria(categoria.id);
+const urlPagina = (n: number) => (n === 1 ? base : `${base}/${n}`);
+const esPrimera = page.currentPage === 1;
+
+const metaTitle = esPrimera
+  ? `${categoria.nombre} en Colombia | Reiki Solar`
+  : `${categoria.nombre} · Página ${page.currentPage} | Reiki Solar`;
+
+const metaDescription = esPrimera
+  ? categoria.descripcionSeo.slice(0, 155)
+  : `${categoria.nombre}: página ${page.currentPage} de ${page.lastPage} del catálogo de Reiki Solar. Envío nacional y garantía.`;
+
+const migas = [
+  { nombre: 'Inicio', url: '/' },
+  { nombre: 'Tienda', url: '/tienda' },
+  { nombre: categoria.nombre, url: base },
+];
+
+const itemListJsonLd = {
+  '@type': 'CollectionPage',
+  name: categoria.nombre,
+  description: categoria.descripcionSeo,
+  url: `${SITE}${urlPagina(page.currentPage)}`,
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: page.total,
+    itemListElement: page.data.map((p, i) => ({
+      '@type': 'ListItem',
+      position: page.start + i + 1,
+      item: {
+        '@type': 'Product',
+        name: p.data.title,
+        url: `${SITE}/tienda/${p.slug}`,
+        image: `${SITE}${p.data.image}`,
+        ...(p.data.brand ? { brand: { '@type': 'Brand', name: p.data.brand } } : {}),
+        offers: {
+          '@type': 'Offer',
+          price: String(precioNumerico(p.data.price)),
+          priceCurrency: 'COP',
+        },
+      },
+    })),
+  },
+};
+
+/** Ventana de páginas alrededor de la actual, para no imprimir 30 números. */
+const ventana = (() => {
+  const total = page.lastPage;
+  const actual = page.currentPage;
+  const nums = new Set<number>([1, total, actual, actual - 1, actual + 1]);
+  return [...nums].filter((n) => n >= 1 && n <= total).sort((a, b) => a - b);
+})();
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{metaTitle}</title>
+    <FontAwesome />
+    <SEO
+      title={metaTitle}
+      description={metaDescription}
+      canonical={urlPagina(page.currentPage)}
+      keywords={`${categoria.nombre} Colombia, ${categoria.nombre} Medellín, comprar ${categoria.nombre.toLowerCase()}, ${categoria.tipoSingular.toLowerCase()} precio`}
+      schemaType="WebPage"
+      schemaData={itemListJsonLd}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd(migas))} />
+    {page.url.prev && <link rel="prev" href={`${SITE}${page.url.prev}`} />}
+    {page.url.next && <link rel="next" href={`${SITE}${page.url.next}`} />}
+  </head>
+  <body>
+    <Header />
+
+    <main class="cat-main">
+      <div class="cat-container">
+        <nav class="migas" aria-label="Ruta de navegación">
+          <ol>
+            {migas.map((miga, i) => (
+              <li>
+                {i < migas.length - 1 ? <a href={miga.url}>{miga.nombre}</a> : <span aria-current="page">{miga.nombre}</span>}
+              </li>
+            ))}
+          </ol>
+        </nav>
+
+        <header class="cat-header">
+          <h1>
+            <i class={categoria.icono} aria-hidden="true"></i>
+            {categoria.nombre}
+          </h1>
+          <p class="cat-desc">{categoria.descripcionSeo}</p>
+          <p class="cat-conteo">
+            {page.total} {page.total === 1 ? 'producto' : 'productos'}
+            {page.lastPage > 1 && ` · página ${page.currentPage} de ${page.lastPage}`}
+          </p>
+        </header>
+
+        <div class="cat-layout">
+          <aside class="cat-sidebar">
+            <h2 class="cat-sidebar-title">Categorías</h2>
+            <nav class="cat-menu">
+              {CATEGORIAS.map((c) => (
+                <a href={urlCategoria(c.id)} class={c.id === categoria.id ? 'activa' : ''}>
+                  <i class={c.icono} aria-hidden="true"></i>
+                  <span>{c.nombre}</span>
+                </a>
+              ))}
+            </nav>
+          </aside>
+
+          <div class="cat-content">
+            <FiltrosCategoria categoria={categoria} facetas={facetas} />
+
+            <div class="cat-grid">
+              {page.data.map((producto) => (
+                <ProductoCardCompact producto={producto} valor={valores[producto.slug]} />
+              ))}
+            </div>
+
+            {page.lastPage > 1 && (
+              <nav class="paginacion" aria-label="Paginación">
+                {page.url.prev ? (
+                  <a href={page.url.prev} rel="prev" class="pag-flecha">
+                    <i class="fas fa-chevron-left" aria-hidden="true"></i> Anterior
+                  </a>
+                ) : (
+                  <span class="pag-flecha deshabilitada">
+                    <i class="fas fa-chevron-left" aria-hidden="true"></i> Anterior
+                  </span>
+                )}
+
+                <div class="pag-numeros">
+                  {ventana.map((n, i) => (
+                    <>
+                      {i > 0 && ventana[i - 1] !== n - 1 && <span class="pag-elipsis">…</span>}
+                      {n === page.currentPage ? (
+                        <span class="pag-num activa" aria-current="page">{n}</span>
+                      ) : (
+                        <a class="pag-num" href={urlPagina(n)}>{n}</a>
+                      )}
+                    </>
+                  ))}
+                </div>
+
+                {page.url.next ? (
+                  <a href={page.url.next} rel="next" class="pag-flecha">
+                    Siguiente <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                  </a>
+                ) : (
+                  <span class="pag-flecha deshabilitada">
+                    Siguiente <i class="fas fa-chevron-right" aria-hidden="true"></i>
+                  </span>
+                )}
+              </nav>
+            )}
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <Footer />
+    <ShoppingCartDrawer />
+    <WhatsAppFloat />
+    <CartFloatButton />
+
+    <script>
+      document.addEventListener('click', (e) => {
+        const btn = e.target instanceof Element ? e.target.closest('.qty-btn') : null;
+        if (!(btn instanceof HTMLElement)) return;
+        const input = btn.parentElement?.querySelector('.qty-input');
+        if (!(input instanceof HTMLInputElement)) return;
+        const actual = parseInt(input.value, 10) || 1;
+        input.value = String(btn.classList.contains('plus') ? actual + 1 : Math.max(1, actual - 1));
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  html {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+
+  /* La tarjeta está dimensionada para carrusel; en grilla ocupa la celda completa. */
+  .cat-grid .producto-card {
+    min-width: 0;
+    max-width: none;
+    width: 100%;
+  }
+</style>
+
+<style>
+  .cat-main {
+    background: linear-gradient(180deg, #faf7fc 0%, #ffffff 320px);
+    padding: 2rem 0 4rem;
+  }
+
+  .cat-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .migas ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0 0 1.5rem;
+    padding: 0;
+    font-size: 0.85rem;
+    color: #6b7280;
+  }
+
+  .migas li:not(:last-child)::after {
+    content: '›';
+    margin-left: 0.4rem;
+    color: #c4b5cd;
+  }
+
+  .migas a {
+    color: #6b2181;
+    text-decoration: none;
+  }
+
+  .migas a:hover {
+    text-decoration: underline;
+  }
+
+  .cat-header {
+    margin-bottom: 2rem;
+  }
+
+  .cat-header h1 {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin: 0 0 0.6rem;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #1f2937;
+  }
+
+  .cat-header h1 i {
+    color: #6b2181;
+  }
+
+  .cat-desc {
+    margin: 0 0 0.5rem;
+    max-width: 760px;
+    color: #4b5563;
+    font-size: 0.98rem;
+  }
+
+  .cat-conteo {
+    margin: 0;
+    font-size: 0.85rem;
+    color: #9ca3af;
+  }
+
+  .cat-layout {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr);
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .cat-sidebar {
+    position: sticky;
+    top: 1.5rem;
+    background: white;
+    border-radius: 18px;
+    padding: 1.25rem;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, 0.07);
+  }
+
+  .cat-sidebar-title {
+    margin: 0 0 0.9rem;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #1f2937;
+  }
+
+  .cat-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .cat-menu a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.55rem 0.7rem;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    color: #4b5563;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .cat-menu a i {
+    width: 18px;
+    color: #9ca3af;
+  }
+
+  .cat-menu a:hover {
+    background: #f9f5fb;
+    color: #6b2181;
+  }
+
+  .cat-menu a:hover i {
+    color: #6b2181;
+  }
+
+  .cat-menu a.activa {
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+    font-weight: 600;
+  }
+
+  .cat-menu a.activa i {
+    color: white;
+  }
+
+  .cat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .paginacion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .pag-flecha {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.55rem 1rem;
+    border-radius: 50px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #6b2181;
+    background: white;
+    border: 1px solid #e5e7eb;
+    text-decoration: none;
+  }
+
+  .pag-flecha:hover {
+    background: #6b2181;
+    border-color: #6b2181;
+    color: white;
+  }
+
+  .pag-flecha.deshabilitada {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+
+  .pag-numeros {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .pag-num {
+    min-width: 38px;
+    height: 38px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #4b5563;
+    background: white;
+    border: 1px solid #e5e7eb;
+    text-decoration: none;
+  }
+
+  .pag-num:hover {
+    border-color: #6b2181;
+    color: #6b2181;
+  }
+
+  .pag-num.activa {
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    border-color: transparent;
+    color: white;
+  }
+
+  .pag-elipsis {
+    color: #9ca3af;
+    padding: 0 0.15rem;
+  }
+
+  @media (max-width: 900px) {
+    .cat-layout {
+      grid-template-columns: 1fr;
+    }
+
+    /*
+     * En móvil el menú de 9 categorías se comía la primera pantalla completa y el primer
+     * producto quedaba a varios scrolls. Pasa a ser una tira horizontal deslizable.
+     */
+    .cat-sidebar {
+      position: static;
+      padding: 0.85rem 0;
+      background: transparent;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .cat-sidebar-title {
+      display: none;
+    }
+
+    .cat-menu {
+      flex-direction: row;
+      flex-wrap: nowrap;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.35rem;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .cat-menu::-webkit-scrollbar {
+      display: none;
+    }
+
+    .cat-menu a {
+      flex-shrink: 0;
+      border-radius: 50px;
+      border: 1px solid #e5e7eb;
+      background: white;
+      white-space: nowrap;
+    }
+
+    .cat-menu a.activa {
+      border-color: transparent;
+    }
+
+    .cat-header h1 {
+      font-size: 1.5rem;
+    }
+
+    .cat-desc {
+      font-size: 0.9rem;
+    }
+  }
+</style>

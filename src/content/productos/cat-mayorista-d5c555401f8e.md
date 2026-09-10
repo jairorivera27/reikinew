@@ -1,7 +1,7 @@
 ---
 title: "SmartPS-250A-T0"
 description: "Periférico de protección o alimentación auxiliar Huawei (SmartGuard / SmartPS) para cuadros AC/DC en instalaciones Smart PV según esquema del fabricante."
-image: "/images/huawei.png"
+image: "/images/productos-tienda/protecciones/generic-mccb.jpg"
 category: "protecciones"
 price: "$417.690"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Instalación por electricista autorizado"
   - "Fuente: [Huawei](https://solar.huawei.com/)"
 brand: "Huawei"
-model: "SmartPS-250A-T0"
 stock: "disponible"
 order: 5065
 ---

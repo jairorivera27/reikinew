@@ -1,5 +1,6 @@
 ---
-title: "SOLIS INVERSOR HIBRIDO S6-EH3P30K03-LV-YD-H-US"
+draft: true
+title: "Solis Inversor Hibrido S6-EH3P30K03-LV-YD-H-US"
 description: "Inversor híbrido Solis: gestión de energía solar, batería y red con MPPT múltiples, protecciones AFCI (según modelo) y alta eficiencia de conversión."
 image: "/images/livoltek.png"
 category: "inversores"
@@ -11,7 +12,6 @@ specifications:
   - "Grado IP66 en muchos modelos de campo; rango térmico −25 °C a +60 °C típico"
   - "Fuente: [Solis](https://www.solisinverters.com/)"
 brand: "Solis"
-model: "SOLIS INVERSOR HIBRIDO S6-EH3P30K03-LV-YD-H-US"
 stock: "disponible"
 order: 5085
 ---

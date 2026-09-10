@@ -1,7 +1,7 @@
 ---
 title: "Huawei SUN2000-8K-LC0"
 description: "Inversor Huawei SUN2000-8K-LC0 de 8 kW con doble MPPT y funciones de protección activa. Precio no incluye costos de envío."
-image: "/images/Productos tienda/Inversores/Huawei 4KTL-L1 Medellín.png"
+image: "/images/productos-tienda/inversores/huawei-sun2000.png"
 category: "inversores"
 price: "$4.390.000"
 specifications:

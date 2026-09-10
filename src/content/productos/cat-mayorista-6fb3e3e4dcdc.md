@@ -1,7 +1,7 @@
 ---
-title: "HOYMILES DATA TRANSFER UNIT DTU-PRO-S - WIFI"
+title: "Hoymiles Data Transfer Unit DTU-PRO-S - WIFI"
 description: "Unidad de telemetría Hoymiles (DTU) para agregar microinversores a la nube: recogida de datos de generación y estado, según modelo con Ethernet, Wi‑Fi o variantes regionales."
-image: "/images/astroenergy.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$1.392.300"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Alimentación y montaje según manual de instalación"
   - "Fuente: [Hoymiles](https://www.hoymiles.com/)"
 brand: "Hoymiles"
-model: "HOYMILES DATA TRANSFER UNIT DTU-PRO-S - WIFI"
 stock: "disponible"
 order: 5031
 ---

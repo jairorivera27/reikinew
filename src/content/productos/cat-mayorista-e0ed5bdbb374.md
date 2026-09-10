@@ -1,7 +1,7 @@
 ---
-title: "PYTES COMM CABLE 3.5M"
+title: "Pytes Comm Cable 3.5M"
 description: "Sistema o módulo de almacenamiento en litio (LiFePO₄ típico) para acoplamiento con inversores compatibles; BMS, expansión y cableado según referencia Pytes o BYD."
-image: "/images/astroenergy.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$38.250"
 specifications:
@@ -11,7 +11,6 @@ specifications:
   - "Sólo con inversores en lista de compatibilidad del fabricante"
   - "Fuente: documentación OEM del modelo"
 brand: "Pytes"
-model: "PYTES COMM CABLE 3.5M"
 stock: "disponible"
 order: 5206
 ---

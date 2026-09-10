@@ -1,8 +1,8 @@
 ---
-title: "SOLIS MONITOREO S2-WL-ST (USB)"
+title: "Solis Monitoreo S2-WL-ST (USB)"
 description: "Equipo de monitorización o medida para inversores Solis (logger Wi‑Fi/LAN, EPM, GPRS, medidor + TC, etc.) según referencia exacta."
 image: "/images/livoltek.png"
-category: "protecciones"
+category: "monitoreo"
 price: "$247.200"
 specifications:
   - "Compatibilidad con modelos Solis indicados en manual del accesorio"
@@ -10,7 +10,6 @@ specifications:
   - "Instalación y cableado según guía Solis"
   - "Fuente: [Solis](https://www.solisinverters.com/)"
 brand: "Solis"
-model: "SOLIS MONITOREO S2-WL-ST (USB)"
 stock: "disponible"
 order: 5101
 ---

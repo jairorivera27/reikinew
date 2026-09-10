@@ -1,4 +1,4 @@
----
+﻿---
 title: "Normativa de energía solar en Colombia: leyes, requisitos y venta de excedentes"
 description: "Conoce la Ley 1715, el Decreto 1073 y la Resolución CREG 174 de 2021. Requisitos RETIE, registro ante la UPME y cómo vender excedentes de energía solar en Colombia."
 image: "/images/UPME.png"
@@ -63,7 +63,7 @@ Sí. Aunque no se conecten a la red, deben acatar normas de seguridad eléctrica
 ## CTA
 
 <div class="blog-cta-section">
-  <a href="https://wa.me/573245737413?text=Necesito%20asesor%C3%ADa%20 legal%20para%20instalar%20energ%C3%ADa%20solar" target="_blank" rel="noopener noreferrer" class="blog-cta-button">
+  <a href="https://wa.me/573122435627?text=Necesito%20asesor%C3%ADa%20 legal%20para%20instalar%20energ%C3%ADa%20solar" target="_blank" rel="noopener noreferrer" class="blog-cta-button">
     <i class="fab fa-whatsapp"></i>
     <span>Hablar con un experto en normativa solar</span>
     <i class="fas fa-arrow-right"></i>

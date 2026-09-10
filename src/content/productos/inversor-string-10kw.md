@@ -1,7 +1,7 @@
 ---
 title: "Huawei 36KTL-M3"
 description: "Inversor Huawei SUN2000-36KTL-M3, potencia trifásica para proyectos comerciales e industriales."
-image: "/images/productos-tienda/inversores/huawei-4ktl-l1-medellin.png"
+image: "/images/productos-tienda/inversores/huawei-sun2000.png"
 category: "inversores"
 price: "$12.300.000"
 specifications:

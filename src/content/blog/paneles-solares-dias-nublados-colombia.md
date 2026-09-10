@@ -1,4 +1,4 @@
----
+﻿---
 title: "¿Funcionan los paneles solares en días nublados? Esto pasa en Colombia"
 description: "Explicamos cómo la irradiancia difusa mantiene la generación solar en días nublados y qué tecnologías usar para optimizar el rendimiento en Bogotá, Medellín y la Costa."
 image: "/images/energia solar en empresas.png"
@@ -45,7 +45,7 @@ En ciudades como Bogotá, combinar paneles con baterías LiFePO4 garantiza energ
 ## CTA
 
 <div class="blog-cta-section">
-  <a href="https://wa.me/573245737413?text=Quiero%20saber%20c%C3%B3mo%20funcionan%20los%20paneles%20en%20d%C3%ADas%20nublados" target="_blank" rel="noopener noreferrer" class="blog-cta-button">
+  <a href="https://wa.me/573122435627?text=Quiero%20saber%20c%C3%B3mo%20funcionan%20los%20paneles%20en%20d%C3%ADas%20nublados" target="_blank" rel="noopener noreferrer" class="blog-cta-button">
     <i class="fab fa-whatsapp"></i>
     <span>Diseñar un sistema eficiente para mi clima</span>
     <i class="fas fa-arrow-right"></i>

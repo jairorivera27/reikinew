@@ -1,7 +1,7 @@
 ---
 title: "PYTES USB TO RJ45 CABLE (RS232 for 48100R)"
 description: "Sistema o módulo de almacenamiento en litio (LiFePO₄ típico) para acoplamiento con inversores compatibles; BMS, expansión y cableado según referencia Pytes o BYD."
-image: "/images/astroenergy.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$137.700"
 specifications:
@@ -11,7 +11,6 @@ specifications:
   - "Sólo con inversores en lista de compatibilidad del fabricante"
   - "Fuente: documentación OEM del modelo"
 brand: "Pytes"
-model: "PYTES USB TO RJ45 CABLE (RS232 for 48100R)"
 stock: "disponible"
 order: 5207
 ---

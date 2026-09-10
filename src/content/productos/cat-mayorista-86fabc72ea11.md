@@ -1,7 +1,8 @@
 ---
-title: "HERRAMIENTA PARA JUEGO CONECTOR MC4 TE CONNECTIVITY"
+draft: true
+title: "Herramienta para Juego Conector MC4 Te Connectivity"
 description: "Conector o herramienta MC4 homologada (TE Connectivity u OEM equivalente) para interconexión de módulos y cableado solar."
-image: "/images/astroenergy.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$71.910"
 specifications:
@@ -9,8 +10,7 @@ specifications:
   - "Grado de protección IP68 típico en conectores MC4 de calidad industrial"
   - "Crimpe con herramienta certificada del fabricante"
   - "Fuente: [TE Connectivity](https://www.te.com/)"
-brand: "Genérico"
-model: "HERRAMIENTA PARA JUEGO CONECTOR MC4 TE CONNECTIVITY"
+brand: "Sin marca"
 stock: "disponible"
 order: 5200
 ---

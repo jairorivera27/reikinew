@@ -1,24 +1,14 @@
 import type { APIRoute } from 'astro';
 import { getCollection } from 'astro:content';
+import { CATEGORIAS, PRODUCTOS_POR_PAGINA, urlCategoria, urlProducto } from '../config/categorias-tienda';
+import { DESCUENTOS_URL } from '../utils/descuentos';
 
 /**
- * Genera dinámicamente el sitemap.xml para SEO
- * 
- * Este archivo se ejecuta en build time y genera todas las URLs del sitio.
- * 
- * Para agregar rutas dinámicas en el futuro:
- * 1. Obtén las rutas dinámicas usando getCollection() o getStaticPaths()
- * 2. Agrega cada ruta al array 'pages' con su lastmod y changefreq
- * 3. Ejemplo para productos dinámicos:
- *    const productos = await getCollection('productos');
- *    productos.forEach(producto => {
- *      pages.push({
- *        url: `${site}/tienda/${producto.slug}`,
- *        lastmod: producto.data.updatedAt || new Date().toISOString(),
- *        changefreq: 'weekly',
- *        priority: '0.8'
- *      });
- *    });
+ * Genera dinámicamente el sitemap.xml para SEO.
+ *
+ * Se ejecuta en build time e incluye páginas estáticas, servicios, blog,
+ * listados de categoría (con sus páginas 2, 3, …) y la ficha de cada producto.
+ * Los productos en borrador quedan fuera.
  */
 
 const site = 'https://reikisolar.com.co';
@@ -27,6 +17,7 @@ export const GET: APIRoute = async () => {
   // Obtener todas las entradas de colecciones dinámicas
   const servicios = await getCollection('servicios');
   const blogPosts = await getCollection('blog');
+  const productos = await getCollection('productos', ({ data }) => data.draft !== true);
 
   // Páginas estáticas - Optimizadas para SEO de energía solar en Colombia/Medellín
   const staticPages = [
@@ -90,8 +81,56 @@ export const GET: APIRoute = async () => {
     priority: post.data.featured ? '0.8' : '0.6' // Posts destacados tienen mayor prioridad
   }));
 
+  // Listados de categoría, incluidas las páginas 2, 3, … de cada una
+  const categoriaPages = CATEGORIAS.flatMap((categoria) => {
+    const total = productos.filter((p) => p.data.category === categoria.id).length;
+    if (total === 0) return [];
+
+    const base = urlCategoria(categoria.id);
+    const ultimaPagina = Math.ceil(total / PRODUCTOS_POR_PAGINA);
+
+    return Array.from({ length: ultimaPagina }, (_, i) => ({
+      url: `${site}${i === 0 ? base : `${base}/${i + 1}`}`,
+      lastmod: new Date().toISOString(),
+      changefreq: 'weekly',
+      // La primera página de cada categoría es la que queremos posicionar
+      priority: i === 0 ? '0.9' : '0.5',
+    }));
+  });
+
+  // Listado de rebajados: solo se publica si hay ofertas vigentes
+  const rebajados = productos.filter((p) => p.data.precioAnterior && p.data.descuentoPct);
+  const descuentoPages =
+    rebajados.length > 0
+      ? [
+          {
+            url: `${site}${DESCUENTOS_URL}`,
+            lastmod: new Date().toISOString(),
+            changefreq: 'daily',
+            priority: '0.9',
+          },
+        ]
+      : [];
+
+  // Fichas individuales de producto
+  const productoPages = productos.map((producto) => ({
+    url: `${site}${urlProducto(producto.slug)}`,
+    lastmod: producto.data.updatedAt
+      ? new Date(producto.data.updatedAt).toISOString()
+      : new Date().toISOString(),
+    changefreq: 'weekly',
+    priority: '0.7',
+  }));
+
   // Combinar todas las páginas
-  const allPages = [...staticPages, ...servicioPages, ...blogPages];
+  const allPages = [
+    ...staticPages,
+    ...descuentoPages,
+    ...categoriaPages,
+    ...productoPages,
+    ...servicioPages,
+    ...blogPages,
+  ];
 
   // Generar XML del sitemap
   const sitemap = `<?xml version="1.0" encoding="UTF-8"?>

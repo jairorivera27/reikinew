@@ -1,66 +1,93 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { getAddiInstallmentHint } from '../../utils/addiHint';
-import { formatTipoPotenciaLine } from '../../utils/productCardCompactMeta';
+import { formatTipoPotenciaLine, marcaVaEnLineaMorada } from '../../utils/productCardCompactMeta';
+import { urlProducto } from '../../config/categorias-tienda';
+import { etiquetaPrecioPorUnidad, type ResultadoValor } from '../../utils/calidadPrecio';
 
 interface Props {
   producto: CollectionEntry<'productos'>;
+  /** Puntaje de calidad-precio dentro de su categoría. Si falta, la tarjeta no lo muestra. */
+  valor?: ResultadoValor;
 }
 
-const { producto } = Astro.props;
+const { producto, valor } = Astro.props;
 const d = producto.data;
 const slug = producto.slug;
+const urlFicha = urlProducto(slug);
 
-const tipoPotenciaLine = formatTipoPotenciaLine(String(d.category), d.title);
+const tipoPotenciaLine = formatTipoPotenciaLine(String(d.category), d.title, {
+  brand: d.brand,
+  model: d.model,
+  power: d.power,
+});
 
 const marcaDisplay = String(d.brand ?? '').trim();
+/** Si la marca ya va en la línea morada, no la repetimos en gris. */
+const mostrarMarcaSeparada = marcaDisplay !== '' && !marcaVaEnLineaMorada(String(d.category));
 const modeloDisplay = String(d.model ?? '').trim() || d.title.trim();
 
 const addiHint = getAddiInstallmentHint(d.price);
+
+const enLiquidacion = Boolean(d.precioAnterior && d.descuentoPct);
+const precioUnitario = etiquetaPrecioPorUnidad(valor);
 ---
 
 <div class="producto-card" data-product-slug={slug}>
-  <div class="producto-image-container">
-    <img
-      src={d.image}
-      alt={d.title}
-      class="producto-image"
-      loading="lazy"
-    />
-    {d.stock === 'disponible' && (
-      <div class="producto-badge disponible">Disponible</div>
-    )}
-    {d.stock === 'agotado' && (
-      <div class="producto-badge agotado">Agotado</div>
-    )}
-    {d.stock === 'pre-orden' && (
-      <div class="producto-badge pre-orden">Pre-orden</div>
-    )}
-  </div>
+  <a class="producto-image-link" href={urlFicha} aria-label={`Ver detalles de ${d.title}`}>
+    <div class="producto-image-container">
+      <img
+        src={d.image}
+        alt={d.title}
+        class="producto-image"
+        loading="lazy"
+      />
+      {d.stock === 'disponible' && (
+        <div class="producto-badge disponible">Disponible</div>
+      )}
+      {d.stock === 'agotado' && (
+        <div class="producto-badge agotado">Agotado</div>
+      )}
+      {d.stock === 'pre-orden' && (
+        <div class="producto-badge pre-orden">Pre-orden</div>
+      )}
+      {enLiquidacion && <div class="producto-badge-descuento">-{d.descuentoPct}%</div>}
+      {valor?.destacado && (
+        <div class="producto-badge-valor" title="Mejor relación calidad-precio de su categoría">
+          <i class="fas fa-award" aria-hidden="true"></i>
+          Mejor calidad-precio
+        </div>
+      )}
+    </div>
+  </a>
 
   <div class="producto-content">
     <span class="sr-only">{d.title}</span>
 
-    <div class="producto-meta-stack">
+    <a class="producto-meta-stack" href={urlFicha}>
       <p class="producto-tipo-potencia">{tipoPotenciaLine}</p>
-      {marcaDisplay !== '' && (
+      {mostrarMarcaSeparada && (
         <p class="producto-marca-gris">{marcaDisplay}</p>
       )}
       <div class="producto-modelo-recuadro" title={d.title}>
         {modeloDisplay}
       </div>
-    </div>
+    </a>
 
     <div class="producto-footer-compact">
-      <div class="producto-price">{d.price}</div>
+      <div class="producto-price">
+        {d.price}
+        {enLiquidacion && <span class="producto-price-anterior">{d.precioAnterior}</span>}
+      </div>
+      {precioUnitario && <p class="producto-precio-unitario">{precioUnitario}</p>}
       <p class="producto-addi-hint">
         <span>{addiHint}</span>
         <img src="/images/Addi.png" alt="Addi" class="producto-addi-logo" loading="lazy" decoding="async" />
       </p>
 
-      <button type="button" class="producto-ver-detalles" data-product-slug={slug}>
+      <a class="producto-ver-detalles" href={urlFicha} data-product-slug={slug}>
         Ver detalles
-      </button>
+      </a>
 
       <div class="producto-actions">
         <div class="quantity-controls" data-product-id={slug}>
@@ -170,6 +197,19 @@ const addiHint = getAddiInstallmentHint(d.price);
     color: white;
   }
 
+  .producto-badge-descuento {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 20px;
+    background: #dc2626;
+    color: white;
+    font-size: 0.82rem;
+    font-weight: 800;
+    box-shadow: 0 3px 10px rgba(220, 38, 38, 0.38);
+  }
+
   .producto-content {
     padding: 0.95rem;
     display: flex;
@@ -179,12 +219,33 @@ const addiHint = getAddiInstallmentHint(d.price);
     flex: 0 0 auto;
   }
 
+  .producto-image-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .producto-image-link:hover .producto-image {
+    transform: scale(1.03);
+  }
+
+  .producto-image {
+    transition: transform 0.25s ease;
+  }
+
   /** Orden: tipo+potencia (morado negrita) → marca gris → recuadro modelo */
   .producto-meta-stack {
     display: flex;
     flex-direction: column;
     gap: 0.35rem;
     cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .producto-meta-stack:hover .producto-tipo-potencia {
+    text-decoration: underline;
+    text-underline-offset: 3px;
   }
 
   .producto-tipo-potencia {
@@ -268,6 +329,38 @@ const addiHint = getAddiInstallmentHint(d.price);
     line-height: 1.2;
   }
 
+  .producto-price-anterior {
+    margin-left: 0.45rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #9ca3af;
+    text-decoration: line-through;
+  }
+
+  .producto-precio-unitario {
+    margin: 0.1rem 0 0;
+    font-size: 0.74rem;
+    font-weight: 500;
+    color: #6b7280;
+  }
+
+  .producto-badge-valor {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.28rem 0.6rem;
+    border-radius: 20px;
+    background: linear-gradient(135deg, #047857, #10b981);
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+    box-shadow: 0 3px 10px rgba(4, 120, 87, 0.35);
+    z-index: 2;
+  }
+
   .producto-ver-detalles {
     align-self: flex-start;
     margin: 0;
@@ -279,6 +372,8 @@ const addiHint = getAddiInstallmentHint(d.price);
     border: 1px dashed #cbd5e1;
     border-radius: 10px;
     cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     transition:
       border-color 0.2s ease,

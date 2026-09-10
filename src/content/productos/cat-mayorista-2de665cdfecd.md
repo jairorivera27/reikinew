@@ -1,5 +1,6 @@
 ---
-title: "SOLIS INVERSOR S5-GC20K-LV-$ SOLIS 25 KW 220V TRIFASICO-$ SOLIS INVERSOR S6-GC3P30K04-LV-ND"
+draft: true
+title: "Solis Inversor S5-GC20K-LV-$ Solis 25 KW 220V Trifasico-$ Solis Inversor S6-GC3P30K04-LV-ND"
 description: "Inversor string on-grid Solis: doble o múltiple MPPT, monitorización y protecciones integradas para instalaciones residenciales, comerciales o grandes según referencia."
 image: "/images/livoltek.png"
 category: "inversores"

@@ -1,7 +1,7 @@
 ---
-title: "ACCUENERGY ACUCT-200R-600: 1A"
+title: "Accuenergy ACUCT-200R-600: 1A"
 description: "Transformador de corriente (TC) o núcleo dividido Accuenergy para medición de energía, telemetría o protección en AC o según modelo."
-image: "/images/astroenergy.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$898.350"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Instalación por electricista; verificar diámetro de bus"
   - "Fuente: [Accuenergy](https://www.accuenergy.com/)"
 brand: "Accuenergy"
-model: "ACCUENERGY ACUCT-200R-600: 1A"
 stock: "disponible"
 order: 5197
 ---

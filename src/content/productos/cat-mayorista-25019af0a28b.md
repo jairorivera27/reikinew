@@ -1,7 +1,8 @@
 ---
-title: "3P -3XCT CLAMP 600 (CTS 600A)"
+draft: true
+title: "3P -3XCT Clamp 600 (CTS 600A)"
 description: "Juego de núcleos o abrazaderas de corriente (CT) para medición trifásica en monitorización Solis o cuadros con medidor externo; rango nominal según amperaje del código."
-image: "/images/Productos tienda/Inversores/LUMIANRIA SOLAR EN MEDELLIN.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$1.174.200"
 specifications:
@@ -10,8 +11,7 @@ specifications:
   - "Precisión de clase según fabricante del TC"
   - "Uso típico con EPM / medidor trifásico Solis u OEM compatible"
   - "Fuente: manual Solis / fabricante del TC"
-brand: "Genérico"
-model: "3P -3XCT CLAMP 600 (CTS 600A)"
+brand: "Sin marca"
 stock: "disponible"
 order: 5109
 ---

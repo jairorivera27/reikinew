@@ -1,0 +1,452 @@
+﻿---
+/**
+ * Filtros del listado de categorÃ­a.
+ *
+ * Sin filtros activos la pÃ¡gina muestra el HTML estÃ¡tico que renderizÃ³ Astro (bueno para
+ * SEO y para el LCP). Al tocar un filtro se descarga el Ã­ndice de la categorÃ­a y el grid
+ * pasa a renderizarse en el cliente sobre el catÃ¡logo completo, no solo sobre la pÃ¡gina.
+ */
+import type { CategoriaTienda } from '../../config/categorias-tienda';
+import type { FacetasCategoria } from '../../utils/facetasCategoria';
+
+interface Props {
+  categoria: CategoriaTienda;
+  facetas: FacetasCategoria;
+}
+
+const { categoria, facetas } = Astro.props;
+
+const formatoCorto = (valor: number) =>
+  new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(valor);
+---
+
+<section
+  class="filtros"
+  data-filtros
+  data-indice={`/tienda/indice/${categoria.slug}.json`}
+  data-unidad={facetas.unidad ?? ''}
+  data-orden-default={categoria.id === 'inversores' ? 'tipo-potencia' : 'valor'}
+>
+  <div class="filtros-barra">
+    <button type="button" class="filtros-toggle" data-filtros-toggle aria-expanded="false" aria-controls="filtros-panel">
+      <i class="fas fa-sliders-h" aria-hidden="true"></i>
+      Filtrar
+      <span class="filtros-activos-num" data-filtros-contador hidden>0</span>
+    </button>
+
+    <p class="filtros-resultado" data-filtros-resultado aria-live="polite">
+      {facetas.total} {facetas.total === 1 ? 'producto' : 'productos'}
+    </p>
+
+    <label class="filtros-orden">
+      <span>Ordenar por</span>
+      <select data-filtro-orden>
+        {categoria.id === 'inversores' ? (
+          <>
+            <option value="tipo-potencia">On-Grid â†’ Off-Grid â†’ HÃ­brido</option>
+            <option value="valor">Mejor calidad-precio</option>
+            <option value="precio-asc">Menor precio</option>
+            <option value="precio-desc">Mayor precio</option>
+            {facetas.unidad && <option value="potencia-desc">Mayor {facetas.unidad}</option>}
+            {facetas.unidad && <option value="unitario-asc">Menor precio por {facetas.unidad}</option>}
+          </>
+        ) : (
+          <>
+            <option value="valor">Mejor calidad-precio</option>
+            <option value="precio-asc">Menor precio</option>
+            <option value="precio-desc">Mayor precio</option>
+            {facetas.unidad && <option value="potencia-desc">Mayor {facetas.unidad}</option>}
+            {facetas.unidad && <option value="unitario-asc">Menor precio por {facetas.unidad}</option>}
+          </>
+        )}
+      </select>
+    </label>
+  </div>
+
+  <div class="filtros-panel" id="filtros-panel" data-filtros-panel hidden>
+    {facetas.tiposInversor.length > 0 && (
+      <fieldset class="filtros-grupo">
+        <legend>Tipo de inversor</legend>
+        <div class="filtros-marcas">
+          {facetas.tiposInversor.map((tipo) => (
+            <label class="filtros-check">
+              <input type="checkbox" data-filtro-tipo value={tipo.nombre} />
+              <span>{tipo.nombre}</span>
+              <span class="filtros-conteo">{tipo.conteo}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+    )}
+
+    {facetas.marcas.length > 1 && (
+      <fieldset class="filtros-grupo">
+        <legend>Marca</legend>
+        <div class="filtros-marcas">
+          {facetas.marcas.map((marca) => (
+            <label class="filtros-check">
+              <input type="checkbox" data-filtro-marca value={marca.nombre} />
+              <span>{marca.nombre}</span>
+              <span class="filtros-conteo">{marca.conteo}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+    )}
+
+    <fieldset class="filtros-grupo">
+      <legend>Precio</legend>
+      <p class="filtros-rango-hint">
+        Desde {formatoCorto(facetas.precioMin)} hasta {formatoCorto(facetas.precioMax)}
+      </p>
+      <div class="filtros-rango">
+        <label>
+          <span>MÃ­nimo</span>
+          <input type="number" data-filtro-precio-min min="0" step="10000" placeholder={String(facetas.precioMin)} />
+        </label>
+        <label>
+          <span>MÃ¡ximo</span>
+          <input type="number" data-filtro-precio-max min="0" step="10000" placeholder={String(facetas.precioMax)} />
+        </label>
+      </div>
+    </fieldset>
+
+    {facetas.unidad && facetas.potenciaMin !== null && (
+      <fieldset class="filtros-grupo">
+        <legend>{facetas.unidad === 'kWh' ? 'Capacidad' : facetas.unidad === 'A' ? 'Corriente' : 'Potencia'} ({facetas.unidad})</legend>
+        <p class="filtros-rango-hint">
+          Desde {facetas.potenciaMin} hasta {facetas.potenciaMax} {facetas.unidad}
+        </p>
+        <div class="filtros-rango">
+          <label>
+            <span>MÃ­nimo</span>
+            <input type="number" data-filtro-potencia-min min="0" step="any" placeholder={String(facetas.potenciaMin)} />
+          </label>
+          <label>
+            <span>MÃ¡ximo</span>
+            <input type="number" data-filtro-potencia-max min="0" step="any" placeholder={String(facetas.potenciaMax)} />
+          </label>
+        </div>
+      </fieldset>
+    )}
+
+    {facetas.hayAgotados && (
+      <fieldset class="filtros-grupo">
+        <legend>Disponibilidad</legend>
+        <label class="filtros-check">
+          <input type="checkbox" data-filtro-disponibles />
+          <span>Solo productos disponibles</span>
+        </label>
+      </fieldset>
+    )}
+
+    <div class="filtros-acciones">
+      <button type="button" class="filtros-limpiar" data-filtros-limpiar>
+        <i class="fas fa-times" aria-hidden="true"></i>
+        Limpiar filtros
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '../../scripts/filtrosCategoria';
+</script>
+
+<style>
+  .filtros {
+    margin-bottom: 1.5rem;
+  }
+
+  .filtros-barra {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    padding: 0.85rem 1.1rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.06);
+  }
+
+  .filtros-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.55rem 1.1rem;
+    border-radius: 50px;
+    border: 1px solid #e5e7eb;
+    background: #f9fafb;
+    color: #6b2181;
+    font-size: 0.9rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  }
+
+  .filtros-toggle:hover,
+  .filtros-toggle[aria-expanded='true'] {
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    border-color: transparent;
+    color: white;
+  }
+
+  /* display:inline-flex gana sobre el display:none que el navegador da a [hidden]. */
+  .filtros-activos-num[hidden] {
+    display: none;
+  }
+
+  .filtros-activos-num {
+    min-width: 20px;
+    height: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 0.35rem;
+    border-radius: 20px;
+    background: #dc2626;
+    color: white;
+    font-size: 0.72rem;
+    font-weight: 700;
+  }
+
+  .filtros-resultado {
+    margin: 0;
+    font-size: 0.88rem;
+    color: #6b7280;
+    flex: 1;
+  }
+
+  .filtros-orden {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    color: #6b7280;
+  }
+
+  .filtros-orden select {
+    padding: 0.45rem 0.7rem;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    background: white;
+    font-size: 0.87rem;
+    font-family: inherit;
+    color: #374151;
+    cursor: pointer;
+  }
+
+  .filtros-panel {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.5rem;
+    margin-top: 0.85rem;
+    padding: 1.35rem;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.06);
+  }
+
+  .filtros-grupo {
+    border: none;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .filtros-grupo legend {
+    padding: 0;
+    margin-bottom: 0.6rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #6b2181;
+  }
+
+  .filtros-marcas {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    max-height: 190px
+    ;
+    overflow-y: auto;
+  }
+
+  .filtros-check {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.32rem 0.4rem;
+    border-radius: 8px;
+    font-size: 0.87rem;
+    color: #374151;
+    cursor: pointer;
+  }
+
+  .filtros-check:hover {
+    background: #f9f5fb;
+  }
+
+  .filtros-check input {
+    accent-color: #6b2181;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+  }
+
+  .filtros-check span:first-of-type {
+    flex: 1;
+  }
+
+  .filtros-conteo {
+    font-size: 0.78rem;
+    color: #9ca3af;
+  }
+
+  .filtros-rango-hint {
+    margin: 0 0 0.5rem;
+    font-size: 0.78rem;
+    color: #9ca3af;
+  }
+
+  .filtros-rango {
+    display: flex;
+    gap: 0.6rem;
+  }
+
+  .filtros-rango label {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 0.75rem;
+    color: #6b7280;
+  }
+
+  .filtros-rango input {
+    width: 100%;
+    padding: 0.45rem 0.6rem;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    font-size: 0.87rem;
+    font-family: inherit;
+    color: #374151;
+  }
+
+  .filtros-rango input:focus {
+    outline: 2px solid rgba(107, 33, 129, 0.35);
+    border-color: #6b2181;
+  }
+
+  .filtros-acciones {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  .filtros-limpiar {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    border: 1px solid #fecaca;
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  .filtros-limpiar:hover {
+    background: #fee2e2;
+  }
+
+  @media (max-width: 640px) {
+    .filtros-resultado {
+      order: 3;
+      flex-basis: 100%;
+    }
+
+    .filtros-orden {
+      flex-wrap: wrap;
+    }
+  }
+</style>
+
+<style is:global>
+  /*
+   * .paginacion declara display:flex, que gana sobre el display:none que el navegador
+   * aplica a [hidden]. Sin esto la paginaciÃ³n estÃ¡tica sigue visible bajo los resultados
+   * filtrados.
+   */
+    .filtros-panel[hidden] {
+    display: none;
+  }
+
+  .paginacion[hidden] {
+    display: none;
+  }
+
+  /* Elementos que inserta el script de filtros, fuera del alcance del CSS con scope. */
+  .filtros-cargar-mas {
+    display: block;
+    margin: 2rem auto 0;
+    padding: 0.75rem 1.75rem;
+    border-radius: 50px;
+    border: 1px solid #e5e7eb;
+    background: white;
+    color: #6b2181;
+    font-size: 0.92rem;
+    font-weight: 600;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    cursor: pointer;
+    transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
+  }
+
+  .filtros-cargar-mas:hover {
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    border-color: transparent;
+    color: white;
+  }
+
+  .filtros-vacio {
+    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 3.5rem 1.5rem;
+    background: white;
+    border-radius: 18px;
+    text-align: center;
+    color: #6b7280;
+  }
+
+  .filtros-vacio i {
+    font-size: 2.25rem;
+    color: #d8c4e2;
+  }
+
+  .filtros-vacio p {
+    margin: 0;
+    font-size: 0.98rem;
+  }
+
+  .filtros-vacio .filtros-limpiar {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 1.1rem;
+    border-radius: 50px;
+    border: 1px solid #fecaca;
+    background: #fef2f2;
+    color: #b91c1c;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+  }
+</style>

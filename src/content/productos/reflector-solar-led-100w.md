@@ -10,7 +10,6 @@ specifications:
   - "Uso recomendado: exterior residencial y comercial"
   - "Tecnologia: LED solar"
   - "Instalacion: pared o poste"
-brand: "Reflector solar de 100W"
 model: "RSL-100W-15AH"
 stock: "disponible"
 order: 11

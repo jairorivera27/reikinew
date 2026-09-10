@@ -1,7 +1,7 @@
 ---
-title: "SOLIS METER TRIFASICO + CTS (MEDIDOR + MONITOREO SOLO PARA 1 INVERSOR)"
+title: "Solis Meter Trifasico + CTS (medidor + Monitoreo Solo para 1 Inversor)"
 description: "Equipo de monitorización o medida para inversores Solis (logger Wi‑Fi/LAN, EPM, GPRS, medidor + TC, etc.) según referencia exacta."
-image: "/images/livoltek.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$741.600"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Instalación y cableado según guía Solis"
   - "Fuente: [Solis](https://www.solisinverters.com/)"
 brand: "Solis"
-model: "SOLIS METER TRIFASICO + CTS (MEDIDOR + MONITOREO SOLO PARA 1 INVERSOR)"
 stock: "disponible"
 order: 5106
 ---

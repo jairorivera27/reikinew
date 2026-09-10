@@ -10,7 +10,6 @@ specifications:
   - "Panel solar: externo"
   - "Aplicacion: grandes vias, parqueaderos y zonas empresariales"
   - "Instalacion: poste"
-brand: "Luminaria solar de calle 200W panel externo"
 model: "LCS-200W-40AH-AP-PE"
 stock: "disponible"
 order: 21

@@ -10,7 +10,6 @@ specifications:
   - "Tecnologia: LED solar"
   - "Cobertura: areas amplias"
   - "Uso recomendado: parqueaderos, bodegas y vias internas"
-brand: "Reflector solar de 400W"
 model: "RSL-400W-40AH"
 stock: "disponible"
 order: 15

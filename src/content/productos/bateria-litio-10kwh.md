@@ -1,7 +1,7 @@
 ---
 title: "Batería de Litio 10kWh"
 description: "Batería de litio de 10kWh con tecnología LiFePO4, perfecta para sistemas residenciales y comerciales pequeños que requieren mayor autonomía."
-image: "/images/productos-tienda/baterias/pylontech-10kwh-medellin.png"
+image: "/images/productos-tienda/baterias/pylontech-uf5000.png"
 category: "baterias"
 price: "$23.900.000"
 specifications:

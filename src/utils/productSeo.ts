@@ -24,6 +24,9 @@ function categoryLabel(category: string): string {
     controladores: 'controlador mppt solar',
     protecciones: 'proteccion electrica solar',
     cargadores: 'cargador solar',
+    monitoreo: 'equipo de monitoreo solar',
+    bombeo: 'bomba solar',
+    accesorios: 'accesorio solar',
   };
   return map[category] || 'equipo solar';
 }

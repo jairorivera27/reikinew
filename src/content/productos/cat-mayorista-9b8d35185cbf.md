@@ -2,7 +2,7 @@
 title: "Smart DongleB-06-EU"
 description: "Dongle de comunicaciones Huawei para inversores SUN2000: conectividad 4G o Wi‑Fi según referencia, para telemetría remota sin cableado LAN permanente."
 image: "/images/huawei.png"
-category: "protecciones"
+category: "accesorios"
 price: "$711.450"
 specifications:
   - "Compatibilidad con modelos SUN2000 indicados en la referencia del dongle"
@@ -10,7 +10,6 @@ specifications:
   - "Configuración vía aplicación FusionSolar"
   - "Fuente: [Huawei](https://solar.huawei.com/)"
 brand: "Huawei"
-model: "Smart DongleB-06-EU"
 stock: "disponible"
 order: 5060
 ---

@@ -1,0 +1,1117 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
+import ShoppingCartDrawer from '../../components/ShoppingCartDrawer.astro';
+import CartFloatButton from '../../components/CartFloatButton.astro';
+import SEO from '../../components/SEO.astro';
+import FontAwesome from '../../components/FontAwesome.astro';
+import { getCategoria, urlCategoria, urlProducto } from '../../config/categorias-tienda';
+import { CONTACT_WHATSAPP_URL } from '../../config/contact';
+import { getAddiInstallmentHint } from '../../utils/addiHint';
+import {
+  breadcrumbJsonLd,
+  metaDescriptionProducto,
+  metaTitleProducto,
+  migasProducto,
+  precioNumerico,
+  productJsonLd,
+} from '../../utils/productoSeoMeta';
+import {
+  SERVICIOS,
+  certificacionesDeCategoria,
+  faqJsonLd,
+  faqsDe,
+  garantiaDeCategoria,
+  grupoDelCatalogo,
+  resolverSerie,
+} from '../../utils/fichaTecnica';
+import { calcularValor, etiquetaPrecioPorUnidad } from '../../utils/calidadPrecio';
+
+export async function getStaticPaths() {
+  const productos = await getCollection('productos', ({ data }) => data.draft !== true);
+  return productos.map((producto) => ({
+    params: { slug: producto.slug },
+    props: { producto },
+  }));
+}
+
+type Props = { producto: CollectionEntry<'productos'> };
+
+const { producto } = Astro.props;
+const d = producto.data;
+const categoria = getCategoria(d.category);
+const specs = d.specifications ?? [];
+const stock = d.stock ?? 'disponible';
+
+const metaTitle = metaTitleProducto(d);
+const metaDescription = metaDescriptionProducto(d);
+const migas = migasProducto(d, producto.slug);
+const addiHint = getAddiInstallmentHint(d.price);
+
+const relacionados = (await getCollection('productos', ({ data }) => data.draft !== true))
+  .filter((p) => p.data.category === d.category && p.slug !== producto.slug)
+  .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
+  .slice(0, 4);
+
+const mensajeWhatsApp = encodeURIComponent(
+  `Hola, quiero información sobre: ${d.title}${d.model ? ` (${d.model})` : ''}`
+);
+
+const etiquetasStock: Record<string, string> = {
+  disponible: 'Disponible',
+  agotado: 'Agotado',
+  'pre-orden': 'Pre-orden',
+};
+
+const enLiquidacion = Boolean(d.precioAnterior && d.descuentoPct);
+const ahorroCOP = enLiquidacion
+  ? new Intl.NumberFormat('es-CO', {
+      style: 'currency',
+      currency: 'COP',
+      maximumFractionDigits: 0,
+    }).format(precioNumerico(d.precioAnterior!) - precioNumerico(d.price))
+  : '';
+
+// Ficha técnica: lo que trae el catálogo primero y después la hoja de datos de la serie.
+const serie = resolverSerie({ title: d.title, model: d.model, brand: d.brand });
+const grupoCatalogo = grupoDelCatalogo(specs);
+const grupos = [...(grupoCatalogo ? [grupoCatalogo] : []), ...(serie?.grupos ?? [])];
+
+/** La garantía de la serie es un dato verificado; la de categoría es solo referencia. */
+const garantiaSerie = serie?.grupos
+  .find((g) => g.titulo.toLowerCase().includes('garantía'))
+  ?.filas.map((f) => `${f.clave}: ${f.valor}`)
+  .join(' · ');
+const garantiaCategoria = garantiaDeCategoria(d.category);
+const certificaciones = certificacionesDeCategoria(d.category);
+const faqs = faqsDe(d.category);
+
+const mensajeFichaTecnica = encodeURIComponent(
+  `Hola, necesito la ficha técnica completa de: ${d.title}${d.model ? ` (${d.model})` : ''}`
+);
+
+// Precio por unidad de potencia, comparado con el resto de su categoría.
+const deLaCategoria = (await getCollection('productos', ({ data }) => data.draft !== true)).filter(
+  (p) => p.data.category === d.category
+);
+const precioUnitario = etiquetaPrecioPorUnidad(
+  calcularValor(deLaCategoria.map((p) => ({ slug: p.slug, ...p.data }))).get(producto.slug)
+);
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{metaTitle}</title>
+    <FontAwesome />
+    <SEO
+      title={metaTitle}
+      description={metaDescription}
+      canonical={urlProducto(producto.slug)}
+      ogImage={d.image}
+      ogType="product"
+      keywords={(d.seoKeywords ?? []).join(', ')}
+      schemaType="Product"
+      schemaData={productJsonLd(d, producto.slug)}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd(migas))} />
+    <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd(faqs))} />
+  </head>
+  <body>
+    <Header />
+
+    <main class="ficha-main">
+      <div class="ficha-container">
+        <nav class="migas" aria-label="Ruta de navegación">
+          <ol>
+            {migas.map((miga, i) => (
+              <li>
+                {i < migas.length - 1 ? (
+                  <a href={miga.url}>{miga.nombre}</a>
+                ) : (
+                  <span aria-current="page">{miga.nombre}</span>
+                )}
+              </li>
+            ))}
+          </ol>
+        </nav>
+
+        {enLiquidacion && (
+          <section class="promo-banner" aria-labelledby="promo-titulo">
+            <img class="promo-banner-img" src={d.promoImagen} alt="" role="presentation" loading="eager" decoding="async" />
+            <div class="promo-banner-contenido">
+              <p class="promo-etiqueta">{d.promocion}</p>
+              <p class="promo-descuento">
+                <span class="promo-descuento-num">-{d.descuentoPct}%</span>
+              </p>
+              <h2 id="promo-titulo" class="promo-titulo">{d.title}</h2>
+              <p class="promo-precios">
+                <span class="promo-precio-viejo">{d.precioAnterior}</span>
+                <span class="promo-precio-nuevo">{d.price}</span>
+              </p>
+              <p class="promo-ahorro">Ahorrás {ahorroCOP} · unidades limitadas</p>
+            </div>
+          </section>
+        )}
+
+        <article class="ficha">
+          <div class="ficha-media">
+            <img src={d.image} alt={d.title} width="520" height="400" fetchpriority="high" decoding="async" />
+            <span class={`ficha-badge ${stock}`}>{etiquetasStock[stock] ?? 'Disponible'}</span>
+            {enLiquidacion && <span class="ficha-badge-descuento">-{d.descuentoPct}%</span>}
+          </div>
+
+          <div class="ficha-info">
+            {d.brand && <p class="ficha-marca">{d.brand}</p>}
+            <h1 class="ficha-titulo">{d.title}</h1>
+
+            <dl class="ficha-identificadores">
+              {d.model && (
+                <div>
+                  <dt>Modelo</dt>
+                  <dd>{d.model}</dd>
+                </div>
+              )}
+              {d.power && (
+                <div>
+                  <dt>Especificación</dt>
+                  <dd>{d.power}</dd>
+                </div>
+              )}
+              <div>
+                <dt>Categoría</dt>
+                <dd><a href={urlCategoria(d.category)}>{categoria?.nombre}</a></dd>
+              </div>
+            </dl>
+
+            <p class="ficha-precio">
+              {d.price}
+              {enLiquidacion && (
+                <>
+                  <span class="ficha-precio-anterior">{d.precioAnterior}</span>
+                  <span class="ficha-precio-pill">-{d.descuentoPct}% {d.promocion}</span>
+                </>
+              )}
+            </p>
+            {precioUnitario && (
+              <p class="ficha-precio-unitario">
+                <i class="fas fa-calculator" aria-hidden="true"></i>
+                {precioUnitario} · sirve para comparar este equipo con otros de su categoría
+              </p>
+            )}
+            <p class="ficha-addi">
+              <span>{addiHint}</span>
+              <img src="/images/Addi.png" alt="Addi" class="ficha-addi-logo" loading="lazy" decoding="async" />
+            </p>
+
+            <div class="ficha-acciones">
+              <div class="quantity-controls" data-product-id={producto.slug}>
+                <button class="qty-btn minus" type="button" aria-label="Disminuir cantidad">-</button>
+                <input type="number" class="qty-input" value="1" min="1" readonly aria-label="Cantidad" />
+                <button class="qty-btn plus" type="button" aria-label="Aumentar cantidad">+</button>
+              </div>
+              <button
+                type="button"
+                class="ficha-btn-primario add-to-cart"
+                data-product-id={producto.slug}
+                data-product-title={d.title}
+                data-product-description={d.description}
+                data-product-price={d.price}
+                data-product-image={d.image}
+                data-product-brand={d.brand || ''}
+                data-product-model={d.model || ''}
+              >
+                <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+                Agregar al carrito
+              </button>
+            </div>
+
+            <a class="ficha-btn-whatsapp" href={`${CONTACT_WHATSAPP_URL}?text=${mensajeWhatsApp}`} rel="noopener" target="_blank">
+              <i class="fab fa-whatsapp" aria-hidden="true"></i>
+              Consultar por WhatsApp
+            </a>
+
+            <div class="ficha-bloque">
+              <h2>Descripción</h2>
+              <p>{d.description}</p>
+            </div>
+
+            {grupos.length > 0 && (
+              <div class="ficha-bloque">
+                <h2>Especificaciones técnicas</h2>
+
+                {grupos.map((grupo) => (
+                  <section class="specs-grupo">
+                    <h3>{grupo.titulo}</h3>
+                    <table class="ficha-specs">
+                      <tbody>
+                        {grupo.filas.map((fila) => (
+                          <tr>
+                            {fila.clave ? (
+                              <th scope="row">{fila.clave}</th>
+                            ) : (
+                              <th scope="row" class="sin-clave"></th>
+                            )}
+                            <td>{fila.valor}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </section>
+                ))}
+
+                {serie ? (
+                  <p class="specs-fuente">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    Datos de la serie <strong>{serie.nombre}</strong>, tomados de la hoja de datos
+                    del fabricante (<a href={serie.url} rel="noopener nofollow" target="_blank">{serie.fuente}</a>).
+                    Los valores pueden variar según la variante exacta del modelo.
+                  </p>
+                ) : (
+                  <p class="specs-fuente specs-fuente-solicitud">
+                    <i class="fas fa-info-circle" aria-hidden="true"></i>
+                    Mostramos los datos que entrega el fabricante para esta referencia. Si necesitás
+                    la hoja de datos completa antes de comprar,
+                    <a href={`${CONTACT_WHATSAPP_URL}?text=${mensajeFichaTecnica}`} rel="noopener" target="_blank">
+                      pedila por WhatsApp
+                    </a>
+                    y te la enviamos.
+                  </p>
+                )}
+              </div>
+            )}
+
+            <div class="ficha-bloque">
+              <h2>Garantía y normativa</h2>
+              <div class="confianza-grid">
+                {garantiaSerie && (
+                  <div class="confianza-item destacado">
+                    <i class="fas fa-award" aria-hidden="true"></i>
+                    <div>
+                      <strong>Garantía del fabricante</strong>
+                      <p>{garantiaSerie}</p>
+                    </div>
+                  </div>
+                )}
+
+                {!garantiaSerie && garantiaCategoria && (
+                  <div class="confianza-item destacado">
+                    <i class="fas fa-award" aria-hidden="true"></i>
+                    <div>
+                      <strong>Garantía del fabricante</strong>
+                      <p>{garantiaCategoria} La cobertura exacta de esta referencia se confirma en la cotización.</p>
+                    </div>
+                  </div>
+                )}
+
+                {certificaciones.length > 0 && (
+                  <div class="confianza-item">
+                    <i class="fas fa-clipboard-check" aria-hidden="true"></i>
+                    <div>
+                      <strong>Normativa aplicable</strong>
+                      <p>
+                        En Colombia una instalación de este tipo debe cumplir:
+                        {' '}{certificaciones.join(' · ')}.
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </div>
+
+            <div class="ficha-bloque">
+              <h2>Cómo comprás en Reiki Solar</h2>
+              <div class="confianza-grid">
+                {SERVICIOS.map((servicio) => (
+                  <div class="confianza-item">
+                    <i class={servicio.icono} aria-hidden="true"></i>
+                    <div>
+                      <strong>{servicio.titulo}</strong>
+                      <p>{servicio.detalle}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div class="ficha-bloque">
+              <h2>Preguntas frecuentes</h2>
+              <div class="faq-lista">
+                {faqs.map((faq, i) => (
+                  <details class="faq-item" open={i === 0}>
+                    <summary>
+                      {faq.pregunta}
+                      <i class="fas fa-chevron-down" aria-hidden="true"></i>
+                    </summary>
+                    <p>{faq.respuesta}</p>
+                  </details>
+                ))}
+              </div>
+
+              <p class="faq-cierre">
+                ¿Te queda otra duda?
+                <a href={`${CONTACT_WHATSAPP_URL}?text=${mensajeWhatsApp}`} rel="noopener" target="_blank">
+                  Escribinos por WhatsApp
+                </a>
+                y te responde un asesor técnico.
+              </p>
+            </div>
+          </div>
+        </article>
+
+        {relacionados.length > 0 && (
+          <section class="relacionados">
+            <div class="relacionados-header">
+              <h2>Otros productos en {categoria?.nombre}</h2>
+              <a href={urlCategoria(d.category)}>Ver toda la categoría</a>
+            </div>
+            <div class="relacionados-grid">
+              {relacionados.map((p) => (
+                <a class="relacionado-card" href={urlProducto(p.slug)}>
+                  <img src={p.data.image} alt={p.data.title} loading="lazy" decoding="async" width="200" height="150" />
+                  <span class="relacionado-titulo">{p.data.title}</span>
+                  <span class="relacionado-precio">{p.data.price}</span>
+                </a>
+              ))}
+            </div>
+          </section>
+        )}
+      </div>
+    </main>
+
+    <Footer />
+    <ShoppingCartDrawer />
+    <WhatsAppFloat />
+    <CartFloatButton />
+
+    <script>
+      document.addEventListener('click', (e) => {
+        const btn = e.target instanceof Element ? e.target.closest('.qty-btn') : null;
+        if (!(btn instanceof HTMLElement)) return;
+        const input = btn.parentElement?.querySelector('.qty-input');
+        if (!(input instanceof HTMLInputElement)) return;
+        const actual = parseInt(input.value, 10) || 1;
+        input.value = String(btn.classList.contains('plus') ? actual + 1 : Math.max(1, actual - 1));
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  html {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+</style>
+
+<style>
+  .ficha-main {
+    background: linear-gradient(180deg, #faf7fc 0%, #ffffff 340px);
+    padding: 2rem 0 4rem;
+  }
+
+  .ficha-container {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .migas {
+    margin-bottom: 1.5rem;
+  }
+
+  .migas ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.85rem;
+    color: #6b7280;
+  }
+
+  .migas li:not(:last-child)::after {
+    content: '›';
+    margin-left: 0.4rem;
+    color: #c4b5cd;
+  }
+
+  .migas a {
+    color: #6b2181;
+    text-decoration: none;
+  }
+
+  .migas a:hover {
+    text-decoration: underline;
+  }
+
+  .migas span[aria-current] {
+    color: #4b5563;
+    display: inline-block;
+    max-width: 380px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    vertical-align: bottom;
+  }
+
+  /* Bloque de liquidación */
+  .promo-banner {
+    position: relative;
+    border-radius: 24px;
+    overflow: hidden;
+    margin-bottom: 1.75rem;
+    min-height: 260px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 10px 34px rgba(107, 33, 129, 0.28);
+  }
+
+  .promo-banner-img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .promo-banner-contenido {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    color: white;
+    background: linear-gradient(180deg, rgba(30, 5, 40, 0.55), rgba(30, 5, 40, 0.72));
+  }
+
+  .promo-etiqueta {
+    margin: 0 0 0.4rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #ffd166;
+  }
+
+  .promo-descuento {
+    margin: 0;
+    line-height: 1;
+  }
+
+  .promo-descuento-num {
+    font-size: 4.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    color: #ffd166;
+    text-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  }
+
+  .promo-titulo {
+    margin: 0.6rem auto 0.8rem;
+    max-width: 640px;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .promo-precios {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.9rem;
+    margin: 0 0 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .promo-precio-viejo {
+    font-size: 1.1rem;
+    color: #e9d5f0;
+    text-decoration: line-through;
+    opacity: 0.85;
+  }
+
+  .promo-precio-nuevo {
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: white;
+  }
+
+  .promo-ahorro {
+    margin: 0;
+    font-size: 0.92rem;
+    color: #f3e8f7;
+  }
+
+  .ficha-badge-descuento {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    padding: 0.45rem 0.85rem;
+    border-radius: 20px;
+    background: #dc2626;
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 800;
+    box-shadow: 0 4px 14px rgba(220, 38, 38, 0.4);
+  }
+
+  .ficha-precio-anterior {
+    margin-left: 0.7rem;
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: #9ca3af;
+    text-decoration: line-through;
+  }
+
+  .ficha-precio-pill {
+    display: inline-block;
+    margin-left: 0.6rem;
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    background: #fee2e2;
+    color: #b91c1c;
+    font-size: 0.8rem;
+    font-weight: 700;
+    vertical-align: middle;
+  }
+
+  .ficha {
+    display: grid;
+    grid-template-columns: minmax(0, 460px) minmax(0, 1fr);
+    gap: 2.5rem;
+    background: white;
+    border-radius: 24px;
+    padding: 2rem;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .ficha-media {
+    position: relative;
+    align-self: start;
+    background: #f8fafc;
+    border: 1px solid #eef2ff;
+    border-radius: 18px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 340px;
+  }
+
+  .ficha-media img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: contain;
+  }
+
+  .ficha-badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.4rem 0.9rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: white;
+  }
+
+  .ficha-badge.disponible {
+    background: #10b981;
+  }
+
+  .ficha-badge.agotado {
+    background: #ef4444;
+  }
+
+  .ficha-badge.pre-orden {
+    background: #f59e0b;
+  }
+
+  .ficha-marca {
+    margin: 0 0 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #9ca3af;
+  }
+
+  .ficha-titulo {
+    margin: 0 0 1rem;
+    font-size: 1.75rem;
+    line-height: 1.25;
+    font-weight: 700;
+    color: #1f2937;
+  }
+
+  .ficha-identificadores {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 2rem;
+    margin: 0 0 1.25rem;
+    padding: 0.9rem 0;
+    border-top: 1px solid #f1f5f9;
+    border-bottom: 1px solid #f1f5f9;
+  }
+
+  .ficha-identificadores dt {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #9ca3af;
+    margin-bottom: 0.15rem;
+  }
+
+  .ficha-identificadores dd {
+    margin: 0;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #374151;
+  }
+
+  .ficha-identificadores a {
+    color: #6b2181;
+    text-decoration: none;
+  }
+
+  .ficha-identificadores a:hover {
+    text-decoration: underline;
+  }
+
+  .ficha-precio {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+    color: #6b2181;
+  }
+
+  .ficha-addi {
+    margin: 0.2rem 0 1.4rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #0066eb;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+  }
+
+  .ficha-addi-logo {
+    height: 16px;
+    width: auto;
+  }
+
+  .ficha-acciones {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  .quantity-controls {
+    display: flex;
+    align-items: center;
+    border: 2px solid #e5e7eb;
+    border-radius: 50px;
+    overflow: hidden;
+  }
+
+  .qty-btn {
+    background: #f3f4f6;
+    border: none;
+    width: 38px;
+    height: 44px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #6b2181;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+
+  .qty-btn:hover {
+    background: #6b2181;
+    color: white;
+  }
+
+  .qty-input {
+    width: 48px;
+    height: 44px;
+    border: none;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #1f2937;
+    background: white;
+  }
+
+  .ficha-btn-primario {
+    flex: 1;
+    min-width: 220px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+    padding: 0.85rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(107, 33, 129, 0.3);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .ficha-btn-primario:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(107, 33, 129, 0.42);
+  }
+
+  .ficha-btn-whatsapp {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.9rem;
+    color: #128c7e;
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+  }
+
+  .ficha-btn-whatsapp:hover {
+    text-decoration: underline;
+  }
+
+  .ficha-bloque {
+    margin-top: 2rem;
+  }
+
+  .ficha-bloque h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #1f2937;
+    margin: 0 0 0.7rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid #f3e8f7;
+  }
+
+  .ficha-bloque p {
+    margin: 0;
+    color: #4b5563;
+    font-size: 0.95rem;
+  }
+
+  .ficha-precio-unitario {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin: 0.35rem 0 0 !important;
+    font-size: 0.82rem;
+    color: #6b7280 !important;
+  }
+
+  .ficha-precio-unitario i {
+    color: #6b2181;
+  }
+
+  .specs-grupo {
+    margin-bottom: 1.5rem;
+  }
+
+  .specs-grupo:last-of-type {
+    margin-bottom: 0.85rem;
+  }
+
+  .specs-grupo h3 {
+    margin: 0 0 0.4rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #6b2181;
+  }
+
+  .specs-fuente {
+    display: flex;
+    gap: 0.55rem;
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    background: #f8fafc;
+    border-left: 3px solid #6b2181;
+    font-size: 0.83rem !important;
+    color: #4b5563 !important;
+    line-height: 1.55;
+  }
+
+  .specs-fuente i {
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+    color: #6b2181;
+  }
+
+  .specs-fuente a {
+    color: #6b2181;
+    font-weight: 600;
+  }
+
+  .specs-fuente-solicitud {
+    background: #fffbeb;
+    border-left-color: #f59e0b;
+  }
+
+  .specs-fuente-solicitud i {
+    color: #f59e0b;
+  }
+
+  /* Bloques de garantía, normativa y servicios: lo que responde "¿puedo confiar?". */
+  .confianza-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(258px, 1fr));
+    gap: 0.85rem;
+  }
+
+  .confianza-item {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.95rem 1.1rem;
+    border-radius: 14px;
+    background: #f9fafb;
+    border: 1px solid #f1f5f9;
+  }
+
+  .confianza-item.destacado {
+    background: #f5fdf8;
+    border-color: #bbf7d0;
+  }
+
+  .confianza-item > i {
+    flex-shrink: 0;
+    margin-top: 0.2rem;
+    font-size: 1.05rem;
+    color: #6b2181;
+  }
+
+  .confianza-item.destacado > i {
+    color: #047857;
+  }
+
+  .confianza-item strong {
+    display: block;
+    margin-bottom: 0.15rem;
+    font-size: 0.9rem;
+    color: #1f2937;
+  }
+
+  .confianza-item p {
+    font-size: 0.85rem !important;
+    line-height: 1.5;
+  }
+
+  .faq-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .faq-item {
+    border: 1px solid #f1f5f9;
+    border-radius: 12px;
+    background: #fcfcfd;
+    overflow: hidden;
+  }
+
+  .faq-item summary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.85rem 1.1rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #1f2937;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .faq-item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item summary i {
+    flex-shrink: 0;
+    font-size: 0.75rem;
+    color: #6b2181;
+    transition: transform 0.2s ease;
+  }
+
+  .faq-item[open] summary {
+    background: #faf7fc;
+  }
+
+  .faq-item[open] summary i {
+    transform: rotate(180deg);
+  }
+
+  .faq-item p {
+    padding: 0 1.1rem 1rem;
+    font-size: 0.9rem !important;
+    line-height: 1.6;
+  }
+
+  .faq-cierre {
+    margin-top: 1rem !important;
+    font-size: 0.88rem !important;
+  }
+
+  .faq-cierre a {
+    color: #6b2181;
+    font-weight: 600;
+    margin-left: 0.25rem;
+  }
+
+  .ficha-specs {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+  }
+
+  .ficha-specs th,
+  .ficha-specs td {
+    text-align: left;
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid #f1f5f9;
+    vertical-align: top;
+  }
+
+  .ficha-specs th {
+    width: 34%;
+    color: #6b7280;
+    font-weight: 600;
+  }
+
+  .ficha-specs th.sin-clave {
+    width: 0;
+    padding: 0;
+  }
+
+  .ficha-specs td {
+    color: #374151;
+  }
+
+  .relacionados {
+    margin-top: 3rem;
+  }
+
+  .relacionados-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  .relacionados-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    color: #1f2937;
+  }
+
+  .relacionados-header a {
+    color: #6b2181;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+  }
+
+  .relacionados-header a:hover {
+    text-decoration: underline;
+  }
+
+  .relacionados-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .relacionado-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    background: white;
+    border-radius: 16px;
+    padding: 1rem;
+    text-decoration: none;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .relacionado-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 28px rgba(107, 33, 129, 0.22);
+  }
+
+  .relacionado-card img {
+    width: 100%;
+    height: 120px;
+    object-fit: contain;
+  }
+
+  .relacionado-titulo {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #374151;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .relacionado-precio {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #6b2181;
+  }
+
+  @media (max-width: 900px) {
+    .promo-descuento-num {
+      font-size: 3.2rem;
+    }
+
+    .promo-precio-nuevo {
+      font-size: 1.6rem;
+    }
+
+    .ficha {
+      grid-template-columns: 1fr;
+      padding: 1.25rem;
+      gap: 1.5rem;
+    }
+
+    .ficha-titulo {
+      font-size: 1.4rem;
+    }
+
+    .ficha-btn-primario {
+      min-width: 0;
+    }
+  }
+</style>

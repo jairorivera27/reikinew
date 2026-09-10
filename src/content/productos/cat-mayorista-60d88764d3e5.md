@@ -1,5 +1,6 @@
 ---
-title: "SOLIS HIBRIDO S6-EH1P11.4K-H-US-$ SOLIS INVERSOR HIBRIDO S6-EH1P5K-H-US"
+draft: true
+title: "Solis Hibrido S6-EH1P11.4K-H-US-$ Solis Inversor Hibrido S6-EH1P5K-H-US"
 description: "Inversor híbrido Solis: gestión de energía solar, batería y red con MPPT múltiples, protecciones AFCI (según modelo) y alta eficiencia de conversión."
 image: "/images/livoltek.png"
 category: "inversores"
@@ -11,7 +12,6 @@ specifications:
   - "Grado IP66 en muchos modelos de campo; rango térmico −25 °C a +60 °C típico"
   - "Fuente: [Solis](https://www.solisinverters.com/)"
 brand: "Solis"
-model: "SOLIS HIBRIDO S6-EH1P11.4K-H-US-$ SOLIS INVERSOR HIBRIDO S6-EH1P5K-H-US"
 stock: "disponible"
 order: 5080
 ---

@@ -1,8 +1,8 @@
-import type { APIRoute } from 'astro';
+﻿import type { APIRoute } from 'astro';
 
 // Número de WhatsApp de destino (Colombia) - Este es el número final donde quieres recibir los mensajes
 // IMPORTANTE: Este debe ser el mismo número que usaste para obtener la API key de CallMeBot
-const WHATSAPP_NUMBER_COLOMBIA = '573245737413';
+const WHATSAPP_NUMBER_COLOMBIA = '573122435627';
 
 // Helper para formatear moneda colombiana
 function formatCOP(num?: number): string {
@@ -166,7 +166,7 @@ export const POST: APIRoute = async ({ request }) => {
         const apiKeyStr = String(callmebotApiKey);
         // CallMeBot requiere el número de destino (donde quieres recibir el mensaje)
         // IMPORTANTE: El número debe ser el mismo que usaste para obtener la API key
-        // Formato: código de país + número sin espacios ni guiones (ej: 573245737413)
+        // Formato: código de país + número sin espacios ni guiones (ej: 573122435627)
         const phoneNumber = WHATSAPP_NUMBER_COLOMBIA.replace(/[^0-9]/g, ''); // Limpiar cualquier carácter no numérico
         const callmebotUrl = `https://api.callmebot.com/whatsapp.php?phone=${phoneNumber}&text=${encodeURIComponent(mensaje)}&apikey=${apiKeyStr}`;
         console.log('📤 Enviando a CallMeBot...');

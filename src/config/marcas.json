@@ -1,0 +1,66 @@
+{
+  "_instrucciones": "Marcas de la tienda: nombre canónico, variantes de escritura y nivel de reputación. El nivel (1 a 5) pesa en el puntaje de calidad-precio junto con el precio por unidad de potencia. Editá este archivo para ajustar el ranking; no hace falta tocar código. Tras cambiar 'variantes', corré: node scripts/normalizar-marcas.mjs --aplicar",
+
+  "_nivelesSignificado": {
+    "5": "Marca premium con soporte y garantía consolidada en Colombia",
+    "4": "Marca reconocida de uso masivo en proyectos",
+    "3": "Marca correcta, alternativa de precio medio",
+    "2": "Marca económica o de accesorios",
+    "1": "Sin marca definida o genérica"
+  },
+
+  "marcas": {
+    "Victron": { "nivel": 5, "variantes": ["victron energy", "victron"] },
+    "Huawei": { "nivel": 5, "variantes": ["huawei"] },
+    "Fronius": { "nivel": 5, "variantes": ["fronius"] },
+    "Studer": { "nivel": 5, "variantes": ["studer"] },
+    "SMA": { "nivel": 5, "variantes": ["sma"] },
+
+    "Growatt": { "nivel": 4, "variantes": ["growatt"] },
+    "GoodWe": { "nivel": 4, "variantes": ["goodwe", "good we"] },
+    "Solis": { "nivel": 4, "variantes": ["solis", "ginlong"] },
+    "Deye": { "nivel": 4, "variantes": ["deye"] },
+    "Hoymiles": { "nivel": 4, "variantes": ["hoymiles"] },
+    "APsystems": { "nivel": 4, "variantes": ["apsystems", "aps systems", "aps"] },
+    "Jinko Solar": { "nivel": 4, "variantes": ["jinko solar", "jinko"] },
+    "JA Solar": { "nivel": 4, "variantes": ["ja solar", "jasolar"] },
+    "LONGi": { "nivel": 4, "variantes": ["longi", "longi solar"] },
+    "Trina Solar": { "nivel": 4, "variantes": ["trina solar", "trina"] },
+    "Pylontech": { "nivel": 4, "variantes": ["pylontech"] },
+    "BYD": { "nivel": 4, "variantes": ["byd"] },
+    "Schneider": { "nivel": 4, "variantes": ["schneider", "schneider electric"] },
+    "ABB": { "nivel": 4, "variantes": ["abb"] },
+
+    "Must": { "nivel": 3, "variantes": ["must"] },
+    "Felicity": { "nivel": 3, "variantes": ["felicity", "felicity solar"] },
+    "Dyness": { "nivel": 3, "variantes": ["dyness"] },
+    "BSLBATT": { "nivel": 3, "variantes": ["bslbatt"] },
+    "Pytes": { "nivel": 3, "variantes": ["pytes"] },
+    "Soluna": { "nivel": 3, "variantes": ["soluna"] },
+    "EPever": { "nivel": 3, "variantes": ["epever", "ep ever"] },
+    "Kolos": { "nivel": 2, "variantes": ["kolos", "kol"] },
+    "Astroenergy": { "nivel": 3, "variantes": ["astroenergy", "astro energy"] },
+    "Eastron": { "nivel": 3, "variantes": ["eastron"] },
+    "Accuenergy": { "nivel": 3, "variantes": ["accuenergy"] },
+    "Citel": { "nivel": 3, "variantes": ["citel"] },
+    "Suntree": { "nivel": 3, "variantes": ["suntree"] },
+    "Tensite": { "nivel": 3, "variantes": ["tensite"] },
+    "Ecosoft": { "nivel": 3, "variantes": ["ecosoft"] },
+    "Schletter": { "nivel": 3, "variantes": ["schletter"] },
+
+    "Leader": { "nivel": 2, "variantes": ["leader"] },
+    "Inti": { "nivel": 2, "variantes": ["inti"] },
+    "LDSolar": { "nivel": 2, "variantes": ["ldsolar", "ld solar"] },
+    "PowerTech": { "nivel": 2, "variantes": ["powertech", "power tech"] },
+    "Procable": { "nivel": 2, "variantes": ["procable"] },
+
+    "Sin marca": { "nivel": 1, "variantes": ["multimarca", "generico", "genérico", "varios", "sin marca"] }
+  },
+
+  "_notaNoEsMarca": "Si el valor de brand parece el nombre del producto (trae la potencia o demasiadas palabras), el normalizador borra el campo en vez de crear una marca falsa en los filtros.",
+  "patronesNoEsMarca": [
+    "\\d+\\s*w\\b",
+    "\\d+\\s*kwh?\\b",
+    "^(reflector|luminaria|panel|inversor|bateria|batería|controlador|bomba|cargador)\\b"
+  ]
+}

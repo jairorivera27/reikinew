@@ -1,7 +1,7 @@
 ---
 title: "Fusible DC 100A con Portafusible"
 description: "Fusible DC de 100 amperios con portafusible para protección de sistemas solares de alta potencia."
-image: "/images/Productos tienda/Protección Electrica/Breaker DC 100a con Portafusible ABB Medellín.png"
+image: "/images/productos-tienda/protecciones/abb-fuseholder-100a.png"
 category: "protecciones"
 price: "$109.000"
 specifications:

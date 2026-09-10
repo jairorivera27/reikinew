@@ -1,0 +1,96 @@
+{
+  "_instrucciones": "Define qué equipos son los más demandados del mercado colombiano para que abran cada carrusel. Es lo primero que ve un comprador, así que manda sobre el resto del puntaje. Editá los rangos, marcas y modelos sin tocar código; el orden se recalcula en el próximo build.",
+
+  "_fuente": "Investigación de mercado Colombia 2026: el estándar residencial son paneles monocristalinos TOPCon/N-type de 540-620W, inversores híbridos y on-grid de 3-12kW, y baterías de litio de 5-16kWh a 48/51,2V. Marcas Tier-1 dominantes: Jinko, LONGi, Trina, JA Solar (paneles); Huawei, Growatt, GoodWe, Deye, Solis, Fronius (inversores); Hoymiles y APsystems (microinversores); Victron y EPever (controladores); Huawei LUNA2000, Pylontech, Felicity (baterías).",
+
+  "pesos": {
+    "_comentario": "Suman 100. 'demanda' es el peso del ajuste al mercado; 'valor' el del precio por unidad de potencia.",
+    "demanda": 42,
+    "valor": 28,
+    "marca": 13,
+    "disponibilidad": 10,
+    "imagen": 7
+  },
+
+  "_pesosDemanda": "Reparto interno del puntaje de demanda: estar en el rango de potencia que más se vende, ser de una marca demandada en esa categoría y coincidir con una línea de producto estrella.",
+  "pesosDemanda": {
+    "rango": 0.5,
+    "marca": 0.3,
+    "modelo": 0.2
+  },
+
+  "categorias": {
+    "paneles": {
+      "_nota": "El estándar residencial y comercial es 540-620W. Por debajo de 400W son paneles pequeños de nicho.",
+      "rangoPreferido": { "min": 540, "max": 630 },
+      "marcasDemandadas": ["Jinko Solar", "LONGi", "Trina Solar", "JA Solar", "Canadian Solar"],
+      "modelosEstrella": ["tiger neo", "topcon", "n-type", "bifacial"]
+    },
+    "inversores": {
+      "_nota": "El volumen está en 3-12kW residencial y pequeño comercio. Los de 50kW+ son proyectos industriales puntuales.",
+      "rangoPreferido": { "min": 3000, "max": 12000 },
+      "marcasDemandadas": ["Huawei", "Growatt", "GoodWe", "Deye", "Solis", "Fronius", "Hoymiles", "APsystems"],
+      "modelosEstrella": [
+        "sun2000",
+        "min ",
+        "mid ",
+        "tlxhus",
+        "es-ld",
+        "ms g4",
+        "dns",
+        "et-lv",
+        "hms-",
+        "hmt-",
+        "ds3",
+        "qt2",
+        "hibrido",
+        "híbrido"
+      ]
+    },
+    "baterias": {
+      "_nota": "El estándar residencial es 5kWh escalable; hasta 16kWh cubre casas grandes.",
+      "rangoPreferido": { "min": 4.8, "max": 16 },
+      "marcasDemandadas": ["Huawei", "Pylontech", "Felicity", "BYD", "Dyness", "Soluna", "Pytes"],
+      "modelosEstrella": ["luna2000", "us5000", "us3000", "lifepo4", "51,2v", "51.2v", "48v"]
+    },
+    "controladores": {
+      "_nota": "Residencial y off-grid pequeño: 20-60A. Victron es el estándar de referencia y EPever la opción económica.",
+      "rangoPreferido": { "min": 20, "max": 60 },
+      "marcasDemandadas": ["Victron", "EPever", "Growatt", "Must"],
+      "modelosEstrella": ["mppt", "smartsolar", "bluesolar", "tracer"]
+    },
+    "protecciones": {
+      "_nota": "Los breakers y DPS de 16-63A son los de rotación diaria en instalaciones residenciales.",
+      "rangoPreferido": { "min": 16, "max": 63 },
+      "marcasDemandadas": ["Suntree", "Victron", "Schneider", "ABB", "Citel"],
+      "modelosEstrella": ["dps", "breaker", "dc", "supresor"]
+    },
+    "monitoreo": {
+      "_nota": "Sin rango de potencia comparable. Manda la marca del inversor con el que se integra.",
+      "marcasDemandadas": ["Huawei", "Victron", "Growatt", "GoodWe", "Hoymiles", "APsystems"],
+      "modelosEstrella": ["dongle", "datalogger", "dtu", "ecu", "shunt", "smart meter", "medidor"]
+    },
+    "bombeo": {
+      "_nota": "Riego y fincas: las bombas de 750W a 2200W cubren la mayoría de los pozos.",
+      "rangoPreferido": { "min": 750, "max": 2200 },
+      "marcasDemandadas": [],
+      "modelosEstrella": ["kolos", "sumergible"]
+    },
+    "reflectores": {
+      "_nota": "Iluminación exterior de consumo: 100-200W es el volumen.",
+      "rangoPreferido": { "min": 100, "max": 200 },
+      "marcasDemandadas": [],
+      "modelosEstrella": ["sensor", "led"]
+    },
+    "cargadores": {
+      "_nota": "Categoría nueva y pequeña; sin datos de demanda todavía.",
+      "marcasDemandadas": ["Victron", "Huawei"],
+      "modelosEstrella": []
+    },
+    "accesorios": {
+      "_nota": "Dongles, cables, sensores y piezas de campo. Manda la marca del equipo al que se conectan.",
+      "marcasDemandadas": ["Huawei", "Hoymiles", "APsystems", "Growatt", "Victron", "Fronius"],
+      "modelosEstrella": ["dongle", "accesorio", "dtu", "ecu", "optimizer", "optimizador", "trunk", "end cap"]
+    }
+  }
+}

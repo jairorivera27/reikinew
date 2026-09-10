@@ -1,7 +1,7 @@
 ---
-title: "SOLIS EPM3 (MONITOREO MAS DE 2 A 10 INVERSORES TRIFASICO)-$ SOLIS EPM3 5G PLUS (MONITOREO MAS DE 2 A 80 INVERSORES TRIFASICO)-$ SOLIS MONITOREO EPM3-5G-PRO"
+title: "Solis EPM3 (monitoreo Mas de 2 A 10 Inversores Trifasico)-$ Solis EPM3 5G Plus (monitoreo Mas de 2 A 80 Inversores Trifasico)-$ Solis Monitoreo EPM3-5G-PRO"
 description: "Equipo de monitorización o medida para inversores Solis (logger Wi‑Fi/LAN, EPM, GPRS, medidor + TC, etc.) según referencia exacta."
-image: "/images/livoltek.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$1.838.550"
 specifications:

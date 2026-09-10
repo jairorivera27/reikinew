@@ -1,7 +1,7 @@
 ---
 title: "SUN2000-36KTL-M3"
 description: "Inversor string trifásico Huawei SUN2000 KTL-M3 para plantas comerciales e industriales: varios MPPT, monitorización y compatibilidad con SmartLogger según proyecto."
-image: "/images/huawei.png"
+image: "/images/productos-tienda/inversores/huawei-sun2000.png"
 category: "inversores"
 price: "$13.815.900"
 specifications:
@@ -11,7 +11,6 @@ specifications:
   - "IP66; rango térmico extendido para tejados e intemperie"
   - "Fuente: [Huawei FusionSolar](https://solar.huawei.com/)"
 brand: "Huawei"
-model: "SUN2000-36KTL-M3"
 stock: "disponible"
 order: 5047
 ---

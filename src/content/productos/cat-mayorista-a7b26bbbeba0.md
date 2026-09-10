@@ -1,7 +1,7 @@
 ---
-title: "TRANSFORMADOR DE CORRIENTE ACCUENERGY 100 A"
+title: "Transformador de Corriente Accuenergy 100 A"
 description: "Transformador de corriente (TC) o núcleo dividido Accuenergy para medición de energía, telemetría o protección en AC o según modelo."
-image: "/images/astroenergy.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$298.350"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Instalación por electricista; verificar diámetro de bus"
   - "Fuente: [Accuenergy](https://www.accuenergy.com/)"
 brand: "Accuenergy"
-model: "TRANSFORMADOR DE CORRIENTE ACCUENERGY 100 A"
 stock: "disponible"
 order: 5192
 ---

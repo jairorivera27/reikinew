@@ -1,7 +1,7 @@
 ---
-title: "FRONIUS SMART METER WR"
+title: "Fronius Smart Meter Wr"
 description: "Sensor o periférico de monitorización Fronius (Datamanager, Smart Meter, sonda térmica/anemómetro) para inversores y Solar.web."
-image: "/images/logo-Victron-Energy-Ecogreensolar-1.jpg"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$2.264.400"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Instalación según manual Fronius"
   - "Fuente: [Fronius](https://www.fronius.com/)"
 brand: "Fronius"
-model: "FRONIUS SMART METER WR"
 stock: "disponible"
 order: 5116
 ---

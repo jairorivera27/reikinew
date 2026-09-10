@@ -1,9 +1,9 @@
----
-// WhatsAppFloat.astro - Botón flotante de WhatsApp
+﻿---
+import { CONTACT_WHATSAPP_URL } from '../config/contact';
 ---
 
 <a 
-  href="https://wa.me/573245737413" 
+  href={CONTACT_WHATSAPP_URL} 
   target="_blank" 
   rel="noopener noreferrer" 
   class="whatsapp-float"

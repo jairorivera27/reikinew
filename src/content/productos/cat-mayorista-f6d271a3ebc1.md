@@ -1,7 +1,7 @@
 ---
 title: "PYTES E-BOX 48100R (5.12kWh-51.2V-100Ah) CABLE CORTO"
 description: "Sistema o módulo de almacenamiento en litio (LiFePO₄ típico) para acoplamiento con inversores compatibles; BMS, expansión y cableado según referencia Pytes o BYD."
-image: "/images/bateria-litio.svg"
+image: "/images/productos-tienda/baterias/pytes-battery.png"
 category: "baterias"
 price: "$5.890.500"
 specifications:
@@ -11,7 +11,6 @@ specifications:
   - "Sólo con inversores en lista de compatibilidad del fabricante"
   - "Fuente: documentación OEM del modelo"
 brand: "Pytes"
-model: "PYTES E-BOX 48100R (5.12kWh-51.2V-100Ah) CABLE CORTO"
 stock: "disponible"
 order: 5208
 ---

@@ -1,7 +1,7 @@
 ---
-title: "SOLIS S2-WL-ST"
+title: "Solis S2-WL-ST"
 description: "Equipo de monitorización o medida para inversores Solis (logger Wi‑Fi/LAN, EPM, GPRS, medidor + TC, etc.) según referencia exacta."
-image: "/images/livoltek.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$247.200"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Instalación y cableado según guía Solis"
   - "Fuente: [Solis](https://www.solisinverters.com/)"
 brand: "Solis"
-model: "SOLIS S2-WL-ST"
 stock: "disponible"
 order: 5100
 ---

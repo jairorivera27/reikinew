@@ -1,7 +1,7 @@
 ---
-title: "FRONIUS INVERSOR PRIMO 10.0-1 208/240"
+title: "Fronius Inversor Primo 10.0-1 208/240"
 description: "Inversor Fronius (Primo, Symo, Tauro): tecnología SnapINverter o plataforma comercial según familia, MPPT múltiples y monitorización Solar.web."
-image: "/images/logo-Victron-Energy-Ecogreensolar-1.jpg"
+image: "/images/productos-tienda/inversores/fronius-primo.jpg"
 category: "inversores"
 price: "$14.925.150"
 specifications:
@@ -11,7 +11,6 @@ specifications:
   - "Protecciones y normativa según manual de instalación"
   - "Fuente: [Fronius](https://www.fronius.com/)"
 brand: "Fronius"
-model: "FRONIUS INVERSOR PRIMO 10.0-1 208/240"
 stock: "disponible"
 order: 5118
 ---

@@ -1,5 +1,5 @@
 ---
-title: "STUDER MPPT SOLAR CHARGE CONTROLLER - VS 120 - 48V"
+title: "Studer MPPT Solar Charge Controller - Vs 120 - 48V"
 description: "Controlador solar MPPT Studer serie VT/VS: máximo aprovechamiento de campo FV hacia banco de baterías de 48 V (según modelo)."
 image: "/images/logo-Victron-Energy-Ecogreensolar-1.jpg"
 category: "controladores"
@@ -10,7 +10,6 @@ specifications:
   - "Cableado y seccionado según manual"
   - "Fuente: [Studer Innotec](https://www.studer-innotec.com/)"
 brand: "Studer"
-model: "STUDER MPPT SOLAR CHARGE CONTROLLER - VS 120 - 48V"
 stock: "disponible"
 order: 5132
 ---

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Energía Solar para Empresas en Medellín y Colombia: Rentabilidad y Sostenibilidad"
 description: "Descubre cómo la energía solar transforma empresas en Medellín y Colombia. Ahorra hasta un 80% en costos de energía, aprovecha beneficios tributarios y mejora tu sostenibilidad corporativa con paneles solares."
 image: "/images/energia solar en empresas.png"
@@ -89,7 +89,7 @@ No deje que los costos de energía limiten el crecimiento de su negocio. **Reiki
 Nuestro equipo de ingenieros expertos en Medellín está listo para realizar un estudio de viabilidad gratuito para su empresa.
 
 <div class="blog-cta-section">
-  <a href="https://wa.me/573245737413?text=Hola,%20me%20interesa%20una%20cotización%20de%20paneles%20solares%20para%20mi%20empresa" target="_blank" rel="noopener noreferrer" class="blog-cta-button">
+  <a href="https://wa.me/573122435627?text=Hola,%20me%20interesa%20una%20cotización%20de%20paneles%20solares%20para%20mi%20empresa" target="_blank" rel="noopener noreferrer" class="blog-cta-button">
     <i class="fab fa-whatsapp"></i>
     <span>Solicitar Asesoría Empresarial Gratuita</span>
     <i class="fas fa-arrow-right"></i>

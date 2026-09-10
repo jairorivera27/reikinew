@@ -1,7 +1,7 @@
 ---
 title: "SUN2000-150K-MG0(PRO)"
 description: "Inversor central / string de gran formato Huawei SUN2000 para plantas de megavatios o grandes comerciales: arquitectura de alta tensión, múltiples MPPT y telemetría con SmartLogger."
-image: "/images/huawei.png"
+image: "/images/productos-tienda/inversores/huawei-sun2000.png"
 category: "inversores"
 price: "$37.791.000"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Protecciones y normativa según manual de campo Huawei"
   - "Fuente: [Huawei FusionSolar](https://solar.huawei.com/)"
 brand: "Huawei"
-model: "SUN2000-150K-MG0(PRO)"
 stock: "disponible"
 order: 5053
 ---

@@ -10,7 +10,6 @@ specifications:
   - "Tecnologia: LED solar"
   - "Instalacion: pared o poste"
   - "Uso recomendado: patios, accesos y fachadas"
-brand: "Reflector solar de 60W"
 model: "RSL-60W-10AH"
 stock: "disponible"
 order: 10

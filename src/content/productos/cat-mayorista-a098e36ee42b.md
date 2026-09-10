@@ -1,7 +1,7 @@
 ---
-title: "SOLIS EPM3-5G-PRO SPLIT PHASE-$ 3P -3XCT CLAMP 300 (CTS 300A)"
+title: "Solis EPM3-5G-PRO Split Phase-$ 3P -3XCT Clamp 300 (CTS 300A)"
 description: "Equipo de monitorización o medida para inversores Solis (logger Wi‑Fi/LAN, EPM, GPRS, medidor + TC, etc.) según referencia exacta."
-image: "/images/livoltek.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$1.089.226"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Instalación y cableado según guía Solis"
   - "Fuente: [Solis](https://www.solisinverters.com/)"
 brand: "Solis"
-model: "SOLIS EPM3-5G-PRO SPLIT PHASE-$ 3P -3XCT CLAMP 300 (CTS 300A)"
 stock: "disponible"
 order: 5108
 ---

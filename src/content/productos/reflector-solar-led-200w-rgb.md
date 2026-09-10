@@ -10,7 +10,6 @@ specifications:
   - "Color de luz: RGB"
   - "Tecnologia: LED solar"
   - "Uso recomendado: eventos, jardines y fachadas"
-brand: "Reflector solar de 200W RGB"
 model: "RSL-200W-20AH-RGB"
 stock: "disponible"
 order: 13

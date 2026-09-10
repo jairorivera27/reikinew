@@ -1,4 +1,4 @@
----
+﻿---
 title: "Cómo extender la vida útil de un sistema solar por más de 25 años"
 description: "Guía para proteger tu inversión solar: limpieza, monitoreo, garantías, seguros y mantenimiento correctivo en Colombia."
 image: "/images/energia solar en empresas sostenibilidad.png"
@@ -55,7 +55,7 @@ El costo anual oscila entre 0,5 % y 1 % del valor del sistema y puede exigir
 ## CTA
 
 <div class="blog-cta-section">
-  <a href="https://wa.me/573245737413?text=Quiero%20un%20plan%20de%20mantenimiento%20solar%20preventivo" target="_blank" rel="noopener noreferrer" class="blog-cta-button">
+  <a href="https://wa.me/573122435627?text=Quiero%20un%20plan%20de%20mantenimiento%20solar%20preventivo" target="_blank" rel="noopener noreferrer" class="blog-cta-button">
     <i class="fab fa-whatsapp"></i>
     <span>Agendar mantenimiento profesional</span>
     <i class="fas fa-arrow-right"></i>

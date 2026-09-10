@@ -1,7 +1,7 @@
 ---
-title: "SUPRESOR DS50PVS-880G/10KT1 CITEL"
+title: "Supresor DS50PVS-880G/10KT1 Citel"
 description: "Supresor de transitorios Citel DS50PV para protección CC en strings fotovoltaicos contra sobretensiones inducidas por rayo o conmutación."
-image: "/images/astroenergy.png"
+image: "/images/productos-tienda/protecciones/citel-spd.jpg"
 category: "protecciones"
 price: "$853.740"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Coordenación con puesta a tierra y blindajes"
   - "Fuente: [Citel](https://www.citel.us/)"
 brand: "Citel"
-model: "SUPRESOR DS50PVS-880G/10KT1 CITEL"
 stock: "disponible"
 order: 5190
 ---

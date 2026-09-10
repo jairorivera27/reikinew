@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" width="1200" height="400" role="img" aria-label="Banner de liquidación">
+  <defs>
+    <linearGradient id="fondoPromo" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#4a1259"/>
+      <stop offset="55%" stop-color="#6b2181"/>
+      <stop offset="100%" stop-color="#a8339c"/>
+    </linearGradient>
+    <linearGradient id="brilloPromo" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="400" fill="url(#fondoPromo)"/>
+  <rect width="1200" height="200" fill="url(#brilloPromo)"/>
+
+  <circle cx="90" cy="60" r="46" fill="#ffffff" opacity="0.06"/>
+  <circle cx="240" cy="340" r="28" fill="#ffffff" opacity="0.06"/>
+  <circle cx="390" cy="60" r="28" fill="#ffffff" opacity="0.06"/>
+  <circle cx="540" cy="340" r="46" fill="#ffffff" opacity="0.06"/>
+  <circle cx="690" cy="60" r="28" fill="#ffffff" opacity="0.06"/>
+  <circle cx="840" cy="340" r="28" fill="#ffffff" opacity="0.06"/>
+  <circle cx="990" cy="60" r="46" fill="#ffffff" opacity="0.06"/>
+  <circle cx="1140" cy="340" r="28" fill="#ffffff" opacity="0.06"/>
+
+  <g transform="translate(1176 380)">
+    <text text-anchor="end" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+          font-size="14" font-weight="600" letter-spacing="1.2" fill="#ffffff" opacity="0.45">IMAGEN DE PRUEBA · REEMPLAZAR</text>
+  </g>
+</svg>

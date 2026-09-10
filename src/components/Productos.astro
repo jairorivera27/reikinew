@@ -1,11 +1,27 @@
 ---
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import { calcularValor } from '../utils/calidadPrecio';
 
 const MAX_CAROUSEL = 8;
-const productos = await getCollection('productos');
+const productos = await getCollection('productos', ({ data }) => data.draft !== true);
 
-/** Prioridad: `homeCarouselOrder` en el frontmatter; si faltan cupos, se completan por `order` general. */
+/**
+ * Puntaje de calidad-precio de cada producto, calculado por categoría (solo tiene
+ * sentido comparar equipos del mismo tipo) y luego unificado en un mapa.
+ */
+const puntajes = new Map<string, number>();
+for (const categoria of new Set(productos.map((p) => p.data.category))) {
+  const valores = calcularValor(
+    productos.filter((p) => p.data.category === categoria).map((p) => ({ slug: p.slug, ...p.data }))
+  );
+  for (const [slug, valor] of valores) puntajes.set(slug, valor.puntaje);
+}
+
+/**
+ * Prioridad: el curado manual de `homeCarouselOrder`; los cupos libres se llenan con los
+ * equipos de mejor relación calidad-precio.
+ */
 function pickCarouselProductos(entries: CollectionEntry<'productos'>[]): CollectionEntry<'productos'>[] {
   const destacados = entries
     .filter((p) => p.data.homeCarouselOrder != null)
@@ -20,7 +36,7 @@ function pickCarouselProductos(entries: CollectionEntry<'productos'>[]): Collect
 
   const resto = entries
     .filter((p) => !ids.has(p.id))
-    .sort((a, b) => (a.data.order ?? 999) - (b.data.order ?? 999));
+    .sort((a, b) => (puntajes.get(b.slug) ?? 0) - (puntajes.get(a.slug) ?? 0));
 
   for (const p of resto) {
     if (out.length >= MAX_CAROUSEL) break;

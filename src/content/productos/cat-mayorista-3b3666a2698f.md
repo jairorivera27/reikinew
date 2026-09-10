@@ -1,20 +1,19 @@
 ---
-title: "HUAWEI ACCESORIO 02233DXX (SUN2000-2~6KTL-L1)"
-description: "Equipo Huawei Smart PV: inversor, optimizador o accesorio de campo para maximizar energía, seguridad y monitorización. Verifique tabla de compatibilidad del fabricante con su inversor y país."
+title: "Huawei Accesorio 02233DXX (SUN2000-2~6KTL-L1)"
+description: "Accesorio Huawei FusionSolar compatible con inversores SUN2000-2~6KTL-L1. Verifique la tabla de compatibilidad del fabricante antes de comprar."
 image: "/images/huawei.png"
-category: "inversores"
+category: "accesorios"
 price: "$244.800"
 specifications:
-  - "Parámetros eléctricos según código SUN2000 / MERC / Backup Box / accesorio"
-  - "Instalación y puesta en servicio sólo personal certificado"
-  - "Garantía y homologaciones según región Colombia / importador"
+  - "Tipo: Accesorio Huawei FusionSolar"
+  - "Compatibilidad: inversores SUN2000-2~6KTL-L1"
+  - "Referencia: 02233DXX"
   - "Fuente: [Huawei FusionSolar](https://solar.huawei.com/)"
 brand: "Huawei"
-model: "HUAWEI ACCESORIO 02233DXX (SUN2000-2~6KTL-L1)"
 stock: "disponible"
 order: 5070
 ---
 
-**HUAWEI ACCESORIO 02233DXX (SUN2000-2~6KTL-L1)** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.
+**Huawei Accesorio 02233DXX (SUN2000-2~6KTL-L1)** · pieza de campo compatible con la serie residencial monofásica SUN2000 KTL-L1. Confirmá número de parte y tabla de compatibilidad del fabricante antes de comprar.
 
-Reiki Solar gestiona importación y disponibilidad; envío nacional se cotiza según destino.
+Reiki Solar gestiona importación y disponibilidad; el envío nacional se cotiza según destino.

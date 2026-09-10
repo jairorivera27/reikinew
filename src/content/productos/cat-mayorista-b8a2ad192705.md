@@ -1,7 +1,7 @@
 ---
-title: "APS UNLOCK TOOL YC600"
+title: "APS Unlock Tool YC600"
 description: "Accesorio original APsystems para microinversores (tapas de bus, ECU de comunicación, CTS de corriente, conectores o herramientas). Garantiza mecánica y normativa del conjunto certificado."
-image: "/images/Productos tienda/Inversores/Apsystems DS3D Medellín.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$7.632"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Revise número de parte y región (NA/LATAM/EU)"
   - "Fuente: [APsystems](https://global.apsystems.com/)"
 brand: "APsystems"
-model: "APS UNLOCK TOOL YC600"
 stock: "disponible"
 order: 5016
 ---

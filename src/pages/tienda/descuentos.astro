@@ -1,0 +1,481 @@
+---
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import WhatsAppFloat from '../../components/WhatsAppFloat.astro';
+import ShoppingCartDrawer from '../../components/ShoppingCartDrawer.astro';
+import CartFloatButton from '../../components/CartFloatButton.astro';
+import SEO from '../../components/SEO.astro';
+import FontAwesome from '../../components/FontAwesome.astro';
+import ProductoCardCompact from '../../components/tienda/ProductoCardCompact.astro';
+import { CATEGORIAS, nombreCategoria, urlCategoria } from '../../config/categorias-tienda';
+import { SITE, breadcrumbJsonLd, precioNumerico } from '../../utils/productoSeoMeta';
+import {
+  DESCUENTOS_NOMBRE,
+  DESCUENTOS_URL,
+  ahorroEnPesos,
+  formatearCOP,
+  getProductosRebajados,
+} from '../../utils/descuentos';
+
+const productos = await getProductosRebajados();
+
+const ahorroTotal = productos.reduce((suma, p) => suma + ahorroEnPesos(p.data), 0);
+const descuentoMaximo = Math.max(0, ...productos.map((p) => p.data.descuentoPct ?? 0));
+
+/** Categorías que hoy tienen al menos un producto rebajado. */
+const categoriasConOferta = CATEGORIAS.filter((c) =>
+  productos.some((p) => p.data.category === c.id)
+);
+
+const metaTitle = `Descuentos en Equipos Solares | Reiki Solar`;
+const metaDescription = productos.length
+  ? `${productos.length} equipos solares rebajados hasta -${descuentoMaximo}%: paneles, inversores y baterías con precio de liquidación. Envío nacional en Colombia.`
+  : 'Consulta las promociones vigentes en equipos solares de Reiki Solar.';
+
+const migas = [
+  { nombre: 'Inicio', url: '/' },
+  { nombre: 'Tienda', url: '/tienda' },
+  { nombre: DESCUENTOS_NOMBRE, url: DESCUENTOS_URL },
+];
+
+const itemListJsonLd = {
+  '@type': 'CollectionPage',
+  name: 'Descuentos en equipos solares',
+  description: metaDescription,
+  url: `${SITE}${DESCUENTOS_URL}`,
+  mainEntity: {
+    '@type': 'ItemList',
+    numberOfItems: productos.length,
+    itemListElement: productos.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      item: {
+        '@type': 'Product',
+        name: p.data.title,
+        url: `${SITE}/tienda/${p.slug}`,
+        image: `${SITE}${p.data.image}`,
+        ...(p.data.brand ? { brand: { '@type': 'Brand', name: p.data.brand } } : {}),
+        offers: {
+          '@type': 'Offer',
+          price: String(precioNumerico(p.data.price)),
+          priceCurrency: 'COP',
+          availability:
+            p.data.stock === 'agotado'
+              ? 'https://schema.org/OutOfStock'
+              : 'https://schema.org/InStock',
+        },
+      },
+    })),
+  },
+};
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{metaTitle}</title>
+    <FontAwesome />
+    <SEO
+      title={metaTitle}
+      description={metaDescription}
+      canonical={DESCUENTOS_URL}
+      keywords="descuentos paneles solares Colombia, ofertas equipos solares, liquidación inversores solares, baterías litio en promoción"
+      schemaType="WebPage"
+      schemaData={itemListJsonLd}
+    />
+    <script type="application/ld+json" set:html={JSON.stringify(breadcrumbJsonLd(migas))} />
+  </head>
+  <body>
+    <Header />
+
+    <main class="desc-main">
+      <div class="desc-container">
+        <nav class="migas" aria-label="Ruta de navegación">
+          <ol>
+            {migas.map((miga, i) => (
+              <li>
+                {i < migas.length - 1 ? (
+                  <a href={miga.url}>{miga.nombre}</a>
+                ) : (
+                  <span aria-current="page">{miga.nombre}</span>
+                )}
+              </li>
+            ))}
+          </ol>
+        </nav>
+
+        <header class="desc-hero">
+          <span class="desc-hero-tag">
+            <i class="fas fa-bolt" aria-hidden="true"></i>
+            Liquidación
+          </span>
+          <h1>
+            Descuentos hasta
+            <strong>-{descuentoMaximo}%</strong>
+          </h1>
+          <p class="desc-hero-sub">
+            {productos.length} {productos.length === 1 ? 'equipo rebajado' : 'equipos rebajados'} con
+            precio de liquidación. Stock limitado: cuando se agota, el precio vuelve a su valor normal.
+          </p>
+
+          {ahorroTotal > 0 && (
+            <p class="desc-hero-ahorro">
+              <i class="fas fa-piggy-bank" aria-hidden="true"></i>
+              Ahorro total disponible: <strong>{formatearCOP(ahorroTotal)}</strong>
+            </p>
+          )}
+        </header>
+
+        {categoriasConOferta.length > 1 && (
+          <nav class="desc-chips" aria-label="Categorías con descuento">
+            {categoriasConOferta.map((c) => (
+              <a href={urlCategoria(c.id)} class="desc-chip">
+                <i class={c.icono} aria-hidden="true"></i>
+                {c.nombre}
+                <span>{productos.filter((p) => p.data.category === c.id).length}</span>
+              </a>
+            ))}
+          </nav>
+        )}
+
+        {productos.length > 0 ? (
+          <div class="desc-grid">
+            {productos.map((producto) => (
+              <article class="desc-item">
+                <p class="desc-item-cat">
+                  <i class="fas fa-tag" aria-hidden="true"></i>
+                  {nombreCategoria(producto.data.category)}
+                  <span class="desc-item-ahorro">
+                    Ahorrás {formatearCOP(ahorroEnPesos(producto.data))}
+                  </span>
+                </p>
+                <ProductoCardCompact producto={producto} />
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div class="desc-vacio">
+            <i class="fas fa-tags" aria-hidden="true"></i>
+            <p>No hay equipos rebajados en este momento.</p>
+            <a href="/tienda" class="desc-vacio-btn">Ver todo el catálogo</a>
+          </div>
+        )}
+
+        <section class="desc-cta">
+          <h2>¿No encontrás lo que buscás en oferta?</h2>
+          <p>
+            Cotizamos cualquier equipo del catálogo y armamos el sistema completo según tu consumo.
+          </p>
+          <div class="desc-cta-botones">
+            <a href="/tienda" class="desc-cta-primario">
+              <i class="fas fa-solar-panel" aria-hidden="true"></i>
+              Ver todo el catálogo
+            </a>
+            <a href="/COTSOLRK" class="desc-cta-secundario">
+              <i class="fas fa-calculator" aria-hidden="true"></i>
+              Cotizar mi sistema
+            </a>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <Footer />
+    <ShoppingCartDrawer />
+    <WhatsAppFloat />
+    <CartFloatButton />
+
+    <script>
+      document.addEventListener('click', (e) => {
+        const btn = e.target instanceof Element ? e.target.closest('.qty-btn') : null;
+        if (!(btn instanceof HTMLElement)) return;
+        const input = btn.parentElement?.querySelector('.qty-input');
+        if (!(input instanceof HTMLInputElement)) return;
+        const actual = parseInt(input.value, 10) || 1;
+        input.value = String(btn.classList.contains('plus') ? actual + 1 : Math.max(1, actual - 1));
+      });
+    </script>
+  </body>
+</html>
+
+<style is:global>
+  html {
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+  }
+
+  /* La tarjeta viene dimensionada para carrusel; acá ocupa la celda completa. */
+  .desc-grid .producto-card {
+    min-width: 0;
+    max-width: none;
+    width: 100%;
+  }
+</style>
+
+<style>
+  .desc-main {
+    background: linear-gradient(180deg, #f0fdf4 0%, #ffffff 340px);
+    padding: 2rem 0 4rem;
+  }
+
+  .desc-container {
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .migas {
+    margin-bottom: 1.25rem;
+    font-size: 0.85rem;
+  }
+
+  .migas ol {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    color: #9ca3af;
+  }
+
+  .migas li:not(:last-child)::after {
+    content: '›';
+    margin-left: 0.4rem;
+    color: #d1d5db;
+  }
+
+  .migas a {
+    color: #6b2181;
+    text-decoration: none;
+  }
+
+  .migas a:hover {
+    text-decoration: underline;
+  }
+
+  .desc-hero {
+    padding: 2.25rem 2rem;
+    margin-bottom: 1.75rem;
+    border-radius: 22px;
+    background: linear-gradient(135deg, #16a34a 0%, #39ff14 50%, #4ade80 100%);
+    color: #052e16;
+    box-shadow: 0 12px 34px rgba(57, 255, 20, 0.32);
+  }
+
+  .desc-hero-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.3rem 0.85rem;
+    border-radius: 50px;
+    background: rgba(5, 46, 22, 0.14);
+    color: #052e16;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  .desc-hero h1 {
+    margin: 0.75rem 0 0.5rem;
+    font-size: 2.5rem;
+    font-weight: 300;
+    line-height: 1.15;
+  }
+
+  .desc-hero h1 strong {
+    font-weight: 800;
+  }
+
+  .desc-hero-sub {
+    margin: 0;
+    max-width: 62ch;
+    font-size: 1rem;
+    opacity: 0.94;
+  }
+
+  .desc-hero-ahorro {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 1.1rem 0 0;
+    padding: 0.5rem 1rem;
+    border-radius: 12px;
+    background: rgba(0, 0, 0, 0.18);
+    font-size: 0.95rem;
+  }
+
+  .desc-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .desc-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    border: 1px solid #e5e7eb;
+    background: white;
+    color: #374151;
+    font-size: 0.87rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .desc-chip i {
+    color: #16a34a;
+  }
+
+  .desc-chip span {
+    padding: 0.05rem 0.45rem;
+    border-radius: 20px;
+    background: #f0fdf4;
+    color: #14532d;
+    font-size: 0.76rem;
+    font-weight: 700;
+  }
+
+  .desc-chip:hover {
+    border-color: #39ff14;
+    color: #14532d;
+    box-shadow: 0 4px 14px rgba(57, 255, 20, 0.25);
+  }
+
+  .desc-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .desc-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .desc-item-cat {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0;
+    font-size: 0.78rem;
+    color: #6b7280;
+  }
+
+  .desc-item-cat i {
+    color: #16a34a;
+  }
+
+  .desc-item-ahorro {
+    margin-left: auto;
+    padding: 0.1rem 0.5rem;
+    border-radius: 20px;
+    background: #ecfdf5;
+    color: #047857;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  .desc-vacio {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 4rem 1.5rem;
+    background: white;
+    border-radius: 18px;
+    text-align: center;
+    color: #6b7280;
+  }
+
+  .desc-vacio i {
+    font-size: 2.5rem;
+    color: #86efac;
+  }
+
+  .desc-vacio p {
+    margin: 0;
+  }
+
+  .desc-vacio-btn,
+  .desc-cta-primario,
+  .desc-cta-secundario {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.92rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+
+  .desc-vacio-btn,
+  .desc-cta-primario {
+    background: linear-gradient(135deg, #6b2181, #8b2a9b);
+    color: white;
+  }
+
+  .desc-cta {
+    margin-top: 3.5rem;
+    padding: 2.25rem 2rem;
+    border-radius: 20px;
+    background: #faf7fc;
+    text-align: center;
+  }
+
+  .desc-cta h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #6b2181;
+  }
+
+  .desc-cta p {
+    margin: 0 auto 1.5rem;
+    max-width: 56ch;
+    color: #6b7280;
+    font-size: 0.95rem;
+  }
+
+  .desc-cta-botones {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+
+  .desc-cta-secundario {
+    border: 1px solid #d8c4e2;
+    background: white;
+    color: #6b2181;
+  }
+
+  @media (max-width: 640px) {
+    .desc-hero {
+      padding: 1.75rem 1.35rem;
+    }
+
+    .desc-hero h1 {
+      font-size: 1.9rem;
+    }
+
+    .desc-grid {
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1.1rem;
+    }
+  }
+</style>

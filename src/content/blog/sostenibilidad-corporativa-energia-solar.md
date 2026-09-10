@@ -1,4 +1,4 @@
----
+﻿---
 title: "Sostenibilidad Corporativa: Cómo la Energía Solar Transforma tu Empresa"
 description: "Impulsa tu estrategia ESG con energía solar en Colombia: métricas, casos de éxito y tácticas para posicionar tu marca como líder en sostenibilidad corporativa."
 image: "/images/energia solar en empresas sostenibilidad.png"
@@ -82,7 +82,7 @@ La sostenibilidad corporativa dejó de ser un discurso de reputación para conve
 En Reiki Energía Solar diseñamos proyectos llave en mano para empresas en Medellín y toda Colombia: diagnóstico, dimensionamiento, beneficios tributarios y estrategia de comunicación sostenible. Agenda una consultoría y da el siguiente paso hacia una empresa con energía solar, rentabilidad y reputación 360°.
 
 <div class="blog-cta-section">
-  <a href="https://wa.me/573245737413?text=Quiero%20asesor%C3%ADa%20sobre%20energ%C3%ADa%20solar%20corporativa" target="_blank" rel="noopener noreferrer" class="blog-cta-button">
+  <a href="https://wa.me/573122435627?text=Quiero%20asesor%C3%ADa%20sobre%20energ%C3%ADa%20solar%20corporativa" target="_blank" rel="noopener noreferrer" class="blog-cta-button">
     <i class="fab fa-whatsapp"></i>
     <span>Solicita tu auditoría solar empresarial</span>
     <i class="fas fa-arrow-right"></i>

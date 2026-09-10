@@ -10,7 +10,6 @@ specifications:
   - "Sensor de movimiento: incluido"
   - "Aplicacion: via peatonal y accesos"
   - "Instalacion: poste o muro"
-brand: "Luminaria solar de calle 30W"
 model: "LCS-30W-5AH-SM"
 stock: "disponible"
 order: 17

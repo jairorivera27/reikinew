@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300" role="img" aria-label="Bombeo Solar">
+  <rect width="400" height="300" rx="16" fill="#f8fafc"/>
+  <rect x="1" y="1" width="398" height="298" rx="16" fill="none" stroke="#eef2ff" stroke-width="2"/>
+  <g transform="translate(200 130)">
+      <path d="M0 -72 C34 -30 54 -6 54 18 A54 54 0 0 1 -54 18 C-54 -6 -34 -30 0 -72 Z"
+            fill="none" stroke="#6b2181" stroke-width="6" stroke-linejoin="round"/>
+      <path d="M-24 14 A24 24 0 0 0 0 38" fill="none" stroke="#c4a0d0" stroke-width="6" stroke-linecap="round"/>
+      <path d="M-78 62 L78 62" stroke="#6b2181" stroke-width="6" stroke-linecap="round"/>
+    </g>
+  <text x="200" y="256" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="18" font-weight="600" fill="#6b7280">Bombeo Solar</text>
+  <text x="200" y="278" text-anchor="middle" font-family="Helvetica Neue, Helvetica, Arial, sans-serif"
+        font-size="13" fill="#9ca3af">Imagen referencial</text>
+</svg>

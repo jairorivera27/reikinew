@@ -1,0 +1,554 @@
+{
+  "_instrucciones": "Especificaciones tomadas de las hojas de datos del fabricante. Cada serie declara su fuente y la ficha del producto la enlaza, así el cliente puede verificar el dato. NUNCA agregues especificaciones sin una fuente: un dato eléctrico equivocado puede provocar una instalación insegura. Si un equipo no tiene serie reconocida, la ficha muestra solo lo que trae el catálogo y ofrece la hoja de datos por WhatsApp.",
+
+  "_comoAgregarUnaSerie": "1) Buscá la hoja de datos oficial. 2) Copiá los valores tal como figuran. 3) Definí 'patrones' en minúscula: si alguno aparece en el título o el modelo del producto, hereda estas especificaciones. Poné los patrones más específicos primero, porque gana el primero que coincide.",
+
+  "series": [
+    {
+      "id": "jinko-tiger-neo-72hl4",
+      "nombre": "Jinko Tiger Neo 72HL4 (565–585 W)",
+      "marca": "Jinko Solar",
+      "patrones": ["tiger neo", "jkm565n", "jkm585n", "72hl4"],
+      "fuente": "Hoja de datos JinkoSolar Tiger Neo 72HL4-(V)",
+      "url": "https://fronus.com/downloads/modules/JinkoSolar/Tiger-neo/585W/Datasheet-585W-Jinko-Tiger-Neo.pdf",
+      "especificaciones": {
+        "Célula y tecnología": {
+          "Tipo de célula": "Monocristalina tipo N (TOPCon)",
+          "Número de células": "144 (72×2)",
+          "Tecnologías": "TOPCon, SMBB, HOT 3.0, garantía anti-PID"
+        },
+        "Rendimiento eléctrico (STC)": {
+          "Eficiencia del módulo": "Hasta 22,65 %",
+          "Tensión de circuito abierto (Voc)": "52,47 V",
+          "Corriente de cortocircuito (Isc)": "14,07 A",
+          "Tensión en máxima potencia (Vmp)": "43,53 V",
+          "Corriente en máxima potencia (Imp)": "13,44 A",
+          "Tolerancia de potencia": "0 ~ +3 %",
+          "Tensión máxima del sistema": "1500 V CC"
+        },
+        "Comportamiento térmico": {
+          "Coeficiente de temperatura Pmax": "−0,29 %/°C",
+          "Coeficiente de temperatura Voc": "−0,25 %/°C",
+          "Coeficiente de temperatura Isc": "+0,045 %/°C",
+          "Temperatura de operación": "−40 °C a +70 °C"
+        },
+        "Construcción": {
+          "Dimensiones": "2278 × 1134 × 30 mm",
+          "Peso": "27,0 kg",
+          "Vidrio frontal": "3,2 mm templado, antirreflejo y bajo en hierro",
+          "Marco": "Aleación de aluminio anodizado",
+          "Caja de conexiones": "IP68",
+          "Conector": "MC4 / JK03M",
+          "Cable de salida": "4,0 mm²",
+          "Carga mecánica": "5400 Pa frontal / 2400 Pa posterior"
+        },
+        "Garantía del fabricante": {
+          "Garantía de producto": "12 años",
+          "Garantía lineal de potencia": "30 años",
+          "Degradación primer año": "≤ 1 %",
+          "Degradación anual siguiente": "0,40 %",
+          "Potencia garantizada al año 30": "≥ 87,4 %"
+        }
+      }
+    },
+    {
+      "id": "huawei-sun2000-ktl-l1",
+      "nombre": "Huawei SUN2000 KTL-L1 (2–6 kW monofásico)",
+      "marca": "Huawei",
+      "patrones": ["ktl-l1", "sun2000-2ktl", "sun2000-3ktl", "sun2000-4ktl", "sun2000-5ktl", "sun2000-6ktl"],
+      "fuente": "Hoja de datos Huawei SUN2000-2/3/3.68/4/4.6/5/6KTL-L1",
+      "url": "https://solar.huawei.com/-/media/Solar/attachment/pdf/mea/datasheet/SUN2000-2-6KTL-L1.pdf",
+      "especificaciones": {
+        "Eficiencia": {
+          "Eficiencia máxima": "Hasta 98,4 %",
+          "Eficiencia europea": "Hasta 97,8 %"
+        },
+        "Entrada fotovoltaica": {
+          "Tensión máxima de entrada": "600 V",
+          "Tensión de arranque": "100 V",
+          "Rango de operación MPPT": "90 V – 560 V",
+          "Tensión nominal de entrada": "360 V",
+          "Corriente máxima por MPPT": "12,5 A",
+          "Corriente de cortocircuito por MPPT": "18 A",
+          "Número de MPPT": "2"
+        },
+        "Protecciones": {
+          "Anti-isla": "Sí",
+          "Polaridad inversa CC": "Sí",
+          "Monitorización de aislamiento": "Sí",
+          "Descargador de sobretensiones": "CC y CA, tipo II según EN/IEC 61643-11",
+          "Corriente residual": "Monitorización incluida",
+          "Protecciones CA": "Sobrecorriente, cortocircuito y sobretensión",
+          "Sobrecalentamiento": "Sí",
+          "Falla de arco (AFCI)": "Sí"
+        },
+        "Datos generales": {
+          "Grado de protección": "IP65",
+          "Temperatura de operación": "−25 °C a +60 °C",
+          "Humedad relativa": "0 % a 100 % HR",
+          "Altitud de operación": "0 a 4000 m",
+          "Refrigeración": "Convección natural, sin ventilador",
+          "Consumo nocturno": "< 2,5 W",
+          "Comunicación": "WLAN integrado + app FusionSolar, RS485; Ethernet o 4G con dongle opcional",
+          "Peso": "12,0 kg",
+          "Dimensiones": "365 × 365 × 156 mm"
+        },
+        "Normas y garantía": {
+          "Seguridad": "EN/IEC 62109-1, EN/IEC 62109-2",
+          "Garantía del fabricante": "120 meses (10 años) desde 180 días después del envío"
+        }
+      }
+    },
+    {
+      "id": "huawei-sun2000-residencial",
+      "nombre": "Huawei SUN2000 residencial y comercial",
+      "marca": "Huawei",
+      "patrones": ["sun2000"],
+      "fuente": "Condiciones de garantía Huawei FusionSolar, serie SUN2000",
+      "url": "https://solar.huawei.com/es/products/",
+      "especificaciones": {
+        "Plataforma": {
+          "Monitorización": "App FusionSolar con seguimiento de producción en tiempo real",
+          "Comunicación": "WLAN o RS485; Ethernet y 4G mediante Smart Dongle opcional",
+          "Protección de arco (AFCI)": "Incluida en la serie residencial",
+          "Optimizadores compatibles": "SUN2000-450W-P, 450W-P2 y 600W-P2P"
+        },
+        "Normas y garantía": {
+          "Seguridad": "EN/IEC 62109-1, EN/IEC 62109-2",
+          "Garantía del fabricante": "120 meses en la serie residencial (SUN2000 L1, M0/M1, LC0, MB0); 60 meses en algunas series de gran potencia"
+        }
+      }
+    },
+    {
+      "id": "huawei-luna2000",
+      "nombre": "Huawei LUNA2000 Smart String ESS",
+      "marca": "Huawei",
+      "patrones": ["luna2000"],
+      "fuente": "Documentación Huawei LUNA2000-5/10/15-S0",
+      "url": "https://solar.huawei.com/es/products/",
+      "especificaciones": {
+        "Almacenamiento": {
+          "Química": "LiFePO4 (litio ferrofosfato)",
+          "Capacidad por módulo": "5 kWh",
+          "Capacidad del sistema": "5, 10 o 15 kWh según número de módulos",
+          "Módulos por columna": "Hasta 3",
+          "Profundidad de descarga": "100 %",
+          "Potencia de salida": "2,5 kW con 1 módulo; 5 kW con 2 o 3",
+          "Potencia pico": "3,5 kW (10 s) con 1 módulo; 7 kW (10 s) con 2 o 3"
+        },
+        "Integración": {
+          "Inversores compatibles": "Serie SUN2000 (L1, M1, LC0, MB0)",
+          "Módulo de potencia requerido": "LUNA2000-5KW-C0, se vende por separado",
+          "Monitorización": "Huawei FusionSolar, optimización a nivel de pack"
+        },
+        "Datos generales": {
+          "Grado de protección": "IP66"
+        }
+      }
+    },
+    {
+      "id": "pylontech-us5000",
+      "nombre": "Pylontech US5000 (4,8 kWh / 48 V)",
+      "marca": "Pylontech",
+      "patrones": ["us5000"],
+      "fuente": "Hoja de datos Pylontech US5000",
+      "url": "https://leisurepower.co.uk/media/pdf/7b/d6/56/US5000-datasheet.pdf",
+      "especificaciones": {
+        "Almacenamiento": {
+          "Química": "LiFePO4 (litio ferrofosfato, sin cobalto)",
+          "Tensión nominal": "48 V CC",
+          "Capacidad nominal": "4800 Wh (100 Ah)",
+          "Capacidad utilizable": "4560 Wh (95 Ah)",
+          "Profundidad de descarga (DoD)": "95 %",
+          "Tensión de carga": "52,5 – 53,5 V",
+          "Tensión de descarga": "43,5 – 53,5 V"
+        },
+        "Corrientes": {
+          "Corriente recomendada": "80 A",
+          "Corriente continua máxima": "100 A",
+          "Corriente de pico": "121–200 A durante 15 s"
+        },
+        "Vida útil": {
+          "Ciclos de vida": "> 6000 ciclos a 25 °C",
+          "Vida de diseño": "15+ años a 25 °C",
+          "Autodescarga": "Hasta 6 meses en estante sin recargar"
+        },
+        "Sistema y comunicación": {
+          "BMS": "Integrado, protege contra sobrecarga, sobredescarga, sobrecorriente y temperatura extrema",
+          "Comunicación": "RS485 y CAN",
+          "Módulos en paralelo": "Hasta 16 por grupo",
+          "Compatibilidad": "Serie 48 V de Pylontech (UP5000, US3000C, US2000C, US3000, US2000)"
+        },
+        "Datos generales": {
+          "Dimensiones": "442 × 420 × 161 mm (formato rack 19″, 4U)",
+          "Peso": "39,7 kg",
+          "Grado de protección": "IP20 (instalación en interior)",
+          "Temperatura de carga": "0 °C a 50 °C",
+          "Temperatura de descarga": "−10 °C a 50 °C",
+          "Altitud máxima": "≤ 4000 m",
+          "Refrigeración": "Natural, sin ventilador"
+        },
+        "Normas y garantía": {
+          "Certificaciones": "TÜV, CE, UL, UN38.3",
+          "Normas de referencia": "IEC62619, IEC63056, UL1973, UL9540A, IEC61000-6-2, IEC61000-6-3",
+          "Garantía del fabricante": "10 años según condiciones de Pylontech"
+        }
+      }
+    },
+    {
+      "id": "pylontech-us3000c",
+      "nombre": "Pylontech US3000C (3,55 kWh / 48 V)",
+      "marca": "Pylontech",
+      "patrones": ["us3000c", "us3000", "us2000c"],
+      "fuente": "Manual Pylontech US3000C",
+      "url": "https://fvcomponentes.com/wp-content/uploads/2024/09/Bateria-Pylontech-US3000C-Manual-Espanol.pdf",
+      "especificaciones": {
+        "Almacenamiento": {
+          "Química": "LiFePO4 (litio ferrofosfato)",
+          "Tensión nominal": "48 V CC",
+          "Capacidad nominal": "3552 Wh (74 Ah)",
+          "Capacidad utilizable": "3374 Wh (70,2 Ah)",
+          "Profundidad de descarga (DoD)": "95 %",
+          "Tensión de carga": "52,5 – 53,5 V",
+          "Tensión de descarga": "44,5 – 53,5 V"
+        },
+        "Corrientes": {
+          "Corriente recomendada": "37 A",
+          "Corriente máxima": "74 A",
+          "Corriente de pico": "90 A durante 15 s"
+        },
+        "Vida útil": {
+          "Ciclos de vida": "> 6000 ciclos a 25 °C",
+          "Vida de diseño": "15+ años a 25 °C"
+        },
+        "Sistema y comunicación": {
+          "BMS": "Integrado, con protección de sobrecarga, sobredescarga, sobrecorriente y temperatura",
+          "Comunicación": "RS485 y CAN",
+          "Módulos en paralelo": "Hasta 16 por grupo"
+        },
+        "Datos generales": {
+          "Dimensiones": "442 × 420 × 132 mm (formato rack 19″, 3U)",
+          "Peso": "32 kg",
+          "Grado de protección": "IP20 (instalación en interior)",
+          "Temperatura de carga": "0 °C a 50 °C",
+          "Temperatura de descarga": "−10 °C a 50 °C"
+        },
+        "Normas y garantía": {
+          "Certificaciones": "TÜV, CE, UN38.3, UL",
+          "Normas de referencia": "IEC62619, IEC62040, IEC62477-1, UL1973, UL1642, VDE2510-50",
+          "Garantía del fabricante": "10 años según condiciones de Pylontech"
+        }
+      }
+    },
+    {
+      "id": "victron-smartsolar-mppt",
+      "nombre": "Victron SmartSolar MPPT",
+      "marca": "Victron",
+      "patrones": ["smartsolar", "bluesolar", "mppt victron", "victron mppt", "scc0"],
+      "fuente": "Hoja de datos Victron SmartSolar MPPT",
+      "url": "https://www.victronenergy.com/upload/documents/Datasheet-SmartSolar-charge-controller-MPPT-100-30-&-100-50-ES.pdf",
+      "especificaciones": {
+        "Rendimiento": {
+          "Eficiencia máxima": "Superior al 98 %",
+          "Seguimiento MPPT": "Ultrarrápido; hasta 30 % más de captación que un PWM y hasta 10 % más que un MPPT lento",
+          "Sombreado parcial": "Algoritmo BlueSolar que localiza el punto de máxima potencia óptimo",
+          "Refrigeración": "Convección natural, sin ventilador"
+        },
+        "Carga de baterías": {
+          "Tensiones de batería": "12 / 24 / 36 / 48 V con selección automática",
+          "Algoritmo de carga": "Adaptativo multifase, totalmente programable",
+          "Perfiles preprogramados": "8 seleccionables",
+          "Químicas compatibles": "Plomo abierto, AGM, gel y litio LiFePO4",
+          "Compensación por temperatura": "−16 mV/°C (12 V) y −32 mV/°C (24 V)",
+          "Sensor de temperatura de batería": "Interno"
+        },
+        "Protecciones": {
+          "Polaridad inversa fotovoltaica": "Sí",
+          "Cortocircuito de salida": "Sí",
+          "Sobretemperatura": "Sí"
+        },
+        "Monitorización": {
+          "Bluetooth": "Integrado, sin accesorios",
+          "Aplicación": "VictronConnect, con historial de 30 días",
+          "Puertos": "VE.Direct (y VE.Can en modelos superiores)",
+          "Pantalla": "LCD SmartSolar Control opcional"
+        },
+        "Datos generales": {
+          "Grado de protección": "IP43 en la electrónica, IP22 en la zona de conexiones",
+          "Temperatura de operación": "−30 °C a +60 °C (potencia nominal plena hasta 40 °C)",
+          "Humedad": "95 % sin condensación",
+          "Color": "Azul RAL 5012"
+        },
+        "Garantía del fabricante": {
+          "Garantía": "5 años Victron Energy"
+        }
+      }
+    },
+    {
+      "id": "growatt-min-tlx",
+      "nombre": "Growatt MIN TL-X / TL-XH",
+      "marca": "Growatt",
+      "patrones": ["min ", "tl-x", "tlx", "min10000", "min5000", "6000tl", "mid "],
+      "fuente": "Documentación técnica Growatt serie MIN TL-X / TL-XH",
+      "url": "https://es.growatt.com/products",
+      "especificaciones": {
+        "Rendimiento": {
+          "Eficiencia máxima": "Hasta 98,4 %",
+          "Configuración": "Monofásico (serie MIN) y trifásico (serie MID)"
+        },
+        "Datos generales": {
+          "Grado de protección": "IP65, apto para instalación exterior",
+          "Refrigeración": "Convección natural",
+          "Monitorización": "App ShinePhone; Wi-Fi, LAN o 4G según módulo"
+        },
+        "Garantía del fabricante": {
+          "Garantía estándar": "5 años, extensible hasta 10 según condiciones del fabricante"
+        }
+      }
+    },
+    {
+      "id": "hoymiles-hms-hmt",
+      "nombre": "Hoymiles HMS / HMT (microinversores)",
+      "marca": "Hoymiles",
+      "patrones": ["hms-", "hmt-", "hms1600", "hms2000", "mi-1500"],
+      "fuente": "Catálogo Hoymiles de microinversores serie HMS y HMT",
+      "url": "https://www.hoymiles.com/products/",
+      "especificaciones": {
+        "Arquitectura": {
+          "Tipo": "Microinversor con MPPT independiente por panel",
+          "Ventaja": "Un panel sombreado o con falla no arrastra el rendimiento del resto",
+          "Serie HMS": "Monofásica",
+          "Serie HMT": "Trifásica"
+        },
+        "Monitorización": {
+          "Plataforma": "Hoymiles S-Miles Cloud",
+          "Unidad de comunicación": "DTU-Lite-S o DTU-Pro-S, requerida para monitorizar"
+        },
+        "Datos generales": {
+          "Instalación": "Exterior, bajo el panel",
+          "Escalabilidad": "Se amplía panel por panel, sin rediseñar el string"
+        }
+      }
+    },
+    {
+      "id": "apsystems-ds3-qt2",
+      "nombre": "APsystems DS3 / QT2 (microinversores)",
+      "marca": "APsystems",
+      "patrones": ["ds3", "qt2", "ecu-r", "ecu-c"],
+      "fuente": "Catálogo APsystems series DS3 y QT2",
+      "url": "https://emea.apsystems.com/products/",
+      "especificaciones": {
+        "Arquitectura": {
+          "Tipo": "Microinversor multipanel con MPPT independiente por entrada",
+          "Serie DS3": "Dos paneles por unidad, monofásico",
+          "Serie QT2": "Cuatro paneles por unidad, trifásico"
+        },
+        "Monitorización": {
+          "Plataforma": "APsystems EMA",
+          "Unidad de comunicación": "ECU-R o ECU-C, requerida para monitorizar"
+        }
+      }
+    },
+    {
+      "id": "suntree-proteccion",
+      "nombre": "Suntree — protecciones para sistemas fotovoltaicos",
+      "marca": "Suntree",
+      "patrones": ["suntree", "scb8", "siso", "sq8"],
+      "fuente": "Catálogo Suntree Electric de protecciones fotovoltaicas",
+      "url": "https://www.suntree-electric.com/",
+      "especificaciones": {
+        "Aplicación": {
+          "Uso": "Protección de circuitos de corriente continua y alterna en instalaciones solares",
+          "Función": "Corta el circuito ante sobrecarga o cortocircuito y permite maniobra segura para mantenimiento"
+        },
+        "Instalación": {
+          "Montaje": "Riel DIN, dentro de tablero",
+          "Requisito normativo": "En Colombia el tablero y sus protecciones deben cumplir RETIE"
+        }
+      }
+    }
+  ],
+
+  "_garantiasNota": "Garantía del fabricante cuando el producto no coincide con ninguna serie. Son referencias del mercado, no un compromiso de Reiki Solar: la ficha las presenta como 'garantía del fabricante' y aclara que se confirma en la cotización.",
+  "garantiasPorCategoria": {
+    "paneles": "Entre 12 y 15 años de garantía de producto y hasta 30 años de garantía lineal de potencia, según fabricante.",
+    "inversores": "Entre 5 y 10 años de garantía de fabricante, según marca y serie.",
+    "baterias": "Entre 5 y 10 años de garantía de fabricante, sujeta a ciclos y condiciones de uso.",
+    "controladores": "Entre 2 y 5 años de garantía de fabricante.",
+    "protecciones": "Entre 1 y 3 años de garantía de fabricante.",
+    "monitoreo": "Entre 1 y 5 años de garantía de fabricante.",
+    "bombeo": "Entre 1 y 2 años de garantía de fabricante.",
+    "reflectores": "1 año de garantía de fabricante.",
+    "cargadores": "Entre 2 y 5 años de garantía de fabricante.",
+    "accesorios": "Entre 1 y 3 años de garantía de fabricante, según la pieza."
+  },
+
+  "_certificacionesNota": "Marco normativo aplicable en Colombia. Sirve para explicar al cliente qué exige la ley en su instalación.",
+  "certificacionesPorCategoria": {
+    "paneles": ["RETIE", "IEC 61215 / IEC 61730"],
+    "inversores": ["RETIE", "IEC 62109-1 / 62109-2", "Certificación anti-isla"],
+    "baterias": ["UN38.3 (transporte)", "IEC 62619", "UL 1973"],
+    "controladores": ["RETIE", "IEC 62109"],
+    "protecciones": ["RETIE", "IEC 60947 / IEC 61643"],
+    "monitoreo": ["Compatibilidad con el inversor del sistema"],
+    "bombeo": ["RETIE"],
+    "reflectores": ["RETIE"],
+    "cargadores": ["RETIE", "IEC 61851"],
+    "accesorios": ["Compatibilidad con el equipo principal del sistema"]
+  },
+
+  "_serviciosNota": "REVISAR CON EL DUEÑO antes de publicar plazos o condiciones más concretas. El texto actual es deliberadamente prudente y no promete tiempos fijos.",
+  "servicios": [
+    {
+      "icono": "fas fa-truck",
+      "titulo": "Envío a todo Colombia",
+      "detalle": "Despachamos a cualquier ciudad del país. El costo se cotiza según el destino y el peso del equipo."
+    },
+    {
+      "icono": "fas fa-headset",
+      "titulo": "Asesoría técnica incluida",
+      "detalle": "Antes de comprar validamos que el equipo sea compatible con tu sistema: tensión, potencia y protecciones."
+    },
+    {
+      "icono": "fas fa-file-invoice",
+      "titulo": "Factura electrónica",
+      "detalle": "Emitimos factura electrónica y acompañamos el trámite de los beneficios tributarios de la Ley 2099."
+    },
+    {
+      "icono": "fas fa-shield-alt",
+      "titulo": "Garantía del fabricante",
+      "detalle": "Gestionamos la garantía directamente con el fabricante o su representante en Colombia."
+    }
+  ],
+
+  "_faqNota": "Se publican como FAQPage en JSON-LD, así que pueden aparecer como resultado enriquecido en Google. Mantené las respuestas verificables.",
+  "faqGeneral": [
+    {
+      "pregunta": "¿El precio incluye la instalación?",
+      "respuesta": "No. El precio publicado corresponde únicamente al equipo. Si necesitás la instalación, la cotizamos aparte según tu proyecto y ubicación, con personal certificado RETIE."
+    },
+    {
+      "pregunta": "¿Puedo pagar a cuotas?",
+      "respuesta": "Sí. Trabajamos con Addi, que permite dividir la compra en cuotas mensuales. El valor por cuota que se muestra en la ficha es una estimación; el plan definitivo lo aprueba Addi al momento del pago."
+    },
+    {
+      "pregunta": "¿Hacen envíos a todo el país?",
+      "respuesta": "Sí, despachamos a toda Colombia. El costo del envío se cotiza según el destino y el peso del equipo, y lo confirmamos antes de cerrar la compra."
+    },
+    {
+      "pregunta": "¿Cómo sé si este equipo es compatible con mi sistema?",
+      "respuesta": "Escribinos por WhatsApp con los datos de tu instalación (inversor, tensión del banco de baterías y consumo) y validamos la compatibilidad antes de que compres."
+    },
+    {
+      "pregunta": "¿Emiten factura electrónica?",
+      "respuesta": "Sí. Emitimos factura electrónica, necesaria para acceder a los beneficios tributarios que la Ley 2099 contempla para proyectos de energía renovable en Colombia."
+    }
+  ],
+
+  "faqPorCategoria": {
+    "paneles": [
+      {
+        "pregunta": "¿Cuántos paneles necesito para mi casa?",
+        "respuesta": "Depende de tu consumo mensual en kWh y de las horas de sol de tu zona. Como referencia en Colombia, un hogar que consume entre 250 y 600 kWh al mes suele requerir entre 8 y 12 paneles de 550 W. Podés usar nuestro cotizador para un cálculo con tu factura."
+      },
+      {
+        "pregunta": "¿Los paneles funcionan en días nublados?",
+        "respuesta": "Sí, aunque generan menos. Los paneles de tipo N con tecnología TOPCon tienen mejor desempeño con poca luz que los PERC tradicionales, lo que ayuda en zonas de alta nubosidad como Bogotá o el Eje Cafetero."
+      },
+      {
+        "pregunta": "¿Qué diferencia hay entre un panel monofacial y uno bifacial?",
+        "respuesta": "El bifacial también genera con la luz que se refleja en la superficie de abajo, y puede producir hasta un 30 % más en techos claros o reflectantes con montaje elevado. En un techo oscuro y a ras, la ventaja es mínima."
+      }
+    ],
+    "inversores": [
+      {
+        "pregunta": "¿Cuál es la diferencia entre un inversor on-grid y uno híbrido?",
+        "respuesta": "El on-grid solo funciona conectado a la red y reduce tu factura, pero se apaga si hay corte. El híbrido además admite baterías, así que te da respaldo cuando falla el servicio. Si querés agregar baterías más adelante, conviene el híbrido desde el inicio."
+      },
+      {
+        "pregunta": "¿Qué potencia de inversor me corresponde?",
+        "respuesta": "Se dimensiona según la potencia total de los paneles y el tipo de acometida de tu predio (monofásica, bifásica o trifásica). Un inversor mal dimensionado desperdicia generación o se sobrecarga, así que conviene validarlo con nosotros antes de comprar."
+      },
+      {
+        "pregunta": "¿Necesito un medidor bidireccional?",
+        "respuesta": "Sí, si vas a inyectar excedentes a la red bajo la Ley 2099. El operador de red de tu zona (EPM, Codensa, Celsia, Air-e o Afinia) debe homologar el medidor y aprobar la conexión."
+      }
+    ],
+    "baterias": [
+      {
+        "pregunta": "¿Cuántas horas de respaldo me da esta batería?",
+        "respuesta": "Dividí la capacidad utilizable entre el consumo que quieras respaldar. Una batería de 5 kWh cubre unas 5 horas de una carga de 1 kW, o mucho más si solo respaldás lo esencial: nevera, iluminación e internet."
+      },
+      {
+        "pregunta": "¿Por qué litio y no plomo-ácido?",
+        "respuesta": "Las de litio ferrofosfato (LiFePO4) admiten descargas del 95 % de su capacidad y superan los 6000 ciclos, mientras que una de plomo se limita a cerca del 50 % y a menos de 1000 ciclos. Cuestan más al inicio, pero salen más baratas por kWh entregado a lo largo de su vida."
+      },
+      {
+        "pregunta": "¿Puedo agregar más baterías después?",
+        "respuesta": "En la mayoría de los sistemas de 48 V sí, siempre que se respeten los límites del fabricante y del inversor. Conviene confirmar cuántos módulos admite tu equipo antes de comprar el primero."
+      }
+    ],
+    "controladores": [
+      {
+        "pregunta": "¿MPPT o PWM?",
+        "respuesta": "Un controlador MPPT aprovecha hasta un 30 % más de energía que un PWM porque busca el punto de máxima potencia del panel, y es el indicado en instalaciones donde la tensión del panel supera la del banco de baterías. El PWM sirve para sistemas pequeños y de bajo costo."
+      },
+      {
+        "pregunta": "¿Cómo elijo el amperaje?",
+        "respuesta": "Dividí la potencia total de los paneles entre la tensión del banco de baterías y agregá un margen de seguridad. Si te queda justo, el controlador limitará la generación en los picos de sol."
+      }
+    ],
+    "protecciones": [
+      {
+        "pregunta": "¿Por qué necesito protecciones específicas para corriente continua?",
+        "respuesta": "La corriente continua no cruza por cero como la alterna, así que el arco eléctrico no se extingue solo. Un breaker de corriente alterna usado en el lado de continua puede no cortar el arco y provocar un incendio. En Colombia RETIE exige protecciones dimensionadas para el circuito correspondiente."
+      },
+      {
+        "pregunta": "¿Qué es un DPS y por qué lo necesito?",
+        "respuesta": "Es un descargador de sobretensiones que desvía a tierra los picos por descargas atmosféricas. En Colombia, con alta actividad eléctrica en muchas regiones, protege al inversor de un daño que la garantía no cubre."
+      }
+    ],
+    "monitoreo": [
+      {
+        "pregunta": "¿El monitoreo es obligatorio?",
+        "respuesta": "No es obligatorio para que el sistema funcione, pero es lo que te permite ver cuánto generás y detectar una falla temprano. Sin monitoreo, un panel o un string caído puede pasar meses sin que nadie lo note."
+      },
+      {
+        "pregunta": "¿Este accesorio funciona con cualquier inversor?",
+        "respuesta": "No. Los dispositivos de monitoreo son propios de cada fabricante y solo se comunican con inversores de su misma marca y serie. Confirmá con nosotros el modelo exacto de tu inversor antes de comprar."
+      }
+    ],
+    "bombeo": [
+      {
+        "pregunta": "¿Necesito baterías para una bomba solar?",
+        "respuesta": "En general no. Lo habitual es bombear durante el día y almacenar el agua en un tanque elevado, que resulta mucho más económico que almacenar la energía en baterías."
+      },
+      {
+        "pregunta": "¿Cómo dimensiono la bomba?",
+        "respuesta": "Hacen falta la profundidad del pozo, la altura hasta el tanque y los litros por día que necesitás. Con esos tres datos definimos la potencia y el número de paneles."
+      }
+    ],
+    "reflectores": [
+      {
+        "pregunta": "¿Cuánto duran encendidos?",
+        "respuesta": "Depende de la batería integrada y de las horas de sol que reciba el panel durante el día. Con buena exposición, los modelos con sensor de movimiento suelen cubrir la noche completa porque solo encienden a plena potencia cuando detectan paso."
+      }
+    ],
+    "cargadores": [
+      {
+        "pregunta": "¿Puedo cargar el carro con mis paneles?",
+        "respuesta": "Sí, si tu sistema tiene potencia suficiente. Cargar un vehículo eléctrico agrega un consumo importante, así que conviene revisar el dimensionamiento del inversor y de la acometida antes de instalar el cargador."
+      }
+    ],
+    "accesorios": [
+      {
+        "pregunta": "¿Este accesorio funciona con cualquier inversor?",
+        "respuesta": "No. Los accesorios suelen ser propios de cada fabricante y serie. En el caso de Huawei, el 02233DXX es para SUN2000-2~6KTL-L1 y el 02233SPV para SUN2000-20~50KTL-M3. Confirmá el modelo exacto de tu equipo antes de comprar."
+      },
+      {
+        "pregunta": "¿Necesito un técnico para instalarlo?",
+        "respuesta": "Depende de la pieza. Dongles y sensores suelen ser plug-and-play, pero cables de AC trunk, optimizadores o cajas de respaldo deben instalarse por personal certificado."
+      }
+    ]
+  }
+}

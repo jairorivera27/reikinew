@@ -1,7 +1,7 @@
 ---
-title: "FRONIUS INVERSOR TAURO ECO 50-3-D 208-220 (4.210.308.001)"
+title: "Fronius Inversor Tauro Eco 50-3-D 208-220 (4.210.308.001)"
 description: "Inversor Fronius (Primo, Symo, Tauro): tecnología SnapINverter o plataforma comercial según familia, MPPT múltiples y monitorización Solar.web."
-image: "/images/logo-Victron-Energy-Ecogreensolar-1.jpg"
+image: "/images/productos-tienda/inversores/fronius-primo.jpg"
 category: "inversores"
 price: "$53.167.500"
 specifications:
@@ -11,7 +11,6 @@ specifications:
   - "Protecciones y normativa según manual de instalación"
   - "Fuente: [Fronius](https://www.fronius.com/)"
 brand: "Fronius"
-model: "FRONIUS INVERSOR TAURO ECO 50-3-D 208-220 (4.210.308.001)"
 stock: "disponible"
 order: 5124
 ---

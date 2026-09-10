@@ -1,7 +1,7 @@
 ---
-title: "STUDER INVERTER CHARGER XTENDER XTM 2600-48V"
+title: "Studer Inverter Charger Xtender Xtm 2600-48V"
 description: "Inversor-cargador Studer Xtender: onda senoidal pura, carga de baterías y soporte de red o generador según configuración XTM."
-image: "/images/logo-Victron-Energy-Ecogreensolar-1.jpg"
+image: "/images/productos-tienda/inversores/studer-xtender.jpg"
 category: "inversores"
 price: "$14.886.900"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Instalación profesional obligatoria"
   - "Fuente: [Studer Innotec](https://www.studer-innotec.com/)"
 brand: "Studer"
-model: "STUDER INVERTER CHARGER XTENDER XTM 2600-48V"
 stock: "disponible"
 order: 5125
 ---

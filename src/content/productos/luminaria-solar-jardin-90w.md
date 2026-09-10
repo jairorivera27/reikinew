@@ -10,7 +10,6 @@ specifications:
   - "Diseno: tipo jardin"
   - "Aplicacion: senderos, parques y exteriores residenciales"
   - "Instalacion: poste decorativo"
-brand: "Luminaria solar tipo jardin 90W"
 model: "LSJ-90W-15AH"
 stock: "disponible"
 order: 19

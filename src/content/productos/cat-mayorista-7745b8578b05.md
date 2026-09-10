@@ -1,7 +1,7 @@
 ---
-title: "HOYMILES AC TRUNK PORT CAP"
+title: "Hoymiles AC Trunk Port Cap"
 description: "Accesorio de cableado o conexión CA/CC para sistemas con microinversores Hoymiles: troncal, tapas, herramientas de desconexión o extensiones homologadas por el fabricante."
-image: "/images/astroenergy.png"
+image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
 category: "protecciones"
 price: "$32.130"
 specifications:
@@ -10,7 +10,6 @@ specifications:
   - "Dimensiones y normas según manual Hoymiles del accesorio"
   - "Fuente: [Hoymiles](https://www.hoymiles.com/)"
 brand: "Hoymiles"
-model: "HOYMILES AC TRUNK PORT CAP"
 stock: "disponible"
 order: 5028
 ---
