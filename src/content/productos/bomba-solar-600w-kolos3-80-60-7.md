@@ -1,7 +1,7 @@
 ---
 title: "Bomba Solar 600W KOLOS3-80-60-7"
 description: "Bomba Solar 600W KOLOS3-80-60-7. Equipo para bombeo de agua en aplicaciones solares, agrícolas o residenciales. Modelo: KOLOS3-80-60-7; especificación principal: 600W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/placeholders/bombeo.svg"
+image: "/images/productos-tienda/bombeo/kolos-bomba-solar.jpg"
 category: "bombeo"
 price: "$2.609.819"
 specifications:
@@ -14,7 +14,6 @@ sku: "KOLOS3-80-60-7"
 power: "600W"
 stock: "disponible"
 order: 6049
-imagenPendiente: true
 updatedAt: "2026-09-10"
 seoKeywords:
   - "bomba solar"

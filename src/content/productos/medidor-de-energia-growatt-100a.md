@@ -1,7 +1,7 @@
 ---
 title: "Medidor de Energía Growatt 100A"
 description: "Medidor de Energía Growatt 100A. Equipo para medición y supervisión del consumo y la generación eléctrica. Marca: Growatt; especificación principal: 100A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/growatt.png"
+image: "/images/productos-tienda/monitoreo/growatt-shine.jpg"
 category: "monitoreo"
 price: "$1.269.879"
 specifications:

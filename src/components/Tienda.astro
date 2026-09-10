@@ -59,6 +59,46 @@ const productosJSON = JSON.stringify(
     }))
   )
 );
+
+/** Logos de marcas para el carrusel bajo el hero. */
+const MARCAS_CARRUSEL: { nombre: string; src: string }[] = [
+  { nombre: 'Huawei', src: '/images/marcas/huawei.png' },
+  { nombre: 'Victron', src: '/images/marcas/victron.jpg' },
+  { nombre: 'Growatt', src: '/images/marcas/growatt.png' },
+  { nombre: 'GoodWe', src: '/images/marcas/goodwe.svg' },
+  { nombre: 'Deye', src: '/images/marcas/deye.svg' },
+  { nombre: 'Felicity', src: '/images/marcas/felicity.png' },
+  { nombre: 'Hoymiles', src: '/images/marcas/hoymiles.svg' },
+  { nombre: 'APsystems', src: '/images/marcas/apsystems.png' },
+  { nombre: 'Fronius', src: '/images/marcas/fronius.svg' },
+  { nombre: 'Solis', src: '/images/marcas/solis.png' },
+  { nombre: 'Must', src: '/images/marcas/must.png' },
+  { nombre: 'LONGi', src: '/images/marcas/longi.png' },
+  { nombre: 'JA Solar', src: '/images/marcas/ja-solar.png' },
+  { nombre: 'Jinko', src: '/images/marcas/jinko.svg' },
+  { nombre: 'Pylontech', src: '/images/marcas/pylontech.png' },
+  { nombre: 'Suntree', src: '/images/marcas/suntree.svg' },
+  { nombre: 'Tensite', src: '/images/marcas/tensite.svg' },
+  { nombre: 'Livoltek', src: '/images/marcas/livoltek.png' },
+];
+
+const marcasFallbacks: Record<string, string> = {
+  Huawei: '/images/huawei.png',
+  Victron: '/images/logo-Victron-Energy-Ecogreensolar-1.jpg',
+  Growatt: '/images/growatt.png',
+  Solis: '/images/solis.png',
+  Must: '/images/Must.png',
+  LONGi: '/images/Longi.png',
+  'JA Solar': '/images/JA_Solar_Logo.svg.png',
+  Livoltek: '/images/livoltek.png',
+};
+
+const marcasConSrc = MARCAS_CARRUSEL.map((m) => ({
+  nombre: m.nombre,
+  src: m.src,
+  fallback: marcasFallbacks[m.nombre] || '',
+}));
+const marcasLoop = [...marcasConSrc, ...marcasConSrc];
 ---
 
 <section id="tienda" class="tienda-section">
@@ -66,6 +106,29 @@ const productosJSON = JSON.stringify(
     <div class="tienda-header">
       <h1 class="tienda-title">Tienda de Equipos Solares</h1>
       <p class="tienda-subtitle">Encuentra los mejores equipos solares para tu proyecto</p>
+    </div>
+  </div>
+
+  <div class="marcas-banner" aria-label="Marcas que distribuimos">
+    <div class="marcas-banner-inner">
+      <p class="marcas-banner-label">Marcas aliadas</p>
+      <div class="marcas-track-wrap">
+        <div class="marcas-track">
+          {marcasLoop.map((marca, i) => (
+            <div class="marcas-item" data-brand={marca.nombre}>
+              <img
+                src={marca.src}
+                data-fallback={marca.fallback || undefined}
+                alt={i < marcasConSrc.length ? `Logo ${marca.nombre}` : ''}
+                loading="lazy"
+                decoding="async"
+                class="marcas-logo"
+              />
+              <span class="marcas-nombre">{marca.nombre}</span>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </div>
   
@@ -441,7 +504,7 @@ const productosJSON = JSON.stringify(
     padding: 0.85rem 1rem;
     border-radius: 14px;
     background: linear-gradient(135deg, #16a34a, #39ff14 55%, #22c55e);
-    color: #052e16;
+    color: #ffffff;
     text-decoration: none;
     box-shadow: 0 6px 18px rgba(57, 255, 20, 0.35);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -454,7 +517,7 @@ const productosJSON = JSON.stringify(
 
   .sidebar-descuentos > i {
     font-size: 1.15rem;
-    color: #052e16;
+    color: #ffffff;
   }
 
   .sidebar-descuentos-texto {
@@ -462,13 +525,14 @@ const productosJSON = JSON.stringify(
     flex-direction: column;
     line-height: 1.25;
     font-size: 0.78rem;
-    opacity: 0.92;
+    opacity: 0.95;
+    color: #ffffff;
   }
 
   .sidebar-descuentos-texto strong {
     font-size: 0.98rem;
     opacity: 1;
-    color: #052e16;
+    color: #ffffff;
   }
 
   .sidebar-descuentos-num {
@@ -479,8 +543,8 @@ const productosJSON = JSON.stringify(
     align-items: center;
     justify-content: center;
     border-radius: 20px;
-    background: rgba(5, 46, 22, 0.18);
-    color: #052e16;
+    background: rgba(255, 255, 255, 0.28);
+    color: #ffffff;
     font-size: 0.8rem;
     font-weight: 700;
   }
@@ -494,7 +558,7 @@ const productosJSON = JSON.stringify(
     padding: 1.1rem 1.5rem;
     border-radius: 18px;
     background: linear-gradient(135deg, #16a34a 0%, #39ff14 50%, #4ade80 100%);
-    color: #052e16;
+    color: #ffffff;
     text-decoration: none;
     box-shadow: 0 10px 28px rgba(57, 255, 20, 0.32);
     transition: transform 0.2s ease, box-shadow 0.2s ease;
@@ -513,8 +577,8 @@ const productosJSON = JSON.stringify(
     height: 44px;
     flex-shrink: 0;
     border-radius: 12px;
-    background: rgba(5, 46, 22, 0.14);
-    color: #052e16;
+    background: rgba(255, 255, 255, 0.22);
+    color: #ffffff;
     font-size: 1.2rem;
   }
 
@@ -523,15 +587,15 @@ const productosJSON = JSON.stringify(
     flex-direction: column;
     line-height: 1.35;
     font-size: 0.86rem;
-    opacity: 0.94;
-    color: #052e16;
+    opacity: 0.95;
+    color: #ffffff;
   }
 
   .banner-descuentos-texto strong {
     font-size: 1.15rem;
     font-weight: 700;
     opacity: 1;
-    color: #052e16;
+    color: #ffffff;
   }
 
   .banner-descuentos-cta {
@@ -542,7 +606,7 @@ const productosJSON = JSON.stringify(
     flex-shrink: 0;
     padding: 0.55rem 1.15rem;
     border-radius: 50px;
-    background: white;
+    background: #ffffff;
     color: #14532d;
     font-size: 0.88rem;
     font-weight: 700;
@@ -616,7 +680,7 @@ const productosJSON = JSON.stringify(
 
   .tienda-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 1.25rem;
     width: 100%;
   }
 
@@ -636,6 +700,108 @@ const productosJSON = JSON.stringify(
     text-align: center;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Carrusel de marcas bajo el hero */
+  .marcas-banner {
+    width: 100%;
+    margin: 0 0 2.25rem;
+    padding: 0 0 0.25rem;
+  }
+
+  .marcas-banner-inner {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .marcas-banner-label {
+    margin: 0 0 0.85rem;
+    text-align: center;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.78);
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .marcas-track-wrap {
+    overflow: hidden;
+    border-radius: 16px;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.12);
+    mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 4%, #000 96%, transparent);
+  }
+
+  .marcas-track {
+    display: flex;
+    width: max-content;
+    gap: 0.65rem;
+    padding: 0.85rem 1rem;
+    animation: marcas-scroll 42s linear infinite;
+  }
+
+  .marcas-track-wrap:hover .marcas-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes marcas-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .marcas-item {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    width: 118px;
+    min-height: 78px;
+    padding: 0.55rem 0.65rem 0.45rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.94);
+    box-shadow: 0 2px 10px rgba(15, 23, 42, 0.08);
+  }
+
+  .marcas-item.is-missing {
+    display: none;
+  }
+
+  .marcas-logo {
+    display: block;
+    width: auto;
+    height: 36px;
+    max-width: 96px;
+    object-fit: contain;
+    filter: grayscale(0.15);
+  }
+
+  .marcas-nombre {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #4b5563;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marcas-track {
+      animation: none;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: center;
+    }
   }
 
   .categoria-section {
@@ -2083,13 +2249,28 @@ const productosJSON = JSON.stringify(
     });
   }
 
-  // Control del carrusel de marcas
+  // Control del carrusel de marcas + fallback de logos
   function initMarcasCarousel() {
-    const marcasTrack = document.querySelector('.marcas-track');
+    const track = document.querySelector('.marcas-track');
+    if (!track) return;
+
+    track.querySelectorAll('img.marcas-logo').forEach((img) => {
+      if (!(img instanceof HTMLImageElement)) return;
+      img.addEventListener('error', function onErr() {
+        img.removeEventListener('error', onErr);
+        const fb = img.getAttribute('data-fallback');
+        if (fb && img.src.indexOf(fb) === -1) {
+          img.src = fb;
+          return;
+        }
+        const item = img.closest('.marcas-item');
+        if (item) item.classList.add('is-missing');
+      });
+    });
+
     const prevBtn = document.querySelector('.marcas-prev');
     const nextBtn = document.querySelector('.marcas-next');
-    
-    if (!marcasTrack || !prevBtn || !nextBtn) return;
+    if (!prevBtn || !nextBtn) return;
     
     let manualScrollPosition = 0;
     let isManualControl = false;

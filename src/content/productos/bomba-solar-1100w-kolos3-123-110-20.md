@@ -1,7 +1,7 @@
 ---
 title: "Bomba Solar 1100W KOLOS3-123-110-20"
 description: "Bomba Solar 1100W KOLOS3-123-110-20. Equipo para bombeo de agua en aplicaciones solares, agrícolas o residenciales. Modelo: KOLOS3-123-110-20; especificación principal: 1100W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/placeholders/bombeo.svg"
+image: "/images/productos-tienda/bombeo/kolos-bomba-solar.jpg"
 category: "bombeo"
 price: "$3.086.414"
 specifications:
@@ -14,7 +14,6 @@ sku: "KOLOS3-123-110-20"
 power: "1100W"
 stock: "disponible"
 order: 6041
-imagenPendiente: true
 updatedAt: "2026-09-10"
 seoKeywords:
   - "bomba solar"

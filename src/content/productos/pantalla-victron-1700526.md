@@ -1,7 +1,7 @@
 ---
 title: "Pantalla Victron 1700526"
 description: "Pantalla Victron 1700526. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Victron; modelo: 1700526; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/logo-Victron-Energy-Ecogreensolar-1.jpg"
+image: "/images/productos-tienda/controladores/victron-smartsolar-mppt.jpg"
 category: "monitoreo"
 price: "$1.055.061"
 specifications:

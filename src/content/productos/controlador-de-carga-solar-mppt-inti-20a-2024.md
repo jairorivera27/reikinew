@@ -1,7 +1,7 @@
 ---
 title: "Controlador de Carga Solar MPPT Inti 20A 2024"
 description: "Controlador de Carga Solar MPPT Inti 20A 2024. Equipo para regulación y gestión de la carga en sistemas fotovoltaicos. Marca: Inti; modelo: 2024; especificación principal: 20A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/placeholders/controladores.svg"
+image: "/images/productos-tienda/controladores/inti-mppt.jpg"
 category: "controladores"
 price: "$297.500"
 specifications:
@@ -13,7 +13,6 @@ sku: "2024"
 power: "20A"
 stock: "disponible"
 order: 6054
-imagenPendiente: true
 updatedAt: "2026-09-10"
 seoKeywords:
   - "controlador solar"

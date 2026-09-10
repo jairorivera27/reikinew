@@ -1,7 +1,7 @@
 ---
 title: "Bomba Solar 2200W KOL4-110-220-MP"
 description: "Bomba Solar 2200W KOL4-110-220-MP. Equipo para bombeo de agua en aplicaciones solares, agrícolas o residenciales. Modelo: KOL4-110-220-MP; especificación principal: 2200W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/placeholders/bombeo.svg"
+image: "/images/productos-tienda/bombeo/kolos-bomba-solar.jpg"
 category: "bombeo"
 price: "$4.084.972"
 specifications:
@@ -14,7 +14,6 @@ sku: "KOL4-110-220-MP"
 power: "2200W"
 stock: "disponible"
 order: 6046
-imagenPendiente: true
 updatedAt: "2026-09-10"
 seoKeywords:
   - "bomba solar"

@@ -1,7 +1,7 @@
 ---
 title: "Controlador de Carga Solar MPPT Inti 30A 3024"
 description: "Controlador de Carga Solar MPPT Inti 30A 3024. Equipo para regulación y gestión de la carga en sistemas fotovoltaicos. Marca: Inti; modelo: 3024; especificación principal: 30A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/placeholders/controladores.svg"
+image: "/images/productos-tienda/controladores/inti-mppt.jpg"
 category: "controladores"
 price: "$437.500"
 specifications:
@@ -13,7 +13,6 @@ sku: "3024"
 power: "30A"
 stock: "disponible"
 order: 6055
-imagenPendiente: true
 updatedAt: "2026-09-10"
 seoKeywords:
   - "controlador solar"

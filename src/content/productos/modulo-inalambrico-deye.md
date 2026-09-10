@@ -1,7 +1,7 @@
 ---
 title: "Módulo Inalámbrico Deye"
 description: "Módulo Inalámbrico Deye. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Deye; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/placeholders/monitoreo.svg"
+image: "/images/productos-tienda/monitoreo/deye-logger.jpg"
 category: "monitoreo"
 price: "$269.164"
 specifications:
@@ -12,7 +12,6 @@ brand: "Deye"
 power: "N/A"
 stock: "disponible"
 order: 6374
-imagenPendiente: true
 updatedAt: "2026-09-10"
 seoKeywords:
   - "sistema de monitoreo solar"

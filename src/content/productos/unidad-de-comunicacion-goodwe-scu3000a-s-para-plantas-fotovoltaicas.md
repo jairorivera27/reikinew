@@ -1,7 +1,7 @@
 ---
 title: "Unidad de Comunicación GoodWe SCU3000A-S para Plantas Fotovoltaicas"
 description: "Unidad de Comunicación GoodWe SCU3000A-S para Plantas Fotovoltaicas. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: GoodWe; modelo: SCU3000A-S; especificación principal: ≤30W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/placeholders/monitoreo.svg"
+image: "/images/productos-tienda/monitoreo/goodwe-ezlogger.jpg"
 category: "monitoreo"
 price: "$9.787.750"
 specifications:
@@ -14,7 +14,6 @@ sku: "SCU3000A-S"
 power: "≤30W"
 stock: "disponible"
 order: 6002
-imagenPendiente: true
 updatedAt: "2026-09-10"
 seoKeywords:
   - "sistema de monitoreo solar"

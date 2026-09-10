@@ -1,7 +1,7 @@
 ---
 title: "Datalogger Deye LS4G-3"
 description: "Datalogger Deye LS4G-3. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Deye; modelo: LS4G-3; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/placeholders/monitoreo.svg"
+image: "/images/productos-tienda/monitoreo/deye-logger.jpg"
 category: "monitoreo"
 price: "$1.468.162"
 specifications:
@@ -14,7 +14,6 @@ sku: "LS4G-3"
 power: "N/A"
 stock: "disponible"
 order: 6372
-imagenPendiente: true
 updatedAt: "2026-09-10"
 seoKeywords:
   - "sistema de monitoreo solar"

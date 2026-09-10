@@ -1,7 +1,7 @@
 ---
 title: "Módulo Inalámbrico LDSolar Accesorio/Monitor"
 description: "Módulo Inalámbrico LDSolar Accesorio/Monitor. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: LDSolar; modelo: Accesorio/Monitor; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/placeholders/monitoreo.svg"
+image: "/images/productos-tienda/monitoreo/growatt-shine.jpg"
 category: "monitoreo"
 price: "$108.588"
 specifications:
@@ -14,7 +14,6 @@ sku: "Accesorio/Monitor"
 power: "N/A"
 stock: "disponible"
 order: 6384
-imagenPendiente: true
 updatedAt: "2026-09-10"
 seoKeywords:
   - "sistema de monitoreo solar"

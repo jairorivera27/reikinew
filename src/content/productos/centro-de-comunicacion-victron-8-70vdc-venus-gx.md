@@ -1,7 +1,7 @@
 ---
 title: "Centro de comunicación Victron 8–70VDC Venus GX"
 description: "Centro de comunicación Victron 8–70VDC Venus GX. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Victron; modelo: Venus GX; especificación principal: 8–70VDC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/logo-Victron-Energy-Ecogreensolar-1.jpg"
+image: "/images/productos-tienda/monitoreo/victron-cerbo-gx.jpg"
 category: "monitoreo"
 price: "$983.981"
 specifications:

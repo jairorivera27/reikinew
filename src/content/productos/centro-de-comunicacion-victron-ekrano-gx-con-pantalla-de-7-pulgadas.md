@@ -1,7 +1,7 @@
 ---
 title: "Centro de Comunicación Victron Ekrano GX con Pantalla de 7 pulgadas"
 description: "Centro de Comunicación Victron Ekrano GX con Pantalla de 7 pulgadas. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Victron; modelo: Ekrano GX; especificación principal: Pantalla 7 pulgadas. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/logo-Victron-Energy-Ecogreensolar-1.jpg"
+image: "/images/productos-tienda/monitoreo/victron-gx-touch.jpg"
 category: "monitoreo"
 price: "$3.109.381"
 specifications:

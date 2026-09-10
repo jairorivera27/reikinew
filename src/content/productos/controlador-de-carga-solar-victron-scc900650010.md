@@ -1,7 +1,7 @@
 ---
 title: "Controlador de Carga Solar Victron SCC900650010"
 description: "Controlador de Carga Solar Victron SCC900650010. Equipo para regulación y gestión de la carga en sistemas fotovoltaicos. Marca: Victron; modelo: SCC900650010; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/logo-Victron-Energy-Ecogreensolar-1.jpg"
+image: "/images/productos-tienda/controladores/victron-smartsolar-mppt.jpg"
 category: "controladores"
 price: "$148.838"
 specifications:

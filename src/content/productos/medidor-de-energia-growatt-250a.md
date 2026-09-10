@@ -1,7 +1,7 @@
 ---
 title: "Medidor de Energía Growatt 250A"
 description: "Medidor de Energía Growatt 250A. Equipo para medición y supervisión del consumo y la generación eléctrica. Marca: Growatt; especificación principal: 250A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/growatt.png"
+image: "/images/productos-tienda/monitoreo/growatt-shine.jpg"
 category: "monitoreo"
 price: "$1.850.450"
 specifications:

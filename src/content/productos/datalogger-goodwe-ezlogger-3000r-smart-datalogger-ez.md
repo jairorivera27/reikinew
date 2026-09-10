@@ -1,7 +1,7 @@
 ---
 title: "Datalogger GoodWe EzLogger 3000R Smart DataLogger Ez"
 description: "Datalogger GoodWe EzLogger 3000R Smart DataLogger Ez. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: GoodWe; modelo: EzLogger 3000R Smart DataLogger Ez; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/placeholders/monitoreo.svg"
+image: "/images/productos-tienda/monitoreo/goodwe-ezlogger.jpg"
 category: "monitoreo"
 price: "$841.330"
 specifications:
@@ -14,7 +14,6 @@ sku: "EzLogger 3000R Smart DataLogger Ez"
 power: "N/A"
 stock: "disponible"
 order: 6376
-imagenPendiente: true
 updatedAt: "2026-09-10"
 seoKeywords:
   - "sistema de monitoreo solar"

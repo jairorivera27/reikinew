@@ -1,7 +1,7 @@
 ---
 title: "Pantalla Victron BPP900800150"
 description: "Pantalla Victron BPP900800150. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Victron; modelo: BPP900800150; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/logo-Victron-Energy-Ecogreensolar-1.jpg"
+image: "/images/productos-tienda/controladores/victron-smartsolar-mppt.jpg"
 category: "monitoreo"
 price: "$688.786"
 specifications:

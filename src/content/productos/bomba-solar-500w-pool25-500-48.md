@@ -1,7 +1,7 @@
 ---
 title: "Bomba Solar 500W POOL25-500-48"
 description: "Bomba Solar 500W POOL25-500-48. Equipo para bombeo de agua en aplicaciones solares, agrícolas o residenciales. Modelo: POOL25-500-48; especificación principal: 500W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/placeholders/bombeo.svg"
+image: "/images/productos-tienda/bombeo/kolos-bomba-solar.jpg"
 category: "bombeo"
 price: "$3.177.151"
 specifications:
@@ -14,7 +14,6 @@ sku: "POOL25-500-48"
 power: "500W"
 stock: "disponible"
 order: 6048
-imagenPendiente: true
 updatedAt: "2026-09-10"
 seoKeywords:
   - "bomba solar"
