@@ -57,7 +57,10 @@ const productosCollection = defineCollection({
     /** Marca productos que entraron con logo de marca o placeholder en vez de foto real. */
     imagenPendiente: z.boolean().optional(),
     updatedAt: z.string().optional(),
-    /** Orden en el carrusel del inicio (1 = primero). Si no se define, no se prioriza en el carrusel. */
+    /**
+     * Desempate opcional en el carrusel del inicio (1 = primero dentro de su grupo).
+     * El carrusel prioriza promociones y luego mejor calidad-precio; este campo solo ordena dentro de cada grupo.
+     */
     homeCarouselOrder: z.number().int().min(1).max(24).optional(),
     /** SEO visible en la ficha del producto (no en tarjetas). */
     seoKeywords: z.array(z.string()).max(10).optional(),

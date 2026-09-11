@@ -16,7 +16,6 @@ brand: "Pylontech"
 model: "US10000"
 stock: "disponible"
 order: 8
-homeCarouselOrder: 5
 ---
 
 Batería de litio de gran capacidad, ideal para sistemas que requieren mayor autonomía energética. Perfecta para viviendas grandes o pequeños comercios.

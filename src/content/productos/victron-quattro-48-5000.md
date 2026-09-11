@@ -13,7 +13,6 @@ brand: "Victron"
 model: "Quattro 48/5000"
 stock: "disponible"
 order: 6
-homeCarouselOrder: 6
 ---
 
 El Victron Quattro 48/5000 es un inversor cargador avanzado con dos entradas de CA y dos salidas de CA, ideal para sistemas complejos.

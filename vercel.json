@@ -4,6 +4,27 @@
   "installCommand": "npm install",
   "framework": null,
   "cleanUrls": true,
-  "trailingSlash": false
+  "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/servicios/energia-solar",
+      "destination": "/servicios/energia-solar-residencial",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/meditacion-guiada",
+      "destination": "/servicios/energia-solar-empresas",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/reiki-tradicional",
+      "destination": "/servicios/bombeo-solar",
+      "permanent": true
+    },
+    {
+      "source": "/servicios/limpieza-energetica",
+      "destination": "/servicios/energia-solar-movil",
+      "permanent": true
+    }
+  ]
 }
-

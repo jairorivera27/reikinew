@@ -34,7 +34,7 @@ const {
   title,
   description,
   canonical,
-  ogImage = '/images/og-default.jpg',
+  ogImage = '/images/og-default.png',
   ogType = 'website',
   noindex = false,
   keywords = 'energía solar, paneles solares, energía solar Colombia, energía solar Medellín, paneles solares Medellín, instalación solar, energía renovable Colombia, sistemas solares, inversores solares, baterías solares',
@@ -47,34 +47,40 @@ const fullTitle = title.includes('|') ? title : `${title} | Reiki Energía Solar
 const canonicalUrl = canonical ? `${site}${canonical}` : `${site}${Astro.url.pathname}`;
 const ogImageUrl = ogImage.startsWith('http') ? ogImage : `${site}${ogImage}`;
 
-// Schema.org structured data base
-const baseSchema = {
-  "@context": "https://schema.org",
-  "@type": schemaType,
-  "name": "Reiki Energía Solar",
-  "url": site,
-  "logo": `${site}/images/logo.png`,
-  "description": "Empresa líder en instalación de sistemas de energía solar en Medellín y Colombia. Paneles solares, inversores, baterías y soluciones completas de energía renovable.",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Medellín",
-    "addressRegion": "Antioquia",
-    "addressCountry": "CO"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": CONTACT_PHONE_SCHEMA,
-    "contactType": "customer service",
-    "areaServed": "CO",
-    "availableLanguage": "Spanish"
-  },
-  "sameAs": [
-    CONTACT_WHATSAPP_URL
-  ]
-};
-
-// Combinar schema base con datos adicionales
-const finalSchema = { ...baseSchema, ...schemaData };
+/** Si schemaData trae @graph, se publica tal cual (útil para home / entidades enriquecidas). */
+const finalSchema = Array.isArray((schemaData as { '@graph'?: unknown })['@graph'])
+  ? { '@context': 'https://schema.org', ...schemaData }
+  : {
+      '@context': 'https://schema.org',
+      '@type': schemaType,
+      name: 'Reiki Energía Solar',
+      url: site,
+      logo: `${site}/logo_blanco.png`,
+      description:
+        'Empresa colombiana de energía solar en Medellín: instalación de paneles solares, sistemas fotovoltaicos y venta de equipos para Colombia.',
+      address: {
+        '@type': 'PostalAddress',
+        streetAddress: 'Carrera 80 #39-167 Local 105',
+        addressLocality: 'Medellín',
+        addressRegion: 'Antioquia',
+        postalCode: '050001',
+        addressCountry: 'CO',
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: CONTACT_PHONE_SCHEMA,
+        contactType: 'customer service',
+        areaServed: 'CO',
+        availableLanguage: 'Spanish',
+      },
+      sameAs: [
+        CONTACT_WHATSAPP_URL,
+        'https://www.facebook.com/profile.php?id=61551829530814',
+        'https://www.instagram.com/reikiener/',
+        'https://www.linkedin.com/company/reiki-energia-solar/',
+      ],
+      ...schemaData,
+    };
 ---
 
 <!-- Metadatos básicos -->

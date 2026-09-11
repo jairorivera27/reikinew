@@ -1,5 +1,6 @@
 ﻿---
 import { getCollection } from 'astro:content';
+import Icon from './Icon.astro';
 
 // Obtener los últimos posts del blog
 const blogPosts = await getCollection('blog');
@@ -62,18 +63,18 @@ const latestPosts = blogPosts
 
     <div class="blog-controls">
       <button class="blog-btn blog-prev" aria-label="Artículos anteriores">
-        <i class="fas fa-chevron-left"></i>
+        <Icon name="chevron-left" />
       </button>
       <button class="blog-btn blog-next" aria-label="Siguientes artículos">
-        <i class="fas fa-chevron-right"></i>
+        <Icon name="chevron-right" />
       </button>
     </div>
 
     <div class="blog-cta-section">
       <a href="https://wa.me/573122435627" target="_blank" rel="noopener noreferrer" class="blog-cta-button">
-        <i class="fab fa-whatsapp"></i>
+        <Icon name="whatsapp" />
         <span>¿Tienes preguntas? Escríbenos por WhatsApp</span>
-        <i class="fas fa-arrow-right"></i>
+        <Icon name="arrow-right" />
       </a>
     </div>
   </div>

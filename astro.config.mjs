@@ -71,6 +71,12 @@ export default defineConfig({
   prefetch: true,
   integrations: [react()],
   compressHTML: true,
+  redirects: {
+    '/servicios/energia-solar': '/servicios/energia-solar-residencial',
+    '/servicios/meditacion-guiada': '/servicios/energia-solar-empresas',
+    '/servicios/reiki-tradicional': '/servicios/bombeo-solar',
+    '/servicios/limpieza-energetica': '/servicios/energia-solar-movil',
+  },
   build: {
     inlineStylesheets: 'auto',
     assets: '_assets',

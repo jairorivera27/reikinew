@@ -1,104 +1,295 @@
 ---
-// Hero.astro
+import { CONTACT_WHATSAPP_URL } from '../config/contact';
+
+const whatsappCotizar = `${CONTACT_WHATSAPP_URL}?text=${encodeURIComponent(
+  'Hola Reiki Solar, quiero cotizar un sistema solar llave en mano y reducir mi factura de energía.'
+)}`;
 ---
 
-<section class="hero">
-  <!-- Video de fondo -->
-  <div class="hero-video">
-    <video autoplay muted loop playsinline preload="metadata" poster="/energia solar vivienda.png">
-      <source src="/Diseño hero.mp4" type="video/mp4">
-      Tu navegador no soporta videos HTML5.
+<section class="hero" aria-label="Presentación Reiki Energía Solar">
+  <div class="hero-media" aria-hidden="true">
+    <video
+      class="hero-video-el"
+      muted
+      loop
+      playsinline
+      preload="none"
+      poster="/energia solar vivienda.png"
+    >
+      <source src="/hero-home.mp4" type="video/mp4" />
     </video>
+    <div class="hero-scrim"></div>
   </div>
-  
+
+  <div class="hero-content">
+    <img
+      src="/logo_blanco.png"
+      alt="Reiki Energía Solar"
+      class="hero-brand"
+      width="220"
+      height="72"
+      decoding="async"
+    />
+    <h1 class="hero-title">Baja tu factura con energía solar hecha en Colombia</h1>
+    <p class="hero-lead">
+      <span class="hero-lead-full">Cotiza un sistema llave en mano o compra paneles, inversores y baterías de marcas líderes — con precio claro y acompañamiento desde Medellín para todo el país.</span>
+      <span class="hero-lead-short">Cotiza llave en mano o compra equipos con precio claro. Te acompañamos desde Medellín a todo el país.</span>
+    </p>
+    <div class="hero-ctas">
+      <a class="hero-cta hero-cta-primary" href={whatsappCotizar} target="_blank" rel="noopener noreferrer">
+        Cotizar mi proyecto
+      </a>
+      <a class="hero-cta hero-cta-secondary" href="/tienda" data-astro-prefetch>
+        Comprar equipos
+      </a>
+    </div>
+  </div>
 </section>
 
 <style>
   .hero {
-    min-height: 100vh;
     position: relative;
+    min-height: min(100vh, 820px);
+    display: flex;
+    align-items: flex-end;
     overflow: hidden;
+    background: #3b0f4a;
   }
 
-  .hero-video {
+  .hero-media {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     z-index: 0;
-    background: linear-gradient(135deg, #6b2181, #8b2a9b);
-    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="hero-pattern" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="2" fill="%23ffffff" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23hero-pattern)"/></svg>');
   }
 
-  .hero-video video {
+  .hero-video-el {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
-    min-width: 100%;
-    min-height: 100%;
-      opacity: 0;
-    transition: opacity 0.5s ease;
+    opacity: 0;
+    transition: opacity 0.6s ease;
   }
 
-  /* Responsive Design */
+  .hero-video-el.is-ready {
+    opacity: 1;
+  }
+
+  .hero-scrim {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(180deg, rgba(40, 8, 52, 0.35) 0%, rgba(40, 8, 52, 0.55) 45%, rgba(30, 5, 40, 0.88) 100%),
+      linear-gradient(90deg, rgba(30, 5, 40, 0.55) 0%, transparent 55%);
+    pointer-events: none;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5.5rem 2rem 4rem;
+    color: #fff;
+  }
+
+  .hero-brand {
+    display: block;
+    width: auto;
+    height: clamp(48px, 8vw, 72px);
+    margin: 0 0 1.25rem;
+    filter: drop-shadow(0 4px 18px rgba(0, 0, 0, 0.35));
+  }
+
+  .hero-title {
+    margin: 0 0 0.85rem;
+    max-width: 18ch;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    line-height: 1.12;
+    letter-spacing: -0.02em;
+    color: #fff;
+    text-shadow: 0 2px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  .hero-lead {
+    margin: 0 0 1.75rem;
+    max-width: 38rem;
+    font-size: clamp(1rem, 2vw, 1.18rem);
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.92);
+  }
+
+  .hero-lead-short {
+    display: none;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 3rem;
+    padding: 0.85rem 1.5rem;
+    border-radius: 999px;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  }
+
+  .hero-cta-primary {
+    background: linear-gradient(135deg, #ffd700, #ffa500);
+    color: #1f2937;
+    box-shadow: 0 8px 24px rgba(255, 165, 0, 0.35);
+  }
+
+  .hero-cta-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(255, 165, 0, 0.45);
+  }
+
+  .hero-cta-secondary {
+    background: rgba(255, 255, 255, 0.12);
+    color: #fff;
+    border: 1.5px solid rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(6px);
+  }
+
+  .hero-cta-secondary:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-2px);
+  }
+
   @media (max-width: 768px) {
     .hero {
-      min-height: 70vh;
+      min-height: 78vh;
+      align-items: flex-end;
     }
 
-    .hero-video video {
-      object-position: center;
+    .hero-content {
+      padding: 4.5rem 1.25rem 2.75rem;
+    }
+
+    .hero-title {
+      max-width: 14ch;
+      font-size: clamp(1.85rem, 7.5vw, 2.45rem);
+    }
+
+    .hero-lead {
+      max-width: 28rem;
+      font-size: 1rem;
+      line-height: 1.45;
+      margin-bottom: 1.35rem;
+    }
+
+    .hero-lead-full {
+      display: none;
+    }
+
+    .hero-lead-short {
+      display: inline;
     }
   }
 
   @media (max-width: 480px) {
     .hero {
-      min-height: 60vh;
+      min-height: 72vh;
+    }
+
+    .hero-ctas {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .hero-cta {
+      width: 100%;
     }
   }
 
+  @media (prefers-reduced-motion: reduce) {
+    .hero-video-el {
+      display: none;
+    }
 
-
-
-
+    .hero-media {
+      background:
+        linear-gradient(180deg, rgba(59, 15, 74, 0.45), rgba(30, 5, 40, 0.75)),
+        url('/energia solar vivienda.png') center / cover no-repeat;
+    }
+  }
 </style>
 
 <script is:inline>
-  // Optimizado: usar requestIdleCallback para no bloquear el renderizado
-  (function() {
-    function initVideo() {
-      const video = document.querySelector('.hero-video video');
+  (function () {
+    function initHeroVideo() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var video = document.querySelector('.hero-video-el');
       if (!video) return;
-      
-      // Mostrar video cuando esté listo
-      video.addEventListener('loadeddata', function() {
-        video.style.opacity = '1';
-      }, { once: true });
-      
-      // Intentar reproducir
-      video.addEventListener('canplay', function() {
-        video.play().catch(function() {
-          // Autoplay bloqueado, no es crítico
-        });
-      }, { once: true });
-      
-      // Manejar errores silenciosamente
-      video.addEventListener('error', function() {
-        video.style.display = 'none';
-      }, { once: true });
-    }
-    
-    // Usar requestIdleCallback si está disponible, sino DOMContentLoaded
-    if ('requestIdleCallback' in window) {
-      requestIdleCallback(initVideo, { timeout: 2000 });
-    } else {
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initVideo);
+
+      var load = function () {
+        if (video.getAttribute('data-src-loaded')) return;
+        video.setAttribute('data-src-loaded', '1');
+        video.preload = 'metadata';
+        video.load();
+      };
+
+      video.addEventListener(
+        'loadeddata',
+        function () {
+          video.classList.add('is-ready');
+        },
+        { once: true }
+      );
+
+      video.addEventListener(
+        'canplay',
+        function () {
+          var playPromise = video.play();
+          if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(function () {});
+          }
+        },
+        { once: true }
+      );
+
+      video.addEventListener(
+        'error',
+        function () {
+          video.style.display = 'none';
+        },
+        { once: true }
+      );
+
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(
+          function (entries) {
+            if (entries.some(function (e) { return e.isIntersecting; })) {
+              load();
+              io.disconnect();
+            }
+          },
+          { rootMargin: '80px' }
+        );
+        io.observe(video);
       } else {
-        initVideo();
+        load();
       }
+    }
+
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(initHeroVideo, { timeout: 1800 });
+    } else if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initHeroVideo);
+    } else {
+      initHeroVideo();
     }
   })();
 </script>

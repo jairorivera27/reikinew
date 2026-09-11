@@ -13,7 +13,6 @@ brand: "Trina Solar"
 model: "TSM-700NEG21C.20"
 stock: "disponible"
 order: 4
-homeCarouselOrder: 2
 seoDifferentiator: "Panel de 700W con tecnología Vertex N para máxima potencia por módulo en proyectos de alto consumo."
 seoKeywords:
   - "panel trina 700w precio colombia"

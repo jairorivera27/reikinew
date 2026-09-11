@@ -1,0 +1,207 @@
+---
+const MARCAS = [
+  { nombre: 'Huawei', src: '/images/marcas/huawei.png' },
+  { nombre: 'Victron', src: '/images/marcas/victron.jpg' },
+  { nombre: 'Growatt', src: '/images/marcas/growatt.png' },
+  { nombre: 'GoodWe', src: '/images/marcas/goodwe.svg' },
+  { nombre: 'Deye', src: '/images/marcas/deye.svg' },
+  { nombre: 'LONGi', src: '/images/marcas/longi.png' },
+  { nombre: 'JA Solar', src: '/images/marcas/ja-solar.png' },
+  { nombre: 'Jinko', src: '/images/marcas/jinko.svg' },
+  { nombre: 'Pylontech', src: '/images/marcas/pylontech.png' },
+  { nombre: 'Hoymiles', src: '/images/marcas/hoymiles.svg' },
+];
+
+const marcasLoop = [...MARCAS, ...MARCAS];
+
+const trustItems = [
+  {
+    label: 'Llave en mano real',
+    detail: 'Diseño, suministro, instalación y legalización: un solo equipo responsable de tu proyecto.',
+  },
+  {
+    label: 'Precio transparente',
+    detail: 'Tienda mayorista con tarifas publicadas en paneles, inversores, baterías y protecciones.',
+  },
+  {
+    label: 'Marcas que sí rinden',
+    detail: 'Huawei, Victron, Growatt, LONGi, Jinko y más: equipos de marca con soporte comercial.',
+  },
+  {
+    label: 'Normativa y cobertura',
+    detail: 'Proyectos alineados a Ley 1715 y CREG 174, con operación desde Medellín hacia toda Colombia.',
+  },
+];
+---
+
+<section class="home-trust" aria-label="Marcas y confianza">
+  <div class="home-trust-inner">
+    <ul class="trust-row">
+      {trustItems.map((item) => (
+        <li class="trust-item">
+          <span class="trust-label">{item.label}</span>
+          <span class="trust-detail">{item.detail}</span>
+        </li>
+      ))}
+    </ul>
+
+    <div class="marcas-strip" aria-label="Marcas que distribuimos">
+      <p class="marcas-strip-label">Distribuimos marcas líderes</p>
+      <div class="marcas-strip-wrap">
+        <div class="marcas-strip-track">
+          {marcasLoop.map((marca, i) => (
+            <div class="marcas-strip-item">
+              <img
+                src={marca.src}
+                alt={i < MARCAS.length ? `Logo ${marca.nombre}` : ''}
+                loading="lazy"
+                decoding="async"
+                class="marcas-strip-logo"
+              />
+              <span class="marcas-strip-name">{marca.nombre}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .home-trust {
+    background: #f7f4f8;
+    border-bottom: 1px solid #ebe4ef;
+    padding: 1.5rem 0 1.75rem;
+  }
+
+  .home-trust-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  .trust-row {
+    list-style: none;
+    margin: 0 0 1.35rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 0.85rem;
+  }
+
+  .trust-item {
+    background: #fff;
+    border: 1px solid #ebe4ef;
+    border-radius: 12px;
+    padding: 1rem 1.05rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    min-height: 100%;
+  }
+
+  .trust-label {
+    font-size: 0.98rem;
+    font-weight: 800;
+    color: #6b2181;
+    letter-spacing: -0.01em;
+  }
+
+  .trust-detail {
+    font-size: 0.84rem;
+    color: #4b5563;
+    line-height: 1.45;
+  }
+
+  .marcas-strip-label {
+    margin: 0 0 0.65rem;
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #6b7280;
+  }
+
+  .marcas-strip-wrap {
+    overflow: hidden;
+    border-radius: 14px;
+    background: #fff;
+    border: 1px solid #ebe4ef;
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+
+  .marcas-strip-track {
+    display: flex;
+    width: max-content;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    animation: home-marcas-scroll 38s linear infinite;
+  }
+
+  .marcas-strip-wrap:hover .marcas-strip-track {
+    animation-play-state: paused;
+  }
+
+  @keyframes home-marcas-scroll {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+
+  .marcas-strip-item {
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    min-width: 92px;
+    padding: 0.35rem 0.6rem;
+  }
+
+  .marcas-strip-item.is-missing {
+    display: none;
+  }
+
+  .marcas-strip-logo {
+    height: 32px;
+    width: auto;
+    max-width: 88px;
+    object-fit: contain;
+  }
+
+  .marcas-strip-name {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: #4b5563;
+  }
+
+  @media (max-width: 900px) {
+    .trust-row {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 520px) {
+    .trust-row {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marcas-strip-track {
+      animation: none;
+      flex-wrap: wrap;
+      width: 100%;
+      justify-content: center;
+    }
+  }
+</style>
+
+<script>
+  document.querySelectorAll('.marcas-strip-logo').forEach((img) => {
+    if (!(img instanceof HTMLImageElement)) return;
+    img.addEventListener('error', () => {
+      img.closest('.marcas-strip-item')?.classList.add('is-missing');
+    });
+  });
+</script>

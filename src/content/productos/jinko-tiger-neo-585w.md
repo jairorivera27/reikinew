@@ -12,7 +12,6 @@ brand: "Jinko Solar"
 model: "JKM585N-72HL4-V"
 stock: "disponible"
 order: 6
-homeCarouselOrder: 1
 seoDifferentiator: "Tecnología N-Type Tiger Neo con mejor desempeño en baja irradiación y altas temperaturas."
 seoKeywords:
   - "panel jinko tiger neo 585w precio colombia"

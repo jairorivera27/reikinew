@@ -1,4 +1,6 @@
 ﻿---
+import Icon from './Icon.astro';
+
 const logoSrc = '/logo_blanco.png';
 const currentYear = new Date().getFullYear();
 ---
@@ -16,16 +18,16 @@ const currentYear = new Date().getFullYear();
         </p>
         <div class="social-links">
           <a href="https://www.facebook.com/profile.php?id=61551829530814" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
-            <i class="fab fa-facebook-f"></i>
+            <Icon name="facebook" />
           </a>
           <a href="https://www.instagram.com/reikiener/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
-            <i class="fab fa-instagram"></i>
+            <Icon name="instagram" />
           </a>
           <a href="https://www.linkedin.com/company/reiki-energia-solar/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
-            <i class="fab fa-linkedin-in"></i>
+            <Icon name="linkedin" />
           </a>
           <a href="https://wa.me/573122435627" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="WhatsApp">
-            <i class="fab fa-whatsapp"></i>
+            <Icon name="whatsapp" />
           </a>
         </div>
       </div>
@@ -61,10 +63,10 @@ const currentYear = new Date().getFullYear();
       <div class="footer-section">
         <h4 class="footer-title">Nuestros Servicios</h4>
         <ul class="footer-links">
-          <li><a href="/servicios/energia-solar">Energía Solar Hogar</a></li>
-          <li><a href="/servicios/meditacion-guiada">Energía Solar Empresas</a></li>
-          <li><a href="/servicios/reiki-tradicional">Bombeo Solar</a></li>
-          <li><a href="/servicios/limpieza-energetica">Energía Solar Móvil</a></li>
+          <li><a href="/servicios/energia-solar-residencial">Energía Solar Hogar</a></li>
+          <li><a href="/servicios/energia-solar-empresas">Energía Solar Empresas</a></li>
+          <li><a href="/servicios/bombeo-solar">Bombeo Solar</a></li>
+          <li><a href="/servicios/energia-solar-movil">Energía Solar Móvil</a></li>
         </ul>
       </div>
 
@@ -73,20 +75,20 @@ const currentYear = new Date().getFullYear();
         <h4 class="footer-title">Contacto</h4>
         <div class="contact-info">
           <div class="contact-item">
-            <i class="fas fa-phone"></i>
+            <Icon name="phone" />
             <span>Servicio al cliente: +57 312 243 5627</span>
           </div>
           <div class="contact-item">
-            <i class="fas fa-envelope"></i>
+            <Icon name="envelope" />
             <span>comercial@reikisolar.com.co</span>
           </div>
           <div class="contact-item">
-            <i class="fas fa-map-marker-alt"></i>
+            <Icon name="map-marker" />
             <span>Carrera 80 #39-167 Local 105</span>
           </div>
           <div class="contact-item">
-            <i class="fas fa-clock"></i>
-            <span>Lun - Vie: 9:00 - 18:00</span>
+            <Icon name="clock" />
+            <span>Lun - Sáb: 8:00 - 18:00</span>
           </div>
         </div>
       </div>
@@ -225,6 +227,11 @@ const currentYear = new Date().getFullYear();
     border: 1px solid rgba(255, 255, 255, 0.2);
   }
 
+  .social-link :global(svg) {
+    width: 1.05rem;
+    height: 1.05rem;
+  }
+
   .social-link:hover {
     background: rgba(255, 255, 255, 0.2);
     transform: translateY(-2px);
@@ -245,10 +252,11 @@ const currentYear = new Date().getFullYear();
     font-size: 0.95rem;
   }
 
-  .contact-item i {
-    width: 20px;
+  .contact-item :global(svg) {
+    width: 18px;
+    height: 18px;
     color: #8b2a9b;
-    font-size: 1rem;
+    flex-shrink: 0;
   }
 
   .footer-bottom {

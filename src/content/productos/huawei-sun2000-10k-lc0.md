@@ -13,7 +13,6 @@ brand: "Huawei"
 model: "SUN2000-10K-LC0"
 stock: "pre-orden"
 order: 41
-homeCarouselOrder: 3
 ---
 
 La referencia SUN2000-10K-LC0 ofrece administración inteligente, monitoreo en la nube y soporte para baterías Huawei. Precio no incluye costos de envío ni instalación.

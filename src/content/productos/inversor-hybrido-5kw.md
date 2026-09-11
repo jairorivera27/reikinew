@@ -13,7 +13,6 @@ brand: "Deye"
 model: "SUN-5K-SG01LP1-US"
 stock: "disponible"
 order: 2
-homeCarouselOrder: 4
 ---
 
 Inversor híbrido Deye de 5kW, permite gestionar paneles, baterías y red eléctrica de forma eficiente e inteligente.

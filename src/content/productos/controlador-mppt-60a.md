@@ -16,7 +16,6 @@ brand: "EPever"
 model: "Tracer-6415AN"
 stock: "disponible"
 order: 2
-homeCarouselOrder: 7
 ---
 
 Controlador MPPT profesional con comunicación Bluetooth para monitoreo y control desde tu smartphone. Perfecto para sistemas solares de alta potencia.

@@ -1,39 +1,49 @@
 import type { APIRoute } from 'astro';
 
 /**
- * Genera dinámicamente el archivo robots.txt
- * 
- * Este archivo indica a los buscadores qué páginas pueden indexar.
- * 
- * Para modificar las reglas:
- * - Allow: permite indexar rutas específicas
- * - Disallow: bloquea la indexación de rutas específicas
- * - Sitemap: indica la ubicación del sitemap.xml
- * 
- * Ejemplo para bloquear una ruta:
- *   Disallow: /admin/
- *   Disallow: /api/
+ * robots.txt — indexación web + señalización para crawlers de IA.
  */
-
 const site = 'https://reikisolar.com.co';
 
 export const GET: APIRoute = () => {
   const robotsTxt = `User-agent: *
 Allow: /
 
-# Bloquear acceso a archivos de sistema y API
+# APIs y assets de build
 Disallow: /api/
 Disallow: /_astro/
 
-# Sitemap
+# Crawlers de IA / respuestas generativas (permitidos)
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Bytespider
+Allow: /
+
+# Mapas para buscadores e IAs
 Sitemap: ${site}/sitemap.xml
+# Entidad para modelos de lenguaje: ${site}/llms.txt
 `;
 
   return new Response(robotsTxt, {
     headers: {
       'Content-Type': 'text/plain; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600'
-    }
+      'Cache-Control': 'public, max-age=3600',
+    },
   });
 };
-

@@ -4,43 +4,9 @@ import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import SEO from '../components/SEO.astro';
 import FontAwesome from '../components/FontAwesome.astro';
+import { buildAboutJsonLdGraph, ORG } from '../config/organization';
 
-const site = 'https://reikisolar.com.co';
-const organizationSchema = {
-  "@type": "Organization",
-  "name": "Reiki Energía Solar",
-  "legalName": "Reiki Energía Solar",
-  "url": site,
-  "logo": `${site}/images/logo.png`,
-  "foundingDate": "2020",
-  "founders": [{
-    "@type": "Person",
-    "name": "Reiki Energía Solar"
-  }],
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "Medellín",
-    "addressRegion": "Antioquia",
-    "addressCountry": "CO"
-  },
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+57-312-243-5627",
-    "contactType": "customer service",
-    "areaServed": "CO",
-    "availableLanguage": ["Spanish"]
-  },
-  "sameAs": [
-    "https://wa.me/573122435627"
-  ],
-  "knowsAbout": [
-    "Energía Solar",
-    "Paneles Solares",
-    "Sistemas Fotovoltaicos",
-    "Energía Renovable",
-    "Instalación Solar"
-  ]
-};
+const aboutSchema = buildAboutJsonLdGraph();
 ---
 
 <!DOCTYPE html>
@@ -53,11 +19,11 @@ const organizationSchema = {
     <FontAwesome />
     <SEO 
       title="Quiénes Somos - Empresa de Energía Solar en Medellín"
-      description="Reiki Energía Solar: Empresa colombiana especializada en energía solar fotovoltaica. Instalación de paneles solares en Medellín, Bogotá, Cali y toda Colombia. Expertos en sistemas solares on-grid y off-grid."
+      description={`${ORG.name} (${ORG.legalName}): empresa de paneles solares e instalación fotovoltaica en Medellín, Bogotá, Cali y Colombia. Proyectos llave en mano y tienda de equipos on-grid y off-grid.`}
       canonical="/quienes-somos"
-      keywords="empresa energía solar Medellín, empresa paneles solares Colombia, instaladores solares, expertos energía solar, energía renovable Colombia, empresa fotovoltaica, instalación solar profesional"
+      keywords="empresa energía solar Medellín, Reiki Energía Solar SAS, empresa paneles solares Colombia, instaladores solares Medellín, energía renovable Colombia, empresa fotovoltaica Colombia"
       schemaType="Organization"
-      schemaData={organizationSchema}
+      schemaData={aboutSchema}
     />
   </head>
   <body>
@@ -67,7 +33,9 @@ const organizationSchema = {
       <section class="about-hero">
         <div class="container">
           <h1 class="hero-title">Quiénes Somos</h1>
-          <p class="hero-subtitle">Empresa colombiana especializada en soluciones solares fotovoltaicas y proyectos de energía renovable</p>
+          <p class="hero-subtitle">
+            {ORG.name}: empresa de energía solar en {ORG.addressLocality} con proyectos y equipos para toda Colombia
+          </p>
         </div>
       </section>
 
@@ -75,12 +43,14 @@ const organizationSchema = {
         <div class="container">
           <div class="about-content">
             <div class="about-text">
+              <p class="about-entity-line">
+                <strong>{ORG.name}</strong> ({ORG.legalName}) es una empresa colombiana de energía solar fotovoltaica
+                con sede en {ORG.streetAddress}, {ORG.addressLocality}, {ORG.addressRegion}. Diseñamos, suministramos e instalamos
+                sistemas solares y vendemos equipos con precio publicado.
+              </p>
               <h2 class="section-title">Nuestra Historia</h2>
               <p class="about-description">
-                Reiki Energía Solar es una empresa colombiana especializada en soluciones de energía solar fotovoltaica, 
-                enfocada en el diseño, suministro e instalación de sistemas solares para hogares, industrias y comercios. 
-                Promovemos la transición energética en Colombia mediante tecnología fotovoltaica de última generación, 
-                cumpliendo con la Ley 1715 de 2014 y la CREG 174 de 2021.
+                {ORG.description}
               </p>
               <p class="about-description">
                 Nuestro equipo de ingenieros expertos en energía renovable trabaja para ofrecer autogeneración eléctrica 
@@ -96,7 +66,7 @@ const organizationSchema = {
               </p>
             </div>
             <div class="about-image">
-              <img src="/energia solar vivienda.png" alt="Reiki Energía Solar" loading="lazy">
+              <img src="/energia solar vivienda.png" alt={`${ORG.name} - energía solar en Medellín y Colombia`} loading="lazy">
             </div>
           </div>
         </div>
@@ -405,6 +375,18 @@ const organizationSchema = {
     font-weight: 700;
     color: #1f2937;
     margin-bottom: 2rem;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .about-entity-line {
+    font-size: 1.08rem;
+    line-height: 1.65;
+    color: #1f2937;
+    margin: 0 0 1.5rem;
+    padding: 0.9rem 1rem;
+    background: #f7f4f8;
+    border-left: 3px solid #6b2181;
+    border-radius: 0 12px 12px 0;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   }
 
