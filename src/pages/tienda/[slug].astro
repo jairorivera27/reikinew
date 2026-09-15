@@ -8,6 +8,7 @@ import ShoppingCartDrawer from '../../components/ShoppingCartDrawer.astro';
 import CartFloatButton from '../../components/CartFloatButton.astro';
 import SEO from '../../components/SEO.astro';
 import FontAwesome from '../../components/FontAwesome.astro';
+import PagoConfianza from '../../components/PagoConfianza.astro';
 import { getCategoria, urlCategoria, urlProducto } from '../../config/categorias-tienda';
 import { CONTACT_WHATSAPP_URL } from '../../config/contact';
 import { getAddiInstallmentHint } from '../../utils/addiHint';
@@ -230,6 +231,8 @@ const precioUnitario = etiquetaPrecioPorUnidad(
                 Agregar al carrito
               </button>
             </div>
+
+            <PagoConfianza />
 
             <a class="ficha-btn-whatsapp" href={`${CONTACT_WHATSAPP_URL}?text=${mensajeWhatsApp}`} rel="noopener" target="_blank">
               <i class="fab fa-whatsapp" aria-hidden="true"></i>

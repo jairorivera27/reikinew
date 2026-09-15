@@ -1,6 +1,7 @@
 ﻿---
 import { getCollection } from 'astro:content';
 import ProductoCardCompact from './tienda/ProductoCardCompact.astro';
+import PagoConfianza from './PagoConfianza.astro';
 import { CATEGORIAS, urlCategoria } from '../config/categorias-tienda';
 import { calcularValor, ordenarPorValor, type ResultadoValor } from '../utils/calidadPrecio';
 import { ordenarInversoresPorTipoYPotencia } from '../utils/productCardCompactMeta';
@@ -297,6 +298,8 @@ const marcasLoop = [...marcasConSrc, ...marcasConSrc];
     </div>
   </div>
 
+  <PagoConfianza variant="section" class="pago-confianza-section--tienda" />
+
   <!-- CTA Section -->
   <div class="cta-section">
     <div class="container">
@@ -411,6 +414,7 @@ const marcasLoop = [...marcasConSrc, ...marcasConSrc];
               Agregar
             </button>
           </div>
+          <PagoConfianza class="pago-confianza--modal" />
         </div>
       </div>
       </div>

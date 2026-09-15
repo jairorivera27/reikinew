@@ -1,0 +1,344 @@
+---
+/**
+ * Franja de confianza de pago (logos en chips proporcionales).
+ *
+ * Paga con: Visa Mastercard American Express
+ * PSE Nequi Bancolombia
+ * Mediante: Wompi Addi SUMAS
+ */
+interface Props {
+  class?: string;
+  variant?: 'inline' | 'section';
+}
+
+const { class: className = '', variant = 'inline' } = Astro.props;
+const isSection = variant === 'section';
+
+type LogoItem = {
+  src: string;
+  alt: string;
+  /** Forma del chip para logos redondos/cuadrados */
+  shape?: 'rect' | 'round' | 'square';
+};
+
+const filaTarjetas: LogoItem[] = [
+  { src: '/checkout-trust/visa.svg', alt: 'Visa' },
+  { src: '/checkout-trust/mastercard.svg', alt: 'Mastercard' },
+  { src: '/checkout-trust/amex.svg', alt: 'American Express' },
+];
+
+const filaMedios: LogoItem[] = [
+  { src: '/checkout-trust/pse.png', alt: 'PSE', shape: 'round' },
+  { src: '/checkout-trust/nequi.png', alt: 'Nequi' },
+  { src: '/checkout-trust/bancolombia.png', alt: 'Bancolombia' },
+];
+
+const filaPlataformas: LogoItem[] = [
+  { src: '/checkout-trust/wompi.png', alt: 'Wompi' },
+  { src: '/images/Addi.png', alt: 'Addi' },
+  { src: '/checkout-trust/sumas.png', alt: 'SUMAS', shape: 'square' },
+];
+
+const size = isSection ? 40 : 34;
+---
+
+{
+  isSection ? (
+    <section class:list={['pago-confianza-section', className]} aria-labelledby="pago-confianza-heading">
+      <div class="pago-confianza-section-inner">
+        <h2 id="pago-confianza-heading" class="pago-confianza-heading">Formas de pago</h2>
+        <div class="pago-confianza pago-confianza--lg">
+          <div class="pago-confianza-fila">
+            <span class="pago-confianza-label">Paga con:</span>
+            <div class="pago-confianza-logos">
+              {filaTarjetas.map((m) => (
+                <span class="pago-confianza-chip">
+                  <img src={m.src} alt={m.alt} class="pago-confianza-logo" width={size * 1.7} height={size} loading="lazy" decoding="async" />
+                </span>
+              ))}
+            </div>
+          </div>
+          <div class="pago-confianza-fila">
+            <span class="pago-confianza-label pago-confianza-label--spacer" aria-hidden="true"></span>
+            <div class="pago-confianza-logos">
+              {filaMedios.map((m) => (
+                <span class:list={['pago-confianza-chip', m.shape === 'round' && 'pago-confianza-chip--round']}>
+                  <img
+                    src={m.src}
+                    alt={m.alt}
+                    class:list={['pago-confianza-logo', m.shape === 'round' && 'pago-confianza-logo--round']}
+                    width={size}
+                    height={size}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+              ))}
+            </div>
+          </div>
+          <div class="pago-confianza-fila">
+            <span class="pago-confianza-label">Mediante:</span>
+            <div class="pago-confianza-logos">
+              {filaPlataformas.map((p) => (
+                <span class:list={['pago-confianza-chip', p.shape === 'square' && 'pago-confianza-chip--square']}>
+                  <img
+                    src={p.src}
+                    alt={p.alt}
+                    class:list={['pago-confianza-logo', p.shape === 'square' && 'pago-confianza-logo--square']}
+                    width={p.shape === 'square' ? size : size * 1.6}
+                    height={size}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  ) : (
+    <div class:list={['pago-confianza', className]} role="note">
+      <div class="pago-confianza-fila">
+        <span class="pago-confianza-label">Paga con:</span>
+        <div class="pago-confianza-logos">
+          {filaTarjetas.map((m) => (
+            <span class="pago-confianza-chip">
+              <img src={m.src} alt={m.alt} class="pago-confianza-logo" width={size * 1.7} height={size} loading="lazy" decoding="async" />
+            </span>
+          ))}
+        </div>
+      </div>
+      <div class="pago-confianza-fila">
+        <span class="pago-confianza-label pago-confianza-label--spacer" aria-hidden="true"></span>
+        <div class="pago-confianza-logos">
+          {filaMedios.map((m) => (
+            <span class:list={['pago-confianza-chip', m.shape === 'round' && 'pago-confianza-chip--round']}>
+              <img
+                src={m.src}
+                alt={m.alt}
+                class:list={['pago-confianza-logo', m.shape === 'round' && 'pago-confianza-logo--round']}
+                width={size}
+                height={size}
+                loading="lazy"
+                decoding="async"
+              />
+            </span>
+          ))}
+        </div>
+      </div>
+      <div class="pago-confianza-fila">
+        <span class="pago-confianza-label">Mediante:</span>
+        <div class="pago-confianza-logos">
+          {filaPlataformas.map((p) => (
+            <span class:list={['pago-confianza-chip', p.shape === 'square' && 'pago-confianza-chip--square']}>
+              <img
+                src={p.src}
+                alt={p.alt}
+                class:list={['pago-confianza-logo', p.shape === 'square' && 'pago-confianza-logo--square']}
+                width={p.shape === 'square' ? size : size * 1.6}
+                height={size}
+                loading="lazy"
+                decoding="async"
+              />
+            </span>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
+<style is:global>
+  .pago-confianza {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+    margin: 0.85rem 0 0;
+    padding: 0.85rem 0.9rem;
+    border-radius: 12px;
+    background: #fff;
+    border: 1px solid #e8eaef;
+    box-shadow: 0 1px 2px rgba(16, 24, 40, 0.04);
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .pago-confianza-fila {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.55rem;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .pago-confianza-label {
+    flex: 0 0 auto;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    color: #344054;
+    white-space: nowrap;
+    min-width: 5.4rem;
+  }
+
+  .pago-confianza-label--spacer {
+    visibility: hidden;
+  }
+
+  .pago-confianza-logos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 0.45rem;
+    min-width: 0;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+  }
+
+  .pago-confianza-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    height: 42px;
+    min-width: 64px;
+    padding: 0 0.55rem;
+    border-radius: 10px;
+    background: #f9fafb;
+    border: 1px solid #eaecf0;
+    box-sizing: border-box;
+  }
+
+  .pago-confianza-chip--round,
+  .pago-confianza-chip--square {
+    min-width: 42px;
+    width: 42px;
+    padding: 0.2rem;
+  }
+
+  .pago-confianza-logo {
+    display: block;
+    height: 26px;
+    width: auto;
+    max-width: 86px;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+  }
+
+  .pago-confianza-logo--round {
+    height: 34px;
+    width: 34px;
+    max-width: 34px;
+    border-radius: 50%;
+  }
+
+  .pago-confianza-logo--square {
+    height: 32px;
+    width: 32px;
+    max-width: 32px;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+
+  .pago-confianza--modal {
+    margin-top: 0.75rem;
+  }
+
+  .pago-confianza--lg {
+    gap: 0.8rem;
+    padding: 1rem 1.1rem;
+  }
+
+  .pago-confianza--lg .pago-confianza-label {
+    font-size: 0.9rem;
+    min-width: 6.2rem;
+  }
+
+  .pago-confianza--lg .pago-confianza-chip {
+    height: 52px;
+    min-width: 78px;
+    padding: 0 0.7rem;
+  }
+
+  .pago-confianza--lg .pago-confianza-chip--round,
+  .pago-confianza--lg .pago-confianza-chip--square {
+    min-width: 52px;
+    width: 52px;
+  }
+
+  .pago-confianza--lg .pago-confianza-logo {
+    height: 32px;
+    max-width: 110px;
+  }
+
+  .pago-confianza--lg .pago-confianza-logo--round {
+    height: 42px;
+    width: 42px;
+    max-width: 42px;
+  }
+
+  .pago-confianza--lg .pago-confianza-logo--square {
+    height: 40px;
+    width: 40px;
+    max-width: 40px;
+  }
+
+  .pago-confianza-section {
+    width: 100%;
+    padding: 2rem 1.25rem;
+    background: #f7f4f8;
+    border-top: 1px solid #ebe4ef;
+    border-bottom: 1px solid #ebe4ef;
+  }
+
+  .pago-confianza-section-inner {
+    max-width: 980px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .pago-confianza-section .pago-confianza {
+    margin: 0 auto;
+  }
+
+  .pago-confianza-heading {
+    margin: 0 0 1rem;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #3b0f4a;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .pago-confianza-section--tienda {
+    background: rgba(255, 255, 255, 0.96);
+    border-radius: 16px;
+    border: none;
+    margin: 0 auto 2rem;
+    max-width: 1100px;
+    width: calc(100% - 2rem);
+    box-shadow: 0 10px 30px rgba(40, 10, 55, 0.18);
+  }
+
+  @media (max-width: 480px) {
+    .pago-confianza-label {
+      min-width: 4.6rem;
+      font-size: 0.74rem;
+    }
+
+    .pago-confianza-chip {
+      height: 38px;
+      min-width: 56px;
+    }
+
+    .pago-confianza-logo {
+      height: 22px;
+      max-width: 72px;
+    }
+  }
+</style>
