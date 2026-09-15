@@ -1,5 +1,6 @@
 ﻿---
 import Icon from './Icon.astro';
+import { CONTACT_EMAIL, CONTACT_PHONE_DISPLAY } from '../config/contact';
 
 const logoSrc = '/logo_blanco.png';
 const currentYear = new Date().getFullYear();
@@ -76,11 +77,11 @@ const currentYear = new Date().getFullYear();
         <div class="contact-info">
           <div class="contact-item">
             <Icon name="phone" />
-            <span>Servicio al cliente: +57 312 243 5627</span>
+            <span>Servicio al cliente: {CONTACT_PHONE_DISPLAY}</span>
           </div>
           <div class="contact-item">
             <Icon name="envelope" />
-            <span>comercial@reikisolar.com.co</span>
+            <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
           </div>
           <div class="contact-item">
             <Icon name="map-marker" />
@@ -250,6 +251,16 @@ const currentYear = new Date().getFullYear();
     gap: 0.8rem;
     color: #d1d5db;
     font-size: 0.95rem;
+  }
+
+  .contact-item a {
+    color: #d1d5db;
+    text-decoration: none;
+  }
+
+  .contact-item a:hover {
+    color: #fff;
+    text-decoration: underline;
   }
 
   .contact-item :global(svg) {

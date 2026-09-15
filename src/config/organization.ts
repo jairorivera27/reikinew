@@ -1,6 +1,8 @@
 /**
  * Entidad canónica Reiki Energía Solar — una sola fuente para schema, llms.txt y copy SEO/IA.
  */
+import { CONTACT_EMAIL, CONTACT_PHONE_SCHEMA } from './contact';
+
 export const SITE_URL = 'https://reikisolar.com.co';
 
 export const ORG = {
@@ -9,8 +11,8 @@ export const ORG = {
   alternateName: ['Reiki Solar', 'Reiki Energía Solar Medellín'],
   description:
     'Empresa colombiana de energía solar fotovoltaica con sede en Medellín: diseño, suministro e instalación de sistemas solares llave en mano, y tienda de paneles, inversores, baterías y protecciones con precio publicado para Colombia.',
-  telephone: '+57-312-243-5627',
-  email: 'comercial@reikisolar.com.co',
+  telephone: CONTACT_PHONE_SCHEMA,
+  email: CONTACT_EMAIL,
   streetAddress: 'Carrera 80 #39-167 Local 105',
   addressLocality: 'Medellín',
   addressRegion: 'Antioquia',

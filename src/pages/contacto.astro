@@ -4,6 +4,12 @@ import Footer from '../components/Footer.astro';
 import WhatsAppFloat from '../components/WhatsAppFloat.astro';
 import SEO from '../components/SEO.astro';
 import FontAwesome from '../components/FontAwesome.astro';
+import {
+  CONTACT_EMAIL,
+  CONTACT_EMAIL_MAILTO,
+  CONTACT_PHONE_DISPLAY,
+  CONTACT_PHONE_TEL,
+} from '../config/contact';
 ---
 
 <!DOCTYPE html>
@@ -123,7 +129,7 @@ import FontAwesome from '../components/FontAwesome.astro';
                   </div>
                   <div class="contact-details">
                     <h3>Teléfono</h3>
-                    <a href="tel:+573122435627">+57 312 243 5627</a>
+                    <a href={`tel:${CONTACT_PHONE_TEL}`}>{CONTACT_PHONE_DISPLAY}</a>
                   </div>
                 </div>
 
@@ -133,7 +139,7 @@ import FontAwesome from '../components/FontAwesome.astro';
                   </div>
                   <div class="contact-details">
                     <h3>Correo electrónico</h3>
-                    <a href="mailto:comercial@reikisolar.com.co">comercial@reikisolar.com.co</a>
+                    <a href={CONTACT_EMAIL_MAILTO}>{CONTACT_EMAIL}</a>
                   </div>
                 </div>
 

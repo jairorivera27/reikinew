@@ -1,5 +1,5 @@
 /**
- * Teléfono / WhatsApp de atención al cliente (única fuente de verdad en el sitio).
+ * Teléfono / WhatsApp / correo de atención al cliente (única fuente de verdad en el sitio).
  */
 export const CONTACT_PHONE_E164 = '573122435627';
 
@@ -11,3 +11,7 @@ export const CONTACT_PHONE_TEL = '+573122435627';
 export const CONTACT_PHONE_SCHEMA = '+57-312-243-5627';
 
 export const CONTACT_WHATSAPP_URL = `https://wa.me/${CONTACT_PHONE_E164}`;
+
+/** Correo público de contacto (web, schema, llms.txt) */
+export const CONTACT_EMAIL = 'info@reikisolar.com.co';
+export const CONTACT_EMAIL_MAILTO = `mailto:${CONTACT_EMAIL}`;
