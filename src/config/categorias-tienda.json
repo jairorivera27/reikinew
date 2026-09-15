@@ -63,31 +63,11 @@
       "descripcionSeo": "Breakers DC y AC, DPS, fusibles, seccionadores y tableros de protección para instalaciones fotovoltaicas seguras."
     },
     {
-      "id": "cargadores",
-      "nombre": "Cargadores para Carro",
-      "slug": "cargadores-para-carro",
-      "icono": "fas fa-car-battery",
-      "orden": 7,
-      "tipoSingular": "Cargador",
-      "imagenPorDefecto": "/images/placeholders/cargadores.svg",
-      "descripcionSeo": "Cargadores solares y mantenedores de batería para vehículos, con paneles portátiles y regulador integrado."
-    },
-    {
-      "id": "monitoreo",
-      "nombre": "Monitoreo y Medición",
-      "slug": "monitoreo-medicion",
-      "icono": "fas fa-chart-line",
-      "orden": 8,
-      "tipoSingular": "Equipo de monitoreo",
-      "imagenPorDefecto": "/images/placeholders/monitoreo.svg",
-      "descripcionSeo": "Dataloggers, medidores de energía, transformadores de corriente y sistemas de gestión energética para plantas solares."
-    },
-    {
       "id": "bombeo",
       "nombre": "Bombeo Solar",
       "slug": "bombeo-solar",
       "icono": "fas fa-water",
-      "orden": 9,
+      "orden": 7,
       "tipoSingular": "Bomba solar",
       "imagenPorDefecto": "/images/placeholders/bombeo.svg",
       "descripcionSeo": "Bombas solares sumergibles y de superficie para riego, ganadería y abastecimiento de agua en zonas sin red eléctrica."
@@ -97,10 +77,10 @@
       "nombre": "Accesorios",
       "slug": "accesorios",
       "icono": "fas fa-puzzle-piece",
-      "orden": 10,
+      "orden": 8,
       "tipoSingular": "Accesorio",
       "imagenPorDefecto": "/images/placeholders/accesorios.svg",
-      "descripcionSeo": "Accesorios solares: dongles, cables, tapas, sensores, optimizadores y piezas de campo compatibles con inversores y sistemas fotovoltaicos."
+      "descripcionSeo": "Accesorios solares, monitoreo y medición: dongles, dataloggers, medidores, cables, sensores, optimizadores y piezas de campo compatibles con inversores y sistemas fotovoltaicos."
     }
   ],
 
@@ -112,8 +92,8 @@
     "Batería": "baterias",
     "Controlador": "controladores",
     "Protección": "protecciones",
-    "Monitoreo": "monitoreo",
-    "Medidor": "monitoreo",
+    "Monitoreo": "accesorios",
+    "Medidor": "accesorios",
     "Bomba": "bombeo",
     "Accesorio": "accesorios"
   },

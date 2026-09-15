@@ -2,7 +2,7 @@
 title: "Solis Monitoreo S3-WIFI-ST"
 description: "Equipo de monitorización o medida para inversores Solis (logger Wi‑Fi/LAN, EPM, GPRS, medidor + TC, etc.) según referencia exacta."
 image: "/images/productos-tienda/monitoreo/solis-datamanager.jpg"
-category: "monitoreo"
+category: "accesorios"
 price: "$355.350"
 specifications:
   - "Compatibilidad con modelos Solis indicados en manual del accesorio"

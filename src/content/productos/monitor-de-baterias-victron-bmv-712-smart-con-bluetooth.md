@@ -2,7 +2,7 @@
 title: "Monitor de Baterías Victron BMV-712 Smart con Bluetooth"
 description: "Monitor de Baterías Victron BMV-712 Smart con Bluetooth. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Victron; modelo: BMV-712 Smart; especificación principal: 6.5–70VDC, shunt 500A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/monitoreo/victron-cerbo-gx.jpg"
-category: "monitoreo"
+category: "accesorios"
 price: "$789.028"
 specifications:
   - "Tipo: Monitor de baterías"

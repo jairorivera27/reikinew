@@ -3,7 +3,7 @@ draft: true
 title: "Medidor de Energía 500VA 3202029"
 description: "Medidor de Energía 500VA 3202029. Equipo para medición y supervisión del consumo y la generación eléctrica. Modelo: 3202029; especificación principal: 500VA. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/monitoreo.svg"
-category: "monitoreo"
+category: "accesorios"
 price: "$1.013.014"
 specifications:
   - "Tipo: Medidor"

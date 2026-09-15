@@ -2,7 +2,7 @@
 title: "DTU Hoymiles Accesorio/Monitor"
 description: "DTU Hoymiles Accesorio/Monitor. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Hoymiles; modelo: Accesorio/Monitor; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/monitoreo/hoymiles-dtu.jpg"
-category: "monitoreo"
+category: "accesorios"
 price: "$1.236.596"
 specifications:
   - "Tipo: DTU"

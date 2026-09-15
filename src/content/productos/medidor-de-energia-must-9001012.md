@@ -2,7 +2,7 @@
 title: "Medidor de Energía Must 9001012"
 description: "Medidor de Energía Must 9001012. Equipo para medición y supervisión del consumo y la generación eléctrica. Marca: Must; modelo: 9001012; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/monitoreo/eastron-meter.jpg"
-category: "monitoreo"
+category: "accesorios"
 price: "$20.616.750"
 specifications:
   - "Tipo: Medidor"

@@ -2,7 +2,7 @@
 title: "Medidor de Energía Eastron 3VA 3202011"
 description: "Medidor de Energía Eastron 3VA 3202011. Equipo para medición y supervisión del consumo y la generación eléctrica. Marca: Eastron; modelo: 3202011; especificación principal: 3VA. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/monitoreo/eastron-meter.jpg"
-category: "monitoreo"
+category: "accesorios"
 price: "$598.544"
 specifications:
   - "Tipo: Medidor"

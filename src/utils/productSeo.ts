@@ -23,8 +23,6 @@ function categoryLabel(category: string): string {
     reflectores: 'reflector solar led',
     controladores: 'controlador mppt solar',
     protecciones: 'proteccion electrica solar',
-    cargadores: 'cargador solar',
-    monitoreo: 'equipo de monitoreo solar',
     bombeo: 'bomba solar',
     accesorios: 'accesorio solar',
   };

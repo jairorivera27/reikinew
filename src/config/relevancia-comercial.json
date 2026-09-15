@@ -66,7 +66,7 @@
       "modelosEstrella": ["dps", "breaker", "dc", "supresor"]
     },
     "monitoreo": {
-      "_nota": "Sin rango de potencia comparable. Manda la marca del inversor con el que se integra.",
+      "_nota": "Fusionada en accesorios. Conservada solo por compatibilidad de scripts antiguos.",
       "marcasDemandadas": ["Huawei", "Victron", "Growatt", "GoodWe", "Hoymiles", "APsystems"],
       "modelosEstrella": ["dongle", "datalogger", "dtu", "ecu", "shunt", "smart meter", "medidor"]
     },
@@ -82,15 +82,10 @@
       "marcasDemandadas": [],
       "modelosEstrella": ["sensor", "led"]
     },
-    "cargadores": {
-      "_nota": "Categoría nueva y pequeña; sin datos de demanda todavía.",
-      "marcasDemandadas": ["Victron", "Huawei"],
-      "modelosEstrella": []
-    },
     "accesorios": {
-      "_nota": "Dongles, cables, sensores y piezas de campo. Manda la marca del equipo al que se conectan.",
-      "marcasDemandadas": ["Huawei", "Hoymiles", "APsystems", "Growatt", "Victron", "Fronius"],
-      "modelosEstrella": ["dongle", "accesorio", "dtu", "ecu", "optimizer", "optimizador", "trunk", "end cap"]
+      "_nota": "Incluye monitoreo y medición: dongles, dataloggers, medidores, cables, sensores y piezas de campo.",
+      "marcasDemandadas": ["Huawei", "Hoymiles", "APsystems", "Growatt", "Victron", "Fronius", "GoodWe"],
+      "modelosEstrella": ["dongle", "accesorio", "dtu", "ecu", "optimizer", "optimizador", "trunk", "end cap", "datalogger", "medidor", "shunt"]
     }
   }
 }

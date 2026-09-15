@@ -3,7 +3,7 @@ draft: true
 title: "Módulo Inalámbrico 1700528"
 description: "Módulo Inalámbrico 1700528. Equipo para monitoreo y comunicación de equipos de energía solar. Modelo: 1700528; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/monitoreo.svg"
-category: "monitoreo"
+category: "accesorios"
 price: "$660.476"
 specifications:
   - "Tipo: Módulo Inalámbrico"

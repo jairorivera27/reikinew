@@ -77,6 +77,8 @@ export default defineConfig({
     '/servicios/meditacion-guiada': '/servicios/energia-solar-empresas',
     '/servicios/reiki-tradicional': '/servicios/bombeo-solar',
     '/servicios/limpieza-energetica': '/servicios/energia-solar-movil',
+    '/tienda/categoria/monitoreo-medicion': '/tienda/categoria/accesorios',
+    '/tienda/categoria/cargadores-para-carro': '/tienda/categoria/accesorios',
   },
   build: {
     inlineStylesheets: 'auto',

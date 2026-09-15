@@ -8,8 +8,6 @@ export const CATEGORY_LABEL_ES: Record<string, string> = {
   reflectores: 'Reflector solar',
   controladores: 'Controlador',
   protecciones: 'Protección eléctrica',
-  cargadores: 'Cargador',
-  monitoreo: 'Equipo de monitoreo',
   bombeo: 'Bomba solar',
   accesorios: 'Accesorio',
 };
@@ -433,7 +431,7 @@ export function formatTipoPotenciaLine(
   const tipo = compactCategoryLabel(category);
   const partes = [tipo];
   if (potencia) partes.push(potencia);
-  if (marca && (category === 'paneles' || category === 'accesorios' || category === 'monitoreo' || category === 'cargadores')) {
+  if (marca && (category === 'paneles' || category === 'accesorios')) {
     partes.push(marca);
   }
   return partes.join(' · ');

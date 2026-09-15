@@ -22,11 +22,10 @@ const UNIDAD_POR_CATEGORIA: Record<string, Unidad> = {
   inversores: 'W',
   bombeo: 'W',
   reflectores: 'W',
-  cargadores: 'W',
   baterias: 'kWh',
   controladores: 'A',
   protecciones: 'A',
-  // monitoreo queda fuera a propósito: sus especificaciones no son comparables entre sí.
+  // accesorios/monitoreo quedan fuera: sus especificaciones no son comparables entre sí.
 };
 
 /** Rangos plausibles: descartan valores corruptos del catálogo (ej. "6003003W"). */

@@ -3,7 +3,7 @@ draft: true
 title: "Módulo Inalámbrico 1700507"
 description: "Módulo Inalámbrico 1700507. Equipo para monitoreo y comunicación de equipos de energía solar. Modelo: 1700507; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/monitoreo.svg"
-category: "monitoreo"
+category: "accesorios"
 price: "$199.473"
 specifications:
   - "Tipo: Módulo Inalámbrico"

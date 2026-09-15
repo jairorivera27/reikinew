@@ -3,7 +3,7 @@ draft: true
 title: "Datalogger 9001005"
 description: "Datalogger 9001005. Equipo para monitoreo y comunicación de equipos de energía solar. Modelo: 9001005; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/monitoreo.svg"
-category: "monitoreo"
+category: "accesorios"
 price: "$23.740.500"
 specifications:
   - "Tipo: Datalogger"

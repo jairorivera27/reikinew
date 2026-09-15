@@ -3,7 +3,7 @@ draft: true
 title: "Medidor de Energía DTSU666"
 description: "Medidor de Energía DTSU666. Equipo para medición y supervisión del consumo y la generación eléctrica. Modelo: DTSU666; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/monitoreo.svg"
-category: "monitoreo"
+category: "accesorios"
 price: "$1.223.469"
 specifications:
   - "Tipo: Medidor"

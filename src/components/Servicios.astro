@@ -90,7 +90,8 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
   .servicio-section {
     padding: 1.5rem 0;
     position: relative;
-    overflow: visible;
+    overflow-x: clip;
+    overflow-y: visible;
     background: #ffffff;
   }
 
@@ -141,7 +142,7 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
     background: #6b2181;
     box-shadow: 0 20px 60px rgba(107, 33, 129, 0.35);
     color: white;
-    transform: translateX(-200px);
+    transform: translate3d(-48px, 0, 0);
   }
 
   .servicio-right .servicio-content {
@@ -149,12 +150,12 @@ const serviciosOrdenados = servicios.sort((a, b) => (a.data.order || 0) - (b.dat
     background: #6b2181;
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 20px 60px rgba(107, 33, 129, 0.35);
-    transform: translateX(200px);
+    transform: translate3d(48px, 0, 0);
   }
 
   .servicio-section.visible .servicio-content {
     opacity: 1;
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
   }
 
   /* Hover effect - debe estar después de .visible para tener mayor especificidad */

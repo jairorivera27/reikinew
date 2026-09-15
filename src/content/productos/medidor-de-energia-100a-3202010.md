@@ -3,7 +3,7 @@ draft: true
 title: "Medidor de Energía 100A 3202010"
 description: "Medidor de Energía 100A 3202010. Equipo para medición y supervisión del consumo y la generación eléctrica. Modelo: 3202010; especificación principal: 100A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/monitoreo.svg"
-category: "monitoreo"
+category: "accesorios"
 price: "$808.462"
 specifications:
   - "Tipo: Medidor"

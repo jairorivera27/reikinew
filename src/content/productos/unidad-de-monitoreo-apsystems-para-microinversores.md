@@ -2,7 +2,7 @@
 title: "Unidad de Monitoreo APsystems para Microinversores"
 description: "Unidad de Monitoreo APsystems para Microinversores. Producto para recopilar y comunicar datos de microinversores APsystems para supervisión del sistema fotovoltaico. Marca: APsystems; especificación principal: especificación no disponible. Verifique compatibilidad y condiciones de instalación. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/monitoreo/apsystems-ecu.jpg"
-category: "monitoreo"
+category: "accesorios"
 price: "$1.957.550"
 specifications:
   - "Tipo: Unidad de monitoreo"

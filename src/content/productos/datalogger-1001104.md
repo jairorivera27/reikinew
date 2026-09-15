@@ -3,7 +3,7 @@ draft: true
 title: "Datalogger 1001104"
 description: "Datalogger 1001104. Equipo para monitoreo y comunicación de equipos de energía solar. Modelo: 1001104; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/monitoreo.svg"
-category: "monitoreo"
+category: "accesorios"
 price: "$7.497.000"
 specifications:
   - "Tipo: Datalogger"

@@ -2,7 +2,7 @@
 title: "Datalogger Deye para Monitoreo de Inversores Solares"
 description: "Datalogger Deye para Monitoreo de Inversores Solares. Producto para recopilar y transmitir datos de inversores Deye para monitoreo remoto de la instalación fotovoltaica. Marca: Deye; especificación principal: especificación no disponible. Verifique compatibilidad y condiciones de instalación. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/monitoreo/deye-logger.jpg"
-category: "monitoreo"
+category: "accesorios"
 price: "$367.041"
 specifications:
   - "Tipo: Datalogger"

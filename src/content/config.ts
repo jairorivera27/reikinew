@@ -29,8 +29,6 @@ const productosCollection = defineCollection({
       'reflectores',
       'controladores',
       'protecciones',
-      'cargadores',
-      'monitoreo',
       'bombeo',
       'accesorios',
     ]),

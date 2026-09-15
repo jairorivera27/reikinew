@@ -2,7 +2,7 @@
 title: "Pantalla Victron 50W BPP900465050"
 description: "Pantalla Victron 50W BPP900465050. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Victron; modelo: BPP900465050; especificación principal: 50W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/controladores/victron-smartsolar-mppt.jpg"
-category: "monitoreo"
+category: "accesorios"
 price: "$83.612"
 specifications:
   - "Tipo: Pantalla"

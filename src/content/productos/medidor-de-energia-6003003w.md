@@ -3,7 +3,7 @@ draft: true
 title: "Medidor de Energía 6003003W"
 description: "Medidor de Energía 6003003W. Equipo para medición y supervisión del consumo y la generación eléctrica. Modelo: 6003003; especificación principal: 6003003W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/monitoreo.svg"
-category: "monitoreo"
+category: "accesorios"
 price: "$4.123.350"
 specifications:
   - "Tipo: Medidor"

@@ -410,7 +410,7 @@ const logoSrc = '/logo_blanco.png';
     .nav-menu {
       position: fixed;
       top: 0;
-      right: -100%;
+      right: 0;
       width: 80%;
       max-width: 300px;
       height: 100vh;
@@ -424,13 +424,16 @@ const logoSrc = '/logo_blanco.png';
       padding-top: 80px;
       overflow-y: auto;
       -webkit-overflow-scrolling: touch;
-      transform: translateX(0);
+      transform: translateX(100%);
       will-change: transform;
+      visibility: hidden;
+      pointer-events: none;
     }
 
     .nav-menu.active {
       transform: translateX(0);
-      right: 0;
+      visibility: visible;
+      pointer-events: auto;
     }
 
     .nav-list {

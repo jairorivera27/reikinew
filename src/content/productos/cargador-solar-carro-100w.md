@@ -2,7 +2,8 @@
 title: "Cargador Solar para Carro 100W"
 description: "Cargador solar profesional de máxima potencia 100W para baterías de carro y vehículos recreativos. Panel plegable de alta eficiencia."
 image: "/images/Productos tienda/Cargador de Carros/Cargador Solar para Carro 100W Powertech Medellín.png"
-category: "cargadores"
+category: "accesorios"
+draft: true
 price: "$699.000"
 specifications:
   - "Panel solar: 100W plegable"

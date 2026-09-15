@@ -3,7 +3,7 @@ draft: true
 title: "Pantalla de Monitoreo Solar Ref. 1700531"
 description: "Pantalla de Monitoreo Solar Ref. 1700531. Producto para visualización local de información operativa en sistemas de energía solar; confirme compatibilidad antes de comprar. Modelo: 1700531; especificación principal: especificación no disponible. Verifique compatibilidad y condiciones de instalación. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/monitoreo.svg"
-category: "monitoreo"
+category: "accesorios"
 price: "$992.936"
 specifications:
   - "Tipo: Pantalla de monitoreo"

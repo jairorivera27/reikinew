@@ -376,11 +376,9 @@
     "baterias": "Entre 5 y 10 años de garantía de fabricante, sujeta a ciclos y condiciones de uso.",
     "controladores": "Entre 2 y 5 años de garantía de fabricante.",
     "protecciones": "Entre 1 y 3 años de garantía de fabricante.",
-    "monitoreo": "Entre 1 y 5 años de garantía de fabricante.",
     "bombeo": "Entre 1 y 2 años de garantía de fabricante.",
     "reflectores": "1 año de garantía de fabricante.",
-    "cargadores": "Entre 2 y 5 años de garantía de fabricante.",
-    "accesorios": "Entre 1 y 3 años de garantía de fabricante, según la pieza."
+    "accesorios": "Entre 1 y 5 años de garantía de fabricante, según la pieza (incluye monitoreo y medición)."
   },
 
   "_certificacionesNota": "Marco normativo aplicable en Colombia. Sirve para explicar al cliente qué exige la ley en su instalación.",
@@ -390,10 +388,8 @@
     "baterias": ["UN38.3 (transporte)", "IEC 62619", "UL 1973"],
     "controladores": ["RETIE", "IEC 62109"],
     "protecciones": ["RETIE", "IEC 60947 / IEC 61643"],
-    "monitoreo": ["Compatibilidad con el inversor del sistema"],
     "bombeo": ["RETIE"],
     "reflectores": ["RETIE"],
-    "cargadores": ["RETIE", "IEC 61851"],
     "accesorios": ["Compatibilidad con el equipo principal del sistema"]
   },
 
@@ -508,16 +504,6 @@
         "respuesta": "Es un descargador de sobretensiones que desvía a tierra los picos por descargas atmosféricas. En Colombia, con alta actividad eléctrica en muchas regiones, protege al inversor de un daño que la garantía no cubre."
       }
     ],
-    "monitoreo": [
-      {
-        "pregunta": "¿El monitoreo es obligatorio?",
-        "respuesta": "No es obligatorio para que el sistema funcione, pero es lo que te permite ver cuánto generás y detectar una falla temprano. Sin monitoreo, un panel o un string caído puede pasar meses sin que nadie lo note."
-      },
-      {
-        "pregunta": "¿Este accesorio funciona con cualquier inversor?",
-        "respuesta": "No. Los dispositivos de monitoreo son propios de cada fabricante y solo se comunican con inversores de su misma marca y serie. Confirmá con nosotros el modelo exacto de tu inversor antes de comprar."
-      }
-    ],
     "bombeo": [
       {
         "pregunta": "¿Necesito baterías para una bomba solar?",
@@ -534,16 +520,14 @@
         "respuesta": "Depende de la batería integrada y de las horas de sol que reciba el panel durante el día. Con buena exposición, los modelos con sensor de movimiento suelen cubrir la noche completa porque solo encienden a plena potencia cuando detectan paso."
       }
     ],
-    "cargadores": [
-      {
-        "pregunta": "¿Puedo cargar el carro con mis paneles?",
-        "respuesta": "Sí, si tu sistema tiene potencia suficiente. Cargar un vehículo eléctrico agrega un consumo importante, así que conviene revisar el dimensionamiento del inversor y de la acometida antes de instalar el cargador."
-      }
-    ],
     "accesorios": [
       {
+        "pregunta": "¿El monitoreo es obligatorio?",
+        "respuesta": "No es obligatorio para que el sistema funcione, pero es lo que te permite ver cuánto generás y detectar una falla temprano. Sin monitoreo, un panel o un string caído puede pasar meses sin que nadie lo note."
+      },
+      {
         "pregunta": "¿Este accesorio funciona con cualquier inversor?",
-        "respuesta": "No. Los accesorios suelen ser propios de cada fabricante y serie. En el caso de Huawei, el 02233DXX es para SUN2000-2~6KTL-L1 y el 02233SPV para SUN2000-20~50KTL-M3. Confirmá el modelo exacto de tu equipo antes de comprar."
+        "respuesta": "No. Los accesorios y equipos de monitoreo suelen ser propios de cada fabricante y serie. En el caso de Huawei, el 02233DXX es para SUN2000-2~6KTL-L1 y el 02233SPV para SUN2000-20~50KTL-M3. Confirmá el modelo exacto de tu equipo antes de comprar."
       },
       {
         "pregunta": "¿Necesito un técnico para instalarlo?",

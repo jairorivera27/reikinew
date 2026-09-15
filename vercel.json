@@ -25,6 +25,26 @@
       "source": "/servicios/limpieza-energetica",
       "destination": "/servicios/energia-solar-movil",
       "permanent": true
+    },
+    {
+      "source": "/tienda/categoria/monitoreo-medicion",
+      "destination": "/tienda/categoria/accesorios",
+      "permanent": true
+    },
+    {
+      "source": "/tienda/categoria/monitoreo-medicion/(.*)",
+      "destination": "/tienda/categoria/accesorios/$1",
+      "permanent": true
+    },
+    {
+      "source": "/tienda/categoria/cargadores-para-carro",
+      "destination": "/tienda/categoria/accesorios",
+      "permanent": true
+    },
+    {
+      "source": "/tienda/categoria/cargadores-para-carro/(.*)",
+      "destination": "/tienda/categoria/accesorios/$1",
+      "permanent": true
     }
   ]
 }

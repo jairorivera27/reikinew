@@ -2,7 +2,8 @@
 title: "Cargador Solar para Carro 60W"
 description: "Cargador solar de alta potencia 60W para baterías de carro 12V/24V. Panel solar plegable con controlador MPPT avanzado."
 image: "/images/Productos tienda/Cargador de Carros/Cargador Solar para Carro 60W Powertech Medellín.png"
-category: "cargadores"
+category: "accesorios"
+draft: true
 price: "$519.000"
 specifications:
   - "Panel solar: 60W plegable"

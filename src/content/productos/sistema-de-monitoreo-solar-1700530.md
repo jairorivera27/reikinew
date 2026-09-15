@@ -3,7 +3,7 @@ draft: true
 title: "Sistema de Monitoreo Solar 1700530"
 description: "Sistema de Monitoreo Solar 1700530. Equipo para monitoreo y comunicación de equipos de energía solar. Modelo: 1700530; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/monitoreo.svg"
-category: "monitoreo"
+category: "accesorios"
 price: "$155.147"
 specifications:
   - "Tipo: Monitoreo"

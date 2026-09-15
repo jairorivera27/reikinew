@@ -3,7 +3,7 @@ draft: true
 title: "Datalogger 4001005"
 description: "Datalogger 4001005. Equipo para monitoreo y comunicación de equipos de energía solar. Modelo: 4001005; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/monitoreo.svg"
-category: "monitoreo"
+category: "accesorios"
 price: "$2.499.000"
 specifications:
   - "Tipo: Datalogger"

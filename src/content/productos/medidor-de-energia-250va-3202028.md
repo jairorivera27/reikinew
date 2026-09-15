@@ -3,7 +3,7 @@ draft: true
 title: "Medidor de Energía 250VA 3202028"
 description: "Medidor de Energía 250VA 3202028. Equipo para medición y supervisión del consumo y la generación eléctrica. Modelo: 3202028; especificación principal: 250VA. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/monitoreo.svg"
-category: "monitoreo"
+category: "accesorios"
 price: "$960.193"
 specifications:
   - "Tipo: Medidor"

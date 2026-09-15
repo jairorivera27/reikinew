@@ -3,7 +3,7 @@ draft: true
 title: "Medidor de Energía 6003001"
 description: "Medidor de Energía 6003001. Equipo para medición y supervisión del consumo y la generación eléctrica. Modelo: 6003001; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/monitoreo.svg"
-category: "monitoreo"
+category: "accesorios"
 price: "$3.498.600"
 specifications:
   - "Tipo: Medidor"

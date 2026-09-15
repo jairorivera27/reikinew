@@ -1,15 +1,21 @@
 ---
 const MARCAS = [
-  { nombre: 'Huawei', src: '/images/marcas/huawei.png' },
-  { nombre: 'Victron', src: '/images/marcas/victron.jpg' },
-  { nombre: 'Growatt', src: '/images/marcas/growatt.png' },
-  { nombre: 'GoodWe', src: '/images/marcas/goodwe.svg' },
-  { nombre: 'Deye', src: '/images/marcas/deye.svg' },
   { nombre: 'LONGi', src: '/images/marcas/longi.png' },
   { nombre: 'JA Solar', src: '/images/marcas/ja-solar.png' },
-  { nombre: 'Jinko', src: '/images/marcas/jinko.svg' },
+  { nombre: 'Jinko', src: '/images/marcas/jinko.png' },
+  { nombre: 'Astroenergy', src: '/images/marcas/astroenergy.png' },
+  { nombre: 'Huawei', src: '/images/marcas/huawei.png' },
+  { nombre: 'Victron', src: '/images/marcas/victron.png' },
+  { nombre: 'Growatt', src: '/images/marcas/growatt.png' },
+  { nombre: 'GoodWe', src: '/images/marcas/goodwe.png' },
+  { nombre: 'Deye', src: '/images/marcas/deye.png' },
+  { nombre: 'Fronius', src: '/images/marcas/fronius.png' },
+  { nombre: 'Solis', src: '/images/marcas/solis.png' },
+  { nombre: 'Hoymiles', src: '/images/marcas/hoymiles.png' },
   { nombre: 'Pylontech', src: '/images/marcas/pylontech.png' },
-  { nombre: 'Hoymiles', src: '/images/marcas/hoymiles.svg' },
+  { nombre: 'Suntree', src: '/images/marcas/suntree.png' },
+  { nombre: 'Tensite', src: '/images/marcas/tensite.png' },
+  { nombre: 'Connera', src: '/images/marcas/connera.png' },
 ];
 
 const marcasLoop = [...MARCAS, ...MARCAS];
@@ -46,18 +52,20 @@ const trustItems = [
     </ul>
 
     <div class="marcas-strip" aria-label="Marcas que distribuimos">
-      <p class="marcas-strip-label">Distribuimos marcas líderes</p>
+      <p class="marcas-strip-label">Nuestras marcas Aliadas</p>
       <div class="marcas-strip-wrap">
         <div class="marcas-strip-track">
           {marcasLoop.map((marca, i) => (
             <div class="marcas-strip-item">
-              <img
-                src={marca.src}
-                alt={i < MARCAS.length ? `Logo ${marca.nombre}` : ''}
-                loading="lazy"
-                decoding="async"
-                class="marcas-strip-logo"
-              />
+              <div class="marcas-strip-cell">
+                <img
+                  src={marca.src}
+                  alt={i < MARCAS.length ? `Logo ${marca.nombre}` : ''}
+                  loading="lazy"
+                  decoding="async"
+                  class="marcas-strip-logo"
+                />
+              </div>
               <span class="marcas-strip-name">{marca.nombre}</span>
             </div>
           ))}
@@ -72,12 +80,15 @@ const trustItems = [
     background: #f7f4f8;
     border-bottom: 1px solid #ebe4ef;
     padding: 1.5rem 0 1.75rem;
+    overflow-x: clip;
   }
 
   .home-trust-inner {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 1.25rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .trust-row {
@@ -116,27 +127,31 @@ const trustItems = [
   .marcas-strip-label {
     margin: 0 0 0.65rem;
     text-align: center;
-    font-size: 0.75rem;
+    font-size: 0.82rem;
     font-weight: 700;
-    letter-spacing: 0.08em;
+    letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: #6b7280;
+    color: #6b2181;
   }
 
   .marcas-strip-wrap {
     overflow: hidden;
+    width: 100%;
+    max-width: 100%;
     border-radius: 14px;
     background: #fff;
     border: 1px solid #ebe4ef;
+    contain: paint;
     mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
   }
 
   .marcas-strip-track {
     display: flex;
     width: max-content;
-    gap: 0.5rem;
-    padding: 0.75rem;
-    animation: home-marcas-scroll 38s linear infinite;
+    gap: 0.75rem;
+    padding: 0.9rem;
+    animation: home-marcas-scroll 42s linear infinite;
   }
 
   .marcas-strip-wrap:hover .marcas-strip-track {
@@ -153,24 +168,33 @@ const trustItems = [
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.3rem;
-    min-width: 92px;
-    padding: 0.35rem 0.6rem;
+    gap: 0.35rem;
+    width: 128px;
   }
 
-  .marcas-strip-item.is-missing {
-    display: none;
+  .marcas-strip-cell {
+    width: 128px;
+    height: 84px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.65rem 0.75rem;
+    border-radius: 12px;
+    background: #fafafa;
+    border: 1px solid #f0f1f3;
+    box-sizing: border-box;
   }
 
   .marcas-strip-logo {
-    height: 32px;
+    height: auto;
     width: auto;
-    max-width: 88px;
+    max-width: 108px;
+    max-height: 52px;
     object-fit: contain;
   }
 
   .marcas-strip-name {
-    font-size: 0.68rem;
+    font-size: 0.7rem;
     font-weight: 600;
     color: #4b5563;
   }
@@ -185,6 +209,20 @@ const trustItems = [
     .trust-row {
       grid-template-columns: 1fr;
     }
+
+    .marcas-strip-item,
+    .marcas-strip-cell {
+      width: 112px;
+    }
+
+    .marcas-strip-cell {
+      height: 76px;
+    }
+
+    .marcas-strip-logo {
+      max-width: 92px;
+      max-height: 44px;
+    }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -196,12 +234,3 @@ const trustItems = [
     }
   }
 </style>
-
-<script>
-  document.querySelectorAll('.marcas-strip-logo').forEach((img) => {
-    if (!(img instanceof HTMLImageElement)) return;
-    img.addEventListener('error', () => {
-      img.closest('.marcas-strip-item')?.classList.add('is-missing');
-    });
-  });
-</script>

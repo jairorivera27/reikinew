@@ -3,7 +3,7 @@ draft: true
 title: "Medidor de Energía 100VA 3202024"
 description: "Medidor de Energía 100VA 3202024. Equipo para medición y supervisión del consumo y la generación eléctrica. Modelo: 3202024; especificación principal: 100VA. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/monitoreo.svg"
-category: "monitoreo"
+category: "accesorios"
 price: "$769.976"
 specifications:
   - "Tipo: Medidor"

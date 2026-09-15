@@ -2,7 +2,7 @@
 title: "Módulo Inalámbrico Growatt Accesorio/Monitor"
 description: "Módulo Inalámbrico Growatt Accesorio/Monitor. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Growatt; modelo: Accesorio/Monitor; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/monitoreo/growatt-shine.jpg"
-category: "monitoreo"
+category: "accesorios"
 price: "$306.871"
 specifications:
   - "Tipo: Módulo Inalámbrico"

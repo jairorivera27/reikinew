@@ -3,7 +3,7 @@ draft: true
 title: "Módulo Inalámbrico Wi-Fi/LAN 2.0 Kit WIFI/LAN 2.0 Módulo d"
 description: "Módulo Inalámbrico Wi-Fi/LAN 2.0 Kit WIFI/LAN 2.0 Módulo d. Equipo para monitoreo y comunicación de equipos de energía solar. Modelo: Wi-Fi/LAN 2.0 Kit WIFI/LAN 2.0 Módulo d; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/monitoreo.svg"
-category: "monitoreo"
+category: "accesorios"
 price: "$199.920"
 specifications:
   - "Tipo: Módulo Inalámbrico"
