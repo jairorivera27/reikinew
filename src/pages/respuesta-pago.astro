@@ -621,6 +621,75 @@ const emailjsTemplateId =
           var params = new URLSearchParams(window.location.search);
           if (tryLocalMock(params)) return;
 
+          // Retorno desde Addi (redirectionUrl)
+          if (String(params.get('gateway') || '').toLowerCase() === 'addi') {
+            var addiOrder = params.get('orderId') || params.get('order') || '';
+            var addiStatus = String(params.get('status') || 'PENDING').toUpperCase();
+            var custAddi = loadLocalJson(LS_CUSTOMER_KEY);
+            var refAddi =
+              addiOrder ||
+              (custAddi && custAddi.orderId) ||
+              localStorage.getItem('reiki_checkout_reference') ||
+              '';
+
+            if (addiStatus === 'APPROVED' || addiStatus === 'COMPLETED') {
+              setStatus(
+                'success',
+                '¡Solicitud Addi aprobada!',
+                'Tu financiamiento Addi quedó registrado. Te contactaremos para confirmar el pedido y la entrega. Si Addi aún está validando, el webhook confirmará el estado final.',
+                refAddi ? 'Pedido: ' + refAddi : '',
+                ''
+              );
+              setActions(
+                actionButton('/tienda', 'Seguir comprando') +
+                  actionButton(
+                    'https://wa.me/573122435627?text=' +
+                      encodeURIComponent('Hola, pagué / solicité con Addi. Pedido ' + refAddi),
+                    'Consultar mi pedido',
+                    'pay-action-btn--ghost'
+                  )
+              );
+              try {
+                localStorage.removeItem(LS_CART_KEY);
+                window.dispatchEvent(new CustomEvent('cartUpdated', { detail: { totalItems: 0 } }));
+              } catch (_e) {}
+              return;
+            }
+
+            if (addiStatus === 'REJECTED' || addiStatus === 'DECLINED' || addiStatus === 'ABANDONED') {
+              setStatus(
+                'error',
+                'Addi no aprobó la solicitud',
+                'Puedes intentar de nuevo con Addi o pagar con Wompi (tarjeta, PSE, Nequi).',
+                refAddi ? 'Pedido: ' + refAddi : '',
+                ''
+              );
+              setActions(
+                actionButton('/carrito', 'Volver al carrito', 'pay-action-btn--error') +
+                  actionButton('/tienda', 'Ver tienda', 'pay-action-btn--ghost')
+              );
+              return;
+            }
+
+            setStatus(
+              'pending',
+              'Estamos confirmando tu solicitud Addi…',
+              'Si ya completaste el flujo en Addi, en unos minutos confirmaremos el estado. También puedes escribirnos por WhatsApp con tu número de pedido.',
+              refAddi ? 'Pedido: ' + refAddi : '',
+              ''
+            );
+            setActions(
+              actionButton('/', 'Ir al inicio') +
+                actionButton(
+                  'https://wa.me/573122435627?text=' +
+                    encodeURIComponent('Hola, estoy esperando confirmación Addi. Pedido ' + refAddi),
+                  'WhatsApp',
+                  'pay-action-btn--ghost'
+                )
+            );
+            return;
+          }
+
           var txId = resolveTransactionIdFromUrl(params);
 
           if (!txId) {

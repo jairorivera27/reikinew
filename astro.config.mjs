@@ -2,6 +2,7 @@ import crypto from 'node:crypto';
 import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import { loadEnv } from 'vite';
+import { addiApiDevPlugin } from './scripts/lib/addi-api-dev-plugin.mjs';
 
 /** Firma Wompi en desarrollo (misma ruta que en Vercel: /api/wompi-integrity). */
 function wompiIntegrityDevPlugin() {
@@ -82,7 +83,7 @@ export default defineConfig({
     assets: '_assets',
   },
   vite: {
-    plugins: [wompiIntegrityDevPlugin()],
+    plugins: [wompiIntegrityDevPlugin(), addiApiDevPlugin()],
     build: {
       cssMinify: true,
       minify: 'terser',

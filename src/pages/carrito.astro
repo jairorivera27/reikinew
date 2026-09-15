@@ -31,7 +31,7 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
     <FontAwesome />
     <SEO
       title="Checkout | Carrito de compras | Reiki Energía Solar"
-      description="Finaliza tu compra de equipos solares. Datos de envío y pago con Wompi o Addi (próximamente)."
+      description="Finaliza tu compra de equipos solares. Pago con Wompi (tarjeta, PSE, Nequi…) o Addi (cuotas)."
       canonical="/carrito"
       keywords="checkout, carrito, pago Wompi, Addi, energía solar Colombia"
       schemaType="WebPage"
@@ -118,6 +118,20 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
                         class="checkout-input"
                       />
                     </label>
+                    <label class="checkout-field">
+                      <span class="checkout-label">Cédula (CC) <abbr title="requerido para Addi">*</abbr></span>
+                      <input
+                        type="text"
+                        name="idNumber"
+                        inputmode="numeric"
+                        autocomplete="off"
+                        required
+                        placeholder="Número de cédula"
+                        class="checkout-input"
+                        pattern="[0-9]{5,20}"
+                        title="Solo números, sin puntos ni espacios"
+                      />
+                    </label>
                     <label class="checkout-field checkout-field--full">
                       <span class="checkout-label">Dirección completa <abbr title="requerido">*</abbr></span>
                       <input
@@ -182,19 +196,45 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
                   <div class="checkout-step-badge">2</div>
                   <h2 id="step-payment-title" class="checkout-card-title">Pago seguro</h2>
                   <p class="checkout-card-desc">
-                    Al continuar te abriremos la pasarela oficial de Wompi, donde podrás elegir tu método de pago.
+                    Elige cómo quieres pagar: Wompi (tarjeta, PSE, Nequi…) o Addi (compra ahora y paga a cuotas).
                   </p>
+
+                  <fieldset class="checkout-pay-methods">
+                    <legend class="sr-only">Método de pago</legend>
+                    <label class="checkout-pay-option">
+                      <input type="radio" name="paymentMethod" value="wompi" checked />
+                      <span class="checkout-pay-option-body">
+                        <img src="/images/Wompi_LogoPrincipal.jpg" alt="" class="checkout-pay-logo checkout-pay-logo--wompi" />
+                        <span>
+                          <strong>Wompi</strong>
+                          <small>Tarjeta, PSE, Nequi, Bancolombia…</small>
+                        </span>
+                      </span>
+                    </label>
+                    <label class="checkout-pay-option">
+                      <input type="radio" name="paymentMethod" value="addi" />
+                      <span class="checkout-pay-option-body">
+                        <img src="/images/Addi.png" alt="" class="checkout-pay-logo checkout-pay-logo--addi" />
+                        <span>
+                          <strong>Addi</strong>
+                          <small>Paga a cuotas sin tarjeta de crédito</small>
+                        </span>
+                      </span>
+                    </label>
+                  </fieldset>
+
                   <img
                     src="/images/Pasarale de pago.png"
-                    alt="Medios de pago disponibles en Wompi"
+                    alt="Medios de pago disponibles"
                     class="checkout-payment-gateway-image"
                     loading="lazy"
                     decoding="async"
+                    id="checkout-wompi-methods-img"
                   />
 
                   <p class="checkout-integration-note" role="note">
                     <i class="fas fa-plug" aria-hidden="true"></i>
-                    Al finalizar, registramos tu pedido y te llevamos a Wompi para completar el pago de forma segura.
+                    Al finalizar te redirigimos a la pasarela elegida para completar el pago de forma segura.
                   </p>
 
                   <div class="checkout-legal-consent">
@@ -215,8 +255,7 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
                   <div class="checkout-trust-block">
                     <p class="checkout-trust-text">
                       <i class="fas fa-shield-halved" aria-hidden="true"></i>
-                      Pago 100% seguro procesado por
-                      <img src="/images/Wompi_LogoPrincipal.jpg" alt="Wompi" class="checkout-wompi-inline-logo" loading="lazy" decoding="async" />
+                      Pago 100% seguro con Wompi o Addi
                     </p>
                   </div>
                 </section>
@@ -431,6 +470,117 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
         };
         document.head.appendChild(s);
       });
+    }
+
+    /**
+     * Crea solicitud Addi y redirige al checkout BNPL.
+     */
+    async function openAddiCheckout(form) {
+      var fd = new FormData(form);
+      var cart = loadCart();
+      if (!cart.length) {
+        showCheckoutToast('Tu carrito está vacío.');
+        return {};
+      }
+
+      var totalCop = computeCartTotalCop(cart);
+      if (totalCop < 1000) {
+        showCheckoutToast('El total a pagar no es válido.');
+        return {};
+      }
+
+      var idNumber = String(fd.get('idNumber') || '').replace(/\D/g, '');
+      if (idNumber.length < 5) {
+        showCheckoutToast('Ingresa tu cédula para pagar con Addi.');
+        return {};
+      }
+
+      var orderId = generatePaymentReference();
+      var email = String(fd.get('email') || '').trim();
+      var fullName = String(fd.get('fullName') || '').trim();
+      var phone = String(fd.get('phone') || '').trim();
+      var addressLine = String(fd.get('addressLine') || '').trim();
+      var city = String(fd.get('city') || '').trim();
+
+      try {
+        localStorage.setItem(
+          'reiki_checkout_customer',
+          JSON.stringify({
+            fullName: fullName,
+            email: email,
+            phone: phone,
+            idNumber: idNumber,
+            addressLine: addressLine,
+            city: city,
+            department: String(fd.get('department') || ''),
+            zip: String(fd.get('zip') || ''),
+            gateway: 'addi',
+            orderId: orderId,
+          })
+        );
+        localStorage.setItem('reiki_checkout_reference', orderId);
+      } catch (_e) {}
+
+      showCheckoutToast('Abriendo Addi (pago a cuotas)…');
+
+      var items = cart.map(function (item) {
+        var unitCop = extractPrice(item.price);
+        var qty = parseInt(item.quantity, 10) || 1;
+        return {
+          sku: item.id || item.slug || item.title,
+          name: item.title,
+          quantity: qty,
+          unitPrice: unitCop,
+          pictureUrl: item.image
+            ? item.image.indexOf('http') === 0
+              ? item.image
+              : 'https://reikisolar.com.co' + (item.image.charAt(0) === '/' ? item.image : '/' + item.image)
+            : 'https://reikisolar.com.co/images/Addi.png',
+          category: item.category || 'energia-solar',
+          brand: item.brand || 'Reiki Solar',
+        };
+      });
+
+      try {
+        var res = await fetch('/api/addi-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            orderId: orderId,
+            totalAmount: totalCop,
+            shippingAmount: 0,
+            items: items,
+            client: {
+              fullName: fullName,
+              email: email,
+              phone: phone,
+              idNumber: idNumber,
+              idType: 'CC',
+            },
+            shippingAddress: {
+              lineOne: addressLine,
+              city: city,
+            },
+          }),
+        });
+        var json = await res.json().catch(function () {
+          return {};
+        });
+        if (!res.ok || !json.redirectUrl) {
+          console.error('[checkout] Addi', res.status, json);
+          showCheckoutToast(
+            json.error ||
+              'No se pudo abrir Addi. Verifica ADDI_CLIENT_ID / ADDI_CLIENT_SECRET o intenta con Wompi.'
+          );
+          return {};
+        }
+        window.location.href = String(json.redirectUrl);
+        return json;
+      } catch (err) {
+        console.error('[checkout] Addi fetch', err);
+        showCheckoutToast('No se pudo contactar Addi. Intenta de nuevo o paga con Wompi.');
+        return {};
+      }
     }
 
     /**
@@ -827,21 +977,9 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
     if (checkoutForm instanceof HTMLFormElement) {
       checkoutForm.addEventListener('submit', async function (e) {
         e.preventDefault();
-        var activeWompiKey = resolveStoredWompiKey();
-        if (!activeWompiKey) {
-          console.error('Error: PUBLIC_WOMPI_KEY no está en el build (p. ej. falta en Vercel al compilar).');
-          showCheckoutToast(
-            'Falta la llave pública de Wompi en el sitio. En Vercel: Settings → Environment Variables → agrega PUBLIC_WOMPI_KEY (tu pub_prod_…) para Production y vuelve a desplegar el proyecto.'
-          );
-          return;
-        }
-        if (!isPlausibleWompiPublicKey(activeWompiKey)) {
-          console.error('[checkout] PUBLIC_WOMPI_KEY no tiene formato pub_prod_… / pub_test_…');
-          showCheckoutToast(
-            'La llave Wompi del sitio no es válida. Corrige PUBLIC_WOMPI_KEY en Vercel y redespliega.'
-          );
-          return;
-        }
+        var methodEl = checkoutForm.querySelector('input[name="paymentMethod"]:checked');
+        var paymentMethod = methodEl ? String(methodEl.value) : 'wompi';
+
         if (aceptarTerminosEl instanceof HTMLInputElement && !aceptarTerminosEl.checked) {
           showCheckoutToast('Debes aceptar los Términos y Condiciones para continuar con tu compra');
           aceptarTerminosEl.focus();
@@ -855,9 +993,30 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
           showCheckoutToast('Tu carrito está vacío.');
           return;
         }
+
         var btn = submitBtn instanceof HTMLButtonElement ? submitBtn : null;
         if (btn) btn.disabled = true;
         try {
+          if (paymentMethod === 'addi') {
+            await openAddiCheckout(checkoutForm);
+            return;
+          }
+
+          var activeWompiKey = resolveStoredWompiKey();
+          if (!activeWompiKey) {
+            console.error('Error: PUBLIC_WOMPI_KEY no está en el build (p. ej. falta en Vercel al compilar).');
+            showCheckoutToast(
+              'Falta la llave pública de Wompi en el sitio. En Vercel: Settings → Environment Variables → agrega PUBLIC_WOMPI_KEY (tu pub_prod_…) para Production y vuelve a desplegar el proyecto.'
+            );
+            return;
+          }
+          if (!isPlausibleWompiPublicKey(activeWompiKey)) {
+            console.error('[checkout] PUBLIC_WOMPI_KEY no tiene formato pub_prod_… / pub_test_…');
+            showCheckoutToast(
+              'La llave Wompi del sitio no es válida. Corrige PUBLIC_WOMPI_KEY en Vercel y redespliega.'
+            );
+            return;
+          }
           await openWompiCheckout(checkoutForm, activeWompiKey);
         } catch (err) {
           console.error('[checkout]', err);
@@ -1110,6 +1269,70 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
     border: 1px solid #e5e7eb;
     background: #fff;
     padding: 0.35rem;
+  }
+
+  .checkout-pay-methods {
+    border: 0;
+    margin: 0 0 1rem;
+    padding: 0;
+    display: grid;
+    gap: 0.65rem;
+  }
+
+  .checkout-pay-option {
+    display: block;
+    cursor: pointer;
+  }
+
+  .checkout-pay-option input {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .checkout-pay-option-body {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.85rem 1rem;
+    border: 1.5px solid #d1d5db;
+    border-radius: 12px;
+    background: #fff;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .checkout-pay-option-body strong {
+    display: block;
+    font-size: 0.95rem;
+    color: #111827;
+  }
+
+  .checkout-pay-option-body small {
+    display: block;
+    color: #6b7280;
+    margin-top: 0.15rem;
+  }
+
+  .checkout-pay-option input:checked + .checkout-pay-option-body {
+    border-color: #0d9488;
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.15);
+  }
+
+  .checkout-pay-option input:focus-visible + .checkout-pay-option-body {
+    outline: 2px solid #0d9488;
+    outline-offset: 2px;
+  }
+
+  .checkout-pay-logo {
+    width: 52px;
+    height: 28px;
+    object-fit: contain;
+    flex-shrink: 0;
+  }
+
+  .checkout-pay-logo--addi {
+    width: 48px;
+    height: 28px;
   }
 
   .checkout-field-grid {

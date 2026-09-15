@@ -40,3 +40,10 @@ Thumbs.db
 apps/
 okr-platform/
 reiki-api-key.pem
+
+# Secretos Google / Merchant Center (NUNCA subir a git)
+secrets/
+*-google*.json
+*service-account*.json
+dotted-saga-*.json
+**/credentials/*.json
