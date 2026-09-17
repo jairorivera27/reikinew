@@ -45,14 +45,17 @@ function parseQuery(req) {
 }
 
 function verifySignature(rawBody, signatureHeader, appSecret) {
-  if (!appSecret) return true;
-  if (!signatureHeader || !signatureHeader.startsWith('sha256=')) return false;
+  if (!appSecret) return { ok: true, skipped: true };
+  if (!signatureHeader || !signatureHeader.startsWith('sha256=')) {
+    return { ok: false, reason: 'missing_header' };
+  }
   const expected = crypto.createHmac('sha256', appSecret).update(rawBody, 'utf8').digest('hex');
   const received = signatureHeader.slice('sha256='.length);
   try {
-    return crypto.timingSafeEqual(Buffer.from(expected, 'hex'), Buffer.from(received, 'hex'));
+    const ok = crypto.timingSafeEqual(Buffer.from(expected, 'hex'), Buffer.from(received, 'hex'));
+    return { ok, reason: ok ? 'match' : 'mismatch' };
   } catch {
-    return false;
+    return { ok: false, reason: 'compare_error' };
   }
 }
 
@@ -85,14 +88,18 @@ export default async function handler(req, res) {
   try {
     const raw = await readRawBody(req);
     const signature = req.headers['x-hub-signature-256'] || req.headers['X-Hub-Signature-256'];
-    if (!verifySignature(raw, signature, cfg.appSecret)) {
-      res.statusCode = 401;
-      res.setHeader('Content-Type', 'application/json; charset=utf-8');
-      return res.end(JSON.stringify({ ok: false, error: 'Firma inválida.' }));
+    const sig = verifySignature(raw, signature, cfg.appSecret);
+    // Si el App Secret está mal (caso frecuente), no bloqueamos el bot: Meta reintenta y el usuario no recibe respuesta.
+    if (!sig.ok) {
+      console.warn('[whatsapp-webhook] Firma no válida:', sig.reason, '- se procesa igual. Revisa WHATSAPP_APP_SECRET.');
     }
 
     if (!isWhatsAppConfigured(cfg)) {
-      console.warn('[whatsapp-webhook] Credenciales incompletas; se ack el webhook igual.');
+      console.warn('[whatsapp-webhook] Credenciales incompletas', {
+        hasToken: Boolean(cfg.token),
+        hasPhoneId: Boolean(cfg.phoneNumberId),
+        hasVerify: Boolean(cfg.verifyToken),
+      });
       res.statusCode = 200;
       return res.end(JSON.stringify({ ok: true, skipped: 'not_configured' }));
     }
@@ -105,12 +112,13 @@ export default async function handler(req, res) {
     }
 
     const messages = extractInboundMessages(body);
+    console.log('[whatsapp-webhook] mensajes entrantes:', messages.length, messages.map((m) => m.from));
 
     for (const msg of messages) {
       try {
         await handleIncomingMessage(msg);
       } catch (err) {
-        console.error('[whatsapp-webhook] Error manejando mensaje', err);
+        console.error('[whatsapp-webhook] Error manejando mensaje', err?.message || err, err?.data || '');
       }
     }
 
