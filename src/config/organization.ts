@@ -31,7 +31,7 @@ export const ORG = {
     'https://www.facebook.com/profile.php?id=61551829530814',
     'https://www.instagram.com/reikiener/',
     'https://www.linkedin.com/company/reiki-energia-solar/',
-    'https://wa.me/573122435627',
+    'https://wa.me/573004052638',
   ],
   knowsAbout: [
     'Energía solar Medellín',
@@ -79,7 +79,7 @@ export const HOME_FAQS: { question: string; answer: string }[] = [
   {
     question: '¿Cómo cotizar un sistema de energía solar con Reiki?',
     answer:
-      'Puedes escribir por WhatsApp al +57 312 243 5627, usar el formulario de contacto en reikisolar.com.co/contacto, o comprar equipos directamente en la tienda si ya tienes instalador.',
+      'Puedes escribir por WhatsApp al +57 300 405 2638, usar el formulario de contacto en reikisolar.com.co/contacto, o comprar equipos directamente en la tienda si ya tienes instalador.',
   },
 ];
 

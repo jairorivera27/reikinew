@@ -2,40 +2,40 @@
 
 Asistente gratis (cupo Meta + tu Vercel): saluda, responde FAQ, captura leads de proyecto y te avisa para atender personalizado.
 
+**Número de producción:** `+57 300 405 2638` (`573004052638`)  
+**Phone number ID:** `1372559729264279`  
+Webhook: `https://reikisolar.com.co/api/whatsapp-webhook`
+
 ## Checklist Meta (hazlo una vez)
 
-1. Entra a [developers.facebook.com](https://developers.facebook.com/) → **Crear app** → tipo **Business**.
-2. Agrega el producto **WhatsApp** → **API Setup**.
-3. En **Meta Business Suite** asocia un número (prueba de Meta o tu `312…` si lo migras a Cloud API).
-4. Copia:
-   - **Temporary / Permanent access token** → `WHATSAPP_ACCESS_TOKEN`
-   - **Phone number ID** → `WHATSAPP_PHONE_NUMBER_ID`
-5. Inventa un verify token (ej. `reiki-wa-verify-2026`) → `WHATSAPP_VERIFY_TOKEN`
-6. En la app → **Configuración** → **Básico** → **App secret** → `WHATSAPP_APP_SECRET`
-7. Despliega el sitio en Vercel con las variables (abajo).
-8. En WhatsApp → **Configuration** → Webhook:
-   - Callback URL: `https://reikisolar.com.co/api/whatsapp-webhook`
-   - Verify token: el mismo de `WHATSAPP_VERIFY_TOKEN`
-   - Suscríbete a: `messages`
-9. Envía un mensaje de prueba al número Cloud API → debe responder el menú.
+1. [developers.facebook.com](https://developers.facebook.com/) → app Business → caso de uso **WhatsApp**.
+2. **Paso 1** (prueba) o **Paso 2** (producción): token + Phone number ID.
+3. En producción: registrar el número real (`300…`), activar **Suscribir webhooks**, callback:
+   - URL: `https://reikisolar.com.co/api/whatsapp-webhook`
+   - Verify token: el mismo de `WHATSAPP_VERIFY_TOKEN` (ej. `reiki-wa-2026`)
+   - Campo: `messages`
+4. App → **Configuración** → **Básico** → **App secret** → `WHATSAPP_APP_SECRET`
+5. Cargar variables en Vercel (Production + Preview) y **redeploy**.
+6. Escribe `hola` al `+57 300 405 2638` desde otro celular → menú del bot.
 
 ### Aviso de leads al celular (gratis)
 
-Opcional pero recomendado: [CallMeBot](https://www.callmebot.com/blog/free-api-whatsapp-messages/)  
-Guarda `CALLMEBOT_API_KEY` y `WHATSAPP_OWNER_PHONE=573122435627`.  
-Así te llega un WhatsApp cuando alguien pide proyecto o asesor.
+Opcional: [CallMeBot](https://www.callmebot.com/blog/free-api-whatsapp-messages/)  
+Guarda `CALLMEBOT_API_KEY` y `WHATSAPP_OWNER_PHONE=573004052638`.
 
 ## Variables (Vercel + `.env` local)
 
 ```env
-WHATSAPP_VERIFY_TOKEN=elige_un_secreto
+WHATSAPP_VERIFY_TOKEN=reiki-wa-2026
 WHATSAPP_ACCESS_TOKEN=token_de_meta
-WHATSAPP_PHONE_NUMBER_ID=id_del_numero
+WHATSAPP_PHONE_NUMBER_ID=1372559729264279
 WHATSAPP_APP_SECRET=app_secret_meta
-WHATSAPP_OWNER_PHONE=573122435627
+WHATSAPP_OWNER_PHONE=573004052638
 WHATSAPP_SITE_URL=https://reikisolar.com.co
 CALLMEBOT_API_KEY=opcional
 ```
+
+El teléfono público del sitio vive en `src/config/contact.ts` (`CONTACT_PHONE_*` / `CONTACT_WHATSAPP_URL`).
 
 ## Qué hace el bot
 
@@ -60,6 +60,5 @@ Tras un lead de proyecto, el bot **deja de responder** ~12 h para que tú atiend
 
 ## Notas
 
-- Volumen bajo: el cupo gratuito mensual de conversaciones de Meta suele bastar.
-- El número de *prueba* de Meta solo escribe a números agregados en la consola; para producción verifica el negocio y usa tu línea.
-- No subas tokens a git.
+- El token temporal de Meta caduca; conviene System User (token permanente).
+- No subas tokens a git (`.env` está en `.gitignore`).

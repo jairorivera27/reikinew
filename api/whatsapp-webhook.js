@@ -9,7 +9,7 @@
  *   WHATSAPP_ACCESS_TOKEN
  *   WHATSAPP_PHONE_NUMBER_ID
  *   WHATSAPP_APP_SECRET          (opcional pero recomendado: valida X-Hub-Signature-256)
- *   WHATSAPP_OWNER_PHONE         (default 573122435627)
+ *   WHATSAPP_OWNER_PHONE         (default 573004052638)
  *   CALLMEBOT_API_KEY            (aviso gratis al dueño cuando hay lead)
  *   WHATSAPP_SITE_URL            (default https://reikisolar.com.co)
  */

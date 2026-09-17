@@ -11,7 +11,7 @@ export function getWhatsAppConfig() {
     phoneNumberId: String(process.env.WHATSAPP_PHONE_NUMBER_ID || '').trim(),
     verifyToken: String(process.env.WHATSAPP_VERIFY_TOKEN || '').trim(),
     appSecret: String(process.env.WHATSAPP_APP_SECRET || '').trim(),
-    ownerPhone: String(process.env.WHATSAPP_OWNER_PHONE || '573122435627').replace(/\D/g, ''),
+    ownerPhone: String(process.env.WHATSAPP_OWNER_PHONE || '573004052638').replace(/\D/g, ''),
     callmebotKey: String(process.env.CALLMEBOT_API_KEY || '').trim(),
     siteUrl: String(process.env.WHATSAPP_SITE_URL || process.env.ADDI_SITE_URL || 'https://reikisolar.com.co').replace(
       /\/$/,
