@@ -3,6 +3,7 @@ import { defineConfig } from 'astro/config';
 import react from '@astrojs/react';
 import { loadEnv } from 'vite';
 import { addiApiDevPlugin } from './scripts/lib/addi-api-dev-plugin.mjs';
+import { whatsappApiDevPlugin } from './scripts/lib/whatsapp-api-dev-plugin.mjs';
 
 /** Firma Wompi en desarrollo (misma ruta que en Vercel: /api/wompi-integrity). */
 function wompiIntegrityDevPlugin() {
@@ -85,7 +86,7 @@ export default defineConfig({
     assets: '_assets',
   },
   vite: {
-    plugins: [wompiIntegrityDevPlugin(), addiApiDevPlugin()],
+    plugins: [wompiIntegrityDevPlugin(), addiApiDevPlugin(), whatsappApiDevPlugin()],
     build: {
       cssMinify: true,
       minify: 'terser',

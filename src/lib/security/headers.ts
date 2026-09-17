@@ -17,7 +17,7 @@ export const securityHeaders = {
     "font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com",
     "img-src 'self' data: https:",
     // CallMeBot / WhatsApp notify + Wompi APIs used by widget and integrity endpoint clients
-    "connect-src 'self' https://api.callmebot.com https://api.whatsapp.com https://api.wompi.co https://checkout.wompi.co https://production.wompi.co https://sandbox.wompi.co",
+    "connect-src 'self' https://api.callmebot.com https://api.whatsapp.com https://graph.facebook.com https://api.wompi.co https://checkout.wompi.co https://production.wompi.co https://sandbox.wompi.co",
     "frame-src 'self' https://checkout.wompi.co https://api.wompi.co",
     "frame-ancestors 'none'",
     "base-uri 'self'",
