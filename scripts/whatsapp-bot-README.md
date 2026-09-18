@@ -37,17 +37,21 @@ CALLMEBOT_API_KEY=opcional
 
 El teléfono público del sitio vive en `src/config/contact.ts` (`CONTACT_PHONE_*` / `CONTACT_WHATSAPP_URL`).
 
-## Qué hace el bot
+## Qué hace el bot (asesor comercial)
+
+Prioridad: *asesorar* → calificar necesidad → cerrar a cotización / tienda / humano.
 
 | Entrada | Acción |
 |---|---|
-| Hola / menú | Menú: Tienda · Proyecto · FAQ · Asesor |
-| Tienda | Link a `/tienda` |
-| Proyecto | 4 preguntas (nombre, ciudad, tipo, consumo/factura) → te avisa |
-| Asesor | Marca chat para humano + te avisa |
-| `menu` | Reactiva el bot si estaba en modo humano |
+| Hola / menú | Menú consultivo: ahorro · respaldo · finca · cotizar · tienda · aprender · asesor |
+| Objetivo (ahorro/respaldo/finca) | Descubrimiento 5 preguntas + lead al dueño |
+| Texto libre (panel, batería, factura…) | Tip experto desde `api/_lib/whatsapp-solar-kb.js` + CTA de venta |
+| Cotizar / proyecto | Mismo flujo de descubrimiento |
+| Tienda | Guía + link `/tienda` (sin forzar si aún no está claro el sistema) |
+| Asesor | Handoff humano ~12 h |
+| `menu` | Reactiva el bot |
 
-Tras un lead de proyecto, el bot **deja de responder** ~12 h para que tú atiendas sin choque.
+Para “reentrenar”: añade keywords/respuestas en `whatsapp-solar-kb.js` y redespliega. Los intents no reconocidos quedan en logs Vercel (`unmatched intent`).
 
 ## Archivos
 
@@ -55,7 +59,8 @@ Tras un lead de proyecto, el bot **deja de responder** ~12 h para que tú atiend
 |---|---|
 | `api/whatsapp-webhook.js` | Webhook GET/POST |
 | `api/_lib/whatsapp.js` | Envío Cloud API + CallMeBot |
-| `api/_lib/whatsapp-bot.js` | Guion y sesiones |
+| `api/_lib/whatsapp-bot.js` | Flujo comercial consultivo |
+| `api/_lib/whatsapp-solar-kb.js` | Base de conocimiento solar (ampliable) |
 | `scripts/lib/whatsapp-api-dev-plugin.mjs` | Local `astro dev` |
 
 ## Notas
