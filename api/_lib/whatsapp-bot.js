@@ -1,6 +1,5 @@
 /**
- * Bot comercial consultivo Reiki — asesorar primero, luego cerrar a tienda/proyecto/humano.
- * Conocimiento ampliable en whatsapp-solar-kb.js
+ * Bot comercial Reiki — conversación natural, amigable y orientada a la venta.
  */
 import { getWhatsAppConfig, sendText, sendButtons, sendList, notifyOwner } from './whatsapp.js';
 import { CONSULTANT_INTRO, SOLAR_TIPS, matchSolarTip } from './whatsapp-solar-kb.js';
@@ -41,22 +40,45 @@ function normalize(text) {
     .toLowerCase();
 }
 
+function firstName(nombre) {
+  const n = String(nombre || '').trim().split(/\s+/)[0];
+  return n || '';
+}
+
+function isGreeting(n) {
+  return /^(hola|buenas|buen[oa]s?\s*(dias|días|tardes|noches)?|hey|hi|holi|saludos|menu|inicio|bot)\b/.test(
+    n
+  );
+}
+
 async function sendMainMenu(from, cfg) {
+  await sendText({ to: from, body: CONSULTANT_INTRO, cfg });
+  await sendButtons({
+    to: from,
+    body: 'Elige lo que más se parece a lo que buscas (o escríbeme con tus palabras):',
+    buttons: [
+      { id: 'obj_ahorro', title: 'Bajar la factura' },
+      { id: 'obj_respaldo', title: 'Ya no más cortes' },
+      { id: 'menu_mas', title: 'Otras opciones' },
+    ],
+    cfg,
+  });
+}
+
+async function sendMoreOptions(from, cfg) {
   await sendList({
     to: from,
-    body: CONSULTANT_INTRO,
-    buttonText: 'Ver opciones',
+    body: 'Claro, mira qué te sirve mejor ahora mismo:',
+    buttonText: 'Ver más',
     sections: [
       {
-        title: 'Asesoría y venta',
+        title: '¿Qué necesitas?',
         rows: [
-          { id: 'obj_ahorro', title: 'Quiero ahorrar en luz', description: 'Bajar la factura con solar' },
-          { id: 'obj_respaldo', title: 'Respaldo / cortes', description: 'No quedarme sin energía' },
-          { id: 'obj_finca', title: 'Finca / sin red', description: 'Sistema aislado u off-grid' },
-          { id: 'menu_proyecto', title: 'Cotizar proyecto', description: 'Diseño e instalación' },
-          { id: 'menu_tienda', title: 'Comprar equipos', description: 'Tienda con precios' },
-          { id: 'menu_aprender', title: 'Explicame opciones', description: 'Guía rápida solar' },
-          { id: 'menu_asesor', title: 'Hablar con asesor', description: 'Persona real Reiki' },
+          { id: 'obj_finca', title: 'Finca / sin red', description: 'Sistema aislado' },
+          { id: 'menu_proyecto', title: 'Cotizar instalación', description: 'Llave en mano' },
+          { id: 'menu_tienda', title: 'Ver la tienda', description: 'Equipos con precio' },
+          { id: 'menu_aprender', title: 'Explícame un poco', description: 'Sin tecnicismos' },
+          { id: 'menu_asesor', title: 'Hablar con alguien', description: 'Asesor Reiki' },
         ],
       },
     ],
@@ -68,38 +90,39 @@ async function sendTip(from, tip, cfg) {
   const site = cfg.siteUrl;
   const body = tip.body
     .replace('/tienda/categoria/paneles-solares', `${site}/tienda/categoria/paneles-solares`)
-    .replace(/Catálogo: \//, `Catálogo: ${site}/`);
-  await sendText({ to: from, body: `*${tip.title}*\n\n${body}`, cfg });
+    .replace(/Catálogo: \//, `Míralos aquí: ${site}/`);
+  await sendText({ to: from, body: body, cfg });
+
   if (tip.cta === 'tienda') {
     await sendButtons({
       to: from,
-      body: 'Siguiente paso recomendado:',
+      body: '¿Qué prefieres hacer?',
       buttons: [
-        { id: 'menu_tienda', title: 'Ir a tienda' },
-        { id: 'menu_proyecto', title: 'Cotizar proyecto' },
-        { id: 'menu_asesor', title: 'Hablar asesor' },
+        { id: 'menu_tienda', title: 'Ver tienda' },
+        { id: 'menu_proyecto', title: 'Cotizar sistema' },
+        { id: 'menu_asesor', title: 'Hablar con ustedes' },
       ],
       cfg,
     });
   } else if (tip.cta === 'asesor') {
     await sendButtons({
       to: from,
-      body: '¿Te paso con un asesor?',
+      body: '¿Te conecto con un asesor?',
       buttons: [
-        { id: 'menu_asesor', title: 'Sí, asesor' },
-        { id: 'menu_proyecto', title: 'Cotizar primero' },
-        { id: 'menu_root', title: 'Menú' },
+        { id: 'menu_asesor', title: 'Sí, por favor' },
+        { id: 'menu_proyecto', title: 'Mejor cotizar' },
+        { id: 'menu_root', title: 'Empezar de nuevo' },
       ],
       cfg,
     });
   } else {
     await sendButtons({
       to: from,
-      body: 'Para darte un número real necesitamos tus datos. ¿Cotizamos?',
+      body: 'Si te late, en 1 minutito te dejo listo para una cotización real 👇',
       buttons: [
-        { id: 'menu_proyecto', title: 'Sí, cotizar' },
-        { id: 'menu_aprender', title: 'Más info' },
-        { id: 'menu_asesor', title: 'Hablar asesor' },
+        { id: 'menu_proyecto', title: 'Sí, cotícenme' },
+        { id: 'menu_aprender', title: 'Cuéntame más' },
+        { id: 'menu_asesor', title: 'Hablar con alguien' },
       ],
       cfg,
     });
@@ -110,19 +133,20 @@ async function startDiscovery(from, objetivo, cfg) {
   const s = session(from);
   s.step = 'disc_nombre';
   s.data = { objetivo };
+
   const blurb =
     objetivo === 'ahorro'
-      ? 'Perfecto: vamos a enfocarnos en *reducir tu factura* con un diseño serio (no “kit genérico”).'
+      ? 'Genial — vamos a mirar cómo *bajar esa factura* sin venderte un kit que no te sirve.'
       : objetivo === 'respaldo'
-        ? 'Perfecto: priorizaremos *qué cargas proteger* y cuántas horas de autonomía necesitas.'
-        : 'Perfecto: en finca/sin red el dimensionamiento de *batería y consumo* es crítico.';
+        ? 'Perfecto — vamos a cuidar que no te quedes sin lo importante cuando se vaya la luz.'
+        : 'Listo — en finca/sin red hay que dimensionar bien para que no te quedes corto (ni te gastes de más).';
 
   await sendText({
     to: from,
     body:
       `${blurb}\n\n` +
-      'Te haré *5 preguntas cortas* para que un asesor te cotice con precisión (y no pierdas plata en equipos de más o de menos).\n\n' +
-      '1️⃣ ¿Cuál es tu *nombre*?',
+      'Para orientarte bien solo necesito unos datos rapiditos (como si habláramos en la oficina).\n\n' +
+      '¿Cómo te llamas?',
     cfg,
   });
 }
@@ -130,36 +154,37 @@ async function startDiscovery(from, objetivo, cfg) {
 async function finishDiscovery(from, cfg) {
   const s = session(from);
   const d = s.data;
+  const name = firstName(d.nombre);
   const summary =
-    `☀️ *LEAD COMERCIAL — Bot asesor*\n\n` +
+    `☀️ *LEAD COMERCIAL — WhatsApp*\n\n` +
     `Objetivo: ${d.objetivo || '—'}\n` +
     `Nombre: ${d.nombre || '—'}\n` +
     `WhatsApp: +${from}\n` +
     `Ciudad: ${d.ciudad || '—'}\n` +
     `Tipo: ${d.tipo || '—'}\n` +
     `Factura/consumo: ${d.consumo || '—'}\n` +
-    `Urgencia: ${d.urgencia || '—'}\n\n` +
-    `_Prioridad: asesoramiento → cotización personalizada._`;
+    `Urgencia: ${d.urgencia || '—'}`;
 
   await notifyOwner(summary, cfg);
   markHuman(from);
 
   const tip =
     d.objetivo === 'respaldo'
-      ? 'Con cortes, suele evaluarse *híbrido + batería* según cargas críticas.'
+      ? 'Con lo que me contaste, lo más probable es revisar un *híbrido con batería* según lo que quieras mantener prendido.'
       : d.objetivo === 'finca'
-        ? 'En off-grid validaremos consumo diario y autonomía antes de comprar equipos.'
-        : 'Para ahorro de factura, el diseño on-grid se ajusta a tu consumo y techo.';
+        ? 'En tu caso vamos a validar consumo y autonomía antes de hablar de equipos sueltos.'
+        : 'Con tu factura/consumo podemos estimar un sistema on-grid a tu medida.';
 
   await sendText({
     to: from,
     body:
-      `Gracias, *${d.nombre || 'listo'}*. Ya tengo lo esencial.\n\n` +
+      (name ? `¡Gracias, *${name}*! ` : '¡Gracias! ') +
+      `Ya tengo lo importante.\n\n` +
       `${tip}\n\n` +
-      'Un *asesor Reiki* te escribirá por este chat con la orientación y cotización.\n\n' +
-      'Mientras tanto puedes revisar equipos con precio publicado:\n' +
+      'En un momento un *asesor de Reiki* te escribe por aquí con la orientación y la cotización.\n\n' +
+      'Si quieres ir mirando equipos mientras tanto:\n' +
       `${cfg.siteUrl}/tienda\n\n` +
-      '_Escribe *menu* si quieres volver al asistente._',
+      'Cuando quieras volver a hablar conmigo, escribe *hola*.',
     cfg,
   });
   s.step = 'human';
@@ -168,20 +193,19 @@ async function finishDiscovery(from, cfg) {
 async function sendLearnMenu(from, cfg) {
   await sendList({
     to: from,
-    body:
-      'Elige el tema y te lo explico en lenguaje claro (sin humo técnico innecesario):',
+    body: 'Claro — dime qué te intriga y te lo cuento fácil, sin enrollarte:',
     buttonText: 'Temas',
     sections: [
       {
-        title: 'Aprende y decide',
+        title: 'Te lo explico fácil',
         rows: [
-          { id: 'tip_ahorro_factura', title: 'Ahorrar en la factura', description: 'On-grid y dimensionamiento' },
-          { id: 'tip_backup', title: 'Cortes de luz', description: 'Híbrido y baterías' },
-          { id: 'tip_offgrid', title: 'Finca / sin red', description: 'Off-grid bien hecho' },
-          { id: 'tip_paneles', title: 'Paneles', description: 'Qué mirar al comprar' },
-          { id: 'tip_inversores', title: 'Inversores', description: 'On-grid vs híbrido' },
+          { id: 'tip_ahorro_factura', title: 'Bajar la factura', description: 'Cómo funciona' },
+          { id: 'tip_backup', title: 'Cuando hay cortes', description: 'Respaldo real' },
+          { id: 'tip_offgrid', title: 'Finca / sin red', description: 'Sistema aislado' },
+          { id: 'tip_paneles', title: 'Paneles', description: 'Qué mirar' },
+          { id: 'tip_inversores', title: 'Inversores', description: 'Cuál te sirve' },
           { id: 'tip_baterias', title: 'Baterías', description: 'Litio y autonomía' },
-          { id: 'tip_precios', title: 'Cómo se cotiza', description: 'Tienda vs proyecto' },
+          { id: 'tip_precios', title: 'Precios', description: 'Cómo cotizamos' },
         ],
       },
     ],
@@ -201,7 +225,7 @@ export async function handleIncomingMessage(msg) {
   const id = msg.buttonId || msg.listId || '';
   const n = normalize(text);
 
-  if (n === 'menu' || n === 'hola' || n === 'inicio' || n === 'bot' || id === 'menu_root') {
+  if (id === 'menu_root' || isGreeting(n) || n === 'menu') {
     const s = session(from);
     s.step = 'idle';
     delete s.humanUntil;
@@ -213,95 +237,131 @@ export async function handleIncomingMessage(msg) {
     return;
   }
 
-  // Objetivos de descubrimiento comercial
-  if (id === 'obj_ahorro' || n.includes('ahorrar') || n === 'ahorro') {
+  if (id === 'menu_mas') {
+    await sendMoreOptions(from, cfg);
+    return;
+  }
+
+  if (id === 'obj_ahorro') {
     await startDiscovery(from, 'ahorro', cfg);
     return;
   }
-  if (id === 'obj_respaldo' || n.includes('respaldo') || n.includes('corte')) {
+  if (id === 'obj_respaldo') {
     await startDiscovery(from, 'respaldo', cfg);
     return;
   }
-  if (id === 'obj_finca' || n.includes('finca') || n.includes('offgrid') || n.includes('off grid')) {
+  if (id === 'obj_finca') {
     await startDiscovery(from, 'finca', cfg);
     return;
   }
 
-  if (id === 'menu_aprender' || n === 'aprender' || n === 'guia' || n === 'guía') {
+  if (id === 'menu_aprender') {
     await sendLearnMenu(from, cfg);
     return;
   }
 
   if (id.startsWith('tip_')) {
-    const tipId = id.slice(4);
-    const found = SOLAR_TIPS.find((t) => t.id === tipId);
+    const found = SOLAR_TIPS.find((t) => t.id === id.slice(4));
     if (found) {
       await sendTip(from, found, cfg);
       return;
     }
   }
 
-  if (id === 'menu_tienda' || n === 'tienda' || n === '1' || n === 'comprar') {
+  // Texto libre: primero asesoría natural; si es intención corta de compra, cotizar
+  if (text && !id) {
+    const tip = matchSolarTip(n);
+    const shortBuy =
+      n.length <= 48 &&
+      /\b(quiero|necesito|me gustaria|me gustaría|cotiz|proyecto|ahorrar|respaldo|finca)\b/.test(n);
+
+    if (tip && !shortBuy) {
+      console.log('[whatsapp-bot] tip matched', tip.id, 'from', from);
+      await sendTip(from, tip, cfg);
+      return;
+    }
+    if (/\b(finca|offgrid|off grid|sin red)\b/.test(n) && shortBuy) {
+      await startDiscovery(from, 'finca', cfg);
+      return;
+    }
+    if (/\b(respaldo|corte|cortes|apagon|apagón)\b/.test(n) && (shortBuy || !tip)) {
+      await startDiscovery(from, 'respaldo', cfg);
+      return;
+    }
+    if (/\b(ahorrar|ahorro|bajar (la )?factura)\b/.test(n) && (shortBuy || !tip)) {
+      await startDiscovery(from, 'ahorro', cfg);
+      return;
+    }
+    if (tip) {
+      await sendTip(from, tip, cfg);
+      return;
+    }
+  }
+
+  if (/\b(aprender|explic|guia|guía)\b/.test(n)) {
+    await sendLearnMenu(from, cfg);
+    return;
+  }
+
+  if (id === 'menu_tienda' || n === 'tienda' || n === 'comprar') {
     await sendText({
       to: from,
       body:
-        'Si ya tienes instalador o sabes exactamente qué equipo necesitas, la *tienda* es el camino más rápido: precios publicados y envío nacional.\n\n' +
-        `👉 ${cfg.siteUrl}/tienda\n\n` +
-        'Si aún no tienes claro el *tipo de sistema* (ahorro vs respaldo vs finca), te recomiendo cotizar proyecto: evita comprar de más o incompatible.',
+        'Si ya sabes qué equipo necesitas (o tienes instalador), la tienda es lo más rápido: precios claros y envío a todo el país.\n\n' +
+        `Aquí la tienes: ${cfg.siteUrl}/tienda\n\n` +
+        'Si todavía no estás seguro del *tipo de sistema*, mejor te cotizamos: así no compras algo que después no encaja.',
       cfg,
     });
     await sendButtons({
       to: from,
-      body: '¿Seguro de lo que necesitas?',
+      body: '¿Cómo quieres seguir?',
       buttons: [
         { id: 'menu_tienda', title: 'Abrir tienda' },
         { id: 'menu_proyecto', title: 'Mejor cotizar' },
-        { id: 'menu_aprender', title: 'Explicame' },
+        { id: 'menu_aprender', title: 'Explícame' },
       ],
       cfg,
     });
-    // Abrir tienda = segundo toque; primer toque ya explicó
     return;
   }
 
-  if (id === 'menu_proyecto' || n === 'proyecto' || n === 'cotizar' || n === '2') {
+  if (id === 'menu_proyecto' || n === 'proyecto' || n === 'cotizar') {
     const s = session(from);
-    const obj = s.data.objetivo || 'ahorro';
-    await startDiscovery(from, obj, cfg);
+    await startDiscovery(from, s.data.objetivo || 'ahorro', cfg);
     return;
   }
 
-  if (id === 'menu_asesor' || n === 'asesor' || n === 'humano' || n === 'persona' || n === '4') {
+  if (id === 'menu_asesor' || n === 'asesor' || n === 'humano' || n === 'persona') {
     markHuman(from);
     await notifyOwner(
-      `👤 *Cliente pide asesor*\nWhatsApp: +${from}\nMensaje: ${text || '(tocó Hablar con asesor)'}`,
+      `👤 *Cliente pide asesor*\nWhatsApp: +${from}\nMensaje: ${text || '(pidió hablar con alguien)'}`,
       cfg
     );
     await sendText({
       to: from,
       body:
-        'Listo. Un *asesor humano de Reiki* te atenderá en este chat.\n\n' +
-        'Horario orientativo: Lun–Sáb 8:00–18:00 (Medellín).\n' +
-        'Si puedes, deja en un mensaje: *ciudad + qué necesitas* (ahorro, respaldo o equipos).\n\n' +
-        '_Escribe *menu* para volver al asistente._',
+        'Listo 🙂 En breve alguien del equipo te escribe por este mismo chat.\n\n' +
+        'Horario aproximado: Lun–Sáb 8:00–18:00 (Medellín).\n\n' +
+        'Si puedes, déjame en un mensajito tu *ciudad* y qué necesitas — así te atienden más rápido.\n\n' +
+        'Si quieres volver conmigo después, escribe *hola*.',
       cfg,
     });
     return;
   }
 
-  // Flujo descubrimiento (5 pasos)
   const s = session(from);
 
   if (s.step === 'disc_nombre') {
     if (text.length < 2) {
-      await sendText({ to: from, body: '¿Me compartes tu nombre, por favor?', cfg });
+      await sendText({ to: from, body: '¿Me dices tu nombre? Así te hablo de tú a tú 🙂', cfg });
       return;
     }
     s.data.nombre = text.slice(0, 80);
     s.step = 'disc_ciudad';
+    const name = firstName(s.data.nombre);
     await sendText({
       to: from,
-      body: `Gracias, *${s.data.nombre}*.\n\n2️⃣ ¿En qué *ciudad* está el proyecto?`,
+      body: `Encantado, *${name}*.\n\n¿En qué ciudad está el proyecto?`,
       cfg,
     });
     return;
@@ -309,18 +369,18 @@ export async function handleIncomingMessage(msg) {
 
   if (s.step === 'disc_ciudad') {
     if (text.length < 2) {
-      await sendText({ to: from, body: 'Indica la ciudad (ej. Medellín, Bogotá, Cali…).', cfg });
+      await sendText({ to: from, body: '¿Me dices la ciudad? (ej. Medellín, Bogotá, Cali…)', cfg });
       return;
     }
     s.data.ciudad = text.slice(0, 80);
     s.step = 'disc_tipo';
     await sendButtons({
       to: from,
-      body: '3️⃣ ¿Qué tipo de instalación es?',
+      body: `¡Nice! *${s.data.ciudad}*. ¿Esto es para casa, negocio o algo más grande?`,
       buttons: [
-        { id: 'tipo_hogar', title: 'Hogar' },
-        { id: 'tipo_comercio', title: 'Comercio' },
-        { id: 'tipo_industria', title: 'Industria/finca' },
+        { id: 'tipo_hogar', title: 'Casa / hogar' },
+        { id: 'tipo_comercio', title: 'Negocio' },
+        { id: 'tipo_industria', title: 'Finca / industria' },
       ],
       cfg,
     });
@@ -333,16 +393,15 @@ export async function handleIncomingMessage(msg) {
     else if (id === 'tipo_industria') s.data.tipo = 'Industria/finca';
     else if (text) s.data.tipo = text.slice(0, 40);
     else {
-      await sendText({ to: from, body: 'Elige Hogar, Comercio o Industria/finca.', cfg });
+      await sendText({ to: from, body: '¿Me ayudas con un toque? Casa, negocio o finca/industria.', cfg });
       return;
     }
     s.step = 'disc_consumo';
     await sendText({
       to: from,
       body:
-        '4️⃣ ¿Cuál es tu *factura de luz aprox.* o el *consumo mensual (kWh)*?\n\n' +
-        'Ejemplos: `$350.000` o `420 kWh`\n' +
-        '_Si no lo sabes, escribe “no sé” y lo estimamos contigo._',
+        'Última cosa importante: ¿cuánto te llega más o menos de *luz al mes*?\n\n' +
+        'Puede ser en pesos (ej. $350.000) o en kWh. Si no lo tienes a la mano, escribe *no sé* y lo estimamos juntos.',
       cfg,
     });
     return;
@@ -350,18 +409,18 @@ export async function handleIncomingMessage(msg) {
 
   if (s.step === 'disc_consumo') {
     if (text.length < 1) {
-      await sendText({ to: from, body: 'Cuéntame factura o kWh (aunque sea aproximado).', cfg });
+      await sendText({ to: from, body: '¿Me das un aproximado de la factura o del consumo? Con “no sé” también sirve.', cfg });
       return;
     }
     s.data.consumo = text.slice(0, 80);
     s.step = 'disc_urgencia';
     await sendButtons({
       to: from,
-      body: '5️⃣ ¿Con qué urgencia quieres avanzar?',
+      body: '¿Y tú cómo lo ves de tiempo? Así sabemos si te priorizamos esta semana.',
       buttons: [
-        { id: 'urg_ya', title: 'Esta semana' },
+        { id: 'urg_ya', title: 'Lo antes posible' },
         { id: 'urg_mes', title: 'Este mes' },
-        { id: 'urg_explorar', title: 'Solo explorando' },
+        { id: 'urg_explorar', title: 'Estoy mirando' },
       ],
       cfg,
     });
@@ -369,33 +428,43 @@ export async function handleIncomingMessage(msg) {
   }
 
   if (s.step === 'disc_urgencia' || id.startsWith('urg_')) {
-    if (id === 'urg_ya') s.data.urgencia = 'Esta semana';
+    if (id === 'urg_ya') s.data.urgencia = 'Lo antes posible';
     else if (id === 'urg_mes') s.data.urgencia = 'Este mes';
     else if (id === 'urg_explorar') s.data.urgencia = 'Explorando';
     else if (text) s.data.urgencia = text.slice(0, 40);
     else {
-      await sendText({ to: from, body: 'Elige la urgencia con los botones.', cfg });
+      await sendText({ to: from, body: '¿Me tocas una de las opciones de tiempo? Así te organizamos mejor.', cfg });
       return;
     }
     await finishDiscovery(from, cfg);
     return;
   }
 
-  // Compat: old proyecto_* steps if any warm session
   if (s.step?.startsWith('proyecto_')) {
     s.step = 'idle';
     s.data = {};
   }
 
-  // Intento de expertise por texto libre
   if (text && !id) {
-    const tip = matchSolarTip(n);
-    if (tip) {
-      console.log('[whatsapp-bot] tip matched', tip.id, 'from', from);
-      await sendTip(from, tip, cfg);
-      return;
-    }
     console.log('[whatsapp-bot] unmatched intent', n.slice(0, 80), 'from', from);
+    await sendText({
+      to: from,
+      body:
+        'Te leo 🙂 Para ayudarte mejor, cuéntame si quieres *bajar la factura*, *respaldo por cortes*, o *comprar un equipo*.\n\n' +
+        'También puedes tocar una opción:',
+      cfg,
+    });
+    await sendButtons({
+      to: from,
+      body: '¿Por dónde empezamos?',
+      buttons: [
+        { id: 'obj_ahorro', title: 'Bajar la factura' },
+        { id: 'obj_respaldo', title: 'Cortes de luz' },
+        { id: 'menu_mas', title: 'Otras opciones' },
+      ],
+      cfg,
+    });
+    return;
   }
 
   if (!text && !id) return;
@@ -403,7 +472,6 @@ export async function handleIncomingMessage(msg) {
 }
 
 /**
- * Extrae mensajes útiles del webhook Meta.
  * @param {any} body
  */
 export function extractInboundMessages(body) {
