@@ -9,19 +9,19 @@ export const SOLAR_TIPS = [
   {
     id: 'ahorro_factura',
     keywords: ['ahorrar', 'factura', 'cuenta de luz', 'recibo', 'tarifa', 'epm', 'kwh', 'consumo', 'luz cara'],
-    title: 'Bajar la factura',
+    title: 'Dejar de pagar energía',
     body:
-      'Claro que sí. Si lo que te preocupa es la *cuenta de la luz*, en la mayoría de hogares en Colombia trabajamos con un sistema *conectado a la red*: de día generas con paneles y reduces lo que le compras a la empresa de energía.\n\n' +
+      'Claro que sí. Si lo que quieres es *dejar de pagar tanta energía*, en la mayoría de hogares en Colombia trabajamos con un sistema *conectado a la red*: de día generas con paneles y reduces lo que le compras a la empresa de energía.\n\n' +
       'Para cotizarte bien no inventamos un kit genérico: miramos tu consumo o el valor de la factura, el techo y la ciudad. Así te proponemos algo que sí te sirva.\n\n' +
-      'Si además tienes *cortes*, te conviene mirar un híbrido con batería. ¿Quieres que te dejemos una cotización seria?',
+      'Si además *se te va la energía*, te conviene mirar un híbrido con batería. ¿Quieres que te dejemos una cotización seria?',
     cta: 'proyecto',
   },
   {
     id: 'backup',
     keywords: ['corte', 'cortes', 'apagón', 'apagon', 'respaldo', 'backup', 'ups', 'sin luz', 'se va la luz'],
-    title: 'Cuando se va la luz',
+    title: 'Se me va la energía',
     body:
-      'Entiendo perfecto. Si lo que buscas es *no quedarte sin energía*, hay que ver qué quieres mantener prendido (nevera, wifi, luces, bomba…) y por cuánto tiempo.\n\n' +
+      'Entiendo perfecto. Si *se te va la energía* y quieres respaldo, hay que ver qué deseas mantener prendido (nevera, wifi, luces, bomba…) y por cuánto tiempo.\n\n' +
       'Con eso armamos un *híbrido con batería* a tu medida. Te puedo dejar el caso listo para que un asesor te pase opciones claras, sin rodeos.',
     cta: 'proyecto',
   },

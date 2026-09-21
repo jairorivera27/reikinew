@@ -130,13 +130,31 @@ async function startAsesorCapture(from, cfg, ultimoMensaje) {
 
 async function sendMainMenu(from, cfg) {
   await sendText({ to: from, body: CONSULTANT_INTRO, cfg });
-  await sendButtons({
+  await sendList({
     to: from,
-    body: 'Si prefieres, toca una opción y seguimos por ahí 👇',
-    buttons: [
-      { id: 'obj_ahorro', title: 'Bajar la factura' },
-      { id: 'obj_respaldo', title: 'Respaldo / cortes' },
-      { id: 'menu_mas', title: 'Otras opciones' },
+    body: 'Si prefieres, elige una opción y seguimos por ahí 👇',
+    buttonText: 'Ver opciones',
+    sections: [
+      {
+        title: '¿Qué necesitas?',
+        rows: [
+          {
+            id: 'obj_ahorro',
+            title: 'Dejar de pagar energía',
+            description: 'Quiero dejar de pagar energía',
+          },
+          {
+            id: 'obj_respaldo',
+            title: 'Se me va la energía',
+            description: 'Cortes y respaldo en casa',
+          },
+          {
+            id: 'menu_mas',
+            title: 'Otras opciones',
+            description: 'Tienda, cotizar o hablar con asesor',
+          },
+        ],
+      },
     ],
     cfg,
   });
@@ -303,8 +321,8 @@ async function sendLearnMenu(from, cfg) {
       {
         title: 'Orientación',
         rows: [
-          { id: 'tip_ahorro_factura', title: 'Bajar la factura', description: 'Cómo funciona' },
-          { id: 'tip_backup', title: 'Cuando hay cortes', description: 'Respaldo real' },
+          { id: 'tip_ahorro_factura', title: 'Dejar de pagar energía', description: 'Cómo funciona' },
+          { id: 'tip_backup', title: 'Se me va la energía', description: 'Respaldo real' },
           { id: 'tip_offgrid', title: 'Finca / sin red', description: 'Sistema aislado' },
           { id: 'tip_paneles', title: 'Paneles', description: 'Qué tener en cuenta' },
           { id: 'tip_inversores', title: 'Inversores', description: 'Cuál te conviene' },
@@ -582,8 +600,8 @@ export async function handleIncomingMessage(msg) {
       to: from,
       body: '¿Por dónde empezamos?',
       buttons: [
-        { id: 'obj_ahorro', title: 'Bajar la factura' },
-        { id: 'obj_respaldo', title: 'Cortes de luz' },
+        { id: 'obj_ahorro', title: 'Dejar de pagar luz' },
+        { id: 'obj_respaldo', title: 'Se me va la energía' },
         { id: 'menu_mas', title: 'Otras opciones' },
       ],
       cfg,
