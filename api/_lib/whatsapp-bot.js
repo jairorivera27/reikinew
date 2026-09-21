@@ -51,6 +51,75 @@ function isGreeting(n) {
   );
 }
 
+/** Resumen completo para CallMeBot / logs */
+function formatLeadSummary(from, data = {}, titulo = 'LEAD COMERCIAL — WhatsApp') {
+  const d = data || {};
+  return (
+    `☀️ *${titulo}*\n\n` +
+    `WhatsApp cliente: +${from}\n` +
+    `Nombre: ${d.nombre || '—'}\n` +
+    `Ciudad: ${d.ciudad || '—'}\n` +
+    `Objetivo: ${d.objetivo || '—'}\n` +
+    `Tipo: ${d.tipo || '—'}\n` +
+    `Factura/consumo: ${d.consumo || '—'}\n` +
+    `Urgencia: ${d.urgencia || '—'}\n` +
+    `Necesidad: ${d.necesidad || '—'}\n` +
+    `Último mensaje: ${d.ultimoMensaje || '—'}`
+  );
+}
+
+async function handoffToHuman(from, cfg, opts = {}) {
+  const s = session(from);
+  if (opts.necesidad) s.data.necesidad = opts.necesidad;
+  if (opts.ultimoMensaje) s.data.ultimoMensaje = opts.ultimoMensaje;
+
+  const titulo = opts.titulo || 'Cliente pide asesor';
+  await notifyOwner(formatLeadSummary(from, s.data, titulo), cfg);
+  markHuman(from);
+
+  const name = firstName(s.data.nombre);
+  await sendText({
+    to: from,
+    body:
+      (name ? `Listo, *${name}* 🙂 ` : 'Listo 🙂 ') +
+      'En breve alguien del equipo te escribe por este mismo chat.\n\n' +
+      'Horario aproximado: Lun–Sáb 8:00–18:00 (Medellín).\n\n' +
+      'Si quieres volver conmigo después, escribe *hola*.',
+    cfg,
+  });
+  s.step = 'human';
+}
+
+/** Si pide asesor sin datos, captura 2 datos rápidos antes de avisar */
+async function startAsesorCapture(from, cfg, ultimoMensaje) {
+  const s = session(from);
+  if (ultimoMensaje) s.data.ultimoMensaje = String(ultimoMensaje).slice(0, 120);
+
+  if (!s.data.nombre) {
+    s.step = 'asesor_nombre';
+    await sendText({
+      to: from,
+      body:
+        'Claro, te paso con un asesor.\n\n' +
+        'Para que te atiendan bien, ¿me dices tu *nombre*?',
+      cfg,
+    });
+    return;
+  }
+  if (!s.data.ciudad || !s.data.necesidad) {
+    s.step = 'asesor_necesidad';
+    await sendText({
+      to: from,
+      body:
+        (firstName(s.data.nombre) ? `Gracias, *${firstName(s.data.nombre)}*. ` : '') +
+        '¿En qué *ciudad* estás y qué necesitas? (ej. “Medellín, bajar la factura” o “Cali, paneles para finca”)',
+      cfg,
+    });
+    return;
+  }
+  await handoffToHuman(from, cfg, { titulo: 'Cliente pide asesor' });
+}
+
 async function sendMainMenu(from, cfg) {
   await sendText({ to: from, body: CONSULTANT_INTRO, cfg });
   await sendButtons({
@@ -155,17 +224,8 @@ async function finishDiscovery(from, cfg) {
   const s = session(from);
   const d = s.data;
   const name = firstName(d.nombre);
-  const summary =
-    `☀️ *LEAD COMERCIAL — WhatsApp*\n\n` +
-    `Objetivo: ${d.objetivo || '—'}\n` +
-    `Nombre: ${d.nombre || '—'}\n` +
-    `WhatsApp: +${from}\n` +
-    `Ciudad: ${d.ciudad || '—'}\n` +
-    `Tipo: ${d.tipo || '—'}\n` +
-    `Factura/consumo: ${d.consumo || '—'}\n` +
-    `Urgencia: ${d.urgencia || '—'}`;
 
-  await notifyOwner(summary, cfg);
+  await notifyOwner(formatLeadSummary(from, d, 'LEAD COTIZACIÓN — WhatsApp'), cfg);
   markHuman(from);
 
   const tip =
@@ -332,24 +392,48 @@ export async function handleIncomingMessage(msg) {
   }
 
   if (id === 'menu_asesor' || n === 'asesor' || n === 'humano' || n === 'persona') {
-    markHuman(from);
-    await notifyOwner(
-      `👤 *Cliente pide asesor*\nWhatsApp: +${from}\nMensaje: ${text || '(pidió hablar con alguien)'}`,
-      cfg
-    );
+    await startAsesorCapture(from, cfg, text || '(pidió hablar con alguien)');
+    return;
+  }
+
+  const s = session(from);
+
+  if (s.step === 'asesor_nombre') {
+    if (text.length < 2) {
+      await sendText({ to: from, body: '¿Me dices tu nombre, por favor?', cfg });
+      return;
+    }
+    s.data.nombre = text.slice(0, 80);
+    s.step = 'asesor_necesidad';
     await sendText({
       to: from,
-      body:
-        'Listo 🙂 En breve alguien del equipo te escribe por este mismo chat.\n\n' +
-        'Horario aproximado: Lun–Sáb 8:00–18:00 (Medellín).\n\n' +
-        'Si puedes, déjame en un mensajito tu *ciudad* y qué necesitas — así te atienden más rápido.\n\n' +
-        'Si quieres volver conmigo después, escribe *hola*.',
+      body: `Gracias, *${firstName(s.data.nombre)}*. ¿En qué *ciudad* estás y qué necesitas?`,
       cfg,
     });
     return;
   }
 
-  const s = session(from);
+  if (s.step === 'asesor_necesidad') {
+    if (text.length < 3) {
+      await sendText({
+        to: from,
+        body: 'Cuéntame ciudad + qué necesitas (ej. “Bogotá, cotizar paneles para casa”).',
+        cfg,
+      });
+      return;
+    }
+    s.data.necesidad = text.slice(0, 200);
+    // Si escribió "Medellín, bajar factura" intenta sacar ciudad
+    if (!s.data.ciudad) {
+      const m = text.match(/^([^,]+),/);
+      if (m) s.data.ciudad = m[1].trim().slice(0, 80);
+    }
+    await handoffToHuman(from, cfg, {
+      titulo: 'Cliente pide asesor',
+      ultimoMensaje: text,
+    });
+    return;
+  }
 
   if (s.step === 'disc_nombre') {
     if (text.length < 2) {
