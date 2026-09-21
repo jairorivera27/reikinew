@@ -132,7 +132,7 @@ async function sendMainMenu(from, cfg) {
   await sendText({ to: from, body: CONSULTANT_INTRO, cfg });
   await sendButtons({
     to: from,
-    body: 'Elige la opción que más se acerque a lo que buscas:',
+    body: 'Si prefieres, toca una opción y seguimos por ahí 👇',
     buttons: [
       { id: 'obj_ahorro', title: 'Bajar la factura' },
       { id: 'obj_respaldo', title: 'Respaldo / cortes' },

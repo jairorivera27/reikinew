@@ -127,6 +127,6 @@ export function matchSolarTip(normalizedText) {
 }
 
 export const CONSULTANT_INTRO =
-  '¡Hola! ☀️ Bienvenido a *Reiki Energía Solar*.\n\n' +
-  'Con gusto te ayudo: primero entendemos qué necesitas y después te orientamos con una cotización o los equipos adecuados.\n\n' +
-  '¿En qué te puedo colaborar hoy?';
+  '¡Hola! ☀️ Qué gusto saludarte.\n\n' +
+  'Soy el asistente de *Reiki Energía Solar*. Estoy aquí para ayudarte con calma: entender qué necesitas y orientarte hacia la mejor opción (ahorro, respaldo o equipos).\n\n' +
+  'Cuéntame, ¿en qué te puedo echar una mano hoy?';
