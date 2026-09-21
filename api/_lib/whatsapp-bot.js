@@ -102,13 +102,19 @@ async function startAsesorCapture(from, cfg, ultimoMensaje) {
   const s = session(from);
   if (ultimoMensaje) s.data.ultimoMensaje = String(ultimoMensaje).slice(0, 120);
 
+  // Aviso inmediato (aunque falten datos) para que el asesor no se pierda el lead
+  await notifyOwner(
+    `ALERTA: cliente pidió asesor\nWhatsApp: +${from}\nNombre: ${s.data.nombre || 'pendiente'}\nCiudad: ${s.data.ciudad || 'pendiente'}\nNota: capturando datos…`,
+    cfg
+  );
+
   if (!s.data.nombre) {
     s.step = 'asesor_nombre';
     await sendText({
       to: from,
       body:
-        'Con gusto te paso con un asesor.\n\n' +
-        'Para atenderte mejor, ¿me compartes tu *nombre*?',
+        'Con gusto te conecto con un asesor.\n\n' +
+        'Para que te atiendan bien, ¿me compartes tu *nombre*?',
       cfg,
     });
     return;

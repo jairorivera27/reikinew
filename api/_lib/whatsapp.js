@@ -93,16 +93,33 @@ export async function sendList({ to, body, buttonText, sections, cfg = getWhatsA
 
 /** Aviso al dueño vía CallMeBot (gratis) o log */
 export async function notifyOwner(message, cfg = getWhatsAppConfig()) {
+  const plain = String(message || '')
+    .replace(/\*/g, '')
+    .replace(/_/g, '')
+    .replace(/\n{3,}/g, '\n\n')
+    .trim()
+    .slice(0, 1500);
+
+  console.log('[whatsapp] LEAD PARA ASESOR\n', plain);
+
   if (cfg.callmebotKey && cfg.ownerPhone) {
-    const url = `https://api.callmebot.com/whatsapp.php?phone=${cfg.ownerPhone}&text=${encodeURIComponent(message)}&apikey=${encodeURIComponent(cfg.callmebotKey)}`;
+    const url = `https://api.callmebot.com/whatsapp.php?phone=${cfg.ownerPhone}&text=${encodeURIComponent(plain)}&apikey=${encodeURIComponent(cfg.callmebotKey)}`;
     try {
       const res = await fetch(url, { method: 'GET', headers: { 'User-Agent': 'ReikiWhatsAppBot/1.0' } });
       const text = await res.text();
-      return { ok: res.ok, method: 'callmebot', detail: text.slice(0, 120) };
+      const ok = res.ok || /queued|Message to/i.test(text);
+      const paused = /Paused|resume/i.test(text);
+      console.log('[whatsapp] CallMeBot', { status: res.status, ok, paused, detail: text.slice(0, 200) });
+      if (paused) {
+        console.error('[whatsapp] CallMeBot PAUSADO — el dueño debe enviar "resume" al bot de CallMeBot');
+      }
+      return { ok: ok && !paused, method: 'callmebot', detail: text.slice(0, 200), paused };
     } catch (err) {
       console.error('[whatsapp] CallMeBot error', err);
+      return { ok: false, method: 'callmebot', error: String(err?.message || err) };
     }
   }
-  console.log('[whatsapp] LEAD PARA ASESOR\n', message);
+
+  console.warn('[whatsapp] CALLMEBOT_API_KEY o WHATSAPP_OWNER_PHONE faltan — lead solo en logs');
   return { ok: true, method: 'log' };
 }
