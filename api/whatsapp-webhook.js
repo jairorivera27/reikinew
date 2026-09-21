@@ -12,6 +12,8 @@
  *   WHATSAPP_OWNER_PHONE         (default 573004052638)
  *   CALLMEBOT_API_KEY            (aviso gratis al dueño cuando hay lead)
  *   WHATSAPP_SITE_URL            (default https://reikisolar.com.co)
+ *   OPENAI_API_KEY               (opcional: conversación natural + tools)
+ *   OPENAI_MODEL                 (default gpt-4o-mini)
  */
 import crypto from 'node:crypto';
 import { getWhatsAppConfig, isWhatsAppConfigured } from './_lib/whatsapp.js';

@@ -5,6 +5,12 @@
   "framework": null,
   "cleanUrls": true,
   "trailingSlash": false,
+  "functions": {
+    "api/whatsapp-webhook.js": {
+      "maxDuration": 60,
+      "includeFiles": "data/whatsapp-product-index.json"
+    }
+  },
   "redirects": [
     {
       "source": "/servicios/energia-solar",

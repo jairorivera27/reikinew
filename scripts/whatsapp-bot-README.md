@@ -1,69 +1,65 @@
 # Bot WhatsApp (Cloud API Meta) — Reiki Energía Solar
 
-Asistente gratis (cupo Meta + tu Vercel): saluda, responde FAQ, captura leads de proyecto y te avisa para atender personalizado.
+Asesor comercial en WhatsApp: tono natural, cotización, tienda y handoff a humano.
 
-**Número de producción:** `+57 300 405 2638` (`573004052638`)  
-**Phone number ID:** `1372559729264279`  
+**Número:** `+57 300 405 2638` · **Phone number ID:** `1372559729264279`  
 Webhook: `https://reikisolar.com.co/api/whatsapp-webhook`
 
-## Checklist Meta (hazlo una vez)
+## Modos
 
-1. [developers.facebook.com](https://developers.facebook.com/) → app Business → caso de uso **WhatsApp**.
-2. **Paso 1** (prueba) o **Paso 2** (producción): token + Phone number ID.
-3. En producción: registrar el número real (`300…`), activar **Suscribir webhooks**, callback:
-   - URL: `https://reikisolar.com.co/api/whatsapp-webhook`
-   - Verify token: el mismo de `WHATSAPP_VERIFY_TOKEN` (ej. `reiki-wa-2026`)
-   - Campo: `messages`
-4. App → **Configuración** → **Básico** → **App secret** → `WHATSAPP_APP_SECRET`
-5. Cargar variables en Vercel (Production + Preview) y **redeploy**.
-6. Escribe `hola` al `+57 300 405 2638` desde otro celular → menú del bot.
+1. **Con OpenAI (recomendado)** — conversación natural (GPT), tools:
+   - `buscar_producto_tienda` → catálogo real (`data/whatsapp-product-index.json`)
+   - `recomendar_proyecto_solar` → orientación de sistema
+   - `escalar_a_humano` → CallMeBot a tu celular + pausa IA
+2. **Sin OpenAI** — flujo por reglas (menús + captura nombre/ciudad) como respaldo.
 
-### Aviso de leads al celular (gratis)
-
-Opcional: [CallMeBot](https://www.callmebot.com/blog/free-api-whatsapp-messages/)  
-Guarda `CALLMEBOT_API_KEY` y `WHATSAPP_OWNER_PHONE=573004052638`.
-
-## Variables (Vercel + `.env` local)
+## Variables (Vercel Production + Preview)
 
 ```env
 WHATSAPP_VERIFY_TOKEN=reiki-wa-2026
-WHATSAPP_ACCESS_TOKEN=token_de_meta
+WHATSAPP_ACCESS_TOKEN=
 WHATSAPP_PHONE_NUMBER_ID=1372559729264279
-WHATSAPP_APP_SECRET=app_secret_meta
-WHATSAPP_OWNER_PHONE=573004052638
+WHATSAPP_APP_SECRET=
+WHATSAPP_OWNER_PHONE=573245737413
 WHATSAPP_SITE_URL=https://reikisolar.com.co
-CALLMEBOT_API_KEY=opcional
+CALLMEBOT_API_KEY=
+
+OPENAI_API_KEY=
+OPENAI_MODEL=gpt-4o-mini
 ```
 
-El teléfono público del sitio vive en `src/config/contact.ts` (`CONTACT_PHONE_*` / `CONTACT_WHATSAPP_URL`).
+Plantilla: [`.env.whatsapp.example`](../.env.whatsapp.example)
 
-## Qué hace el bot (asesor comercial)
+Tras cambiar env: **Redeploy**.
 
-Prioridad: *asesorar* → calificar necesidad → cerrar a cotización / tienda / humano.
+## CallMeBot (aviso de leads)
 
-| Entrada | Acción |
-|---|---|
-| Hola / menú | Menú consultivo: ahorro · respaldo · finca · cotizar · tienda · aprender · asesor |
-| Objetivo (ahorro/respaldo/finca) | Descubrimiento 5 preguntas + lead al dueño |
-| Texto libre (panel, batería, factura…) | Tip experto desde `api/_lib/whatsapp-solar-kb.js` + CTA de venta |
-| Cotizar / proyecto | Mismo flujo de descubrimiento |
-| Tienda | Guía + link `/tienda` (sin forzar si aún no está claro el sistema) |
-| Asesor | Handoff humano ~12 h |
-| `menu` | Reactiva el bot |
-
-Para “reentrenar”: añade keywords/respuestas en `whatsapp-solar-kb.js` y redespliega. Los intents no reconocidos quedan en logs Vercel (`unmatched intent`).
+1. Activa en tu celular personal con **+34 623 78 95 80**
+2. Si está pausado: envía `resume` al número que indique CallMeBot
+3. `WHATSAPP_OWNER_PHONE` = tu personal (ej. `573245737413`), no el 300 de la empresa
 
 ## Archivos
 
 | Archivo | Rol |
 |---|---|
-| `api/whatsapp-webhook.js` | Webhook GET/POST |
-| `api/_lib/whatsapp.js` | Envío Cloud API + CallMeBot |
-| `api/_lib/whatsapp-bot.js` | Flujo comercial consultivo |
-| `api/_lib/whatsapp-solar-kb.js` | Base de conocimiento solar (ampliable) |
-| `scripts/lib/whatsapp-api-dev-plugin.mjs` | Local `astro dev` |
+| `api/whatsapp-webhook.js` | Webhook Meta |
+| `api/_lib/whatsapp.js` | Envío Graph + CallMeBot |
+| `api/_lib/whatsapp-bot.js` | Orquestación (IA + reglas) |
+| `api/_lib/whatsapp-ai.js` | OpenAI + function calling |
+| `api/_lib/whatsapp-catalog.js` | Búsqueda / recomendación |
+| `api/_lib/whatsapp-session.js` | Sesión anti-cruces nombre/ciudad |
+| `api/_lib/whatsapp-solar-kb.js` | Tips (fallback sin IA) |
+| `data/whatsapp-product-index.json` | Índice tienda |
+| `scripts/build-whatsapp-product-index.mjs` | Regenerar índice |
 
-## Notas
+Regenerar índice tras cambios grandes de catálogo:
 
-- El token temporal de Meta caduca; conviene System User (token permanente).
-- No subas tokens a git (`.env` está en `.gitignore`).
+```bash
+node scripts/build-whatsapp-product-index.mjs
+```
+
+## Prueba
+
+1. `hola` al 300… → saludo natural (con IA) o menú (sin IA)
+2. Pedir un panel/inversor → link real de `/tienda/...`
+3. Pedir asesor → mensaje a tu celular vía CallMeBot

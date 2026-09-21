@@ -12,6 +12,7 @@ import {
   isLikelyPersonName,
   extractPersonName,
 } from './whatsapp-session.js';
+import { clearAiPause, handleAiMessage, isAiPaused, isOpenAiConfigured } from './whatsapp-ai.js';
 
 const HUMAN_MS = 12 * 60 * 60 * 1000;
 const DISC_STEPS = new Set([
@@ -22,6 +23,64 @@ const DISC_STEPS = new Set([
   'disc_urgencia',
   'asesor_datos',
 ]);
+
+/** Mapea botones/listas a intención en lenguaje natural para la IA */
+function intentFromId(id) {
+  const map = {
+    obj_ahorro: 'Quiero dejar de pagar tanta energía / bajar mi factura de la luz',
+    obj_respaldo: 'Se me va la energía, necesito respaldo por cortes de luz',
+    obj_finca: 'Necesito un sistema solar para finca o un sitio sin red',
+    menu_proyecto: 'Quiero cotizar un proyecto de instalación solar llave en mano',
+    menu_tienda: 'Quiero ver o comprar equipos en la tienda online',
+    menu_aprender: 'Explícame opciones de energía solar de forma sencilla',
+    menu_asesor: 'Quiero hablar con un asesor humano de Reiki',
+    menu_mas: 'Muéstrame más opciones de ayuda',
+    menu_root: 'Hola, quiero empezar de nuevo',
+    tip_ahorro_factura: 'Explícame cómo dejar de pagar tanta energía con paneles solares',
+    tip_backup: 'Explícame qué hacer cuando se me va la energía',
+    tip_offgrid: 'Explícame sistemas para finca o sin red',
+    tip_paneles: 'Quiero información sobre paneles solares',
+    tip_inversores: 'Quiero información sobre inversores',
+    tip_baterias: 'Quiero información sobre baterías',
+    tip_precios: 'Explícame cómo cotizan los precios',
+    tipo_hogar: 'El proyecto es para casa u hogar',
+    tipo_comercio: 'El proyecto es para un negocio o comercio',
+    tipo_industria: 'El proyecto es para finca o industria',
+    urg_ya: 'Quiero avanzar lo antes posible',
+    urg_mes: 'Quiero avanzar este mes',
+    urg_explorar: 'Todavía estoy explorando opciones',
+  };
+  return map[id] || '';
+}
+
+async function replyWithAi(from, cfg, userText, { withQuickMenu = false } = {}) {
+  try {
+    const result = await handleAiMessage(from, userText);
+    if (result.paused) {
+      const s = getSession(from);
+      markHuman(from, s);
+    }
+    if (result.text) {
+      await sendText({ to: from, body: result.text, cfg });
+    }
+    if (withQuickMenu && !result.paused) {
+      await sendButtons({
+        to: from,
+        body: 'También puedes tocar una opción rápida:',
+        buttons: [
+          { id: 'obj_ahorro', title: 'Dejar de pagar luz' },
+          { id: 'obj_respaldo', title: 'Se me va la energía' },
+          { id: 'menu_asesor', title: 'Hablar con asesor' },
+        ],
+        cfg,
+      });
+    }
+    return true;
+  } catch (err) {
+    console.error('[whatsapp-bot] OpenAI fallback a reglas:', err?.message || err);
+    return false;
+  }
+}
 
 function firstName(nombre) {
   return String(nombre || '').trim().split(/\s+/)[0] || '';
@@ -431,21 +490,32 @@ export async function handleIncomingMessage(msg) {
   const id = msg.buttonId || msg.listId || '';
   const n = normalizeText(text);
   const s = getSession(from);
+  const useAi = isOpenAiConfigured();
 
   if (id === 'menu_root' || isGreeting(n) || n === 'menu') {
     resetSession(from);
+    clearAiPause(from);
+    if (useAi) {
+      const ok = await replyWithAi(from, cfg, text || 'Hola', { withQuickMenu: true });
+      if (ok) return;
+    }
     await sendMainMenu(from, cfg);
     return;
   }
 
-  if (s.step === 'human' && s.humanUntil && Date.now() < s.humanUntil) return;
+  if ((s.step === 'human' && s.humanUntil && Date.now() < s.humanUntil) || isAiPaused(from)) {
+    return;
+  }
   if (s.step === 'human') {
     s.step = 'idle';
     delete s.humanUntil;
     saveSession(from, s);
   }
 
-  if (await handleDiscoveryStep(from, text, id, cfg)) return;
+  // Si hay captura estructurada a medias, terminarla con reglas (anti-bucle)
+  if (DISC_STEPS.has(s.step)) {
+    if (await handleDiscoveryStep(from, text, id, cfg)) return;
+  }
 
   if (id.startsWith('tipo_')) {
     s.step = 'disc_tipo';
@@ -458,6 +528,18 @@ export async function handleIncomingMessage(msg) {
     if (await handleDiscoveryStep(from, text, id, cfg)) return;
   }
 
+  // Modo IA: conversación natural + tools (tienda, cotizar, humano)
+  if (useAi) {
+    const userText = intentFromId(id) || text;
+    if (userText) {
+      const ok = await replyWithAi(from, cfg, userText, {
+        withQuickMenu: id === 'menu_mas',
+      });
+      if (ok) return;
+    }
+  }
+
+  // ——— Fallback por reglas (sin OPENAI_API_KEY o si falló OpenAI) ———
   if (id === 'menu_mas') {
     await sendMoreOptions(from, cfg);
     return;
