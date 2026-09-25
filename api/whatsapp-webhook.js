@@ -8,17 +8,16 @@
  *   WHATSAPP_VERIFY_TOKEN
  *   WHATSAPP_ACCESS_TOKEN
  *   WHATSAPP_PHONE_NUMBER_ID
- *   WHATSAPP_APP_SECRET          (opcional pero recomendado: valida X-Hub-Signature-256)
- *   PERSONAL_PHONE_NUMBER        (celular personal para leads; fallback WHATSAPP_OWNER_PHONE)
- *   WHATSAPP_OWNER_PHONE         (alias / fallback del personal)
- *   CALLMEBOT_API_KEY            (aviso gratis al dueño cuando hay lead)
- *   WHATSAPP_SITE_URL            (default https://reikisolar.com.co)
- *   OPENAI_API_KEY               (opcional: conversación natural + tools)
- *   OPENAI_MODEL                 (default gpt-4o-mini)
+ *   WHATSAPP_APP_SECRET
+ *   PERSONAL_PHONE_NUMBER / CALLMEBOT_API_KEY
+ *   ANTHROPIC_API_KEY / ANTHROPIC_MODEL
+ *   KV_REST_API_URL + KV_REST_API_TOKEN  (escritura — sesiones, locks, idempotencia)
  */
 import crypto from 'node:crypto';
 import { getWhatsAppConfig, isWhatsAppConfigured, sendText } from './_lib/whatsapp.js';
 import { extractInboundMessages, handleIncomingMessage } from './_lib/whatsapp-bot.js';
+import { claimMessageId, withUserLock } from './_lib/whatsapp-idem.js';
+import { isRedisConfigured } from './_lib/whatsapp-redis.js';
 
 function readRawBody(req) {
   return new Promise((resolve, reject) => {
@@ -156,6 +155,12 @@ export default async function handler(req, res) {
       return res.end(JSON.stringify({ ok: true, skipped: 'not_configured' }));
     }
 
+    if (!isRedisConfigured()) {
+      console.error(
+        '[whatsapp-webhook] KV_REST_API_URL/TOKEN ausentes — sesiones e idempotencia no son confiables en Vercel.'
+      );
+    }
+
     const diag = summarizeWebhook(body);
     const messages = extractInboundMessages(body);
 
@@ -169,6 +174,7 @@ export default async function handler(req, res) {
           type: m.rawType,
           text: String(m.text || '').slice(0, 40),
           id: m.buttonId || m.listId || '',
+          messageId: m.messageId || null,
         })),
       })
     );
@@ -183,13 +189,18 @@ export default async function handler(req, res) {
 
     for (const msg of messages) {
       try {
-        await handleIncomingMessage(msg);
+        if (msg.messageId && !(await claimMessageId(msg.messageId))) {
+          continue;
+        }
+        await withUserLock(msg.from, async () => {
+          await handleIncomingMessage(msg);
+        });
       } catch (err) {
         console.error('[whatsapp-webhook] Error manejando mensaje', err?.message || err, err?.data || '');
         try {
           await sendText({
             to: msg.from,
-            body: '¡Hola! ☀️ Te saluda Reiki Energía Solar. Escribe *hola* para ver el menú.',
+            body: '¡Hola! ☀️ Te saluda Reiki Energía Solar. Escribe *menú* para ver opciones.',
             cfg,
           });
         } catch (err2) {

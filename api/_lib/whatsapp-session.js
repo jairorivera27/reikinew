@@ -1,16 +1,27 @@
 /**
- * Sesión WhatsApp con persistencia best-effort en /tmp (misma instancia warm)
- * + validación nombre/ciudad para evitar cruces.
+ * Sesión WhatsApp en Upstash Redis (compartida entre instancias Vercel).
+ * TTL 6 h. Sin /tmp — en serverless cada instancia tenía estado distinto.
  */
-import fs from 'node:fs';
-import path from 'node:path';
+import { getRedis, isRedisConfigured, waKey } from './whatsapp-redis.js';
 
-const STORE = path.join('/tmp', 'reiki-wa-sessions.json');
-const TTL_MS = 6 * 60 * 60 * 1000;
+const TTL_SEC = 6 * 60 * 60;
 
-/** @type {Map<string, { step: string, data: Record<string, string>, humanUntil?: number, updatedAt: number }>} */
-const mem = globalThis.__reikiWaSessionsV2 || new Map();
-globalThis.__reikiWaSessionsV2 = mem;
+/** Fallback en memoria SOLO si Redis no está configurado (dev local). */
+const mem = globalThis.__reikiWaSessionsV3 || new Map();
+globalThis.__reikiWaSessionsV3 = mem;
+
+let redisMissingLogged = false;
+
+function warnNoRedis(op) {
+  if (!redisMissingLogged) {
+    redisMissingLogged = true;
+    console.error(
+      `[reiki-session] Redis NO configurado (${op}). ` +
+        `En Vercel hace falta KV_REST_API_URL + KV_REST_API_TOKEN (escritura). ` +
+        `Sin Redis las sesiones se pierden entre instancias y se cruzan nombre/ciudad.`
+    );
+  }
+}
 
 const CITY_HINTS = new Set(
   [
@@ -54,69 +65,102 @@ const CITY_HINTS = new Set(
   )
 );
 
-function loadDisk() {
-  try {
-    if (!fs.existsSync(STORE)) return;
-    const raw = JSON.parse(fs.readFileSync(STORE, 'utf8'));
-    const now = Date.now();
-    for (const [k, v] of Object.entries(raw || {})) {
-      if (!v || now - (v.updatedAt || 0) > TTL_MS) continue;
-      if (!mem.has(k)) mem.set(k, v);
-    }
-  } catch {
-    /* ignore */
-  }
-}
-
-function saveDisk() {
-  try {
-    const obj = Object.fromEntries(mem.entries());
-    fs.writeFileSync(STORE, JSON.stringify(obj));
-  } catch {
-    /* ignore on read-only */
-  }
-}
-
-loadDisk();
-
-export function getSession(from) {
-  const id = sessionKey(from);
-  loadDisk();
-  let s = mem.get(id);
-  if (!s || Date.now() - (s.updatedAt || 0) > TTL_MS) {
-    s = { step: 'idle', data: {}, updatedAt: Date.now() };
-    mem.set(id, s);
-  }
-  return s;
-}
-
-export function saveSession(from, s) {
-  const id = sessionKey(from);
-  s.updatedAt = Date.now();
-  mem.set(id, s);
-  saveDisk();
-}
-
-export function resetSession(from) {
-  const id = sessionKey(from);
-  const s = { step: 'idle', data: {}, updatedAt: Date.now() };
-  mem.set(id, s);
-  saveDisk();
-  return s;
-}
-
 /** Clave de sesión: teléfono o BSUID completo */
-function sessionKey(from) {
+export function sessionKey(from) {
   const raw = String(from || '').trim();
   if (/^[A-Z]{2}(\.ENT)?\.[A-Za-z0-9]+$/.test(raw)) return raw;
   return raw.replace(/\D/g, '') || raw;
+}
+
+function emptySession() {
+  return { step: 'idle', data: {}, updatedAt: Date.now() };
+}
+
+/**
+ * @param {string} from
+ * @returns {Promise<{ step: string, data: Record<string, string>, humanUntil?: number, updatedAt: number, msgCount?: number }>}
+ */
+export async function getSession(from) {
+  const id = sessionKey(from);
+  const redis = getRedis();
+  if (!redis) {
+    warnNoRedis('getSession');
+    let s = mem.get(id);
+    if (!s || Date.now() - (s.updatedAt || 0) > TTL_SEC * 1000) {
+      s = emptySession();
+      mem.set(id, s);
+    }
+    return s;
+  }
+  try {
+    const raw = await redis.get(waKey('session', id));
+    if (raw && typeof raw === 'object' && raw.step) {
+      mem.set(id, raw);
+      return raw;
+    }
+    if (typeof raw === 'string') {
+      const parsed = JSON.parse(raw);
+      if (parsed && parsed.step) {
+        mem.set(id, parsed);
+        return parsed;
+      }
+    }
+  } catch (err) {
+    console.error('[reiki-session] getSession redis error', err?.message || err);
+  }
+  const s = emptySession();
+  mem.set(id, s);
+  return s;
+}
+
+/**
+ * @param {string} from
+ * @param {object} s
+ */
+export async function saveSession(from, s) {
+  const id = sessionKey(from);
+  s.updatedAt = Date.now();
+  mem.set(id, s);
+  const redis = getRedis();
+  if (!redis) {
+    warnNoRedis('saveSession');
+    return;
+  }
+  try {
+    await redis.set(waKey('session', id), s, { ex: TTL_SEC });
+  } catch (err) {
+    console.error('[reiki-session] saveSession redis error', err?.message || err);
+  }
+}
+
+/**
+ * @param {string} from
+ */
+export async function resetSession(from) {
+  const id = sessionKey(from);
+  const s = emptySession();
+  mem.set(id, s);
+  const redis = getRedis();
+  if (!redis) {
+    warnNoRedis('resetSession');
+    return s;
+  }
+  try {
+    await redis.set(waKey('session', id), s, { ex: TTL_SEC });
+  } catch (err) {
+    console.error('[reiki-session] resetSession redis error', err?.message || err);
+  }
+  return s;
+}
+
+export function isRedisSessionReady() {
+  return isRedisConfigured();
 }
 
 export function normalizeText(text) {
   return String(text || '')
     .normalize('NFD')
     .replace(/\p{M}/gu, '')
-    // iOS/WhatsApp a veces mete BOM, zero-width, RTL marks
     .replace(/[\u200B-\u200D\uFEFF\u2060\u00A0]/g, '')
     .replace(/[\u202A-\u202E\u2066-\u2069]/g, '')
     .trim()
@@ -127,7 +171,6 @@ export function isLikelyCity(text) {
   const n = normalizeText(text);
   if (!n || n.length < 3) return false;
   if (CITY_HINTS.has(n)) return true;
-  // "Medellín Colombia", "cerca a Medellín"
   for (const c of CITY_HINTS) {
     if (n === c || n.startsWith(c + ' ') || n.includes(' ' + c)) return true;
   }
@@ -142,7 +185,6 @@ export function isLikelyPersonName(text) {
   if (isLikelyCity(t)) return false;
   const parts = t.split(/\s+/).filter(Boolean);
   if (parts.length < 1 || parts.length > 3) return false;
-  // Evitar frases
   if (/^(me llamo|soy|mi nombre|hola|buenas)\b/i.test(t)) {
     const rest = t.replace(/^(me llamo|soy|mi nombre es|mi nombre)\s+/i, '').trim();
     return isLikelyPersonName(rest) || (rest.length >= 2 && rest.split(/\s+/).length <= 3);

@@ -22,7 +22,7 @@ export const SOLAR_TIPS = [
     title: 'Se me va la energía',
     body:
       'Entiendo perfecto. Si *se te va la energía* y quieres respaldo, hay que ver qué deseas mantener prendido (nevera, wifi, luces, bomba…) y por cuánto tiempo.\n\n' +
-      'Con eso armamos un *híbrido con batería* a tu medida. Te puedo dejar el caso listo para que un asesor te pase opciones claras, sin rodeos.',
+      'Con eso armamos un *híbrido con batería* a tu medida. Te puedo dejar el caso listo para que nuestro *ingeniero de diseño fotovoltaico* te oriente con opciones claras, sin costo.',
     cta: 'proyecto',
   },
   {
@@ -68,7 +68,7 @@ export const SOLAR_TIPS = [
     title: 'Bombeo solar',
     body:
       'Para bombeo solar miramos caudal, altura y si necesitas agua solo de día o también de noche. A veces con tanque elevado te ahorras batería.\n\n' +
-      'Dime ciudad y uso (casa, riego, ganado) y con gusto te pasamos con un asesor para cotizarte algo que funcione en campo.',
+      'Dime ciudad y uso (casa, riego, ganado) y con gusto te pasamos con nuestro *ingeniero de diseño fotovoltaico* para cotizarte algo que funcione en campo (asesoramiento sin costo).',
     cta: 'proyecto',
   },
   {
@@ -87,7 +87,7 @@ export const SOLAR_TIPS = [
     title: 'Pagos y cuotas',
     body:
       'En la tienda online puedes pagar con *Wompi* (tarjeta, PSE, Nequi, Bancolombia) y en muchos casos *Addi* a cuotas.\n\n' +
-      'Si es un proyecto de instalación, el asesor te explica alcance y formas de pago. ¿Prefieres ver la tienda o que te coticiemos el sistema completo?',
+      'Si es un proyecto de instalación, el *ingeniero de diseño fotovoltaico* te explica alcance y formas de pago, sin costo. ¿Prefieres ver la tienda o que te coticiemos el sistema completo?',
     cta: 'tienda',
   },
   {
@@ -127,6 +127,5 @@ export function matchSolarTip(normalizedText) {
 }
 
 export const CONSULTANT_INTRO =
-  '¡Hola! ☀️ Qué gusto saludarte.\n\n' +
-  'Soy el asistente de *Reiki Energía Solar*. Estoy aquí para ayudarte con calma: entender qué necesitas y orientarte hacia la mejor opción (ahorro, respaldo o equipos).\n\n' +
-  'Cuéntame, ¿en qué te puedo echar una mano hoy?';
+  '¡Hola! ☀️ Te saluda el equipo de Reiki Energía Solar. Nos alegra mucho que quieras dar el paso hacia la energía limpia.\n\n' +
+  '¿Qué tienes en mente para hoy? ¿Te gustaría saber cuánto podrías bajar tu factura con un proyecto solar, o buscas un equipo en particular?';

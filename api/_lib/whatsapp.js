@@ -150,6 +150,42 @@ export async function sendList({ to, body, buttonText, sections, cfg = getWhatsA
 }
 
 /**
+ * Botón de llamada a la acción (URL). display_text máx. 20 caracteres.
+ * @param {{ to: string, body: string, displayText: string, url: string, cfg?: object }} opts
+ */
+export async function sendCtaUrl({ to, body, displayText, url, cfg = getWhatsAppConfig() }) {
+  return graphPost(cfg.phoneNumberId, cfg.token, {
+    messaging_product: 'whatsapp',
+    ...recipientFields(to),
+    type: 'interactive',
+    interactive: {
+      type: 'cta_url',
+      body: { text: String(body || '').slice(0, 1024) },
+      action: {
+        name: 'cta_url',
+        parameters: {
+          display_text: String(displayText || 'Abrir').slice(0, 20),
+          url: String(url || '').trim(),
+        },
+      },
+    },
+  });
+}
+
+/** Imagen por URL pública https */
+export async function sendImage({ to, link, caption, cfg = getWhatsAppConfig() }) {
+  return graphPost(cfg.phoneNumberId, cfg.token, {
+    messaging_product: 'whatsapp',
+    ...recipientFields(to),
+    type: 'image',
+    image: {
+      link: String(link || '').trim(),
+      ...(caption ? { caption: String(caption).slice(0, 1024) } : {}),
+    },
+  });
+}
+
+/**
  * Aviso al número personal (PERSONAL_PHONE_NUMBER):
  * 1) WhatsApp Cloud API (si la ventana de 24h lo permite)
  * 2) CallMeBot (gratis, fiable)
@@ -200,4 +236,31 @@ export async function notifyOwner(message, cfg = getWhatsAppConfig()) {
   if (results.some((r) => r.ok)) return { ok: true, results };
   console.warn('[whatsapp] PERSONAL_PHONE_NUMBER/CALLMEBOT faltan o fallaron — lead solo en logs');
   return { ok: Boolean(results.length), method: 'log', results };
+}
+
+/**
+ * POST JSON a LEADS_WEBHOOK_URL (p. ej. Google Apps Script → Sheets).
+ * No bloquea el flujo si falla.
+ * @param {Record<string, unknown>} payload
+ */
+export async function postLeadWebhook(payload) {
+  const url = String(process.env.LEADS_WEBHOOK_URL || '').trim();
+  if (!url) return { ok: false, skipped: true };
+  try {
+    const res = await fetch(url, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ...payload,
+        fecha_bogota: new Date().toLocaleString('es-CO', { timeZone: 'America/Bogota' }),
+        source: payload?.source || 'whatsapp',
+      }),
+    });
+    const ok = res.ok;
+    if (!ok) console.warn('[whatsapp] LEADS_WEBHOOK_URL status', res.status);
+    return { ok, status: res.status };
+  } catch (err) {
+    console.warn('[whatsapp] LEADS_WEBHOOK_URL error', err?.message || err);
+    return { ok: false, error: String(err?.message || err) };
+  }
 }

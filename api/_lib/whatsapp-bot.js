@@ -7,6 +7,7 @@ import {
   sendButtons,
   sendList,
   notifyOwner,
+  postLeadWebhook,
   isBsuid,
   parsePhoneCo,
   formatClientContact,
@@ -21,9 +22,35 @@ import {
   isLikelyPersonName,
   extractPersonName,
 } from './whatsapp-session.js';
-import { clearAiPause, handleAiMessage, isAiPaused, isOpenAiConfigured, shouldSkipResumenAsk } from './whatsapp-ai.js';
+import {
+  clearAiPause,
+  handleAiMessage,
+  isAiConfigured,
+  isAiPaused,
+  setAiPause,
+  shouldSkipResumenAsk,
+} from './whatsapp-ai.js';
+import {
+  MEDIA_RECEIVED_MSG,
+  ensureHabeasDataSent,
+  sendEngineerHandoff,
+  sendPauseNoticeOnce,
+  clearHabeasFlag,
+} from './whatsapp-atencion.js';
 
-const HUMAN_MS = 12 * 60 * 60 * 1000;
+const MEDIA_TYPES = new Set([
+  'image',
+  'audio',
+  'video',
+  'document',
+  'sticker',
+  'location',
+  'contacts',
+  'order',
+]);
+
+const HUMAN_MS =
+  (Number(process.env.HUMAN_MODE_HOURS) > 0 ? Number(process.env.HUMAN_MODE_HOURS) : 12) * 60 * 60 * 1000;
 const DISC_STEPS = new Set([
   'disc_nombre',
   'disc_ciudad',
@@ -79,8 +106,8 @@ async function replyWithAi(from, cfg, userText, { withQuickMenu = false } = {}) 
   try {
     const result = await handleAiMessage(from, userText);
     if (result.paused) {
-      const s = getSession(from);
-      markHuman(from, s);
+      const s = await getSession(from);
+      await markHuman(from, s);
     }
     if (result.text) {
       await sendText({ to: from, body: result.text, cfg });
@@ -99,7 +126,7 @@ async function replyWithAi(from, cfg, userText, { withQuickMenu = false } = {}) 
     }
     return true;
   } catch (err) {
-    console.error('[whatsapp-bot] OpenAI fallback a reglas:', err?.message || err);
+    console.error('[whatsapp-bot] Claude fallback a reglas:', err?.message || err);
     return false;
   }
 }
@@ -132,25 +159,45 @@ function formatLeadSummary(from, data = {}, titulo = 'LEAD COMERCIAL') {
   );
 }
 
-function markHuman(from, s) {
+async function markHuman(from, s) {
   s.step = 'human';
   s.humanUntil = Date.now() + HUMAN_MS;
-  saveSession(from, s);
+  await saveSession(from, s);
 }
 
 async function handoffToHuman(from, cfg, s, titulo) {
-  await notifyOwner(formatLeadSummary(from, s.data, titulo || 'LEAD asesor'), cfg);
-  markHuman(from, s);
-  const name = firstName(s.data.nombre);
-  await sendText({
-    to: from,
-    body:
-      (name ? `Listo, *${name}*. ` : 'Listo. ') +
-      'Ya avisé a nuestro *ingeniero de diseño fotovoltaico*. Se contactará contigo por este mismo chat para darte un *asesoramiento más personalizado*, sin costo.\n\n' +
-      'Horario: lunes a sábado, 8:00 a 18:00 (Medellín).\n\n' +
-      'Si quieres volver con el asistente después, escribe *hola*.',
-    cfg,
+  const notify = await notifyOwner(formatLeadSummary(from, s.data, titulo || 'LEAD asesor'), cfg);
+  await markHuman(from, s);
+  await setAiPause(from, HUMAN_MS);
+  await postLeadWebhook({
+    tipo: 'derivacion_reglas',
+    nombre: s.data.nombre || '',
+    ciudad: s.data.ciudad || '',
+    celular: s.data.telefono || (isBsuid(from) ? 'número oculto' : from),
+    identificador: from,
+    resumen: s.data.necesidad || s.data.objetivo || '',
+    intencion: titulo || 'asesor',
+    aviso_ok: Boolean(notify?.ok),
   });
+  await sendEngineerHandoff({ to: from, nombre: s.data.nombre, cfg });
+}
+
+async function finishDiscovery(from, cfg) {
+  const s = await getSession(from);
+  const notify = await notifyOwner(formatLeadSummary(from, s.data, 'LEAD COTIZACION'), cfg);
+  await markHuman(from, s);
+  await setAiPause(from, HUMAN_MS);
+  await postLeadWebhook({
+    tipo: 'derivacion_cotizacion_reglas',
+    nombre: s.data.nombre || '',
+    ciudad: s.data.ciudad || '',
+    celular: s.data.telefono || (isBsuid(from) ? 'número oculto' : from),
+    identificador: from,
+    resumen: [s.data.tipo, s.data.consumo, s.data.objetivo].filter(Boolean).join(' · '),
+    intencion: 'cotizacion',
+    aviso_ok: Boolean(notify?.ok),
+  });
+  await sendEngineerHandoff({ to: from, nombre: s.data.nombre, cfg });
 }
 
 async function sendMainMenu(from, cfg) {
@@ -248,9 +295,10 @@ async function sendTip(from, tip, cfg) {
 }
 
 async function askNombre(from, cfg, blurb) {
-  const s = getSession(from);
+  const s = await getSession(from);
   s.step = 'disc_nombre';
-  saveSession(from, s);
+  await saveSession(from, s);
+  await ensureHabeasDataSent(from, cfg);
   await sendText({
     to: from,
     body:
@@ -262,9 +310,9 @@ async function askNombre(from, cfg, blurb) {
 }
 
 async function askCiudad(from, cfg) {
-  const s = getSession(from);
+  const s = await getSession(from);
   s.step = 'disc_ciudad';
-  saveSession(from, s);
+  await saveSession(from, s);
   const name = firstName(s.data.nombre);
   await sendText({
     to: from,
@@ -277,9 +325,9 @@ async function askCiudad(from, cfg) {
 }
 
 async function startDiscovery(from, objetivo, cfg) {
-  const s = getSession(from);
+  const s = await getSession(from);
   s.data.objetivo = objetivo || s.data.objetivo || 'ahorro';
-  saveSession(from, s);
+  await saveSession(from, s);
 
   const blurb =
     s.data.objetivo === 'ahorro'
@@ -300,9 +348,9 @@ async function startDiscovery(from, objetivo, cfg) {
 }
 
 async function askTipo(from, cfg) {
-  const s = getSession(from);
+  const s = await getSession(from);
   s.step = 'disc_tipo';
-  saveSession(from, s);
+  await saveSession(from, s);
   await sendButtons({
     to: from,
     body: `Quedó: *${s.data.nombre}* en *${s.data.ciudad}*. ¿El proyecto es para…?`,
@@ -315,33 +363,15 @@ async function askTipo(from, cfg) {
   });
 }
 
-async function finishDiscovery(from, cfg) {
-  const s = getSession(from);
-  await notifyOwner(formatLeadSummary(from, s.data, 'LEAD COTIZACION'), cfg);
-  markHuman(from, s);
-  const name = firstName(s.data.nombre);
-  await sendText({
-    to: from,
-    body:
-      `Muchas gracias, *${name}*. Ya tengo tus datos:\n` +
-      `• Ciudad: *${s.data.ciudad}*\n` +
-      `• Tipo: *${s.data.tipo || '—'}*\n` +
-      `• Consumo/factura: *${s.data.consumo || '—'}*\n\n` +
-      'Un *ingeniero de diseño fotovoltaico* de Reiki se contactará contigo por este chat para un *asesoramiento más personalizado* (sin costo).\n\n' +
-      `Mientras tanto puedes mirar equipos: ${cfg.siteUrl}/tienda\n\n` +
-      'Para volver al asistente: *hola*.',
-    cfg,
-  });
-}
-
 async function askAsesorNombre(from, cfg) {
-  const s = getSession(from);
+  const s = await getSession(from);
   s.step = 'asesor_nombre';
-  saveSession(from, s);
+  await saveSession(from, s);
+  await ensureHabeasDataSent(from, cfg);
   await sendText({
     to: from,
     body:
-      'Claro, con gusto te paso con nuestro *ingeniero de diseño fotovoltaico* para un asesoramiento más personalizado, *sin costo* 👍\n\n' +
+      'Claro, con gusto te paso con nuestro *ingeniero experto en diseño fotovoltaico* para un asesoramiento más personalizado, *sin costo* 👍\n\n' +
       'Para avisarle bien, ¿cuál es tu *nombre*?\n\n' +
       '_Solo el nombre, por ejemplo: Alex_',
     cfg,
@@ -349,9 +379,9 @@ async function askAsesorNombre(from, cfg) {
 }
 
 async function askAsesorCiudad(from, cfg) {
-  const s = getSession(from);
+  const s = await getSession(from);
   s.step = 'asesor_ciudad';
-  saveSession(from, s);
+  await saveSession(from, s);
   const name = firstName(s.data.nombre);
   await sendText({
     to: from,
@@ -364,9 +394,9 @@ async function askAsesorCiudad(from, cfg) {
 }
 
 async function askAsesorCelular(from, cfg) {
-  const s = getSession(from);
+  const s = await getSession(from);
   s.step = 'asesor_celular';
-  saveSession(from, s);
+  await saveSession(from, s);
   const name = firstName(s.data.nombre);
   await sendText({
     to: from,
@@ -379,9 +409,9 @@ async function askAsesorCelular(from, cfg) {
 }
 
 async function askAsesorResumen(from, cfg) {
-  const s = getSession(from);
+  const s = await getSession(from);
   s.step = 'asesor_resumen';
-  saveSession(from, s);
+  await saveSession(from, s);
   const name = firstName(s.data.nombre);
   await sendText({
     to: from,
@@ -397,7 +427,7 @@ async function askAsesorResumen(from, cfg) {
  * Pide nombre → ciudad → (celular si BSUID) → resumen, y solo entonces avisa por CallMeBot.
  */
 async function continueAsesorLead(from, cfg) {
-  const s = getSession(from);
+  const s = await getSession(from);
   if (!String(s.data.nombre || '').trim()) {
     await askAsesorNombre(from, cfg);
     return;
@@ -419,7 +449,7 @@ async function continueAsesorLead(from, cfg) {
 }
 
 async function startAsesorCapture(from, cfg, { seedNecesidad } = {}) {
-  const s = getSession(from);
+  const s = await getSession(from);
   if (seedNecesidad && !s.data.necesidad) {
     s.data.necesidad = String(seedNecesidad).slice(0, 400);
   }
@@ -434,7 +464,7 @@ async function startAsesorCapture(from, cfg, { seedNecesidad } = {}) {
     ].filter(Boolean);
     s.data.necesidad = bits.join(' · ').slice(0, 400);
   }
-  saveSession(from, s);
+  await saveSession(from, s);
   await continueAsesorLead(from, cfg);
 }
 
@@ -478,7 +508,7 @@ async function sendLearnMenu(from, cfg) {
 
 /** @returns {Promise<boolean>} */
 async function handleDiscoveryStep(from, text, id, cfg) {
-  const s = getSession(from);
+  const s = await getSession(from);
   if (!DISC_STEPS.has(s.step)) return false;
 
   if (s.step === 'asesor_nombre') {
@@ -503,7 +533,7 @@ async function handleDiscoveryStep(from, text, id, cfg) {
       return true;
     }
     s.data.nombre = extractPersonName(raw);
-    saveSession(from, s);
+    await saveSession(from, s);
     await continueAsesorLead(from, cfg);
     return true;
   }
@@ -517,7 +547,7 @@ async function handleDiscoveryStep(from, text, id, cfg) {
     }
     if (isLikelyPersonName(raw) && !isLikelyCity(raw) && raw.split(/\s+/).length <= 2) {
       s.data.nombre = extractPersonName(raw);
-      saveSession(from, s);
+      await saveSession(from, s);
       await sendText({
         to: from,
         body:
@@ -532,7 +562,7 @@ async function handleDiscoveryStep(from, text, id, cfg) {
       return true;
     }
     s.data.ciudad = raw.slice(0, 80);
-    saveSession(from, s);
+    await saveSession(from, s);
     await continueAsesorLead(from, cfg);
     return true;
   }
@@ -554,7 +584,7 @@ async function handleDiscoveryStep(from, text, id, cfg) {
       return true;
     }
     s.data.telefono = tel;
-    saveSession(from, s);
+    await saveSession(from, s);
     await continueAsesorLead(from, cfg);
     return true;
   }
@@ -577,7 +607,7 @@ async function handleDiscoveryStep(from, text, id, cfg) {
       return true;
     }
     s.data.necesidad = resumen.slice(0, 400);
-    saveSession(from, s);
+    await saveSession(from, s);
     await continueAsesorLead(from, cfg);
     return true;
   }
@@ -598,7 +628,7 @@ async function handleDiscoveryStep(from, text, id, cfg) {
     s.data.nombre = parsed.nombre;
     s.data.ciudad = parsed.ciudad;
     s.data.necesidad = parsed.necesidad;
-    saveSession(from, s);
+    await saveSession(from, s);
     await handoffToHuman(from, cfg, s, 'LEAD asesor');
     return true;
   }
@@ -620,7 +650,7 @@ async function handleDiscoveryStep(from, text, id, cfg) {
       return true;
     }
     s.data.nombre = extractPersonName(text);
-    saveSession(from, s);
+    await saveSession(from, s);
     await askCiudad(from, cfg);
     return true;
   }
@@ -629,7 +659,7 @@ async function handleDiscoveryStep(from, text, id, cfg) {
     // Si mandó un nombre otra vez, no lo tomes como ciudad
     if (isLikelyPersonName(text) && !isLikelyCity(text) && text.split(/\s+/).length <= 2) {
       s.data.nombre = extractPersonName(text);
-      saveSession(from, s);
+      await saveSession(from, s);
       await sendText({
         to: from,
         body:
@@ -644,7 +674,7 @@ async function handleDiscoveryStep(from, text, id, cfg) {
       return true;
     }
     s.data.ciudad = text.trim().slice(0, 80);
-    saveSession(from, s);
+    await saveSession(from, s);
     await askTipo(from, cfg);
     return true;
   }
@@ -659,7 +689,7 @@ async function handleDiscoveryStep(from, text, id, cfg) {
       return true;
     }
     s.step = 'disc_consumo';
-    saveSession(from, s);
+    await saveSession(from, s);
     await sendText({
       to: from,
       body:
@@ -673,7 +703,7 @@ async function handleDiscoveryStep(from, text, id, cfg) {
   if (s.step === 'disc_consumo') {
     s.data.consumo = (text || 'no sé').slice(0, 80);
     s.step = 'disc_urgencia';
-    saveSession(from, s);
+    await saveSession(from, s);
     await sendButtons({
       to: from,
       body: '¿Con qué prioridad quieres avanzar?',
@@ -696,7 +726,7 @@ async function handleDiscoveryStep(from, text, id, cfg) {
       await sendText({ to: from, body: 'Toca una de las opciones de tiempo, por favor.', cfg });
       return true;
     }
-    saveSession(from, s);
+    await saveSession(from, s);
     await finishDiscovery(from, cfg);
     return true;
   }
@@ -705,7 +735,7 @@ async function handleDiscoveryStep(from, text, id, cfg) {
 }
 
 /**
- * @param {{ from: string, text?: string, buttonId?: string, listId?: string }} msg
+ * @param {{ from: string, text?: string, buttonId?: string, listId?: string, rawType?: string, mediaId?: string, caption?: string }} msg
  */
 export async function handleIncomingMessage(msg) {
   const cfg = getWhatsAppConfig();
@@ -713,27 +743,61 @@ export async function handleIncomingMessage(msg) {
   const from = String(msg.from || '').trim();
   if (!from) return;
 
-  const text = String(msg.text || '').trim();
+  const rawType = String(msg.rawType || '').toLowerCase();
+  const isMedia = MEDIA_TYPES.has(rawType);
+  const text = String(msg.text || msg.caption || '').trim();
   const id = msg.buttonId || msg.listId || '';
   const n = normalizeText(text);
-  const s = getSession(from);
-  const useAi = isOpenAiConfigured();
+  const s = await getSession(from);
+  const useAi = isAiConfigured();
+  const wantsRestart =
+    id === 'menu_root' || n === 'menu' || n === 'bot' || n === 'inicio' || /^(menu|inicio|bot)\b/.test(n);
+  const humanPaused =
+    (s.step === 'human' && s.humanUntil && Date.now() < s.humanUntil) || (await isAiPaused(from));
 
   // Contador de mensajes de la conversación (para no pedir resumen si ya hay chat)
-  if (!isGreeting(n) && id !== 'menu_root') {
+  if (!isMedia && !isGreeting(n) && id !== 'menu_root' && !wantsRestart) {
     s.msgCount = Number(s.msgCount || 0) + 1;
-    saveSession(from, s);
+    await saveSession(from, s);
   }
 
   // Si estamos capturando datos del ingeniero, NO reiniciar ni saludar
-  if (ASESOR_CAPTURE_STEPS.has(s.step)) {
+  if (ASESOR_CAPTURE_STEPS.has(s.step) && !isMedia) {
     if (await handleDiscoveryStep(from, text, id, cfg)) return;
   }
 
-  if (id === 'menu_root' || isGreeting(n) || n === 'menu') {
-    resetSession(from);
-    clearAiPause(from);
-    // Bienvenida fija (no regenerar con IA)
+  // Modo humano: "hola" NO reactiva; solo menú / bot / inicio (o que venza la pausa)
+  if (humanPaused) {
+    if (wantsRestart) {
+      await resetSession(from);
+      await clearAiPause(from);
+      await clearHabeasFlag(from);
+      await sendMainMenu(from, cfg);
+      return;
+    }
+    // Un solo aviso por pausa; el resto: silencio
+    await sendPauseNoticeOnce(from, cfg);
+    return;
+  }
+  if (s.step === 'human') {
+    s.step = 'idle';
+    delete s.humanUntil;
+    await saveSession(from, s);
+  }
+
+  // Media (foto/audio/doc…): no reiniciar sesión ni tratar como "hola"
+  if (isMedia) {
+    try {
+      await sendText({ to: from, body: MEDIA_RECEIVED_MSG, cfg });
+    } catch (err) {
+      console.warn('[whatsapp-bot] media ack falló', err?.message || err);
+    }
+    return;
+  }
+
+  if (id === 'menu_root' || isGreeting(n) || wantsRestart) {
+    await resetSession(from);
+    await clearAiPause(from);
     await sendMainMenu(from, cfg);
     return;
   }
@@ -752,29 +816,6 @@ export async function handleIncomingMessage(msg) {
     return;
   }
 
-  if ((s.step === 'human' && s.humanUntil && Date.now() < s.humanUntil) || isAiPaused(from)) {
-    // No dejar a iOS/Android en silencio total tras handoff
-    if (text) {
-      try {
-        await sendText({
-          to: from,
-          body:
-            'Un ingeniero de diseño fotovoltaico ya tiene tu caso y te escribirá por este chat.\n\n' +
-            'Si quieres volver al menú del asistente, escribe *hola*.',
-          cfg,
-        });
-      } catch (err) {
-        console.warn('[whatsapp-bot] aviso human-mode falló', err?.message || err);
-      }
-    }
-    return;
-  }
-  if (s.step === 'human') {
-    s.step = 'idle';
-    delete s.humanUntil;
-    saveSession(from, s);
-  }
-
   // Si hay captura estructurada a medias, terminarla con reglas (anti-bucle)
   if (DISC_STEPS.has(s.step)) {
     if (await handleDiscoveryStep(from, text, id, cfg)) return;
@@ -782,12 +823,12 @@ export async function handleIncomingMessage(msg) {
 
   if (id.startsWith('tipo_')) {
     s.step = 'disc_tipo';
-    saveSession(from, s);
+    await saveSession(from, s);
     if (await handleDiscoveryStep(from, text, id, cfg)) return;
   }
   if (id.startsWith('urg_')) {
     s.step = 'disc_urgencia';
-    saveSession(from, s);
+    await saveSession(from, s);
     if (await handleDiscoveryStep(from, text, id, cfg)) return;
   }
 
@@ -802,7 +843,7 @@ export async function handleIncomingMessage(msg) {
     }
   }
 
-  // ——— Fallback por reglas (sin OPENAI_API_KEY o si falló OpenAI) ———
+  // ——— Fallback por reglas (sin ANTHROPIC_API_KEY o si falló Claude) ———
   if (id === 'menu_mas') {
     await sendMoreOptions(from, cfg);
     return;
@@ -933,7 +974,7 @@ export function extractInboundMessages(body) {
           const bodyText = String(m.text?.body || '')
             .replace(/[\u200B-\u200D\uFEFF\u2060\u00A0]/g, '')
             .trim();
-          out.push({ from, text: bodyText || 'hola', rawType: type });
+          out.push({ from, text: bodyText || 'hola', rawType: type, messageId: m.id });
           continue;
         }
 
@@ -947,6 +988,7 @@ export function extractInboundMessages(body) {
             buttonId: btn?.id,
             listId: list?.id,
             rawType: type,
+            messageId: m.id,
           });
           continue;
         }
@@ -957,6 +999,7 @@ export function extractInboundMessages(body) {
             text: m.button?.text || 'hola',
             buttonId: m.button?.payload || m.button?.text,
             rawType: type,
+            messageId: m.id,
           });
           continue;
         }
@@ -964,7 +1007,7 @@ export function extractInboundMessages(body) {
         // Primer mensaje iOS / CTWA: type=unsupported (131051/131060)
         if (type === 'unsupported' || type === 'system') {
           console.warn('[whatsapp] mensaje especial → hola', { from, type, errors: m.errors || null });
-          out.push({ from, text: 'hola', rawType: type });
+          out.push({ from, text: 'hola', rawType: type, messageId: m.id });
           continue;
         }
 
@@ -974,12 +1017,21 @@ export function extractInboundMessages(body) {
         }
 
         if (['image', 'audio', 'video', 'document', 'sticker', 'location', 'contacts', 'order'].includes(type)) {
-          out.push({ from, text: 'hola', rawType: type });
+          const mediaObj = m[type] || {};
+          const mediaId = String(mediaObj.id || mediaObj.voice?.id || '').trim() || undefined;
+          const caption = String(mediaObj.caption || '').trim() || undefined;
+          out.push({
+            from,
+            rawType: type,
+            mediaId,
+            caption,
+            text: caption,
+            messageId: m.id,
+          });
           continue;
         }
 
-        console.warn('[whatsapp] tipo no mapeado → hola', { from, type, keys: Object.keys(m) });
-        out.push({ from, text: 'hola', rawType: type || 'unknown' });
+        console.warn('[whatsapp] tipo no mapeado (ignorado)', { from, type, keys: Object.keys(m) });
       }
     }
   }
