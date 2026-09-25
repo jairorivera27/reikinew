@@ -35,6 +35,38 @@ export function isBsuid(id) {
 }
 
 /**
+ * Normaliza celular colombiano a dígitos internacionales (57…).
+ * Acepta 300…, 57 300…, +57…
+ */
+export function parsePhoneCo(text) {
+  const digits = String(text || '').replace(/\D/g, '');
+  if (!digits) return '';
+  if (digits.length === 10 && /^3\d{9}$/.test(digits)) return `57${digits}`;
+  if (digits.length === 12 && digits.startsWith('57') && /^573\d{9}$/.test(digits)) return digits;
+  if (digits.length >= 10 && digits.length <= 15) return digits;
+  return '';
+}
+
+/**
+ * Línea de contacto para leads CallMeBot / Cloud API.
+ * Con username/privacidad Meta no manda teléfono: solo BSUID.
+ */
+export function formatClientContact(from, data = {}) {
+  const tel = parsePhoneCo(data?.telefono || data?.celular || '');
+  if (tel) return `WhatsApp / celular: +${tel}`;
+  if (isBsuid(from)) {
+    return (
+      `WhatsApp: número oculto (username/privacidad)\n` +
+      `ID interno: ${from}\n` +
+      `→ Responde en WhatsApp Business / Meta (mismo chat del cliente)`
+    );
+  }
+  const digits = String(from || '').replace(/\D/g, '');
+  if (digits) return `WhatsApp: +${digits}`;
+  return `WhatsApp: ${from || '—'}`;
+}
+
+/**
  * Arma destino: teléfono → `to`; BSUID → `recipient`.
  * @param {string} toOrRecipient
  */

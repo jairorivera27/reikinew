@@ -1,7 +1,16 @@
 /**
  * Bot comercial Reiki — captura clara nombre→ciudad (sin cruces) + aviso CallMeBot.
  */
-import { getWhatsAppConfig, sendText, sendButtons, sendList, notifyOwner } from './whatsapp.js';
+import {
+  getWhatsAppConfig,
+  sendText,
+  sendButtons,
+  sendList,
+  notifyOwner,
+  isBsuid,
+  parsePhoneCo,
+  formatClientContact,
+} from './whatsapp.js';
 import { CONSULTANT_INTRO, SOLAR_TIPS, matchSolarTip } from './whatsapp-solar-kb.js';
 import {
   getSession,
@@ -24,10 +33,17 @@ const DISC_STEPS = new Set([
   'asesor_datos',
   'asesor_nombre',
   'asesor_ciudad',
+  'asesor_celular',
   'asesor_resumen',
 ]);
 
-const ASESOR_CAPTURE_STEPS = new Set(['asesor_nombre', 'asesor_ciudad', 'asesor_resumen', 'asesor_datos']);
+const ASESOR_CAPTURE_STEPS = new Set([
+  'asesor_nombre',
+  'asesor_ciudad',
+  'asesor_celular',
+  'asesor_resumen',
+  'asesor_datos',
+]);
 
 /** Mapea botones/listas a intención en lenguaje natural para la IA */
 function intentFromId(id) {
@@ -103,11 +119,9 @@ function isGreeting(n) {
 
 function formatLeadSummary(from, data = {}, titulo = 'LEAD COMERCIAL') {
   const d = data || {};
-  const isBsuid = /^[A-Z]{2}(\.ENT)?\.[A-Za-z0-9]+$/.test(String(from || ''));
-  const waLine = isBsuid ? `WhatsApp BSUID: ${from}` : `WhatsApp: +${from}`;
   return (
     `${titulo}\n` +
-    `${waLine}\n` +
+    `${formatClientContact(from, d)}\n` +
     `Nombre: ${d.nombre || '—'}\n` +
     `Ciudad: ${d.ciudad || '—'}\n` +
     `Objetivo: ${d.objetivo || '—'}\n` +
@@ -349,6 +363,21 @@ async function askAsesorCiudad(from, cfg) {
   });
 }
 
+async function askAsesorCelular(from, cfg) {
+  const s = getSession(from);
+  s.step = 'asesor_celular';
+  saveSession(from, s);
+  const name = firstName(s.data.nombre);
+  await sendText({
+    to: from,
+    body:
+      (name ? `Gracias, *${name}*. ` : '') +
+      'WhatsApp no nos muestra tu número (privacidad/username). ¿Me compartes tu *celular* para que el ingeniero te escriba?\n\n' +
+      '_Ejemplo: 300 123 4567_',
+    cfg,
+  });
+}
+
 async function askAsesorResumen(from, cfg) {
   const s = getSession(from);
   s.step = 'asesor_resumen';
@@ -365,7 +394,7 @@ async function askAsesorResumen(from, cfg) {
 }
 
 /**
- * Pide nombre → ciudad → resumen (lo que falte) y solo entonces avisa por CallMeBot.
+ * Pide nombre → ciudad → (celular si BSUID) → resumen, y solo entonces avisa por CallMeBot.
  */
 async function continueAsesorLead(from, cfg) {
   const s = getSession(from);
@@ -375,6 +404,11 @@ async function continueAsesorLead(from, cfg) {
   }
   if (!String(s.data.ciudad || '').trim()) {
     await askAsesorCiudad(from, cfg);
+    return;
+  }
+  // iOS/username: Meta no envía teléfono → pedir celular para el aviso al ingeniero
+  if (isBsuid(from) && !parsePhoneCo(s.data.telefono)) {
+    await askAsesorCelular(from, cfg);
     return;
   }
   if (!String(s.data.necesidad || '').trim()) {
@@ -498,6 +532,28 @@ async function handleDiscoveryStep(from, text, id, cfg) {
       return true;
     }
     s.data.ciudad = raw.slice(0, 80);
+    saveSession(from, s);
+    await continueAsesorLead(from, cfg);
+    return true;
+  }
+
+  if (s.step === 'asesor_celular') {
+    const raw = String(text || '').trim();
+    const nRes = normalizeText(raw);
+    if (isGreeting(nRes) || nRes === 'menu') {
+      await askAsesorCelular(from, cfg);
+      return true;
+    }
+    const tel = parsePhoneCo(raw);
+    if (!tel || tel.length < 10) {
+      await sendText({
+        to: from,
+        body: 'Necesito un celular válido 🙂\nEjemplo: *300 123 4567*',
+        cfg,
+      });
+      return true;
+    }
+    s.data.telefono = tel;
     saveSession(from, s);
     await continueAsesorLead(from, cfg);
     return true;

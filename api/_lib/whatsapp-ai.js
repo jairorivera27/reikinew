@@ -2,12 +2,18 @@
  * Capa OpenAI (GPT) + function calling para el bot WhatsApp Reiki.
  * Si no hay OPENAI_API_KEY, el caller debe usar el flujo por reglas.
  */
-import { getWhatsAppConfig, notifyOwner } from './whatsapp.js';
+import { getWhatsAppConfig, notifyOwner, isBsuid, parsePhoneCo, formatClientContact } from './whatsapp.js';
 import { recommendProject, searchProducts } from './whatsapp-catalog.js';
 
 const OPENAI_URL = 'https://api.openai.com/v1/chat/completions';
 const MODEL = String(process.env.OPENAI_MODEL || 'gpt-4o-mini').trim();
-const MAX_HISTORY = 6;
+const MAX_HISTORY = 12;
+const HUMAN_PAUSE_MS = 12 * 60 * 60 * 1000;
+/** Si hay más de esto en el historial, NO pedir resumen al escalar */
+const RESUMEN_ASK_MAX_MSGS = 5;
+
+const HANDOFF_CLIENT_MSG =
+  '¡Claro que sí! Nuestro *ingeniero de diseño fotovoltaico* se contactará contigo por este mismo chat para darte un *asesoramiento más personalizado*, sin costo.';
 
 /** @type {Map<string, { role: string, content: string }[]>} */
 const histories = globalThis.__reikiWaAiHistory || new Map();
@@ -17,33 +23,50 @@ globalThis.__reikiWaAiHistory = histories;
 const paused = globalThis.__reikiWaAiPaused || new Map();
 globalThis.__reikiWaAiPaused = paused;
 
-const SYSTEM_PROMPT = `Eres el asesor comercial estrella de Reiki Energía Solar SAS (https://reikisolar.com.co).
-Tu tono es cálido, empático, amigable y muy natural (cero robótico). Hablas como un comercial colombiano profesional: cercano, claro y con gusto de ayudar.
-Eres experto en energía solar, pero explicas fácil. No inventes precios de instalación cerrados ni productos que no existan en la tienda.
+const SYSTEM_PROMPT = `Eres el asesor comercial estrella de Reiki Energía Solar SAS. Tu tono es cálido, empático, amigable y muy natural (cero robótico). Eres un experto en energía solar, pero explicas las cosas de manera sencilla, sin tecnicismos excesivos a menos que el cliente lo pida. Toda tu base de conocimiento sobre la empresa pertenece a www.reikisolar.com.co.
 
-Flujos:
-1) Proyectos llave en mano: guía con UNA pregunta a la vez. Cuando tengas consumo/factura, ciudad y tipo de uso, usa recomendar_proyecto_solar.
-2) Productos/equipos: si piden un equipo concreto, usa buscar_producto_tienda y comparte nombre, precio y link exacto.
-3) Humano: si piden asesor/persona/humano, están frustrados, o la duda es demasiado compleja, usa escalar_a_humano de inmediato.
+Tus flujos principales son:
 
-Reglas de oro:
-- NUNCA repitas la misma pregunta en bucle. Si no saben un dato, ofrece aproximado o escala a humano.
-- Respuestas breves (máximo 2-3 párrafos cortos). Emojis con moderación.
-- No digas que eres GPT/OpenAI; eres el asistente de Reiki.
-- Si el cliente solo saluda, saluda con calidez y pregunta en qué le ayudas (dejar de pagar tanta energía, se le va la luz, o comprar equipos).`;
+Proyectos: Si un cliente quiere un sistema completo, guíalo. No hagas 5 preguntas de golpe. Haz UNA pregunta a la vez (ej. '¡Qué excelente iniciativa! Para darte un estimado preciso, ¿sabes más o menos de cuánto es tu factura de luz o tu consumo en kWh?'). Cuando tengas los datos básicos, usa la herramienta recomendar_proyecto_solar.
+
+Productos/Equipos: Si un cliente busca comprar un equipo específico, usa la herramienta buscar_producto_tienda para encontrar el producto ideal y envíale el enlace directo para que lo compre en la página web.
+
+Derivación a ingeniero de diseño fotovoltaico (asesoramiento sin costo). Di siempre "ingeniero de diseño fotovoltaico", no digas solo "asesor".
+
+Cuándo derivar al ingeniero:
+1) Si el cliente pide ingeniero / persona / humano / asesor: primero asegúrate de tener *nombre*, *ciudad* y un *resumen* de lo que necesita (UNA pregunta a la vez, en ese orden).
+2) Si el identificador del chat no es un teléfono (privacidad/username de WhatsApp), también pide su *celular* (ej. 300 123 4567) y pásalo en telefono_cliente.
+3) Solo cuando ya tengas los datos, llama escalar_a_humano con nombre_cliente, ciudad, resumen y telefono_cliente si aplica.
+4) Si YA hay conversación larga y faltan nombre o ciudad, pregunta solo lo que falte; no vuelvas a pedir el resumen si ya quedó claro en el chat.
+5) NUNCA llames escalar_a_humano sin nombre del cliente.
+
+NUNCA prometas visita técnica ni digas que "vamos a realizar la visita". Di que el *ingeniero de diseño fotovoltaico* se contactará contigo para darte un *asesoramiento más personalizado* (sin costo).
+
+Reglas de Oro:
+
+NUNCA te quedes en un bucle repitiendo la misma pregunta. Si el cliente no sabe la respuesta, ofrécele un aproximado o deriva al ingeniero.
+
+Tus respuestas deben ser breves (máximo 2-3 párrafos cortos). Usa emojis con moderación para mantener la cercanía.
+
+Extra: si el cliente solo saluda, responde EXACTAMENTE con este mensaje de bienvenida (sin cambiarlo):
+"¡Hola! ☀️ Te saluda el equipo de Reiki Energía Solar. Nos alegra mucho que quieras dar el paso hacia la energía limpia.
+
+¿Qué tienes en mente para hoy? ¿Te gustaría saber cuánto podrías ahorrar con un proyecto solar en tu factura de luz, o buscas un producto en particular?"
+No digas que eres GPT/OpenAI.`;
 
 const TOOLS = [
   {
     type: 'function',
     function: {
       name: 'recomendar_proyecto_solar',
-      description: 'Genera una recomendación estructurada de sistema solar con los datos del cliente.',
+      description:
+        'Recibe consumo mensual, tipo de techo y ubicación y retorna una recomendación estructurada de sistema solar.',
       parameters: {
         type: 'object',
         properties: {
-          consumo_mensual: { type: 'string', description: 'Factura o kWh mensuales' },
-          tipo_techo: { type: 'string', description: 'Tipo de techo si se conoce' },
-          ubicacion: { type: 'string', description: 'Ciudad o zona' },
+          consumo_mensual: { type: 'string', description: 'Factura mensual o consumo en kWh' },
+          tipo_techo: { type: 'string', description: 'Tipo de techo (teja, concreto, lámina, etc.)' },
+          ubicacion: { type: 'string', description: 'Ciudad o zona del proyecto' },
           objetivo: {
             type: 'string',
             description: 'ahorro | respaldo | finca | mixto',
@@ -57,7 +80,8 @@ const TOOLS = [
     type: 'function',
     function: {
       name: 'buscar_producto_tienda',
-      description: 'Busca productos reales del catálogo reikisolar.com.co/tienda',
+      description:
+        'Busca equipos específicos (inversores, paneles, baterías) en la tienda y retorna nombre, precio y link exacto de compra (reikisolar.com.co/tienda/...).',
       parameters: {
         type: 'object',
         properties: {
@@ -72,15 +96,23 @@ const TOOLS = [
     type: 'function',
     function: {
       name: 'escalar_a_humano',
-      description: 'Pausa la IA y avisa a un asesor humano con resumen del caso.',
+      description:
+        'Pasa al ingeniero de diseño fotovoltaico. REQUIERE nombre_cliente, ciudad y resumen. Si el chat no tiene teléfono visible, también telefono_cliente. Si falta alguno, NO uses esta tool: pregunta lo que falte primero.',
       parameters: {
         type: 'object',
         properties: {
-          resumen: { type: 'string', description: 'Resumen claro de lo que quiere el cliente' },
-          nombre_cliente: { type: 'string' },
-          ciudad: { type: 'string' },
+          resumen: {
+            type: 'string',
+            description: 'Resumen del requerimiento (del cliente o del historial)',
+          },
+          nombre_cliente: { type: 'string', description: 'Nombre del cliente (obligatorio)' },
+          ciudad: { type: 'string', description: 'Ciudad del proyecto (obligatorio)' },
+          telefono_cliente: {
+            type: 'string',
+            description: 'Celular del cliente (ej. 3001234567). Obligatorio si WhatsApp ocultó el número.',
+          },
         },
-        required: ['resumen'],
+        required: ['resumen', 'nombre_cliente', 'ciudad'],
       },
     },
   },
@@ -88,6 +120,16 @@ const TOOLS = [
 
 export function isOpenAiConfigured() {
   return Boolean(String(process.env.OPENAI_API_KEY || '').trim());
+}
+
+/** Cantidad de mensajes en el historial de IA (user+assistant) */
+export function getAiHistoryCount(from) {
+  return (histories.get(from) || []).length;
+}
+
+/** True si la conversación ya es larga: no pedir resumen al escalar */
+export function shouldSkipResumenAsk(from) {
+  return getAiHistoryCount(from) > RESUMEN_ASK_MAX_MSGS;
 }
 
 export function isAiPaused(from) {
@@ -142,8 +184,14 @@ async function runTool(name, args, from) {
     const items = searchProducts(args.query || '', { category: args.categoria, limit: 5 });
     return JSON.stringify({
       encontrados: items.length,
-      productos: items,
-      nota: items.length ? 'Usa estos links exactos.' : 'Sin coincidencias; ofrece cotizar proyecto o escalar a humano.',
+      productos: items.map((p) => ({
+        nombre: p.nombre,
+        precio: p.precio,
+        link_compra: p.url,
+      })),
+      nota: items.length
+        ? 'Comparte al cliente el nombre y el link_compra exacto (no inventes URLs).'
+        : 'Sin coincidencias; ofrece cotizar proyecto o escalar a humano.',
     });
   }
   if (name === 'recomendar_proyecto_solar') {
@@ -157,31 +205,100 @@ async function runTool(name, args, from) {
     );
   }
   if (name === 'escalar_a_humano') {
+    let resumen = String(args.resumen || '').trim();
+    let nombre = String(args.nombre_cliente || '').trim();
+    let ciudad = String(args.ciudad || '').trim();
+    let telefono = parsePhoneCo(args.telefono_cliente || '');
+
+    // Completar desde sesión si la IA no los mandó
+    try {
+      const { getSession } = await import('./whatsapp-session.js');
+      const s = getSession(from);
+      if (!nombre) nombre = String(s.data.nombre || '').trim();
+      if (!ciudad) ciudad = String(s.data.ciudad || '').trim();
+      if (!resumen) resumen = String(s.data.necesidad || '').trim();
+      if (!telefono) telefono = parsePhoneCo(s.data.telefono || '');
+    } catch {
+      /* optional */
+    }
+
+    const longChat = shouldSkipResumenAsk(from);
+    const tooThin =
+      resumen.length < 12 ||
+      /^(hablar con (un )?(asesor|ingeniero)|asesor|humano|persona|quiero (un )?(asesor|ingeniero)|ing\.? diseño)\b/i.test(
+        resumen
+      );
+
+    if (!nombre || nombre.length < 2) {
+      return JSON.stringify({
+        ok: false,
+        error:
+          'Falta el NOMBRE del cliente. Pídele solo el nombre (ej. Alex) y NO llames escalar_a_humano hasta tenerlo. Luego pásalo en nombre_cliente.',
+      });
+    }
+    if (!ciudad || ciudad.length < 3) {
+      return JSON.stringify({
+        ok: false,
+        error:
+          'Falta la CIUDAD del cliente. Pídele solo la ciudad y NO llames escalar_a_humano hasta tenerla. Luego pásala en ciudad.',
+      });
+    }
+    if (isBsuid(from) && !telefono) {
+      return JSON.stringify({
+        ok: false,
+        error:
+          'Este cliente oculta su número de WhatsApp. Pídele su CELULAR (ej. 300 123 4567) y pásalo en telefono_cliente antes de escalar.',
+      });
+    }
+
+    if (tooThin && longChat) {
+      const hist = histories.get(from) || [];
+      resumen = hist
+        .filter((m) => m.role === 'user')
+        .map((m) => m.content)
+        .join(' | ')
+        .slice(0, 500);
+      if (resumen.length < 8) resumen = 'Cliente pidió ingeniero tras conversación; ver historial en chat.';
+    } else if (tooThin && !longChat) {
+      return JSON.stringify({
+        ok: false,
+        error:
+          'Falta un resumen concreto. Pídele qué necesita y NO vuelvas a llamar escalar_a_humano hasta tenerlo.',
+      });
+    }
+
     const cfg = getWhatsAppConfig();
+    const leadData = { nombre, ciudad, necesidad: resumen, telefono };
     const summary =
-      `LEAD IA WhatsApp\n` +
-      `WhatsApp: +${from}\n` +
-      `Nombre: ${args.nombre_cliente || '—'}\n` +
-      `Ciudad: ${args.ciudad || '—'}\n` +
-      `Resumen: ${args.resumen || '—'}`;
+      `LEAD IA WhatsApp — Reiki\n` +
+      `${formatClientContact(from, leadData)}\n` +
+      `Nombre: ${nombre}\n` +
+      `Ciudad: ${ciudad}\n` +
+      `Resumen: ${resumen}\n` +
+      `Notificado a: +${cfg.personalPhone || cfg.ownerPhone}`;
+
+    paused.set(from, { until: Date.now() + HUMAN_PAUSE_MS });
     await notifyOwner(summary, cfg);
-    paused.set(from, { until: Date.now() + 12 * 60 * 60 * 1000 });
+
     try {
       const { getSession, saveSession } = await import('./whatsapp-session.js');
       const s = getSession(from);
       s.step = 'human';
-      s.humanUntil = Date.now() + 12 * 60 * 60 * 1000;
-      if (args.nombre_cliente) s.data.nombre = String(args.nombre_cliente).slice(0, 80);
-      if (args.ciudad) s.data.ciudad = String(args.ciudad).slice(0, 80);
-      if (args.resumen) s.data.necesidad = String(args.resumen).slice(0, 200);
+      s.humanUntil = Date.now() + HUMAN_PAUSE_MS;
+      s.data.nombre = nombre.slice(0, 80);
+      s.data.ciudad = ciudad.slice(0, 80);
+      s.data.necesidad = resumen.slice(0, 400);
+      if (telefono) s.data.telefono = telefono;
+      s.data.necesidad = resumen.slice(0, 400);
       saveSession(from, s);
     } catch {
       /* session optional */
     }
+
     return JSON.stringify({
       ok: true,
-      mensaje_para_cliente:
-        '¡Claro que sí! Ya le envié un mensaje a uno de nuestros ingenieros; se pondrá en contacto contigo desde este mismo chat en breve.',
+      pausado: true,
+      mensaje_para_cliente: HANDOFF_CLIENT_MSG,
     });
   }
   return JSON.stringify({ error: 'tool_unknown' });
@@ -212,9 +329,21 @@ export async function handleAiMessage(from, userText) {
 
   pushHistory(from, 'user', text);
   const history = histories.get(from) || [];
+  const longChat = history.length > RESUMEN_ASK_MAX_MSGS;
 
   /** @type {{ role: string, content?: string, tool_calls?: any[], tool_call_id?: string, name?: string }[]} */
-  let messages = [{ role: 'system', content: SYSTEM_PROMPT }, ...history];
+  let messages = [
+    {
+      role: 'system',
+      content:
+        SYSTEM_PROMPT +
+        `\n\nEstado actual del chat: ${history.length} mensajes en historial. ` +
+        (longChat
+          ? 'Conversación LARGA (>5): si piden ingeniero, escala YA sin pedir resumen.'
+          : 'Conversación CORTA (≤5): si piden ingeniero desde el menú inicial, pide resumen primero.'),
+    },
+    ...history,
+  ];
 
   let data = await openaiChat(messages);
   let choice = data.choices?.[0]?.message;
@@ -244,10 +373,8 @@ export async function handleAiMessage(from, userText) {
     }
 
     if (isAiPaused(from)) {
-      const pausedMsg =
-        '¡Claro que sí! Ya le envié un mensaje a uno de nuestros ingenieros; se pondrá en contacto contigo desde este mismo chat en breve.';
-      pushHistory(from, 'assistant', pausedMsg);
-      return { text: pausedMsg, paused: true };
+      pushHistory(from, 'assistant', HANDOFF_CLIENT_MSG);
+      return { text: HANDOFF_CLIENT_MSG, paused: true };
     }
 
     data = await openaiChat(messages);
@@ -257,7 +384,7 @@ export async function handleAiMessage(from, userText) {
   let reply = String(choice?.content || '').trim();
   if (!reply) {
     reply =
-      'Con gusto te ayudo 🙂 Cuéntame si quieres dejar de pagar tanta energía, si se te va la luz, o si buscas un equipo específico.';
+      'Gracias por el mensaje. ¿Me cuentas un poco más qué necesitas, o prefieres que te pase con nuestro ingeniero de diseño fotovoltaico?';
   }
 
   pushHistory(from, 'assistant', reply);
