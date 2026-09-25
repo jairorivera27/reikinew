@@ -80,7 +80,7 @@ function saveDisk() {
 loadDisk();
 
 export function getSession(from) {
-  const id = String(from || '').replace(/\D/g, '');
+  const id = sessionKey(from);
   loadDisk();
   let s = mem.get(id);
   if (!s || Date.now() - (s.updatedAt || 0) > TTL_MS) {
@@ -91,24 +91,34 @@ export function getSession(from) {
 }
 
 export function saveSession(from, s) {
-  const id = String(from || '').replace(/\D/g, '');
+  const id = sessionKey(from);
   s.updatedAt = Date.now();
   mem.set(id, s);
   saveDisk();
 }
 
 export function resetSession(from) {
-  const id = String(from || '').replace(/\D/g, '');
+  const id = sessionKey(from);
   const s = { step: 'idle', data: {}, updatedAt: Date.now() };
   mem.set(id, s);
   saveDisk();
   return s;
 }
 
+/** Clave de sesión: teléfono o BSUID completo */
+function sessionKey(from) {
+  const raw = String(from || '').trim();
+  if (/^[A-Z]{2}(\.ENT)?\.[A-Za-z0-9]+$/.test(raw)) return raw;
+  return raw.replace(/\D/g, '') || raw;
+}
+
 export function normalizeText(text) {
   return String(text || '')
     .normalize('NFD')
     .replace(/\p{M}/gu, '')
+    // iOS/WhatsApp a veces mete BOM, zero-width, RTL marks
+    .replace(/[\u200B-\u200D\uFEFF\u2060\u00A0]/g, '')
+    .replace(/[\u202A-\u202E\u2066-\u2069]/g, '')
     .trim()
     .toLowerCase();
 }

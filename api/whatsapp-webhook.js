@@ -9,14 +9,15 @@
  *   WHATSAPP_ACCESS_TOKEN
  *   WHATSAPP_PHONE_NUMBER_ID
  *   WHATSAPP_APP_SECRET          (opcional pero recomendado: valida X-Hub-Signature-256)
- *   WHATSAPP_OWNER_PHONE         (default 573004052638)
+ *   PERSONAL_PHONE_NUMBER        (celular personal para leads; fallback WHATSAPP_OWNER_PHONE)
+ *   WHATSAPP_OWNER_PHONE         (alias / fallback del personal)
  *   CALLMEBOT_API_KEY            (aviso gratis al dueño cuando hay lead)
  *   WHATSAPP_SITE_URL            (default https://reikisolar.com.co)
  *   OPENAI_API_KEY               (opcional: conversación natural + tools)
  *   OPENAI_MODEL                 (default gpt-4o-mini)
  */
 import crypto from 'node:crypto';
-import { getWhatsAppConfig, isWhatsAppConfigured } from './_lib/whatsapp.js';
+import { getWhatsAppConfig, isWhatsAppConfigured, sendText } from './_lib/whatsapp.js';
 import { extractInboundMessages, handleIncomingMessage } from './_lib/whatsapp-bot.js';
 
 function readRawBody(req) {
@@ -61,6 +62,43 @@ function verifySignature(rawBody, signatureHeader, appSecret) {
   }
 }
 
+/** Resumen seguro para logs */
+function summarizeWebhook(body) {
+  const summary = [];
+  for (const entry of body?.entry || []) {
+    for (const change of entry.changes || []) {
+      const value = change.value || {};
+      const msgs = value.messages || [];
+      const statuses = value.statuses || [];
+      summary.push({
+        field: change.field,
+        phoneNumberId: value.metadata?.phone_number_id,
+        displayPhone: value.metadata?.display_phone_number,
+        messages: msgs.map((m) => ({
+          type: m.type,
+          from: m.from,
+          from_user_id: m.from_user_id || null,
+          id: m.id,
+          hasText: Boolean(m.text?.body),
+          errors: m.errors || null,
+        })),
+        statuses: statuses.map((s) => ({
+          status: s.status,
+          recipient: s.recipient_id,
+          recipient_user_id: s.recipient_user_id || null,
+          errors: s.errors || null,
+        })),
+        contacts: (value.contacts || []).map((c) => ({
+          wa_id: c.wa_id || null,
+          user_id: c.user_id || c.bsuid || null,
+        })),
+        errors: value.errors || null,
+      });
+    }
+  }
+  return summary;
+}
+
 export default async function handler(req, res) {
   const cfg = getWhatsAppConfig();
 
@@ -88,10 +126,22 @@ export default async function handler(req, res) {
   }
 
   try {
-    const raw = await readRawBody(req);
+    let body = {};
+    let raw = '';
+    if (req.body && typeof req.body === 'object' && !Buffer.isBuffer(req.body)) {
+      body = req.body;
+      raw = JSON.stringify(req.body);
+    } else {
+      raw = await readRawBody(req);
+      try {
+        body = raw ? JSON.parse(raw) : {};
+      } catch {
+        body = {};
+      }
+    }
+
     const signature = req.headers['x-hub-signature-256'] || req.headers['X-Hub-Signature-256'];
     const sig = verifySignature(raw, signature, cfg.appSecret);
-    // Si el App Secret está mal (caso frecuente), no bloqueamos el bot: Meta reintenta y el usuario no recibe respuesta.
     if (!sig.ok) {
       console.warn('[whatsapp-webhook] Firma no válida:', sig.reason, '- se procesa igual. Revisa WHATSAPP_APP_SECRET.');
     }
@@ -106,21 +156,45 @@ export default async function handler(req, res) {
       return res.end(JSON.stringify({ ok: true, skipped: 'not_configured' }));
     }
 
-    let body = {};
-    try {
-      body = raw ? JSON.parse(raw) : {};
-    } catch {
-      body = {};
-    }
-
+    const diag = summarizeWebhook(body);
     const messages = extractInboundMessages(body);
-    console.log('[whatsapp-webhook] mensajes entrantes:', messages.length, messages.map((m) => m.from));
+
+    console.log(
+      '[whatsapp-webhook] diag:',
+      JSON.stringify({
+        bodyKeys: Object.keys(body || {}),
+        parsed: diag,
+        extracted: messages.map((m) => ({
+          from: m.from,
+          type: m.rawType,
+          text: String(m.text || '').slice(0, 40),
+          id: m.buttonId || m.listId || '',
+        })),
+      })
+    );
+
+    for (const block of diag) {
+      for (const st of block.statuses || []) {
+        if (st.status === 'failed' || st.errors?.length) {
+          console.error('[whatsapp-webhook] entrega fallida a', st.recipient, st.errors || st.status);
+        }
+      }
+    }
 
     for (const msg of messages) {
       try {
         await handleIncomingMessage(msg);
       } catch (err) {
         console.error('[whatsapp-webhook] Error manejando mensaje', err?.message || err, err?.data || '');
+        try {
+          await sendText({
+            to: msg.from,
+            body: '¡Hola! ☀️ Te saluda Reiki Energía Solar. Escribe *hola* para ver el menú.',
+            cfg,
+          });
+        } catch (err2) {
+          console.error('[whatsapp-webhook] fallback sendText también falló', err2?.message || err2);
+        }
       }
     }
 

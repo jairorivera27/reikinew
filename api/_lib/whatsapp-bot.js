@@ -12,7 +12,7 @@ import {
   isLikelyPersonName,
   extractPersonName,
 } from './whatsapp-session.js';
-import { clearAiPause, handleAiMessage, isAiPaused, isOpenAiConfigured } from './whatsapp-ai.js';
+import { clearAiPause, handleAiMessage, isAiPaused, isOpenAiConfigured, shouldSkipResumenAsk } from './whatsapp-ai.js';
 
 const HUMAN_MS = 12 * 60 * 60 * 1000;
 const DISC_STEPS = new Set([
@@ -22,7 +22,12 @@ const DISC_STEPS = new Set([
   'disc_consumo',
   'disc_urgencia',
   'asesor_datos',
+  'asesor_nombre',
+  'asesor_ciudad',
+  'asesor_resumen',
 ]);
+
+const ASESOR_CAPTURE_STEPS = new Set(['asesor_nombre', 'asesor_ciudad', 'asesor_resumen', 'asesor_datos']);
 
 /** Mapea botones/listas a intención en lenguaje natural para la IA */
 function intentFromId(id) {
@@ -33,7 +38,8 @@ function intentFromId(id) {
     menu_proyecto: 'Quiero cotizar un proyecto de instalación solar llave en mano',
     menu_tienda: 'Quiero ver o comprar equipos en la tienda online',
     menu_aprender: 'Explícame opciones de energía solar de forma sencilla',
-    menu_asesor: 'Quiero hablar con un asesor humano de Reiki',
+    menu_asesor:
+      'Quiero hablar con el ingeniero de diseño fotovoltaico para un mejor asesoramiento sin costo.',
     menu_mas: 'Muéstrame más opciones de ayuda',
     menu_root: 'Hola, quiero empezar de nuevo',
     tip_ahorro_factura: 'Explícame cómo dejar de pagar tanta energía con paneles solares',
@@ -70,7 +76,7 @@ async function replyWithAi(from, cfg, userText, { withQuickMenu = false } = {}) 
         buttons: [
           { id: 'obj_ahorro', title: 'Dejar de pagar luz' },
           { id: 'obj_respaldo', title: 'Se me va la energía' },
-          { id: 'menu_asesor', title: 'Hablar con asesor' },
+          { id: 'menu_asesor', title: 'Ing. diseño solar' },
         ],
         cfg,
       });
@@ -87,16 +93,21 @@ function firstName(nombre) {
 }
 
 function isGreeting(n) {
-  return /^(hola|buenas|buen[oa]s?\s*(dias|días|tardes|noches)?|hey|hi|holi|saludos|menu|inicio|bot)\b/.test(
-    n
+  const t = String(n || '')
+    .replace(/[\u200B-\u200D\uFEFF\u2060]/g, '')
+    .trim();
+  return /^(hola|buenas|buen[oa]s?\s*(dias|días|tardes|noches)?|hey|hi|holi|saludos|menu|inicio|bot|hello)\b/.test(
+    t
   );
 }
 
 function formatLeadSummary(from, data = {}, titulo = 'LEAD COMERCIAL') {
   const d = data || {};
+  const isBsuid = /^[A-Z]{2}(\.ENT)?\.[A-Za-z0-9]+$/.test(String(from || ''));
+  const waLine = isBsuid ? `WhatsApp BSUID: ${from}` : `WhatsApp: +${from}`;
   return (
     `${titulo}\n` +
-    `WhatsApp: +${from}\n` +
+    `${waLine}\n` +
     `Nombre: ${d.nombre || '—'}\n` +
     `Ciudad: ${d.ciudad || '—'}\n` +
     `Objetivo: ${d.objetivo || '—'}\n` +
@@ -121,7 +132,7 @@ async function handoffToHuman(from, cfg, s, titulo) {
     to: from,
     body:
       (name ? `Listo, *${name}*. ` : 'Listo. ') +
-      'Ya avisé a un asesor de Reiki. Te escribirán por este mismo chat.\n\n' +
+      'Ya avisé a nuestro *ingeniero de diseño fotovoltaico*. Se contactará contigo por este mismo chat para darte un *asesoramiento más personalizado*, sin costo.\n\n' +
       'Horario: lunes a sábado, 8:00 a 18:00 (Medellín).\n\n' +
       'Si quieres volver con el asistente después, escribe *hola*.',
     cfg,
@@ -129,35 +140,54 @@ async function handoffToHuman(from, cfg, s, titulo) {
 }
 
 async function sendMainMenu(from, cfg) {
+  // Primero solo texto (máxima compatibilidad iOS). Luego menú.
   await sendText({ to: from, body: CONSULTANT_INTRO, cfg });
-  await sendList({
-    to: from,
-    body: 'Si prefieres, elige una opción y seguimos por ahí 👇',
-    buttonText: 'Ver opciones',
-    sections: [
-      {
-        title: '¿Qué necesitas?',
-        rows: [
+  try {
+    // Botones primero: más confiables en iOS que la lista
+    await sendButtons({
+      to: from,
+      body: 'Elige una opción 👇',
+      buttons: [
+        { id: 'obj_ahorro', title: 'Dejar de pagar luz' },
+        { id: 'obj_respaldo', title: 'Se me va la energía' },
+        { id: 'menu_asesor', title: 'Ing. diseño solar' },
+      ],
+      cfg,
+    });
+  } catch (err) {
+    console.warn('[whatsapp-bot] sendButtons falló:', err?.message || err);
+    try {
+      await sendList({
+        to: from,
+        body: 'Si prefieres, elige una opción y seguimos por ahí 👇',
+        buttonText: 'Ver opciones',
+        sections: [
           {
-            id: 'obj_ahorro',
-            title: 'Dejar de pagar energía',
-            description: 'Quiero dejar de pagar energía',
-          },
-          {
-            id: 'obj_respaldo',
-            title: 'Se me va la energía',
-            description: 'Cortes y respaldo',
-          },
-          {
-            id: 'menu_mas',
-            title: 'Otras opciones',
-            description: 'Tienda, cotizar o asesor',
+            title: '¿Qué necesitas?',
+            rows: [
+              { id: 'obj_ahorro', title: 'Dejar de pagar energía', description: 'Ahorro en factura' },
+              { id: 'obj_respaldo', title: 'Se me va la energía', description: 'Cortes y respaldo' },
+              { id: 'menu_tienda', title: 'Productos/tienda solar', description: 'Ver y comprar equipos' },
+              { id: 'menu_mas', title: 'Otras opciones', description: 'Cotizar, finca o ingeniero' },
+            ],
           },
         ],
-      },
-    ],
-    cfg,
-  });
+        cfg,
+      });
+    } catch (err2) {
+      console.warn('[whatsapp-bot] sendList también falló:', err2?.message || err2);
+      await sendText({
+        to: from,
+        body:
+          'Puedes escribirme:\n' +
+          '• *ahorro* — dejar de pagar tanta luz\n' +
+          '• *respaldo* — se me va la energía\n' +
+          '• *tienda* — ver equipos\n' +
+          '• *ingeniero* — hablar con diseño fotovoltaico',
+        cfg,
+      });
+    }
+  }
 }
 
 async function sendMoreOptions(from, cfg) {
@@ -173,7 +203,11 @@ async function sendMoreOptions(from, cfg) {
           { id: 'menu_proyecto', title: 'Cotizar instalación', description: 'Llave en mano' },
           { id: 'menu_tienda', title: 'Ver la tienda', description: 'Equipos con precio' },
           { id: 'menu_aprender', title: 'Explícame un poco', description: 'Orientación clara' },
-          { id: 'menu_asesor', title: 'Hablar con un asesor', description: 'Atención personal' },
+          {
+            id: 'menu_asesor',
+            title: 'Ing. diseño solar',
+            description: 'Asesoría FV sin costo',
+          },
         ],
       },
     ],
@@ -193,7 +227,7 @@ async function sendTip(from, tip, cfg) {
     buttons: [
       { id: 'menu_proyecto', title: 'Sí, cotizar' },
       { id: 'menu_tienda', title: 'Ir a la tienda' },
-      { id: 'menu_asesor', title: 'Hablar con asesor' },
+      { id: 'menu_asesor', title: 'Ing. diseño solar' },
     ],
     cfg,
   });
@@ -279,38 +313,95 @@ async function finishDiscovery(from, cfg) {
       `• Ciudad: *${s.data.ciudad}*\n` +
       `• Tipo: *${s.data.tipo || '—'}*\n` +
       `• Consumo/factura: *${s.data.consumo || '—'}*\n\n` +
-      'Un asesor de Reiki te escribe por este chat con la cotización.\n\n' +
+      'Un *ingeniero de diseño fotovoltaico* de Reiki se contactará contigo por este chat para un *asesoramiento más personalizado* (sin costo).\n\n' +
       `Mientras tanto puedes mirar equipos: ${cfg.siteUrl}/tienda\n\n` +
       'Para volver al asistente: *hola*.',
     cfg,
   });
 }
 
-async function startAsesorCapture(from, cfg) {
+async function askAsesorNombre(from, cfg) {
   const s = getSession(from);
-  await notifyOwner(
-    `ALERTA: pidió asesor\nWhatsApp: +${from}\nNombre: ${s.data.nombre || 'pendiente'}\nCiudad: ${s.data.ciudad || 'pendiente'}`,
-    cfg
-  );
-
-  if (s.data.nombre && s.data.ciudad) {
-    s.data.necesidad = s.data.necesidad || s.data.objetivo || 'Hablar con asesor';
-    await handoffToHuman(from, cfg, s, 'LEAD asesor');
-    return;
-  }
-
-  s.step = 'asesor_datos';
+  s.step = 'asesor_nombre';
   saveSession(from, s);
   await sendText({
     to: from,
     body:
-      'Con gusto te conecto con un asesor.\n\n' +
-      'Escríbeme en *un solo mensaje* así:\n' +
-      '*Nombre, Ciudad, Qué necesitas*\n\n' +
-      'Ejemplo:\n' +
-      'Alex, Bogotá, paneles para mi casa',
+      'Claro, con gusto te paso con nuestro *ingeniero de diseño fotovoltaico* para un asesoramiento más personalizado, *sin costo* 👍\n\n' +
+      'Para avisarle bien, ¿cuál es tu *nombre*?\n\n' +
+      '_Solo el nombre, por ejemplo: Alex_',
     cfg,
   });
+}
+
+async function askAsesorCiudad(from, cfg) {
+  const s = getSession(from);
+  s.step = 'asesor_ciudad';
+  saveSession(from, s);
+  const name = firstName(s.data.nombre);
+  await sendText({
+    to: from,
+    body:
+      (name ? `Gracias, *${name}*. ` : 'Gracias. ') +
+      '¿En qué *ciudad* está el proyecto?\n\n' +
+      '_Solo la ciudad, por ejemplo: Medellín_',
+    cfg,
+  });
+}
+
+async function askAsesorResumen(from, cfg) {
+  const s = getSession(from);
+  s.step = 'asesor_resumen';
+  saveSession(from, s);
+  const name = firstName(s.data.nombre);
+  await sendText({
+    to: from,
+    body:
+      (name ? `Perfecto, *${name}*. ` : '') +
+      'Antes de pasar el caso, déjame un *resumen corto* de lo que necesitas.\n\n' +
+      'Ejemplo: _Cotizar sistema solar para casa, factura de unos $250.000_',
+    cfg,
+  });
+}
+
+/**
+ * Pide nombre → ciudad → resumen (lo que falte) y solo entonces avisa por CallMeBot.
+ */
+async function continueAsesorLead(from, cfg) {
+  const s = getSession(from);
+  if (!String(s.data.nombre || '').trim()) {
+    await askAsesorNombre(from, cfg);
+    return;
+  }
+  if (!String(s.data.ciudad || '').trim()) {
+    await askAsesorCiudad(from, cfg);
+    return;
+  }
+  if (!String(s.data.necesidad || '').trim()) {
+    await askAsesorResumen(from, cfg);
+    return;
+  }
+  await handoffToHuman(from, cfg, s, 'LEAD ingeniero FV');
+}
+
+async function startAsesorCapture(from, cfg, { seedNecesidad } = {}) {
+  const s = getSession(from);
+  if (seedNecesidad && !s.data.necesidad) {
+    s.data.necesidad = String(seedNecesidad).slice(0, 400);
+  }
+  // En chat largo: reutilizar contexto como resumen si aún no hay
+  const turns = Number(s.msgCount || 0);
+  const longChat = turns > 5 || shouldSkipResumenAsk(from);
+  if (longChat && !s.data.necesidad) {
+    const bits = [
+      s.data.objetivo,
+      s.data.consumo && `Consumo: ${s.data.consumo}`,
+      'Pidió ingeniero tras conversación',
+    ].filter(Boolean);
+    s.data.necesidad = bits.join(' · ').slice(0, 400);
+  }
+  saveSession(from, s);
+  await continueAsesorLead(from, cfg);
 }
 
 function parseDatosLinea(text) {
@@ -355,6 +446,85 @@ async function sendLearnMenu(from, cfg) {
 async function handleDiscoveryStep(from, text, id, cfg) {
   const s = getSession(from);
   if (!DISC_STEPS.has(s.step)) return false;
+
+  if (s.step === 'asesor_nombre') {
+    const raw = String(text || '').trim();
+    const nRes = normalizeText(raw);
+    if (isGreeting(nRes) || nRes === 'menu') {
+      await askAsesorNombre(from, cfg);
+      return true;
+    }
+    if (isLikelyCity(raw) && !/me llamo|soy |mi nombre/i.test(raw)) {
+      await sendText({
+        to: from,
+        body:
+          `*${raw}* parece una ciudad 🙂\n\n` +
+          'Primero necesito tu *nombre* (solo el nombre).\nEjemplo: Alex',
+        cfg,
+      });
+      return true;
+    }
+    if (!isLikelyPersonName(raw) && raw.length < 2) {
+      await sendText({ to: from, body: '¿Me escribes tu nombre? Solo el nombre, ej: Alex', cfg });
+      return true;
+    }
+    s.data.nombre = extractPersonName(raw);
+    saveSession(from, s);
+    await continueAsesorLead(from, cfg);
+    return true;
+  }
+
+  if (s.step === 'asesor_ciudad') {
+    const raw = String(text || '').trim();
+    const nRes = normalizeText(raw);
+    if (isGreeting(nRes) || nRes === 'menu') {
+      await askAsesorCiudad(from, cfg);
+      return true;
+    }
+    if (isLikelyPersonName(raw) && !isLikelyCity(raw) && raw.split(/\s+/).length <= 2) {
+      s.data.nombre = extractPersonName(raw);
+      saveSession(from, s);
+      await sendText({
+        to: from,
+        body:
+          `Perfecto, tu nombre es *${firstName(s.data.nombre)}*.\n\n` +
+          'Ahora dime la *ciudad* del proyecto (solo la ciudad).',
+        cfg,
+      });
+      return true;
+    }
+    if (raw.length < 3) {
+      await sendText({ to: from, body: '¿En qué ciudad está el proyecto? Ej: Bogotá', cfg });
+      return true;
+    }
+    s.data.ciudad = raw.slice(0, 80);
+    saveSession(from, s);
+    await continueAsesorLead(from, cfg);
+    return true;
+  }
+
+  if (s.step === 'asesor_resumen') {
+    const resumen = String(text || '').trim();
+    const nRes = normalizeText(resumen);
+    if (isGreeting(nRes) || nRes === 'menu') {
+      await askAsesorResumen(from, cfg);
+      return true;
+    }
+    if (resumen.length < 5) {
+      await sendText({
+        to: from,
+        body:
+          'Necesito un poquito más de detalle para el ingeniero 🙂\n\n' +
+          'Cuéntame qué necesitas (proyecto, equipo, consumo…).',
+        cfg,
+      });
+      return true;
+    }
+    s.data.necesidad = resumen.slice(0, 400);
+    saveSession(from, s);
+    await continueAsesorLead(from, cfg);
+    return true;
+  }
 
   if (s.step === 'asesor_datos') {
     const parsed = parseDatosLinea(text);
@@ -483,7 +653,8 @@ async function handleDiscoveryStep(from, text, id, cfg) {
  */
 export async function handleIncomingMessage(msg) {
   const cfg = getWhatsAppConfig();
-  const from = String(msg.from || '').replace(/\D/g, '');
+  // Conservar BSUID (CO.xxx) o teléfono; no destruir con replace(/\D/)
+  const from = String(msg.from || '').trim();
   if (!from) return;
 
   const text = String(msg.text || '').trim();
@@ -492,18 +663,54 @@ export async function handleIncomingMessage(msg) {
   const s = getSession(from);
   const useAi = isOpenAiConfigured();
 
+  // Contador de mensajes de la conversación (para no pedir resumen si ya hay chat)
+  if (!isGreeting(n) && id !== 'menu_root') {
+    s.msgCount = Number(s.msgCount || 0) + 1;
+    saveSession(from, s);
+  }
+
+  // Si estamos capturando datos del ingeniero, NO reiniciar ni saludar
+  if (ASESOR_CAPTURE_STEPS.has(s.step)) {
+    if (await handleDiscoveryStep(from, text, id, cfg)) return;
+  }
+
   if (id === 'menu_root' || isGreeting(n) || n === 'menu') {
     resetSession(from);
     clearAiPause(from);
-    if (useAi) {
-      const ok = await replyWithAi(from, cfg, text || 'Hola', { withQuickMenu: true });
-      if (ok) return;
-    }
+    // Bienvenida fija (no regenerar con IA)
     await sendMainMenu(from, cfg);
     return;
   }
 
+  // Pedir ingeniero: siempre capturar nombre/ciudad/resumen antes de CallMeBot
+  const asksEngineer =
+    id === 'menu_asesor' ||
+    n === 'asesor' ||
+    n === 'humano' ||
+    n === 'persona' ||
+    /\bingeniero\b/.test(n) ||
+    /\basesor(ia|ía)?\b/.test(n);
+
+  if (asksEngineer && !ASESOR_CAPTURE_STEPS.has(s.step)) {
+    await startAsesorCapture(from, cfg);
+    return;
+  }
+
   if ((s.step === 'human' && s.humanUntil && Date.now() < s.humanUntil) || isAiPaused(from)) {
+    // No dejar a iOS/Android en silencio total tras handoff
+    if (text) {
+      try {
+        await sendText({
+          to: from,
+          body:
+            'Un ingeniero de diseño fotovoltaico ya tiene tu caso y te escribirá por este chat.\n\n' +
+            'Si quieres volver al menú del asistente, escribe *hola*.',
+          cfg,
+        });
+      } catch (err) {
+        console.warn('[whatsapp-bot] aviso human-mode falló', err?.message || err);
+      }
+    }
     return;
   }
   if (s.step === 'human') {
@@ -582,7 +789,7 @@ export async function handleIncomingMessage(msg) {
       buttons: [
         { id: 'menu_tienda', title: 'Abrir tienda' },
         { id: 'menu_proyecto', title: 'Mejor cotizar' },
-        { id: 'menu_asesor', title: 'Hablar asesor' },
+        { id: 'menu_asesor', title: 'Ing. diseño solar' },
       ],
       cfg,
     });
@@ -591,11 +798,6 @@ export async function handleIncomingMessage(msg) {
 
   if (id === 'menu_proyecto' || n === 'proyecto' || n === 'cotizar') {
     await startDiscovery(from, s.data.objetivo || 'ahorro', cfg);
-    return;
-  }
-
-  if (id === 'menu_asesor' || n === 'asesor' || n === 'humano' || n === 'persona') {
-    await startAsesorCapture(from, cfg);
     return;
   }
 
@@ -635,27 +837,93 @@ export async function handleIncomingMessage(msg) {
 }
 
 export function extractInboundMessages(body) {
-  /** @type {{ from: string, text?: string, buttonId?: string, listId?: string }[]} */
+  /** @type {{ from: string, text?: string, buttonId?: string, listId?: string, rawType?: string }[]} */
   const out = [];
   for (const entry of body?.entry || []) {
     for (const change of entry.changes || []) {
       const value = change.value;
-      if (!value?.messages) continue;
-      for (const m of value.messages) {
-        const from = m.from;
-        if (m.type === 'text') out.push({ from, text: m.text?.body || '' });
-        else if (m.type === 'interactive') {
+      if (!value) continue;
+      const contactWa = String(value.contacts?.[0]?.wa_id || '').trim();
+      const contactUserId = String(
+        value.contacts?.[0]?.user_id || value.contacts?.[0]?.bsuid || ''
+      ).trim();
+      const msgs = value.messages;
+      if (!Array.isArray(msgs) || msgs.length === 0) continue;
+
+      for (const m of msgs) {
+        // Teléfono clásico O BSUID (iOS / username / privacidad)
+        let from =
+          String(m.from || '').trim() ||
+          String(m.from_user_id || '').trim() ||
+          contactWa ||
+          contactUserId;
+        // Si from es solo dígitos, normalizar; si es BSUID, dejar intacto
+        if (from && /^\d+$/.test(from.replace(/\D/g, '')) && !/^[A-Z]{2}\./.test(from)) {
+          from = from.replace(/\D/g, '');
+        }
+        if (!from) {
+          console.warn('[whatsapp] mensaje sin from resoluble', {
+            type: m.type,
+            id: m.id,
+            fromRaw: m.from,
+            fromUserId: m.from_user_id,
+            keys: Object.keys(m || {}),
+          });
+          continue;
+        }
+        const type = String(m.type || '').toLowerCase();
+
+        if (type === 'text') {
+          const bodyText = String(m.text?.body || '')
+            .replace(/[\u200B-\u200D\uFEFF\u2060\u00A0]/g, '')
+            .trim();
+          out.push({ from, text: bodyText || 'hola', rawType: type });
+          continue;
+        }
+
+        if (type === 'interactive') {
           const btn = m.interactive?.button_reply;
           const list = m.interactive?.list_reply;
+          const nfm = m.interactive?.nfm_reply;
           out.push({
             from,
-            text: btn?.title || list?.title || '',
+            text: btn?.title || list?.title || nfm?.body || 'hola',
             buttonId: btn?.id,
             listId: list?.id,
+            rawType: type,
           });
-        } else if (m.type === 'button') {
-          out.push({ from, text: m.button?.text || '', buttonId: m.button?.payload });
+          continue;
         }
+
+        if (type === 'button') {
+          out.push({
+            from,
+            text: m.button?.text || 'hola',
+            buttonId: m.button?.payload || m.button?.text,
+            rawType: type,
+          });
+          continue;
+        }
+
+        // Primer mensaje iOS / CTWA: type=unsupported (131051/131060)
+        if (type === 'unsupported' || type === 'system') {
+          console.warn('[whatsapp] mensaje especial → hola', { from, type, errors: m.errors || null });
+          out.push({ from, text: 'hola', rawType: type });
+          continue;
+        }
+
+        if (type === 'reaction') {
+          // No abrir menú por cada reacción
+          continue;
+        }
+
+        if (['image', 'audio', 'video', 'document', 'sticker', 'location', 'contacts', 'order'].includes(type)) {
+          out.push({ from, text: 'hola', rawType: type });
+          continue;
+        }
+
+        console.warn('[whatsapp] tipo no mapeado → hola', { from, type, keys: Object.keys(m) });
+        out.push({ from, text: 'hola', rawType: type || 'unknown' });
       }
     }
   }
