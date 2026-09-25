@@ -6,6 +6,7 @@ import {
   sendText,
   sendButtons,
   sendList,
+  sendCtaUrl,
   notifyOwner,
   postLeadWebhook,
   isBsuid,
@@ -36,7 +37,12 @@ import {
   sendEngineerHandoff,
   sendPauseNoticeOnce,
   clearHabeasFlag,
+  ATTENTION_PHONE_DISPLAY,
+  attentionWhatsAppUrl,
 } from './whatsapp-atencion.js';
+import { looksLikeCatalogQuery, sendProductSearchList } from './whatsapp-catalog.js';
+import { handleCartMessage, looksLikePaymentQuery, sendPaymentOptions } from './whatsapp-cart.js';
+import { canUseAi } from './whatsapp-ai-budget.js';
 
 const MEDIA_TYPES = new Set([
   'image',
@@ -105,6 +111,32 @@ function intentFromId(id) {
 async function replyWithAi(from, cfg, userText, { withQuickMenu = false } = {}) {
   try {
     const result = await handleAiMessage(from, userText);
+    if (result.skipped) {
+      // tope diario / presupuesto / crédito → menú + CTA 324 sin error
+      await sendText({
+        to: from,
+        body:
+          result.skipped === 'daily'
+            ? 'Por hoy ya te ayudé bastante por este chat 🙂 Puedes usar el menú o escribirle directo al ingeniero.'
+            : result.skipped === 'budget'
+              ? 'En este momento te atiendo con el menú y nuestro ingeniero. Elige una opción 👇'
+              : 'Te atiendo con el menú o con nuestro ingeniero experto 👇',
+        cfg,
+      });
+      await sendMainMenu(from, cfg);
+      try {
+        await sendCtaUrl({
+          to: from,
+          body: 'O escribe directo al ingeniero:',
+          displayText: 'Escribir al ingeniero',
+          url: attentionWhatsAppUrl(),
+          cfg,
+        });
+      } catch {
+        /* ignore */
+      }
+      return true;
+    }
     if (result.paused) {
       const s = await getSession(from);
       await markHuman(from, s);
@@ -117,7 +149,7 @@ async function replyWithAi(from, cfg, userText, { withQuickMenu = false } = {}) 
         to: from,
         body: 'También puedes tocar una opción rápida:',
         buttons: [
-          { id: 'obj_ahorro', title: 'Dejar de pagar luz' },
+          { id: 'obj_ahorro', title: 'Bajar mi factura' },
           { id: 'obj_respaldo', title: 'Se me va la energía' },
           { id: 'menu_asesor', title: 'Ing. diseño solar' },
         ],
@@ -128,6 +160,21 @@ async function replyWithAi(from, cfg, userText, { withQuickMenu = false } = {}) 
   } catch (err) {
     console.error('[whatsapp-bot] Claude fallback a reglas:', err?.message || err);
     return false;
+  }
+}
+
+async function sendAiBlockedFallback(from, cfg) {
+  await sendMainMenu(from, cfg);
+  try {
+    await sendCtaUrl({
+      to: from,
+      body: `Atención personalizada: ${ATTENTION_PHONE_DISPLAY}`,
+      displayText: 'Escribir al ingeniero',
+      url: attentionWhatsAppUrl(),
+      cfg,
+    });
+  } catch {
+    /* ignore */
   }
 }
 
@@ -209,7 +256,7 @@ async function sendMainMenu(from, cfg) {
       to: from,
       body: 'Elige una opción 👇',
       buttons: [
-        { id: 'obj_ahorro', title: 'Dejar de pagar luz' },
+        { id: 'obj_ahorro', title: 'Bajar mi factura' },
         { id: 'obj_respaldo', title: 'Se me va la energía' },
         { id: 'menu_asesor', title: 'Ing. diseño solar' },
       ],
@@ -749,7 +796,6 @@ export async function handleIncomingMessage(msg) {
   const id = msg.buttonId || msg.listId || '';
   const n = normalizeText(text);
   const s = await getSession(from);
-  const useAi = isAiConfigured();
   const wantsRestart =
     id === 'menu_root' || n === 'menu' || n === 'bot' || n === 'inicio' || /^(menu|inicio|bot)\b/.test(n);
   const humanPaused =
@@ -785,8 +831,28 @@ export async function handleIncomingMessage(msg) {
     await saveSession(from, s);
   }
 
-  // Media (foto/audio/doc…): no reiniciar sesión ni tratar como "hola"
+  // Media (foto/audio/doc…): sin IA
   if (isMedia) {
+    const cap = String(msg.caption || text || '').toLowerCase();
+    if (/comprobante|pago|transfer|bre-?b|wompi|addi|nequi|recibo/.test(cap) || rawType === 'document') {
+      try {
+        await sendText({
+          to: from,
+          body: `¡Gracias! 📎 Los comprobantes van al *${ATTENTION_PHONE_DISPLAY}*. Reenvíalo allí (no lo validamos en este chat).`,
+          cfg,
+        });
+        await sendCtaUrl({
+          to: from,
+          body: 'Enviar comprobante:',
+          displayText: 'Enviar comprobante',
+          url: attentionWhatsAppUrl('Hola, envío el comprobante de pago'),
+          cfg,
+        });
+      } catch {
+        await sendText({ to: from, body: MEDIA_RECEIVED_MSG, cfg });
+      }
+      return;
+    }
     try {
       await sendText({ to: from, body: MEDIA_RECEIVED_MSG, cfg });
     } catch (err) {
@@ -802,7 +868,10 @@ export async function handleIncomingMessage(msg) {
     return;
   }
 
-  // Pedir ingeniero: siempre capturar nombre/ciudad/resumen antes de CallMeBot
+  // Carrito / productos / pagos (reglas, sin IA)
+  if (await handleCartMessage(from, text, id, cfg)) return;
+
+  // Pedir ingeniero: captura con reglas
   const asksEngineer =
     id === 'menu_asesor' ||
     n === 'asesor' ||
@@ -832,18 +901,72 @@ export async function handleIncomingMessage(msg) {
     if (await handleDiscoveryStep(from, text, id, cfg)) return;
   }
 
-  // Modo IA: conversación natural + tools (tienda, cotizar, humano)
-  if (useAi) {
-    const userText = intentFromId(id) || text;
-    if (userText) {
-      const ok = await replyWithAi(from, cfg, userText, {
-        withQuickMenu: id === 'menu_mas',
-      });
-      if (ok) return;
+  // Botones/listas de menú → reglas (nunca IA)
+  if (id === 'menu_mas') {
+    await sendMoreOptions(from, cfg);
+    return;
+  }
+  if (id === 'obj_ahorro' || id === 'menu_proyecto') {
+    await startDiscovery(from, 'ahorro', cfg);
+    return;
+  }
+  if (id === 'obj_respaldo') {
+    await startDiscovery(from, 'respaldo', cfg);
+    return;
+  }
+  if (id === 'obj_finca') {
+    await startDiscovery(from, 'finca', cfg);
+    return;
+  }
+  if (id === 'menu_tienda' || id === 'tip_paneles' || id === 'tip_inversores' || id === 'tip_baterias') {
+    const q =
+      id === 'tip_paneles'
+        ? 'panel solar'
+        : id === 'tip_inversores'
+          ? 'inversor'
+          : id === 'tip_baterias'
+            ? 'bateria litio'
+            : 'panel';
+    await sendProductSearchList(from, q, cfg);
+    return;
+  }
+  if (id === 'menu_aprender') {
+    await sendLearnMenu(from, cfg);
+    return;
+  }
+  if (id.startsWith('tip_')) {
+    const tip = matchSolarTip(intentFromId(id) || text);
+    if (tip) {
+      await sendTip(from, tip, cfg);
+      return;
     }
   }
 
-  // ——— Fallback por reglas (sin ANTHROPIC_API_KEY o si falló Claude) ———
+  // Pagos sin IA
+  if (looksLikePaymentQuery(text)) {
+    await sendPaymentOptions(from, cfg);
+    return;
+  }
+
+  // Catálogo por palabras clave → lista interactiva sin IA
+  if (text && looksLikeCatalogQuery(text)) {
+    await sendProductSearchList(from, text, cfg);
+    return;
+  }
+
+  // IA solo para texto libre que no encajó arriba (y si hay cupo)
+  if (!id && text) {
+    const gate = await canUseAi(from);
+    if (gate.ok && isAiConfigured()) {
+      const ok = await replyWithAi(from, cfg, text);
+      if (ok) return;
+    } else if (gate.reason === 'daily' || gate.reason === 'budget') {
+      await sendAiBlockedFallback(from, cfg);
+      return;
+    }
+  }
+
+  // ——— Fallback por reglas ———
   if (id === 'menu_mas') {
     await sendMoreOptions(from, cfg);
     return;

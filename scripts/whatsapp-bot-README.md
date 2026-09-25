@@ -46,10 +46,28 @@ Plantilla: [`.env.whatsapp.example`](../.env.whatsapp.example)
 
 Tras cambiar env: **Redeploy**.
 
+## Modo híbrido (costos)
+
+**Reglas (sin IA):** saludo/menú, captura ingeniero, pausa humana, media/comprobantes, búsqueda de catálogo por palabras clave (lista hasta 10), carrito/cantidades/PDF stub, formas de pago.
+
+**IA (Haiku por defecto):** solo texto libre que no encaje arriba (“qué me sirve…”, dudas técnicas generales), con topes:
+- 15 respuestas IA / cliente / día (`AI_DAILY_LIMIT_PER_USER`)
+- presupuesto mensual USD (`AI_MONTHLY_BUDGET_USD`, default 5)
+- historial 10 msgs, max_tokens 400, máx. 3 tool rounds
+
+```env
+ANTHROPIC_MODEL=claude-haiku-4-5-20251001
+AI_DAILY_LIMIT_PER_USER=15
+AI_MONTHLY_BUDGET_USD=5
+ADMIN_KEY=...
+```
+
+Uso: `GET /api/whatsapp-ai-usage?key=ADMIN_KEY`
+
 ## Persistencia (Upstash / Vercel KV)
 
 Obligatorio en producción: `KV_REST_API_URL` + **`KV_REST_API_TOKEN`** (escritura).  
-Sirve para: sesiones (nombre/ciudad), historial Claude, pausa humana, `message.id` (idempotencia 48 h) y lock por usuario (20 s).
+Sirve para: sesiones (nombre/ciudad), historial Claude, pausa humana, `message.id` (idempotencia 48 h), lock por usuario (20 s), carrito (7 d) y topes de IA.
 
 Sin el token de escritura, cada instancia de Vercel ve una sesión distinta y se cruzan los datos.
 
