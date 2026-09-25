@@ -8,6 +8,7 @@
  */
 import type { CategoriaTienda } from '../../config/categorias-tienda';
 import type { FacetasCategoria } from '../../utils/facetasCategoria';
+import BuscadorProductos from './BuscadorProductos.astro';
 
 interface Props {
   categoria: CategoriaTienda;
@@ -28,6 +29,12 @@ const formatoCorto = (valor: number) =>
   data-orden-default={categoria.id === 'inversores' ? 'tipo-potencia' : 'valor'}
 >
   <div class="filtros-barra">
+    <BuscadorProductos
+      id={`buscador-${categoria.slug}`}
+      variante="filtros"
+      placeholder={`Buscar en ${categoria.nombre}…`}
+    />
+
     <button type="button" class="filtros-toggle" data-filtros-toggle aria-expanded="false" aria-controls="filtros-panel">
       <i class="fas fa-sliders-h" aria-hidden="true"></i>
       Filtrar
@@ -79,6 +86,21 @@ const formatoCorto = (valor: number) =>
       </fieldset>
     )}
 
+    {facetas.voltajes.length > 0 && (
+      <fieldset class="filtros-grupo">
+        <legend>Voltaje</legend>
+        <div class="filtros-marcas">
+          {facetas.voltajes.map((v) => (
+            <label class="filtros-check">
+              <input type="checkbox" data-filtro-voltaje value={v.nombre} />
+              <span>{v.nombre}</span>
+              <span class="filtros-conteo">{v.conteo}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+    )}
+
     {facetas.marcas.length > 1 && (
       <fieldset class="filtros-grupo">
         <legend>Marca</legend>
@@ -119,12 +141,31 @@ const formatoCorto = (valor: number) =>
         </p>
         <div class="filtros-rango">
           <label>
-            <span>MÃ­nimo</span>
+            <span>Mínimo</span>
             <input type="number" data-filtro-potencia-min min="0" step="any" placeholder={String(facetas.potenciaMin)} />
           </label>
           <label>
-            <span>MÃ¡ximo</span>
+            <span>Máximo</span>
             <input type="number" data-filtro-potencia-max min="0" step="any" placeholder={String(facetas.potenciaMax)} />
+          </label>
+        </div>
+      </fieldset>
+    )}
+
+    {facetas.ahMin !== null && facetas.ahMax !== null && (
+      <fieldset class="filtros-grupo">
+        <legend>Capacidad (Ah)</legend>
+        <p class="filtros-rango-hint">
+          Desde {facetas.ahMin} hasta {facetas.ahMax} Ah
+        </p>
+        <div class="filtros-rango">
+          <label>
+            <span>Mínimo</span>
+            <input type="number" data-filtro-ah-min min="0" step="any" placeholder={String(facetas.ahMin)} />
+          </label>
+          <label>
+            <span>Máximo</span>
+            <input type="number" data-filtro-ah-max min="0" step="any" placeholder={String(facetas.ahMax)} />
           </label>
         </div>
       </fieldset>
@@ -161,7 +202,7 @@ const formatoCorto = (valor: number) =>
   .filtros-barra {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.85rem;
     flex-wrap: wrap;
     padding: 0.85rem 1.1rem;
     background: white;
@@ -387,7 +428,7 @@ const formatoCorto = (valor: number) =>
   }
 
   .paginacion[hidden] {
-    display: none;
+    display: none !important;
   }
 
   /* Elementos que inserta el script de filtros, fuera del alcance del CSS con scope. */

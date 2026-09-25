@@ -33,7 +33,11 @@ const enLiquidacion = Boolean(d.precioAnterior && d.descuentoPct);
 const precioUnitario = etiquetaPrecioPorUnidad(valor);
 ---
 
-<div class="producto-card" data-product-slug={slug}>
+<div
+  class="producto-card"
+  data-product-slug={slug}
+  data-search={[d.title, d.brand, d.model, d.power, tipoPotenciaLine].filter(Boolean).join(' ')}
+>
   <a class="producto-image-link" href={urlFicha} aria-label={`Ver detalles de ${d.title}`}>
     <div class="producto-image-container">
       <img

@@ -34,22 +34,72 @@ interface ItemIndice {
   destacado: boolean;
   stock: string;
   description: string;
+  power?: string;
   ordenTipo?: number | null;
   potenciaW?: number | null;
   tipoInversor?: string | null;
+  voltaje?: number | null;
+  voltajeBucket?: string | null;
+  ah?: number | null;
 }
 
 type Orden = 'valor' | 'tipo-potencia' | 'precio-asc' | 'precio-desc' | 'potencia-desc' | 'unitario-asc';
 
 interface Filtros {
+  q: string;
   marcas: string[];
   tipos: string[];
+  voltajes: string[];
   precioMin: number | null;
   precioMax: number | null;
   potenciaMin: number | null;
   potenciaMax: number | null;
+  ahMin: number | null;
+  ahMax: number | null;
   soloDisponibles: boolean;
   orden: Orden;
+}
+
+/** Normaliza texto para búsqueda (sin acentos, minúsculas). */
+function normalizarQ(texto: string): string {
+  return String(texto || '')
+    .normalize('NFD')
+    .replace(/\p{M}/gu, '')
+    .toLowerCase()
+    .trim();
+}
+
+/** Tokens de búsqueda: "550 w" / "5kw" / "growatt 5k" */
+function tokensBusqueda(q: string): string[] {
+  const n = normalizarQ(q);
+  if (!n) return [];
+  return n
+    .split(/[\s,/|]+/)
+    .map((t) => t.trim())
+    .filter((t) => t.length > 0);
+}
+
+function coincideBusqueda(p: ItemIndice, tokens: string[]): boolean {
+  if (tokens.length === 0) return true;
+  const haystack = normalizarQ(
+    [
+      p.title,
+      p.brand,
+      p.model,
+      p.tipoPotencia,
+      p.power ?? '',
+      p.description,
+      p.magnitud != null ? String(p.magnitud) : '',
+      p.potenciaW != null ? String(p.potenciaW) : '',
+      p.potenciaW != null ? `${Math.round(p.potenciaW / 1000)}kw` : '',
+      p.magnitud != null ? `${p.magnitud}w` : '',
+      p.voltajeBucket ?? '',
+      p.ah != null ? `${p.ah}ah` : '',
+      p.voltaje != null ? `${p.voltaje}v` : '',
+    ].join(' ')
+  );
+  const compact = haystack.replace(/\s+/g, '');
+  return tokens.every((t) => haystack.includes(t) || compact.includes(t.replace(/\s+/g, '')));
 }
 
 const COMPARADORES: Record<Orden, (a: ItemIndice, b: ItemIndice) => number> = {
@@ -93,13 +143,21 @@ function iniciar(): void {
   const contadorActivos = raiz.querySelector<HTMLElement>('[data-filtros-contador]');
   const textoResultado = raiz.querySelector<HTMLElement>('[data-filtros-resultado]');
   const selectOrden = raiz.querySelector<HTMLSelectElement>('[data-filtro-orden]');
+  const inputBusqueda = raiz.querySelector<HTMLInputElement>('[data-buscador-q]');
+  const btnLimpiarBusqueda = raiz.querySelector<HTMLButtonElement>('[data-buscador-limpiar]');
   const paginacion = document.querySelector<HTMLElement>('.paginacion');
 
   const unidad = raiz.dataset.unidad ?? '';
   const urlIndice = raiz.dataset.indice ?? '';
   const ordenDefault = (raiz.dataset.ordenDefault as Orden) || 'valor';
-  /** Se toma del navegador para conservar la ruta tal como se cargó, sin filtros. */
-  const urlBase = window.location.pathname;
+  /**
+   * Raíz de la categoría sin /2, /3… Así los filtros no se pierden al paginar
+   * y la URL canónica del filtro queda siempre en la página 1.
+   */
+  const pathInicial = window.location.pathname;
+  const urlBase = pathInicial.replace(/\/\d+\/?$/, '') || pathInicial;
+  const partioDeSubpagina =
+    pathInicial.replace(/\/$/, '') !== urlBase.replace(/\/$/, '');
 
   /** HTML original de Astro: se restaura cuando el usuario limpia los filtros. */
   const gridOriginal = grid.innerHTML;
@@ -123,14 +181,21 @@ function iniciar(): void {
     const tipos = [...raiz!.querySelectorAll<HTMLInputElement>('[data-filtro-tipo]')]
       .filter((el) => el.checked)
       .map((el) => el.value);
+    const voltajes = [...raiz!.querySelectorAll<HTMLInputElement>('[data-filtro-voltaje]')]
+      .filter((el) => el.checked)
+      .map((el) => el.value);
 
     return {
+      q: String(inputBusqueda?.value || '').trim(),
       marcas,
       tipos,
+      voltajes,
       precioMin: numero('[data-filtro-precio-min]'),
       precioMax: numero('[data-filtro-precio-max]'),
       potenciaMin: numero('[data-filtro-potencia-min]'),
       potenciaMax: numero('[data-filtro-potencia-max]'),
+      ahMin: numero('[data-filtro-ah-min]'),
+      ahMax: numero('[data-filtro-ah-max]'),
       soloDisponibles:
         raiz!.querySelector<HTMLInputElement>('[data-filtro-disponibles]')?.checked === true,
       orden: (selectOrden?.value as Orden) || ordenDefault,
@@ -139,10 +204,13 @@ function iniciar(): void {
 
   function contarActivos(f: Filtros): number {
     return (
+      (f.q ? 1 : 0) +
       f.marcas.length +
       f.tipos.length +
+      f.voltajes.length +
       (f.precioMin !== null || f.precioMax !== null ? 1 : 0) +
       (f.potenciaMin !== null || f.potenciaMax !== null ? 1 : 0) +
+      (f.ahMin !== null || f.ahMax !== null ? 1 : 0) +
       (f.soloDisponibles ? 1 : 0)
     );
   }
@@ -152,18 +220,28 @@ function iniciar(): void {
   }
 
   function aplicar(f: Filtros, items: ItemIndice[]): ItemIndice[] {
+    const tokens = tokensBusqueda(f.q);
     const filtrados = items.filter((p) => {
+      if (!coincideBusqueda(p, tokens)) return false;
       if (f.marcas.length > 0 && !f.marcas.includes(p.brand)) return false;
       if (f.tipos.length > 0 && (!p.tipoInversor || !f.tipos.includes(p.tipoInversor))) return false;
+      if (f.voltajes.length > 0 && (!p.voltajeBucket || !f.voltajes.includes(p.voltajeBucket))) {
+        return false;
+      }
       if (f.precioMin !== null && p.priceNum < f.precioMin) return false;
       if (f.precioMax !== null && p.priceNum > f.precioMax) return false;
       if (f.soloDisponibles && p.stock !== 'disponible') return false;
 
       if (f.potenciaMin !== null || f.potenciaMax !== null) {
-        // Sin magnitud conocida no se puede afirmar que cumpla el rango.
         if (p.magnitud === null) return false;
         if (f.potenciaMin !== null && p.magnitud < f.potenciaMin) return false;
         if (f.potenciaMax !== null && p.magnitud > f.potenciaMax) return false;
+      }
+
+      if (f.ahMin !== null || f.ahMax !== null) {
+        if (p.ah == null) return false;
+        if (f.ahMin !== null && p.ah < f.ahMin) return false;
+        if (f.ahMax !== null && p.ah > f.ahMax) return false;
       }
 
       return true;
@@ -277,21 +355,31 @@ function iniciar(): void {
 
   function sincronizarUrl(f: Filtros): void {
     const params = new URLSearchParams();
+    if (f.q) params.set('q', f.q);
     if (f.tipos.length > 0) params.set('tipo', f.tipos.join(','));
     if (f.marcas.length > 0) params.set('marca', f.marcas.join(','));
+    if (f.voltajes.length > 0) params.set('voltaje', f.voltajes.join(','));
     if (f.precioMin !== null) params.set('precioMin', String(f.precioMin));
     if (f.precioMax !== null) params.set('precioMax', String(f.precioMax));
     if (f.potenciaMin !== null) params.set('potMin', String(f.potenciaMin));
     if (f.potenciaMax !== null) params.set('potMax', String(f.potenciaMax));
+    if (f.ahMin !== null) params.set('ahMin', String(f.ahMin));
+    if (f.ahMax !== null) params.set('ahMax', String(f.ahMax));
     if (f.soloDisponibles) params.set('disponibles', '1');
     if (f.orden !== ordenDefault) params.set('orden', f.orden);
 
     const query = params.toString();
+    // Siempre en la raíz de la categoría (sin /2): evita perder filtros al paginar.
     window.history.replaceState(null, '', query ? `${urlBase}?${query}` : urlBase);
   }
 
   function restaurarEstatico(): void {
     quitarBotonMas();
+    // Si entró por /categoria/2, el HTML original es esa página: al limpiar ir a página 1.
+    if (partioDeSubpagina) {
+      window.location.assign(urlBase);
+      return;
+    }
     grid!.innerHTML = gridOriginal;
     if (paginacion) paginacion.hidden = false;
     if (textoResultado) textoResultado.textContent = resultadoOriginal;
@@ -300,6 +388,8 @@ function iniciar(): void {
   async function refrescar(): Promise<void> {
     const f = leerFiltros();
     const activos = contarActivos(f);
+
+    if (btnLimpiarBusqueda) btnLimpiarBusqueda.hidden = !f.q;
 
     if (contadorActivos) {
       contadorActivos.hidden = activos === 0;
@@ -359,15 +449,17 @@ function iniciar(): void {
     raiz!.querySelectorAll<HTMLInputElement>('input[type="number"]').forEach((el) => {
       el.value = '';
     });
+    if (inputBusqueda) inputBusqueda.value = '';
+    if (btnLimpiarBusqueda) btnLimpiarBusqueda.hidden = true;
     if (selectOrden) selectOrden.value = ordenDefault;
     void refrescar();
   }
 
-  // Espera a que el usuario termine de escribir antes de recalcular los rangos.
+  // Espera a que el usuario termine de escribir antes de recalcular los rangos / búsqueda.
   let temporizador = 0;
   function refrescarConEspera(): void {
     window.clearTimeout(temporizador);
-    temporizador = window.setTimeout(() => void refrescar(), 350);
+    temporizador = window.setTimeout(() => void refrescar(), 280);
   }
 
   raiz.addEventListener('change', (e) => {
@@ -378,7 +470,14 @@ function iniciar(): void {
   });
 
   raiz.addEventListener('input', (e) => {
-    if (e.target instanceof HTMLInputElement && e.target.type === 'number') refrescarConEspera();
+    const t = e.target;
+    if (!(t instanceof HTMLInputElement)) return;
+    if (t.type === 'number' || t.matches('[data-buscador-q]')) refrescarConEspera();
+  });
+
+  btnLimpiarBusqueda?.addEventListener('click', () => {
+    if (inputBusqueda) inputBusqueda.value = '';
+    void refrescar();
   });
 
   // Delegado en document porque el botón de "limpiar" también vive en el estado vacío.
@@ -401,6 +500,9 @@ function iniciar(): void {
     const params = new URLSearchParams(window.location.search);
     if ([...params.keys()].length === 0) return;
 
+    const q = params.get('q');
+    if (inputBusqueda && q) inputBusqueda.value = q;
+
     const marcas = (params.get('marca') ?? '').split(',').filter(Boolean);
     raiz!.querySelectorAll<HTMLInputElement>('[data-filtro-marca]').forEach((el) => {
       el.checked = marcas.includes(el.value);
@@ -411,6 +513,11 @@ function iniciar(): void {
       el.checked = tipos.includes(el.value);
     });
 
+    const voltajes = (params.get('voltaje') ?? '').split(',').filter(Boolean);
+    raiz!.querySelectorAll<HTMLInputElement>('[data-filtro-voltaje]').forEach((el) => {
+      el.checked = voltajes.includes(el.value);
+    });
+
     const asignar = (selector: string, valor: string | null): void => {
       const el = raiz!.querySelector<HTMLInputElement>(selector);
       if (el && valor) el.value = valor;
@@ -419,6 +526,8 @@ function iniciar(): void {
     asignar('[data-filtro-precio-max]', params.get('precioMax'));
     asignar('[data-filtro-potencia-min]', params.get('potMin'));
     asignar('[data-filtro-potencia-max]', params.get('potMax'));
+    asignar('[data-filtro-ah-min]', params.get('ahMin'));
+    asignar('[data-filtro-ah-max]', params.get('ahMax'));
 
     const dispo = raiz!.querySelector<HTMLInputElement>('[data-filtro-disponibles]');
     if (dispo) dispo.checked = params.get('disponibles') === '1';
@@ -426,13 +535,43 @@ function iniciar(): void {
     const orden = params.get('orden');
     if (selectOrden && orden && orden in COMPARADORES) selectOrden.value = orden;
 
-    if (panel && botonPanel) {
+    // Abrir panel solo si hay filtros de panel (no solo búsqueda).
+    const soloBusqueda = Boolean(q) && [...params.keys()].every((k) => k === 'q');
+    if (panel && botonPanel && !soloBusqueda) {
       panel.hidden = false;
       botonPanel.setAttribute('aria-expanded', 'true');
     }
 
     void refrescar();
   }
+
+  /** Conserva ?filtros=… al pasar de página 1 → 2 (paginación estática). */
+  function enlazarPaginacionConFiltros(): void {
+    if (!paginacion) return;
+    paginacion.querySelectorAll<HTMLAnchorElement>('a[href]').forEach((a) => {
+      a.addEventListener('click', (e) => {
+        const f = leerFiltros();
+        if (hayFiltros(f)) {
+          // Con filtros activos la paginación estática no aplica: usar “cargar más”.
+          e.preventDefault();
+          return;
+        }
+        const qs = window.location.search;
+        if (!qs || qs === '?') return;
+        try {
+          const dest = new URL(a.href, window.location.origin);
+          if (!dest.search) {
+            e.preventDefault();
+            window.location.assign(`${dest.pathname}${qs}`);
+          }
+        } catch {
+          /* ignore */
+        }
+      });
+    });
+  }
+
+  enlazarPaginacionConFiltros();
 }
 
 iniciar();

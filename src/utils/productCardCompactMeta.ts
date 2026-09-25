@@ -178,10 +178,13 @@ function marcaLimpia(brand?: string): string | null {
   return m;
 }
 
-/** Datos de batería: V, Ah, kWh (Ah se estima si solo hay V + kWh). */
-function metaBateria(title: string, power?: string, model?: string): string[] {
+/** Datos numéricos de batería: V, Ah, kWh (Ah se estima si solo hay V + kWh). */
+export function specsBateria(
+  title: string,
+  power?: string,
+  model?: string
+): { voltaje: number | null; ah: number | null; kwh: number | null } {
   const texto = `${title} ${power ?? ''} ${model ?? ''}`;
-  const partes: string[] = [];
   const vMatch = texto.match(/(\d+(?:[.,]\d+)?)\s*V(?:DC)?\b/i);
   const ahMatch = texto.match(/(\d+(?:[.,]\d+)?)\s*Ah\b/i);
   let kwhMatch = texto.match(/(\d+(?:[.,]\d+)?)\s*kWh\b/i);
@@ -190,12 +193,11 @@ function metaBateria(title: string, power?: string, model?: string): string[] {
     if (wh) {
       const whn = parseFloat(wh[1].replace(',', '.'));
       if (Number.isFinite(whn) && whn >= 100) {
-        kwhMatch = [wh[0], formatDecimalToken(String(whn / 1000))] as RegExpMatchArray;
+        kwhMatch = [wh[0], String(whn / 1000)] as RegExpMatchArray;
       }
     }
   }
 
-  // Modelos tipo FLA48280 / FLA24171 → Ah embebido al final
   let ahFromModel: number | undefined;
   const mAh =
     `${model ?? ''} ${title}`.match(/\bFLA\d{2}(\d{3})\b/i) ||
@@ -205,8 +207,8 @@ function metaBateria(title: string, power?: string, model?: string): string[] {
     if (n >= 50 && n <= 600) ahFromModel = n;
   }
 
-  const vNum = vMatch ? parseFloat(vMatch[1].replace(',', '.')) : NaN;
-  const ahNum = ahMatch ? parseFloat(ahMatch[1].replace(',', '.')) : ahFromModel ?? NaN;
+  let vNum = vMatch ? parseFloat(vMatch[1].replace(',', '.')) : NaN;
+  let ahNum = ahMatch ? parseFloat(ahMatch[1].replace(',', '.')) : ahFromModel ?? NaN;
   let kwhNum = kwhMatch ? parseFloat(String(kwhMatch[1]).replace(',', '.')) : NaN;
 
   if (!Number.isFinite(kwhNum)) {
@@ -217,30 +219,45 @@ function metaBateria(title: string, power?: string, model?: string): string[] {
     }
   }
 
-  // Preferir 51,2 V nominal litio cuando el título dice 48 V pero el modelo es FLA48…
-  let vShow = vNum;
   if (
     Number.isFinite(vNum) &&
     Math.abs(vNum - 48) < 0.01 &&
     /\bFLA48|\b51[.,]2\s*V/i.test(texto)
   ) {
-    vShow = 51.2;
+    vNum = 51.2;
   }
 
-  if (Number.isFinite(vShow)) partes.push(`${formatDecimalToken(String(vShow))} V`);
-
-  if (Number.isFinite(ahNum)) {
-    partes.push(`${formatDecimalToken(String(ahNum))} Ah`);
-  } else if (Number.isFinite(vShow) && vShow > 0 && Number.isFinite(kwhNum) && kwhNum > 0) {
-    // Ah ≈ kWh × 1000 / V (usar 51,2 si el pack es litio 48 V nominal)
-    const vCalc = Math.abs(vShow - 48) < 0.01 ? 51.2 : vShow;
+  if (!Number.isFinite(ahNum) && Number.isFinite(vNum) && vNum > 0 && Number.isFinite(kwhNum) && kwhNum > 0) {
+    const vCalc = Math.abs(vNum - 48) < 0.01 ? 51.2 : vNum;
     const estimado = (kwhNum * 1000) / vCalc;
-    const redondeado =
-      estimado >= 100 ? Math.round(estimado) : Math.round(estimado * 10) / 10;
-    partes.push(`${formatDecimalToken(String(redondeado))} Ah`);
+    ahNum = estimado >= 100 ? Math.round(estimado) : Math.round(estimado * 10) / 10;
   }
 
-  if (Number.isFinite(kwhNum)) partes.push(`${formatDecimalToken(String(kwhNum))} kWh`);
+  return {
+    voltaje: Number.isFinite(vNum) ? vNum : null,
+    ah: Number.isFinite(ahNum) ? ahNum : null,
+    kwh: Number.isFinite(kwhNum) ? kwhNum : null,
+  };
+}
+
+/** Agrupa tensiones de batería en etiquetas de filtro. */
+export function bucketVoltajeBateria(v: number): string {
+  if (v >= 11 && v <= 13.5) return '12V';
+  if (v >= 23 && v <= 26) return '24V';
+  if (v >= 47 && v <= 50) return '48V';
+  if (v >= 50.5 && v <= 53) return '51.2V';
+  if (v >= 100) return 'Alto voltaje (HV)';
+  const entero = Math.abs(v - Math.round(v)) < 0.05;
+  return entero ? `${Math.round(v)}V` : `${String(v).replace('.', ',')}V`;
+}
+
+/** Datos de batería: V, Ah, kWh (Ah se estima si solo hay V + kWh). */
+function metaBateria(title: string, power?: string, model?: string): string[] {
+  const { voltaje, ah, kwh } = specsBateria(title, power, model);
+  const partes: string[] = [];
+  if (voltaje !== null) partes.push(`${formatDecimalToken(String(voltaje))} V`);
+  if (ah !== null) partes.push(`${formatDecimalToken(String(ah))} Ah`);
+  if (kwh !== null) partes.push(`${formatDecimalToken(String(kwh))} kWh`);
   return partes;
 }
 

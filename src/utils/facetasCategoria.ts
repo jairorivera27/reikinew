@@ -5,16 +5,25 @@
  * controles ofrezcan siempre las marcas y los rangos reales del catálogo.
  */
 import { precioNumero, type ResultadoValor } from './calidadPrecio';
-import { detectarTipoInversor } from './productCardCompactMeta';
+import {
+  bucketVoltajeBateria,
+  detectarTipoInversor,
+  specsBateria,
+} from './productCardCompactMeta';
 
 export interface FacetasCategoria {
   marcas: { nombre: string; conteo: number }[];
   /** Solo inversores: On-Grid, Off-Grid, Híbrido. */
   tiposInversor: { nombre: string; conteo: number }[];
+  /** Solo baterías: 12V, 24V, 48V, 51.2V, HV… */
+  voltajes: { nombre: string; conteo: number }[];
   precioMin: number;
   precioMax: number;
   potenciaMin: number | null;
   potenciaMax: number | null;
+  /** Solo baterías: rango de capacidad en Ah. */
+  ahMin: number | null;
+  ahMax: number | null;
   unidad: string | null;
   total: number;
   hayAgotados: boolean;
@@ -29,6 +38,7 @@ interface ProductoFaceteable {
     category?: string;
     price: string;
     stock?: string;
+    power?: string;
   };
 }
 
@@ -44,21 +54,28 @@ export function tipoInversorParaFiltro(
   return 'On-Grid'; // On-Grid, Microinversor o desconocido
 }
 
+const ORDEN_VOLTAJE = ['12V', '24V', '48V', '51.2V', 'Alto voltaje (HV)'];
+
 export function calcularFacetas(
   productos: ProductoFaceteable[],
   valores: Map<string, ResultadoValor>
 ): FacetasCategoria {
   const conteoMarcas = new Map<string, number>();
   const conteoTipos = new Map<string, number>();
+  const conteoVoltajes = new Map<string, number>();
   let precioMin = Infinity;
   let precioMax = 0;
   let potenciaMin: number | null = null;
   let potenciaMax: number | null = null;
+  let ahMin: number | null = null;
+  let ahMax: number | null = null;
   let hayAgotados = false;
   let esInversores = false;
+  let esBaterias = false;
 
   for (const p of productos) {
     if (p.data.category === 'inversores') esInversores = true;
+    if (p.data.category === 'baterias') esBaterias = true;
 
     const marca = p.data.brand?.trim();
     // "Sin marca" no es una marca útil para filtrar; no la listamos en el panel.
@@ -69,6 +86,18 @@ export function calcularFacetas(
     if (p.data.category === 'inversores' && p.data.title) {
       const tipo = tipoInversorParaFiltro(p.data.title, p.data.model, p.data.brand);
       conteoTipos.set(tipo, (conteoTipos.get(tipo) ?? 0) + 1);
+    }
+
+    if (p.data.category === 'baterias' && p.data.title) {
+      const specs = specsBateria(p.data.title, p.data.power, p.data.model);
+      if (specs.voltaje !== null) {
+        const bucket = bucketVoltajeBateria(specs.voltaje);
+        conteoVoltajes.set(bucket, (conteoVoltajes.get(bucket) ?? 0) + 1);
+      }
+      if (specs.ah !== null) {
+        ahMin = ahMin === null ? specs.ah : Math.min(ahMin, specs.ah);
+        ahMax = ahMax === null ? specs.ah : Math.max(ahMax, specs.ah);
+      }
     }
 
     const precio = precioNumero(p.data.price);
@@ -88,6 +117,15 @@ export function calcularFacetas(
 
   const ordenTipos = ['On-Grid', 'Off-Grid', 'Híbrido'];
 
+  const voltajesOrdenados = [...conteoVoltajes.entries()]
+    .map(([nombre, conteo]) => ({ nombre, conteo }))
+    .sort((a, b) => {
+      const ia = ORDEN_VOLTAJE.indexOf(a.nombre);
+      const ib = ORDEN_VOLTAJE.indexOf(b.nombre);
+      if (ia >= 0 || ib >= 0) return (ia < 0 ? 99 : ia) - (ib < 0 ? 99 : ib);
+      return a.nombre.localeCompare(b.nombre, 'es');
+    });
+
   return {
     marcas: [...conteoMarcas.entries()]
       .map(([nombre, conteo]) => ({ nombre, conteo }))
@@ -97,10 +135,13 @@ export function calcularFacetas(
           .filter((nombre) => (conteoTipos.get(nombre) ?? 0) > 0)
           .map((nombre) => ({ nombre, conteo: conteoTipos.get(nombre) ?? 0 }))
       : [],
+    voltajes: esBaterias ? voltajesOrdenados : [],
     precioMin: precioMin === Infinity ? 0 : precioMin,
     precioMax,
     potenciaMin: potenciaMin === null ? null : Math.floor(potenciaMin),
     potenciaMax: potenciaMax === null ? null : Math.ceil(potenciaMax),
+    ahMin: ahMin === null ? null : Math.floor(ahMin),
+    ahMax: ahMax === null ? null : Math.ceil(ahMax),
     unidad: [...valores.values()].find((v) => v.unidad !== null)?.unidad ?? null,
     total: productos.length,
     hayAgotados,

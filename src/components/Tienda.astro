@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import ProductoCardCompact from './tienda/ProductoCardCompact.astro';
+import BuscadorProductos from './tienda/BuscadorProductos.astro';
 import PagoConfianza from './PagoConfianza.astro';
 import { CATEGORIAS, urlCategoria } from '../config/categorias-tienda';
 import { calcularValor, ordenarPorValor, type ResultadoValor } from '../utils/calidadPrecio';
@@ -109,9 +110,16 @@ const marcasLoop = [...marcasConSrc, ...marcasConSrc];
     <div class="tienda-header">
       <h1 class="tienda-title">Tienda de Equipos Solares</h1>
       <p class="tienda-subtitle">Encuentra los mejores equipos solares para tu proyecto</p>
+      <BuscadorProductos id="buscador-tienda" variante="tienda" />
+      <p class="buscador-tienda-hint" data-buscador-tienda-hint hidden aria-live="polite"></p>
     </div>
   </div>
 
+  <div class="buscador-tienda-resultados container" data-buscador-tienda-resultados hidden>
+    <div class="buscador-tienda-grid cat-grid" data-buscador-tienda-grid></div>
+  </div>
+
+  <div data-tienda-contenido>
   <div class="marcas-banner" aria-label="Marcas que distribuimos">
     <div class="marcas-banner-inner">
       <p class="marcas-banner-label">Nuestras marcas Aliadas</p>
@@ -228,6 +236,7 @@ const marcasLoop = [...marcasConSrc, ...marcasConSrc];
       </div>
     </div>
   </div>
+  </div><!-- /data-tienda-contenido -->
 
   <PagoConfianza variant="section" class="pago-confianza-section--tienda" />
 
@@ -635,6 +644,31 @@ const marcasLoop = [...marcasConSrc, ...marcasConSrc];
     text-align: center;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1.25rem;
+  }
+
+  .buscador-tienda-hint {
+    margin: 0.75rem auto 0;
+    max-width: 640px;
+    font-size: 0.92rem;
+    color: rgba(255, 255, 255, 0.92);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+  }
+
+  .buscador-tienda-hint[hidden],
+  .buscador-tienda-resultados[hidden],
+  [data-tienda-contenido][hidden] {
+    display: none !important;
+  }
+
+  .buscador-tienda-resultados {
+    margin: 0 auto 2rem;
+  }
+
+  .buscador-tienda-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 1.25rem;
   }
 
   /* Carrusel de marcas bajo el hero */
@@ -2233,5 +2267,158 @@ const marcasLoop = [...marcasConSrc, ...marcasConSrc];
       }
     });
   });
+</script>
+
+<script>
+  /**
+   * Búsqueda global en /tienda: nombre, marca, modelo y potencia.
+   * Carga /tienda/indice/todos.json la primera vez que el usuario escribe.
+   */
+  (function initBuscadorTienda() {
+    const input = document.querySelector('[data-buscador-q]');
+    const btnLimpiar = document.querySelector('[data-buscador-limpiar]');
+    const hint = document.querySelector('[data-buscador-tienda-hint]');
+    const panel = document.querySelector('[data-buscador-tienda-resultados]');
+    const grid = document.querySelector('[data-buscador-tienda-grid]');
+    const contenido = document.querySelector('[data-tienda-contenido]');
+    if (!(input instanceof HTMLInputElement) || !grid || !panel || !contenido) return;
+
+    /** @type {{ slug: string, url: string, title: string, brand: string, model: string, power: string, tipoPotencia: string, categoryName: string, image: string, price: string, stock: string }[] | null} */
+    let catalogo = null;
+    let timer = 0;
+
+    function normalizar(t) {
+      return String(t || '')
+        .normalize('NFD')
+        .replace(/\p{M}/gu, '')
+        .toLowerCase()
+        .trim();
+    }
+
+    function tokens(q) {
+      const n = normalizar(q);
+      if (!n) return [];
+      return n.split(/[\s,/|]+/).filter(Boolean);
+    }
+
+    function coincide(p, toks) {
+      if (!toks.length) return true;
+      const hay = normalizar(
+        [p.title, p.brand, p.model, p.power, p.tipoPotencia, p.categoryName].join(' ')
+      );
+      const compact = hay.replace(/\s+/g, '');
+      return toks.every((t) => hay.includes(t) || compact.includes(t.replace(/\s+/g, '')));
+    }
+
+    function escapar(v) {
+      return String(v ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function tarjeta(p) {
+      const stock =
+        p.stock === 'agotado' ? 'Agotado' : p.stock === 'pre-orden' ? 'Pre-orden' : 'Disponible';
+      return `
+        <div class="producto-card" data-product-slug="${escapar(p.slug)}">
+          <a class="producto-image-link" href="${escapar(p.url)}" aria-label="Ver detalles de ${escapar(p.title)}">
+            <div class="producto-image-container">
+              <img src="${escapar(p.image)}" alt="${escapar(p.title)}" class="producto-image" loading="lazy" decoding="async" />
+              <div class="producto-badge ${escapar(p.stock)}">${stock}</div>
+            </div>
+          </a>
+          <div class="producto-content">
+            <a class="producto-meta-stack" href="${escapar(p.url)}">
+              <p class="producto-tipo-potencia">${escapar(p.tipoPotencia || p.categoryName)}</p>
+              ${p.brand ? `<p class="producto-marca-gris">${escapar(p.brand)}</p>` : ''}
+              <div class="producto-modelo-recuadro" title="${escapar(p.title)}">${escapar(p.model || p.title)}</div>
+            </a>
+            <div class="producto-footer-compact">
+              <div class="producto-price">${escapar(p.price)}</div>
+              <a class="producto-ver-detalles" href="${escapar(p.url)}">Ver detalles</a>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    async function asegurarCatalogo() {
+      if (catalogo) return catalogo;
+      if (hint) {
+        hint.hidden = false;
+        hint.textContent = 'Buscando…';
+      }
+      const res = await fetch('/tienda/indice/todos.json');
+      if (!res.ok) throw new Error('índice');
+      const data = await res.json();
+      catalogo = data.items || [];
+      return catalogo;
+    }
+
+    async function refrescar() {
+      const q = input.value.trim();
+      if (btnLimpiar instanceof HTMLElement) btnLimpiar.hidden = !q;
+
+      if (!q) {
+        panel.hidden = true;
+        contenido.hidden = false;
+        grid.innerHTML = '';
+        if (hint) {
+          hint.hidden = true;
+          hint.textContent = '';
+        }
+        return;
+      }
+
+      try {
+        const items = await asegurarCatalogo();
+        const toks = tokens(q);
+        const hits = items.filter((p) => coincide(p, toks)).slice(0, 48);
+        contenido.hidden = true;
+        panel.hidden = false;
+        if (hits.length === 0) {
+          grid.innerHTML = `
+            <div class="filtros-vacio" style="grid-column:1/-1">
+              <i class="fas fa-search" aria-hidden="true"></i>
+              <p>No encontramos equipos con “${escapar(q)}”.</p>
+              <p style="font-size:0.88rem;color:#9ca3af">Prueba por marca (Growatt) o potencia (550W, 5kW).</p>
+            </div>`;
+        } else {
+          grid.innerHTML = hits.map(tarjeta).join('');
+        }
+        if (hint) {
+          hint.hidden = false;
+          hint.textContent =
+            hits.length === 1
+              ? '1 equipo encontrado'
+              : `${hits.length} equipos encontrados${items.length > hits.length && hits.length === 48 ? ' (mostrando los primeros 48)' : ''}`;
+        }
+      } catch {
+        if (hint) {
+          hint.hidden = false;
+          hint.textContent = 'No se pudo cargar el catálogo. Recargá la página.';
+        }
+      }
+    }
+
+    input.addEventListener('input', () => {
+      window.clearTimeout(timer);
+      timer = window.setTimeout(() => void refrescar(), 280);
+    });
+
+    btnLimpiar?.addEventListener('click', () => {
+      input.value = '';
+      void refrescar();
+      input.focus();
+    });
+
+    const params = new URLSearchParams(window.location.search);
+    const q0 = params.get('q');
+    if (q0) {
+      input.value = q0;
+      void refrescar();
+    }
+  })();
 </script>
 

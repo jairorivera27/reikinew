@@ -6,6 +6,8 @@ import {
   formatTipoPotenciaLine,
   ordenTipoInversor,
   potenciaEnVatios,
+  specsBateria,
+  bucketVoltajeBateria,
 } from '../../../utils/productCardCompactMeta';
 import { tipoInversorParaFiltro } from '../../../utils/facetasCategoria';
 
@@ -39,6 +41,10 @@ export const GET: APIRoute = async ({ props }) => {
   const items = productos.map((p) => {
     const valor = valores.get(p.slug);
     const meta = { brand: p.data.brand, model: p.data.model, power: p.data.power };
+    const bat =
+      categoriaId === 'baterias'
+        ? specsBateria(p.data.title, p.data.power, p.data.model)
+        : null;
     return {
       slug: p.slug,
       title: p.data.title,
@@ -68,6 +74,9 @@ export const GET: APIRoute = async ({ props }) => {
         categoriaId === 'inversores'
           ? tipoInversorParaFiltro(p.data.title, p.data.model, p.data.brand)
           : null,
+      voltaje: bat?.voltaje ?? null,
+      voltajeBucket: bat?.voltaje != null ? bucketVoltajeBateria(bat.voltaje) : null,
+      ah: bat?.ah ?? null,
     };
   });
 
