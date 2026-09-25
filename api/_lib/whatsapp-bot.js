@@ -41,8 +41,24 @@ import {
   attentionWhatsAppUrl,
 } from './whatsapp-atencion.js';
 import { looksLikeCatalogQuery, sendProductSearchList } from './whatsapp-catalog.js';
-import { handleCartMessage, looksLikePaymentQuery, sendPaymentOptions } from './whatsapp-cart.js';
+import {
+  handleCartMessage,
+  hasActiveCartOrQuote,
+  sendPaymentOptions,
+  sendAmbiguousPayOrAhorro,
+  startPurchaseClose,
+} from './whatsapp-cart.js';
+import {
+  looksLikeAhorroIntent,
+  looksLikeRespaldoIntent,
+  looksLikePaymentIntent,
+  looksLikeAmbiguousPayIntent,
+  looksLikeBuyIntent,
+  looksLikeInstallIntent,
+  looksLikeQuoteEquipmentIntent,
+} from './whatsapp-intent.js';
 import { canUseAi } from './whatsapp-ai-budget.js';
+import { recommendProject } from './whatsapp-catalog.js';
 
 const MEDIA_TYPES = new Set([
   'image',
@@ -63,6 +79,13 @@ const DISC_STEPS = new Set([
   'disc_tipo',
   'disc_consumo',
   'disc_urgencia',
+  'inst_lugar',
+  'inst_objetivo',
+  'inst_consumo',
+  'inst_ciudad',
+  'inst_techo',
+  'inst_nombre',
+  'inst_celular',
   'asesor_datos',
   'asesor_nombre',
   'asesor_ciudad',
@@ -81,17 +104,19 @@ const ASESOR_CAPTURE_STEPS = new Set([
 /** Mapea botones/listas a intención en lenguaje natural para la IA */
 function intentFromId(id) {
   const map = {
-    obj_ahorro: 'Quiero dejar de pagar tanta energía / bajar mi factura de la luz',
+    obj_ahorro: 'Quiero bajar mi factura de la luz con energía solar',
     obj_respaldo: 'Se me va la energía, necesito respaldo por cortes de luz',
     obj_finca: 'Necesito un sistema solar para finca o un sitio sin red',
     menu_proyecto: 'Quiero cotizar un proyecto de instalación solar llave en mano',
+    menu_instalar: 'Quiero instalar energía solar en mi casa o negocio',
+    menu_cotizar: 'Quiero cotizar un equipo de la tienda',
     menu_tienda: 'Quiero ver o comprar equipos en la tienda online',
     menu_aprender: 'Explícame opciones de energía solar de forma sencilla',
     menu_asesor:
       'Quiero hablar con el ingeniero de diseño fotovoltaico para un mejor asesoramiento sin costo.',
     menu_mas: 'Muéstrame más opciones de ayuda',
     menu_root: 'Hola, quiero empezar de nuevo',
-    tip_ahorro_factura: 'Explícame cómo dejar de pagar tanta energía con paneles solares',
+    tip_ahorro_factura: 'Explícame cómo bajar mi factura con paneles solares',
     tip_backup: 'Explícame qué hacer cuando se me va la energía',
     tip_offgrid: 'Explícame sistemas para finca o sin red',
     tip_paneles: 'Quiero información sobre paneles solares',
@@ -101,6 +126,17 @@ function intentFromId(id) {
     tipo_hogar: 'El proyecto es para casa u hogar',
     tipo_comercio: 'El proyecto es para un negocio o comercio',
     tipo_industria: 'El proyecto es para finca o industria',
+    lugar_casa: 'La instalación sería en casa',
+    lugar_negocio: 'La instalación sería en un negocio',
+    lugar_finca: 'La instalación sería en una finca',
+    obj_ahorrar: 'Busco principalmente ahorrar en la factura',
+    obj_respaldo_btn: 'Busco respaldo en cortes de luz',
+    obj_ambos: 'Busco ahorrar y tener respaldo',
+    obj_sin_red: 'Necesito energía sin red eléctrica',
+    techo_teja: 'Techo de teja de barro',
+    techo_lamina: 'Techo de lámina o metálico',
+    techo_losa: 'Techo de losa o concreto',
+    techo_nose: 'No sé cómo es el techo',
     urg_ya: 'Quiero avanzar lo antes posible',
     urg_mes: 'Quiero avanzar este mes',
     urg_explorar: 'Todavía estoy explorando opciones',
@@ -248,53 +284,29 @@ async function finishDiscovery(from, cfg) {
 }
 
 async function sendMainMenu(from, cfg) {
-  // Primero solo texto (máxima compatibilidad iOS). Luego menú.
   await sendText({ to: from, body: CONSULTANT_INTRO, cfg });
   try {
-    // Botones primero: más confiables en iOS que la lista
     await sendButtons({
       to: from,
-      body: 'Elige una opción 👇',
+      body: 'Elige una opción, por favor 👇',
       buttons: [
-        { id: 'obj_ahorro', title: 'Bajar mi factura' },
-        { id: 'obj_respaldo', title: 'Se me va la energía' },
-        { id: 'menu_asesor', title: 'Ing. diseño solar' },
+        { id: 'menu_cotizar', title: 'Cotizar un equipo' },
+        { id: 'menu_instalar', title: 'Instalar solar' },
+        { id: 'menu_asesor', title: 'Hablar c/ ingeniero' },
       ],
       cfg,
     });
   } catch (err) {
     console.warn('[whatsapp-bot] sendButtons falló:', err?.message || err);
-    try {
-      await sendList({
-        to: from,
-        body: 'Si prefieres, elige una opción y seguimos por ahí 👇',
-        buttonText: 'Ver opciones',
-        sections: [
-          {
-            title: '¿Qué necesitas?',
-            rows: [
-              { id: 'obj_ahorro', title: 'Dejar de pagar energía', description: 'Ahorro en factura' },
-              { id: 'obj_respaldo', title: 'Se me va la energía', description: 'Cortes y respaldo' },
-              { id: 'menu_tienda', title: 'Productos/tienda solar', description: 'Ver y comprar equipos' },
-              { id: 'menu_mas', title: 'Otras opciones', description: 'Cotizar, finca o ingeniero' },
-            ],
-          },
-        ],
-        cfg,
-      });
-    } catch (err2) {
-      console.warn('[whatsapp-bot] sendList también falló:', err2?.message || err2);
-      await sendText({
-        to: from,
-        body:
-          'Puedes escribirme:\n' +
-          '• *ahorro* — dejar de pagar tanta luz\n' +
-          '• *respaldo* — se me va la energía\n' +
-          '• *tienda* — ver equipos\n' +
-          '• *ingeniero* — hablar con diseño fotovoltaico',
-        cfg,
-      });
-    }
+    await sendText({
+      to: from,
+      body:
+        'Puedes escribirme, por favor:\n' +
+        '• *cotizar* — un equipo de la tienda\n' +
+        '• *instalar* — sistema solar a tu medida\n' +
+        '• *ingeniero* — hablar con diseño fotovoltaico',
+      cfg,
+    });
   }
 }
 
@@ -309,7 +321,7 @@ async function sendMoreOptions(from, cfg) {
         rows: [
           { id: 'obj_finca', title: 'Finca / sin red', description: 'Sistema aislado' },
           { id: 'menu_proyecto', title: 'Cotizar instalación', description: 'Llave en mano' },
-          { id: 'menu_tienda', title: 'Ver la tienda', description: 'Equipos con precio' },
+          { id: 'menu_tienda', title: 'Ver equipos', description: 'Catálogo y tienda' },
           { id: 'menu_aprender', title: 'Explícame un poco', description: 'Orientación clara' },
           {
             id: 'menu_asesor',
@@ -372,26 +384,302 @@ async function askCiudad(from, cfg) {
 }
 
 async function startDiscovery(from, objetivo, cfg) {
+  // Unificamos ahorro/respaldo/finca en el flujo de instalación (preguntas una a una).
+  await startInstallFlow(from, cfg, { seedObjetivo: objetivo });
+}
+
+async function startQuoteEquipment(from, cfg, { seedQuery } = {}) {
+  const q = String(seedQuery || '').trim();
+  if (q && looksLikeCatalogQuery(q)) {
+    await sendProductSearchList(from, q, cfg);
+    return;
+  }
+  await sendText({
+    to: from,
+    body:
+      'Con mucho gusto te ayudo a cotizar. Por favor cuéntame qué equipo buscas (por ejemplo: inversor de 5 kW, panel de 625 W o batería de litio) 🙌',
+    cfg,
+  });
+}
+
+async function startInstallFlow(from, cfg, { seedObjetivo } = {}) {
   const s = await getSession(from);
-  s.data.objetivo = objetivo || s.data.objetivo || 'ahorro';
+  s.data.flujo = 'instalar';
+  if (seedObjetivo) s.data.objetivo = seedObjetivo;
+  s.step = 'inst_lugar';
   await saveSession(from, s);
+  await sendText({
+    to: from,
+    body:
+      '¡Qué buena decisión! 🌞 Con mucho gusto te ayudo. Te haré unas preguntas rápidas para que nuestro ingeniero experto en diseño fotovoltaico prepare una propuesta a tu medida, sin costo.',
+    cfg,
+  });
+  await sendButtons({
+    to: from,
+    body: '¿Dónde sería la instalación, por favor?',
+    buttons: [
+      { id: 'lugar_casa', title: 'Casa' },
+      { id: 'lugar_negocio', title: 'Negocio' },
+      { id: 'lugar_finca', title: 'Finca' },
+    ],
+    cfg,
+  });
+}
 
-  const blurb =
-    s.data.objetivo === 'ahorro'
-      ? 'Perfecto. Vamos a trabajar en cómo *dejar de pagar tanta energía* con un sistema a tu medida.'
-      : s.data.objetivo === 'respaldo'
-        ? 'Perfecto. Vamos a armar un respaldo confiable para cuando *se te va la energía*.'
-        : 'Perfecto. En finca o sin red dimensionamos el sistema con cuidado.';
+async function askInstallObjetivo(from, cfg) {
+  const s = await getSession(from);
+  s.step = 'inst_objetivo';
+  await saveSession(from, s);
+  const isFinca = /finca/i.test(String(s.data.tipo || ''));
+  if (isFinca) {
+    await sendButtons({
+      to: from,
+      body: '¿Qué buscas principalmente, por favor?',
+      buttons: [
+        { id: 'obj_ahorrar', title: 'Ahorrar factura' },
+        { id: 'obj_ambos', title: 'Ambos' },
+        { id: 'obj_sin_red', title: 'Energía sin red' },
+      ],
+      cfg,
+    });
+  } else {
+    await sendButtons({
+      to: from,
+      body: '¿Qué buscas principalmente, por favor?',
+      buttons: [
+        { id: 'obj_ahorrar', title: 'Ahorrar factura' },
+        { id: 'obj_respaldo_btn', title: 'Respaldo cortes' },
+        { id: 'obj_ambos', title: 'Ambos' },
+      ],
+      cfg,
+    });
+  }
+}
 
-  if (!s.data.nombre) {
-    await askNombre(from, cfg, blurb);
-    return;
+async function askInstallConsumo(from, cfg) {
+  const s = await getSession(from);
+  s.step = 'inst_consumo';
+  await saveSession(from, s);
+  await sendText({
+    to: from,
+    body:
+      'Por favor, compárteme el valor de tu factura mensual o los kWh (o una foto de la factura).',
+    cfg,
+  });
+}
+
+async function askInstallCiudad(from, cfg) {
+  const s = await getSession(from);
+  s.step = 'inst_ciudad';
+  await saveSession(from, s);
+  await sendText({
+    to: from,
+    body: '¿En qué ciudad o municipio está la instalación, por favor?\n\n_Ejemplo: Medellín_',
+    cfg,
+  });
+}
+
+async function askInstallTecho(from, cfg) {
+  const s = await getSession(from);
+  s.step = 'inst_techo';
+  await saveSession(from, s);
+  await sendList({
+    to: from,
+    body: '¿Cómo es tu techo, por favor?',
+    buttonText: 'Tipo de techo',
+    sections: [
+      {
+        title: 'Techo',
+        rows: [
+          { id: 'techo_teja', title: 'Teja de barro', description: '' },
+          { id: 'techo_lamina', title: 'Lámina/metálico', description: '' },
+          { id: 'techo_losa', title: 'Losa/concreto', description: '' },
+          { id: 'techo_nose', title: 'No sé', description: '' },
+        ],
+      },
+    ],
+    cfg,
+  });
+}
+
+async function askInstallNombre(from, cfg) {
+  const s = await getSession(from);
+  s.step = 'inst_nombre';
+  await saveSession(from, s);
+  await ensureHabeasDataSent(from, cfg);
+  await sendText({
+    to: from,
+    body: '¿Me regalas tu nombre, por favor?',
+    cfg,
+  });
+}
+
+async function askInstallCelular(from, cfg) {
+  const s = await getSession(from);
+  s.step = 'inst_celular';
+  await saveSession(from, s);
+  await sendText({
+    to: from,
+    body:
+      'WhatsApp no nos muestra tu número. ¿Me compartes tu celular, por favor?\n\n_Ejemplo: 300 123 4567_',
+    cfg,
+  });
+}
+
+async function finishInstallFlow(from, cfg) {
+  const s = await getSession(from);
+  const rec = recommendProject({
+    consumoMensual: s.data.consumo,
+    tipoTecho: s.data.techo,
+    ubicacion: s.data.ciudad,
+    objetivo: s.data.objetivo || s.data.tipo,
+  });
+  const name = firstName(s.data.nombre);
+  let orient = '';
+  if (rec.kwp_min != null && rec.kwp_max != null) {
+    orient =
+      `\n\nComo orientación amable, para tu consumo te alcanzaría un sistema de aproximadamente *${String(rec.kwp_min).replace('.', ',')} a ${String(rec.kwp_max).replace('.', ',')} kWp*. El ingeniero lo confirma sin costo.`;
   }
-  if (!s.data.ciudad) {
-    await askCiudad(from, cfg);
-    return;
+  await sendText({
+    to: from,
+    body:
+      (name ? `Gracias por tu paciencia, *${name}*. ` : 'Gracias por tu paciencia. ') +
+      `Con la información que me diste, ${rec.resumen}${orient}`,
+    cfg,
+  });
+  s.data.necesidad = [
+    `Instalación ${s.data.tipo || ''}`.trim(),
+    s.data.objetivo && `Objetivo: ${s.data.objetivo}`,
+    s.data.consumo && `Consumo/factura: ${s.data.consumo}`,
+    s.data.techo && `Techo: ${s.data.techo}`,
+    s.data.ciudad && `Ciudad: ${s.data.ciudad}`,
+    rec.kwp_min != null && `Rango orientativo: ${rec.kwp_min}-${rec.kwp_max} kWp`,
+  ]
+    .filter(Boolean)
+    .join(' · ')
+    .slice(0, 500);
+  await saveSession(from, s);
+  await handoffToHuman(from, cfg, s, 'LEAD instalación solar');
+}
+
+async function handleInstallStep(from, text, id, cfg) {
+  const s = await getSession(from);
+  const step = s.step;
+
+  if (step === 'inst_lugar') {
+    if (id === 'lugar_casa' || /\bcasa\b|\bhogar\b/.test(normalizeText(text))) {
+      s.data.tipo = 'Casa';
+    } else if (id === 'lugar_negocio' || /\bnegocio\b|\bcomercio\b/.test(normalizeText(text))) {
+      s.data.tipo = 'Negocio';
+    } else if (id === 'lugar_finca' || /\bfinca\b|\bindustria\b/.test(normalizeText(text))) {
+      s.data.tipo = 'Finca';
+    } else if (!id && text) {
+      await sendButtons({
+        to: from,
+        body: 'Por favor elige una opción:',
+        buttons: [
+          { id: 'lugar_casa', title: 'Casa' },
+          { id: 'lugar_negocio', title: 'Negocio' },
+          { id: 'lugar_finca', title: 'Finca' },
+        ],
+        cfg,
+      });
+      return true;
+    } else {
+      return false;
+    }
+    await saveSession(from, s);
+    await askInstallObjetivo(from, cfg);
+    return true;
   }
-  await askTipo(from, cfg);
+
+  if (step === 'inst_objetivo') {
+    if (id === 'obj_ahorrar') s.data.objetivo = 'ahorro';
+    else if (id === 'obj_respaldo_btn') s.data.objetivo = 'respaldo';
+    else if (id === 'obj_ambos') s.data.objetivo = 'ambos';
+    else if (id === 'obj_sin_red') s.data.objetivo = 'sin red / finca';
+    else if (text) s.data.objetivo = String(text).slice(0, 80);
+    else return false;
+    await saveSession(from, s);
+    await askInstallConsumo(from, cfg);
+    return true;
+  }
+
+  if (step === 'inst_consumo') {
+    if (!text && !id) return false;
+    s.data.consumo = String(text || id || '').slice(0, 120);
+    await saveSession(from, s);
+    await askInstallCiudad(from, cfg);
+    return true;
+  }
+
+  if (step === 'inst_ciudad') {
+    if (!text || !isLikelyCity(text)) {
+      await sendText({
+        to: from,
+        body: 'Por favor indícame solo la ciudad o municipio (ej. *Bogotá*).',
+        cfg,
+      });
+      return true;
+    }
+    s.data.ciudad = String(text).trim().slice(0, 80);
+    await saveSession(from, s);
+    await askInstallTecho(from, cfg);
+    return true;
+  }
+
+  if (step === 'inst_techo') {
+    const map = {
+      techo_teja: 'Teja de barro',
+      techo_lamina: 'Lámina/metálico',
+      techo_losa: 'Losa/concreto',
+      techo_nose: 'No sé',
+    };
+    if (id && map[id]) s.data.techo = map[id];
+    else if (text) s.data.techo = String(text).slice(0, 80);
+    else return false;
+    await saveSession(from, s);
+    await askInstallNombre(from, cfg);
+    return true;
+  }
+
+  if (step === 'inst_nombre') {
+    const nombre = extractPersonName(text);
+    if (!nombre || !isLikelyPersonName(nombre)) {
+      await sendText({
+        to: from,
+        body: 'Por favor responde solo tu nombre (ej. *Alex*).',
+        cfg,
+      });
+      return true;
+    }
+    s.data.nombre = nombre.slice(0, 80);
+    await saveSession(from, s);
+    if (isBsuid(from) && !parsePhoneCo(s.data.telefono)) {
+      await askInstallCelular(from, cfg);
+      return true;
+    }
+    await finishInstallFlow(from, cfg);
+    return true;
+  }
+
+  if (step === 'inst_celular') {
+    const tel = parsePhoneCo(text);
+    if (!tel) {
+      await sendText({
+        to: from,
+        body: 'No reconocí el celular. Ejemplo: *300 123 4567*. Por favor inténtalo de nuevo.',
+        cfg,
+      });
+      return true;
+    }
+    s.data.telefono = tel;
+    await saveSession(from, s);
+    await finishInstallFlow(from, cfg);
+    return true;
+  }
+
+  return false;
 }
 
 async function askTipo(from, cfg) {
@@ -539,7 +827,7 @@ async function sendLearnMenu(from, cfg) {
       {
         title: 'Orientación',
         rows: [
-          { id: 'tip_ahorro_factura', title: 'Dejar de pagar energía', description: 'Cómo funciona' },
+          { id: 'tip_ahorro_factura', title: 'Bajar mi factura', description: 'Cómo funciona' },
           { id: 'tip_backup', title: 'Se me va la energía', description: 'Respaldo' },
           { id: 'tip_offgrid', title: 'Finca / sin red', description: 'Aislado' },
           { id: 'tip_paneles', title: 'Paneles', description: 'Qué mirar' },
@@ -557,6 +845,10 @@ async function sendLearnMenu(from, cfg) {
 async function handleDiscoveryStep(from, text, id, cfg) {
   const s = await getSession(from);
   if (!DISC_STEPS.has(s.step)) return false;
+
+  if (String(s.step || '').startsWith('inst_')) {
+    return handleInstallStep(from, text, id, cfg);
+  }
 
   if (s.step === 'asesor_nombre') {
     const raw = String(text || '').trim();
@@ -868,17 +1160,31 @@ export async function handleIncomingMessage(msg) {
     return;
   }
 
-  // Carrito / productos / pagos (reglas, sin IA)
-  if (await handleCartMessage(from, text, id, cfg)) return;
+  // Carrito en captura (nombre/ciudad/qty) — antes del resto de reglas
+  if (
+    ['cart_nombre', 'cart_ciudad', 'cart_celular', 'cart_qty_other'].includes(s.step) ||
+    (id &&
+      (id.startsWith('cart_') ||
+        id.startsWith('qty:') ||
+        id.startsWith('qty_other:') ||
+        id.startsWith('prod:') ||
+        id === 'quiere_comprar'))
+  ) {
+    if (await handleCartMessage(from, text, id, cfg)) return;
+  }
 
-  // Pedir ingeniero: captura con reglas
+  // ——— Orden de reglas (sin IA): ingeniero → ahorro → pagar → catálogo → IA ———
+  // (respaldo va con ahorro, antes de pagar, para no confundir con métodos de pago)
+
+  // 1) Pedir ingeniero
   const asksEngineer =
     id === 'menu_asesor' ||
     n === 'asesor' ||
     n === 'humano' ||
     n === 'persona' ||
     /\bingeniero\b/.test(n) ||
-    /\basesor(ia|ía)?\b/.test(n);
+    /\basesor(ia|ía)?\b/.test(n) ||
+    /\bhablar con (un )?(asesor|ingeniero|humano|persona)\b/.test(n);
 
   if (asksEngineer && !ASESOR_CAPTURE_STEPS.has(s.step)) {
     await startAsesorCapture(from, cfg);
@@ -906,16 +1212,22 @@ export async function handleIncomingMessage(msg) {
     await sendMoreOptions(from, cfg);
     return;
   }
-  if (id === 'obj_ahorro' || id === 'menu_proyecto') {
-    await startDiscovery(from, 'ahorro', cfg);
+  if (id === 'menu_cotizar') {
+    await startQuoteEquipment(from, cfg);
+    return;
+  }
+  if (id === 'menu_instalar' || id === 'obj_ahorro' || id === 'menu_proyecto') {
+    await startInstallFlow(from, cfg, {
+      seedObjetivo: id === 'obj_ahorro' ? 'ahorro' : undefined,
+    });
     return;
   }
   if (id === 'obj_respaldo') {
-    await startDiscovery(from, 'respaldo', cfg);
+    await startInstallFlow(from, cfg, { seedObjetivo: 'respaldo' });
     return;
   }
   if (id === 'obj_finca') {
-    await startDiscovery(from, 'finca', cfg);
+    await startInstallFlow(from, cfg, { seedObjetivo: 'finca' });
     return;
   }
   if (id === 'menu_tienda' || id === 'tip_paneles' || id === 'tip_inversores' || id === 'tip_baterias') {
@@ -942,19 +1254,69 @@ export async function handleIncomingMessage(msg) {
     }
   }
 
-  // Pagos sin IA
-  if (looksLikePaymentQuery(text)) {
+  // 2) Instalar sistema / cotizar equipo (antes de ahorro genérico)
+  if (text && looksLikeInstallIntent(text)) {
+    await startInstallFlow(from, cfg);
+    return;
+  }
+  if (text && looksLikeQuoteEquipmentIntent(text)) {
+    if (looksLikeCatalogQuery(text)) {
+      await sendProductSearchList(from, text, cfg);
+    } else {
+      await startQuoteEquipment(from, cfg, { seedQuery: text });
+    }
+    return;
+  }
+
+  // 2b) Ahorro / bajar factura → flujo instalación
+  if (text && looksLikeAhorroIntent(text)) {
+    await startInstallFlow(from, cfg, { seedObjetivo: 'ahorro' });
+    return;
+  }
+
+  // 2c) Respaldo / apagones
+  if (text && looksLikeRespaldoIntent(text)) {
+    await startInstallFlow(from, cfg, { seedObjetivo: 'respaldo' });
+    return;
+  }
+
+  // 2c) Quiere comprar (solo con carrito/cotización; si no → catálogo)
+  const hasCartOrQuoteEarly = text ? await hasActiveCartOrQuote(from) : false;
+  if (text && looksLikeBuyIntent(text)) {
+    if (hasCartOrQuoteEarly) {
+      await startPurchaseClose(from, cfg);
+      return;
+    }
+    await sendText({
+      to: from,
+      body:
+        '¡Claro! Primero elige el equipo. Busca por ejemplo *panel 550W* o *inversor 5kW*, agrégalo a tu cotización y luego te ayudo a comprar.',
+      cfg,
+    });
+    return;
+  }
+
+  // 3) Pagar a Reiki (estricto) o aclarar si es ambiguo
+  const hasCartOrQuote = hasCartOrQuoteEarly;
+  if (text && looksLikeAmbiguousPayIntent(text, { hasCartOrQuote })) {
+    await sendAmbiguousPayOrAhorro(from, cfg);
+    return;
+  }
+  if (text && looksLikePaymentIntent(text, { hasCartOrQuote })) {
     await sendPaymentOptions(from, cfg);
     return;
   }
 
-  // Catálogo por palabras clave → lista interactiva sin IA
+  // Resto de carrito (agregar, ver, PDF…) sin re-evaluar pagos por texto libre
+  if (await handleCartMessage(from, text, id, cfg)) return;
+
+  // 4) Catálogo por palabras clave → lista interactiva sin IA
   if (text && looksLikeCatalogQuery(text)) {
     await sendProductSearchList(from, text, cfg);
     return;
   }
 
-  // IA solo para texto libre que no encajó arriba (y si hay cupo)
+  // 5) IA solo para texto libre que no encajó arriba (y si hay cupo)
   if (!id && text) {
     const gate = await canUseAi(from);
     if (gate.ok && isAiConfigured()) {
@@ -1016,8 +1378,12 @@ export async function handleIncomingMessage(msg) {
     return;
   }
 
-  if (id === 'menu_proyecto' || n === 'proyecto' || n === 'cotizar') {
-    await startDiscovery(from, s.data.objetivo || 'ahorro', cfg);
+  if (id === 'menu_proyecto' || n === 'proyecto' || n === 'instalar') {
+    await startInstallFlow(from, cfg, { seedObjetivo: s.data.objetivo || 'ahorro' });
+    return;
+  }
+  if (id === 'menu_cotizar' || n === 'cotizar') {
+    await startQuoteEquipment(from, cfg);
     return;
   }
 
@@ -1045,7 +1411,7 @@ export async function handleIncomingMessage(msg) {
     }
     await sendText({
       to: from,
-      body: 'Con gusto te ayudo 🙂 ¿Quieres dejar de pagar tanta energía, tienes cortes, o buscas un equipo?',
+      body: 'Con gusto te ayudo 🙂 ¿Quieres bajar tu factura, tienes cortes, o buscas un equipo?',
       cfg,
     });
     await sendMainMenu(from, cfg);

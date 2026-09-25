@@ -318,6 +318,7 @@ function iniciar(): void {
                 data-product-image="${escapar(p.image)}"
                 data-product-brand="${escapar(p.brand)}"
                 data-product-model="${escapar(p.model)}"
+                data-product-category="${escapar(p.category || '')}"
               >
                 <i class="fas fa-shopping-cart"></i>
                 Agregar

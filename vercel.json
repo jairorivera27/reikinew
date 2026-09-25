@@ -8,9 +8,31 @@
   "functions": {
     "api/whatsapp-webhook.js": {
       "maxDuration": 60,
-      "includeFiles": "data/whatsapp-product-index.json"
+      "memory": 1769,
+      "includeFiles": "{data/whatsapp-product-index.json,config/empresa.json,data/reiki-knowledge.md}"
+    },
+    "api/cotizacion-pdf.js": {
+      "maxDuration": 60,
+      "memory": 1769,
+      "includeFiles": "config/empresa.json"
+    },
+    "api/cotizacion-web.js": {
+      "maxDuration": 60,
+      "memory": 1769,
+      "includeFiles": "config/empresa.json"
+    },
+    "api/cotizacion-download.js": {
+      "maxDuration": 60,
+      "memory": 1769,
+      "includeFiles": "config/empresa.json"
     }
   },
+  "rewrites": [
+    {
+      "source": "/cotizacion/:id.pdf",
+      "destination": "/api/cotizacion-download?id=:id"
+    }
+  ],
   "redirects": [
     {
       "source": "/servicios/energia-solar",

@@ -432,6 +432,18 @@ const emailjsTemplateId =
                   String(wompiTxnId || referencia_pedido || '')
               );
             }
+            // Confirmación segura en servidor (GET Wompi + monto + ref cot-…). No marcar desde el cliente.
+            try {
+              if (wompiTxnId) {
+                await fetch('/api/wompi-confirm-pago', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ id: String(wompiTxnId) }),
+                });
+              }
+            } catch (_confirmErr) {
+              /* ignore — el webhook de eventos también confirma */
+            }
           } catch (e) {
             console.error('[respuesta-pago][finalizeApprovedSale]', e);
           }

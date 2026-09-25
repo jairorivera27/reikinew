@@ -9,9 +9,9 @@ export const SOLAR_TIPS = [
   {
     id: 'ahorro_factura',
     keywords: ['ahorrar', 'factura', 'cuenta de luz', 'recibo', 'tarifa', 'epm', 'kwh', 'consumo', 'luz cara'],
-    title: 'Dejar de pagar energía',
+    title: 'Bajar mi factura',
     body:
-      'Claro que sí. Si lo que quieres es *dejar de pagar tanta energía*, en la mayoría de hogares en Colombia trabajamos con un sistema *conectado a la red*: de día generas con paneles y reduces lo que le compras a la empresa de energía.\n\n' +
+      'Claro que sí. Si lo que quieres es *bajar tu factura de la luz*, en la mayoría de hogares en Colombia trabajamos con un sistema *conectado a la red*: de día generas con paneles y reduces lo que le compras a la empresa de energía.\n\n' +
       'Para cotizarte bien no inventamos un kit genérico: miramos tu consumo o el valor de la factura, el techo y la ciudad. Así te proponemos algo que sí te sirva.\n\n' +
       'Si además *se te va la energía*, te conviene mirar un híbrido con batería. ¿Quieres que te dejemos una cotización seria?',
     cta: 'proyecto',
@@ -127,5 +127,5 @@ export function matchSolarTip(normalizedText) {
 }
 
 export const CONSULTANT_INTRO =
-  '¡Hola! ☀️ Te saluda el equipo de Reiki Energía Solar. Nos alegra mucho que quieras dar el paso hacia la energía limpia.\n\n' +
-  '¿Qué tienes en mente para hoy? ¿Te gustaría saber cuánto podrías bajar tu factura con un proyecto solar, o buscas un equipo en particular?';
+  '¡Hola! ☀️ Bienvenido a Reiki Energía Solar, es un gusto saludarte.\n\n' +
+  '¿En qué te puedo ayudar el día de hoy? 😊';

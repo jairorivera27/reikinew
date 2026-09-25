@@ -36,21 +36,24 @@
 
     <div class="order-summary" id="order-summary" style="display: none;">
       <div class="summary-row">
-        <span>Subtotal gravado:</span>
-        <span id="cart-subtotal-gravado">$0</span>
-      </div>
-      <div class="summary-row">
-        <span>Subtotal exento:</span>
+        <span>Subtotal excluido de IVA:</span>
         <span id="cart-subtotal-exento">$0</span>
       </div>
       <div class="summary-row">
-        <span>IVA:</span>
+        <span>Subtotal gravado (base):</span>
+        <span id="cart-subtotal-gravado">$0</span>
+      </div>
+      <div class="summary-row">
+        <span>IVA 19 %:</span>
         <span id="cart-iva">$0</span>
       </div>
       <div class="summary-row total-row">
         <span>Total:</span>
         <span id="cart-total" class="cart-total">$0</span>
       </div>
+      <p class="cart-iva-note" style="font-size:0.75rem;color:#666;margin:0.4rem 0 0;line-height:1.35;">
+        Paneles e inversores excluidos de IVA (Ley 1715). Los demás incluyen IVA del 19 %.
+      </p>
     </div>
   </div>
 
@@ -58,6 +61,10 @@
     <button type="button" class="cart-checkout-btn" id="checkout-btn" disabled>
       <i class="fas fa-lock" aria-hidden="true"></i>
       Finalizar Compra Segura
+    </button>
+    <button type="button" class="cart-pdf-btn" id="cart-pdf-download-btn" disabled>
+      <i class="fas fa-file-pdf" aria-hidden="true"></i>
+      Descargar cotización en PDF
     </button>
     <div class="cart-footer-hint">
       <a href="/tienda">Seguir navegando en la tienda</a>
@@ -158,6 +165,7 @@
     const cartItems = document.getElementById('cart-items');
     const cartTotalEl = document.getElementById('cart-total');
     const checkoutBtn = document.getElementById('checkout-btn');
+    const pdfBtn = document.getElementById('cart-pdf-download-btn');
 
     if (!cartItems || !checkoutBtn) return;
 
@@ -171,6 +179,7 @@
         </div>
       `;
       checkoutBtn.disabled = true;
+      if (pdfBtn) pdfBtn.disabled = true;
       const os = document.getElementById('order-summary');
       if (os) os.style.display = 'none';
     } else {
@@ -220,22 +229,57 @@
           .join('')}
       `;
       checkoutBtn.disabled = false;
+      if (pdfBtn) pdfBtn.disabled = false;
     }
 
-    const subtotal = cart.reduce((sum, item) => {
-      return sum + extractPrice(item.price) * item.quantity;
-    }, 0);
+    const IVA_RATE = 0.19;
+    const IVA_EXCLUIDAS = ['paneles', 'inversores'];
+    function normIva(s) {
+      return String(s || '')
+        .normalize('NFD')
+        .replace(/\p{M}/gu, '')
+        .toLowerCase()
+        .trim();
+    }
+    function isExcluidoIva(item) {
+      if (item?.excluidoIva === true) return true;
+      if (item?.excluidoIva === false) return false;
+      const cat = normIva(item?.categoria || item?.category || '');
+      const name = normIva(item?.nombre || item?.title || '');
+      for (const ex of IVA_EXCLUIDAS) {
+        if (cat === ex || cat.includes(ex) || (cat && ex.includes(cat))) return true;
+      }
+      if (/\bmicroinversor|microinverter|micro-inversor\b/.test(name)) return true;
+      if (/\binversor(es)?\b/.test(name)) return true;
+      if (/\bpanel(es)?\b/.test(name) && !/\b(protector|proteccion|estructura|cable|conector|cargador)\b/.test(name)) {
+        return true;
+      }
+      return false;
+    }
 
-    const subtotalGravado = subtotal / 1.19;
-    const iva = subtotalGravado * 0.19;
-    const subtotalExento = 0;
-    const total = subtotal;
+    let excluido = 0;
+    let gravadoConIva = 0;
+    let baseGravada = 0;
+    let iva = 0;
+    for (const item of cart) {
+      const unit = Math.round(extractPrice(item.price) || 0);
+      const line = unit * (item.quantity || 1);
+      if (isExcluidoIva(item)) {
+        excluido += line;
+      } else {
+        gravadoConIva += line;
+        const baseLine = Math.round(line / (1 + IVA_RATE));
+        baseGravada += baseLine;
+        iva += line - baseLine;
+      }
+    }
+    const total = Math.round(excluido + gravadoConIva);
 
     const gravadoEl = document.getElementById('cart-subtotal-gravado');
     const exentoEl = document.getElementById('cart-subtotal-exento');
     const ivaEl = document.getElementById('cart-iva');
-    if (gravadoEl) gravadoEl.textContent = formatPrice(subtotalGravado);
-    if (exentoEl) exentoEl.textContent = formatPrice(subtotalExento);
+    if (gravadoEl) gravadoEl.textContent = formatPrice(baseGravada);
+    if (exentoEl) exentoEl.textContent = formatPrice(excluido);
     if (ivaEl) ivaEl.textContent = formatPrice(iva);
     if (cartTotalEl) cartTotalEl.textContent = formatPrice(total);
   }
@@ -261,6 +305,7 @@
         image: producto.image,
         brand: producto.brand,
         model: producto.model,
+        categoria: producto.categoria || producto.category || '',
         quantity,
       });
     }
@@ -321,6 +366,13 @@
         window.location.assign('/carrito');
       });
     }
+    const pdfDl = document.getElementById('cart-pdf-download-btn');
+    if (pdfDl) {
+      pdfDl.addEventListener('click', function () {
+        if (pdfDl.disabled) return;
+        window.location.assign('/carrito#pdf');
+      });
+    }
   });
 
   document.addEventListener('reiki-cart-open', () => openCartSidebar());
@@ -347,6 +399,7 @@
       image: btn.dataset.productImage || '',
       brand: btn.dataset.productBrand || '',
       model: btn.dataset.productModel || '',
+      categoria: btn.dataset.productCategory || '',
     });
 
     const resetQi = qtyWrap?.querySelector('.qty-input');
@@ -740,6 +793,30 @@
   }
 
   .cart-checkout-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .cart-pdf-btn {
+    width: 100%;
+    margin-top: 0.55rem;
+    padding: 0.75rem 1rem;
+    border: 1.5px solid #6b2181;
+    border-radius: 10px;
+    background: #fff;
+    color: #6b2181;
+    font-weight: 700;
+    font-size: 0.92rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+  }
+  .cart-pdf-btn:hover:not(:disabled) {
+    background: #f4eef7;
+  }
+  .cart-pdf-btn:disabled {
     opacity: 0.5;
     cursor: not-allowed;
   }

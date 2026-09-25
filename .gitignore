@@ -47,3 +47,5 @@ secrets/
 *service-account*.json
 dotted-saga-*.json
 **/credentials/*.json
+
+.vercel

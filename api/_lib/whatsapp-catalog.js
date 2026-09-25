@@ -242,23 +242,62 @@ export async function sendProductDetail(to, product, cfg = getWhatsAppConfig()) 
 
 export function recommendProject({ consumoMensual, tipoTecho, ubicacion, objetivo }) {
   const site = siteUrl();
-  const consumo = String(consumoMensual || '').trim();
+  const consumoRaw = String(consumoMensual || '').trim();
   const lugar = String(ubicacion || 'Colombia').trim();
   const techo = String(tipoTecho || 'por confirmar').trim();
   const obj = String(objetivo || 'ahorro').toLowerCase();
 
   let tipoSistema = 'on-grid (conectado a la red) para reducir la factura';
-  if (/respaldo|corte|hibrido|híbrido|bateria|batería/.test(obj)) {
+  if (/respaldo|corte|hibrido|híbrido|bateria|batería|ambos/.test(obj)) {
     tipoSistema = 'híbrido con batería (ahorro + respaldo ante cortes)';
   } else if (/finca|off|sin red|aislad/.test(obj)) {
     tipoSistema = 'off-grid / aislado (sin red o autonomía alta)';
   }
 
+  // kWp = kWh_mes / (30 × HSP × PR); PR=0,78. HSP por zona (default 4,0).
+  const hsp = /medell|envigad|bello|itagui|sabaneta|rionegro|antioquia/i.test(lugar)
+    ? 4.5
+    : /cartagena|barranquilla|santa marta|valledupar|monteria|sincelejo|costa/i.test(lugar)
+      ? 5.0
+      : 4.0;
+  const pr = 0.78;
+  const TARIFA_COP_KWH = 800; // aproximación si solo dan valor de factura
+  let kwh = null;
+  const mKwh = consumoRaw.match(/([\d.,]+)\s*k\s*w\s*h/i);
+  if (mKwh) {
+    kwh = parseFloat(mKwh[1].replace(/\./g, '').replace(',', '.'));
+  } else {
+    const digits = consumoRaw.replace(/[^\d]/g, '');
+    if (digits.length >= 3) {
+      const pesos = Number(digits);
+      if (pesos > 50_000) kwh = pesos / TARIFA_COP_KWH;
+      else if (pesos > 50 && pesos < 50_000) kwh = pesos; // ya parece kWh
+    }
+  }
+
+  let kwpMin = null;
+  let kwpMax = null;
+  let rangoTxt = '';
+  if (kwh && kwh > 0) {
+    const kwp = kwh / (30 * hsp * pr);
+    kwpMin = Math.max(0.5, Math.round(kwp * 0.9 * 10) / 10);
+    kwpMax = Math.round(kwp * 1.2 * 10) / 10;
+    rangoTxt = `un sistema de aproximadamente *${String(kwpMin).replace('.', ',')} a ${String(kwpMax).replace('.', ',')} kWp*`;
+  }
+
   return {
     ok: true,
+    kwp_min: kwpMin,
+    kwp_max: kwpMax,
+    hsp,
+    pr,
+    kwh_estimado: kwh,
     resumen:
-      `Para ${lugar}, con consumo/factura "${consumo || 'por confirmar'}" y techo "${techo}", ` +
+      `Para ${lugar}, con consumo/factura "${consumoRaw || 'por confirmar'}" y techo "${techo}", ` +
       `la ruta más sensata suele ser un sistema *${tipoSistema}*. ` +
+      (rangoTxt
+        ? `Como orientación, te alcanzaría ${rangoTxt}. `
+        : '') +
       `El dimensionamiento exacto lo cierra nuestro ingeniero experto en diseño fotovoltaico (sin costo).`,
     siguientes_pasos: [
       'Confirmar factura o kWh mensuales',

@@ -1,0 +1,21 @@
+{
+  "razon_social": "Reiki Energía Solar SAS",
+  "nit": "901942389",
+  "direccion": "Carrera 80 #39-167 Local 105",
+  "ciudad": "Medellín, Antioquia",
+  "telefono": "+57 300 405 2638",
+  "whatsapp_url": "https://wa.me/573004052638",
+  "correo": "info@reikisolar.com.co",
+  "web": "reikisolar.com.co",
+  "banco": {
+    "nombre": "Bancolombia",
+    "tipo": "ahorros",
+    "numero": "36600008477",
+    "llave_breb": "0089262235"
+  },
+  "atencion": {
+    "telefono": "+57 324 573 7413",
+    "whatsapp_url": "https://wa.me/573245737413"
+  },
+  "iva_excluidas": ["paneles", "inversores"]
+}

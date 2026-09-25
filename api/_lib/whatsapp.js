@@ -48,12 +48,18 @@ export function parsePhoneCo(text) {
 }
 
 /**
+ * Formato display Colombia: "+57 324 573 7413" (no "+573245737413").
+ */
+export { formatPhoneCO } from './phone.js';
+import { formatPhoneCO } from './phone.js';
+
+/**
  * Línea de contacto para leads CallMeBot / Cloud API.
  * Con username/privacidad Meta no manda teléfono: solo BSUID.
  */
 export function formatClientContact(from, data = {}) {
   const tel = parsePhoneCo(data?.telefono || data?.celular || '');
-  if (tel) return `WhatsApp / celular: +${tel}`;
+  if (tel) return `WhatsApp / celular: ${formatPhoneCO(tel)}`;
   if (isBsuid(from)) {
     return (
       `WhatsApp: número oculto (username/privacidad)\n` +
@@ -62,7 +68,7 @@ export function formatClientContact(from, data = {}) {
     );
   }
   const digits = String(from || '').replace(/\D/g, '');
-  if (digits) return `WhatsApp: +${digits}`;
+  if (digits) return `WhatsApp: ${formatPhoneCO(digits)}`;
   return `WhatsApp: ${from || '—'}`;
 }
 
@@ -182,6 +188,60 @@ export async function sendImage({ to, link, caption, cfg = getWhatsAppConfig() }
       link: String(link || '').trim(),
       ...(caption ? { caption: String(caption).slice(0, 1024) } : {}),
     },
+  });
+}
+
+/**
+ * Sube un PDF a la API de medios de WhatsApp Cloud.
+ * @param {Buffer|Uint8Array} pdfBuffer
+ * @param {string} filename
+ * @param {object} [cfg]
+ * @returns {Promise<string>} media id
+ */
+export async function uploadWhatsAppMedia(pdfBuffer, filename = 'cotizacion.pdf', cfg = getWhatsAppConfig()) {
+  const FormData = globalThis.FormData;
+  const Blob = globalThis.Blob;
+  if (!FormData || !Blob) throw new Error('FormData/Blob no disponibles en este runtime');
+  const form = new FormData();
+  form.append('messaging_product', 'whatsapp');
+  form.append('type', 'application/pdf');
+  form.append('file', new Blob([pdfBuffer], { type: 'application/pdf' }), filename);
+
+  const url = `${GRAPH}/${cfg.phoneNumberId}/media`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${cfg.token}` },
+    body: form,
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok || !data?.id) {
+    const msg = data?.error?.message || `WhatsApp media upload ${res.status}`;
+    const err = new Error(msg);
+    err.status = res.status;
+    err.data = data;
+    throw err;
+  }
+  return String(data.id);
+}
+
+/**
+ * Documento PDF por media id (preferido) o link https público.
+ * @param {{ to: string, mediaId?: string, link?: string, filename?: string, caption?: string, cfg?: object }} opts
+ */
+export async function sendDocument({ to, mediaId, link, filename, caption, cfg = getWhatsAppConfig() }) {
+  const doc = {
+    filename: String(filename || 'documento.pdf').slice(0, 240),
+    ...(caption ? { caption: String(caption).slice(0, 1024) } : {}),
+  };
+  if (mediaId) doc.id = String(mediaId);
+  else if (link) doc.link = String(link).trim();
+  else throw new Error('sendDocument requiere mediaId o link');
+
+  return graphPost(cfg.phoneNumberId, cfg.token, {
+    messaging_product: 'whatsapp',
+    ...recipientFields(to),
+    type: 'document',
+    document: doc,
   });
 }
 

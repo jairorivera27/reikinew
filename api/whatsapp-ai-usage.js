@@ -1,8 +1,10 @@
 /**
  * GET /api/whatsapp-ai-usage?key=ADMIN_KEY
  * Reporte de gasto mensual Claude (Redis).
+ * ?log=1 → últimas preguntas/respuestas IA (sin teléfono/nombre).
  */
 import { getAiUsageReport } from './_lib/whatsapp-ai-budget.js';
+import { getAiQaLog } from './_lib/whatsapp-ai-log.js';
 
 export default async function handler(req, res) {
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
@@ -21,6 +23,12 @@ export default async function handler(req, res) {
   }
 
   try {
+    if (q.get('log') === '1' || q.get('log') === 'true') {
+      const limit = Number(q.get('limit') || 50);
+      const log = await getAiQaLog(limit);
+      res.statusCode = 200;
+      return res.end(JSON.stringify({ ok: true, count: log.length, log }));
+    }
     const report = await getAiUsageReport();
     res.statusCode = 200;
     return res.end(JSON.stringify(report));

@@ -1,131 +1,214 @@
-# Bot WhatsApp (Cloud API Meta) — Reiki Energía Solar
+# Bot WhatsApp + cotizaciones PDF — Reiki Energía Solar
 
-Asesor comercial en WhatsApp: Claude + tools, catálogo real, handoff a ingeniero.
+Documentación operativa del bot híbrido (reglas + Claude Haiku), cotizaciones PDF y cierre de compra.
 
-**Número bot/tienda:** `+57 300 405 2638` · **Phone number ID:** `1372559729264279`  
+**Número bot/tienda:** `+57 300 405 2638`  
 **Atención personalizada (ingeniero / comprobantes):** `+57 324 573 7413`  
-Webhook: `https://reikisolar.com.co/api/whatsapp-webhook`
+**Webhook Meta:** `https://reikisolar.com.co/api/whatsapp-webhook`
 
-## Modos
+---
 
-1. **Con Claude (recomendado)** — `ANTHROPIC_API_KEY` + Messages API + tool use:
-   - `buscar_producto_tienda` → catálogo (`data/whatsapp-product-index.json`) + link exacto
-   - `recomendar_proyecto_solar` → orientación de sistema
-   - `escalar_a_humano` → pausa + CallMeBot a `PERSONAL_PHONE_NUMBER` + opcional `LEADS_WEBHOOK_URL`
-2. **Sin Claude** — flujo por reglas (menús + captura nombre/ciudad) como respaldo.
-3. **Audios** — si hay `OPENAI_API_KEY`, Whisper; si no, pide texto.
+## Variables de entorno (Vercel → Production)
 
-## Variables (Vercel Production + Preview)
+### WhatsApp Cloud API
+| Variable | Uso |
+|----------|-----|
+| `WHATSAPP_VERIFY_TOKEN` | Challenge GET del webhook |
+| `WHATSAPP_ACCESS_TOKEN` | Token permanente Graph API |
+| `WHATSAPP_PHONE_NUMBER_ID` | ID del número 300… |
+| `WHATSAPP_APP_SECRET` | Firma `X-Hub-Signature-256` |
+| `WHATSAPP_SITE_URL` | Base HTTPS del sitio (links PDF/carrito), ej. `https://reikisolar.com.co` |
+| `PERSONAL_PHONE_NUMBER` / `WHATSAPP_OWNER_PHONE` | Celular dueño para CallMeBot / avisos (ej. `573245737413`) |
+| `ATTENTION_WHATSAPP` | Opcional; default atención `573245737413` |
+| `CALLMEBOT_API_KEY` | Avisos al dueño |
+| `LEADS_WEBHOOK_URL` | POST JSON de leads (Apps Script / Sheets) |
+| `HUMAN_MODE_HOURS` | Pausa bot tras handoff/compra (default 12) |
 
-```env
-WHATSAPP_VERIFY_TOKEN=reiki-wa-2026
-WHATSAPP_ACCESS_TOKEN=
-WHATSAPP_PHONE_NUMBER_ID=1372559729264279
-WHATSAPP_APP_SECRET=
-PERSONAL_PHONE_NUMBER=573245737413
-WHATSAPP_OWNER_PHONE=573245737413
-ATTENTION_WHATSAPP=573245737413
-WHATSAPP_SITE_URL=https://reikisolar.com.co
-CALLMEBOT_API_KEY=
+### Redis (Upstash / Vercel KV) — obligatorio en prod
+| Variable | Uso |
+|----------|-----|
+| `KV_REST_API_URL` | URL REST |
+| `KV_REST_API_TOKEN` | Token de **escritura** (no el READ_ONLY) |
 
-ANTHROPIC_API_KEY=
-ANTHROPIC_MODEL=claude-sonnet-5
-# Alternativa: claude-haiku-4-5-20251001
+Guarda: sesiones, carritos, cotizaciones, consecutivo CT, historial IA, pausas, idempotencia `message.id`, log IA, locks.
 
-OPENAI_API_KEY=
-HUMAN_MODE_HOURS=12
+### Claude / presupuesto IA
+| Variable | Uso |
+|----------|-----|
+| `ANTHROPIC_API_KEY` | Messages API |
+| `ANTHROPIC_MODEL` | Default `claude-haiku-4-5-20251001` |
+| `AI_DAILY_LIMIT_PER_USER` | Default 15 |
+| `AI_MONTHLY_BUDGET_USD` | Default 5 |
+| `ADMIN_KEY` | Protege endpoints de uso/log |
+| `OPENAI_API_KEY` | Solo Whisper (audios), opcional |
 
-# Upstash / Vercel KV — token de ESCRITURA (no el READ_ONLY)
-KV_REST_API_URL=
-KV_REST_API_TOKEN=
+### Wompi
+| Variable | Uso |
+|----------|-----|
+| `PUBLIC_WOMPI_KEY` / build | Widget checkout (`pub_prod_…` / `pub_test_…`) |
+| `WOMPI_PRIVATE_KEY` | `prv_…` — consultar transacciones y confirmar pagos |
+| `WOMPI_EVENTS_SECRET` | **Secreto de eventos** del dashboard (≠ prv/pub) — firma del webhook |
 
-LEADS_WEBHOOK_URL=
-```
+### Cotizaciones
+| Variable | Uso |
+|----------|-----|
+| `QUOTE_PREFIX` | Prefijo del número (default `CT`) |
 
-Plantilla: [`.env.whatsapp.example`](../.env.whatsapp.example)
+### Horario
+| Variable | Uso |
+|----------|-----|
+| `BUSINESS_HOURS_START` | Default 8 |
+| `BUSINESS_HOURS_END` | Default 18 |
+| `BUSINESS_DAYS` | Default `1,2,3,4,5,6` (lun–sáb). Festivos CO 2026–2027 se excluyen siempre. |
 
-Tras cambiar env: **Redeploy**.
+---
 
-## Modo híbrido (costos)
+## Gasto y log de la IA
 
-**Reglas (sin IA):** saludo/menú, captura ingeniero, pausa humana, media/comprobantes, búsqueda de catálogo por palabras clave (lista hasta 10), carrito/cantidades/PDF stub, formas de pago.
+- **Uso / presupuesto:**  
+  `GET https://reikisolar.com.co/api/whatsapp-ai-usage?key=ADMIN_KEY`
+- **Log de Q&A (sin teléfono ni nombre, últimos 200, TTL 30 d):**  
+  `GET https://reikisolar.com.co/api/whatsapp-ai-usage?key=ADMIN_KEY&log=1`  
+  Opcional: `&limit=50`
 
-**IA (Haiku por defecto):** solo texto libre que no encaje arriba (“qué me sirve…”, dudas técnicas generales), con topes:
-- 15 respuestas IA / cliente / día (`AI_DAILY_LIMIT_PER_USER`)
-- presupuesto mensual USD (`AI_MONTHLY_BUDGET_USD`, default 5)
-- historial 10 msgs, max_tokens 400, máx. 3 tool rounds
+Cada respuesta IA guarda: fecha, pregunta, respuesta, tools usadas.
 
-```env
-ANTHROPIC_MODEL=claude-haiku-4-5-20251001
-AI_DAILY_LIMIT_PER_USER=15
-AI_MONTHLY_BUDGET_USD=5
-ADMIN_KEY=...
-```
+---
 
-Uso: `GET /api/whatsapp-ai-usage?key=ADMIN_KEY`
+## Pruebas de intención (corren en cada `npm run build`)
 
-## Persistencia (Upstash / Vercel KV)
-
-Obligatorio en producción: `KV_REST_API_URL` + **`KV_REST_API_TOKEN`** (escritura).  
-Sirve para: sesiones (nombre/ciudad), historial Claude, pausa humana, `message.id` (idempotencia 48 h), lock por usuario (20 s), carrito (7 d) y topes de IA.
-
-Sin el token de escritura, cada instancia de Vercel ve una sesión distinta y se cruzan los datos.
-
-## CallMeBot (aviso de leads)
-
-1. Activa en tu celular personal con **+34 623 78 95 80**
-2. Si está pausado: envía `resume` al número que indique CallMeBot
-3. `PERSONAL_PHONE_NUMBER` = tu personal (ej. `573245737413`), no el 300 de la empresa
-
-## Archivos (Fase 1)
-
-| Archivo | Rol |
-|---|---|
-| `api/whatsapp-webhook.js` | Webhook Meta |
-| `api/_lib/whatsapp.js` | Graph + CallMeBot + `LEADS_WEBHOOK_URL` |
-| `api/_lib/whatsapp-bot.js` | Orquestación (IA + reglas) |
-| `api/_lib/whatsapp-ai.js` | Claude + tools + historial Redis |
-| `api/_lib/whatsapp-redis.js` | Cliente Upstash |
-| `api/_lib/whatsapp-atencion.js` | Teléfono ingeniero (runtime) |
-| `src/config/atencion.ts` | Teléfono ingeniero (site) |
-| `data/reiki-knowledge.md` | Base de conocimiento (prompt cache) |
-| `api/_lib/whatsapp-catalog.js` | Búsqueda / recomendación |
-| `api/_lib/whatsapp-session.js` | Sesión anti-cruces |
-| `data/whatsapp-product-index.json` | Índice tienda |
+Script: `scripts/test-whatsapp-intents.mjs`  
+Lógica: `api/_lib/whatsapp-intent.js`
 
 ```bash
-node scripts/build-whatsapp-product-index.mjs
+npm run test:intents
 ```
 
-## Modo humano
+### Cómo agregar frases
 
-Tras derivar, el bot se pausa `HUMAN_MODE_HOURS` (default 12).  
-**"hola" no reactiva.** Escribe *menú* o *bot* (o espera a que venza la pausa).
+1. Abre `scripts/test-whatsapp-intents.mjs`.
+2. Añade un caso al array `CASES`:
 
-Durante la pausa: **un solo aviso** (Redis `pause_notice`) con botón "Escribir al ingeniero"; el resto de mensajes → silencio.
-
-## Horario hábil (cierre de handoff)
-
-Fuera de lun–sáb 8–18 Bogotá, el cierre dice "a partir de las 8:00 del …" en vez de "muy pronto".
-
-```env
-BUSINESS_HOURS_START=8
-BUSINESS_HOURS_END=18
-BUSINESS_DAYS=1,2,3,4,5,6
+```js
+{ text: 'mi frase de prueba', expect: 'ahorro' },
+// o con carrito/cotización:
+{ text: 'lo quiero', expect: 'compra', hasCartOrQuote: true },
 ```
 
-## Prueba Fase 2
+Valores de `expect`: `ingeniero` | `ahorro` | `respaldo` | `compra` | `pagar` | `ambiguo_pago` | `catalogo` | `ia`.
 
-1. Pedir ingeniero → habeas data (una vez) → nombre → ciudad → resumen → CTA "Escribir al ingeniero" + timing según horario
-2. Escribir cualquier cosa en pausa → **un** aviso con botón; segundo mensaje → nada
-3. `hola` en pausa → no reactiva; `menú` → sí
-4. Enviar foto/audio → "¡Recibido! 📎…" (no reinicia a menú)
-5. Equipo/precio de tienda → el bot responde sin derivar
+3. Si la frase debe mapear a una intención nueva, ajusta las funciones en `api/_lib/whatsapp-intent.js` (orden: ingeniero → ahorro → respaldo → compra → pagar → catálogo → IA).
+4. Corre `npm run test:intents` antes de desplegar.
 
-## Prueba Fase 1
+---
 
-1. Configura en Vercel: `ANTHROPIC_API_KEY`, `ANTHROPIC_MODEL=claude-sonnet-5`, `KV_REST_API_URL`, `KV_REST_API_TOKEN` → Redeploy
-2. `hola` al 300… → bienvenida fija (sin "dejar de pagar luz")
-3. "tienen paneles de 550?" → link real de `/tienda/...`
-4. Pedir ingeniero → nombre → ciudad → (celular si iOS oculto) → resumen → CallMeBot + pausa
-5. Sin Redis/token de escritura: el bot sigue, pero el historial queda solo en memoria del proceso
+## Cotizaciones PDF y carrito
+
+- Generación: Playwright + `@sparticuz/chromium` en `/api/cotizacion-pdf` y `/api/cotizacion-download` (memory 1769, 60 s).
+- Descarga: `/cotizacion/{id}.pdf?t={token}` (sin token → 404).
+- Compra web: `/carrito?cot={id}&t={token}` (precios congelados; si venció, aviso + precios de catálogo).
+- Datos empresa / banco / Bre-B / atención: **`config/empresa.json`** (ver abajo).
+- Assets estáticos: `public/cotizacion/` (logo, Montserrat, Wompi/Addi, **`qr-breb.png` sin regenerar**).
+
+### Cómo cambiar banco, llave Bre-B o número de atención
+
+Edita `config/empresa.json`:
+
+```json
+{
+  "banco": {
+    "nombre": "Bancolombia",
+    "tipo": "ahorros",
+    "numero": "36600008477",
+    "llave_breb": "0089262235"
+  },
+  "atencion": {
+    "telefono": "+57 324 573 7413",
+    "whatsapp_url": "https://wa.me/573245737413"
+  },
+  "telefono": "+57 300 405 2638"
+}
+```
+
+- El **QR Bre-B** es el archivo fijo `public/cotizacion/qr-breb.png` (no se regenera).
+- Teléfono de atención en mensajes del bot: también `api/_lib/whatsapp-atencion.js` (`ATTENTION_PHONE_DISPLAY`) y/o env `ATTENTION_WHATSAPP`.
+- Tras cambiar JSON: **redeploy** (se incluye con `includeFiles` en las funciones PDF).
+
+Celulares en PDF/avisos usan `formatPhoneCO()` → `+57 324 573 7413`.
+
+---
+
+## Wompi — seguridad de pagos
+
+1. **`/respuesta-pago` no marca `pagada_online` por sí sola.** Solo llama a  
+   `POST /api/wompi-confirm-pago` con `{ "id": "<transactionId>" }`.  
+   El servidor hace `GET /v1/transactions/{id}` con `WOMPI_PRIVATE_KEY` y solo marca si:
+   - `status === APPROVED`
+   - referencia `cot-{id}-…` (o índice Redis)
+   - `amount_in_cents === total_cotización × 100`
+
+2. **Webhook de eventos** (recomendado):
+
+   - **URL a registrar en el panel Wompi**  
+     (Mi cuenta → Desarrolladores / Eventos):  
+     **`https://reikisolar.com.co/api/wompi-events`**  
+     (si el sitio canónico es www: `https://www.reikisolar.com.co/api/wompi-events`)
+
+   - **Variable a crear en Vercel:**  
+     **`WOMPI_EVENTS_SECRET`** = “Secreto de eventos” del dashboard  
+     (sección Secretos de integración técnica; **no** es `prv_` ni `pub_`).
+
+   - Sin firma válida (`signature.checksum` / header `X-Event-Checksum`) → **401**.
+   - También verifica el monto. El aviso al dueño es **idempotente** (`ownerNotifiedPagada`).
+
+---
+
+## Precios del bot al día
+
+En cada build:
+
+```text
+npm run build
+  → node scripts/test-whatsapp-intents.mjs
+  → node scripts/build-whatsapp-product-index.mjs   # lee src/content/productos/*.md
+  → astro build
+```
+
+El índice queda en `data/whatsapp-product-index.json` e incluye la función webhook.
+
+---
+
+## Orden de reglas del bot (sin IA)
+
+1. Ingeniero  
+2. Ahorro (factura/luz — nunca métodos de pago)  
+3. Respaldo / compra (`lo quiero` solo con carrito o cotización)  
+4. Pagar (estricto)  
+5. Catálogo  
+6. IA (texto libre con cupo)
+
+---
+
+## Smoke checklist
+
+1. `hola` al 300… → bienvenida + **Bajar mi factura** + lista con **Ver equipos**  
+2. `estoy cansado de pagar energía` → flujo ahorro (no QR Bre-B)  
+3. Agregar equipo → Generar PDF → `lo quiero` → link compra + Bre-B + modo humano  
+4. Abrir link del PDF `/carrito?cot=&t=` → Wompi/Addi  
+5. `GET /api/whatsapp-ai-usage?key=…&log=1`
+
+---
+
+## Archivos clave
+
+| Ruta | Rol |
+|------|-----|
+| `api/whatsapp-webhook.js` | Entrada Meta |
+| `api/_lib/whatsapp-bot.js` | Orquestación reglas |
+| `api/_lib/whatsapp-intent.js` | Clasificación de intenciones |
+| `api/_lib/whatsapp-cart.js` | Carrito + PDF + compra WA |
+| `api/_lib/cotizacion-*.js` | Store / HTML / PDF |
+| `api/wompi-events.js` | Webhook firmado |
+| `api/wompi-confirm-pago.js` | Confirmación server-side |
+| `config/empresa.json` | Empresa, banco, Bre-B, atención |
+| `scripts/test-whatsapp-intents.mjs` | Pruebas en cada deploy |

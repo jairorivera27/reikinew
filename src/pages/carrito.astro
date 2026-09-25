@@ -53,6 +53,7 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
             Completa tus datos de envío y elige cómo quieres pagar. La pasarela (Wompi) y Addi se conectarán en el siguiente
             paso.
           </p>
+          <div id="cotizacion-banner" class="checkout-cot-banner" hidden role="status"></div>
         </header>
 
         <div id="checkout-loading" class="checkout-loading" aria-live="polite">
@@ -269,8 +270,16 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
 
                 <div class="checkout-summary-breakdown">
                   <div class="checkout-breakdown-row">
-                    <span>Subtotal</span>
-                    <span id="checkout-subtotal">$0</span>
+                    <span>Subtotal excluido de IVA</span>
+                    <span id="checkout-excluido">$0</span>
+                  </div>
+                  <div class="checkout-breakdown-row">
+                    <span>Subtotal gravado (base)</span>
+                    <span id="checkout-base">$0</span>
+                  </div>
+                  <div class="checkout-breakdown-row">
+                    <span>IVA 19 %</span>
+                    <span id="checkout-iva">$0</span>
                   </div>
                   <div class="checkout-breakdown-row checkout-breakdown-row--muted">
                     <span>Envío</span>
@@ -280,18 +289,57 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
                     <span>Total</span>
                     <span id="checkout-total">$0</span>
                   </div>
+                  <p class="checkout-iva-note" style="font-size:0.75rem;color:#666;margin:0.5rem 0 0;line-height:1.35;">
+                    Paneles e inversores excluidos de IVA (Ley 1715 de 2014). Los demás productos incluyen IVA del 19 %.
+                  </p>
                 </div>
 
                 <a href="/tienda" class="checkout-back-link">
                   <i class="fas fa-arrow-left" aria-hidden="true"></i>
                   Seguir comprando
                 </a>
+
+                <button type="button" id="btn-descargar-cotizacion" class="checkout-pdf-btn">
+                  <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                  Descargar cotización en PDF
+                </button>
               </div>
             </aside>
           </div>
         </div>
       </div>
     </main>
+
+    <div id="cotizacion-pdf-modal" class="cot-pdf-modal" hidden>
+      <div class="cot-pdf-modal-card" role="dialog" aria-labelledby="cot-pdf-title">
+        <button type="button" class="cot-pdf-modal-close" id="cot-pdf-close" aria-label="Cerrar">&times;</button>
+        <h2 id="cot-pdf-title">Descargar cotización PDF</h2>
+        <p class="cot-pdf-lead">Completa tus datos para generar el PDF con precios de tu carrito.</p>
+        <form id="cotizacion-pdf-form" class="cot-pdf-form">
+          <label>Nombre completo <abbr title="requerido">*</abbr>
+            <input name="nombre" required maxlength="80" autocomplete="name" />
+          </label>
+          <label>Ciudad <abbr title="requerido">*</abbr>
+            <input name="ciudad" required maxlength="80" autocomplete="address-level2" />
+          </label>
+          <label>Celular <abbr title="requerido">*</abbr>
+            <input name="celular" type="tel" required placeholder="300 123 4567" autocomplete="tel" />
+          </label>
+          <label>Correo (opcional)
+            <input name="correo" type="email" autocomplete="email" />
+          </label>
+          <label class="cot-pdf-check">
+            <input type="checkbox" name="autorizacion" required />
+            <span>Autorizo el tratamiento de mis datos según la
+              <a href="/politica-privacidad" target="_blank" rel="noopener">Política de Privacidad</a>.</span>
+          </label>
+          <button type="submit" class="checkout-submit-btn" id="cot-pdf-submit">
+            Generar y descargar PDF
+          </button>
+          <p id="cot-pdf-status" class="cot-pdf-status" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
 
     <Footer />
     <ShoppingCartDrawer />
@@ -303,6 +351,7 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
 <script define:vars={{ wompiPublicKey, wompiRedirectUrl }}>
   (function () {
     var CART_KEY = 'reiki_cart';
+    var COT_META_KEY = 'reiki_cotizacion_meta';
     var wompiKeyFromBuild =
       typeof wompiPublicKey === 'string' && wompiPublicKey.trim() ? wompiPublicKey.trim() : '';
     var wompiKeyLooksValid = /^pub_(prod|test)_[A-Za-z0-9_-]+$/.test(wompiKeyFromBuild);
@@ -364,10 +413,85 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
 
     /** Referencia única para la pasarela (UUID cuando el navegador lo soporta). */
     function generatePaymentReference() {
+      var meta = null;
+      try {
+        meta = JSON.parse(sessionStorage.getItem(COT_META_KEY) || 'null');
+      } catch (_e) {
+        meta = null;
+      }
+      var suffix =
+        typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
+          ? crypto.randomUUID().replace(/-/g, '').slice(0, 12)
+          : Date.now().toString(36) + Math.random().toString(36).slice(2, 8);
+      if (meta && meta.id) {
+        var ref = 'cot-' + meta.id + '-' + suffix;
+        try {
+          fetch('/api/cotizacion-web?action=link_ref', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: meta.id, reference: ref }),
+          }).catch(function () {});
+        } catch (_e2) {}
+        return ref;
+      }
       if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
         return crypto.randomUUID();
       }
       return 'reiki-' + Date.now().toString(36) + '-' + Math.random().toString(36).slice(2, 12);
+    }
+
+    /** Carga /carrito?cot=&t= (precios congelados o aviso si venció) */
+    async function loadCotizacionFromQuery() {
+      var params = new URLSearchParams(window.location.search);
+      var cotId = params.get('cot');
+      var token = params.get('t');
+      if (!cotId || !token) return;
+
+      try {
+        var res = await fetch(
+          '/api/cotizacion-web?id=' + encodeURIComponent(cotId) + '&t=' + encodeURIComponent(token)
+        );
+        var data = await res.json();
+        if (!data || !data.ok || data.invalid) {
+          // Token inválido → carrito normal sin error visible
+          return;
+        }
+        sessionStorage.setItem(
+          COT_META_KEY,
+          JSON.stringify({ id: data.id, numero: data.numero, token: data.token, vencida: data.vencida })
+        );
+        if (Array.isArray(data.items) && data.items.length) {
+          localStorage.setItem(CART_KEY, JSON.stringify(data.items));
+          try {
+            window.dispatchEvent(new CustomEvent('reiki-cart-storage-changed'));
+          } catch (_e) {}
+        }
+        var banner = document.getElementById('cotizacion-banner');
+        if (banner) {
+          banner.hidden = false;
+          if (data.vencida) {
+            banner.className = 'checkout-cot-banner checkout-cot-banner--warn';
+            banner.textContent =
+              'Esta cotización venció; los precios pueden haber cambiado. Se cargaron precios actuales del catálogo.';
+          } else {
+            banner.className = 'checkout-cot-banner';
+            banner.textContent =
+              'Cotización ' + data.numero + ' cargada con precios congelados. Puedes pagar con Wompi o Addi.';
+          }
+        }
+        // Prefill cliente si viene en la cotización
+        if (data.cliente) {
+          var form = document.getElementById('checkout-form');
+          if (form) {
+            if (data.cliente.nombre && form.fullName) form.fullName.value = data.cliente.nombre;
+            if (data.cliente.correo && form.email) form.email.value = data.cliente.correo;
+            if (data.cliente.celular && form.phone) form.phone.value = data.cliente.celular;
+            if (data.cliente.ciudad && form.city) form.city.value = data.cliente.ciudad;
+          }
+        }
+      } catch (err) {
+        console.warn('[carrito] cot load', err);
+      }
     }
 
     function showCheckoutToast(message) {
@@ -789,7 +913,9 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
     var emptyEl = document.getElementById('checkout-empty');
     var activeEl = document.getElementById('checkout-active');
     var linesEl = document.getElementById('checkout-lines');
-    var subtotalEl = document.getElementById('checkout-subtotal');
+    var excluidoEl = document.getElementById('checkout-excluido');
+    var baseEl = document.getElementById('checkout-base');
+    var ivaEl = document.getElementById('checkout-iva');
     var totalEl = document.getElementById('checkout-total');
 
     function renderLines() {
@@ -868,11 +994,53 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
     }
 
     function updateTotals(cart) {
-      var sub = cart.reduce(function (sum, item) {
-        return sum + extractPrice(item.price) * item.quantity;
-      }, 0);
-      if (subtotalEl) subtotalEl.textContent = formatPrice(sub);
-      if (totalEl) totalEl.textContent = formatPrice(sub);
+      var IVA_RATE = 0.19;
+      var IVA_EXCLUIDAS = ['paneles', 'inversores'];
+      function normIva(s) {
+        return String(s || '')
+          .normalize('NFD')
+          .replace(/\p{M}/gu, '')
+          .toLowerCase()
+          .trim();
+      }
+      function isExcluidoIva(item) {
+        if (item && item.excluidoIva === true) return true;
+        if (item && item.excluidoIva === false) return false;
+        var cat = normIva(item && (item.categoria || item.category));
+        var name = normIva(item && (item.nombre || item.title));
+        for (var i = 0; i < IVA_EXCLUIDAS.length; i++) {
+          var ex = IVA_EXCLUIDAS[i];
+          if (cat === ex || cat.indexOf(ex) !== -1 || (cat && ex.indexOf(cat) !== -1)) return true;
+        }
+        if (/\bmicroinversor|microinverter|micro-inversor\b/.test(name)) return true;
+        if (/\binversor(es)?\b/.test(name)) return true;
+        if (/\bpanel(es)?\b/.test(name) && !/\b(protector|proteccion|estructura|cable|conector|cargador)\b/.test(name)) {
+          return true;
+        }
+        return false;
+      }
+      var excluido = 0;
+      var baseGravada = 0;
+      var iva = 0;
+      var gravadoConIva = 0;
+      for (var j = 0; j < cart.length; j++) {
+        var item = cart[j];
+        var unit = Math.round(extractPrice(item.price) || 0);
+        var line = unit * (item.quantity || 1);
+        if (isExcluidoIva(item)) {
+          excluido += line;
+        } else {
+          gravadoConIva += line;
+          var baseLine = Math.round(line / (1 + IVA_RATE));
+          baseGravada += baseLine;
+          iva += line - baseLine;
+        }
+      }
+      var total = Math.round(excluido + gravadoConIva);
+      if (excluidoEl) excluidoEl.textContent = formatPrice(excluido);
+      if (baseEl) baseEl.textContent = formatPrice(baseGravada);
+      if (ivaEl) ivaEl.textContent = formatPrice(iva);
+      if (totalEl) totalEl.textContent = formatPrice(total);
     }
 
     function updateQty(index, delta) {
@@ -1027,8 +1195,84 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
       });
     }
 
-    function bootCheckoutUi() {
+    function openCotPdfModal() {
+      var modal = document.getElementById('cotizacion-pdf-modal');
+      if (modal) modal.hidden = false;
+    }
+    function closeCotPdfModal() {
+      var modal = document.getElementById('cotizacion-pdf-modal');
+      if (modal) modal.hidden = true;
+    }
+
+    async function submitCotPdfForm(ev) {
+      ev.preventDefault();
+      var form = ev.target;
+      var status = document.getElementById('cot-pdf-status');
+      var btn = document.getElementById('cot-pdf-submit');
+      var cart = loadCart();
+      if (!cart.length) {
+        if (status) status.textContent = 'Tu carrito está vacío.';
+        return;
+      }
+      var fd = new FormData(form);
+      if (!fd.get('autorizacion')) {
+        if (status) status.textContent = 'Debes autorizar el tratamiento de datos.';
+        return;
+      }
+      if (btn) btn.disabled = true;
+      if (status) status.textContent = 'Generando PDF…';
+      try {
+        var res = await fetch('/api/cotizacion-web', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            nombre: fd.get('nombre'),
+            ciudad: fd.get('ciudad'),
+            celular: fd.get('celular'),
+            correo: fd.get('correo'),
+            autorizacion: true,
+            items: cart,
+          }),
+        });
+        var data = await res.json();
+        if (!data.ok) {
+          if (status) status.textContent = 'No se pudo generar. Revisa los datos e intenta de nuevo.';
+          return;
+        }
+        sessionStorage.setItem(
+          COT_META_KEY,
+          JSON.stringify({ id: data.id, numero: data.numero, token: data.token })
+        );
+        if (status) status.textContent = 'Listo: ' + data.numero + '. Descargando…';
+        window.location.href = data.pdfUrl;
+      } catch (err) {
+        console.error(err);
+        if (status) status.textContent = 'Error de red al generar el PDF.';
+      } finally {
+        if (btn) btn.disabled = false;
+      }
+    }
+
+    function wireCotPdfUi() {
+      var openBtn = document.getElementById('btn-descargar-cotizacion');
+      var closeBtn = document.getElementById('cot-pdf-close');
+      var modal = document.getElementById('cotizacion-pdf-modal');
+      var form = document.getElementById('cotizacion-pdf-form');
+      if (openBtn) openBtn.addEventListener('click', openCotPdfModal);
+      if (closeBtn) closeBtn.addEventListener('click', closeCotPdfModal);
+      if (modal) {
+        modal.addEventListener('click', function (e) {
+          if (e.target === modal) closeCotPdfModal();
+        });
+      }
+      if (form) form.addEventListener('submit', submitCotPdfForm);
+      if (window.location.hash === '#pdf') openCotPdfModal();
+    }
+
+    async function bootCheckoutUi() {
+      await loadCotizacionFromQuery();
       initView();
+      wireCotPdfUi();
     }
 
     if (document.readyState === 'loading') {
@@ -1728,6 +1972,109 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
 
   .checkout-back-link:hover {
     text-decoration: underline;
+  }
+
+  .checkout-pdf-btn {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.85rem 1rem;
+    border: 1.5px solid #6b2181;
+    border-radius: 10px;
+    background: #fff;
+    color: #6b2181;
+    font-weight: 700;
+    font-size: 0.95rem;
+    cursor: pointer;
+  }
+  .checkout-pdf-btn:hover {
+    background: #f4eef7;
+  }
+
+  .checkout-cot-banner {
+    margin-top: 1rem;
+    padding: 0.85rem 1.1rem;
+    border-radius: 10px;
+    background: #f4eef7;
+    color: #4a1a5c;
+    font-size: 0.92rem;
+    font-weight: 600;
+  }
+  .checkout-cot-banner--warn {
+    background: #fff3c4;
+    color: #5c4a00;
+  }
+
+  .cot-pdf-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 100000;
+    background: rgba(15, 10, 20, 0.55);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+  }
+  .cot-pdf-modal[hidden] {
+    display: none !important;
+  }
+  .cot-pdf-modal-card {
+    position: relative;
+    width: min(92vw, 420px);
+    background: #fff;
+    border-radius: 14px;
+    padding: 1.5rem 1.35rem 1.25rem;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+  }
+  .cot-pdf-modal-close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.75rem;
+    border: none;
+    background: transparent;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #5f6368;
+  }
+  .cot-pdf-form label {
+    display: block;
+    margin-bottom: 0.75rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: #1f1a24;
+  }
+  .cot-pdf-form input[type='text'],
+  .cot-pdf-form input[type='tel'],
+  .cot-pdf-form input[type='email'] {
+    display: block;
+    width: 100%;
+    margin-top: 0.35rem;
+    padding: 0.55rem 0.65rem;
+    border: 1px solid #e3dbe8;
+    border-radius: 8px;
+    font-size: 0.95rem;
+  }
+  .cot-pdf-check {
+    display: flex !important;
+    gap: 0.55rem;
+    align-items: flex-start;
+    font-weight: 500 !important;
+  }
+  .cot-pdf-check input {
+    margin-top: 0.2rem;
+  }
+  .cot-pdf-status {
+    margin-top: 0.75rem;
+    font-size: 0.88rem;
+    color: #5f6368;
+  }
+  .cot-pdf-lead {
+    font-size: 0.9rem;
+    color: #5f6368;
+    margin: 0.35rem 0 1rem;
   }
 
   .checkout-pay-toast {

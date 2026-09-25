@@ -1,0 +1,84 @@
+{
+  "empresa": {
+    "razon_social": "Reiki Energía Solar SAS",
+    "nit": "901942389",
+    "direccion": "Carrera 80 #39-167 Local 105",
+    "ciudad": "Medellín, Antioquia",
+    "telefono": "+57 300 405 2638",
+    "whatsapp_url": "https://wa.me/573004052638",
+    "correo": "info@reikisolar.com.co",
+    "web": "reikisolar.com.co",
+    "banco": {
+      "nombre": "Bancolombia",
+      "tipo": "ahorros",
+      "numero": "36600008477",
+      "llave_breb": "0089262235"
+    },
+    "atencion": {
+      "telefono": "+57 324 573 7413",
+      "whatsapp_url": "https://wa.me/573245737413"
+    }
+  },
+  "cotizacion": {
+    "numero": "CT-240926-001",
+    "fecha": "24/09/2026",
+    "validez": "5 días hábiles, sujeto a disponibilidad",
+    "canal": "WhatsApp",
+    "asesor": "Equipo comercial Reiki",
+    "link_compra": "https://reikisolar.com.co/carrito?cot=CT-240926-001",
+    "hsp_ciudad": 4.5,
+    "pr": 0.78
+  },
+  "cliente": {
+    "nombre": "Cliente de ejemplo",
+    "ciudad": "Envigado, Antioquia",
+    "celular": "+57 300 000 0000",
+    "correo": "cliente@ejemplo.com"
+  },
+  "items": [
+    {
+      "sku": "1002139",
+      "nombre": "Panel Solar Bifacial N-Type JA Solar 625W",
+      "marca": "JA Solar",
+      "cantidad": 8,
+      "precio_unit": 450355,
+      "imagen": "assets/ja-solar-625w-bifacial.jpg",
+      "url": "https://reikisolar.com.co/tienda/panel-solar-bifacial-n-type-ja-solar-625w-1002139",
+      "potencia_w": 625,
+      "specs": [
+        "Tipo: Bifacial N-Type",
+        "Potencia: 625 W",
+        "Aplicación: generación de energía solar fotovoltaica"
+      ]
+    },
+    {
+      "sku": "3004247",
+      "nombre": "Inversor Solar Off-Grid Felicity 5kW",
+      "marca": "Felicity",
+      "cantidad": 1,
+      "precio_unit": 1785714,
+      "imagen": "assets/felicity-hybrid.jpg",
+      "url": "https://reikisolar.com.co/tienda/inversor-solar-off-grid-felicity-5kw-3004247",
+      "specs": [
+        "Tipo: Off-Grid",
+        "Potencia: 5 kW",
+        "Aplicación: conversión y gestión de energía en instalaciones fotovoltaicas"
+      ]
+    },
+    {
+      "sku": "1880816",
+      "nombre": "Batería Solar Litio Felicity 48V 5.12kWh",
+      "marca": "Felicity",
+      "cantidad": 1,
+      "precio_unit": 4183594,
+      "imagen": "assets/felicity-fla48.jpg",
+      "url": "https://reikisolar.com.co/tienda/bateria-solar-litio-felicity-48v-5-12kwh-1880816",
+      "specs": [
+        "Tipo: Litio",
+        "Capacidad: 48 V · 5,12 kWh",
+        "Aplicación: almacenamiento y respaldo eléctrico"
+      ]
+    }
+  ],
+  "envio": null
+}

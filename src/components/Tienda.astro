@@ -349,6 +349,7 @@ const marcasLoop = [...marcasConSrc, ...marcasConSrc];
               data-product-image=""
               data-product-brand=""
               data-product-model=""
+              data-product-category=""
             >
               <i class="fas fa-shopping-cart"></i>
               Agregar
@@ -1933,6 +1934,7 @@ const marcasLoop = [...marcasConSrc, ...marcasConSrc];
       modalAddBtn.dataset.productImage = p.image || '';
       modalAddBtn.dataset.productBrand = p.brand ? String(p.brand) : '';
       modalAddBtn.dataset.productModel = p.model ? String(p.model) : '';
+      modalAddBtn.dataset.productCategory = p.category ? String(p.category) : '';
     }
 
     overlay.classList.add('is-open');
