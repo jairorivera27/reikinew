@@ -289,7 +289,6 @@ async function runTool(name, args, from) {
       s.data.ciudad = ciudad.slice(0, 80);
       s.data.necesidad = resumen.slice(0, 400);
       if (telefono) s.data.telefono = telefono;
-      s.data.necesidad = resumen.slice(0, 400);
       saveSession(from, s);
     } catch {
       /* session optional */
