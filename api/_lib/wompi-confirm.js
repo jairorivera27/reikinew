@@ -134,9 +134,8 @@ export async function markCotizacionPagadaIdempotent(cotId, meta = {}) {
     await notifyOwner(
       `✅ Cotización pagada online (Wompi)\n` +
         `N.º: ${doc?.numero || id}\n` +
-        `Excluido IVA: ${doc?.subtotal_excluido != null ? '$ ' + Number(doc.subtotal_excluido).toLocaleString('es-CO') : '—'}\n` +
-        `Base gravada: ${doc?.subtotal_base != null ? '$ ' + Number(doc.subtotal_base).toLocaleString('es-CO') : '—'}\n` +
-        `IVA 19%: ${doc?.iva != null ? '$ ' + Number(doc.iva).toLocaleString('es-CO') : '—'}\n` +
+        `Subtotal: ${doc?.subtotal != null ? '$ ' + Number(doc.subtotal).toLocaleString('es-CO') : '—'}\n` +
+        (doc?.iva > 0 ? `IVA 19%: $ ${Number(doc.iva).toLocaleString('es-CO')}\n` : '') +
         `Total: ${doc?.totalFmt || '—'}\n` +
         `Cliente: ${doc?.cliente?.nombre || '—'}\n` +
         `Celular: ${doc?.cliente?.celular || '—'}\n` +

@@ -36,14 +36,10 @@
 
     <div class="order-summary" id="order-summary" style="display: none;">
       <div class="summary-row">
-        <span>Subtotal excluido de IVA:</span>
-        <span id="cart-subtotal-exento">$0</span>
+        <span>Subtotal:</span>
+        <span id="cart-subtotal">$0</span>
       </div>
-      <div class="summary-row">
-        <span>Subtotal gravado (base):</span>
-        <span id="cart-subtotal-gravado">$0</span>
-      </div>
-      <div class="summary-row">
+      <div class="summary-row" id="cart-iva-row">
         <span>IVA 19 %:</span>
         <span id="cart-iva">$0</span>
       </div>
@@ -52,7 +48,7 @@
         <span id="cart-total" class="cart-total">$0</span>
       </div>
       <p class="cart-iva-note" style="font-size:0.75rem;color:#666;margin:0.4rem 0 0;line-height:1.35;">
-        Paneles e inversores excluidos de IVA (Ley 1715). Los demás incluyen IVA del 19 %.
+        Paneles, inversores, reflectores y bombeo solar: precio final. Los demás productos: se adiciona IVA del 19 %.
       </p>
     </div>
   </div>
@@ -233,7 +229,7 @@
     }
 
     const IVA_RATE = 0.19;
-    const IVA_EXCLUIDAS = ['paneles', 'inversores'];
+    const PRECIO_FINAL = ['paneles', 'inversores', 'reflectores', 'bombeo'];
     function normIva(s) {
       return String(s || '')
         .normalize('NFD')
@@ -241,46 +237,40 @@
         .toLowerCase()
         .trim();
     }
-    function isExcluidoIva(item) {
-      if (item?.excluidoIva === true) return true;
-      if (item?.excluidoIva === false) return false;
+    function isPrecioFinal(item) {
+      if (item?.precioFinal === true || item?.excluidoIva === true) return true;
+      if (item?.precioFinal === false || item?.excluidoIva === false) return false;
       const cat = normIva(item?.categoria || item?.category || '');
       const name = normIva(item?.nombre || item?.title || '');
-      for (const ex of IVA_EXCLUIDAS) {
-        if (cat === ex || cat.includes(ex) || (cat && ex.includes(cat))) return true;
+      for (const pf of PRECIO_FINAL) {
+        if (cat === pf || cat.includes(pf) || (cat && pf.includes(cat))) return true;
       }
       if (/\bmicroinversor|microinverter|micro-inversor\b/.test(name)) return true;
       if (/\binversor(es)?\b/.test(name)) return true;
       if (/\bpanel(es)?\b/.test(name) && !/\b(protector|proteccion|estructura|cable|conector|cargador)\b/.test(name)) {
         return true;
       }
+      if (/\b(reflector|luminaria|lampara|lámpara)\b/.test(name)) return true;
+      if (/\b(bomba|bombeo)\b/.test(name)) return true;
       return false;
     }
 
-    let excluido = 0;
-    let gravadoConIva = 0;
-    let baseGravada = 0;
+    let subtotal = 0;
     let iva = 0;
     for (const item of cart) {
       const unit = Math.round(extractPrice(item.price) || 0);
       const line = unit * (item.quantity || 1);
-      if (isExcluidoIva(item)) {
-        excluido += line;
-      } else {
-        gravadoConIva += line;
-        const baseLine = Math.round(line / (1 + IVA_RATE));
-        baseGravada += baseLine;
-        iva += line - baseLine;
-      }
+      subtotal += line;
+      if (!isPrecioFinal(item)) iva += Math.round(line * IVA_RATE);
     }
-    const total = Math.round(excluido + gravadoConIva);
+    const total = Math.round(subtotal + iva);
 
-    const gravadoEl = document.getElementById('cart-subtotal-gravado');
-    const exentoEl = document.getElementById('cart-subtotal-exento');
+    const subEl = document.getElementById('cart-subtotal');
     const ivaEl = document.getElementById('cart-iva');
-    if (gravadoEl) gravadoEl.textContent = formatPrice(baseGravada);
-    if (exentoEl) exentoEl.textContent = formatPrice(excluido);
+    const ivaRow = document.getElementById('cart-iva-row');
+    if (subEl) subEl.textContent = formatPrice(subtotal);
     if (ivaEl) ivaEl.textContent = formatPrice(iva);
+    if (ivaRow) ivaRow.style.display = iva > 0 ? '' : 'none';
     if (cartTotalEl) cartTotalEl.textContent = formatPrice(total);
   }
 

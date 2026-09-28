@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { getAddiInstallmentHint } from '../utils/addiHint';
+import { productoMuestraMasIva } from '../utils/precioIva';
 
 interface Props {
   producto: CollectionEntry<'productos'>;
@@ -10,6 +11,7 @@ const { producto } = Astro.props;
 const specs = producto.data.specifications ?? [];
 const stockStatus = producto.data.stock ?? 'disponible';
 const isNew = (producto.data.order ?? 0) <= 3;
+const muestraMasIva = productoMuestraMasIva(String(producto.data.category), producto.data.title);
 
 // Calcular precio con 15% de descuento (Black Friday)
 const rawPrice = parseInt(producto.data.price.replace(/[^0-9]/g, '')) || 0;
@@ -85,7 +87,7 @@ function getSearchText() {
 
     <div class="producto-footer">
       <div class="producto-price-row">
-        <div class="producto-price">{formattedPrice}</div>
+        <div class="producto-price">{formattedPrice}{muestraMasIva ? <span class="producto-mas-iva"> + IVA</span> : ''}</div>
         <span class="price-caption">Black Friday (-15%)</span>
       </div>
       <p class="producto-addi-hint">

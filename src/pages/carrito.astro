@@ -270,14 +270,10 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
 
                 <div class="checkout-summary-breakdown">
                   <div class="checkout-breakdown-row">
-                    <span>Subtotal excluido de IVA</span>
-                    <span id="checkout-excluido">$0</span>
+                    <span>Subtotal</span>
+                    <span id="checkout-subtotal">$0</span>
                   </div>
-                  <div class="checkout-breakdown-row">
-                    <span>Subtotal gravado (base)</span>
-                    <span id="checkout-base">$0</span>
-                  </div>
-                  <div class="checkout-breakdown-row">
+                  <div class="checkout-breakdown-row" id="checkout-iva-row">
                     <span>IVA 19 %</span>
                     <span id="checkout-iva">$0</span>
                   </div>
@@ -290,7 +286,7 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
                     <span id="checkout-total">$0</span>
                   </div>
                   <p class="checkout-iva-note" style="font-size:0.75rem;color:#666;margin:0.5rem 0 0;line-height:1.35;">
-                    Paneles e inversores excluidos de IVA (Ley 1715 de 2014). Los demás productos incluyen IVA del 19 %.
+                    Paneles, inversores, reflectores y bombeo solar: precio final. Los demás productos: se adiciona IVA del 19 %.
                   </p>
                 </div>
 
@@ -404,11 +400,45 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
       window.dispatchEvent(new CustomEvent('reiki-cart-storage-changed'));
     }
 
+    var IVA_RATE_CHECKOUT = 0.19;
+    var PRECIO_FINAL_CATS = ['paneles', 'inversores', 'reflectores', 'bombeo'];
+    function normIvaCheckout(s) {
+      return String(s || '')
+        .normalize('NFD')
+        .replace(/\p{M}/gu, '')
+        .toLowerCase()
+        .trim();
+    }
+    function isPrecioFinalCheckout(item) {
+      if (item && (item.precioFinal === true || item.excluidoIva === true)) return true;
+      if (item && (item.precioFinal === false || item.excluidoIva === false)) return false;
+      var cat = normIvaCheckout(item && (item.categoria || item.category));
+      var name = normIvaCheckout(item && (item.nombre || item.title));
+      for (var i = 0; i < PRECIO_FINAL_CATS.length; i++) {
+        var pf = PRECIO_FINAL_CATS[i];
+        if (cat === pf || cat.indexOf(pf) !== -1 || (cat && pf.indexOf(cat) !== -1)) return true;
+      }
+      if (/\bmicroinversor|microinverter|micro-inversor\b/.test(name)) return true;
+      if (/\binversor(es)?\b/.test(name)) return true;
+      if (/\bpanel(es)?\b/.test(name) && !/\b(protector|proteccion|estructura|cable|conector|cargador)\b/.test(name)) {
+        return true;
+      }
+      if (/\b(reflector|luminaria|lampara|lámpara)\b/.test(name)) return true;
+      if (/\b(bomba|bombeo)\b/.test(name)) return true;
+      return false;
+    }
+
+    /** Total a cobrar = suma precios + IVA de gravados (Wompi/Addi). */
     function computeCartTotalCop(cart) {
-      var n = cart.reduce(function (sum, item) {
-        return sum + extractPrice(item.price) * (parseInt(item.quantity, 10) || 1);
-      }, 0);
-      return Math.max(0, Math.round(n));
+      var subtotal = 0;
+      var iva = 0;
+      for (var i = 0; i < cart.length; i++) {
+        var item = cart[i];
+        var line = extractPrice(item.price) * (parseInt(item.quantity, 10) || 1);
+        subtotal += line;
+        if (!isPrecioFinalCheckout(item)) iva += Math.round(line * IVA_RATE_CHECKOUT);
+      }
+      return Math.max(0, Math.round(subtotal + iva));
     }
 
     /** Referencia única para la pasarela (UUID cuando el navegador lo soporta). */
@@ -913,9 +943,9 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
     var emptyEl = document.getElementById('checkout-empty');
     var activeEl = document.getElementById('checkout-active');
     var linesEl = document.getElementById('checkout-lines');
-    var excluidoEl = document.getElementById('checkout-excluido');
-    var baseEl = document.getElementById('checkout-base');
+    var subtotalEl = document.getElementById('checkout-subtotal');
     var ivaEl = document.getElementById('checkout-iva');
+    var ivaRow = document.getElementById('checkout-iva-row');
     var totalEl = document.getElementById('checkout-total');
 
     function renderLines() {
@@ -995,7 +1025,7 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
 
     function updateTotals(cart) {
       var IVA_RATE = 0.19;
-      var IVA_EXCLUIDAS = ['paneles', 'inversores'];
+      var PRECIO_FINAL = ['paneles', 'inversores', 'reflectores', 'bombeo'];
       function normIva(s) {
         return String(s || '')
           .normalize('NFD')
@@ -1003,43 +1033,37 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
           .toLowerCase()
           .trim();
       }
-      function isExcluidoIva(item) {
-        if (item && item.excluidoIva === true) return true;
-        if (item && item.excluidoIva === false) return false;
+      function isPrecioFinal(item) {
+        if (item && (item.precioFinal === true || item.excluidoIva === true)) return true;
+        if (item && (item.precioFinal === false || item.excluidoIva === false)) return false;
         var cat = normIva(item && (item.categoria || item.category));
         var name = normIva(item && (item.nombre || item.title));
-        for (var i = 0; i < IVA_EXCLUIDAS.length; i++) {
-          var ex = IVA_EXCLUIDAS[i];
-          if (cat === ex || cat.indexOf(ex) !== -1 || (cat && ex.indexOf(cat) !== -1)) return true;
+        for (var i = 0; i < PRECIO_FINAL.length; i++) {
+          var pf = PRECIO_FINAL[i];
+          if (cat === pf || cat.indexOf(pf) !== -1 || (cat && pf.indexOf(cat) !== -1)) return true;
         }
         if (/\bmicroinversor|microinverter|micro-inversor\b/.test(name)) return true;
         if (/\binversor(es)?\b/.test(name)) return true;
         if (/\bpanel(es)?\b/.test(name) && !/\b(protector|proteccion|estructura|cable|conector|cargador)\b/.test(name)) {
           return true;
         }
+        if (/\b(reflector|luminaria|lampara|lámpara)\b/.test(name)) return true;
+        if (/\b(bomba|bombeo)\b/.test(name)) return true;
         return false;
       }
-      var excluido = 0;
-      var baseGravada = 0;
+      var subtotal = 0;
       var iva = 0;
-      var gravadoConIva = 0;
       for (var j = 0; j < cart.length; j++) {
         var item = cart[j];
         var unit = Math.round(extractPrice(item.price) || 0);
         var line = unit * (item.quantity || 1);
-        if (isExcluidoIva(item)) {
-          excluido += line;
-        } else {
-          gravadoConIva += line;
-          var baseLine = Math.round(line / (1 + IVA_RATE));
-          baseGravada += baseLine;
-          iva += line - baseLine;
-        }
+        subtotal += line;
+        if (!isPrecioFinal(item)) iva += Math.round(line * IVA_RATE);
       }
-      var total = Math.round(excluido + gravadoConIva);
-      if (excluidoEl) excluidoEl.textContent = formatPrice(excluido);
-      if (baseEl) baseEl.textContent = formatPrice(baseGravada);
+      var total = Math.round(subtotal + iva);
+      if (subtotalEl) subtotalEl.textContent = formatPrice(subtotal);
       if (ivaEl) ivaEl.textContent = formatPrice(iva);
+      if (ivaRow) ivaRow.style.display = iva > 0 ? '' : 'none';
       if (totalEl) totalEl.textContent = formatPrice(total);
     }
 

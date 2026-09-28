@@ -1,15 +1,108 @@
 /**
  * Catálogo WhatsApp: índice enriquecido + detección de intención de compra.
+ * Búsqueda: stopwords, categoría obligatoria, kW ≠ kWh, umbral de relevancia.
  */
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { sendList, sendText, sendButtons, sendImage, sendCtaUrl, getWhatsAppConfig } from './whatsapp.js';
+import { isPrecioFinal } from './iva.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 /** @type {object[] | null} */
 let cache = null;
+
+const STOPWORDS = new Set([
+  'un',
+  'una',
+  'unos',
+  'unas',
+  'el',
+  'la',
+  'los',
+  'las',
+  'de',
+  'del',
+  'al',
+  'a',
+  'en',
+  'por',
+  'para',
+  'con',
+  'sin',
+  'que',
+  'me',
+  'te',
+  'se',
+  'mi',
+  'tu',
+  'su',
+  'y',
+  'o',
+  'u',
+  'es',
+  'son',
+  'hay',
+  'tiene',
+  'tienen',
+  'quiero',
+  'necesito',
+  'busco',
+  'cotizar',
+  'cotizame',
+  'cotízame',
+  'cotizacion',
+  'cotización',
+  'precio',
+  'precios',
+  'cuesta',
+  'cuestan',
+  'cuanto',
+  'cuánto',
+  'vale',
+  'ver',
+  'mostrar',
+  'muestrame',
+  'muéstrame',
+  'dame',
+  'pasa',
+  'pasame',
+  'pásame',
+  'equipo',
+  'equipos',
+  'producto',
+  'productos',
+  'solar',
+  'solares',
+  'por',
+  'favor',
+  'hola',
+  'buenas',
+]);
+
+const CATEGORY_HINTS = [
+  { id: 'paneles', re: /\b(panel|paneles|modulo|módulo|modulos)\b/ },
+  { id: 'inversores', re: /\b(inversor|inversores|microinversor|microinversores|inverter)\b/ },
+  { id: 'baterias', re: /\b(bateria|baterias|batería|baterías|litio|lifepo4|kwh)\b/ },
+  { id: 'controladores', re: /\b(controlador|controladores|mppt|pwm)\b/ },
+  { id: 'protecciones', re: /\b(breaker|breakers|protector|proteccion|protecciones|dps|fusible|seccionador)\b/ },
+  { id: 'reflectores', re: /\b(reflector|reflectores|luminaria|luminarias|lampara|lámpara)\b/ },
+  { id: 'bombeo', re: /\b(bomba|bombas|bombeo)\b/ },
+  {
+    id: 'accesorios',
+    re: /\b(cable|cables|conector|estructura|medidor|datalogger|dongle|optimizador|accesorio)\b/,
+  },
+];
+
+const INVERTER_TYPES = [
+  { id: 'hibrido', title: 'Híbrido', re: /\bhibrid/ },
+  { id: 'on-grid', title: 'On-grid', re: /\b(on[\s-]?grid|conectado|red)\b/ },
+  { id: 'off-grid', title: 'Off-grid', re: /\b(off[\s-]?grid|aislad|sin red)\b/ },
+  { id: 'micro', title: 'Microinversor', re: /\bmicro/ },
+];
+
+const MIN_SCORE = 4;
 
 function siteUrl() {
   return String(process.env.WHATSAPP_SITE_URL || 'https://reikisolar.com.co').replace(/\/$/, '');
@@ -78,6 +171,8 @@ export function publicImageUrl(imagePath) {
 function mapProduct(p) {
   const site = siteUrl();
   const specs = Array.isArray(p.specifications) ? p.specifications.slice(0, 4) : [];
+  const categoria = p.category || '';
+  const precioFinal = isPrecioFinal({ categoria, nombre: p.title });
   return {
     id: p.sku || p.slug,
     slug: p.slug,
@@ -87,7 +182,8 @@ function mapProduct(p) {
     modelo: p.model || '',
     precio: p.price || '',
     precioNum: parsePriceCop(p.price),
-    categoria: p.category || '',
+    categoria,
+    precioFinal,
     power: p.power || '',
     stock: p.stock || '',
     specs,
@@ -114,31 +210,144 @@ export function looksLikeCatalogQuery(text) {
   );
 }
 
+export function detectCategoryFromQuery(query) {
+  const n = norm(query);
+  for (const h of CATEGORY_HINTS) {
+    if (h.re.test(n)) return h.id;
+  }
+  // Potencia sin categoría explícita: kWh → baterías; kW/W alto → inversores; W panel típico → paneles
+  if (/\b\d+(?:[.,]\d+)?\s*k\s*w\s*h\b/.test(n)) return 'baterias';
+  if (/\b\d+(?:[.,]\d+)?\s*k\s*w\b/.test(n)) return 'inversores';
+  if (/\b([5-9]\d{2}|[1-9]\d{3})\s*w\b/.test(n)) return 'paneles';
+  return '';
+}
+
+export function detectInverterType(query) {
+  const n = norm(query);
+  for (const t of INVERTER_TYPES) {
+    if (t.re.test(n)) return t.id;
+  }
+  return '';
+}
+
+/** Extrae potencia pedida: { value, unit: 'w'|'kw'|'kwh' } */
+export function extractPowerQuery(query) {
+  const n = norm(query);
+  const mKwh = n.match(/(\d+(?:[.,]\d+)?)\s*k\s*w\s*h\b/);
+  if (mKwh) {
+    return { value: parseFloat(mKwh[1].replace(',', '.')), unit: 'kwh' };
+  }
+  const mKw = n.match(/(\d+(?:[.,]\d+)?)\s*k\s*w\b/);
+  if (mKw) {
+    return { value: parseFloat(mKw[1].replace(',', '.')), unit: 'kw' };
+  }
+  const mW = n.match(/(\d{2,4})\s*w\b/);
+  if (mW) {
+    return { value: parseFloat(mW[1]), unit: 'w' };
+  }
+  return null;
+}
+
+function productPowerInfo(p) {
+  const hay = norm(`${p.power || ''} ${p.title || ''} ${(p.specifications || []).join(' ')}`);
+  const mKwh = hay.match(/(\d+(?:[.,]\d+)?)\s*k\s*w\s*h\b/);
+  if (mKwh) return { value: parseFloat(mKwh[1].replace(',', '.')), unit: 'kwh' };
+  const mKw = hay.match(/(\d+(?:[.,]\d+)?)\s*k\s*w\b/);
+  if (mKw) return { value: parseFloat(mKw[1].replace(',', '.')), unit: 'kw' };
+  const mW = hay.match(/(\d{2,4})\s*w\b/);
+  if (mW) return { value: parseFloat(mW[1]), unit: 'w' };
+  return null;
+}
+
+function powerCompatible(wanted, got) {
+  if (!wanted) return true;
+  if (!got) return false;
+  if (wanted.unit === 'kwh') {
+    if (got.unit !== 'kwh') return false;
+    return Math.abs(got.value - wanted.value) <= Math.max(0.6, wanted.value * 0.25);
+  }
+  if (wanted.unit === 'kw') {
+    if (got.unit === 'kwh') return false;
+    if (got.unit === 'kw') return Math.abs(got.value - wanted.value) <= 0.6;
+    if (got.unit === 'w') return Math.abs(got.value / 1000 - wanted.value) <= 0.6;
+  }
+  if (wanted.unit === 'w') {
+    if (got.unit === 'kwh') return false;
+    if (got.unit === 'w') return Math.abs(got.value - wanted.value) <= 50;
+    if (got.unit === 'kw') return Math.abs(got.value * 1000 - wanted.value) <= 50;
+  }
+  return false;
+}
+
+function tokenizeQuery(query) {
+  const n = norm(query);
+  return n
+    .split(/[^a-z0-9]+/)
+    .filter((t) => t.length > 1 && !STOPWORDS.has(t) && !/^\d+$/.test(t));
+}
+
 /**
  * @param {string} query
- * @param {{ category?: string, limit?: number }} [opts]
+ * @param {{ category?: string, limit?: number, inverterType?: string }} [opts]
+ * @returns {object[] | { needsInverterType: true, query: string }}
  */
 export function searchProducts(query, opts = {}) {
   const q = norm(query);
-  const tokens = q.split(/[^a-z0-9]+/).filter((t) => t.length > 1);
-  if (!tokens.length) return [];
-  const cat = norm(opts.category || '');
+  if (!q) return [];
+
+  const category = norm(opts.category || detectCategoryFromQuery(query));
+  const powerWanted = extractPowerQuery(query);
+  const invType = opts.inverterType || detectInverterType(query);
+  const tokens = tokenizeQuery(query);
   const limit = Math.min(opts.limit || 10, 10);
+
+  // Sin categoría clara → no inventar resultados
+  if (!category && !opts.category) {
+    return [];
+  }
+
+  // Inversor sin tipo (híbrido/on-grid/off-grid/micro) → pedir aclaración
+  if (category === 'inversores' && !invType && !opts.skipTypeAsk) {
+    return { needsInverterType: true, query: String(query || '') };
+  }
 
   const scored = [];
   for (const p of loadIndex()) {
-    if (cat && !norm(p.category).includes(cat) && !norm(p.title).includes(cat)) continue;
+    const pCat = norm(p.category || '');
+    if (category && pCat !== category && !pCat.includes(category)) continue;
+
+    if (invType && category === 'inversores') {
+      const hay = norm(`${p.title} ${(p.specifications || []).join(' ')} ${p.model}`);
+      const typeOk = INVERTER_TYPES.find((t) => t.id === invType);
+      if (typeOk && !typeOk.re.test(hay) && invType !== 'on-grid') {
+        // on-grid: también aceptar si no dice híbrido/off/micro
+        continue;
+      }
+      if (invType === 'on-grid') {
+        if (/\bhibrid|off[\s-]?grid|micro/.test(hay) && !/\bon[\s-]?grid|conectado/.test(hay)) {
+          continue;
+        }
+      }
+    }
+
+    const pPower = productPowerInfo(p);
+    if (powerWanted && !powerCompatible(powerWanted, pPower)) continue;
+
     const hay = norm(
       `${p.title} ${p.brand} ${p.model} ${p.category} ${p.slug} ${p.sku} ${p.power} ${(p.specifications || []).join(' ')}`
     );
     let score = 0;
+    if (category && pCat === category) score += 3;
     for (const t of tokens) {
-      if (hay.includes(t)) score += t.length > 3 ? 3 : 1;
-      if (norm(p.sku) === t) score += 12;
+      if (hay.includes(t)) score += t.length > 3 ? 3 : 2;
+      if (norm(p.sku) === t || norm(p.model) === t) score += 12;
+      if (norm(p.brand) === t) score += 5;
     }
-    if (score <= 0) continue;
+    if (powerWanted && pPower && powerCompatible(powerWanted, pPower)) score += 6;
+    if (score < MIN_SCORE) continue;
     scored.push({ score, p });
   }
+
   scored.sort((a, b) => b.score - a.score);
   return scored.slice(0, limit).map(({ p }) => mapProduct(p));
 }
@@ -161,13 +370,39 @@ function trunc(s, n) {
 /**
  * Lista interactiva hasta 10 productos (nombre + precio). Sin IA.
  */
-export async function sendProductSearchList(to, query, cfg = getWhatsAppConfig()) {
-  const items = searchProducts(query, { limit: 10 });
+export async function sendProductSearchList(to, query, cfg = getWhatsAppConfig(), opts = {}) {
+  const result = searchProducts(query, { limit: 10, ...opts });
+
+  if (result && result.needsInverterType) {
+    await sendButtons({
+      to,
+      body:
+        'Con mucho gusto. Para mostrarte el inversor correcto, ¿de qué tipo lo necesitas, por favor?',
+      buttons: [
+        { id: 'inv_tipo:hibrido', title: 'Híbrido' },
+        { id: 'inv_tipo:on-grid', title: 'On-grid' },
+        { id: 'inv_tipo:off-grid', title: 'Off-grid' },
+      ],
+      cfg,
+    });
+    // Guardar query pendiente vía sesión (import dinámico p/ evitar ciclos)
+    try {
+      const { getSession, saveSession } = await import('./whatsapp-session.js');
+      const s = await getSession(to);
+      s.data.pendingInvQuery = String(query || '').slice(0, 200);
+      await saveSession(to, s);
+    } catch {
+      /* optional */
+    }
+    return { encontrados: 0, needsInverterType: true };
+  }
+
+  const items = Array.isArray(result) ? result : [];
   if (!items.length) {
     await sendText({
       to,
       body:
-        'No encontré ese equipo en la tienda con ese texto. Prueba marca + potencia (ej. *inversor felicity 5kW*) o escribe *menú*.',
+        'No encontré ese equipo en la tienda con ese texto. Prueba marca + potencia (ej. *inversor híbrido felicity 5kW*) o escribe *menú*.',
       cfg,
     });
     return { encontrados: 0 };
@@ -176,7 +411,10 @@ export async function sendProductSearchList(to, query, cfg = getWhatsAppConfig()
   const rows = items.map((p) => ({
     id: `prod:${p.slug}`,
     title: trunc(p.nombre, 24),
-    description: trunc(`${p.precio}${p.marca ? ` · ${p.marca}` : ''}`, 72),
+    description: trunc(
+      `${p.precio}${p.precioFinal ? '' : ' + IVA'}${p.marca ? ` · ${p.marca}` : ''}`,
+      72
+    ),
   }));
 
   await sendList({
@@ -199,9 +437,10 @@ export async function sendProductDetail(to, product, cfg = getWhatsAppConfig()) 
     return false;
   }
   const specsLine = (p.specs || []).slice(0, 2).join(' · ');
+  const ivaTag = p.precioFinal ? '' : ' _(+ IVA)_';
   const caption =
     `*${p.nombre}*\n` +
-    `Precio: *${p.precio}*` +
+    `Precio: *${p.precio}*${ivaTag}` +
     (p.stock ? ` · ${p.stock}` : '') +
     (specsLine ? `\n${specsLine}` : '') +
     (p.power ? `\n${p.power}` : '') +
@@ -218,25 +457,16 @@ export async function sendProductDetail(to, product, cfg = getWhatsAppConfig()) 
   }
   if (!sentImage) await sendText({ to, body: caption, cfg });
 
-  try {
-    await sendButtons({
-      to,
-      body: '¿Qué hacemos con este equipo?',
-      buttons: [
-        { id: `cart_add:${p.slug}`, title: 'Agregar a cotiz.' },
-        { id: 'cart_other', title: 'Ver otra opción' },
-        { id: 'cart_view', title: 'Ver mi cotización' },
-      ],
-      cfg,
-    });
-  } catch (err) {
-    console.warn('[whatsapp-catalog] botones', err?.message || err);
-    try {
-      await sendCtaUrl({ to, body: 'Ver en la tienda:', displayText: 'Ver en tienda', url: p.url, cfg });
-    } catch {
-      /* ignore */
-    }
-  }
+  await sendButtons({
+    to,
+    body: '¿Lo agregamos a tu cotización?',
+    buttons: [
+      { id: `cart_add:${p.slug}`, title: 'Agregar' },
+      { id: 'cart_other', title: 'Ver otro' },
+      { id: 'menu_asesor', title: 'Hablar ingeniero' },
+    ],
+    cfg,
+  });
   return true;
 }
 
@@ -254,14 +484,13 @@ export function recommendProject({ consumoMensual, tipoTecho, ubicacion, objetiv
     tipoSistema = 'off-grid / aislado (sin red o autonomía alta)';
   }
 
-  // kWp = kWh_mes / (30 × HSP × PR); PR=0,78. HSP por zona (default 4,0).
   const hsp = /medell|envigad|bello|itagui|sabaneta|rionegro|antioquia/i.test(lugar)
     ? 4.5
     : /cartagena|barranquilla|santa marta|valledupar|monteria|sincelejo|costa/i.test(lugar)
       ? 5.0
       : 4.0;
   const pr = 0.78;
-  const TARIFA_COP_KWH = 800; // aproximación si solo dan valor de factura
+  const TARIFA_COP_KWH = 800;
   let kwh = null;
   const mKwh = consumoRaw.match(/([\d.,]+)\s*k\s*w\s*h/i);
   if (mKwh) {
@@ -271,7 +500,7 @@ export function recommendProject({ consumoMensual, tipoTecho, ubicacion, objetiv
     if (digits.length >= 3) {
       const pesos = Number(digits);
       if (pesos > 50_000) kwh = pesos / TARIFA_COP_KWH;
-      else if (pesos > 50 && pesos < 50_000) kwh = pesos; // ya parece kWh
+      else if (pesos > 50 && pesos < 50_000) kwh = pesos;
     }
   }
 
@@ -295,9 +524,7 @@ export function recommendProject({ consumoMensual, tipoTecho, ubicacion, objetiv
     resumen:
       `Para ${lugar}, con consumo/factura "${consumoRaw || 'por confirmar'}" y techo "${techo}", ` +
       `la ruta más sensata suele ser un sistema *${tipoSistema}*. ` +
-      (rangoTxt
-        ? `Como orientación, te alcanzaría ${rangoTxt}. `
-        : '') +
+      (rangoTxt ? `Como orientación, te alcanzaría ${rangoTxt}. ` : '') +
       `El dimensionamiento exacto lo cierra nuestro ingeniero experto en diseño fotovoltaico (sin costo).`,
     siguientes_pasos: [
       'Confirmar factura o kWh mensuales',
@@ -319,7 +546,9 @@ export function trimProductsForAi(items, limit = 5) {
   return (items || []).slice(0, limit).map((p) => ({
     nombre: p.nombre,
     precio: p.precio,
+    precioFinal: p.precioFinal,
     link: p.url,
-    specs: (p.specs || []).slice(0, 2),
+    marca: p.marca,
+    categoria: p.categoria,
   }));
 }

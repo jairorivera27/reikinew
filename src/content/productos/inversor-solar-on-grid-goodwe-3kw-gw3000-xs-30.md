@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid GoodWe 3kW GW3000-XS-30"
 description: "Inversor Solar On-Grid GoodWe 3kW GW3000-XS-30. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW3000-XS-30; especificación principal: 3kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$1.323.000"
 specifications:

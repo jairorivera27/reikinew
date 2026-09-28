@@ -17,5 +17,8 @@
     "telefono": "+57 324 573 7413",
     "whatsapp_url": "https://wa.me/573245737413"
   },
-  "iva_excluidas": ["paneles", "inversores"]
+  "iva": {
+    "precio_final": ["paneles", "inversores", "reflectores", "bombeo"],
+    "tasa": 0.19
+  }
 }

@@ -4,6 +4,7 @@ import { getAddiInstallmentHint } from '../../utils/addiHint';
 import { formatTipoPotenciaLine, marcaVaEnLineaMorada } from '../../utils/productCardCompactMeta';
 import { urlProducto } from '../../config/categorias-tienda';
 import { etiquetaPrecioPorUnidad, type ResultadoValor } from '../../utils/calidadPrecio';
+import { productoMuestraMasIva } from '../../utils/precioIva';
 
 interface Props {
   producto: CollectionEntry<'productos'>;
@@ -28,6 +29,7 @@ const mostrarMarcaSeparada = marcaDisplay !== '' && !marcaVaEnLineaMorada(String
 const modeloDisplay = String(d.model ?? '').trim() || d.title.trim();
 
 const addiHint = getAddiInstallmentHint(d.price);
+const muestraMasIva = productoMuestraMasIva(String(d.category), d.title);
 
 const enLiquidacion = Boolean(d.precioAnterior && d.descuentoPct);
 const precioUnitario = etiquetaPrecioPorUnidad(valor);
@@ -80,7 +82,7 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
 
     <div class="producto-footer-compact">
       <div class="producto-price">
-        {d.price}
+        {d.price}{muestraMasIva ? <span class="producto-mas-iva"> + IVA</span> : ''}
         {enLiquidacion && <span class="producto-price-anterior">{d.precioAnterior}</span>}
       </div>
       {precioUnitario && <p class="producto-precio-unitario">{precioUnitario}</p>}
@@ -332,6 +334,13 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
     color: #6b2181;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     line-height: 1.2;
+  }
+
+  .producto-mas-iva {
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #4a1a5c;
+    letter-spacing: 0.04em;
   }
 
   .producto-price-anterior {

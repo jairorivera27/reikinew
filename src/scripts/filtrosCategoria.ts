@@ -295,7 +295,11 @@ function iniciar(): void {
             <div class="producto-modelo-recuadro" title="${escapar(p.title)}">${escapar(p.model || p.title)}</div>
           </a>
           <div class="producto-footer-compact">
-            <div class="producto-price">${escapar(p.price)}${precioAnterior}</div>
+            <div class="producto-price">${escapar(p.price)}${
+              !['paneles', 'inversores', 'reflectores', 'bombeo'].includes(String(p.category || ''))
+                ? '<span class="producto-mas-iva"> + IVA</span>'
+                : ''
+            }${precioAnterior}</div>
             ${precioUnitario}
             <p class="producto-addi-hint">
               <span>${cuotaAddi(p.priceNum)}</span>

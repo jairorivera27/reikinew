@@ -18,6 +18,8 @@ export function getWhatsAppConfig() {
     ownerPhone: personalPhone,
     personalPhone,
     callmebotKey: String(process.env.CALLMEBOT_API_KEY || '').trim(),
+    ownerAlertTemplate: String(process.env.OWNER_ALERT_TEMPLATE || '').trim(),
+    ownerAlertLang: String(process.env.OWNER_ALERT_LANG || 'es').trim() || 'es',
     siteUrl: String(process.env.WHATSAPP_SITE_URL || process.env.ADDI_SITE_URL || 'https://reikisolar.com.co').replace(
       /\/$/,
       ''
@@ -247,10 +249,24 @@ export async function sendDocument({ to, mediaId, link, filename, caption, cfg =
 
 /**
  * Aviso al número personal (PERSONAL_PHONE_NUMBER):
- * 1) WhatsApp Cloud API (si la ventana de 24h lo permite)
- * 2) CallMeBot (gratis, fiable)
+ * 1) Plantilla utility OWNER_ALERT_TEMPLATE (si está configurada; salta ventana 24h)
+ * 2) WhatsApp Cloud API texto libre (si hay ventana 24h)
+ * 3) CallMeBot (gratis, fiable)
+ *
+ * Plantilla sugerida (WhatsApp Manager → Plantillas de mensajes → Utility):
+ *   Nombre: reiki_owner_alert  (o el valor de OWNER_ALERT_TEMPLATE)
+ *   Idioma: Spanish (es)
+ *   Encabezado: DOCUMENTO (opcional; para PDF)
+ *   Cuerpo:
+ *     Alerta Reiki: {{1}}
+ *     Cliente: {{2}}
+ *     Ciudad: {{3}}
+ *     Detalle: {{4}}
+ *   Botón URL opcional: Ver cotización → {{1}} = link
+ *
+ * Variables al llamar notifyOwner(msg, cfg, { templateVars, documentLink, documentFilename })
  */
-export async function notifyOwner(message, cfg = getWhatsAppConfig()) {
+export async function notifyOwner(message, cfg = getWhatsAppConfig(), opts = {}) {
   const plain = String(message || '')
     .replace(/\*/g, '')
     .replace(/_/g, '')
@@ -262,6 +278,54 @@ export async function notifyOwner(message, cfg = getWhatsAppConfig()) {
   console.log('[whatsapp] LEAD PARA ASESOR →', to, '\n', plain);
 
   const results = [];
+
+  // 1) Plantilla utility (fuera de ventana 24h)
+  if (cfg.token && cfg.phoneNumberId && to && cfg.ownerAlertTemplate) {
+    try {
+      const vars = opts.templateVars || [
+        String(opts.titulo || 'Nuevo aviso').slice(0, 60),
+        String(opts.nombre || 'Cliente').slice(0, 60),
+        String(opts.ciudad || '—').slice(0, 60),
+        plain.slice(0, 500),
+      ];
+      const components = [
+        {
+          type: 'body',
+          parameters: vars.map((text) => ({ type: 'text', text: String(text || '—').slice(0, 1024) })),
+        },
+      ];
+      if (opts.documentLink) {
+        components.unshift({
+          type: 'header',
+          parameters: [
+            {
+              type: 'document',
+              document: {
+                link: opts.documentLink,
+                filename: opts.documentFilename || 'Cotizacion-Reiki.pdf',
+              },
+            },
+          ],
+        });
+      }
+      await graphPost(cfg.phoneNumberId, cfg.token, {
+        messaging_product: 'whatsapp',
+        ...recipientFields(to),
+        type: 'template',
+        template: {
+          name: cfg.ownerAlertTemplate,
+          language: { code: cfg.ownerAlertLang || 'es' },
+          components,
+        },
+      });
+      console.log('[whatsapp] Lead por plantilla', cfg.ownerAlertTemplate);
+      results.push({ ok: true, method: 'template' });
+      return { ok: true, method: 'template', results };
+    } catch (err) {
+      console.warn('[whatsapp] Plantilla OWNER_ALERT falló:', err?.message || err);
+      results.push({ ok: false, method: 'template', error: String(err?.message || err) });
+    }
+  }
 
   if (cfg.token && cfg.phoneNumberId && to) {
     try {

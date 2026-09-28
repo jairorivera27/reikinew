@@ -30,6 +30,7 @@ import {
   resolverSerie,
 } from '../../utils/fichaTecnica';
 import { calcularValor, etiquetaPrecioPorUnidad } from '../../utils/calidadPrecio';
+import { productoMuestraMasIva } from '../../utils/precioIva';
 
 export async function getStaticPaths() {
   const productos = await getCollection('productos', ({ data }) => data.draft !== true);
@@ -51,6 +52,7 @@ const metaTitle = metaTitleProducto(d);
 const metaDescription = metaDescriptionProducto(d);
 const migas = migasProducto(d, producto.slug);
 const addiHint = getAddiInstallmentHint(d.price);
+const muestraMasIva = productoMuestraMasIva(String(d.category), d.title);
 
 const relacionados = (await getCollection('productos', ({ data }) => data.draft !== true))
   .filter((p) => p.data.category === d.category && p.slug !== producto.slug)
@@ -191,7 +193,7 @@ const precioUnitario = etiquetaPrecioPorUnidad(
             </dl>
 
             <p class="ficha-precio">
-              {d.price}
+              {d.price}{muestraMasIva ? <span class="ficha-mas-iva"> + IVA</span> : ''}
               {enLiquidacion && (
                 <>
                   <span class="ficha-precio-anterior">{d.precioAnterior}</span>
@@ -703,6 +705,13 @@ const precioUnitario = etiquetaPrecioPorUnidad(
     font-size: 2rem;
     font-weight: 700;
     color: #6b2181;
+  }
+
+  .ficha-mas-iva {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #4a1a5c;
+    letter-spacing: 0.04em;
   }
 
   .ficha-addi {

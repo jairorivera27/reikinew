@@ -355,12 +355,21 @@ async function claudeChat(anthropic, messages) {
 
 async function runTool(name, args, from) {
   if (name === 'buscar_producto_tienda') {
-    const items = searchProducts(args.query || '', { category: args.categoria, limit: 5 });
+    const result = searchProducts(args.query || '', { category: args.categoria, limit: 5 });
+    if (result && result.needsInverterType) {
+      return JSON.stringify({
+        encontrados: 0,
+        needsInverterType: true,
+        nota:
+          'Pregunta UNA sola vez si el inversor es híbrido, on-grid u off-grid (o microinversor). Luego vuelve a buscar.',
+      });
+    }
+    const items = Array.isArray(result) ? result : [];
     return JSON.stringify({
       encontrados: items.length,
       productos: trimProductsForAi(items, 5),
       nota: items.length
-        ? 'Comparte nombre + link exacto. No inventes precios ni URLs.'
+        ? 'Comparte nombre + precio + link exacto. Marca + IVA si precioFinal=false. No inventes precios ni URLs.'
         : 'Sin coincidencias; ofrece otra búsqueda o escalar a humano.',
     });
   }

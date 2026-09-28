@@ -1207,6 +1207,21 @@ export async function handleIncomingMessage(msg) {
     if (await handleDiscoveryStep(from, text, id, cfg)) return;
   }
 
+  // Tipo de inversor (tras búsqueda ambigua)
+  if (id.startsWith('inv_tipo:')) {
+    const tipo = id.slice('inv_tipo:'.length);
+    const s = await getSession(from);
+    const q = String(s.data.pendingInvQuery || 'inversor').trim();
+    delete s.data.pendingInvQuery;
+    await saveSession(from, s);
+    const label = tipo === 'hibrido' ? 'híbrido' : tipo;
+    await sendProductSearchList(from, `${q} ${label}`, cfg, {
+      inverterType: tipo,
+      skipTypeAsk: true,
+    });
+    return;
+  }
+
   // Botones/listas de menú → reglas (nunca IA)
   if (id === 'menu_mas') {
     await sendMoreOptions(from, cfg);

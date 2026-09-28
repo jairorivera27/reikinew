@@ -6,7 +6,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { getRedis, waKey } from './whatsapp-redis.js';
-import { calcTotalesConIvaIncluido, formatCopPdf, isExcluidoIva } from './iva.js';
+import { calcTotalesIva, formatCopPdf, isPrecioFinal } from './iva.js';
 import { formatPhoneCO } from './phone.js';
 import { isFestivoColombia } from './festivos-co.js';
 
@@ -151,7 +151,8 @@ export async function createCotizacion(opts) {
   const items = (opts.items || []).map((it) => {
     const nombre = String(it.nombre || it.title || '');
     const categoria = String(it.categoria || it.category || '');
-    const excluidoIva = isExcluidoIva({
+    const precioFinal = isPrecioFinal({
+      precioFinal: it.precioFinal,
       excluidoIva: it.excluidoIva,
       categoria,
       nombre,
@@ -168,16 +169,17 @@ export async function createCotizacion(opts) {
       specs: Array.isArray(it.specs) ? it.specs.slice(0, 8) : [],
       potencia_w: it.potencia_w != null ? Number(it.potencia_w) : undefined,
       categoria,
-      excluidoIva,
+      precioFinal,
+      excluidoIva: precioFinal,
     };
   });
 
   const envio = opts.envio == null ? null : Number(opts.envio) || 0;
-  const calc = calcTotalesConIvaIncluido(
+  const calc = calcTotalesIva(
     items.map((it) => ({
       price: it.precio_unit,
       quantity: it.cantidad,
-      excluidoIva: it.excluidoIva,
+      precioFinal: it.precioFinal,
       categoria: it.categoria,
       nombre: it.nombre,
     })),
@@ -203,8 +205,9 @@ export async function createCotizacion(opts) {
     },
     items,
     envio,
-    subtotal_excluido: calc.excluido,
-    subtotal_base: calc.baseGravada,
+    subtotal: calc.subtotal,
+    subtotal_excluido: calc.subtotalPrecioFinal,
+    subtotal_base: calc.subtotalGravado,
     iva: calc.iva,
     total: calc.total,
     totalFmt: formatCopPdf(calc.total),

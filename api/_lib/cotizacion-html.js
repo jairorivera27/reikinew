@@ -3,7 +3,7 @@
  * Assets estáticos: /cotizacion/* (logo, fuentes, Wompi/Addi, qr-breb.png).
  * Fotos de producto: URL absoluta https del catálogo.
  */
-import { calcTotalesConIvaIncluido, formatCopPdf, isExcluidoIva } from './iva.js';
+import { calcTotalesIva, formatCopPdf, isPrecioFinal, IVA_NOTA } from './iva.js';
 
 function esc(s) {
   return String(s ?? '')
@@ -85,7 +85,7 @@ export function renderCotizacionHtml(datos) {
     const qty = Number(it.cantidad || 1);
     const unit = Number(it.precio_unit ?? it.precio_unitario ?? it.precioNum ?? 0);
     const sub = unit * qty;
-    const excluido = isExcluidoIva(it);
+    const precioFinal = isPrecioFinal(it);
     return {
       ...it,
       cantidad: qty,
@@ -95,16 +95,17 @@ export function renderCotizacionHtml(datos) {
       sub,
       imagen: it.imagen || '',
       specs: Array.isArray(it.specs) ? it.specs : [],
-      excluidoIva: excluido,
+      precioFinal,
+      excluidoIva: precioFinal,
     };
   });
 
   const envio = datos.envio == null ? null : Number(datos.envio) || 0;
-  const calc = calcTotalesConIvaIncluido(
+  const calc = calcTotalesIva(
     items.map((it) => ({
       price: it.precio_unit,
       quantity: it.cantidad,
-      excluidoIva: it.excluidoIva,
+      precioFinal: it.precioFinal,
       categoria: it.categoria || it.category,
       nombre: it.nombre,
     })),
@@ -112,12 +113,12 @@ export function renderCotizacionHtml(datos) {
   );
 
   const t = {
-    excluido: formatCopPdf(calc.excluido),
-    base: formatCopPdf(calc.baseGravada),
+    subtotal: formatCopPdf(calc.subtotal),
     iva: formatCopPdf(calc.iva),
     total: formatCopPdf(calc.total),
     envio: envio != null ? formatCopPdf(envio) : 'Por cotizar',
     envio_pend: envio == null,
+    mostrarIva: calc.mostrarIva,
   };
 
   const est = buildEstimacion(items, c);
@@ -130,7 +131,7 @@ export function renderCotizacionHtml(datos) {
         <td><img class="thumb" src="${esc(it.imagen)}" alt=""></td>
         <td>${esc(it.sku)}</td>
         <td class="desc"><b>${esc(it.nombre)}</b><small>${esc(it.marca || '')}</small>${
-          it.excluidoIva ? '<span class="tag-ex">Excluido IVA</span>' : ''
+          it.precioFinal ? '' : '<span class="tag-iva">+ IVA</span>'
         }</td>
         <td class="c">${esc(it.cantidad)}</td>
         <td class="num">${esc(it.precio_fmt)}</td>
@@ -216,7 +217,7 @@ export function renderCotizacionHtml(datos) {
   .items .thumb { width: 10mm; height: 10mm; object-fit: contain; background: #fff; border: .3mm solid var(--linea); border-radius: 1.2mm; display: block; }
   .items .desc b { display: block; }
   .items .desc small { color: var(--gris); }
-  .totales { display: grid; grid-template-columns: 1fr 1fr 1fr 0.9fr 1.15fr; margin-top: 4mm; border-radius: 2mm; overflow: hidden; }
+  .totales { display: grid; grid-template-columns: ${t.mostrarIva ? '1fr 1fr 0.9fr 1.15fr' : '1fr 0.9fr 1.15fr'}; margin-top: 4mm; border-radius: 2mm; overflow: hidden; }
   .totales div { background: var(--lila); padding: 2.2mm 2.4mm; }
   .totales span { display: block; font-size: 5.8pt; color: var(--gris); text-transform: uppercase; letter-spacing: .06em; }
   .totales b { font-size: 8.8pt; }
@@ -224,7 +225,7 @@ export function renderCotizacionHtml(datos) {
   .totales .total span { color: var(--morado-osc); font-weight: 700; }
   .totales .total b { font-size: 11.5pt; color: var(--morado-osc); }
   .nota-iva { font-size: 6.4pt; color: var(--gris); margin-top: 1.5mm; line-height: 1.35; }
-  .tag-ex { display: inline-block; margin-top: 0.6mm; font-size: 5.8pt; font-weight: 700; color: var(--morado); background: #efe6f4; border-radius: 0.8mm; padding: 0.3mm 1.2mm; letter-spacing: .04em; text-transform: uppercase; }
+  .tag-iva { display: inline-block; margin-top: 0.6mm; font-size: 5.8pt; font-weight: 700; color: var(--morado-osc); background: var(--amarillo); border-radius: 0.8mm; padding: 0.3mm 1.2mm; letter-spacing: .04em; text-transform: uppercase; }
   .cta { break-inside: avoid; display: flex; align-items: center; gap: 5mm; margin: 4mm 0 4mm; border-radius: 3mm; overflow: hidden;
          background: linear-gradient(100deg, var(--amarillo) 0%, #ffe46b 52%, var(--morado) 52.2%, var(--morado-osc) 100%); }
   .cta .l { flex: 1; padding: 3.5mm 6mm; color: var(--morado-osc); }
@@ -317,13 +318,12 @@ export function renderCotizacionHtml(datos) {
   </table>
 
   <div class="totales">
-    <div><span>Excluido de IVA</span><b>${esc(t.excluido)}</b></div>
-    <div><span>Subtotal gravado (base)</span><b>${esc(t.base)}</b></div>
-    <div><span>IVA 19 %</span><b>${esc(t.iva)}</b></div>
+    <div><span>Subtotal</span><b>${esc(t.subtotal)}</b></div>
+    ${t.mostrarIva ? `<div><span>IVA 19 %</span><b>${esc(t.iva)}</b></div>` : ''}
     <div><span>Envío</span><b>${esc(t.envio)}</b></div>
     <div class="total"><span>Total</span><b>${esc(t.total)}</b></div>
   </div>
-  <p class="nota-iva">Paneles e inversores excluidos de IVA (Ley 1715 de 2014). Los demás productos incluyen IVA del 19 %.${t.envio_pend ? ' El envío nacional se cotiza según el destino.' : ''}</p>
+  <p class="nota-iva">${IVA_NOTA}${t.envio_pend ? ' El envío nacional se cotiza según el destino.' : ''}</p>
 
   <div class="cta">
     <div class="l"><small>¿Listo para continuar?</small><b>Completa tu compra en línea en minutos</b><p class="ctaw">¿Dudas? Atención personalizada por WhatsApp: <a href="${esc(e.atencion.whatsapp_url)}"><b>${esc(e.atencion.telefono)}</b></a></p></div>
@@ -366,7 +366,7 @@ export function renderCotizacionHtml(datos) {
   <h2>Condiciones comerciales</h2>
     <ol>
       <li>Oferta válida por ${esc(c.validez)}. Los precios pueden cambiar por variaciones de la TRM o del proveedor.</li>
-      <li>Paneles e inversores excluidos de IVA (Ley 1715 de 2014); los demás productos incluyen IVA del 19 %. Productos sujetos a disponibilidad de inventario al momento del pago.</li>
+      <li>${IVA_NOTA} Productos sujetos a disponibilidad de inventario al momento del pago.</li>
       <li>El envío nacional no está incluido salvo que aparezca en esta cotización; se cotiza según el destino. También puedes recoger en nuestra sede en Medellín.</li>
       <li>Los equipos cuentan con la garantía directa del fabricante; Reiki Energía Solar te acompaña en el trámite ante defectos de fábrica. La garantía no cubre mala manipulación, instalación por personal no certificado ni daños por falta de protecciones DC/AC exigidas por el RETIE.</li>
       <li>Antes de comprar verifica tensión, capacidad y compatibilidad entre equipos; nuestro ingeniero te ayuda sin costo en el WhatsApp ${esc(e.atencion.telefono)}.</li>

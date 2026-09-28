@@ -27,7 +27,7 @@ import {
 import { getSession, saveSession } from './whatsapp-session.js';
 import { createCotizacion, getCotizacion, updateCotizacionEstado } from './cotizacion-store.js';
 import { renderCotizacionPdfBuffer } from './cotizacion-pdf.js';
-import { calcTotalesConIvaIncluido, formatCopPdf, formatCopCart, isExcluidoIva } from './iva.js';
+import { calcTotalesIva, formatCopPdf, formatCopCart, isPrecioFinal, IVA_NOTA } from './iva.js';
 import { looksLikePaymentIntent } from './whatsapp-intent.js';
 import { formatPhoneCO } from './phone.js';
 
@@ -81,21 +81,26 @@ async function saveCart(from, cart) {
 }
 
 export function summarizeCart(cart) {
-  const items = (cart?.items || []).map((it) => ({
-    slug: it.slug,
-    sku: it.sku,
-    nombre: it.nombre,
-    cantidad: it.cantidad,
-    precio_unitario: it.precio,
-    subtotal: formatPriceCop(it.precioNum * it.cantidad),
-    url: it.url,
-    categoria: it.categoria || '',
-    excluidoIva: isExcluidoIva(it),
-  }));
-  const calc = calcTotalesConIvaIncluido(
+  const items = (cart?.items || []).map((it) => {
+    const precioFinal = isPrecioFinal(it);
+    return {
+      slug: it.slug,
+      sku: it.sku,
+      nombre: it.nombre,
+      cantidad: it.cantidad,
+      precio_unitario: it.precio,
+      subtotal: formatPriceCop(it.precioNum * it.cantidad),
+      url: it.url,
+      categoria: it.categoria || '',
+      precioFinal,
+      excluidoIva: precioFinal,
+    };
+  });
+  const calc = calcTotalesIva(
     (cart?.items || []).map((it) => ({
       price: it.precioNum,
       quantity: it.cantidad,
+      precioFinal: it.precioFinal,
       excluidoIva: it.excluidoIva,
       categoria: it.categoria,
       nombre: it.nombre,
@@ -106,12 +111,15 @@ export function summarizeCart(cart) {
     total: formatPriceCop(calc.total),
     totalNum: calc.total,
     totalPdf: formatCopPdf(calc.total),
-    excluido: calc.excluido,
-    excluidoFmt: formatCopCart(calc.excluido),
+    subtotal: calc.subtotal,
+    subtotalFmt: formatCopCart(calc.subtotal),
     iva: calc.iva,
     ivaFmt: formatCopCart(calc.iva),
-    baseGravada: calc.baseGravada,
-    baseFmt: formatCopCart(calc.baseGravada),
+    mostrarIva: calc.mostrarIva,
+    excluido: calc.subtotalPrecioFinal,
+    excluidoFmt: formatCopCart(calc.subtotalPrecioFinal),
+    baseGravada: calc.subtotalGravado,
+    baseFmt: formatCopCart(calc.subtotalGravado),
     vacio: items.length === 0,
   };
 }
@@ -254,9 +262,8 @@ export async function finalizePdfStub(from, cfg = getWhatsAppConfig()) {
         `Nombre: ${nombre}\n` +
         `Ciudad: ${ciudad}\n` +
         `N.º: ${doc.numero}\n` +
-        `Excluido IVA: ${formatCopPdf(doc.subtotal_excluido || 0)}\n` +
-        `Base gravada: ${formatCopPdf(doc.subtotal_base || 0)}\n` +
-        `IVA 19%: ${formatCopPdf(doc.iva || 0)}\n` +
+        `Subtotal: ${formatCopPdf(doc.subtotal || doc.total)}\n` +
+        (doc.iva > 0 ? `IVA 19%: ${formatCopPdf(doc.iva)}\n` : '') +
         `Total: ${doc.totalFmt}\n` +
         `PDF: ${doc.pdfUrl}\n` +
         `${formatClientContact(from, { telefono })}`,
@@ -400,6 +407,7 @@ export async function addToCart(from, productId, cantidad = 1) {
     existing.precioNum = precioNum;
   } else {
     const categoria = product.categoria || '';
+    const precioFinal = isPrecioFinal({ categoria, nombre: product.nombre });
     cart.items.push({
       slug: product.slug,
       sku: product.sku || '',
@@ -411,7 +419,8 @@ export async function addToCart(from, productId, cantidad = 1) {
       imagen: product.imagen || '',
       url: product.url,
       categoria,
-      excluidoIva: isExcluidoIva({ categoria, nombre: product.nombre }),
+      precioFinal,
+      excluidoIva: precioFinal,
     });
   }
   cart.pendingSlug = null;
@@ -476,18 +485,18 @@ export async function sendCartSummary(from, cfg = getWhatsAppConfig()) {
   const lines = sum.items
     .map(
       (it) =>
-        `• ${it.cantidad}× ${it.nombre} — ${it.subtotal}${it.excluidoIva ? ' _(excluido IVA)_' : ''}`
+        `• ${it.cantidad}× ${it.nombre} — ${it.subtotal}${it.precioFinal ? '' : ' _(+ IVA)_'}`
     )
     .join('\n');
+  const ivaLine = sum.mostrarIva ? `IVA 19 %: *${sum.ivaFmt}*\n` : '';
   await sendText({
     to: from,
     body:
       `*Tu cotización*\n${lines}\n\n` +
-      `Subtotal excluido de IVA: *${sum.excluidoFmt}*\n` +
-      `Subtotal gravado (base): *${sum.baseFmt}*\n` +
-      `IVA 19 %: *${sum.ivaFmt}*\n` +
+      `Subtotal: *${sum.subtotalFmt}*\n` +
+      ivaLine +
       `*Total:* ${sum.total}\n\n` +
-      `_Paneles e inversores excluidos de IVA (Ley 1715). Los demás incluyen IVA del 19 %._`,
+      `_${IVA_NOTA}_`,
     cfg,
   });
   await sendButtons({
@@ -809,9 +818,8 @@ export async function startPurchaseClose(from, cfg = getWhatsAppConfig()) {
       `Ciudad: ${ciudad}\n` +
       `Celular: ${celular}\n` +
       `N.º: ${numero}\n` +
-      `Excluido IVA: ${formatCopPdf(doc.subtotal_excluido || 0)}\n` +
-      `Base gravada: ${formatCopPdf(doc.subtotal_base || 0)}\n` +
-      `IVA 19%: ${formatCopPdf(doc.iva || 0)}\n` +
+      `Subtotal: ${formatCopPdf(doc.subtotal || doc.total)}\n` +
+      (doc.iva > 0 ? `IVA 19%: ${formatCopPdf(doc.iva)}\n` : '') +
       `Total: ${doc.totalFmt}\n` +
       `${itemsTxt}\n` +
       `PDF: ${pdfUrl}\n` +
