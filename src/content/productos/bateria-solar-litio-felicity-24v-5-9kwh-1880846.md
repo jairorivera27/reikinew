@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/bateria-litio-felicity-solar-59kwh-24v-23
 imageAlt: "Felicity Batería Solar Litio Felicity 24V 5.9kWh 1880846 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/1880846/01-bateria-litio-felicity-solar-59kwh-24v-230a-fla-24230-eu-6a14715a5dfe3.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tcnica-batera-litio-felicity-solar-5.9kwh-24v-230a-fla-24230-eu.pdf"
 ---
 **Batería Solar Litio Felicity 24V 5.9kWh 1880846** de Felicity · 24V 5.9kWh.
 

@@ -35,6 +35,7 @@ imageAlt: "Victron MultiPlus 24/3000 3kW – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/inversores/victron-multiplus.png"
 imagen_provisional: true
 imagenSerieRef: "Victron MultiPlus"
+fichaPdf: "/fichas/fabricantes/victron-datasheet-multiplus-inverter-charger-800va-5kva-es.pdf"
 ---
 
 **Victron MultiPlus 24/3000** (ref. **PMP243021102**). MultiPlus Victron Energy, 24/3000, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus.

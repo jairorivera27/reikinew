@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/breaker-solar-dc-4x16a-1200v-suntree-thum
 imageAlt: "Suntree Breaker Suntree 16A DC 5504146 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/5504146/01-breaker-solar-dc-4x16a-1200v-suntree-686807b7b6204.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-breaker-dc-suntree.pdf"
 ---
 **Breaker Suntree 16A DC 5504146** de Suntree · 16A DC.
 

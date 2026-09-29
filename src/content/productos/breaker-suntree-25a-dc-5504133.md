@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/breaker-solar-dc-4x25a-1200v-suntree-thum
 imageAlt: "Suntree Breaker Suntree 25A DC 5504133 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/5504133/01-breaker-solar-dc-4x25a-1200v-suntree-6866b6bfac4ad.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-breaker-dc-suntree.pdf"
 ---
 **Breaker Suntree 25A DC 5504133** de Suntree · 25A DC.
 

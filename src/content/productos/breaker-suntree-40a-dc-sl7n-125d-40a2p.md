@@ -27,6 +27,7 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/suntree-sl7n-dc-thumb.webp"
 imageAlt: "Suntree SL7N-125D-40A2P 40A DC – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
+fichaPdf: "/fichas/proveedores/ficha-tcnica-breaker-solar-dc-1x80a-250v-suntree.pdf"
 ---
 **Breaker Suntree 40A DC SL7N-125D-40A2P** de Suntree · 40A DC.
 

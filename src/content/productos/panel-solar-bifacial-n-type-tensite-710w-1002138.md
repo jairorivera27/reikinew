@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/panel-solar-bifacial-710w-n-type-tensite-
 imageAlt: "Tensite Panel Solar Bifacial N-Type Tensite 710W 1002138 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/1002138/01-panel-solar-bifacial-710w-n-type-tensite-68e68fd24f998.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha_tecnica_em710-ph.pdf"
 ---
 **Panel Solar Bifacial N-Type Tensite 710W 1002138** de Tensite · 710W.
 

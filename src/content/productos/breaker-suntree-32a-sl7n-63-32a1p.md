@@ -27,6 +27,7 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/suntree-sl7n-dc-thumb.webp"
 imageAlt: "Suntree SL7N-63-32A1P 32A – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
+fichaPdf: "/fichas/proveedores/ficha-tecnica-breaker-dc-mcb-sl7n-63-suntree.pdf"
 ---
 **Breaker Suntree 32A SL7N-63-32A1P** de Suntree · 32A.
 

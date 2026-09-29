@@ -26,6 +26,7 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/suntree-spd-dc-thumb.webp"
 imageAlt: "Suntree SUP2H8-PV-2P-800VDC 800VDC, 2P – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/protecciones/suntree-spd-dc.jpg"
+fichaPdf: "/fichas/proveedores/ficha-tecnica-dps-dc-suntree.pdf"
 ---
 **DPS Solar Suntree 800VDC 2P SUP2H8-PV-2P-800VDC** de Suntree · 800VDC, 2P.
 

@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/breaker-solar-ac-3x25a-400vac-suntree-thu
 imageAlt: "Suntree Breaker Suntree 25A AC 5504183 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/5504183/01-breaker-solar-ac-3x25a-400vac-suntree-697385176e727.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-breakers-ac-suntree-1-.pdf"
 ---
 **Breaker Suntree 25A AC 5504183** de Suntree · 25A AC.
 

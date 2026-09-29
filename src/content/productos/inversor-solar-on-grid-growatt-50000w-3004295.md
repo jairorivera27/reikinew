@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/inversor-growatt-max-50-ktl3-xl-2-thumb.w
 imageAlt: "Growatt Inversor Solar On-Grid Growatt 50000W 3004295 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/3004295/01-inversor-on-grid-growatt-max-50-ktl3-xl-2.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/fichatecnica-50kw.pdf"
 ---
 **Inversor Solar On-Grid Growatt 50000W 3004295** de Growatt · 50000W.
 

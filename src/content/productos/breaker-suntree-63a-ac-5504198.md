@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/breaker-solar-ac-3x63a-400vac-suntree-thu
 imageAlt: "Suntree Breaker Suntree 63A AC 5504198 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/5504198/01-breaker-solar-ac-3x63a-400vac-suntree-697387c19942c.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-breakers-ac-suntree-1-.pdf"
 ---
 **Breaker Suntree 63A AC 5504198** de Suntree · 63A AC.
 

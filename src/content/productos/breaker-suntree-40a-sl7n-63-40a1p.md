@@ -27,6 +27,7 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/suntree-sl7n-dc-thumb.webp"
 imageAlt: "Suntree SL7N-63-40A1P 40A – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
+fichaPdf: "/fichas/proveedores/ficha-tecnica-breaker-dc-mcb-sl7n-63-suntree.pdf"
 ---
 **Breaker Suntree 40A SL7N-63-40A1P** de Suntree · 40A.
 

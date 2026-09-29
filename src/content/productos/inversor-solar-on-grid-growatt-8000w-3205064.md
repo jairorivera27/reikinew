@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/inversor-growatt-mid-8k-tl3-xl2-thumb.web
 imageAlt: "Growatt Inversor Solar On-Grid Growatt 8000W 3205064 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/3205064/01-inversor-on-grid-growatt-mid-8k-tl3-xl2.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/inversor-growatt-mid-8000-tl3-xl2.pdf"
 ---
 **Inversor Solar On-Grid Growatt 8000W 3205064** de Growatt · 8000W.
 

@@ -17,6 +17,7 @@ imageThumb: "/images/productos-estudio/huawei-sun2000-10k-lc0-thumb.webp"
 imageAlt: "Huawei SUN2000-10K-LC0 – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/huawei/cat-mayorista-011aa38ff63b/01-NFIN0044.png"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/solaire-nfin0044-ficha.pdf"
 ---
 
 **SUN2000-10K-LC0** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

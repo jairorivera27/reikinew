@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/inversor-hibrido-felicity-solar-8000w-48v
 imageAlt: "Felicity Inversor Solar Híbrido Felicity 8kW 3004616 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/3004616/01-inversor-hibrido-felicity-solar-8000w-48v-ivgm8klp2g1-690281228bee8.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-inversor-hibrido-felicity-solar-ivgm8klp2g1.pdf"
 ---
 **Inversor Solar Híbrido Felicity 8kW 3004616** de Felicity · 8kW.
 

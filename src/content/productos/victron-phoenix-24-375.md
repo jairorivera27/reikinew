@@ -18,6 +18,7 @@ imageAlt: "Victron Phoenix 24/375 – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/inversores/victron-phoenix.png"
 imagen_provisional: true
 imagenSerieRef: "Victron Phoenix"
+fichaPdf: "/fichas/fabricantes/victron-datasheet-inverter-ve.direct-250va-1600va-es.pdf"
 ---
 
 Inversor de onda sinusoidal pura Victron Phoenix, alta eficiencia y potencia de arranque para cargas difíciles.

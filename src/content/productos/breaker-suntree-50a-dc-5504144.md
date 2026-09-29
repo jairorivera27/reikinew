@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/breaker-solar-dc-2x50a-550v-suntree-thumb
 imageAlt: "Suntree Breaker Suntree 50A DC 5504144 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/5504144/01-breaker-solar-dc-2x50a-550v-suntree.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-breaker-dc-suntree.pdf"
 ---
 **Breaker Suntree 50A DC 5504144** de Suntree · 50A DC.
 

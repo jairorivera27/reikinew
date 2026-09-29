@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
 imageAlt: "Victron SCC145110512 N/A – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/controladores/victron-smartsolar-mppt.jpg"
 imagen_provisional: true
+fichaPdf: "/fichas/fabricantes/victron-datasheet-smartsolar-mppt-rs-es.pdf"
 ---
 **Controlador de Carga Solar MPPT Victron SCC145110512** de Victron · N/A.
 

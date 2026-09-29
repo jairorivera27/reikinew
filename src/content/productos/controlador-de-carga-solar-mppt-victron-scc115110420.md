@@ -28,6 +28,7 @@ imageAlt: "Victron Controlador de Carga Solar MPPT Victron SCC115110420 – Reik
 imageOriginal: "proveedores/autosolar/victron/scc115085411/01-controlador-carga-smartsolar-mppt-15085-tr-victron-energy.jpg"
 imagen_provisional: false
 imagenSerieRef: "Victron SmartSolar MPPT 150V-Tr"
+fichaPdf: "/fichas/proveedores/victron-smartsolar-mppt-150-45-a-150-100.pdf"
 ---
 **Controlador de Carga Solar MPPT Victron SCC115110420** de Victron · N/A.
 

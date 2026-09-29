@@ -28,6 +28,7 @@ imageAlt: "Growatt Inversor Solar On-Grid Growatt 25000W 3004292 – Reiki Energ
 imageOriginal: "proveedores/autosolar-codigo/3004291/01-inversor-on-grid-20000w-growatt-mid-20k-tl3-xl2-699df7ff8ecd6.jpg"
 imagen_provisional: false
 imagenSerieRef: "Growatt MID TL3-XL2"
+fichaPdf: "/fichas/proveedores/mid_15-25ktl3-xl2_hoja_de_datos_mx_2.pdf"
 ---
 **Inversor Solar On-Grid Growatt 25000W 3004292** de Growatt · 25000W.
 

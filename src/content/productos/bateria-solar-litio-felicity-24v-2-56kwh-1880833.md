@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/bateria-litio-felicity-solar-256kwh-24v-1
 imageAlt: "Felicity Batería Solar Litio Felicity 24V 2,56kWh 1880833 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/1880833/01-bateria-litio-felicity-solar-256kwh-24v-100a-fla24100-690b99f928255.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-batera-litio-felicity-solar-2-56kwh-24vv-100a-fla24100.pdf"
 ---
 **Batería Solar Litio Felicity 24V 2,56kWh 1880833** de Felicity · 24V 2,56kWh.
 

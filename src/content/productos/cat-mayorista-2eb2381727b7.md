@@ -17,6 +17,7 @@ imageThumb: "/images/productos-estudio/huawei-sun2000-8k-lc0-thumb.webp"
 imageAlt: "Huawei SUN2000-8K-LC0 – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/huawei/cat-mayorista-2eb2381727b7/01-NFIN0041.png"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/solaire-nfin0041-ficha.pdf"
 ---
 
 **SUN2000-8K-LC0** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

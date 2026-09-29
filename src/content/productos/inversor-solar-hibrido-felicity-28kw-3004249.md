@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/inversor-hibrido-felicity-28kw-160-800v-4
 imageAlt: "Felicity Inversor Solar Híbrido Felicity 28kW 3004249 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/3004249/01-inversor-hibrido-felicity-28kw-160-800v-4-mppt-69d7b8a26090b.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-ficha-tcnica-inversor-hbrido-felicity-28kw-160-800v-4-mppt.pdf"
 ---
 **Inversor Solar Híbrido Felicity 28kW 3004249** de Felicity · 28kW.
 

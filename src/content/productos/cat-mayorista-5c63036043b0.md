@@ -18,6 +18,7 @@ imageThumb: "/images/productos-estudio/huawei-sun2000-5ktl-l1-thumb.webp"
 imageAlt: "Huawei SUN2000-5KTL-L1 – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/huawei/cat-mayorista-5c63036043b0/01-NFIN0005.png"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/solaire-nfin0005-ficha.pdf"
 ---
 
 **SUN2000-5KTL-L1** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

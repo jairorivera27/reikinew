@@ -18,6 +18,7 @@ imageAlt: "Victron Quattro 48/5000 – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/inversores/victron-quattro.png"
 imagen_provisional: true
 imagenSerieRef: "Victron Quattro"
+fichaPdf: "/fichas/fabricantes/victron-datasheet-quattro-3kva-15kva-es.pdf"
 ---
 
 El Victron Quattro 48/5000 es un inversor cargador avanzado con dos entradas de CA y dos salidas de CA, ideal para sistemas complejos.

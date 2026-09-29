@@ -28,6 +28,7 @@ imageThumb: "/images/productos-estudio/victron-bluesolar-pwm-lcdusb-1224v-30a-th
 imageOriginal: "proveedores/autosolar/victron/scc040030020/01-controlador-carga-bluesolar-pwm-lcdusb-1224v-30a-victron-energy.jpg"
 imagen_provisional: false
 imagenSerieRef: "Victron BlueSolar PWM LCD&USB"
+fichaPdf: "/fichas/proveedores/ficha-tecnica-2008026.pdf"
 ---
 **Controlador de Carga Solar PWM Victron SCC040010050** de Victron · N/A.
 

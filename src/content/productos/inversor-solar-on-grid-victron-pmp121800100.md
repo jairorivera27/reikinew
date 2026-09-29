@@ -35,6 +35,7 @@ imageAlt: "Victron MultiPlus 12/800 800W – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/inversores/victron-multiplus.png"
 imagen_provisional: true
 imagenSerieRef: "Victron MultiPlus"
+fichaPdf: "/fichas/fabricantes/victron-datasheet-multiplus-inverter-charger-800va-5kva-es.pdf"
 ---
 
 **Victron MultiPlus 12/800** (ref. **PMP121800100**). MultiPlus Victron Energy, 12/800, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus.

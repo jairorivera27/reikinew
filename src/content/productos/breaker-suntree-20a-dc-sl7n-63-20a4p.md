@@ -27,6 +27,7 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/suntree-sl7n-dc-thumb.webp"
 imageAlt: "Suntree SL7N-63-20A4P 20A DC – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
+fichaPdf: "/fichas/proveedores/ficha-tecnica-breaker-dc-mcb-sl7n-63-suntree.pdf"
 ---
 **Breaker Suntree 20A DC SL7N-63-20A4P** de Suntree · 20A DC.
 

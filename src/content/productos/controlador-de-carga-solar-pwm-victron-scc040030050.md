@@ -27,6 +27,7 @@ imageAlt: "Victron Controlador de Carga Solar PWM Victron SCC040030050 – Reiki
 imageThumb: "/images/productos-estudio/victron-bluesolar-pwm-lcdusb-1224v-30a-thumb.webp"
 imageOriginal: "proveedores/autosolar/victron/scc040030020/01-controlador-carga-bluesolar-pwm-lcdusb-1224v-30a-victron-energy.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-2008026.pdf"
 ---
 **Controlador de Carga Solar PWM Victron SCC040030050** de Victron · N/A.
 

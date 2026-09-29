@@ -16,6 +16,7 @@ imageThumb: "/images/productos-estudio/huawei-sun2000-100ktl-m2-thumb.webp"
 imageAlt: "Huawei SUN2000-100KTL-M2 – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/huawei/cat-mayorista-479835eafdcd/01-NFIN0054.png"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/solaire-nfin0054-ficha.pdf"
 ---
 
 **SUN2000-100KTL-M2** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

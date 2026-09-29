@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/victron-smartsolar-mppt-15085-tr-thumb.we
 imageAlt: "Victron Controlador de Carga Solar MPPT Victron SCC115085411 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar/victron/scc115085411/01-controlador-carga-smartsolar-mppt-15085-tr-victron-energy.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/victron-smartsolar-mppt-150-45-a-150-100.pdf"
 ---
 **Controlador de Carga Solar MPPT Victron SCC115085411** de Victron · N/A.
 

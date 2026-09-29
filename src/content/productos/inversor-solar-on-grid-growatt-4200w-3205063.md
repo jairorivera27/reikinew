@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/growatt-min-4200tl-x-thumb.webp"
 imageAlt: "Growatt Inversor Solar On-Grid Growatt 4200W 3205063 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/3205063/01-inversor-on-grid-4200w-growatt-min-4200tl-x.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-del-inversor--min.pdf"
 ---
 **Inversor Solar On-Grid Growatt 4200W 3205063** de Growatt · 4200W.
 

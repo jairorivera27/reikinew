@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/victron-smartsolar-mppt-25060-tr-thumb.we
 imageAlt: "Victron Controlador de Carga Solar MPPT Victron SCC125060321 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar/victron/scc125060221/01-controlador-carga-smartsolar-mppt-25060-tr-victron-energy.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/victron-mppt-smart-250-60-a-100.pdf"
 ---
 **Controlador de Carga Solar MPPT Victron SCC125060321** de Victron · N/A.
 

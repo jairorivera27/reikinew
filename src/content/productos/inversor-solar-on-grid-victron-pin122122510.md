@@ -35,6 +35,7 @@ imageAlt: "Victron Phoenix 12/1200 1.2kW – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/inversores/victron-phoenix.png"
 imagen_provisional: true
 imagenSerieRef: "Victron Phoenix"
+fichaPdf: "/fichas/fabricantes/victron-datasheet-inverter-ve.direct-250va-1600va-es.pdf"
 ---
 
 **Victron Phoenix 12/1200** (ref. **PIN122122510**). Phoenix Victron Energy, 12/1200, 120 V CA, inversor puro para sistemas aislados, con VE.Direct.

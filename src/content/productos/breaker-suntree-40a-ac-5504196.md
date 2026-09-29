@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/breaker-solar-ac-3x40a-400vac-suntree-thu
 imageAlt: "Suntree Breaker Suntree 40A AC 5504196 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/5504196/01-breaker-solar-ac-3x40a-400vac-suntree-697387030a6c7.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-breakers-ac-suntree-1-.pdf"
 ---
 **Breaker Suntree 40A AC 5504196** de Suntree · 40A AC.
 

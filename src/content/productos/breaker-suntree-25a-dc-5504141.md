@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/breaker-solar-dc-2x25a-550v-suntree-thumb
 imageAlt: "Suntree Breaker Suntree 25A DC 5504141 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/5504141/01-breaker-solar-dc-2x25a-550v-suntree.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha--tecnica--breaker--dc--suntree.pdf"
 ---
 **Breaker Suntree 25A DC 5504141** de Suntree · 25A DC.
 

@@ -28,6 +28,7 @@ imageThumb: "/images/productos-estudio/suntree-scb8-ac-prov.webp"
 imageAlt: "Suntree SCB8-63-100A3P 100A AC – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/protecciones/suntree-scb8-ac.jpg"
 imagen_provisional: true
+fichaPdf: "/fichas/proveedores/ficha-tecnica-breakers-ac-suntree-1-.pdf"
 ---
 **Breaker Suntree 100A AC SCB8-63-100A3P** de Suntree · 100A AC.
 

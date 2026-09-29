@@ -17,6 +17,7 @@ imageThumb: "/images/productos-estudio/huawei-sun2000-36ktl-m3-thumb.webp"
 imageAlt: "Huawei 36KTL-M3 – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/huawei/sun2000-36ktl-m3/01-NFIN0030.png"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/solaire-nfin0030-ficha.pdf"
 ---
 
 Inversor comercial Huawei de 36kW, alta eficiencia y múltiples MPPT para maximizar la producción en grandes techos.

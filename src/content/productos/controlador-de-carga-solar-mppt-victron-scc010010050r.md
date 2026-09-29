@@ -28,6 +28,7 @@ imageAlt: "Victron Controlador de Carga Solar MPPT Victron SCC010010050R – Rei
 imageOriginal: "proveedores/autosolar/victron/scc010015050r/01-controlador-carga-bluesolar-mppt-10015-retail-victron-energy.jpg"
 imagen_provisional: false
 imagenSerieRef: "Victron BlueSolar MPPT"
+fichaPdf: "/fichas/proveedores/ficha-tecnica-blusolar-mppt-100-15-retail.pdf"
 ---
 **Controlador de Carga Solar MPPT Victron SCC010010050R** de Victron · N/A.
 

@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/victron-bluesolar-mppt-10015-retail-thumb
 imageAlt: "Victron Controlador de Carga Solar MPPT Victron SCC110015060R – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar/victron/scc010015050r/01-controlador-carga-bluesolar-mppt-10015-retail-victron-energy.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-blusolar-mppt-100-15-retail.pdf"
 ---
 **Controlador de Carga Solar MPPT Victron SCC110015060R** de Victron · N/A.
 

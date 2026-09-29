@@ -34,6 +34,7 @@ imageAlt: "Victron Phoenix 48/250 250W – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/inversores/victron-phoenix.png"
 imagen_provisional: true
 imagenSerieRef: "Victron Phoenix"
+fichaPdf: "/fichas/fabricantes/victron-datasheet-inverter-ve.direct-250va-1600va-es.pdf"
 ---
 
 **Victron Phoenix 48/250** (ref. **PIN482510500**). Phoenix Victron Energy, 48/250, 120 V CA, inversor puro para sistemas aislados, con VE.Direct.

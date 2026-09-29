@@ -27,6 +27,7 @@ imageAlt: "Tensite Inversor Solar Off-Grid Tensite 6.5kW 3004117 – Reiki Energ
 imageThumb: "/images/productos-estudio/inversor-cargador-6500w-48v-tensite-max-thumb.webp"
 imageOriginal: "proveedores/autosolar-codigo/3004117/01-inversor-cargador-6500w-48v-tensite-max-68d54321886f3.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-inversor-tensite-max.pdf"
 ---
 **Inversor Solar Off-Grid Tensite 6.5kW 3004117** de Tensite · 6.5kW.
 

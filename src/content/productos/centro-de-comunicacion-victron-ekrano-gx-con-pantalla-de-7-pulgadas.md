@@ -27,6 +27,7 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/victron-ekrano-gx-pantalla-7-pulgadas-thumb.webp"
 imageAlt: "Victron Ekrano GX Pantalla 7 pulgadas – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/monitoreo/victron-gx-touch.jpg"
+fichaPdf: "/fichas/fabricantes/victron-datasheet-ekrano-gx-es.pdf"
 ---
 **Centro de Comunicación Victron Ekrano GX con Pantalla de 7 pulgadas** de Victron · Pantalla 7 pulgadas.
 

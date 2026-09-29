@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/breaker-solar-ac-2x50a-400vac-suntree-thu
 imageAlt: "Suntree Breaker Suntree 50A AC 5504181 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/5504181/01-breaker-solar-ac-2x50a-400vac-suntree-693b145c4fb9a.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-breakers-ac-suntree-1-.pdf"
 ---
 **Breaker Suntree 50A AC 5504181** de Suntree · 50A AC.
 

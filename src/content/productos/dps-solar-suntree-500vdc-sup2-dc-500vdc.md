@@ -26,6 +26,7 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/suntree-spd-dc-thumb.webp"
 imageAlt: "Suntree SUP2-DC-500VDC 500VDC – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/protecciones/suntree-spd-dc.jpg"
+fichaPdf: "/fichas/proveedores/ficha-tecnica-dps-dc-suntree.pdf"
 ---
 **DPS Solar Suntree 500VDC SUP2-DC-500VDC** de Suntree · 500VDC.
 

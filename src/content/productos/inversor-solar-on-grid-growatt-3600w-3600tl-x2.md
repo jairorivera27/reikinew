@@ -29,6 +29,7 @@ imageThumb: "/images/productos-estudio/growatt-min-6000tl-x2-thumb.webp"
 imageAlt: "Growatt Inversor Solar On-Grid Growatt 3600W 3600TL-X2 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar/growatt/3600tl-x2/01-inversor-on-grid-6000w-growatt-min-6000tl-x2.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-del-inversor--min.pdf"
 ---
 **Inversor Solar On-Grid Growatt 3600W 3600TL-X2** de Growatt · 3600W.
 

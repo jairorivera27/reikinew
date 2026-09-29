@@ -28,6 +28,7 @@ imageThumb: "/images/productos-estudio/growatt-mid-20k-tl3-xl2-thumb.webp"
 imageAlt: "Growatt Inversor Solar On-Grid Growatt 20kW 20KTL3-XL2 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar/growatt/20ktl3-xl2/01-inversor-on-grid-20000w-growatt-mid-20k-tl3-xl2-699df7ff8ecd6.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/mid_15-25ktl3-xl2_hoja_de_datos_mx_2.pdf"
 ---
 **Inversor Solar On-Grid Growatt 20kW 20KTL3-XL2** de Growatt · 20kW.
 

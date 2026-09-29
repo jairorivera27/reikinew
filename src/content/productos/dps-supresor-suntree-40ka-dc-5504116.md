@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/fusible-solar-dc-3p-1200vdc-2040ka-suntre
 imageAlt: "Suntree DPS Supresor Suntree 40kA DC 5504116 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/5504116/01-fusible-solar-dc-3p-1200vdc-2040ka-suntree-685c0d9d9ea70.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-dps-dc-suntree.pdf"
 ---
 **DPS Supresor Suntree 40kA DC 5504116** de Suntree · 40kA DC.
 

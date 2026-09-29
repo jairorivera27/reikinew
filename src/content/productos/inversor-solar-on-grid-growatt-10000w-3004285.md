@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/growatt-mid-10tl3-xl2-thumb.webp"
 imageAlt: "Growatt Inversor Solar On-Grid Growatt 10000W 3004285 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/3004285/01-inversor-on-grid-10000w-growatt-mid-10tl3-xl2-6888fb5456b4c.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/mid_6-12ktl3-xl2_hoja_de_datos_mx.pdf"
 ---
 **Inversor Solar On-Grid Growatt 10000W 3004285** de Growatt · 10000W.
 

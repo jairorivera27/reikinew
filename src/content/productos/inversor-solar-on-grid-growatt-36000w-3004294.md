@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/growatt-mac-36ktl3-xl-thumb.webp"
 imageAlt: "Growatt Inversor Solar On-Grid Growatt 36000W 3004294 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/3004294/01-inversor-on-grid-36000w-growatt-mac-36ktl3-xl.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/mac_30-36ktl3-xl2_hoja_de_datos_mx_202506.pdf"
 ---
 **Inversor Solar On-Grid Growatt 36000W 3004294** de Growatt · 36000W.
 

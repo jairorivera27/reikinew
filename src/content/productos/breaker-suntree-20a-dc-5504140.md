@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/breaker-solar-dc-2x20a-800v-suntree-thumb
 imageAlt: "Suntree Breaker Suntree 20A DC 5504140 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/5504140/01-breaker-solar-dc-2x20a-800v-suntree-69ab463fa8a84.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha--tecnica--breaker--dc--suntree.pdf"
 ---
 **Breaker Suntree 20A DC 5504140** de Suntree · 20A DC.
 

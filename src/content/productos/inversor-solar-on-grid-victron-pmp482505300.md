@@ -33,6 +33,7 @@ imageThumb: "/images/productos-estudio/victron-multiplus-ii-48-5000-thumb.webp"
 imageAlt: "Victron MultiPlus-II 48/5000 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar/victron/multiplus-ii-48-5000/01-multiplus-ii-48500070-95-120v-6866a8f909ad4.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tcnica-multiplusii-48-5000-70-95-120v.pdf"
 ---
 
 **Victron MultiPlus-II 48/5000** (ref. **PMP482505300**). MultiPlus-II Victron Energy, 48/5000, 120 V CA, inversor-cargador para sistemas híbridos y aislados.

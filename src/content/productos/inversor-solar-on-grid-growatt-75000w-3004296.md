@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/growatt-max-75ktl3-xl-thumb.webp"
 imageAlt: "Growatt Inversor Solar On-Grid Growatt 75000W 3004296 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/3004296/01-inversor-on-grid-75000w-growatt-max-75ktl3-xl.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/fichatecnica-50kw.pdf"
 ---
 **Inversor Solar On-Grid Growatt 75000W 3004296** de Growatt · 75000W.
 

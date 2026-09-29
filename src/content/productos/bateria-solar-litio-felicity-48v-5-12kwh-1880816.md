@@ -27,6 +27,7 @@ imageAlt: "Felicity Batería Solar Litio Felicity 48V 5.12kWh 1880816 – Reiki 
 imageThumb: "/images/productos-estudio/bateria-litio-felicity-solar-512kwh-512v-100a-fla48100-thumb.webp"
 imageOriginal: "proveedores/autosolar-codigo/1880816/01-bateria-litio-felicity-solar-512kwh-512v-100a-fla48100-68b1bd4de2412.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/bateria-fla48100-eu-fla48250-eu-cambio.pdf"
 ---
 **Batería Solar Litio Felicity 48V 5.12kWh 1880816** de Felicity · 48V 5.12kWh.
 

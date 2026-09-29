@@ -28,6 +28,7 @@ imageAlt: "Victron Controlador de Carga Solar MPPT Victron SCC115060211 – Reik
 imageOriginal: "proveedores/autosolar/victron/scc115060211/01-controlador-carga-bluesolar-mppt-15060-tr-victron-energy.jpg"
 imagen_provisional: false
 imagenSerieRef: "Victron MPPT 150/60-Tr"
+fichaPdf: "/fichas/proveedores/victron-blue-solar-mppt-150-45a-70a.pdf"
 ---
 **Controlador de Carga Solar MPPT Victron SCC115060211** de Victron · N/A.
 

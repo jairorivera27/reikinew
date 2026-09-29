@@ -16,6 +16,7 @@ imageThumb: "/images/productos-estudio/huawei-sun2000-215ktl-h0-thumb.webp"
 imageAlt: "Huawei SUN2000-215KTL-H0 – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/huawei/cat-mayorista-d93b4767526a/01-NFIN0009.png"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/solaire-nfin0009-ficha.pdf"
 ---
 
 **SUN2000-215KTL-H0** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

@@ -27,6 +27,7 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/suntree-spd-dc-thumb.webp"
 imageAlt: "Suntree SUP2H1-PV-1000VDC 40kA DC – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/protecciones/suntree-spd-dc.jpg"
+fichaPdf: "/fichas/proveedores/ficha-tecnica-dps-dc-suntree.pdf"
 ---
 **DPS Supresor Suntree 40kA DC SUP2H1-PV-1000VDC** de Suntree · 40kA DC.
 

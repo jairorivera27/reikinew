@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/bateria-litio-felicity-solar-375kwh-12v-3
 imageAlt: "Felicity Batería Solar Litio Felicity 24V 7.5kWh 1880814 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/1880814/01-bateria-litio-felicity-solar-375kwh-12v-300a-fla-24300-68d6a18f95092.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-batera-litio-felicity-solar-7.5kwh-12v-300a-fla-24300.pdf"
 ---
 **Batería Solar Litio Felicity 24V 7.5kWh 1880814** de Felicity · 24V 7.5kWh.
 

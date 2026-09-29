@@ -28,6 +28,7 @@ imageAlt: "Victron Controlador de Carga Solar MPPT Victron SCC115035210 – Reik
 imageOriginal: "proveedores/autosolar/victron/scc115035210/01-controlador-carga-bluesolar-mppt-15035-victron-energy.jpg"
 imagen_provisional: false
 imagenSerieRef: "Victron MPPT 150/35"
+fichaPdf: "/fichas/proveedores/ficha-tecnica-blusolar-mppt-150-35.pdf"
 ---
 **Controlador de Carga Solar MPPT Victron SCC115035210** de Victron · N/A.
 

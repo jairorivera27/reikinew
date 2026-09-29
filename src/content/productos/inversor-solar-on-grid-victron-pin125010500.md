@@ -34,6 +34,7 @@ imageAlt: "Victron Phoenix 12/500 500W – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/inversores/victron-phoenix.png"
 imagen_provisional: true
 imagenSerieRef: "Victron Phoenix"
+fichaPdf: "/fichas/fabricantes/victron-datasheet-inverter-ve.direct-250va-1600va-es.pdf"
 ---
 
 **Victron Phoenix 12/500** (ref. **PIN125010500**). Phoenix Victron Energy, 12/500, 120 V CA, inversor puro para sistemas aislados, con VE.Direct.

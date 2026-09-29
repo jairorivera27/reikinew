@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/breaker-solar-dc-2x32a-600v-suntree-thumb
 imageAlt: "Suntree Breaker Suntree 32A DC 5504231 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/5504231/01-breaker-solar-dc-2x32a-600v-suntree-6a106e269740f.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-breaker-dc-mcb-sl7n-63-suntree.pdf"
 ---
 **Breaker Suntree 32A DC 5504231** de Suntree · 32A DC.
 

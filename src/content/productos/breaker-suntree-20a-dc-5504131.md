@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/breaker-solar-dc-4x20a-1200v-suntree-thum
 imageAlt: "Suntree Breaker Suntree 20A DC 5504131 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/5504131/01-breaker-solar-dc-4x20a-1200v-suntree.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-breaker-dc-suntree.pdf"
 ---
 **Breaker Suntree 20A DC 5504131** de Suntree · 20A DC.
 

@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/inversor-cargador-growatt-spf-3000tl-lvm-
 imageAlt: "Growatt Inversor Solar Off-Grid Growatt 3000W 3004250 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/3004250/01-inversor-cargador-growatt-spf-3000tl-lvm-24v.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/fichatecnica-lvm-1-.pdf"
 ---
 **Inversor Solar Off-Grid Growatt 3000W 3004250** de Growatt · 3000W.
 

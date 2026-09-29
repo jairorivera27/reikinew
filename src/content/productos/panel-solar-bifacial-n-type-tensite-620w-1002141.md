@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/panel-solar-bifacial-620w-n-type-tensite-
 imageAlt: "Tensite Panel Solar Bifacial N-Type Tensite 620W 1002141 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/1002141/01-panel-solar-bifacial-620w-n-type-tensite-6a1e08639c2b0.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica---tensite---em610-620ph-.pdf"
 ---
 **Panel Solar Bifacial N-Type Tensite 620W 1002141** de Tensite · 620W.
 

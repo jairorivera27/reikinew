@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/dps-solar-dc-2p-800vdc-2040ka-suntree-thu
 imageAlt: "Suntree DPS Supresor Suntree 40kA DC 5504138 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/5504138/01-dps-solar-dc-2p-800vdc-2040ka-suntree-688394ceca61f.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-dps-dc-suntree.pdf"
 ---
 **DPS Supresor Suntree 40kA DC 5504138** de Suntree · 40kA DC.
 

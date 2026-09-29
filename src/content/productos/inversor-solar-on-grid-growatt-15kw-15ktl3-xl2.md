@@ -28,6 +28,7 @@ imageThumb: "/images/productos-estudio/growatt-mid-15tl3-xl2-thumb.webp"
 imageAlt: "Growatt Inversor Solar On-Grid Growatt 15kW 15KTL3-XL2 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar/growatt/10ktl3-xl2/01-inversor-on-grid-15000w-growatt-mid-15tl3-xl2.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/mid_15-25ktl3-xl2_hoja_de_datos_mx_2.pdf"
 ---
 **Inversor Solar On-Grid Growatt 15kW 15KTL3-XL2** de Growatt · 15kW.
 

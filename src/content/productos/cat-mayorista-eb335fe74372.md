@@ -18,6 +18,7 @@ imageThumb: "/images/productos-estudio/huawei-sun2000-50ktl-m3-thumb.webp"
 imageAlt: "Huawei SUN2000-50KTL-M3 – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/huawei/sun2000-50ktl-m3/01-NFIN0063.png"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/solaire-nfin0063-ficha.pdf"
 ---
 
 **SUN2000-50KTL-M3** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

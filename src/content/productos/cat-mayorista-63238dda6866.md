@@ -17,6 +17,7 @@ imageThumb: "/images/productos-estudio/huawei-sun2000-40ktl-m3-thumb.webp"
 imageAlt: "Huawei SUN2000-40KTL-M3 – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/huawei/cat-mayorista-63238dda6866/01-NFIN0001.png"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/solaire-nfin0001-ficha.pdf"
 ---
 
 **SUN2000-40KTL-M3** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

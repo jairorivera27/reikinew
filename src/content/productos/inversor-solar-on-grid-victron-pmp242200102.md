@@ -36,6 +36,7 @@ imageAlt: "Victron MultiPlus 24/2000 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar/victron/multiplus-12-500/01-inversor-multiplus-compact-12v-2000va-80-50-120v-vebus-victron-energy.jpg"
 imagen_provisional: false
 imagenSerieRef: "Victron MultiPlus Compact"
+fichaPdf: "/fichas/proveedores/datasheet-multiplus-inverter-charger_2kva-and-3kva-120v-us-es.pdf"
 ---
 
 **Victron MultiPlus 24/2000** (ref. **PMP242200102**). MultiPlus Victron Energy, 24/2000, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus.

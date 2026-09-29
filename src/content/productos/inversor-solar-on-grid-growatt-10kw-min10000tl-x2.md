@@ -28,6 +28,7 @@ imageThumb: "/images/productos-estudio/growatt-min-10000tl-x2-thumb.webp"
 imageAlt: "Growatt Inversor Solar On-Grid Growatt 10kW MIN10000TL-X2 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar/growatt/min10000tl-x2/01-inversor-on-grid-10000w-growatt-min-10000tl-x2.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-inversor-10000tl-x2-growatt-min.pdf"
 ---
 **Inversor Solar On-Grid Growatt 10kW MIN10000TL-X2** de Growatt · 10kW.
 

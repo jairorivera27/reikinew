@@ -17,6 +17,7 @@ imageThumb: "/images/productos-estudio/huawei-sun2000-8k-lc0-thumb.webp"
 imageAlt: "Huawei SUN2000-8K-LC0 – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/huawei/sun2000-8k-lc0/01-NFIN0041.png"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/solaire-nfin0041-ficha.pdf"
 ---
 
 Inversor SUN2000-8K-LC0 pensado para residencias de media potencia, compatible con sistemas de monitoreo Huawei FusionSolar. Precio no incluye costos de envío ni instalación.

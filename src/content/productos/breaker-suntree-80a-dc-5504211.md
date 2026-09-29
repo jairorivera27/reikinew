@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/breaker-solar-dc-1x80a-250v-suntree-thumb
 imageAlt: "Suntree Breaker Suntree 80A DC 5504211 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/5504211/01-breaker-solar-dc-1x80a-250v-suntree-6a43e7c78d8e0.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tcnica-breaker-solar-dc-1x80a-250v-suntree.pdf"
 ---
 **Breaker Suntree 80A DC 5504211** de Suntree · 80A DC.
 

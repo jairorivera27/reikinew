@@ -27,6 +27,7 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/suntree-spd-dc-thumb.webp"
 imageAlt: "Suntree SUP2H-PV-500VDC 60kA DC – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/protecciones/suntree-spd-dc.jpg"
+fichaPdf: "/fichas/proveedores/ficha-tecnica-dps-dc-suntree.pdf"
 ---
 **DPS Supresor Suntree 60kA DC SUP2H-PV-500VDC** de Suntree · 60kA DC.
 

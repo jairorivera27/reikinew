@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/bateria-litio-felicity-solar-128kwh-12v-1
 imageAlt: "Felicity Batería Solar Litio Felicity 12V 1,28kWh 1880812 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/1880812/01-bateria-litio-felicity-solar-128kwh-12v-100a-fla12100-68b1b78604ed1.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/fichas-tecnicas-bateria-litio-felicity-solar-serie-fla.pdf"
 ---
 **Batería Solar Litio Felicity 12V 1,28kWh 1880812** de Felicity · 12V 1,28kWh.
 

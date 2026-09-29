@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/breaker-solar-dc-2x63a-550v-suntree-thumb
 imageAlt: "Suntree Breaker Suntree 63A DC 5504145 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/5504145/01-breaker-solar-dc-2x63a-550v-suntree.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-breaker-dc-suntree.pdf"
 ---
 **Breaker Suntree 63A DC 5504145** de Suntree · 63A DC.
 

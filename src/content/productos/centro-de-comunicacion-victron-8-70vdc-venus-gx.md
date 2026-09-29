@@ -27,6 +27,7 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/victron-cerbo-gx-thumb.webp"
 imageAlt: "Victron Venus GX 8–70VDC – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/monitoreo/victron-cerbo-gx.jpg"
+fichaPdf: "/fichas/fabricantes/victron-datasheet-venus-gx-es.pdf"
 ---
 **Centro de comunicación Victron 8–70VDC Venus GX** de Victron · 8–70VDC.
 

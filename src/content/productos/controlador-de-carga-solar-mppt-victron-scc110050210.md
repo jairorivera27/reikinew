@@ -28,6 +28,7 @@ imageAlt: "Victron SmartSolar MPPT 100/50 SCC110050210 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar/controlador-carga-smartsolar-mppt-10050-victron-energy.jpg"
 imagen_provisional: false
 imagenPendiente: false
+fichaPdf: "/fichas/fabricantes/victron-datasheet-smartsolar-charge-controller-mppt-100-30-y-100-50-es.pdf"
 ---
 **Controlador de Carga Solar MPPT Victron SCC110050210** de Victron · N/A.
 

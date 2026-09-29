@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/inversor-cargador-felicity-solar-2000w-24
 imageAlt: "Felicity Inversor Solar Off-Grid Felicity 2kW 3004614 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/3004614/01-inversor-cargador-felicity-solar-2000w-24v-ivcm2024-lv-690bbf2d72d11.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/manual-de-usuario-inversor-cargador-felicity-solar-2000w-24v-ivcm2024-lv.pdf"
 ---
 **Inversor Solar Off-Grid Felicity 2kW 3004614** de Felicity · 2kW.
 

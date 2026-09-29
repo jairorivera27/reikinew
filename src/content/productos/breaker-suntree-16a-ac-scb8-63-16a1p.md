@@ -28,6 +28,7 @@ imageThumb: "/images/productos-estudio/suntree-scb8-ac-prov.webp"
 imageAlt: "Suntree SCB8-63-16A1P 16A AC – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/protecciones/suntree-scb8-ac.jpg"
 imagen_provisional: true
+fichaPdf: "/fichas/proveedores/ficha-tecnica-breakers-ac-suntree-1-.pdf"
 ---
 **Breaker Suntree 16A AC SCB8-63-16A1P** de Suntree · 16A AC.
 

@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/victron-bluesolar-mppt-10050-thumb.webp"
 imageAlt: "Victron Controlador de Carga Solar MPPT Victron SCC020050200 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar/victron/scc010005000/01-controlador-carga-bluesolar-mppt-10050-victron-energy.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/victron-blue-solar-mppt-100-30a-50a.pdf"
 ---
 **Controlador de Carga Solar MPPT Victron SCC020050200** de Victron · N/A.
 

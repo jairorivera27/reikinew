@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/breaker-solar-ac-2x32a-400vac-suntree-thu
 imageAlt: "Suntree Breaker Suntree 32A AC 5504178 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/5504178/01-breaker-solar-ac-2x32a-400vac-suntree-693b12f246070.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tecnica-breakers-ac-suntree-1-.pdf"
 ---
 **Breaker Suntree 32A AC 5504178** de Suntree · 32A AC.
 

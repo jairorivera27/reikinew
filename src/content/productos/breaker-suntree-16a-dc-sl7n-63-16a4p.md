@@ -27,6 +27,7 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/suntree-sl7n-dc-thumb.webp"
 imageAlt: "Suntree SL7N-63-16A4P 16A DC – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
+fichaPdf: "/fichas/proveedores/ficha-tecnica-breaker-dc-mcb-sl7n-63-suntree.pdf"
 ---
 **Breaker Suntree 16A DC SL7N-63-16A4P** de Suntree · 16A DC.
 

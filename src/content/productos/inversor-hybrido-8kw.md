@@ -17,6 +17,7 @@ imageThumb: "/images/productos-estudio/huawei-sun2000-4ktl-l1-thumb.webp"
 imageAlt: "Huawei 4KTL-L1 – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/huawei/sun2000-4ktl-l1/01-NFIN0006.png"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/solaire-nfin0006-ficha.pdf"
 ---
 
 Inversor residencial Huawei de 4kW, compacto, silencioso y preparado para baterías (battery ready).

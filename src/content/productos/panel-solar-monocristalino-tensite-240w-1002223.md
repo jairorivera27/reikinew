@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/panel-solar-monocristalino-240w-tensite-t
 imageAlt: "Tensite Panel Solar Monocristalino Tensite 240W 1002223 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar-codigo/1002223/01-panel-solar-monocristalino-240w-tensite.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha_tecnica_em240_ph.pdf"
 ---
 **Panel Solar Monocristalino Tensite 240W 1002223** de Tensite · 240W.
 

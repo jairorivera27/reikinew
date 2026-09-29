@@ -27,6 +27,7 @@ imageThumb: "/images/productos-estudio/bateria-litio-felicity-solar-16kwh-512v-3
 imageAlt: "Felicity Batería Solar Litio Felicity 48V 16kWh 1880836 – Reiki Energía Solar"
 imageOriginal: "proveedores/autosolar/felicity/1880836/01-bateria-litio-felicity-solar-16kwh-512v-314a-fla48314-69710aa9a141f.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha_tcnica_batera_litio_felicity_solar_16kwh_51-2v_314a_fla48314.pdf"
 ---
 **Batería Solar Litio Felicity 48V 16kWh 1880836** de Felicity · 48V 16kWh.
 

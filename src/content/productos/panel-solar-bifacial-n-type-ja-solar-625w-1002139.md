@@ -27,6 +27,7 @@ imageAlt: "JA Solar Panel Solar Bifacial N-Type JA Solar 625W 1002139 – Reiki 
 imageThumb: "/images/productos-estudio/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar-thumb.webp"
 imageOriginal: "proveedores/autosolar-codigo/1002139/01-panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar-69419565c3870.jpg"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/ficha-tcnica-panel-solar-bifacial-625w-deep-blue-4.0-n-type-ja-solar.pdf"
 ---
 **Panel Solar Bifacial N-Type JA Solar 625W 1002139** de JA Solar · 625W.
 

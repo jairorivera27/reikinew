@@ -27,6 +27,7 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/victron-cerbo-gx-thumb.webp"
 imageAlt: "Victron BMV-712 Smart 6.5–70VDC, shunt 500A – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/monitoreo/victron-cerbo-gx.jpg"
+fichaPdf: "/fichas/fabricantes/victron-datasheet-bmv-712-smart-es.pdf"
 ---
 **Monitor de Baterías Victron BMV-712 Smart con Bluetooth** de Victron · 6.5–70VDC, shunt 500A.
 

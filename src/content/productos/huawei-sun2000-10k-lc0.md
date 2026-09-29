@@ -17,6 +17,7 @@ imageThumb: "/images/productos-estudio/huawei-sun2000-10k-lc0-thumb.webp"
 imageAlt: "Huawei SUN2000-10K-LC0 – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/huawei/sun2000-10k-lc0/01-NFIN0044.png"
 imagen_provisional: false
+fichaPdf: "/fichas/proveedores/solaire-nfin0044-ficha.pdf"
 ---
 
 La referencia SUN2000-10K-LC0 ofrece administración inteligente, monitoreo en la nube y soporte para baterías Huawei. Precio no incluye costos de envío ni instalación.
