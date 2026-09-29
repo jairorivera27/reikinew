@@ -1,6 +1,6 @@
 ---
 title: "Trina Solar 650W"
-description: "Panel solar Trina Solar TSM-650DEG21C.20 de 650W de generación de energía, tecnología Vertex para alta potencia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Panel solar Trina Solar TSM-650DEG21C.20 de 650W de generación de energía, tecnología Vertex para alta potencia. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/trina-solar-tsm-650deg21c-20-prov.webp"
 category: "paneles"
 price: "$669.000"
@@ -33,6 +33,7 @@ faqs:
     respuesta: "Capta luz por ambas caras: además del sol directo aprovecha la luz reflejada por el piso o la cubierta. La ganancia adicional depende de la altura y del color de la superficie (mayor en cubiertas claras y estructuras elevadas)."
   - pregunta: "¿Sirve para sistemas conectados a la red y para sistemas aislados?"
     respuesta: "Sí. Con un inversor on-grid entrega energía a la casa y a la red (autogeneración, con trámite ante el operador de red); con un inversor híbrido u off-grid carga baterías. Lo importante es que el voltaje del arreglo sea compatible con el inversor o el controlador."
+fichaPdf: "/fichas/fabricantes/trina-vertex-deg21c20-datasheet-en.pdf"
 ---
 
 Panel solar Trina Solar de la serie Vertex, capaz de generar 650W, optimizado para grandes proyectos y alta eficiencia.

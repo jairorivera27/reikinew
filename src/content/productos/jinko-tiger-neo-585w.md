@@ -1,6 +1,6 @@
 ---
 title: "Jinko Tiger Neo 585W"
-description: "Panel solar Jinko Solar JKM585N-72HL4-V de 585W, tecnología N-Type Tiger Neo para máxima eficiencia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Panel solar Jinko Solar JKM585N-72HL4-V de 585W, tecnología N-Type Tiger Neo para máxima eficiencia. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/jinko-solar-jkm585n-72hl4-v-585w-prov.webp"
 category: "paneles"
 price: "$431.250"
@@ -37,6 +37,7 @@ faqs:
     respuesta: "Divide tu consumo mensual (kWh, en la factura) entre 79 kWh que aporta cada panel. Por ejemplo, para 300 kWh/mes necesitarías unos 4 paneles. Te hacemos el dimensionamiento gratis con tu factura."
   - pregunta: "¿Sirve para sistemas conectados a la red y para sistemas aislados?"
     respuesta: "Sí. Con un inversor on-grid entrega energía a la casa y a la red (autogeneración, con trámite ante el operador de red); con un inversor híbrido u off-grid carga baterías. Lo importante es que el voltaje del arreglo sea compatible con el inversor o el controlador."
+fichaPdf: "/fichas/fabricantes/jinko-tiger-neo-jkm565-585n-72hl4-v-en.pdf"
 ---
 
 Panel Jinko Solar Tiger Neo de 585W, ofrece un rendimiento superior en altas temperaturas y condiciones de baja radiación.

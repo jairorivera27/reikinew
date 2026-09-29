@@ -1,0 +1,170 @@
+{
+ "bateria-litio-3kwh": {
+  "ref": "US3000",
+  "pdf": "/fichas/fabricantes/pylontech-us3000c-datasheet-en.pdf",
+  "fuente": "https://www.vpsolar.com/download/catalog/Storage/Pylontech/US3000C-Pylontech-datasheet-EN.pdf"
+ },
+ "bateria-litio-5kwh": {
+  "ref": "US5000",
+  "pdf": "/fichas/fabricantes/pylontech-us5000-datasheet-en.pdf",
+  "fuente": "https://www.zcsazzurro.com/uploads/documetazione/Datasheet-battery-Pylontech-US5000-EN.pdf"
+ },
+ "bateria-litio-stack-15kwh": {
+  "ref": "US5000",
+  "pdf": "/fichas/fabricantes/pylontech-us5000-datasheet-en.pdf",
+  "fuente": "https://www.zcsazzurro.com/uploads/documetazione/Datasheet-battery-Pylontech-US5000-EN.pdf"
+ },
+ "cat-mayorista-6ab639f72aef": {
+  "ref": "SUN2000-80K-MGL0",
+  "pdf": "/fichas/fabricantes/huawei-sun2000-80k-mgl0-datasheet.pdf",
+  "fuente": "https://solar.huawei.com/admin/asset/v1/pro/view/acc6a3013d9344ccbdb70f32f3b6d274.pdf"
+ },
+ "controlador-mppt-20a": {
+  "ref": "Tracer-2210AN",
+  "pdf": "/fichas/fabricantes/epever-tracer-an-10-40a-datasheet.pdf",
+  "fuente": "https://www.epever.com/wp-content/uploads/2021/05/EPEVER-Datasheet-tracer-an10A-4OA.pdf"
+ },
+ "controlador-mppt-40a": {
+  "ref": "Tracer-4210AN",
+  "pdf": "/fichas/fabricantes/epever-tracer-an-10-40a-datasheet.pdf",
+  "fuente": "https://www.epever.com/wp-content/uploads/2021/05/EPEVER-Datasheet-tracer-an10A-4OA.pdf"
+ },
+ "inversor-hybrido-5kw": {
+  "ref": "SUN-5K-SG01LP1-US",
+  "pdf": "/fichas/fabricantes/deye-sun-5-8k-sg01lp1-us-ficha-es.pdf",
+  "fuente": "https://es.deyeinverter.com/deyeinverter/2024/08/12/datasheet_sun-5-8k-sg01lp1-us_240810_es.pdf"
+ },
+ "inversor-solar-hibrido-deye-8kw-sun-8k-sg01lp1-us": {
+  "ref": "SUN-8K-SG01LP1-US",
+  "pdf": "/fichas/fabricantes/deye-sun-5-8k-sg01lp1-us-ficha-es.pdf",
+  "fuente": "https://es.deyeinverter.com/deyeinverter/2024/08/12/datasheet_sun-5-8k-sg01lp1-us_240810_es.pdf"
+ },
+ "inversor-solar-hibrido-goodwe-11-4kw-gw11k4-es-us20": {
+  "ref": "GW11K4-ES-US20",
+  "pdf": "/fichas/fabricantes/goodwe-es-us-datasheet-en.pdf",
+  "fuente": "http://us.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_ES-US_Datasheet-EN.pdf"
+ },
+ "inversor-solar-hibrido-goodwe-5kw-gw5000-es-us20": {
+  "ref": "GW5000-ES-US20",
+  "pdf": "/fichas/fabricantes/goodwe-es-us-datasheet-en.pdf",
+  "fuente": "http://us.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_ES-US_Datasheet-EN.pdf"
+ },
+ "inversor-solar-hibrido-goodwe-6kw-gw6000-es-us20": {
+  "ref": "GW6000-ES-US20",
+  "pdf": "/fichas/fabricantes/goodwe-es-us-datasheet-en.pdf",
+  "fuente": "http://us.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_ES-US_Datasheet-EN.pdf"
+ },
+ "inversor-solar-hibrido-goodwe-7-6kw-gw7600-es-us20": {
+  "ref": "GW7600-ES-US20",
+  "pdf": "/fichas/fabricantes/goodwe-es-us-datasheet-en.pdf",
+  "fuente": "http://us.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_ES-US_Datasheet-EN.pdf"
+ },
+ "inversor-solar-hibrido-goodwe-9-6kw-gw9600-es-us20": {
+  "ref": "GW9600-ES-US20",
+  "pdf": "/fichas/fabricantes/goodwe-es-us-datasheet-en.pdf",
+  "fuente": "http://us.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_ES-US_Datasheet-EN.pdf"
+ },
+ "inversor-solar-on-grid-goodwe-10kw-gw10k-sdt-30": {
+  "ref": "GW10K-SDT-30",
+  "pdf": "/fichas/fabricantes/goodwe-sdt-g3-datasheet-en.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SDT-G3_Datasheet-EN.pdf"
+ },
+ "inversor-solar-on-grid-goodwe-12kw-gw12k-sdt-30": {
+  "ref": "GW12K-SDT-30",
+  "pdf": "/fichas/fabricantes/goodwe-sdt-g3-datasheet-en.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SDT-G3_Datasheet-EN.pdf"
+ },
+ "inversor-solar-on-grid-goodwe-12kw-gw12klv-sdt-c30": {
+  "ref": "GW12KLV-SDT-C30",
+  "pdf": "/fichas/fabricantes/goodwe-sdt-g3-datasheet-en.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SDT-G3_Datasheet-EN.pdf"
+ },
+ "inversor-solar-on-grid-goodwe-15kw-gw15k-sdt-30": {
+  "ref": "GW15K-SDT-30",
+  "pdf": "/fichas/fabricantes/goodwe-sdt-g3-datasheet-en.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SDT-G3_Datasheet-EN.pdf"
+ },
+ "inversor-solar-on-grid-goodwe-17kw-gw17k-sdt-30": {
+  "ref": "GW17K-SDT-30",
+  "pdf": "/fichas/fabricantes/goodwe-sdt-g3-datasheet-en.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SDT-G3_Datasheet-EN.pdf"
+ },
+ "inversor-solar-on-grid-goodwe-17kw-gw17klv-sdt-c30": {
+  "ref": "GW17KLV-SDT-C30",
+  "pdf": "/fichas/fabricantes/goodwe-sdt-g3-datasheet-en.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SDT-G3_Datasheet-EN.pdf"
+ },
+ "inversor-solar-on-grid-goodwe-20kw-gw20k-sdt-30": {
+  "ref": "GW20K-SDT-30",
+  "pdf": "/fichas/fabricantes/goodwe-sdt-g3-datasheet-en.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SDT-G3_Datasheet-EN.pdf"
+ },
+ "inversor-solar-on-grid-goodwe-23kw-gw23klv-sdt-br30": {
+  "ref": "GW23KLV-SDT-BR30",
+  "pdf": "/fichas/fabricantes/goodwe-sdt-g3-datasheet-en.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SDT-G3_Datasheet-EN.pdf"
+ },
+ "inversor-solar-on-grid-goodwe-25kw-gw25k-sdt-c30": {
+  "ref": "GW25K-SDT-C30",
+  "pdf": "/fichas/fabricantes/goodwe-sdt-g3-datasheet-en.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SDT-G3_Datasheet-EN.pdf"
+ },
+ "inversor-solar-on-grid-goodwe-8kw-gw8000-sdt-30": {
+  "ref": "GW8000-SDT-30",
+  "pdf": "/fichas/fabricantes/goodwe-sdt-g3-datasheet-en.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SDT-G3_Datasheet-EN.pdf"
+ },
+ "jinko-tiger-neo-585w": {
+  "ref": "JKM585N-72HL4-V",
+  "pdf": "/fichas/fabricantes/jinko-tiger-neo-jkm565-585n-72hl4-v-en.pdf",
+  "fuente": "https://jinkosolarcdn.shwebspace.com/uploads/JKM565-585N-72HL4-(V)-F3-EN.pdf"
+ },
+ "cat-mayorista-53c46fb07470": {
+  "ref": "Xtm (2600|4000)-48",
+  "pdf": "/fichas/fabricantes/studer-xtender-datasheet.pdf",
+  "fuente": "https://www.europe-solarstore.com/download/studer/studer_xtender_series_datasheet.pdf",
+  "familia": true
+ },
+ "cat-mayorista-e72eaabf9f09": {
+  "ref": "Xtm (2600|4000)-48",
+  "pdf": "/fichas/fabricantes/studer-xtender-datasheet.pdf",
+  "fuente": "https://www.europe-solarstore.com/download/studer/studer_xtender_series_datasheet.pdf",
+  "familia": true
+ },
+ "panel-solar-bifacial-600w": {
+  "ref": "NEG21C\\.20",
+  "pdf": "/fichas/fabricantes/trina-vertex-n-neg21c20-datasheet.pdf",
+  "fuente": "https://static.trinasolar.com/sites/default/files/Datasheet_NEG21C.20.pdf",
+  "familia": true
+ },
+ "panel-solar-monocristalino-600w": {
+  "ref": "DEG21C\\.20",
+  "pdf": "/fichas/fabricantes/trina-vertex-deg21c20-datasheet-en.pdf",
+  "fuente": "https://static.trinasolar.com/sites/default/files/Datasheet_Vertex_DEG21C.20_EN_2024_A.pdf",
+  "familia": true
+ },
+ "panel-solar-monocristalino-trina-670w-tsm-670deg21c-20": {
+  "ref": "DEG21C\\.20",
+  "pdf": "/fichas/fabricantes/trina-vertex-deg21c20-datasheet-en.pdf",
+  "fuente": "https://static.trinasolar.com/sites/default/files/Datasheet_Vertex_DEG21C.20_EN_2024_A.pdf",
+  "familia": true
+ },
+ "switch-suntree-16a-dc-siso-40pv-16a": {
+  "ref": "SISO-40",
+  "pdf": "/fichas/fabricantes/suntree-siso-40-ficha.pdf",
+  "fuente": "https://base.sato-power.com/thtimages/ISOLATOR%20SW/suntree-SISO-40-Manual.pdf",
+  "familia": true
+ },
+ "switch-suntree-32a-dc-siso-40md-32a4p": {
+  "ref": "SISO-40",
+  "pdf": "/fichas/fabricantes/suntree-siso-40-ficha.pdf",
+  "fuente": "https://base.sato-power.com/thtimages/ISOLATOR%20SW/suntree-SISO-40-Manual.pdf",
+  "familia": true
+ },
+ "switch-suntree-32a-dc-siso-40pv-32a": {
+  "ref": "SISO-40",
+  "pdf": "/fichas/fabricantes/suntree-siso-40-ficha.pdf",
+  "fuente": "https://base.sato-power.com/thtimages/ISOLATOR%20SW/suntree-SISO-40-Manual.pdf",
+  "familia": true
+ }
+}

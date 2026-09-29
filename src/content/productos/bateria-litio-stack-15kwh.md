@@ -1,6 +1,6 @@
 ---
 title: "Sistema de Baterías Stack 15kWh"
-description: "Sistema modular de baterías de litio apilables, permite expandir la capacidad según necesidades. Ideal para instalaciones comerciales. La foto es de referencia de la serie Pylontech UF. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Sistema modular de baterías de litio apilables, permite expandir la capacidad según necesidades. Ideal para instalaciones comerciales. La foto es de referencia de la serie Pylontech UF. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/pylontech-uf5000-prov.webp"
 category: "baterias"
 price: "$36.900.000"
@@ -30,6 +30,7 @@ faqs:
     respuesta: "El voltaje del banco debe coincidir con el del inversor (48 V) y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
   - pregunta: "¿Qué ventajas tiene el LiFePO4?"
     respuesta: "Es la química de litio más segura para uso residencial: soporta miles de ciclos, no requiere mantenimiento y entrega casi toda su capacidad, a diferencia de las baterías de plomo."
+fichaPdf: "/fichas/fabricantes/pylontech-us5000-datasheet-en.pdf"
 ---
 
 Sistema modular de baterías apilables que permite expandir la capacidad según las necesidades. Perfecto para instalaciones que requieren escalabilidad.

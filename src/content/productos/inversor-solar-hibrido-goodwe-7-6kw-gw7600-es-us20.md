@@ -1,6 +1,6 @@
 ---
 title: "Inversor Solar Híbrido GoodWe 7,6kW GW7600-ES-US20"
-description: "Inversor híbrido GoodWe GW7600-ES-US20 de 7,6kW. Trabaja con paneles, baterías y red: aprovecha el sol de día, guarda energía y te respalda cuando hay cortes. La foto es de referencia de la serie GoodWe ES. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Inversor híbrido GoodWe GW7600-ES-US20 de 7,6kW. Trabaja con paneles, baterías y red: aprovecha el sol de día, guarda energía y te respalda cuando hay cortes. La foto es de referencia de la serie GoodWe ES. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/goodwe-es-prov.webp"
 category: "inversores"
 price: "$6.902.000"
@@ -38,6 +38,7 @@ faqs:
     respuesta: "Un sistema con este inversor de 7,6 kW y unos 8,4 kWp de paneles genera del orden de 1.129 kWh al mes (4,5 horas de sol pico en promedio), así que cubre consumos de esa magnitud. Te dimensionamos el sistema con tu factura."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+fichaPdf: "/fichas/fabricantes/goodwe-es-us-datasheet-en.pdf"
 ---
 **Inversor Solar Híbrido GoodWe 7,6kW GW7600-ES-US20** de GoodWe · 7,6kW.
 

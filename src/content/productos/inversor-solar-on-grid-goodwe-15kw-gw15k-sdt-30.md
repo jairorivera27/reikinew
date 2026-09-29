@@ -1,6 +1,6 @@
 ---
 title: "Inversor Solar On-Grid GoodWe 15kW GW15K-SDT-30"
-description: "Inversor on-grid (conectado a red) GoodWe GW15K-SDT-30 de 15kW. Convierte la energía de tus paneles para el consumo de la casa o el negocio y entrega los excedentes a la red, sin baterías. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Inversor on-grid (conectado a red) GoodWe GW15K-SDT-30 de 15kW. Convierte la energía de tus paneles para el consumo de la casa o el negocio y entrega los excedentes a la red, sin baterías. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/goodwe-sdt-prov.webp"
 category: "inversores"
 price: "$4.592.000"
@@ -37,6 +37,7 @@ faqs:
     respuesta: "Un sistema con este inversor de 15 kW y unos 16,5 kWp de paneles genera del orden de 2.228 kWh al mes (4,5 horas de sol pico en promedio), así que cubre consumos de esa magnitud. Te dimensionamos el sistema con tu factura."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+fichaPdf: "/fichas/fabricantes/goodwe-sdt-g3-datasheet-en.pdf"
 ---
 **Inversor Solar On-Grid GoodWe 15kW GW15K-SDT-30** de GoodWe · 15kW.
 

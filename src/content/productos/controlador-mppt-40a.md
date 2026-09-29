@@ -1,6 +1,6 @@
 ---
 title: "Controlador MPPT 40A"
-description: "Controlador de carga solar MPPT de 40 amperios con pantalla LCD. Máxima eficiencia de carga y protección completa del sistema. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Controlador de carga solar MPPT de 40 amperios con pantalla LCD. Máxima eficiencia de carga y protección completa del sistema. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/epever-tracer-4210an-prov.webp"
 category: "controladores"
 price: "$439.000"
@@ -29,6 +29,7 @@ faqs:
     respuesta: "12V/24V auto. El voltaje de circuito abierto del arreglo, en su punto más frío, nunca debe superarlo."
   - pregunta: "¿Sirve para baterías de litio?"
     respuesta: "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
+fichaPdf: "/fichas/fabricantes/epever-tracer-an-10-40a-datasheet.pdf"
 ---
 
 Controlador de carga MPPT de alta eficiencia con pantalla LCD para monitoreo en tiempo real. Ideal para sistemas solares de mediana potencia.
