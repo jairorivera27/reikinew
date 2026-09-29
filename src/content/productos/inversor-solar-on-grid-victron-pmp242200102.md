@@ -1,7 +1,7 @@
 ---
 title: "Victron MultiPlus 24/2000"
 description: "MultiPlus Victron Energy, 24/2000, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus."
-image: "/images/productos-estudio/victron-multiplus-prov.webp"
+image: "/images/productos-estudio/victron-multiplus-compact-12-2000.webp"
 category: "inversores"
 price: "$3.638.250"
 specifications:
@@ -31,11 +31,11 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/victron-multiplus-prov.webp"
-imageAlt: "Victron MultiPlus 24/2000 2kW – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/inversores/victron-multiplus.png"
-imagen_provisional: true
-imagenSerieRef: "Victron MultiPlus"
+imageThumb: "/images/productos-estudio/victron-multiplus-compact-12-2000-thumb.webp"
+imageAlt: "Victron MultiPlus 24/2000 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar/victron/multiplus-12-500/01-inversor-multiplus-compact-12v-2000va-80-50-120v-vebus-victron-energy.jpg"
+imagen_provisional: false
+imagenSerieRef: "Victron MultiPlus Compact"
 ---
 
 **Victron MultiPlus 24/2000** (ref. **PMP242200102**). MultiPlus Victron Energy, 24/2000, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus.

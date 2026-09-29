@@ -1,7 +1,7 @@
 ---
 title: "Controlador de Carga Solar PWM Victron 30A SCC040030020"
 description: "Controlador de Carga Solar PWM Victron 30A SCC040030020. Equipo para regulación y gestión de la carga en sistemas fotovoltaicos. Marca: Victron; modelo: SCC040030020; especificación principal: 30A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/placeholders/controladores.svg"
+image: "/images/productos-estudio/victron-bluesolar-pwm-lcdusb-1224v-30a.webp"
 category: "controladores"
 price: "$285.250"
 specifications:
@@ -24,9 +24,10 @@ seoKeywords:
   - "comprar controlador solar colombia"
   - "precio controlador solar colombia"
   - "equipos de energía solar colombia"
-imageAlt: "Victron SCC040030020 30A – Reiki Energía Solar"
-draft: true
-imagenPendiente: true
+imageAlt: "Victron Controlador de Carga Solar PWM Victron 30A SCC040030020 – Reiki Energía Solar"
+imagen_provisional: false
+imageThumb: "/images/productos-estudio/victron-bluesolar-pwm-lcdusb-1224v-30a-thumb.webp"
+imageOriginal: "proveedores/autosolar/victron/scc040030020/01-controlador-carga-bluesolar-pwm-lcdusb-1224v-30a-victron-energy.jpg"
 ---
 **Controlador de Carga Solar PWM Victron 30A SCC040030020** de Victron · 30A.
 

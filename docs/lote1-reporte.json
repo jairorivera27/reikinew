@@ -1,0 +1,1488 @@
+{
+ "fuentes": [
+  {
+   "src": "imagenes-proveedores/autosolar/victron/scc010015050r/01-controlador-carga-bluesolar-mppt-10015-retail-victron-energy.jpg",
+   "seo": "victron-bluesolar-mppt-10015-retail",
+   "metodo": "fondo-blanco",
+   "webp": "/images/productos-estudio/victron-bluesolar-mppt-10015-retail.webp",
+   "thumb": "/images/productos-estudio/victron-bluesolar-mppt-10015-retail-thumb.webp",
+   "kb": 82.6,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "controlador-de-carga-solar-mppt-victron-scc010010050r",
+    "controlador-de-carga-solar-mppt-victron-scc010015050r",
+    "controlador-de-carga-solar-mppt-victron-scc010015200r",
+    "controlador-de-carga-solar-mppt-victron-scc110015060r"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/victron/scc010010050r/01-controlador-carga-smartsolar-mppt-10030-victron-energy.jpg",
+   "seo": "victron-smartsolar-mppt-10030",
+   "metodo": "fondo-blanco",
+   "webp": "/images/productos-estudio/victron-smartsolar-mppt-10030.webp",
+   "thumb": "/images/productos-estudio/victron-smartsolar-mppt-10030-thumb.webp",
+   "kb": 68,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "controlador-de-carga-solar-mppt-victron-scc020030200",
+    "controlador-de-carga-solar-mppt-victron-scc110030210"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/victron/scc115035210/01-controlador-carga-bluesolar-mppt-15035-victron-energy.jpg",
+   "seo": "victron-bluesolar-mppt-15035",
+   "metodo": "fondo-blanco",
+   "webp": "/images/productos-estudio/victron-bluesolar-mppt-15035.webp",
+   "thumb": "/images/productos-estudio/victron-bluesolar-mppt-15035-thumb.webp",
+   "kb": 70.1,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "controlador-de-carga-solar-mppt-victron-scc020035000",
+    "controlador-de-carga-solar-mppt-victron-scc115035210"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/victron/scc010005000/01-controlador-carga-bluesolar-mppt-10050-victron-energy.jpg",
+   "seo": "victron-bluesolar-mppt-10050",
+   "metodo": "fondo-blanco",
+   "webp": "/images/productos-estudio/victron-bluesolar-mppt-10050.webp",
+   "thumb": "/images/productos-estudio/victron-bluesolar-mppt-10050-thumb.webp",
+   "kb": 67.7,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "controlador-de-carga-solar-mppt-victron-scc020050200"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/victron/scc110020160r/01-controlador-carga-smartsolar-mppt-10020-retail-victron-energy.jpg",
+   "seo": "victron-smartsolar-mppt-10020-retail",
+   "metodo": "fondo-blanco",
+   "webp": "/images/productos-estudio/victron-smartsolar-mppt-10020-retail.webp",
+   "thumb": "/images/productos-estudio/victron-smartsolar-mppt-10020-retail-thumb.webp",
+   "kb": 76.9,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "controlador-de-carga-solar-mppt-victron-scc075010060r",
+    "controlador-de-carga-solar-mppt-victron-scc075015060r",
+    "controlador-de-carga-solar-mppt-victron-scc110020160r",
+    "controlador-de-carga-solar-mppt-victron-scc110020170r"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/victron/scc115045212/01-controlador-carga-bluesolar-mppt-15045-tr-victron-energy.jpg",
+   "seo": "victron-bluesolar-mppt-15045-tr",
+   "metodo": "fondo-blanco",
+   "webp": "/images/productos-estudio/victron-bluesolar-mppt-15045-tr.webp",
+   "thumb": "/images/productos-estudio/victron-bluesolar-mppt-15045-tr-thumb.webp",
+   "kb": 55.2,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "controlador-de-carga-solar-mppt-victron-scc115045212",
+    "controlador-de-carga-solar-mppt-victron-scc115045222"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/victron/scc115060211/01-controlador-carga-bluesolar-mppt-15060-tr-victron-energy.jpg",
+   "seo": "victron-bluesolar-mppt-15060-tr",
+   "metodo": "fondo-blanco",
+   "webp": "/images/productos-estudio/victron-bluesolar-mppt-15060-tr.webp",
+   "thumb": "/images/productos-estudio/victron-bluesolar-mppt-15060-tr-thumb.webp",
+   "kb": 70.3,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "controlador-de-carga-solar-mppt-victron-scc115060211",
+    "controlador-de-carga-solar-mppt-victron-scc115060311"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/victron/scc115070211/01-controlador-carga-bluesolar-mppt-15070-tr-victron-energy.jpg",
+   "seo": "victron-bluesolar-mppt-15070-tr",
+   "metodo": "fondo-blanco",
+   "webp": "/images/productos-estudio/victron-bluesolar-mppt-15070-tr.webp",
+   "thumb": "/images/productos-estudio/victron-bluesolar-mppt-15070-tr-thumb.webp",
+   "kb": 53.8,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "controlador-de-carga-solar-mppt-victron-scc115070211",
+    "controlador-de-carga-solar-mppt-victron-scc115070411",
+    "controlador-de-carga-solar-mppt-victron-scc115070511"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/victron/scc115085411/01-controlador-carga-smartsolar-mppt-15085-tr-victron-energy.jpg",
+   "seo": "victron-smartsolar-mppt-15085-tr",
+   "metodo": "fondo-blanco",
+   "webp": "/images/productos-estudio/victron-smartsolar-mppt-15085-tr.webp",
+   "thumb": "/images/productos-estudio/victron-smartsolar-mppt-15085-tr-thumb.webp",
+   "kb": 71.2,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "controlador-de-carga-solar-mppt-victron-scc115085411",
+    "controlador-de-carga-solar-mppt-victron-scc115110411",
+    "controlador-de-carga-solar-mppt-victron-scc115110420",
+    "controlador-de-carga-solar-mppt-victron-scc115110511"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/victron/scc125060221/01-controlador-carga-smartsolar-mppt-25060-tr-victron-energy.jpg",
+   "seo": "victron-smartsolar-mppt-25060-tr",
+   "metodo": "fondo-blanco",
+   "webp": "/images/productos-estudio/victron-smartsolar-mppt-25060-tr.webp",
+   "thumb": "/images/productos-estudio/victron-smartsolar-mppt-25060-tr-thumb.webp",
+   "kb": 72,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "controlador-de-carga-solar-mppt-victron-scc125060221",
+    "controlador-de-carga-solar-mppt-victron-scc125060321"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/victron/scc125070221/01-controlador-carga-smartsolar-mppt-25070-tr-victron-energy.jpg",
+   "seo": "victron-smartsolar-mppt-25070-tr",
+   "metodo": "fondo-blanco",
+   "webp": "/images/productos-estudio/victron-smartsolar-mppt-25070-tr.webp",
+   "thumb": "/images/productos-estudio/victron-smartsolar-mppt-25070-tr-thumb.webp",
+   "kb": 67.3,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "controlador-de-carga-solar-mppt-victron-scc125070221",
+    "controlador-de-carga-solar-mppt-victron-scc125070421",
+    "controlador-de-carga-solar-mppt-victron-scc125070441",
+    "controlador-de-carga-solar-mppt-victron-scc125070521"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/victron/scc125085411/01-controlador-carga-smartsolar-mppt-25085-tr-victron-energy.jpg",
+   "seo": "victron-smartsolar-mppt-25085-tr",
+   "metodo": "fondo-blanco",
+   "webp": "/images/productos-estudio/victron-smartsolar-mppt-25085-tr.webp",
+   "thumb": "/images/productos-estudio/victron-smartsolar-mppt-25085-tr-thumb.webp",
+   "kb": 73.5,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "controlador-de-carga-solar-mppt-victron-scc125085411",
+    "controlador-de-carga-solar-mppt-victron-scc125085511",
+    "controlador-de-carga-solar-mppt-victron-scc125110412",
+    "controlador-de-carga-solar-mppt-victron-scc125110441",
+    "controlador-de-carga-solar-mppt-victron-scc125110512"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/victron/scc040030020/01-controlador-carga-bluesolar-pwm-lcdusb-1224v-30a-victron-energy.jpg",
+   "seo": "victron-bluesolar-pwm-lcdusb-1224v-30a",
+   "metodo": "fondo-blanco",
+   "webp": "/images/productos-estudio/victron-bluesolar-pwm-lcdusb-1224v-30a.webp",
+   "thumb": "/images/productos-estudio/victron-bluesolar-pwm-lcdusb-1224v-30a-thumb.webp",
+   "kb": 37.3,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "controlador-de-carga-solar-pwm-victron-30a-scc040030020",
+    "controlador-de-carga-solar-pwm-victron-scc040030050",
+    "controlador-de-carga-solar-pwm-victron-scc040010050",
+    "controlador-de-carga-solar-pwm-victron-scc040020050"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/victron/multiplus-12-500/01-inversor-multiplus-compact-12v-2000va-80-50-120v-vebus-victron-energy.jpg",
+   "seo": "victron-multiplus-compact-12-2000",
+   "metodo": "fondo-blanco",
+   "webp": "/images/productos-estudio/victron-multiplus-compact-12-2000.webp",
+   "thumb": "/images/productos-estudio/victron-multiplus-compact-12-2000-thumb.webp",
+   "kb": 28.4,
+   "q": 87,
+   "scale": 1.18,
+   "fit": 0.7,
+   "slugs": [
+    "inversor-solar-on-grid-victron-pmp122200102",
+    "inversor-solar-on-grid-victron-pmp242200102"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/victron/multiplus-ii-48-5000/01-multiplus-ii-48500070-95-120v-6866a8f909ad4.jpg",
+   "seo": "victron-multiplus-ii-48-5000",
+   "metodo": "fondo-blanco",
+   "webp": "/images/productos-estudio/victron-multiplus-ii-48-5000.webp",
+   "thumb": "/images/productos-estudio/victron-multiplus-ii-48-5000-thumb.webp",
+   "kb": 39.5,
+   "q": 87,
+   "scale": 1.23,
+   "fit": 0.7,
+   "slugs": [
+    "inversor-solar-on-grid-victron-pmp482505110",
+    "inversor-solar-on-grid-victron-pmp482505300",
+    "inversor-solar-on-grid-victron-pmp122305100",
+    "inversor-solar-on-grid-victron-pmp122305102",
+    "inversor-solar-on-grid-victron-pmp122305120",
+    "inversor-solar-on-grid-victron-pmp122305122",
+    "inversor-solar-on-grid-victron-pmp242305102",
+    "inversor-solar-on-grid-victron-pmp242305130",
+    "inversor-solar-on-grid-victron-pmp242305132",
+    "inversor-solar-on-grid-victron-pmp242505110",
+    "inversor-solar-on-grid-victron-pmp482305100",
+    "inversor-solar-on-grid-victron-pmp482305102"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/growatt/10ktl3-xl2/01-inversor-on-grid-15000w-growatt-mid-15tl3-xl2.jpg",
+   "seo": "growatt-mid-15tl3-xl2",
+   "metodo": "multiply",
+   "webp": "/images/productos-estudio/growatt-mid-15tl3-xl2.webp",
+   "thumb": "/images/productos-estudio/growatt-mid-15tl3-xl2-thumb.webp",
+   "kb": 18.3,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "inversor-solar-on-grid-growatt-10kw-10ktl3-xl2",
+    "inversor-solar-on-grid-growatt-15kw-15ktl3-xl2"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/growatt/min10000tl-x2/01-inversor-on-grid-10000w-growatt-min-10000tl-x2.jpg",
+   "seo": "growatt-min-10000tl-x2",
+   "metodo": "multiply",
+   "webp": "/images/productos-estudio/growatt-min-10000tl-x2.webp",
+   "thumb": "/images/productos-estudio/growatt-min-10000tl-x2-thumb.webp",
+   "kb": 28.5,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "inversor-solar-on-grid-growatt-10kw-min10000tl-x2"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/growatt/20ktl3-xl2/01-inversor-on-grid-20000w-growatt-mid-20k-tl3-xl2-699df7ff8ecd6.jpg",
+   "seo": "growatt-mid-20k-tl3-xl2",
+   "metodo": "multiply",
+   "webp": "/images/productos-estudio/growatt-mid-20k-tl3-xl2.webp",
+   "thumb": "/images/productos-estudio/growatt-mid-20k-tl3-xl2-thumb.webp",
+   "kb": 17.4,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "inversor-solar-on-grid-growatt-20kw-20ktl3-xl2"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/autosolar/growatt/3600tl-x2/01-inversor-on-grid-6000w-growatt-min-6000tl-x2.jpg",
+   "seo": "growatt-min-6000tl-x2",
+   "metodo": "multiply",
+   "webp": "/images/productos-estudio/growatt-min-6000tl-x2.webp",
+   "thumb": "/images/productos-estudio/growatt-min-6000tl-x2-thumb.webp",
+   "kb": 27.9,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "inversor-solar-on-grid-growatt-3600w-3600tl-x2",
+    "inversor-solar-on-grid-growatt-6000w-6000tl-x2",
+    "inversor-solar-on-grid-growatt-8000w-8000tl-x2"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-011aa38ff63b/01-NFIN0044.png",
+   "seo": "huawei-sun2000-10k-lc0",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-10k-lc0.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-10k-lc0-thumb.webp",
+   "kb": 16.8,
+   "q": 87,
+   "scale": 0.9,
+   "fit": 0.8,
+   "slugs": [
+    "cat-mayorista-011aa38ff63b"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-16abf09e485c/01-NFIN0030.png",
+   "seo": "huawei-sun2000-36ktl-m3",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-36ktl-m3.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-36ktl-m3-thumb.webp",
+   "kb": 21.6,
+   "q": 87,
+   "scale": 1,
+   "fit": 0.8,
+   "slugs": [
+    "cat-mayorista-16abf09e485c"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-297c1543c156/01-NFIN0006.png",
+   "seo": "huawei-sun2000-4ktl-l1",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-4ktl-l1.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-4ktl-l1-thumb.webp",
+   "kb": 19.1,
+   "q": 87,
+   "scale": 0.95,
+   "fit": 0.8,
+   "slugs": [
+    "cat-mayorista-297c1543c156"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-2eb2381727b7/01-NFIN0041.png",
+   "seo": "huawei-sun2000-8k-lc0",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-8k-lc0.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-8k-lc0-thumb.webp",
+   "kb": 16.8,
+   "q": 87,
+   "scale": 0.9,
+   "fit": 0.8,
+   "slugs": [
+    "cat-mayorista-2eb2381727b7"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-479835eafdcd/01-NFIN0054.png",
+   "seo": "huawei-sun2000-100ktl-m2",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-100ktl-m2.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-100ktl-m2-thumb.webp",
+   "kb": 28.9,
+   "q": 87,
+   "scale": 0.95,
+   "fit": 0.8,
+   "slugs": [
+    "cat-mayorista-479835eafdcd"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-5976fdc3675c/01-NFIN0018.png",
+   "seo": "huawei-sun2000-2ktl-l1",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-2ktl-l1.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-2ktl-l1-thumb.webp",
+   "kb": 19.1,
+   "q": 87,
+   "scale": 0.95,
+   "fit": 0.8,
+   "slugs": [
+    "cat-mayorista-5976fdc3675c"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-5c63036043b0/01-NFIN0005.png",
+   "seo": "huawei-sun2000-5ktl-l1",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-5ktl-l1.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-5ktl-l1-thumb.webp",
+   "kb": 19.1,
+   "q": 87,
+   "scale": 0.95,
+   "fit": 0.8,
+   "slugs": [
+    "cat-mayorista-5c63036043b0"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-63238dda6866/01-NFIN0001.png",
+   "seo": "huawei-sun2000-40ktl-m3",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-40ktl-m3.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-40ktl-m3-thumb.webp",
+   "kb": 21.5,
+   "q": 87,
+   "scale": 1,
+   "fit": 0.8,
+   "slugs": [
+    "cat-mayorista-63238dda6866"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-6809f95a6ec6/01-NFAC0003.png",
+   "seo": "huawei-luna2000-10kw-c1",
+   "metodo": "multiply",
+   "webp": "/images/productos-estudio/huawei-luna2000-10kw-c1.webp",
+   "thumb": "/images/productos-estudio/huawei-luna2000-10kw-c1-thumb.webp",
+   "kb": 12.8,
+   "q": 87,
+   "scale": 1.3,
+   "fit": 0.7,
+   "slugs": [
+    "cat-mayorista-6809f95a6ec6"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-77a53def7b39/01-NFIN0007.png",
+   "seo": "huawei-sun2000-3ktl-l1",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-3ktl-l1.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-3ktl-l1-thumb.webp",
+   "kb": 19.1,
+   "q": 87,
+   "scale": 0.95,
+   "fit": 0.8,
+   "slugs": [
+    "cat-mayorista-77a53def7b39"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-a7acbbe9c321/01-NFIN0008.png",
+   "seo": "huawei-sun2000-6ktl-l1",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-6ktl-l1.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-6ktl-l1-thumb.webp",
+   "kb": 19.1,
+   "q": 87,
+   "scale": 0.95,
+   "fit": 0.8,
+   "slugs": [
+    "cat-mayorista-a7acbbe9c321"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/sun2000-20ktl-m3/01-NFIN0031.png",
+   "seo": "huawei-sun2000-20ktl-m3",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-20ktl-m3.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-20ktl-m3-thumb.webp",
+   "kb": 21.6,
+   "q": 87,
+   "scale": 1,
+   "fit": 0.8,
+   "slugs": [
+    "cat-mayorista-aeeee921984f",
+    "huawei-sun2000-20ktl-m3"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-d93b4767526a/01-NFIN0009.png",
+   "seo": "huawei-sun2000-215ktl-h0",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-215ktl-h0.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-215ktl-h0-thumb.webp",
+   "kb": 28.8,
+   "q": 87,
+   "scale": 0.95,
+   "fit": 0.8,
+   "slugs": [
+    "cat-mayorista-d93b4767526a"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-db886da9420b/01-NFIN0002.png",
+   "seo": "huawei-sun2000-30ktl-m3",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-30ktl-m3.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-30ktl-m3-thumb.webp",
+   "kb": 21.5,
+   "q": 87,
+   "scale": 1,
+   "fit": 0.8,
+   "slugs": [
+    "cat-mayorista-db886da9420b"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/sun2000-50ktl-m3/01-NFIN0063.png",
+   "seo": "huawei-sun2000-50ktl-m3",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-50ktl-m3.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-50ktl-m3-thumb.webp",
+   "kb": 21.8,
+   "q": 87,
+   "scale": 1,
+   "fit": 0.8,
+   "slugs": [
+    "cat-mayorista-eb335fe74372"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-f6c407d9756a/01-NFIN0070.png",
+   "seo": "huawei-sun2000-330ktl-h1",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-330ktl-h1.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-330ktl-h1-thumb.webp",
+   "kb": 28.9,
+   "q": 87,
+   "scale": 0.95,
+   "fit": 0.8,
+   "slugs": [
+    "cat-mayorista-f6c407d9756a"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/sun2000-10k-lc0/01-NFIN0044.png",
+   "seo": "huawei-sun2000-10k-lc0",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-10k-lc0.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-10k-lc0-thumb.webp",
+   "kb": 16.8,
+   "q": 87,
+   "scale": 0.9,
+   "fit": 0.8,
+   "slugs": [
+    "huawei-sun2000-10k-lc0"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/sun2000-8k-lc0/01-NFIN0041.png",
+   "seo": "huawei-sun2000-8k-lc0",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-8k-lc0.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-8k-lc0-thumb.webp",
+   "kb": 16.8,
+   "q": 87,
+   "scale": 0.9,
+   "fit": 0.8,
+   "slugs": [
+    "huawei-sun2000-8k-lc0"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/sun2000-4ktl-l1/01-NFIN0006.png",
+   "seo": "huawei-sun2000-4ktl-l1",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-4ktl-l1.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-4ktl-l1-thumb.webp",
+   "kb": 19.1,
+   "q": 87,
+   "scale": 0.95,
+   "fit": 0.8,
+   "slugs": [
+    "inversor-hybrido-8kw"
+   ]
+  },
+  {
+   "src": "imagenes-proveedores/solaire/huawei/sun2000-36ktl-m3/01-NFIN0030.png",
+   "seo": "huawei-sun2000-36ktl-m3",
+   "metodo": "alfa",
+   "webp": "/images/productos-estudio/huawei-sun2000-36ktl-m3.webp",
+   "thumb": "/images/productos-estudio/huawei-sun2000-36ktl-m3-thumb.webp",
+   "kb": 21.6,
+   "q": 87,
+   "scale": 1,
+   "fit": 0.8,
+   "slugs": [
+    "inversor-string-10kw"
+   ]
+  }
+ ],
+ "productos": [
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc010010050r",
+   "title": "Controlador de Carga Solar MPPT Victron SCC010010050R",
+   "match": "serie",
+   "serieRef": "Victron BlueSolar MPPT",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-mppt-10015-retail.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc010015050r",
+   "title": "Controlador de Carga Solar MPPT Victron SCC010015050R",
+   "match": "serie",
+   "serieRef": "Victron BlueSolar MPPT",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-mppt-10015-retail.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc010015200r",
+   "title": "Controlador de Carga Solar MPPT Victron SCC010015200R",
+   "match": "serie",
+   "serieRef": "Victron BlueSolar MPPT",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-mppt-10015-retail.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc110015060r",
+   "title": "Controlador de Carga Solar MPPT Victron SCC110015060R",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-mppt-10015-retail.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc020030200",
+   "title": "Controlador de Carga Solar MPPT Victron SCC020030200",
+   "match": "serie",
+   "serieRef": "Victron MPPT 100/30",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-10030.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc110030210",
+   "title": "Controlador de Carga Solar MPPT Victron SCC110030210",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-10030.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc020035000",
+   "title": "Controlador de Carga Solar MPPT Victron SCC020035000",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-mppt-15035.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc115035210",
+   "title": "Controlador de Carga Solar MPPT Victron SCC115035210",
+   "match": "serie",
+   "serieRef": "Victron MPPT 150/35",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-mppt-15035.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc020050200",
+   "title": "Controlador de Carga Solar MPPT Victron SCC020050200",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-mppt-10050.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc075010060r",
+   "title": "Controlador de Carga Solar MPPT Victron SCC075010060R",
+   "match": "serie",
+   "serieRef": "Victron SmartSolar MPPT",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-10020-retail.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc075015060r",
+   "title": "Controlador de Carga Solar MPPT Victron SCC075015060R",
+   "match": "serie",
+   "serieRef": "Victron SmartSolar MPPT",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-10020-retail.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc110020160r",
+   "title": "Controlador de Carga Solar MPPT Victron SCC110020160R",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-10020-retail.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc110020170r",
+   "title": "Controlador de Carga Solar MPPT Victron SCC110020170R",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-10020-retail.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc115045212",
+   "title": "Controlador de Carga Solar MPPT Victron SCC115045212",
+   "match": "serie",
+   "serieRef": "Victron MPPT 150/45-Tr",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-mppt-15045-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc115045222",
+   "title": "Controlador de Carga Solar MPPT Victron SCC115045222",
+   "match": "serie",
+   "serieRef": "Victron MPPT 150/45-Tr",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-mppt-15045-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc115060211",
+   "title": "Controlador de Carga Solar MPPT Victron SCC115060211",
+   "match": "serie",
+   "serieRef": "Victron MPPT 150/60-Tr",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-mppt-15060-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc115060311",
+   "title": "Controlador de Carga Solar MPPT Victron SCC115060311",
+   "match": "serie",
+   "serieRef": "Victron MPPT 150/60-Tr",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-mppt-15060-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc115070211",
+   "title": "Controlador de Carga Solar MPPT Victron SCC115070211",
+   "match": "serie",
+   "serieRef": "Victron MPPT 150/70-Tr",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-mppt-15070-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc115070411",
+   "title": "Controlador de Carga Solar MPPT Victron SCC115070411",
+   "match": "serie",
+   "serieRef": "Victron MPPT 150/70-Tr",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-mppt-15070-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc115070511",
+   "title": "Controlador de Carga Solar MPPT Victron SCC115070511",
+   "match": "serie",
+   "serieRef": "Victron MPPT 150/70-Tr",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-mppt-15070-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc115085411",
+   "title": "Controlador de Carga Solar MPPT Victron SCC115085411",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-15085-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc115110411",
+   "title": "Controlador de Carga Solar MPPT Victron SCC115110411",
+   "match": "serie",
+   "serieRef": "Victron SmartSolar MPPT 150V-Tr",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-15085-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc115110420",
+   "title": "Controlador de Carga Solar MPPT Victron SCC115110420",
+   "match": "serie",
+   "serieRef": "Victron SmartSolar MPPT 150V-Tr",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-15085-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc115110511",
+   "title": "Controlador de Carga Solar MPPT Victron SCC115110511",
+   "match": "serie",
+   "serieRef": "Victron SmartSolar MPPT 150V-Tr",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-15085-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc125060221",
+   "title": "Controlador de Carga Solar MPPT Victron SCC125060221",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-25060-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc125060321",
+   "title": "Controlador de Carga Solar MPPT Victron SCC125060321",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-25060-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc125070221",
+   "title": "Controlador de Carga Solar MPPT Victron SCC125070221",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-25070-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc125070421",
+   "title": "Controlador de Carga Solar MPPT Victron SCC125070421",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-25070-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc125070441",
+   "title": "Controlador de Carga Solar MPPT Victron SCC125070441",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-25070-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc125070521",
+   "title": "Controlador de Carga Solar MPPT Victron SCC125070521",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-25070-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc125085411",
+   "title": "Controlador de Carga Solar MPPT Victron SCC125085411",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-25085-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc125085511",
+   "title": "Controlador de Carga Solar MPPT Victron SCC125085511",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-25085-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc125110412",
+   "title": "Controlador de Carga Solar MPPT Victron SCC125110412",
+   "match": "serie",
+   "serieRef": "Victron SmartSolar MPPT 250V-Tr",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-25085-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc125110441",
+   "title": "Controlador de Carga Solar MPPT Victron SCC125110441",
+   "match": "serie",
+   "serieRef": "Victron SmartSolar MPPT 250V-Tr",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-25085-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-mppt-victron-scc125110512",
+   "title": "Controlador de Carga Solar MPPT Victron SCC125110512",
+   "match": "serie",
+   "serieRef": "Victron SmartSolar MPPT 250V-Tr",
+   "antes": {
+    "image": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-smartsolar-mppt-25085-tr.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-pwm-victron-30a-scc040030020",
+   "title": "Controlador de Carga Solar PWM Victron 30A SCC040030020",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-bluesolar-pwm-lcdusb-1224v-30a.webp"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-pwm-lcdusb-1224v-30a.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "controlador-de-carga-solar-pwm-victron-scc040030050",
+   "title": "Controlador de Carga Solar PWM Victron SCC040030050",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/placeholders/controladores.svg",
+    "draft": "true"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-pwm-lcdusb-1224v-30a.webp",
+   "reactivado": true
+  },
+  {
+   "slug": "controlador-de-carga-solar-pwm-victron-scc040010050",
+   "title": "Controlador de Carga Solar PWM Victron SCC040010050",
+   "match": "serie",
+   "serieRef": "Victron BlueSolar PWM LCD&USB",
+   "antes": {
+    "image": "/images/placeholders/controladores.svg",
+    "draft": "true"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-pwm-lcdusb-1224v-30a.webp",
+   "reactivado": true
+  },
+  {
+   "slug": "controlador-de-carga-solar-pwm-victron-scc040020050",
+   "title": "Controlador de Carga Solar PWM Victron SCC040020050",
+   "match": "serie",
+   "serieRef": "Victron BlueSolar PWM LCD&USB",
+   "antes": {
+    "image": "/images/placeholders/controladores.svg",
+    "draft": "true"
+   },
+   "despues": "/images/productos-estudio/victron-bluesolar-pwm-lcdusb-1224v-30a.webp",
+   "reactivado": true
+  },
+  {
+   "slug": "inversor-solar-on-grid-victron-pmp122200102",
+   "title": "Victron MultiPlus 12/2000",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-multiplus-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-multiplus-compact-12-2000.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-victron-pmp242200102",
+   "title": "Victron MultiPlus 24/2000",
+   "match": "serie",
+   "serieRef": "Victron MultiPlus Compact",
+   "antes": {
+    "image": "/images/productos-estudio/victron-multiplus-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-multiplus-compact-12-2000.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-victron-pmp482505110",
+   "title": "Victron MultiPlus-II 48/5000",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-multiplus-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-multiplus-ii-48-5000.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-victron-pmp482505300",
+   "title": "Victron MultiPlus-II 48/5000",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/victron-multiplus-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-multiplus-ii-48-5000.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-victron-pmp122305100",
+   "title": "Victron MultiPlus-II 12/3000",
+   "match": "serie",
+   "serieRef": "Victron MultiPlus-II",
+   "antes": {
+    "image": "/images/productos-estudio/victron-multiplus-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-multiplus-ii-48-5000.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-victron-pmp122305102",
+   "title": "Victron MultiPlus-II 12/3000",
+   "match": "serie",
+   "serieRef": "Victron MultiPlus-II",
+   "antes": {
+    "image": "/images/productos-estudio/victron-multiplus-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-multiplus-ii-48-5000.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-victron-pmp122305120",
+   "title": "Victron MultiPlus-II 12/3000",
+   "match": "serie",
+   "serieRef": "Victron MultiPlus-II",
+   "antes": {
+    "image": "/images/productos-estudio/victron-multiplus-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-multiplus-ii-48-5000.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-victron-pmp122305122",
+   "title": "Victron MultiPlus-II 12/3000",
+   "match": "serie",
+   "serieRef": "Victron MultiPlus-II",
+   "antes": {
+    "image": "/images/productos-estudio/victron-multiplus-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-multiplus-ii-48-5000.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-victron-pmp242305102",
+   "title": "Victron MultiPlus-II 24/3000",
+   "match": "serie",
+   "serieRef": "Victron MultiPlus-II",
+   "antes": {
+    "image": "/images/productos-estudio/victron-multiplus-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-multiplus-ii-48-5000.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-victron-pmp242305130",
+   "title": "Victron MultiPlus-II 24/3000",
+   "match": "serie",
+   "serieRef": "Victron MultiPlus-II",
+   "antes": {
+    "image": "/images/productos-estudio/victron-multiplus-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-multiplus-ii-48-5000.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-victron-pmp242305132",
+   "title": "Victron MultiPlus-II 24/3000",
+   "match": "serie",
+   "serieRef": "Victron MultiPlus-II",
+   "antes": {
+    "image": "/images/productos-estudio/victron-multiplus-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-multiplus-ii-48-5000.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-victron-pmp242505110",
+   "title": "Victron MultiPlus-II 24/5000",
+   "match": "serie",
+   "serieRef": "Victron MultiPlus-II",
+   "antes": {
+    "image": "/images/productos-estudio/victron-multiplus-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-multiplus-ii-48-5000.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-victron-pmp482305100",
+   "title": "Victron MultiPlus-II 48/3000",
+   "match": "serie",
+   "serieRef": "Victron MultiPlus-II",
+   "antes": {
+    "image": "/images/productos-estudio/victron-multiplus-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-multiplus-ii-48-5000.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-victron-pmp482305102",
+   "title": "Victron MultiPlus-II 48/3000",
+   "match": "serie",
+   "serieRef": "Victron MultiPlus-II",
+   "antes": {
+    "image": "/images/productos-estudio/victron-multiplus-prov.webp"
+   },
+   "despues": "/images/productos-estudio/victron-multiplus-ii-48-5000.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-growatt-10kw-10ktl3-xl2",
+   "title": "Inversor Solar On-Grid Growatt 10kW 10KTL3-XL2",
+   "match": "serie",
+   "serieRef": "Growatt MID TL3-XL2",
+   "antes": {
+    "image": "/images/productos-tienda/inversores/growatt-mod.jpg"
+   },
+   "despues": "/images/productos-estudio/growatt-mid-15tl3-xl2.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-growatt-15kw-15ktl3-xl2",
+   "title": "Inversor Solar On-Grid Growatt 15kW 15KTL3-XL2",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-tienda/inversores/growatt-mod.jpg"
+   },
+   "despues": "/images/productos-estudio/growatt-mid-15tl3-xl2.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-growatt-10kw-min10000tl-x2",
+   "title": "Inversor Solar On-Grid Growatt 10kW MIN10000TL-X2",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/growatt-mod-prov.webp"
+   },
+   "despues": "/images/productos-estudio/growatt-min-10000tl-x2.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-growatt-20kw-20ktl3-xl2",
+   "title": "Inversor Solar On-Grid Growatt 20kW 20KTL3-XL2",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-tienda/inversores/growatt-mod.jpg"
+   },
+   "despues": "/images/productos-estudio/growatt-mid-20k-tl3-xl2.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-growatt-3600w-3600tl-x2",
+   "title": "Inversor Solar On-Grid Growatt 3600W 3600TL-X2",
+   "match": "serie",
+   "serieRef": "Growatt MIN TL-X2",
+   "antes": {
+    "image": "/images/productos-tienda/inversores/growatt-mod.jpg"
+   },
+   "despues": "/images/productos-estudio/growatt-min-6000tl-x2.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-growatt-6000w-6000tl-x2",
+   "title": "Inversor Solar On-Grid Growatt 6000W 6000TL-X2",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-tienda/inversores/growatt-mod.jpg"
+   },
+   "despues": "/images/productos-estudio/growatt-min-6000tl-x2.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-solar-on-grid-growatt-8000w-8000tl-x2",
+   "title": "Inversor Solar On-Grid Growatt 8000W 8000TL-X2",
+   "match": "serie",
+   "serieRef": "Growatt MIN TL-X2",
+   "antes": {
+    "image": "/images/productos-tienda/inversores/growatt-mod.jpg"
+   },
+   "despues": "/images/productos-estudio/growatt-min-6000tl-x2.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "cat-mayorista-011aa38ff63b",
+   "title": "SUN2000-10K-LC0",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-10k-lc0.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "cat-mayorista-16abf09e485c",
+   "title": "SUN2000-36KTL-M3",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-36ktl-m3.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "cat-mayorista-297c1543c156",
+   "title": "SUN2000-4KTL-L1",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-4ktl-l1.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "cat-mayorista-2eb2381727b7",
+   "title": "SUN2000-8K-LC0",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-8k-lc0.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "cat-mayorista-479835eafdcd",
+   "title": "SUN2000-100KTL-M2",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-100ktl-m2.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "cat-mayorista-5976fdc3675c",
+   "title": "SUN2000-2KTL-L1",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-2ktl-l1.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "cat-mayorista-5c63036043b0",
+   "title": "SUN2000-5KTL-L1",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-5ktl-l1.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "cat-mayorista-63238dda6866",
+   "title": "SUN2000-40KTL-M3",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-40ktl-m3.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "cat-mayorista-6809f95a6ec6",
+   "title": "LUNA2000-10kW-C1",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-luna-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-luna2000-10kw-c1.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "cat-mayorista-77a53def7b39",
+   "title": "SUN2000-3KTL-L1",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-3ktl-l1.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "cat-mayorista-a7acbbe9c321",
+   "title": "SUN2000-6KTL-L1",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-6ktl-l1.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "cat-mayorista-aeeee921984f",
+   "title": "SUN2000-20KTL-M3",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-20ktl-m3.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "huawei-sun2000-20ktl-m3",
+   "title": "Huawei SUN2000-20KTL-M3",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-20ktl-m3.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "cat-mayorista-d93b4767526a",
+   "title": "SUN2000-215KTL-H0",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-215ktl-h0.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "cat-mayorista-db886da9420b",
+   "title": "SUN2000-30KTL-M3",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-30ktl-m3.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "cat-mayorista-eb335fe74372",
+   "title": "SUN2000-50KTL-M3",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-50ktl-m3.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "cat-mayorista-f6c407d9756a",
+   "title": "SUN2000-330KTL-H1",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-330ktl-h1.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "huawei-sun2000-10k-lc0",
+   "title": "Huawei SUN2000-10K-LC0",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-10k-lc0.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "huawei-sun2000-8k-lc0",
+   "title": "Huawei SUN2000-8K-LC0",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-8k-lc0.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-hybrido-8kw",
+   "title": "Huawei 4KTL-L1",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-4ktl-l1.webp",
+   "reactivado": false
+  },
+  {
+   "slug": "inversor-string-10kw",
+   "title": "Huawei 36KTL-M3",
+   "match": "exacto",
+   "serieRef": null,
+   "antes": {
+    "image": "/images/productos-estudio/huawei-sun2000-prov.webp"
+   },
+   "despues": "/images/productos-estudio/huawei-sun2000-36ktl-m3.webp",
+   "reactivado": false
+  }
+ ]
+}

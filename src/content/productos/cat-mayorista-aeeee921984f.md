@@ -1,7 +1,7 @@
 ---
 title: "SUN2000-20KTL-M3"
 description: "Inversor string trifásico Huawei SUN2000 KTL-M3 para plantas comerciales e industriales: varios MPPT, monitorización y compatibilidad con SmartLogger según proyecto."
-image: "/images/productos-estudio/huawei-sun2000-prov.webp"
+image: "/images/productos-estudio/huawei-sun2000-20ktl-m3.webp"
 category: "inversores"
 price: "$8.500.000"
 specifications:
@@ -18,11 +18,10 @@ promoImagen: "/images/placeholders/promo-liquidacion.svg"
 sku: "SUN2000-20KTL-M3"
 power: "20kW"
 updatedAt: "2026-09-10"
-imageThumb: "/images/productos-estudio/huawei-sun2000-prov.webp"
-imageAlt: "Huawei SUN2000-20KTL-M3 20kW – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/inversores/huawei-sun2000.png"
-imagen_provisional: true
-imagenSerieRef: "Huawei SUN2000"
+imageThumb: "/images/productos-estudio/huawei-sun2000-20ktl-m3-thumb.webp"
+imageAlt: "Huawei SUN2000-20KTL-M3 – Reiki Energía Solar"
+imageOriginal: "proveedores/solaire/huawei/sun2000-20ktl-m3/01-NFIN0031.png"
+imagen_provisional: false
 ---
 
 **SUN2000-20KTL-M3** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

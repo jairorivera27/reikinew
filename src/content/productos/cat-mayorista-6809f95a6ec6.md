@@ -1,7 +1,7 @@
 ---
 title: "LUNA2000-10kW-C1"
 description: "Módulo o sistema de almacenamiento Huawei LUNA2000 (LiFePO₄, alta tensión según serie): expansión modular, BMS integrado y acoplamiento con inversores Huawei híbridos compatibles."
-image: "/images/productos-estudio/huawei-luna-prov.webp"
+image: "/images/productos-estudio/huawei-luna2000-10kw-c1.webp"
 category: "baterias"
 price: "$5.385.600"
 specifications:
@@ -13,11 +13,10 @@ specifications:
 brand: "Huawei"
 stock: "disponible"
 order: 5063
-imageThumb: "/images/productos-estudio/huawei-luna-prov.webp"
-imageAlt: "Huawei – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/baterias/huawei-luna.png"
-imagen_provisional: true
-imagenSerieRef: "Huawei LUNA"
+imageThumb: "/images/productos-estudio/huawei-luna2000-10kw-c1-thumb.webp"
+imageAlt: "Huawei LUNA2000-10kW-C1 – Reiki Energía Solar"
+imageOriginal: "proveedores/solaire/huawei/cat-mayorista-6809f95a6ec6/01-NFAC0003.png"
+imagen_provisional: false
 ---
 
 **LUNA2000-10kW-C1** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

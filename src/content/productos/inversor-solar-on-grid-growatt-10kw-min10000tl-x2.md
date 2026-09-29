@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid Growatt 10kW MIN10000TL-X2"
 description: "Inversor Solar On-Grid Growatt 10kW MIN10000TL-X2. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: Growatt; modelo: MIN10000TL-X2; especificación principal: 10kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-estudio/growatt-mod-prov.webp"
+image: "/images/productos-estudio/growatt-min-10000tl-x2.webp"
 category: "inversores"
 price: "$4.573.250"
 specifications:
@@ -24,11 +24,10 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/growatt-mod-prov.webp"
-imageAlt: "Growatt MIN10000TL-X2 10kW – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/inversores/growatt-mod.jpg"
-imagen_provisional: true
-imagenSerieRef: "Growatt MOD"
+imageThumb: "/images/productos-estudio/growatt-min-10000tl-x2-thumb.webp"
+imageAlt: "Growatt Inversor Solar On-Grid Growatt 10kW MIN10000TL-X2 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar/growatt/min10000tl-x2/01-inversor-on-grid-10000w-growatt-min-10000tl-x2.jpg"
+imagen_provisional: false
 ---
 **Inversor Solar On-Grid Growatt 10kW MIN10000TL-X2** de Growatt · 10kW.
 

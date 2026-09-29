@@ -1,7 +1,7 @@
 ---
 title: "Controlador de Carga Solar MPPT Victron SCC075010060R"
 description: "Controlador de Carga Solar MPPT Victron SCC075010060R. Equipo para regulación y gestión de la carga en sistemas fotovoltaicos. Marca: Victron; modelo: SCC075010060R; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+image: "/images/productos-estudio/victron-smartsolar-mppt-10020-retail.webp"
 category: "controladores"
 price: "$272.869"
 specifications:
@@ -23,10 +23,11 @@ seoKeywords:
   - "comprar controlador solar colombia"
   - "precio controlador solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
-imageAlt: "Victron SCC075010060R N/A – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/controladores/victron-smartsolar-mppt.jpg"
-imagen_provisional: true
+imageThumb: "/images/productos-estudio/victron-smartsolar-mppt-10020-retail-thumb.webp"
+imageAlt: "Victron Controlador de Carga Solar MPPT Victron SCC075010060R – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar/victron/scc110020160r/01-controlador-carga-smartsolar-mppt-10020-retail-victron-energy.jpg"
+imagen_provisional: false
+imagenSerieRef: "Victron SmartSolar MPPT"
 ---
 **Controlador de Carga Solar MPPT Victron SCC075010060R** de Victron · N/A.
 

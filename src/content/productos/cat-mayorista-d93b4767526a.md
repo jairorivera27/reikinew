@@ -1,7 +1,7 @@
 ---
 title: "SUN2000-215KTL-H0"
 description: "Inversor central / string de gran formato Huawei SUN2000 para plantas de megavatios o grandes comerciales: arquitectura de alta tensión, múltiples MPPT y telemetría con SmartLogger."
-image: "/images/productos-estudio/huawei-sun2000-prov.webp"
+image: "/images/productos-estudio/huawei-sun2000-215ktl-h0.webp"
 category: "inversores"
 price: "$38.097.000"
 specifications:
@@ -12,11 +12,10 @@ specifications:
 brand: "Huawei"
 stock: "disponible"
 order: 5054
-imageThumb: "/images/productos-estudio/huawei-sun2000-prov.webp"
-imageAlt: "Huawei – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/inversores/huawei-sun2000.png"
-imagen_provisional: true
-imagenSerieRef: "Huawei SUN2000"
+imageThumb: "/images/productos-estudio/huawei-sun2000-215ktl-h0-thumb.webp"
+imageAlt: "Huawei SUN2000-215KTL-H0 – Reiki Energía Solar"
+imageOriginal: "proveedores/solaire/huawei/cat-mayorista-d93b4767526a/01-NFIN0009.png"
+imagen_provisional: false
 ---
 
 **SUN2000-215KTL-H0** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

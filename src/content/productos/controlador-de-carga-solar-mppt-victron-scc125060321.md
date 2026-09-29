@@ -1,7 +1,7 @@
 ---
 title: "Controlador de Carga Solar MPPT Victron SCC125060321"
 description: "Controlador de Carga Solar MPPT Victron SCC125060321. Equipo para regulación y gestión de la carga en sistemas fotovoltaicos. Marca: Victron; modelo: SCC125060321; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+image: "/images/productos-estudio/victron-smartsolar-mppt-25060-tr.webp"
 category: "controladores"
 price: "$1.922.462"
 specifications:
@@ -23,10 +23,10 @@ seoKeywords:
   - "comprar controlador solar colombia"
   - "precio controlador solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
-imageAlt: "Victron SCC125060321 N/A – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/controladores/victron-smartsolar-mppt.jpg"
-imagen_provisional: true
+imageThumb: "/images/productos-estudio/victron-smartsolar-mppt-25060-tr-thumb.webp"
+imageAlt: "Victron Controlador de Carga Solar MPPT Victron SCC125060321 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar/victron/scc125060221/01-controlador-carga-smartsolar-mppt-25060-tr-victron-energy.jpg"
+imagen_provisional: false
 ---
 **Controlador de Carga Solar MPPT Victron SCC125060321** de Victron · N/A.
 
