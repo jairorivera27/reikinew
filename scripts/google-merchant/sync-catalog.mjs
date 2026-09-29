@@ -187,6 +187,12 @@ function toMerchantInput(data, slug, categoryNames) {
 
   const mpn = String(data.model || data.sku || '').trim() || undefined;
 
+  // Google exige fecha de llegada para pre-orden; sin fecha el producto sería rechazado.
+  const fechaDisp = String(data.fechaDisponibilidad || '').trim();
+  if (data.stock === 'pre-orden' && !/^\d{4}-\d{2}-\d{2}/.test(fechaDisp)) {
+    return { skip: 'pre-orden sin fechaDisponibilidad (AAAA-MM-DD)' };
+  }
+
   return {
     input: {
       offerId: toOfferId(slug, data.sku),
@@ -200,6 +206,7 @@ function toMerchantInput(data, slug, categoryNames) {
       brand: brand || undefined,
       mpn,
       stock: data.stock || 'disponible',
+      availabilityDate: data.stock === 'pre-orden' ? `${fechaDisp.slice(0, 10)}T00:00:00-05:00` : undefined,
       productType: categoryNames[category] || category || undefined,
       googleProductCategory: GOOGLE_CATEGORY_BY_INTERNAL[category],
       productHighlights,

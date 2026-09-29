@@ -1,5 +1,5 @@
 ---
-title: "SUN2000-5KTL-L1"
+title: "Inversor Híbrido Huawei SUN2000-5KTL-L1 5 kW Monofásico"
 description: "Inversor string monofásico Huawei SUN2000-5KTL-L1 para conexión a red, con doble MPPT, alto rendimiento y protecciones avanzadas (incl. detección de arco según revisión). Compatible con integración de baterías LUNA2000 en configuraciones híbridas admitidas por Huawei. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/huawei-sun2000-5ktl-l1.webp"
 category: "inversores"

@@ -1,5 +1,5 @@
 ---
-title: "Apsystems QT2"
+title: "Microinversor Trifásico APsystems QT2"
 description: "Microinversor Apsystems QT2-MX trifásico para 4 paneles, referencia QT2-MX. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/apsystems-qt2-prov.webp"
 category: "inversores"

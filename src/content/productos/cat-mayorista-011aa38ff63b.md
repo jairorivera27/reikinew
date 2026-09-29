@@ -1,5 +1,5 @@
 ---
-title: "SUN2000-10K-LC0"
+title: "Inversor Híbrido Huawei SUN2000-10K-LC0 10 kW"
 description: "Inversor Huawei SUN2000 serie LC0: string inverter trifásico para aplicaciones comerciales e industriales, con amplio rango MPPT y alta eficiencia según potencia nominal del modelo. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/huawei-sun2000-10k-lc0.webp"
 category: "inversores"

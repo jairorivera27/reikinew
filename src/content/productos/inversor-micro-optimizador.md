@@ -1,5 +1,5 @@
 ---
-title: "Apsystems DS3D"
+title: "Microinversor APsystems DS3D-MX 2000 W"
 description: "Microinversor Apsystems DS3D-MX, máxima potencia para dos paneles de alta capacidad. La foto es de referencia de la serie APsystems DS3. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/apsystems-ds3-prov.webp"
 category: "inversores"

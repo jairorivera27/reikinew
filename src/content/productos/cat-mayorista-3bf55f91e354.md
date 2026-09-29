@@ -1,5 +1,5 @@
 ---
-title: "LUNA2000-5-E0-$ LUNA2000-7-E1"
+title: "Módulo de Batería Huawei LUNA2000-5-E0 / LUNA2000-7-E1"
 description: "Módulo o sistema de almacenamiento Huawei LUNA2000 (LiFePO₄, alta tensión según serie): expansión modular, BMS integrado y acoplamiento con inversores Huawei híbridos compatibles. La foto es de referencia de la serie Huawei LUNA. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/huawei-luna-prov.webp"
 category: "baterias"
