@@ -1,6 +1,6 @@
 ---
 title: "Breaker Suntree 20A SL7N-125D-20A2P"
-description: "Breaker Suntree 20A SL7N-125D-20A2P. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Suntree; modelo: SL7N-125D-20A2P; especificación principal: 20A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
+description: "Interruptor termomagnético (breaker) Suntree SL7N-125D-20A2P de 20 A. Protege el circuito contra sobrecargas y cortocircuitos y permite desconectarlo para mantenimiento. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/suntree-sl7n-dc.webp"
 category: "protecciones"
 price: "$136.404"
@@ -28,6 +28,11 @@ imageThumb: "/images/productos-estudio/suntree-sl7n-dc-thumb.webp"
 imageAlt: "Suntree SL7N-125D-20A2P 20A – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
 fichaPdf: "/fichas/proveedores/ficha-tcnica-breaker-solar-dc-1x80a-250v-suntree.pdf"
+faqs:
+  - pregunta: "¿Cómo elijo el amperaje?"
+    respuesta: "Del lado de paneles, la protección debe soportar al menos 1,25 veces la corriente de cortocircuito (Isc) del string y no superar la corriente máxima que admite el cable. Del lado AC se elige según la corriente de salida del inversor."
+  - pregunta: "¿Cumple RETIE?"
+    respuesta: "Las instalaciones solares en Colombia deben cumplir RETIE; usa protecciones certificadas bajo normas IEC y deja la instalación en manos de un técnico. Reiki te asesora en el diseño del tablero."
 ---
 **Breaker Suntree 20A SL7N-125D-20A2P** de Suntree · 20A.
 

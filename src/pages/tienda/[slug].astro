@@ -97,12 +97,31 @@ const garantiaCategoria = garantiaDeCategoria(d.category);
 const certificaciones = certificacionesDeCategoria(d.category);
 // Primero las preguntas del producto; luego las de la categoría que no repitan pregunta.
 const faqsProducto = d.faqs ?? [];
-const faqs = [
-  ...faqsProducto,
-  ...faqsDe(d.category).filter(
-    (f) => !faqsProducto.some((p) => p.pregunta.trim().toLowerCase() === f.pregunta.trim().toLowerCase())
-  ),
-];
+// Palabras clave de una pregunta (sin tildes ni palabras vacías) para descartar preguntas
+// de categoría que dicen lo mismo con otras palabras ("¿Cuántas horas me respalda?" ≈
+// "¿Cuántas horas de respaldo me da esta batería?").
+const VACIAS = new Set(['que', 'como', 'cual', 'cuanto', 'cuanta', 'cuantos', 'cuantas', 'para', 'esta', 'este', 'puedo', 'tiene', 'sirve', 'con', 'mi', 'me', 'los', 'las', 'del', 'una', 'uno', 'por', 'sin', 'sus', 'da']);
+const SINONIMOS: Record<string, string> = { agrega: 'amplia', sumar: 'amplia', bateri: 'banco', respal: 'horas', autono: 'horas', dura: 'horas', ventaj: 'difere' };
+const claves = (q: string) =>
+  new Set(
+    q
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9 ]/g, ' ')
+      .split(/\s+/)
+      .filter((w) => w.length > 2 && !VACIAS.has(w))
+      .map((w) => SINONIMOS[w.slice(0, 6)] ?? w.slice(0, 6))
+  );
+const clavesProducto = faqsProducto.map((p) => claves(p.pregunta));
+const repetida = (q: string) => {
+  const c = claves(q);
+  return clavesProducto.some((k) => [...c].filter((w) => k.has(w)).length >= Math.min(2, c.size, k.size));
+};
+const faqs = [...faqsProducto, ...faqsDe(d.category).filter((f) => !repetida(f.pregunta))].slice(
+  0,
+  faqsProducto.length ? Math.max(10, faqsProducto.length) : undefined
+);
 
 const mensajeFichaTecnica = encodeURIComponent(
   `Hola, necesito la ficha técnica completa de: ${d.title}${d.model ? ` (${d.model})` : ''}`

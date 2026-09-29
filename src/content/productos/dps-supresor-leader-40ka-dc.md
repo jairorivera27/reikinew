@@ -1,6 +1,6 @@
 ---
 title: "DPS Supresor Leader 40kA DC"
-description: "DPS Supresor Leader 40kA DC. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Leader; especificación principal: 40kA DC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
+description: "Protector contra sobretensiones (DPS) Leader DC. Desvía a tierra las sobretensiones por rayos y maniobras antes de que dañen inversores, controladores y paneles. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/leader-dps.webp"
 category: "protecciones"
 price: "$111.562"
@@ -24,6 +24,13 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/leader-dps-thumb.webp"
 imageAlt: "Leader 40kA DC – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/protecciones/leader-dps.jpg"
+faqs:
+  - pregunta: "¿Por qué usar una protección especial para corriente continua (DC)?"
+    respuesta: "En DC el arco eléctrico no se extingue solo como en AC. Las protecciones DC están diseñadas para cortar ese arco con seguridad al voltaje del arreglo solar; un breaker AC común no debe usarse en el lado de paneles."
+  - pregunta: "¿Dónde se instala el DPS?"
+    respuesta: "En el tablero de strings (lado DC) cerca del inversor y, del lado AC, en el tablero principal. Necesita una buena puesta a tierra para funcionar."
+  - pregunta: "¿Cumple RETIE?"
+    respuesta: "Las instalaciones solares en Colombia deben cumplir RETIE; usa protecciones certificadas bajo normas IEC y deja la instalación en manos de un técnico. Reiki te asesora en el diseño del tablero."
 ---
 **DPS Supresor Leader 40kA DC** de Leader · 40kA DC.
 

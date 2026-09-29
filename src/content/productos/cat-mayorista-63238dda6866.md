@@ -1,6 +1,6 @@
 ---
 title: "SUN2000-40KTL-M3"
-description: "Inversor string trifásico Huawei SUN2000 KTL-M3 para plantas comerciales e industriales: varios MPPT, monitorización y compatibilidad con SmartLogger según proyecto."
+description: "Inversor string trifásico Huawei SUN2000 KTL-M3 para plantas comerciales e industriales: varios MPPT, monitorización y compatibilidad con SmartLogger según proyecto. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/huawei-sun2000-40ktl-m3.webp"
 category: "inversores"
 price: "$14.764.500"
@@ -18,6 +18,9 @@ imageAlt: "Huawei SUN2000-40KTL-M3 – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/huawei/cat-mayorista-63238dda6866/01-NFIN0001.png"
 imagen_provisional: false
 fichaPdf: "/fichas/proveedores/solaire-nfin0001-ficha.pdf"
+faqs:
+  - pregunta: "¿Quién lo instala?"
+    respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 ---
 
 **SUN2000-40KTL-M3** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

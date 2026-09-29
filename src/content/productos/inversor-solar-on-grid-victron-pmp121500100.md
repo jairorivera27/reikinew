@@ -1,6 +1,6 @@
 ---
 title: "Victron MultiPlus 12/500"
-description: "MultiPlus Victron Energy, 12/500, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus."
+description: "MultiPlus Victron Energy, 12/500, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus. La foto es de referencia de la serie Victron MultiPlus. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/victron-multiplus-prov.webp"
 category: "inversores"
 price: "$1.227.888"
@@ -35,6 +35,13 @@ imageAlt: "Victron MultiPlus 12/500 500W – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/inversores/victron-multiplus.png"
 imagen_provisional: true
 imagenSerieRef: "Victron MultiPlus"
+faqs:
+  - pregunta: "¿Funciona cuando se va la luz?"
+    respuesta: "Sí, con baterías conectadas alimenta las cargas de respaldo durante los cortes. El tiempo de respaldo depende de la capacidad de las baterías y del consumo."
+  - pregunta: "¿Qué baterías son compatibles?"
+    respuesta: "Debe coincidir el voltaje del banco (12 V) y, para litio, el protocolo de comunicación del BMS. Te confirmamos la compatibilidad antes de la compra."
+  - pregunta: "¿Quién lo instala?"
+    respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 ---
 
 **Victron MultiPlus 12/500** (ref. **PMP121500100**). MultiPlus Victron Energy, 12/500, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus.

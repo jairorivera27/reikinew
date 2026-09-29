@@ -1,6 +1,6 @@
 ---
 title: "Victron Phoenix 12/250"
-description: "Phoenix Victron Energy, 12/250, 120 V CA, inversor puro para sistemas aislados, con VE.Direct."
+description: "Phoenix Victron Energy, 12/250, 120 V CA, inversor puro para sistemas aislados, con VE.Direct. La foto es de referencia de la serie Victron Phoenix. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-phoenix-prov.webp"
 category: "inversores"
 price: "$438.244"
@@ -36,6 +36,11 @@ imageOriginal: "/images/productos-tienda/inversores/victron-phoenix.png"
 imagen_provisional: true
 imagenSerieRef: "Victron Phoenix"
 fichaPdf: "/fichas/fabricantes/victron-datasheet-inverter-ve.direct-250va-1600va-es.pdf"
+faqs:
+  - pregunta: "¿Sirve sin conexión a la red eléctrica?"
+    respuesta: "Sí, está pensado para fincas, cabañas y sitios sin red, alimentado por un banco de baterías que se carga con paneles solares."
+  - pregunta: "¿Quién lo instala?"
+    respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 ---
 
 **Victron Phoenix 12/250** (ref. **PIN122510510**). Phoenix Victron Energy, 12/250, 120 V CA, inversor puro para sistemas aislados, con VE.Direct.

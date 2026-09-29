@@ -1,6 +1,6 @@
 ---
 title: "Panel Solar Monocristalino 500W"
-description: "Panel solar monocristalino de 500W con tecnología PERC, ideal para instalaciones residenciales. Alta eficiencia y durabilidad garantizada."
+description: "Panel solar monocristalino de 500W con tecnología PERC, ideal para instalaciones residenciales. Alta eficiencia y durabilidad garantizada. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/jinko-solar-jkm500m-54hl4-b-prov.webp"
 category: "paneles"
 price: "$529.000"
@@ -27,6 +27,15 @@ imageThumb: "/images/productos-estudio/jinko-solar-jkm500m-54hl4-b-prov.webp"
 imageAlt: "Jinko Solar JKM500M-54HL4-B – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/paneles-solares/jinkosolar-500w.png"
 imagen_provisional: true
+faqs:
+  - pregunta: "¿Cuánta energía genera al día?"
+    respuesta: "Aproximadamente 2,2 kWh por día (500 W × 4,5 horas de sol pico, promedio conservador para Colombia), unos 68 kWh al mes. La cifra real depende de la ciudad, la orientación, la inclinación y las sombras."
+  - pregunta: "¿Cuántos paneles necesito para mi casa o negocio?"
+    respuesta: "Divide tu consumo mensual (kWh, en la factura) entre 68 kWh que aporta cada panel. Por ejemplo, para 300 kWh/mes necesitarías unos 4 paneles. Te hacemos el dimensionamiento gratis con tu factura."
+  - pregunta: "¿Qué tamaño y peso tiene?"
+    respuesta: "Dimensiones: 2176 x 1098 x 35 mm. Peso: 26.5 kg. Verifica el espacio disponible en tu cubierta antes de comprar."
+  - pregunta: "¿Sirve para sistemas conectados a la red y para sistemas aislados?"
+    respuesta: "Sí. Con un inversor on-grid entrega energía a la casa y a la red (autogeneración, con trámite ante el operador de red); con un inversor híbrido u off-grid carga baterías. Lo importante es que el voltaje del arreglo sea compatible con el inversor o el controlador."
 ---
 
 Panel solar monocristalino de 500W con excelente relación precio-rendimiento. Perfecto para instalaciones residenciales y pequeñas comerciales.

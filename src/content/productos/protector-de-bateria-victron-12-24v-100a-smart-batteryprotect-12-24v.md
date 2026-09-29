@@ -1,6 +1,6 @@
 ---
 title: "Protector de batería Victron 12/24V, 100A Smart BatteryProtect 12/24V-100A"
-description: "Protector de batería Victron 12/24V, 100A Smart BatteryProtect 12/24V-100A. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Victron; modelo: Smart BatteryProtect 12/24V-100A; especificación principal: 12/24V, 100A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
+description: "Protección eléctrica Victron Smart BatteryProtect 12/24V-100A de 100 A. Componente de protección para sistemas solares. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/victron-smart-batteryprotect-12-24v-100a-12-24v-100a.webp"
 category: "protecciones"
 price: "$303.300"
@@ -27,6 +27,9 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/victron-smart-batteryprotect-12-24v-100a-12-24v-100a-thumb.webp"
 imageAlt: "Victron Smart BatteryProtect 12/24V-100A 12/24V, 100A – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/protecciones/victron-batteryprotect.jpg"
+faqs:
+  - pregunta: "¿Cumple RETIE?"
+    respuesta: "Las instalaciones solares en Colombia deben cumplir RETIE; usa protecciones certificadas bajo normas IEC y deja la instalación en manos de un técnico. Reiki te asesora en el diseño del tablero."
 ---
 **Protector de batería Victron 12/24V, 100A Smart BatteryProtect 12/24V-100A** de Victron · 12/24V, 100A.
 

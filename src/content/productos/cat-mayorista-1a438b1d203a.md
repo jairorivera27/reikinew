@@ -1,6 +1,6 @@
 ---
 title: "Hoymiles AC Trunk Port Disconnect Tool"
-description: "Accesorio de cableado o conexión CA/CC para sistemas con microinversores Hoymiles: troncal, tapas, herramientas de desconexión o extensiones homologadas por el fabricante."
+description: "Accesorio de cableado o conexión CA/CC para sistemas con microinversores Hoymiles: troncal, tapas, herramientas de desconexión o extensiones homologadas por el fabricante. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/suntree-siso-dc.webp"
 category: "protecciones"
 price: "$19.432"
@@ -15,6 +15,9 @@ order: 5026
 imageThumb: "/images/productos-estudio/suntree-siso-dc-thumb.webp"
 imageAlt: "Hoymiles – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/protecciones/suntree-siso-dc.jpg"
+faqs:
+  - pregunta: "¿Cumple RETIE?"
+    respuesta: "Las instalaciones solares en Colombia deben cumplir RETIE; usa protecciones certificadas bajo normas IEC y deja la instalación en manos de un técnico. Reiki te asesora en el diseño del tablero."
 ---
 
 **HOYMILES AC TRUNK PORT DISCONNECT TOOL** · referencia **Hoymiles** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

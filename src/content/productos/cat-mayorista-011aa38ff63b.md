@@ -1,6 +1,6 @@
 ---
 title: "SUN2000-10K-LC0"
-description: "Inversor Huawei SUN2000 serie LC0: string inverter trifásico para aplicaciones comerciales e industriales, con amplio rango MPPT y alta eficiencia según potencia nominal del modelo."
+description: "Inversor Huawei SUN2000 serie LC0: string inverter trifásico para aplicaciones comerciales e industriales, con amplio rango MPPT y alta eficiencia según potencia nominal del modelo. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/huawei-sun2000-10k-lc0.webp"
 category: "inversores"
 price: "$5.584.500"
@@ -18,6 +18,15 @@ imageAlt: "Huawei SUN2000-10K-LC0 – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/huawei/cat-mayorista-011aa38ff63b/01-NFIN0044.png"
 imagen_provisional: false
 fichaPdf: "/fichas/proveedores/solaire-nfin0044-ficha.pdf"
+faqs:
+  - pregunta: "¿Necesita baterías?"
+    respuesta: "No. Es un inversor conectado a la red: funciona con los paneles y la red eléctrica. Por seguridad se apaga cuando se va la luz (protección anti-isla). Si necesitas respaldo en cortes, elige un inversor híbrido."
+  - pregunta: "¿Puedo vender los excedentes de energía?"
+    respuesta: "Sí, en Colombia la autogeneración a pequeña escala (CREG 174 de 2021) permite entregar excedentes con un medidor bidireccional y el trámite ante el operador de red. Reiki te acompaña en la legalización."
+  - pregunta: "¿Es monofásico, bifásico o trifásico?"
+    respuesta: "Es trifásico. Debe coincidir con la conexión eléctrica de tu predio (lo ves en tu factura o en el tablero)."
+  - pregunta: "¿Quién lo instala?"
+    respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 ---
 
 **SUN2000-10K-LC0** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

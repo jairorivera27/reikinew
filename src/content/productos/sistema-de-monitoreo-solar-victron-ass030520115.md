@@ -1,6 +1,6 @@
 ---
 title: "Sistema de Monitoreo Solar Victron ASS030520115"
-description: "Sistema de Monitoreo Solar Victron ASS030520115. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Victron; modelo: ASS030520115; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
+description: "Datalogger / módulo de monitoreo Victron ASS030520115. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/victron-cerbo-gx.webp"
 category: "accesorios"
 price: "$777.345"
@@ -25,6 +25,11 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/victron-cerbo-gx-thumb.webp"
 imageAlt: "Victron ASS030520115 N/A – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/monitoreo/victron-cerbo-gx.jpg"
+faqs:
+  - pregunta: "¿Con qué equipos es compatible?"
+    respuesta: "Con los inversores o equipos de la misma marca y serie indicados en la ficha técnica. Escríbenos con la referencia de tu inversor y te confirmamos."
+  - pregunta: "¿Necesita internet?"
+    respuesta: "Sí, se conecta por Wi-Fi, red cableada o 4G según el modelo para enviar los datos a la aplicación del fabricante."
 ---
 **Sistema de Monitoreo Solar Victron ASS030520115** de Victron · N/A.
 

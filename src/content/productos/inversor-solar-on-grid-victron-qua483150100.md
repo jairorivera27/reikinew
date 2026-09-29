@@ -1,6 +1,6 @@
 ---
 title: "Victron Quattro 48/15000"
-description: "Quattro Victron Energy, 48/15000, 277 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus."
+description: "Quattro Victron Energy, 48/15000, 277 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus. La foto es de referencia de la serie Victron Quattro. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-quattro-prov.webp"
 category: "inversores"
 price: "$13.602.094"
@@ -36,6 +36,15 @@ imageOriginal: "/images/productos-tienda/inversores/victron-quattro.png"
 imagen_provisional: true
 imagenSerieRef: "Victron Quattro"
 fichaPdf: "/fichas/fabricantes/victron-datasheet-quattro-3kva-15kva-es.pdf"
+faqs:
+  - pregunta: "¿Funciona cuando se va la luz?"
+    respuesta: "Sí, con baterías conectadas alimenta las cargas de respaldo durante los cortes. El tiempo de respaldo depende de la capacidad de las baterías y del consumo."
+  - pregunta: "¿Qué baterías son compatibles?"
+    respuesta: "Debe coincidir el voltaje del banco (48 V) y, para litio, el protocolo de comunicación del BMS. Te confirmamos la compatibilidad antes de la compra."
+  - pregunta: "¿Para qué consumo alcanza?"
+    respuesta: "Un sistema con este inversor de 15 kW y unos 16,5 kWp de paneles genera del orden de 2.228 kWh al mes (4,5 horas de sol pico en promedio), así que cubre consumos de esa magnitud. Te dimensionamos el sistema con tu factura."
+  - pregunta: "¿Quién lo instala?"
+    respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 ---
 
 **Victron Quattro 48/15000** (ref. **QUA483150100**). Quattro Victron Energy, 48/15000, 277 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus.

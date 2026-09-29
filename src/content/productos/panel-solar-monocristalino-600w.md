@@ -1,6 +1,6 @@
 ---
 title: "Trina Solar 650W"
-description: "Panel solar Trina Solar TSM-650DEG21C.20 de 650W de generación de energía, tecnología Vertex para alta potencia."
+description: "Panel solar Trina Solar TSM-650DEG21C.20 de 650W de generación de energía, tecnología Vertex para alta potencia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/trina-solar-tsm-650deg21c-20-prov.webp"
 category: "paneles"
 price: "$669.000"
@@ -24,6 +24,15 @@ imageThumb: "/images/productos-estudio/trina-solar-tsm-650deg21c-20-prov.webp"
 imageAlt: "Trina Solar TSM-650DEG21C.20 – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/paneles-solares/trinasolar-650w.png"
 imagen_provisional: true
+faqs:
+  - pregunta: "¿Cuánta energía genera al día?"
+    respuesta: "Aproximadamente 2,9 kWh por día (650 W × 4,5 horas de sol pico, promedio conservador para Colombia), unos 88 kWh al mes. La cifra real depende de la ciudad, la orientación, la inclinación y las sombras."
+  - pregunta: "¿Cuántos paneles necesito para mi casa o negocio?"
+    respuesta: "Divide tu consumo mensual (kWh, en la factura) entre 88 kWh que aporta cada panel. Por ejemplo, para 300 kWh/mes necesitarías unos 3 paneles. Te hacemos el dimensionamiento gratis con tu factura."
+  - pregunta: "¿Qué ventaja tiene que sea bifacial?"
+    respuesta: "Capta luz por ambas caras: además del sol directo aprovecha la luz reflejada por el piso o la cubierta. La ganancia adicional depende de la altura y del color de la superficie (mayor en cubiertas claras y estructuras elevadas)."
+  - pregunta: "¿Sirve para sistemas conectados a la red y para sistemas aislados?"
+    respuesta: "Sí. Con un inversor on-grid entrega energía a la casa y a la red (autogeneración, con trámite ante el operador de red); con un inversor híbrido u off-grid carga baterías. Lo importante es que el voltaje del arreglo sea compatible con el inversor o el controlador."
 ---
 
 Panel solar Trina Solar de la serie Vertex, capaz de generar 650W, optimizado para grandes proyectos y alta eficiencia.

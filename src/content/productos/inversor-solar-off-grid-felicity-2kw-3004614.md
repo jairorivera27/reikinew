@@ -1,6 +1,6 @@
 ---
 title: "Inversor Solar Off-Grid Felicity 2kW 3004614"
-description: "Inversor Solar Off-Grid Felicity 2kW 3004614. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: Felicity; modelo: 3004614; especificación principal: 2kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
+description: "Inversor off-grid Felicity de 2kW. Para sistemas aislados de la red: convierte la energía de las baterías en corriente alterna para tus equipos. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/inversor-cargador-felicity-solar-2000w-24v-ivcm2024-lv.webp"
 category: "inversores"
 price: "$892.858"
@@ -28,6 +28,11 @@ imageAlt: "Felicity Inversor Solar Off-Grid Felicity 2kW 3004614 – Reiki Energ
 imageOriginal: "proveedores/autosolar-codigo/3004614/01-inversor-cargador-felicity-solar-2000w-24v-ivcm2024-lv-690bbf2d72d11.jpg"
 imagen_provisional: false
 fichaPdf: "/fichas/proveedores/manual-de-usuario-inversor-cargador-felicity-solar-2000w-24v-ivcm2024-lv.pdf"
+faqs:
+  - pregunta: "¿Sirve sin conexión a la red eléctrica?"
+    respuesta: "Sí, está pensado para fincas, cabañas y sitios sin red, alimentado por un banco de baterías que se carga con paneles solares."
+  - pregunta: "¿Quién lo instala?"
+    respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 ---
 **Inversor Solar Off-Grid Felicity 2kW 3004614** de Felicity · 2kW.
 

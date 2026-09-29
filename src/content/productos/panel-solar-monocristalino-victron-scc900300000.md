@@ -1,6 +1,6 @@
 ---
 title: "Panel Solar Monocristalino Victron SCC900300000"
-description: "Panel Solar Monocristalino Victron SCC900300000. Equipo para generación de energía solar fotovoltaica. Marca: Victron; modelo: SCC900300000; especificación principal: especificación no disponible. Compara potencia, tecnología y compatibilidad antes de instalar. Disponible para proyectos solares en Colombia."
+description: "Panel solar Victron SCC900300000 (monocristalino). Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/victron-bluesolar-mono-scc900300000.webp"
 category: "paneles"
 price: "$190.181"
@@ -26,6 +26,9 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/victron-bluesolar-mono-scc900300000-thumb.webp"
 imageAlt: "Victron SCC900300000 N/A – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/paneles-solares/victron-bluesolar-mono.jpg"
+faqs:
+  - pregunta: "¿Sirve para sistemas conectados a la red y para sistemas aislados?"
+    respuesta: "Sí. Con un inversor on-grid entrega energía a la casa y a la red (autogeneración, con trámite ante el operador de red); con un inversor híbrido u off-grid carga baterías. Lo importante es que el voltaje del arreglo sea compatible con el inversor o el controlador."
 ---
 **Panel Solar Monocristalino Victron SCC900300000** de Victron · N/A.
 

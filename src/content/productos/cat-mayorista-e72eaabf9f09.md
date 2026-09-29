@@ -1,6 +1,6 @@
 ---
 title: "Studer Inverter Charger Xtender Xtm 4000-48V"
-description: "Inversor-cargador Studer Xtender: onda senoidal pura, carga de baterías y soporte de red o generador según configuración XTM."
+description: "Inversor-cargador Studer Xtender: onda senoidal pura, carga de baterías y soporte de red o generador según configuración XTM. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/studer-xtender-prov.webp"
 category: "inversores"
 price: "$17.319.600"
@@ -16,6 +16,11 @@ imageThumb: "/images/productos-estudio/studer-xtender-prov.webp"
 imageAlt: "Studer – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/inversores/studer-xtender.jpg"
 imagen_provisional: true
+faqs:
+  - pregunta: "¿Sirve sin conexión a la red eléctrica?"
+    respuesta: "Sí, está pensado para fincas, cabañas y sitios sin red, alimentado por un banco de baterías que se carga con paneles solares."
+  - pregunta: "¿Quién lo instala?"
+    respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 ---
 
 **STUDER INVERTER CHARGER XTENDER XTM 4000-48V** · referencia **Studer** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

@@ -1,6 +1,6 @@
 ---
 title: "Datalogger GoodWe EzLogger 3000U-A Smart DataLogger EzLogger3000U (Utilit"
-description: "Datalogger GoodWe EzLogger 3000U-A Smart DataLogger EzLogger3000U (Utilit. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: GoodWe; modelo: EzLogger 3000U-A Smart DataLogger EzLogger3000U (Utilit; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
+description: "Datalogger / módulo de monitoreo GoodWe EzLogger 3000U-A Smart DataLogger EzLogger3000U (Utilit. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. La foto es de referencia de la serie GoodWe EzLogger. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/goodwe-ezlogger.webp"
 category: "accesorios"
 price: "$2.573.970"
@@ -28,6 +28,11 @@ imageAlt: "GoodWe EzLogger 3000U-A Smart DataLogger EzLogger3000U (Utilit N/A �
 imageOriginal: "/images/productos-tienda/monitoreo/goodwe-ezlogger.jpg"
 imagen_provisional: true
 imagenSerieRef: "GoodWe EzLogger"
+faqs:
+  - pregunta: "¿Con qué equipos es compatible?"
+    respuesta: "Con los inversores o equipos de la misma marca y serie indicados en la ficha técnica. Escríbenos con la referencia de tu inversor y te confirmamos."
+  - pregunta: "¿Necesita internet?"
+    respuesta: "Sí, se conecta por Wi-Fi, red cableada o 4G según el modelo para enviar los datos a la aplicación del fabricante."
 ---
 **Datalogger GoodWe EzLogger 3000U-A Smart DataLogger EzLogger3000U (Utilit** de GoodWe · N/A.
 

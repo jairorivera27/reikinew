@@ -1,6 +1,6 @@
 ---
 title: "Batería Solar Litio Felicity 24V 7,15kWh FLA24280-EU"
-description: "Batería Solar Litio Felicity 24V 7,15kWh FLA24280-EU. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Marca: Felicity; modelo: FLA24280-EU; especificación principal: 24V 7,15kWh. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
+description: "Batería litio Felicity FLA24280-EU de 7,15 kWh a 24 V. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. La foto es de referencia de la serie Felicity FLA24. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/felicity-fla24.webp"
 category: "baterias"
 price: "$4.834.375"
@@ -29,6 +29,11 @@ imageAlt: "Felicity FLA24280-EU 24V 7,15kWh – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/baterias/felicity-fla24.jpg"
 imagen_provisional: true
 imagenSerieRef: "Felicity FLA24"
+faqs:
+  - pregunta: "¿Cuántas horas me respalda?"
+    respuesta: "Con 7,2 kWh y descargándola hasta un 90 % (unos 6,4 kWh útiles), un consumo continuo de 500 W duraría cerca de 13 horas y uno de 1 kW unas 6,4 horas, sin contar pérdidas del inversor (5–10 %). Nevera, luces, internet y TV suelen sumar 300–600 W."
+  - pregunta: "¿Es compatible con mi inversor?"
+    respuesta: "El voltaje del banco debe coincidir con el del inversor (24 V) y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
 ---
 **Batería Solar Litio Felicity 24V 7,15kWh FLA24280-EU** de Felicity · 24V 7,15kWh.
 

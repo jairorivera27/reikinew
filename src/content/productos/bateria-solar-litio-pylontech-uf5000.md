@@ -1,6 +1,6 @@
 ---
 title: "Batería Solar Litio Pylontech UF5000"
-description: "Batería Solar Litio Pylontech UF5000. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Marca: Pylontech; modelo: UF5000; especificación principal: especificación no disponible. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
+description: "Batería litio Pylontech UF5000. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. La foto es de referencia de la serie Pylontech UF. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/pylontech-uf5000-prov.webp"
 category: "baterias"
 price: "$5.182.926"
@@ -28,6 +28,9 @@ imageAlt: "Pylontech UF5000 N/A – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/baterias/pylontech-uf5000.png"
 imagen_provisional: true
 imagenSerieRef: "Pylontech UF"
+faqs:
+  - pregunta: "¿Es compatible con mi inversor?"
+    respuesta: "El voltaje del banco debe coincidir con el del inversor y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
 ---
 **Batería Solar Litio Pylontech UF5000** de Pylontech · N/A.
 

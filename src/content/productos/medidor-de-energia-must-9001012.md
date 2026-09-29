@@ -1,6 +1,6 @@
 ---
 title: "Medidor de Energía Must 9001012"
-description: "Medidor de Energía Must 9001012. Equipo para medición y supervisión del consumo y la generación eléctrica. Marca: Must; modelo: 9001012; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
+description: "Medidor de energía Must. Mide la energía que consumes e inyectas para que el inversor controle la exportación o para monitorear el consumo. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/eastron-meter.webp"
 category: "accesorios"
 price: "$20.616.750"
@@ -24,6 +24,9 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/eastron-meter-thumb.webp"
 imageAlt: "Must 9001012 N/A – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/monitoreo/eastron-meter.jpg"
+faqs:
+  - pregunta: "¿Para qué sirve con un inversor solar?"
+    respuesta: "Permite limitar la inyección a la red (inyección cero), gestionar baterías según el consumo real y ver el balance de energía en la aplicación."
 ---
 **Medidor de Energía Must 9001012** de Must · N/A.
 

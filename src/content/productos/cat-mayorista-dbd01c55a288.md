@@ -1,6 +1,6 @@
 ---
 title: "Hoymiles Microinverter HMS-2000-4T"
-description: "Microinversor monofásico Hoymiles HMS-2000-4T: cuatro MPPT independientes para hasta cuatro módulos de alta potencia, comunicación inalámbrica con gateway Hoymiles y monitoreo en nube."
+description: "Microinversor monofásico Hoymiles HMS-2000-4T: cuatro MPPT independientes para hasta cuatro módulos de alta potencia, comunicación inalámbrica con gateway Hoymiles y monitoreo en nube. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/hoymiles-hms-2000-4t.webp"
 category: "inversores"
 price: "$1.690.650"
@@ -22,6 +22,13 @@ imagen_provisional: false
 imagenPendiente: false
 fichaPdf: "/fichas/hoymiles-hms-2000-4t-ficha.pdf"
 model: "HMS-2000-4T"
+faqs:
+  - pregunta: "¿Cuántos paneles se conectan a cada microinversor?"
+    respuesta: "Depende del número de entradas del modelo (revisa la ficha técnica). Cada entrada tiene su propio seguimiento MPPT y admite un panel."
+  - pregunta: "¿Es monofásico, bifásico o trifásico?"
+    respuesta: "Es monofásico. Debe coincidir con la conexión eléctrica de tu predio (lo ves en tu factura o en el tablero)."
+  - pregunta: "¿Quién lo instala?"
+    respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 ---
 
 **HOYMILES MICROINVERTER HMS-2000-4T** · referencia **Hoymiles** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

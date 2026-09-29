@@ -1,6 +1,6 @@
 ---
 title: "Controlador de Carga Solar MPPT Victron SCC110050210"
-description: "Controlador de Carga Solar MPPT Victron SCC110050210. Equipo para regulación y gestión de la carga en sistemas fotovoltaicos. Marca: Victron; modelo: SCC110050210; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
+description: "Controlador de carga solar MPPT Victron SCC110050210 (SmartSolar MPPT 100/50). Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-smartsolar-mppt-100-50.webp"
 category: "controladores"
 price: "$855.838"
@@ -29,6 +29,11 @@ imageOriginal: "proveedores/autosolar/controlador-carga-smartsolar-mppt-10050-vi
 imagen_provisional: false
 imagenPendiente: false
 fichaPdf: "/fichas/fabricantes/victron-datasheet-smartsolar-charge-controller-mppt-100-30-y-100-50-es.pdf"
+faqs:
+  - pregunta: "¿Qué diferencia hay entre MPPT y PWM?"
+    respuesta: "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
+  - pregunta: "¿Sirve para baterías de litio?"
+    respuesta: "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
 ---
 **Controlador de Carga Solar MPPT Victron SCC110050210** de Victron · N/A.
 

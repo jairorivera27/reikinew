@@ -1,6 +1,6 @@
 ---
 title: "Switch Suntree 100A AC SQ8M-125"
-description: "Switch Suntree 100A AC SQ8M-125. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Suntree; modelo: SQ8M-125; especificación principal: 100A AC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
+description: "Seccionador Suntree SQ8M-125 AC de 100 A. Permite desconectar con seguridad el circuito para mantenimiento o emergencias. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/suntree-sq8-switch-prov.webp"
 category: "protecciones"
 price: "$694.514"
@@ -28,6 +28,9 @@ imageThumb: "/images/productos-estudio/suntree-sq8-switch-prov.webp"
 imageAlt: "Suntree SQ8M-125 100A AC – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/protecciones/suntree-sq8-switch.jpg"
 imagen_provisional: true
+faqs:
+  - pregunta: "¿Cumple RETIE?"
+    respuesta: "Las instalaciones solares en Colombia deben cumplir RETIE; usa protecciones certificadas bajo normas IEC y deja la instalación en manos de un técnico. Reiki te asesora en el diseño del tablero."
 ---
 **Switch Suntree 100A AC SQ8M-125** de Suntree · 100A AC.
 

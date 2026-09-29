@@ -1,6 +1,6 @@
 ---
 title: "Inversor Solar On-Grid GoodWe 10kW GW10K-SDT-30"
-description: "Inversor Solar On-Grid GoodWe 10kW GW10K-SDT-30. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW10K-SDT-30; especificación principal: 10kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
+description: "Inversor on-grid (conectado a red) GoodWe GW10K-SDT-30 de 10kW. Convierte la energía de tus paneles para el consumo de la casa o el negocio y entrega los excedentes a la red, sin baterías. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/goodwe-sdt-prov.webp"
 category: "inversores"
 price: "$4.305.000"
@@ -28,6 +28,15 @@ imageThumb: "/images/productos-estudio/goodwe-sdt-prov.webp"
 imageAlt: "GoodWe GW10K-SDT-30 10kW – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
 imagen_provisional: true
+faqs:
+  - pregunta: "¿Necesita baterías?"
+    respuesta: "No. Es un inversor conectado a la red: funciona con los paneles y la red eléctrica. Por seguridad se apaga cuando se va la luz (protección anti-isla). Si necesitas respaldo en cortes, elige un inversor híbrido."
+  - pregunta: "¿Puedo vender los excedentes de energía?"
+    respuesta: "Sí, en Colombia la autogeneración a pequeña escala (CREG 174 de 2021) permite entregar excedentes con un medidor bidireccional y el trámite ante el operador de red. Reiki te acompaña en la legalización."
+  - pregunta: "¿Para qué consumo alcanza?"
+    respuesta: "Un sistema con este inversor de 10 kW y unos 11 kWp de paneles genera del orden de 1.485 kWh al mes (4,5 horas de sol pico en promedio), así que cubre consumos de esa magnitud. Te dimensionamos el sistema con tu factura."
+  - pregunta: "¿Quién lo instala?"
+    respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 ---
 **Inversor Solar On-Grid GoodWe 10kW GW10K-SDT-30** de GoodWe · 10kW.
 

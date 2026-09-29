@@ -1,6 +1,6 @@
 ---
 title: "Datalogger Growatt ShineWeLink para Microinversores NEO"
-description: "Datalogger Growatt ShineWeLink para Microinversores NEO. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Growatt; modelo: ShineWeLink; especificación principal: 196–250VAC, <5W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
+description: "Datalogger / módulo de monitoreo Growatt ShineWeLink. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/growatt-shine.webp"
 category: "accesorios"
 price: "$188.303"
@@ -27,6 +27,11 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/growatt-shine-thumb.webp"
 imageAlt: "Growatt ShineWeLink 196–250VAC, <5W – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/monitoreo/growatt-shine.jpg"
+faqs:
+  - pregunta: "¿Con qué equipos es compatible?"
+    respuesta: "Con los inversores o equipos de la misma marca y serie indicados en la ficha técnica. Escríbenos con la referencia de tu inversor y te confirmamos."
+  - pregunta: "¿Necesita internet?"
+    respuesta: "Sí, se conecta por Wi-Fi, red cableada o 4G según el modelo para enviar los datos a la aplicación del fabricante."
 ---
 **Datalogger Growatt ShineWeLink para Microinversores NEO** de Growatt · 196–250VAC, <5W.
 

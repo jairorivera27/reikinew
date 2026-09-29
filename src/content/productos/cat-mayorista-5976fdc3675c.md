@@ -1,6 +1,6 @@
 ---
 title: "SUN2000-2KTL-L1"
-description: "Inversor string monofásico Huawei SUN2000-2KTL-L1 para conexión a red, con doble MPPT, alto rendimiento y protecciones avanzadas (incl. detección de arco según revisión). Compatible con integración de baterías LUNA2000 en configuraciones híbridas admitidas por Huawei."
+description: "Inversor string monofásico Huawei SUN2000-2KTL-L1 para conexión a red, con doble MPPT, alto rendimiento y protecciones avanzadas (incl. detección de arco según revisión). Compatible con integración de baterías LUNA2000 en configuraciones híbridas admitidas por Huawei. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/huawei-sun2000-2ktl-l1.webp"
 category: "inversores"
 price: "$2.363.850"
@@ -19,6 +19,9 @@ imageAlt: "Huawei SUN2000-2KTL-L1 – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/huawei/cat-mayorista-5976fdc3675c/01-NFIN0018.png"
 imagen_provisional: false
 fichaPdf: "/fichas/proveedores/solaire-nfin0018-ficha.pdf"
+faqs:
+  - pregunta: "¿Quién lo instala?"
+    respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 ---
 
 **SUN2000-2KTL-L1** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

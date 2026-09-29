@@ -1,6 +1,6 @@
 ---
 title: "Victron MultiPlus 24/2000"
-description: "MultiPlus Victron Energy, 24/2000, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus."
+description: "MultiPlus Victron Energy, 24/2000, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus. La foto es de referencia de la serie Victron MultiPlus Compact. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-multiplus-compact-12-2000.webp"
 category: "inversores"
 price: "$3.638.250"
@@ -37,6 +37,15 @@ imageOriginal: "proveedores/autosolar/victron/multiplus-12-500/01-inversor-multi
 imagen_provisional: false
 imagenSerieRef: "Victron MultiPlus Compact"
 fichaPdf: "/fichas/proveedores/datasheet-multiplus-inverter-charger_2kva-and-3kva-120v-us-es.pdf"
+faqs:
+  - pregunta: "¿Funciona cuando se va la luz?"
+    respuesta: "Sí, con baterías conectadas alimenta las cargas de respaldo durante los cortes. El tiempo de respaldo depende de la capacidad de las baterías y del consumo."
+  - pregunta: "¿Qué baterías son compatibles?"
+    respuesta: "Debe coincidir el voltaje del banco (24 V) y, para litio, el protocolo de comunicación del BMS. Te confirmamos la compatibilidad antes de la compra."
+  - pregunta: "¿Para qué consumo alcanza?"
+    respuesta: "Un sistema con este inversor de 2 kW y unos 2,2 kWp de paneles genera del orden de 297 kWh al mes (4,5 horas de sol pico en promedio), así que cubre consumos de esa magnitud. Te dimensionamos el sistema con tu factura."
+  - pregunta: "¿Quién lo instala?"
+    respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 ---
 
 **Victron MultiPlus 24/2000** (ref. **PMP242200102**). MultiPlus Victron Energy, 24/2000, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus.
