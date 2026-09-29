@@ -12,6 +12,7 @@
  * Verifica monto vs total de la cotización. Aviso al dueño idempotente.
  */
 import { verifyWompiEventSignature, confirmPagoFromWompiTransaction } from './_lib/wompi-confirm.js';
+import { markCheckoutPaidFromWompi } from './_lib/checkout-notify.js';
 
 function readRawBody(req) {
   return new Promise((resolve, reject) => {
@@ -73,8 +74,12 @@ export default async function handler(req, res) {
           transactionId: tx.id,
           reference,
         });
+        let checkoutResult = null;
+        if (result?.reason === 'no_cotizacion') {
+          checkoutResult = await markCheckoutPaidFromWompi(tx);
+        }
         res.statusCode = 200;
-        return res.end(JSON.stringify({ ok: true, result }));
+        return res.end(JSON.stringify({ ok: true, result, checkoutResult }));
       }
     }
 

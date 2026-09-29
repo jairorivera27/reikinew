@@ -291,7 +291,16 @@ export async function notifyOwner(message, cfg = getWhatsAppConfig(), opts = {})
       const components = [
         {
           type: 'body',
-          parameters: vars.map((text) => ({ type: 'text', text: String(text || '—').slice(0, 1024) })),
+          parameters: vars.map((text) => ({
+            type: 'text',
+            // Meta rechaza parámetros con saltos de línea, tabs o 4+ espacios seguidos
+            text:
+              String(text || '—')
+                .replace(/[\r\n\t]+/g, ' | ')
+                .replace(/ {4,}/g, '   ')
+                .trim()
+                .slice(0, 1024) || '—',
+          })),
         },
       ];
       if (opts.documentLink) {

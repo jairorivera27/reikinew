@@ -6,7 +6,8 @@
  *
  * El navegador en /respuesta-pago solo envía el id; nunca marca por sí solo.
  */
-import { confirmPagoByTransactionId } from './_lib/wompi-confirm.js';
+import { confirmPagoByTransactionId, fetchWompiTransaction } from './_lib/wompi-confirm.js';
+import { markCheckoutPaidFromWompi } from './_lib/checkout-notify.js';
 
 function readBody(req) {
   return new Promise((resolve, reject) => {
@@ -59,8 +60,17 @@ export default async function handler(req, res) {
     }
 
     const result = await confirmPagoByTransactionId(id, { sandbox });
-    res.statusCode = result.ok ? 200 : 422;
-    return res.end(JSON.stringify(result));
+    let checkoutResult = null;
+    if (result?.reason === 'no_cotizacion') {
+      try {
+        const tx = await fetchWompiTransaction(id, { sandbox });
+        checkoutResult = await markCheckoutPaidFromWompi(tx);
+      } catch (checkoutErr) {
+        console.warn('[wompi-confirm-pago] checkout notify', checkoutErr?.message || checkoutErr);
+      }
+    }
+    res.statusCode = result.ok || checkoutResult?.ok ? 200 : 422;
+    return res.end(JSON.stringify({ ...result, checkoutResult }));
   } catch (err) {
     console.error('[wompi-confirm-pago]', err);
     res.statusCode = 500;
