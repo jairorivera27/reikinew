@@ -4,8 +4,8 @@
  * NO marca el pedido como pagado: solo avisa al dueño "sin confirmar". El pago real lo confirma addi-webhook.
  * Body: { orderId, status? }
  */
-import { readJsonBody } from './_lib/addi.js';
-import { notifyAddiReturnUnverified } from './_lib/checkout-notify.js';
+import { readJsonBody } from '../addi.js';
+import { notifyAddiReturnUnverified } from '../checkout-notify.js';
 
 export default async function handler(req, res) {
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
