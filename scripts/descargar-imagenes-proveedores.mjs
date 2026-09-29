@@ -12,6 +12,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
+import { classifyMatchStrict, norm as normTipo } from './lib/match-tipos.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
@@ -136,11 +137,7 @@ function parseFm(raw) {
 }
 
 function norm(s) {
-  return String(s || '')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toUpperCase()
-    .replace(/[^A-Z0-9]+/g, '');
+  return normTipo(s);
 }
 
 function slugify(s) {
@@ -341,18 +338,8 @@ async function buildAutosolarIndex() {
   return autosolarIndex;
 }
 
-function decodeVictronScc(model) {
-  const m = String(model || '')
-    .toUpperCase()
-    .replace(/[^A-Z0-9]/g, '');
-  // SmartSolar: SCC1 + VVV + AA…
-  let x = m.match(/^SCC1(\d{3})(\d{2})/);
-  if (x) return { family: 'smartsolar', v: x[1].replace(/^0+/, '') || x[1], a: String(Number(x[2])) };
-  // BlueSolar / other: SCC0 + VVV + AA… or SCC075010060
-  x = m.match(/^SCC0(\d{3})(\d{2})/);
-  if (x) return { family: 'bluesolar', v: x[1].replace(/^0+/, '') || x[1], a: String(Number(x[2])) };
-  x = m.match(/^SCC(\d{2,3})(\d{2})/);
-  if (x) return { family: 'mppt', v: String(Number(x[1])), a: String(Number(x[2])) };
+function decodeVictronScc(_model) {
+  // Prohibido interpretar dígitos SCC como V/A. Usar nombre del producto.
   return null;
 }
 
@@ -496,76 +483,8 @@ async function loadAutosolarProduct(productUrl) {
 }
 
 function classifyMatch(product, pageTitle, pageUrl) {
-  const hay = norm(pageTitle + ' ' + pageUrl);
-  const model = norm(product.model || product.sku || '');
-  const titleN = norm(product.title);
-  const powerN = norm(product.power || '');
-
-  if (!hay) return 'dudoso';
-
-  // exact model
-  if (model && model.length >= 5 && hay.includes(model)) {
-    // power/voltage suffix conflict?
-    if (powerN && powerN.length >= 3) {
-      // e.g. 10050 vs 100A — if our power tokens appear differently
-      const ourAmp = (product.power || product.title || '').match(/(\d+)\s*\/\s*(\d+)/);
-      const theirAmp = (pageTitle || '').match(/(\d+)\s*\/\s*(\d+)/);
-      if (ourAmp && theirAmp) {
-        if (ourAmp[1] !== theirAmp[1] || ourAmp[2] !== theirAmp[2]) return 'dudoso';
-      }
-    }
-    return 'exacto';
-  }
-
-  // series: brand + shared series token, different power
-  const seriesTokens = [
-    'SUN2000',
-    'MULTIPLUS',
-    'PHOENIX',
-    'QUATTRO',
-    'SMARTSOLAR',
-    'BLUESOLAR',
-    'HMS',
-    'HMT',
-    'DS3',
-    'LUNA',
-    'ARK',
-    'UF5000',
-    'US5000',
-    'FLA24',
-    'FLA48',
-    'SDT',
-    'MOD',
-    'MIN',
-    'MID',
-  ];
-  for (const tok of seriesTokens) {
-    if (titleN.includes(tok) && hay.includes(tok)) {
-      // same series token but model not exact
-      if (model && !hay.includes(model)) return 'serie';
-      return 'serie';
-    }
-  }
-
-  // Victron SCC prefix family
-  if (/^SCC/.test(model) && hay.includes('SCC') && /SMARTSOLAR|MPPT|BLUESOLAR|PWM/.test(hay)) {
-    if (hay.includes(model)) return 'exacto';
-    return 'serie';
-  }
-
-  // Growatt TL / KTL
-  if (/GROWATT/.test(norm(product.brand)) && /GROWATT/.test(hay)) {
-    if (model && hay.includes(model)) return 'exacto';
-    return 'serie';
-  }
-
-  if (model && model.length >= 8) {
-    // partial model overlap
-    const core = model.slice(0, Math.min(10, model.length));
-    if (hay.includes(core)) return 'dudoso';
-  }
-
-  return null; // no match
+  const r = classifyMatchStrict(product, pageTitle, pageUrl);
+  return r.match;
 }
 
 async function downloadFile(url, destAbs, site) {
