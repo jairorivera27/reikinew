@@ -134,9 +134,12 @@ function priceDigits(price) {
 }
 
 /** Google limita offerId a 50 caracteres. */
+/** SKUs que comparten varios productos visibles (p. ej. SQ8T-63 en 40A/50A/63A): no sirven como ID único. */
+const SKU_REPETIDOS = new Set();
+
 function toOfferId(slug, sku) {
   const s = String(sku || '').trim();
-  if (s && s.length <= 50 && !/\s/.test(s)) return s;
+  if (s && s.length <= 50 && !/\s/.test(s) && !SKU_REPETIDOS.has(s)) return s;
   if (slug.length <= 50) return slug;
   // ID estable corto a partir del slug (misma entrada → mismo offerId).
   return `r${createHash('sha1').update(slug).digest('hex').slice(0, 49)}`;
@@ -222,6 +225,16 @@ function loadCatalog() {
   const ready = [];
   /** @type {Array<{ slug: string, reason: string }>} */
   const skipped = [];
+
+  // Detecta SKUs repetidos entre productos publicados para no pisar un producto con otro en Merchant.
+  const conteo = new Map();
+  for (const file of files) {
+    const d = parseProductMd(fs.readFileSync(path.join(PRODUCTOS_DIR, file), 'utf8'));
+    if (!d || isTruthyDraft(d.draft)) continue;
+    const k = String(d.sku || '').trim();
+    if (k) conteo.set(k, (conteo.get(k) || 0) + 1);
+  }
+  for (const [k, n] of conteo) if (n > 1) SKU_REPETIDOS.add(k);
 
   for (const file of files) {
     const slug = file.replace(/\.md$/i, '');
