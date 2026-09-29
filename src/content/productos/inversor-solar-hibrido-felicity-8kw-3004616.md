@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar Híbrido Felicity 8kW 3004616"
 description: "Inversor Solar Híbrido Felicity 8kW 3004616. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: Felicity; modelo: 3004616; especificación principal: 8kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-estudio/felicity-hybrid-prov.webp"
+image: "/images/productos-estudio/inversor-hibrido-felicity-solar-8000w-48v-ivgm8klp2g1.webp"
 category: "inversores"
 price: "$5.194.805"
 specifications:
@@ -23,11 +23,10 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/felicity-hybrid-prov.webp"
-imageAlt: "Felicity 3004616 8kW – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/inversores/felicity-hybrid.png"
-imagen_provisional: true
-imagenSerieRef: "Felicity Hybrid"
+imageThumb: "/images/productos-estudio/inversor-hibrido-felicity-solar-8000w-48v-ivgm8klp2g1-thumb.webp"
+imageAlt: "Felicity Inversor Solar Híbrido Felicity 8kW 3004616 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar-codigo/3004616/01-inversor-hibrido-felicity-solar-8000w-48v-ivgm8klp2g1-690281228bee8.jpg"
+imagen_provisional: false
 ---
 **Inversor Solar Híbrido Felicity 8kW 3004616** de Felicity · 8kW.
 

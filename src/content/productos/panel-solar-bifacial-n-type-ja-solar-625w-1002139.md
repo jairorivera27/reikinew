@@ -1,7 +1,7 @@
 ---
 title: "Panel Solar Bifacial N-Type JA Solar 625W 1002139"
 description: "Panel Solar Bifacial N-Type JA Solar 625W 1002139. Equipo para generación de energía solar fotovoltaica. Marca: JA Solar; modelo: 1002139; especificación principal: 625W. Compara potencia, tecnología y compatibilidad antes de instalar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-estudio/ja-solar-1002139-625w.webp"
+image: "/images/productos-estudio/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar.webp"
 category: "paneles"
 price: "$450.355"
 specifications:
@@ -23,9 +23,10 @@ seoKeywords:
   - "comprar panel solar colombia"
   - "precio panel solar colombia"
   - "equipos de energía solar colombia"
-imageAlt: "JA Solar 1002139 625W – Reiki Energía Solar"
-imageThumb: "/images/productos-estudio/ja-solar-1002139-625w-thumb.webp"
-imageOriginal: "/images/productos-tienda/paneles-solares/ja-solar-625w-bifacial.jpg"
+imageAlt: "JA Solar Panel Solar Bifacial N-Type JA Solar 625W 1002139 – Reiki Energía Solar"
+imageThumb: "/images/productos-estudio/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar-thumb.webp"
+imageOriginal: "proveedores/autosolar-codigo/1002139/01-panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar-69419565c3870.jpg"
+imagen_provisional: false
 ---
 **Panel Solar Bifacial N-Type JA Solar 625W 1002139** de JA Solar · 625W.
 

@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar Off-Grid Growatt 3000W 3004250"
 description: "Inversor Solar Off-Grid Growatt 3000W 3004250. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: Growatt; modelo: 3004250; especificación principal: 3000W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/growatt-mod.jpg"
+image: "/images/productos-estudio/inversor-cargador-growatt-spf-3000tl-lvm-24v.webp"
 category: "inversores"
 price: "$1.938.350"
 specifications:
@@ -23,7 +23,10 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
-imagenSerieRef: "Growatt MOD"
+imageThumb: "/images/productos-estudio/inversor-cargador-growatt-spf-3000tl-lvm-24v-thumb.webp"
+imageAlt: "Growatt Inversor Solar Off-Grid Growatt 3000W 3004250 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar-codigo/3004250/01-inversor-cargador-growatt-spf-3000tl-lvm-24v.jpg"
+imagen_provisional: false
 ---
 **Inversor Solar Off-Grid Growatt 3000W 3004250** de Growatt · 3000W.
 

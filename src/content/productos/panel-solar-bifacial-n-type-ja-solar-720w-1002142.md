@@ -1,7 +1,7 @@
 ---
 title: "Panel Solar Bifacial N-Type JA Solar 720W 1002142"
 description: "Panel Solar Bifacial N-Type JA Solar 720W 1002142. Equipo para generación de energía solar fotovoltaica. Marca: JA Solar; modelo: 1002142; especificación principal: 720W. Compara potencia, tecnología y compatibilidad antes de instalar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-estudio/ja-solar-1002142-720w.webp"
+image: "/images/productos-estudio/panel-solar-bifacial-720w-deep-blue-40-n-type-ja-solar.webp"
 category: "paneles"
 price: "$527.296"
 specifications:
@@ -23,9 +23,10 @@ seoKeywords:
   - "comprar panel solar colombia"
   - "precio panel solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/ja-solar-1002142-720w-thumb.webp"
-imageAlt: "JA Solar 1002142 720W – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/paneles-solares/ja-solar-720w-bifacial.jpg"
+imageThumb: "/images/productos-estudio/panel-solar-bifacial-720w-deep-blue-40-n-type-ja-solar-thumb.webp"
+imageAlt: "JA Solar Panel Solar Bifacial N-Type JA Solar 720W 1002142 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar-codigo/1002142/01-panel-solar-bifacial-720w-deep-blue-40-n-type-ja-solar-6a19e5b08bd0a.jpg"
+imagen_provisional: false
 ---
 **Panel Solar Bifacial N-Type JA Solar 720W 1002142** de JA Solar · 720W.
 

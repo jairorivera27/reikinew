@@ -1,7 +1,7 @@
 ---
 title: "Breaker Suntree 50A AC 5504181"
 description: "Breaker Suntree 50A AC 5504181. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Suntree; modelo: 5504181; especificación principal: 50A AC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-estudio/suntree-scb8-ac-prov.webp"
+image: "/images/productos-estudio/breaker-solar-ac-2x50a-400vac-suntree.webp"
 category: "protecciones"
 price: "$15.119"
 specifications:
@@ -23,10 +23,10 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/suntree-scb8-ac-prov.webp"
-imageAlt: "Suntree 5504181 50A AC – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/protecciones/suntree-scb8-ac.jpg"
-imagen_provisional: true
+imageThumb: "/images/productos-estudio/breaker-solar-ac-2x50a-400vac-suntree-thumb.webp"
+imageAlt: "Suntree Breaker Suntree 50A AC 5504181 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar-codigo/5504181/01-breaker-solar-ac-2x50a-400vac-suntree-693b145c4fb9a.jpg"
+imagen_provisional: false
 ---
 **Breaker Suntree 50A AC 5504181** de Suntree · 50A AC.
 

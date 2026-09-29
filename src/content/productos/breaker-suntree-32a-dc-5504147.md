@@ -1,7 +1,7 @@
 ---
 title: "Breaker Suntree 32A DC 5504147"
 description: "Breaker Suntree 32A DC 5504147. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Suntree; modelo: 5504147; especificación principal: 32A DC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-estudio/suntree-sl7n-dc.webp"
+image: "/images/productos-estudio/breaker-solar-dc-4x32a-1200v-suntree.webp"
 category: "protecciones"
 price: "$124.362"
 specifications:
@@ -23,9 +23,10 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/suntree-sl7n-dc-thumb.webp"
-imageAlt: "Suntree 5504147 32A DC – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
+imageThumb: "/images/productos-estudio/breaker-solar-dc-4x32a-1200v-suntree-thumb.webp"
+imageAlt: "Suntree Breaker Suntree 32A DC 5504147 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar-codigo/5504147/01-breaker-solar-dc-4x32a-1200v-suntree.jpg"
+imagen_provisional: false
 ---
 **Breaker Suntree 32A DC 5504147** de Suntree · 32A DC.
 

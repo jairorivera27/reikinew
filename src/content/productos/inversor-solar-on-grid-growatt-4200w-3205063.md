@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid Growatt 4200W 3205063"
 description: "Inversor Solar On-Grid Growatt 4200W 3205063. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: Growatt; modelo: 3205063; especificación principal: 4200W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/growatt-mod.jpg"
+image: "/images/productos-estudio/growatt-min-4200tl-x.webp"
 category: "inversores"
 price: "$1.670.752"
 specifications:
@@ -23,7 +23,10 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
-imagenSerieRef: "Growatt MOD"
+imageThumb: "/images/productos-estudio/growatt-min-4200tl-x-thumb.webp"
+imageAlt: "Growatt Inversor Solar On-Grid Growatt 4200W 3205063 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar-codigo/3205063/01-inversor-on-grid-4200w-growatt-min-4200tl-x.jpg"
+imagen_provisional: false
 ---
 **Inversor Solar On-Grid Growatt 4200W 3205063** de Growatt · 4200W.
 

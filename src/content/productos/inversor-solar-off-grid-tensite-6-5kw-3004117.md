@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar Off-Grid Tensite 6.5kW 3004117"
 description: "Inversor Solar Off-Grid Tensite 6.5kW 3004117. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: Tensite; modelo: 3004117; especificación principal: 6.5kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-estudio/tensite-3004117-6-5kw.webp"
+image: "/images/productos-estudio/inversor-cargador-6500w-48v-tensite-max.webp"
 category: "inversores"
 price: "$3.508.415"
 specifications:
@@ -23,9 +23,10 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
-imageAlt: "Tensite 3004117 6.5kW – Reiki Energía Solar"
-imageThumb: "/images/productos-estudio/tensite-3004117-6-5kw-thumb.webp"
-imageOriginal: "/images/productos-tienda/inversores/tensite-inverter.jpg"
+imageAlt: "Tensite Inversor Solar Off-Grid Tensite 6.5kW 3004117 – Reiki Energía Solar"
+imageThumb: "/images/productos-estudio/inversor-cargador-6500w-48v-tensite-max-thumb.webp"
+imageOriginal: "proveedores/autosolar-codigo/3004117/01-inversor-cargador-6500w-48v-tensite-max-68d54321886f3.jpg"
+imagen_provisional: false
 ---
 **Inversor Solar Off-Grid Tensite 6.5kW 3004117** de Tensite · 6.5kW.
 

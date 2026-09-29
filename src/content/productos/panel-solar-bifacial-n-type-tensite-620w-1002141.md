@@ -1,7 +1,7 @@
 ---
 title: "Panel Solar Bifacial N-Type Tensite 620W 1002141"
 description: "Panel Solar Bifacial N-Type Tensite 620W 1002141. Equipo para generación de energía solar fotovoltaica. Marca: Tensite; modelo: 1002141; especificación principal: 620W. Compara potencia, tecnología y compatibilidad antes de instalar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-estudio/tensite-1002141-620w.webp"
+image: "/images/productos-estudio/panel-solar-bifacial-620w-n-type-tensite.webp"
 category: "paneles"
 price: "$426.954"
 specifications:
@@ -23,9 +23,10 @@ seoKeywords:
   - "comprar panel solar colombia"
   - "precio panel solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/tensite-1002141-620w-thumb.webp"
-imageAlt: "Tensite 1002141 620W – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/paneles-solares/tensite-620w-bifacial.jpg"
+imageThumb: "/images/productos-estudio/panel-solar-bifacial-620w-n-type-tensite-thumb.webp"
+imageAlt: "Tensite Panel Solar Bifacial N-Type Tensite 620W 1002141 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar-codigo/1002141/01-panel-solar-bifacial-620w-n-type-tensite-6a1e08639c2b0.jpg"
+imagen_provisional: false
 ---
 **Panel Solar Bifacial N-Type Tensite 620W 1002141** de Tensite · 620W.
 

@@ -19,8 +19,14 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.join(__dirname, '..');
 const PROD_DIR = path.join(ROOT, 'src', 'content', 'productos');
 const OUT_DIR = path.join(ROOT, 'public', 'images', 'productos-estudio');
-const DECISIONES = path.join(ROOT, 'docs', 'lote1-decisiones.json');
-const REPORTE = path.join(ROOT, 'docs', 'lote1-reporte.json');
+const argVal = (k, d) => {
+  const i = process.argv.indexOf(k);
+  return i > 0 ? process.argv[i + 1] : d;
+};
+// --lote 2 → docs/lote2-decisiones.json / docs/lote2-reporte.json
+const LOTE = argVal('--lote', '1');
+const DECISIONES = path.join(ROOT, 'docs', `lote${LOTE}-decisiones.json`);
+const REPORTE = path.join(ROOT, 'docs', `lote${LOTE}-reporte.json`);
 const DRY = process.argv.includes('--dry-run');
 
 const CANVAS = 1600;
@@ -181,7 +187,7 @@ async function composeMultiply(src) {
   return { composed, scale, targetFit, sourceW: tw, sourceH: th };
 }
 
-const PRODUCTO_BLANCO = /growatt|NFAC0003/i;
+const PRODUCTO_BLANCO = /growatt|NFAC0003|felicity|\/(300[0-9]{4}|320[0-9]{4}|188[0-9]{4})\//i;
 
 async function writeOutputs(seoName, composed) {
   fs.mkdirSync(OUT_DIR, { recursive: true });
@@ -237,7 +243,8 @@ function seoNameFor(src) {
     .replace(/-[0-9a-f]{13}$/, '')
     .replace(/^controlador-carga-/, 'victron-')
     .replace(/^inversor-on-grid-\d+w-/, '')
-    .replace(/^inversor-/, 'victron-')
+    .replace(/^inversor-(?=.*(multiplus|phoenix|quattro))/, 'victron-')
+    .replace(/^inversor-(on-grid-|red-)?/, 'inversor-')
     .replace(/^multiplus-ii-48500070-95-120v/, 'victron-multiplus-ii-48-5000')
     .replace(/^victron-multiplus-compact-12v-2000va.*$/, 'victron-multiplus-compact-12-2000')
     .toLowerCase();

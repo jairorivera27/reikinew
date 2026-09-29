@@ -1,7 +1,7 @@
 ---
 title: "Breaker Suntree 16A DC 5504146"
 description: "Breaker Suntree 16A DC 5504146. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Suntree; modelo: 5504146; especificación principal: 16A DC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-estudio/suntree-sl7n-dc.webp"
+image: "/images/productos-estudio/breaker-solar-dc-4x16a-1200v-suntree.webp"
 category: "protecciones"
 price: "$124.362"
 specifications:
@@ -23,9 +23,10 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/suntree-sl7n-dc-thumb.webp"
-imageAlt: "Suntree 5504146 16A DC – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
+imageThumb: "/images/productos-estudio/breaker-solar-dc-4x16a-1200v-suntree-thumb.webp"
+imageAlt: "Suntree Breaker Suntree 16A DC 5504146 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar-codigo/5504146/01-breaker-solar-dc-4x16a-1200v-suntree-686807b7b6204.jpg"
+imagen_provisional: false
 ---
 **Breaker Suntree 16A DC 5504146** de Suntree · 16A DC.
 

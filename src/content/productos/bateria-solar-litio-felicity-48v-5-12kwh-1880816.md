@@ -1,7 +1,7 @@
 ---
 title: "Batería Solar Litio Felicity 48V 5.12kWh 1880816"
 description: "Batería Solar Litio Felicity 48V 5.12kWh 1880816. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Marca: Felicity; modelo: 1880816; especificación principal: 48V 5.12kWh. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-estudio/felicity-fla48.webp"
+image: "/images/productos-estudio/bateria-litio-felicity-solar-512kwh-512v-100a-fla48100.webp"
 category: "baterias"
 price: "$4.183.594"
 specifications:
@@ -23,11 +23,10 @@ seoKeywords:
   - "comprar batería solar colombia"
   - "precio batería solar colombia"
   - "equipos de energía solar colombia"
-imageAlt: "Felicity 1880816 48V 5.12kWh – Reiki Energía Solar"
-imageThumb: "/images/productos-estudio/felicity-fla48-thumb.webp"
-imageOriginal: "/images/productos-tienda/baterias/felicity-fla48.jpg"
-imagen_provisional: true
-imagenSerieRef: "Felicity FLA48"
+imageAlt: "Felicity Batería Solar Litio Felicity 48V 5.12kWh 1880816 – Reiki Energía Solar"
+imageThumb: "/images/productos-estudio/bateria-litio-felicity-solar-512kwh-512v-100a-fla48100-thumb.webp"
+imageOriginal: "proveedores/autosolar-codigo/1880816/01-bateria-litio-felicity-solar-512kwh-512v-100a-fla48100-68b1bd4de2412.jpg"
+imagen_provisional: false
 ---
 **Batería Solar Litio Felicity 48V 5.12kWh 1880816** de Felicity · 48V 5.12kWh.
 

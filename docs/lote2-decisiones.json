@@ -1,0 +1,315 @@
+{
+ "panel-solar-bifacial-n-type-tensite-710w-1002138": {
+  "src": "imagenes-proveedores/autosolar-codigo/1002138/01-panel-solar-bifacial-710w-n-type-tensite-68e68fd24f998.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "1002138"
+ },
+ "panel-solar-bifacial-n-type-ja-solar-625w-1002139": {
+  "src": "imagenes-proveedores/autosolar-codigo/1002139/01-panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar-69419565c3870.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "1002139"
+ },
+ "panel-solar-bifacial-n-type-ja-solar-715w-1002140": {
+  "src": "imagenes-proveedores/autosolar-codigo/1002140/01-panel-solar-bifacial-715w-deep-blue-40-n-type-ja-solar-697a10ad375f6.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "1002140"
+ },
+ "panel-solar-bifacial-n-type-tensite-620w-1002141": {
+  "src": "imagenes-proveedores/autosolar-codigo/1002141/01-panel-solar-bifacial-620w-n-type-tensite-6a1e08639c2b0.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "1002141"
+ },
+ "panel-solar-bifacial-n-type-ja-solar-720w-1002142": {
+  "src": "imagenes-proveedores/autosolar-codigo/1002142/01-panel-solar-bifacial-720w-deep-blue-40-n-type-ja-solar-6a19e5b08bd0a.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "1002142"
+ },
+ "panel-solar-monocristalino-tensite-240w-1002223": {
+  "src": "imagenes-proveedores/autosolar-codigo/1002223/01-panel-solar-monocristalino-240w-tensite.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "1002223"
+ },
+ "bateria-solar-litio-felicity-12v-1-28kwh-1880812": {
+  "src": "imagenes-proveedores/autosolar-codigo/1880812/01-bateria-litio-felicity-solar-128kwh-12v-100a-fla12100-68b1b78604ed1.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "1880812"
+ },
+ "bateria-solar-litio-felicity-12v-2-56kwh-1880813": {
+  "src": "imagenes-proveedores/autosolar-codigo/1880813/01-bateria-litio-felicity-solar-256kwh-12v-200a-fla12200-68b1b84cb38f0.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "1880813"
+ },
+ "bateria-solar-litio-felicity-24v-7-5kwh-1880814": {
+  "src": "imagenes-proveedores/autosolar-codigo/1880814/01-bateria-litio-felicity-solar-375kwh-12v-300a-fla-24300-68d6a18f95092.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "1880814"
+ },
+ "bateria-solar-litio-felicity-48v-5-12kwh-1880816": {
+  "src": "imagenes-proveedores/autosolar-codigo/1880816/01-bateria-litio-felicity-solar-512kwh-512v-100a-fla48100-68b1bd4de2412.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "1880816"
+ },
+ "bateria-solar-litio-felicity-24v-2-56kwh-1880833": {
+  "src": "imagenes-proveedores/autosolar-codigo/1880833/01-bateria-litio-felicity-solar-256kwh-24v-100a-fla24100-690b99f928255.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "1880833"
+ },
+ "bateria-solar-litio-felicity-48v-11-8kwh-1880845": {
+  "src": "imagenes-proveedores/autosolar-codigo/1880845/01-bateria-litio-felicity-solar-118kwh-512v-fla48230-69fd0e0f67e57.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "1880845"
+ },
+ "bateria-solar-litio-felicity-24v-5-9kwh-1880846": {
+  "src": "imagenes-proveedores/autosolar-codigo/1880846/01-bateria-litio-felicity-solar-59kwh-24v-230a-fla-24230-eu-6a14715a5dfe3.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "1880846"
+ },
+ "inversor-solar-off-grid-tensite-6-5kw-3004117": {
+  "src": "imagenes-proveedores/autosolar-codigo/3004117/01-inversor-cargador-6500w-48v-tensite-max-68d54321886f3.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "3004117"
+ },
+ "inversor-solar-hibrido-felicity-28kw-3004249": {
+  "src": "imagenes-proveedores/autosolar-codigo/3004249/01-inversor-hibrido-felicity-28kw-160-800v-4-mppt-69d7b8a26090b.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "3004249"
+ },
+ "inversor-solar-off-grid-growatt-3000w-3004250": {
+  "src": "imagenes-proveedores/autosolar-codigo/3004250/01-inversor-cargador-growatt-spf-3000tl-lvm-24v.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "3004250"
+ },
+ "inversor-solar-on-grid-growatt-10000w-3004285": {
+  "src": "imagenes-proveedores/autosolar-codigo/3004285/01-inversor-on-grid-10000w-growatt-mid-10tl3-xl2-6888fb5456b4c.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "3004285"
+ },
+ "inversor-solar-on-grid-growatt-15000w-3004290": {
+  "src": "imagenes-proveedores/autosolar-codigo/3004290/01-inversor-on-grid-15000w-growatt-mid-15tl3-xl2.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "3004290"
+ },
+ "inversor-solar-on-grid-growatt-20000w-3004291": {
+  "src": "imagenes-proveedores/autosolar-codigo/3004291/01-inversor-on-grid-20000w-growatt-mid-20k-tl3-xl2-699df7ff8ecd6.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "3004291"
+ },
+ "inversor-solar-on-grid-growatt-25000w-3004292": {
+  "src": "imagenes-proveedores/autosolar-codigo/3004291/01-inversor-on-grid-20000w-growatt-mid-20k-tl3-xl2-699df7ff8ecd6.jpg",
+  "match": "serie",
+  "serieRef": "Growatt MID TL3-XL2",
+  "codigo": "3004292",
+  "nota": "Autosolar solo tiene foto de 250 px; misma carcasa que MID 20K"
+ },
+ "inversor-solar-on-grid-growatt-36000w-3004294": {
+  "src": "imagenes-proveedores/autosolar-codigo/3004294/01-inversor-on-grid-36000w-growatt-mac-36ktl3-xl.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "3004294"
+ },
+ "inversor-solar-on-grid-growatt-50000w-3004295": {
+  "src": "imagenes-proveedores/autosolar-codigo/3004295/01-inversor-on-grid-growatt-max-50-ktl3-xl-2.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "3004295"
+ },
+ "inversor-solar-on-grid-growatt-75000w-3004296": {
+  "src": "imagenes-proveedores/autosolar-codigo/3004296/01-inversor-on-grid-75000w-growatt-max-75ktl3-xl.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "3004296"
+ },
+ "inversor-solar-off-grid-felicity-2kw-3004614": {
+  "src": "imagenes-proveedores/autosolar-codigo/3004614/01-inversor-cargador-felicity-solar-2000w-24v-ivcm2024-lv-690bbf2d72d11.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "3004614"
+ },
+ "inversor-solar-hibrido-felicity-8kw-3004616": {
+  "src": "imagenes-proveedores/autosolar-codigo/3004616/01-inversor-hibrido-felicity-solar-8000w-48v-ivgm8klp2g1-690281228bee8.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "3004616"
+ },
+ "inversor-solar-on-grid-growatt-4200w-3205063": {
+  "src": "imagenes-proveedores/autosolar-codigo/3205063/01-inversor-on-grid-4200w-growatt-min-4200tl-x.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "3205063"
+ },
+ "inversor-solar-on-grid-growatt-8000w-3205064": {
+  "src": "imagenes-proveedores/autosolar-codigo/3205064/01-inversor-on-grid-growatt-mid-8k-tl3-xl2.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "3205064"
+ },
+ "dps-supresor-suntree-40ka-dc-5504116": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504116/01-fusible-solar-dc-3p-1200vdc-2040ka-suntree-685c0d9d9ea70.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504116"
+ },
+ "breaker-suntree-20a-dc-5504131": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504131/01-breaker-solar-dc-4x20a-1200v-suntree.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504131"
+ },
+ "breaker-suntree-25a-dc-5504133": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504133/01-breaker-solar-dc-4x25a-1200v-suntree-6866b6bfac4ad.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504133"
+ },
+ "dps-supresor-suntree-40ka-dc-5504138": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504138/01-dps-solar-dc-2p-800vdc-2040ka-suntree-688394ceca61f.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504138"
+ },
+ "breaker-suntree-20a-dc-5504140": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504140/01-breaker-solar-dc-2x20a-800v-suntree-69ab463fa8a84.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504140"
+ },
+ "breaker-suntree-25a-dc-5504141": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504141/01-breaker-solar-dc-2x25a-550v-suntree.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504141"
+ },
+ "breaker-suntree-32a-dc-5504142": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504142/01-breaker-solar-dc-2x32a-550v-suntree.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504142"
+ },
+ "breaker-suntree-50a-dc-5504144": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504144/01-breaker-solar-dc-2x50a-550v-suntree.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504144"
+ },
+ "breaker-suntree-63a-dc-5504145": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504145/01-breaker-solar-dc-2x63a-550v-suntree.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504145"
+ },
+ "breaker-suntree-16a-dc-5504146": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504146/01-breaker-solar-dc-4x16a-1200v-suntree-686807b7b6204.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504146"
+ },
+ "breaker-suntree-32a-dc-5504147": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504147/01-breaker-solar-dc-4x32a-1200v-suntree.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504147"
+ },
+ "breaker-suntree-20a-dc-5504148": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504148/01-breaker-solar-dc-2x20a-600v-suntree-69fa234a8abd9.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504148"
+ },
+ "breaker-suntree-25a-dc-5504149": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504149/01-breaker-solar-dc-2x25a-600v-suntree-6a35c1dbbfb7f.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504149"
+ },
+ "breaker-suntree-25a-ac-5504177": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504177/01-breaker-solar-ac-2x25a-400vac-suntree-693b1212c3ee4.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504177"
+ },
+ "breaker-suntree-32a-ac-5504178": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504178/01-breaker-solar-ac-2x32a-400vac-suntree-693b12f246070.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504178"
+ },
+ "breaker-suntree-40a-ac-5504179": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504179/01-breaker-solar-ac-2x40a-400vac-suntree-693b1386dab84.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504179"
+ },
+ "breaker-suntree-50a-ac-5504181": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504181/01-breaker-solar-ac-2x50a-400vac-suntree-693b145c4fb9a.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504181"
+ },
+ "breaker-suntree-25a-ac-5504183": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504183/01-breaker-solar-ac-3x25a-400vac-suntree-697385176e727.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504183"
+ },
+ "breaker-suntree-32a-ac-5504184": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504184/01-breaker-solar-ac-3x32a-400vac-suntree-6973856aa5b78.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504184"
+ },
+ "breaker-suntree-40a-ac-5504196": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504196/01-breaker-solar-ac-3x40a-400vac-suntree-697387030a6c7.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504196"
+ },
+ "breaker-suntree-63a-ac-5504198": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504198/01-breaker-solar-ac-3x63a-400vac-suntree-697387c19942c.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504198"
+ },
+ "breaker-suntree-25a-dc-5504209": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504209/01-breaker-solar-dc-2x25a-1000v-suntree-6a39758ae8043.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504209"
+ },
+ "breaker-suntree-32a-dc-5504210": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504210/01-breaker-solar-dc-2x32a-1000v-suntree-6a3975fe66b47.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504210"
+ },
+ "breaker-suntree-80a-dc-5504211": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504211/01-breaker-solar-dc-1x80a-250v-suntree-6a43e7c78d8e0.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504211"
+ },
+ "breaker-suntree-32a-dc-5504231": {
+  "src": "imagenes-proveedores/autosolar-codigo/5504231/01-breaker-solar-dc-2x32a-600v-suntree-6a106e269740f.jpg",
+  "match": "exacto",
+  "serieRef": null,
+  "codigo": "5504231"
+ }
+}

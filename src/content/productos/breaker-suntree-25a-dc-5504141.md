@@ -1,7 +1,7 @@
 ---
 title: "Breaker Suntree 25A DC 5504141"
 description: "Breaker Suntree 25A DC 5504141. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Suntree; modelo: 5504141; especificación principal: 25A DC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-estudio/suntree-sl7n-dc.webp"
+image: "/images/productos-estudio/breaker-solar-dc-2x25a-550v-suntree.webp"
 category: "protecciones"
 price: "$59.122"
 specifications:
@@ -23,9 +23,10 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/suntree-sl7n-dc-thumb.webp"
-imageAlt: "Suntree 5504141 25A DC – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
+imageThumb: "/images/productos-estudio/breaker-solar-dc-2x25a-550v-suntree-thumb.webp"
+imageAlt: "Suntree Breaker Suntree 25A DC 5504141 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar-codigo/5504141/01-breaker-solar-dc-2x25a-550v-suntree.jpg"
+imagen_provisional: false
 ---
 **Breaker Suntree 25A DC 5504141** de Suntree · 25A DC.
 

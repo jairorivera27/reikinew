@@ -1,7 +1,7 @@
 ---
 title: "Batería Solar Litio Felicity 24V 2,56kWh 1880833"
 description: "Batería Solar Litio Felicity 24V 2,56kWh 1880833. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Marca: Felicity; modelo: 1880833; especificación principal: 24V 2,56kWh. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-estudio/felicity-fla24.webp"
+image: "/images/productos-estudio/bateria-litio-felicity-solar-256kwh-24v-100a-fla24100.webp"
 category: "baterias"
 price: "$2.603.125"
 specifications:
@@ -23,11 +23,10 @@ seoKeywords:
   - "56kwh"
   - "comprar batería solar colombia"
   - "precio batería solar colombia"
-imageThumb: "/images/productos-estudio/felicity-fla24-thumb.webp"
-imageAlt: "Felicity 1880833 24V 2,56kWh – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/baterias/felicity-fla24.jpg"
-imagen_provisional: true
-imagenSerieRef: "Felicity FLA24"
+imageThumb: "/images/productos-estudio/bateria-litio-felicity-solar-256kwh-24v-100a-fla24100-thumb.webp"
+imageAlt: "Felicity Batería Solar Litio Felicity 24V 2,56kWh 1880833 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar-codigo/1880833/01-bateria-litio-felicity-solar-256kwh-24v-100a-fla24100-690b99f928255.jpg"
+imagen_provisional: false
 ---
 **Batería Solar Litio Felicity 24V 2,56kWh 1880833** de Felicity · 24V 2,56kWh.
 

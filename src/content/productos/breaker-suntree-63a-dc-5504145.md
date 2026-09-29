@@ -1,7 +1,7 @@
 ---
 title: "Breaker Suntree 63A DC 5504145"
 description: "Breaker Suntree 63A DC 5504145. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Suntree; modelo: 5504145; especificación principal: 63A DC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-estudio/suntree-sl7n-dc.webp"
+image: "/images/productos-estudio/breaker-solar-dc-2x63a-550v-suntree.webp"
 category: "protecciones"
 price: "$63.377"
 specifications:
@@ -23,9 +23,10 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/suntree-sl7n-dc-thumb.webp"
-imageAlt: "Suntree 5504145 63A DC – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
+imageThumb: "/images/productos-estudio/breaker-solar-dc-2x63a-550v-suntree-thumb.webp"
+imageAlt: "Suntree Breaker Suntree 63A DC 5504145 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar-codigo/5504145/01-breaker-solar-dc-2x63a-550v-suntree.jpg"
+imagen_provisional: false
 ---
 **Breaker Suntree 63A DC 5504145** de Suntree · 63A DC.
 

@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid Growatt 75000W 3004296"
 description: "Inversor Solar On-Grid Growatt 75000W 3004296. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: Growatt; modelo: 3004296; especificación principal: 75000W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/growatt-mod.jpg"
+image: "/images/productos-estudio/growatt-max-75ktl3-xl.webp"
 category: "inversores"
 price: "$15.486.261"
 specifications:
@@ -23,7 +23,10 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
-imagenSerieRef: "Growatt MOD"
+imageThumb: "/images/productos-estudio/growatt-max-75ktl3-xl-thumb.webp"
+imageAlt: "Growatt Inversor Solar On-Grid Growatt 75000W 3004296 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar-codigo/3004296/01-inversor-on-grid-75000w-growatt-max-75ktl3-xl.jpg"
+imagen_provisional: false
 ---
 **Inversor Solar On-Grid Growatt 75000W 3004296** de Growatt · 75000W.
 

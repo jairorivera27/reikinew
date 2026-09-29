@@ -1,7 +1,7 @@
 ---
 title: "Breaker Suntree 25A AC 5504183"
 description: "Breaker Suntree 25A AC 5504183. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Suntree; modelo: 5504183; especificación principal: 25A AC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-estudio/suntree-scb8-ac-prov.webp"
+image: "/images/productos-estudio/breaker-solar-ac-3x25a-400vac-suntree.webp"
 category: "protecciones"
 price: "$21.115"
 specifications:
@@ -23,10 +23,10 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/suntree-scb8-ac-prov.webp"
-imageAlt: "Suntree 5504183 25A AC – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/protecciones/suntree-scb8-ac.jpg"
-imagen_provisional: true
+imageThumb: "/images/productos-estudio/breaker-solar-ac-3x25a-400vac-suntree-thumb.webp"
+imageAlt: "Suntree Breaker Suntree 25A AC 5504183 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar-codigo/5504183/01-breaker-solar-ac-3x25a-400vac-suntree-697385176e727.jpg"
+imagen_provisional: false
 ---
 **Breaker Suntree 25A AC 5504183** de Suntree · 25A AC.
 

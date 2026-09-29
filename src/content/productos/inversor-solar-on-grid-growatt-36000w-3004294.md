@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid Growatt 36000W 3004294"
 description: "Inversor Solar On-Grid Growatt 36000W 3004294. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: Growatt; modelo: 3004294; especificación principal: 36000W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/growatt-mod.jpg"
+image: "/images/productos-estudio/growatt-mac-36ktl3-xl.webp"
 category: "inversores"
 price: "$9.264.686"
 specifications:
@@ -23,7 +23,10 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
-imagenSerieRef: "Growatt MOD"
+imageThumb: "/images/productos-estudio/growatt-mac-36ktl3-xl-thumb.webp"
+imageAlt: "Growatt Inversor Solar On-Grid Growatt 36000W 3004294 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar-codigo/3004294/01-inversor-on-grid-36000w-growatt-mac-36ktl3-xl.jpg"
+imagen_provisional: false
 ---
 **Inversor Solar On-Grid Growatt 36000W 3004294** de Growatt · 36000W.
 
