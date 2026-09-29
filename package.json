@@ -15,6 +15,7 @@
     "merchant:sync-catalog": "node scripts/google-merchant/sync-catalog.mjs --insert",
     "merchant:sync-catalog:dry": "node scripts/google-merchant/sync-catalog.mjs",
     "merchant:diagnose": "node scripts/google-merchant/diagnose-disapproved.mjs",
+    "buscar:compra": "node scripts/buscar-compra.mjs",
     "astro": "astro"
   },
   "description": "Sitio web principal (Astro).",

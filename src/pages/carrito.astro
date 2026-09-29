@@ -869,6 +869,38 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
       console.log('[checkout] processCheckout payload', payload);
       console.log('[checkout] payload JSON:', JSON.stringify(payload, null, 2));
 
+      try {
+        await fetch('/api/register-checkout', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            orderId: referenciaUnica,
+            gateway: 'wompi',
+            totalAmount: totalCop,
+            items: items.map(function (it) {
+              return {
+                sku: it.id,
+                name: it.title,
+                quantity: it.quantity,
+                unitPrice: it.unitAmountMinorUnitsCop,
+              };
+            }),
+            client: {
+              fullName: nombreDelFormulario,
+              email: emailDelFormulario,
+              phone: telefonoDelFormulario,
+              idNumber: String(fd.get('idNumber') || '').replace(/\D/g, ''),
+            },
+            shippingAddress: {
+              lineOne: String(fd.get('addressLine') || '').trim(),
+              city: String(fd.get('city') || '').trim(),
+            },
+          }),
+        });
+      } catch (_regErr) {
+        console.warn('[checkout] register-checkout no guardó snapshot (Redis/KV o red).');
+      }
+
       var checkoutConfig = {
         currency: 'COP',
         amountInCents: totalEnCentavos,

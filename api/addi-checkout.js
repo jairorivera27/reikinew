@@ -17,6 +17,7 @@ import {
   readJsonBody,
   removeAccents,
 } from './_lib/addi.js';
+import { saveCheckoutOrder } from './_lib/checkout-order-store.js';
 
 function cleanPhone(phone) {
   let digits = String(phone || '').replace(/\D/g, '');
@@ -112,6 +113,28 @@ export default async function handler(req, res) {
     const address = toAddress(body.shippingAddress || clientIn.address || {});
     const shippingAmount = Number(body.shippingAmount || 0) || 0;
 
+    await saveCheckoutOrder({
+      orderId,
+      reference: orderId,
+      gateway: 'addi',
+      status: 'pending',
+      totalAmount,
+      items: items.map((it, idx) => ({
+        sku: it.sku || it.id || `item-${idx}`,
+        name: it.name || it.title,
+        quantity: it.quantity || 1,
+        unitPrice: it.unitPrice || it.price,
+      })),
+      client: {
+        fullName: String(clientIn.fullName || `${firstName} ${lastName}`).trim(),
+        email,
+        phone: cellphone,
+        idNumber,
+        idType: String(clientIn.idType || 'CC'),
+      },
+      shippingAddress: address,
+    });
+
     const token = await getAddiAccessToken();
 
     const payload = {
@@ -144,7 +167,7 @@ export default async function handler(req, res) {
       billingAddress: address,
       allyUrlRedirection: {
         logoUrl: cfg.logoUrl,
-        callbackUrl: `${cfg.siteUrl}/api/addi-webhook`,
+        callbackUrl: `${cfg.siteUrl}/api/addi-webhook${process.env.ADDI_WEBHOOK_TOKEN ? `?t=${encodeURIComponent(String(process.env.ADDI_WEBHOOK_TOKEN).trim())}` : ''}`,
         redirectionUrl: `${cfg.siteUrl}/respuesta-pago?gateway=addi&orderId=${encodeURIComponent(orderId)}`,
       },
     };

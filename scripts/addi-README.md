@@ -37,7 +37,10 @@ Docs: https://api-docs-sandbox.addi.com/
 | Archivo | Rol |
 |---|---|
 | `api/addi-checkout.js` | Crea la solicitud y devuelve `redirectUrl` |
-| `api/addi-webhook.js` | Recibe estados APPROVED/REJECTED/… |
+| `api/addi-webhook.js` | Recibe estados APPROVED/REJECTED/… + WhatsApp al dueño |
+| `api/register-checkout.js` | Guarda pedido Wompi antes del widget |
+| `api/orders-search.js` | Consulta pedidos (header `Authorization: Bearer ADMIN_ORDERS_SECRET`) |
+| `scripts/buscar-compra.mjs` | Misma búsqueda desde tu PC con vars KV en `.env` |
 | `api/_lib/addi.js` | OAuth + helpers |
 | `src/pages/carrito.astro` | Selector Wompi / Addi |
 | `src/pages/respuesta-pago.astro` | Retorno `?gateway=addi` |

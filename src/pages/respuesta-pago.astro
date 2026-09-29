@@ -645,6 +645,15 @@ const emailjsTemplateId =
               '';
 
             if (addiStatus === 'APPROVED' || addiStatus === 'COMPLETED') {
+              try {
+                await fetch('/api/addi-confirm-order', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({ orderId: refAddi, status: addiStatus }),
+                });
+              } catch (_addiConfirm) {
+                /* webhook también confirma */
+              }
               setStatus(
                 'success',
                 '¡Solicitud Addi aprobada!',
