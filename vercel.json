@@ -29,6 +29,18 @@
   },
   "rewrites": [
     {
+      "source": "/api/register-checkout",
+      "destination": "/api/checkout?accion=register"
+    },
+    {
+      "source": "/api/orders-search",
+      "destination": "/api/checkout?accion=search"
+    },
+    {
+      "source": "/api/addi-confirm-order",
+      "destination": "/api/checkout?accion=addi-confirm"
+    },
+    {
       "source": "/cotizacion/:id.pdf",
       "destination": "/api/cotizacion-download?id=:id"
     }

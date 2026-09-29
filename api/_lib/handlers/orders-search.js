@@ -2,7 +2,7 @@
  * GET /api/orders-search?nombre=&documento=&fecha=YYYY-MM-DD&dias=3
  * Header: Authorization: Bearer <ADMIN_ORDERS_SECRET>
  */
-import { searchCheckoutOrders, listRecentCheckoutOrders } from './_lib/checkout-order-store.js';
+import { searchCheckoutOrders, listRecentCheckoutOrders } from '../checkout-order-store.js';
 
 function authOk(req) {
   const secret = String(process.env.ADMIN_ORDERS_SECRET || '').trim();

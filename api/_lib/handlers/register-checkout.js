@@ -3,8 +3,8 @@
  * Guarda snapshot del carrito antes de Wompi (Addi guarda en addi-checkout).
  * Body: { orderId, gateway?, totalAmount, items[], client{}, shippingAddress? }
  */
-import { readJsonBody } from './_lib/addi.js';
-import { saveCheckoutOrder, cleanDoc } from './_lib/checkout-order-store.js';
+import { readJsonBody } from '../addi.js';
+import { saveCheckoutOrder, cleanDoc } from '../checkout-order-store.js';
 
 export default async function handler(req, res) {
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
