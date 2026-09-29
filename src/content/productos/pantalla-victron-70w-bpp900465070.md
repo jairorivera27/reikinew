@@ -1,7 +1,7 @@
 ---
 title: "Pantalla Victron 70W BPP900465070"
 description: "Pantalla Victron 70W BPP900465070. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Victron; modelo: BPP900465070; especificación principal: 70W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/controladores/victron-smartsolar-mppt.jpg"
+image: "/images/placeholders/accesorios.svg"
 category: "accesorios"
 price: "$113.183"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar sistema de monitoreo solar colombia"
   - "precio sistema de monitoreo solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "Victron BPP900465070 70W – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Pantalla Victron 70W BPP900465070** de Victron · 70W.
 

@@ -1,7 +1,7 @@
 ---
 title: "Hoymiles Microinverter HMS-800-2T"
-description: "Microinversor Hoymiles HMS-800-2T para dos entradas MPPT, ideal para strings cortos o porciones de tejado con sombras diferenciadas."
-image: "/images/productos-tienda/inversores/hoymiles-hms.jpg"
+description: "Microinversor Hoymiles HMS-800-2T para dos entradas MPPT, ideal para strings cortos o porciones de tejado con sombras diferenciadas. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
+image: "/images/productos-estudio/hoymiles-hms-800-2t.webp"
 category: "inversores"
 price: "$1.147.500"
 specifications:
@@ -12,6 +12,20 @@ specifications:
 brand: "Hoymiles"
 stock: "disponible"
 order: 5024
+imageThumb: "/images/productos-estudio/hoymiles-hms-800-2t-thumb.webp"
+imageAlt: "Hoymiles HMS-800-2T – Reiki Energía Solar"
+imageOriginal: "proveedores/solaire/NFMI0009.png"
+imagen_provisional: false
+imagenPendiente: false
+fichaPdf: "/fichas/hoymiles-hms-800-2t-ficha.pdf"
+model: "HMS-800-2T"
+faqs:
+  - pregunta: "¿Cuántos paneles se conectan a cada microinversor?"
+    respuesta: "Depende del número de entradas del modelo (revisa la ficha técnica). Cada entrada tiene su propio seguimiento MPPT y admite un panel."
+  - pregunta: "¿Es monofásico, bifásico o trifásico?"
+    respuesta: "Es monofásico. Debe coincidir con la conexión eléctrica de tu predio (lo ves en tu factura o en el tablero)."
+  - pregunta: "¿Quién lo instala?"
+    respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 ---
 
 **HOYMILES MICROINVERTER HMS-800-2T** · referencia **Hoymiles** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

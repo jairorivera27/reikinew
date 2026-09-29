@@ -1,7 +1,7 @@
 ---
 title: "Studer Cable RJ45 8P 2M"
 description: "Equipo Studer Innotec (BSP, RCC, cables): periféricos para supervisión de batería, control remoto o integración de sistema Xtender/MPPT."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$1.378"
 specifications:
@@ -11,6 +11,9 @@ specifications:
 brand: "Studer"
 stock: "disponible"
 order: 5128
+imageAlt: "Studer – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **STUDER CABLE RJ45 8P 2M** · referencia **Studer** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

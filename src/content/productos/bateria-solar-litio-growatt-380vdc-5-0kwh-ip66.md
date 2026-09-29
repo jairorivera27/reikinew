@@ -1,6 +1,6 @@
 ---
 title: "Batería Solar Litio Growatt 380VDC 5.0kWh IP66"
-description: "Batería Solar Litio Growatt 380VDC 5.0kWh IP66. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Marca: Growatt; modelo: IP66; especificación principal: 380VDC 5.0kWh. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
+description: "Batería litio Growatt IP66 de 5.0 kWh a 380 V. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. La foto es de referencia de la serie Growatt ARK. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-tienda/baterias/growatt-ark.png"
 category: "baterias"
 price: "$8.514.301"
@@ -24,6 +24,13 @@ seoKeywords:
   - "comprar batería solar colombia"
   - "precio batería solar colombia"
   - "equipos de energía solar colombia"
+imagenSerieRef: "Growatt ARK"
+faqs:
+  - pregunta: "¿Cuántas horas me respalda?"
+    respuesta: "Con 5 kWh y descargándola hasta un 90 % (unos 4,5 kWh útiles), un consumo continuo de 500 W duraría cerca de 9 horas y uno de 1 kW unas 4,5 horas, sin contar pérdidas del inversor (5–10 %). Nevera, luces, internet y TV suelen sumar 300–600 W."
+  - pregunta: "¿Es compatible con mi inversor?"
+    respuesta: "El voltaje del banco debe coincidir con el del inversor (380 V) y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
+fichaPdf: "/fichas/fabricantes/growatt-apx-hv-battery-datasheet.pdf"
 ---
 **Batería Solar Litio Growatt 380VDC 5.0kWh IP66** de Growatt · 380VDC 5.0kWh.
 

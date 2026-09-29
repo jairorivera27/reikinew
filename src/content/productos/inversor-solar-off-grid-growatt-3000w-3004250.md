@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar Off-Grid Growatt 3000W 3004250"
-description: "Inversor Solar Off-Grid Growatt 3000W 3004250. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: Growatt; modelo: 3004250; especificación principal: 3000W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/growatt-mod.jpg"
+description: "Inversor off-grid Growatt de 3000W. Para sistemas aislados de la red: convierte la energía de las baterías en corriente alterna para tus equipos. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
+image: "/images/productos-estudio/inversor-cargador-growatt-spf-3000tl-lvm-24v.webp"
 category: "inversores"
 price: "$1.938.350"
 specifications:
@@ -23,6 +23,16 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/inversor-cargador-growatt-spf-3000tl-lvm-24v-thumb.webp"
+imageAlt: "Growatt Inversor Solar Off-Grid Growatt 3000W 3004250 – Reiki Energía Solar"
+imageOriginal: "proveedores/autosolar-codigo/3004250/01-inversor-cargador-growatt-spf-3000tl-lvm-24v.jpg"
+imagen_provisional: false
+fichaPdf: "/fichas/proveedores/fichatecnica-lvm-1-.pdf"
+faqs:
+  - pregunta: "¿Sirve sin conexión a la red eléctrica?"
+    respuesta: "Sí, está pensado para fincas, cabañas y sitios sin red, alimentado por un banco de baterías que se carga con paneles solares."
+  - pregunta: "¿Quién lo instala?"
+    respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 ---
 **Inversor Solar Off-Grid Growatt 3000W 3004250** de Growatt · 3000W.
 

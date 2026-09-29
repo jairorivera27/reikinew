@@ -1,0 +1,225 @@
+﻿
+## generic-mcb-ac (84)
+abrazadera-de-puesta-a-tierra-schletter-conductor-8mm-135003-000 | protecciones | Schletter | 135003-000 | Conductor ├ÿ8mm | Abrazadera de puesta a tierra Schletter Conductor ├ÿ8mm 135003-000
+[D] breaker-10a-ac-10a1p | protecciones | Sin marca | 10A1P | 10A AC | Breaker 10A AC 10A1P
+[D] breaker-16a-ac-16a1p | protecciones | Sin marca | 16A1P | 16A AC | Breaker 16A AC 16A1P
+[D] breaker-20a-ac-20a1p | protecciones | Sin marca | 20A1P | 20A AC | Breaker 20A AC 20A1P
+[D] breaker-20a-ac-20a2p | protecciones | Sin marca | 20A2P | 20A AC | Breaker 20A AC 20A2P
+[D] breaker-32a-ac-32a1p | protecciones | Sin marca | 32A1P | 32A AC | Breaker 32A AC 32A1P
+[D] breaker-40a-ac-40a1p | protecciones | Sin marca | 40A1P | 40A AC | Breaker 40A AC 40A1P
+[D] breaker-50a-ac-50a1p | protecciones | Sin marca | 50A1P | 50A AC | Breaker 50A AC 50A1P
+[D] breaker-63a-ac-63a1p | protecciones | Sin marca | 63A1P | 63A AC | Breaker 63A AC 63A1P
+cat-mayorista-0af15aadb96d | protecciones | Procable |  |  | PROCABLE REF10 NEGRO C PV 6mm Cu(FLEX) XLPE SR 1800V 90┬░C PVC
+cat-mayorista-0c092893cacf | protecciones | Accuenergy |  |  | Accuenergy ACUCT-200R-800: 1A
+cat-mayorista-1121b2f967a5 | protecciones | Fronius |  |  | Fronius Module Temperature Sensor
+cat-mayorista-1b4b3e9159bf | protecciones | APsystems |  |  | APS Communication Unit ECU-C
+cat-mayorista-1b745610f88d | protecciones | Accuenergy |  |  | Transformador de Corriente Accuenergy 600 A
+cat-mayorista-1c76f2d7940a | protecciones | Accuenergy |  |  | Transformador de Corriente Accuenergy 200 A
+cat-mayorista-1c90834961f7 | protecciones | APsystems |  |  | APS AC End Cap For QT2
+cat-mayorista-230011e45adc | protecciones | Hoymiles |  |  | Hoymiles AC Trunk Connector
+[D] cat-mayorista-25019af0a28b | protecciones | Sin marca |  |  | 3P -3XCT Clamp 600 (CTS 600A)
+cat-mayorista-28f10608151f | protecciones | Hoymiles |  |  | Hoymiles Trifasico Hmt Extension Connector
+cat-mayorista-2b8a086329f8 | protecciones | Hoymiles |  |  | Hoymiles Data Transfer Unit DTU-Lite-S
+cat-mayorista-30e3454a43a1 | protecciones | Huawei |  |  | Sdongle A-05 4G-$ Sdongle a -05 Wlan
+cat-mayorista-33b662988d35 | protecciones | Studer |  |  | Studer Battery Status Processor With 500 A Shunt And 5M Cable - Bsp 50
+cat-mayorista-38f415d74b92 | protecciones | BYD |  |  | Altafox - BYD Battery ├éÔé¼ÔÇ£ Box Adjustable Leveling Feet Set (4 Pcs)
+cat-mayorista-39bb7da66882 | protecciones | Huawei |  |  | SmartGuard-63A-S0
+cat-mayorista-4456b041b5f7 | protecciones | Fronius |  |  | Fronius Smart Meter -480V
+cat-mayorista-450551e76976 | protecciones | Accuenergy |  |  | Accuenergy ACUCT-200R-1000: 1A
+cat-mayorista-4c63a793462e | protecciones | Hoymiles |  |  | Hoymiles Single-Phase Electric Meter DDSU666NEW-VIA CT-100A
+cat-mayorista-4f6dffb2c845 | protecciones | APsystems |  |  | APS AC End Cap DS3D (end Cap)
+[D] cat-mayorista-50a57335e28c | protecciones | Sin marca |  |  | SmartLogger3000A01AU
+cat-mayorista-542f1c01667c | protecciones | Fronius |  |  | Fronius Sensor Wind Speed
+cat-mayorista-554a8c912fac | protecciones | APsystems |  |  | APS AC End Cap
+[D] cat-mayorista-572e9c823af7 | protecciones | Sin marca |  |  | SmartLogger3000A00GL
+cat-mayorista-59328d99833f | protecciones | Fronius |  |  | Fronius Datamanager
+cat-mayorista-5a866630fef1 | protecciones | APsystems |  |  | APS CTS 200A (66.6MA)
+[D] cat-mayorista-679fae67a761 | protecciones | Sin marca |  |  | SmartLogger3000A03EU
+cat-mayorista-67f802e82020 | protecciones | Hoymiles |  |  | Hoymiles Split Phase Electric Meter DTSU666 New Via CT 2*100A
+cat-mayorista-69d57647fb0f | protecciones | Solis |  |  | Solis S2-WL-ST
+cat-mayorista-6a590e229a07 | protecciones | Studer |  |  | Studer Cable RJ45 8P 2M
+cat-mayorista-6fb3e3e4dcdc | protecciones | Hoymiles |  |  | Hoymiles Data Transfer Unit DTU-PRO-S - WIFI
+cat-mayorista-7607c19ef34b | protecciones | APsystems |  |  | APS DC Connector Cap MC4 Male
+cat-mayorista-7745b8578b05 | protecciones | Hoymiles |  |  | Hoymiles AC Trunk Port Cap
+cat-mayorista-7f766d732530 | protecciones | Pytes |  |  | PYTES USB TO RJ45 CABLE (RS232 for 48100R)
+cat-mayorista-802f0f345d4d | protecciones | Soluna |  |  | Soluna Wall Mounting Bracket
+cat-mayorista-81cb93a7f938 | protecciones | APsystems |  |  | APS DC Connector Cap MC4 Female
+cat-mayorista-81d8b91d2aa7 | protecciones | Accuenergy |  |  | Transformador de Corriente Accuenergy 50 A
+[D] cat-mayorista-86fabc72ea11 | protecciones | Sin marca |  |  | Herramienta para Juego Conector MC4 Te Connectivity
+cat-mayorista-8881b56cc6fe | protecciones | Fronius |  |  | Fronius Smart Meter Wr
+cat-mayorista-8891f45e70b8 | protecciones | Solis |  |  | Solis Meter Trifasico + CTS (medidor + Monitoreo Solo para 1 Inversor)
+cat-mayorista-8c3f2f2d550e | protecciones | APsystems |  |  | APS Male Connector
+cat-mayorista-8e680568ff18 | protecciones | Procable |  |  | PROCABLE REF10 ROJO C PV 6mm Cu(FLEX) XLPE SR 1800V 90┬░C PVC
+cat-mayorista-90ae5e154654 | protecciones | Soluna |  |  | Soluna Conduit Outlet Fitting
+[D] cat-mayorista-98bf36796b0a | protecciones | Sin marca |  |  | 3P -3XCT Clamp 1000 (CTS 1000A)
+cat-mayorista-9b5024944b74 | protecciones | Hoymiles | HOYMILES MICROINVERTER HMS-1600-4T-$ HOYMILES TRIFASICO HMT CABLE TERMIN |  | Hoymiles Microinverter HMS-1600-4T-$ Hoymiles Trifasico Hmt Cable Term
+cat-mayorista-a098e36ee42b | protecciones | Solis |  |  | Solis EPM3-5G-PRO Split Phase-$ 3P -3XCT Clamp 300 (CTS 300A)
+cat-mayorista-a0c8fb599131 | protecciones | Solis |  |  | Solis Dls Monitoreo LAN-$ S3 GPRS Monitoreo con Simcard
+cat-mayorista-a496d4bc6145 | protecciones | Huawei |  |  | Huawei Backup BOX-B0 (single Phase)
+cat-mayorista-a4bcf6c7d8ba | protecciones | Huawei |  |  | HUAWEI OPTIMIZER MERC-1300W-P long input cable
+cat-mayorista-a6f2b77e8deb | protecciones | Hoymiles |  |  | Hoymiles Three-Phase Electric Meter DTSU666NEW-VIA CT-2*100A
+cat-mayorista-a7b26bbbeba0 | protecciones | Accuenergy |  |  | Transformador de Corriente Accuenergy 100 A
+[D] cat-mayorista-aaa3b3225525 | protecciones | Sin marca |  |  | Inverter Handling Lifting Accessories Bag
+cat-mayorista-acf1d4a2ec5f | protecciones | APsystems |  |  | APS Female Connector
+cat-mayorista-b0ceb6a7dd95 | protecciones | Solis |  |  | SOLIS CTS 1P-1XCT CLAMP 100-$ SOLIS-3P-3xCT CLAMP 2000
+[D] cat-mayorista-b526c5058088 | protecciones | Sin marca |  |  | s3 logger
+cat-mayorista-b89f69b7c502 | protecciones | Accuenergy |  |  | Accuenergy ACUCT-200R-600: 1A
+cat-mayorista-b8a2ad192705 | protecciones | APsystems |  |  | APS Unlock Tool YC600
+[D] cat-mayorista-ba889db29a79 | protecciones | Sin marca |  |  | Juego Conector MC4 Te Connectivity
+cat-mayorista-c6847d547bc2 | protecciones | Hoymiles |  |  | Hoymiles AC Trunk Port Connector Unlock Tool
+cat-mayorista-ca64f43be5f3 | protecciones | Fronius |  |  | Fronius Smart Meter Ts 65A-3 Tcs Internos
+cat-mayorista-cd790f420080 | protecciones | APsystems |  |  | APS CTS 80A (66.6MA) Mexico
+cat-mayorista-ce71d1e2bcd0 | protecciones | Studer |  |  | Studer Remote Control With 2 Meters Cable + Sd Card - RCC02
+cat-mayorista-d0fe3efb908d | protecciones | Hoymiles |  |  | Hoymiles Trifasico Hmt Connector Cable 2,5MTS
+cat-mayorista-d185fa908422 | protecciones | Solis | SOLIS EPM3 (MONITOREO MAS DE 2 A 10 INVERSORES TRIFASICO)-$ SOLIS EPM3 5 |  | Solis EPM3 (monitoreo Mas de 2 A 10 Inversores Trifasico)-$ Solis EPM3
+cat-mayorista-d50170a2ede4 | protecciones | Huawei |  |  | SmartPS-80A-T0
+cat-mayorista-d6c8f3de91a1 | protecciones | APsystems |  |  | APS Communication Unit ECU-R
+cat-mayorista-d9259ee059d7 | protecciones | Accuenergy |  |  | Transformador de Corriente Accuenergy 400 A
+cat-mayorista-d9f27339864a | protecciones | APsystems |  |  | APS Communication Unit ECU-B
+cat-mayorista-dffac024ba0d | protecciones | Procable |  |  | PROCABLE REF12 ROJO C PV 4mm2 Cu (FLEX) XLPE SR 1800V 90┬░C PVC
+cat-mayorista-e0ed5bdbb374 | protecciones | Pytes |  |  | Pytes Comm Cable 3.5M
+cat-mayorista-e16804a4f36d | protecciones | Soluna |  |  | Soluna HV Parallel Box
+cat-mayorista-e5134accccc5 | protecciones | Accuenergy |  |  | Accuenergy ACUCT-200R-400: 1A
+cat-mayorista-ef4b5702b338 | protecciones | Hoymiles |  |  | HOYMILES AC TRUNK CABLE 20T_20L_10 AWG-2.2m
+cat-mayorista-efb01922ea3a | protecciones | Procable |  |  | PROCABLE REF12 NEGRO C PV 4mm2 Cu (FLEX) XLPE SR 1800V 90┬░C PVC
+cat-mayorista-f7c92ea2ba32 | protecciones | Hoymiles |  |  | Hoymiles Trifasico Hmt Trunk Connector
+cat-mayorista-f8f436284238 | protecciones | Hoymiles |  |  | Hoymiles AC Trunk End Cap
+cats: {"protecciones":84}
+
+## victron-smartsolar-mppt (83)
+controlador-de-carga-solar-mppt-victron-scc010010050r | controladores | Victron | SCC010010050R | N/A | Controlador de Carga Solar MPPT Victron SCC010010050R
+controlador-de-carga-solar-mppt-victron-scc010015050r | controladores | Victron | SCC010015050R | N/A | Controlador de Carga Solar MPPT Victron SCC010015050R
+controlador-de-carga-solar-mppt-victron-scc010015200r | controladores | Victron | SCC010015200R | N/A | Controlador de Carga Solar MPPT Victron SCC010015200R
+controlador-de-carga-solar-mppt-victron-scc010060200 | controladores | Victron | SCC010060200 | N/A | Controlador de Carga Solar MPPT Victron SCC010060200
+controlador-de-carga-solar-mppt-victron-scc010060300 | controladores | Victron | SCC010060300 | N/A | Controlador de Carga Solar MPPT Victron SCC010060300
+controlador-de-carga-solar-mppt-victron-scc010070200 | controladores | Victron | SCC010070200 | N/A | Controlador de Carga Solar MPPT Victron SCC010070200
+controlador-de-carga-solar-mppt-victron-scc010070300 | controladores | Victron | SCC010070300 | N/A | Controlador de Carga Solar MPPT Victron SCC010070300
+controlador-de-carga-solar-mppt-victron-scc020030200 | controladores | Victron | SCC020030200 | N/A | Controlador de Carga Solar MPPT Victron SCC020030200
+controlador-de-carga-solar-mppt-victron-scc020035000 | controladores | Victron | SCC020035000 | N/A | Controlador de Carga Solar MPPT Victron SCC020035000
+controlador-de-carga-solar-mppt-victron-scc020050200 | controladores | Victron | SCC020050200 | N/A | Controlador de Carga Solar MPPT Victron SCC020050200
+controlador-de-carga-solar-mppt-victron-scc075010060r | controladores | Victron | SCC075010060R | N/A | Controlador de Carga Solar MPPT Victron SCC075010060R
+controlador-de-carga-solar-mppt-victron-scc075015060r | controladores | Victron | SCC075015060R | N/A | Controlador de Carga Solar MPPT Victron SCC075015060R
+controlador-de-carga-solar-mppt-victron-scc110015060r | controladores | Victron | SCC110015060R | N/A | Controlador de Carga Solar MPPT Victron SCC110015060R
+controlador-de-carga-solar-mppt-victron-scc110020160r | controladores | Victron | SCC110020160R | N/A | Controlador de Carga Solar MPPT Victron SCC110020160R
+controlador-de-carga-solar-mppt-victron-scc110020170r | controladores | Victron | SCC110020170R | N/A | Controlador de Carga Solar MPPT Victron SCC110020170R
+controlador-de-carga-solar-mppt-victron-scc110030210 | controladores | Victron | SCC110030210 | N/A | Controlador de Carga Solar MPPT Victron SCC110030210
+controlador-de-carga-solar-mppt-victron-scc110050210 | controladores | Victron | SCC110050210 (SmartSolar MPPT 100/50) | N/A | Controlador de Carga Solar MPPT Victron SCC110050210
+controlador-de-carga-solar-mppt-victron-scc115035210 | controladores | Victron | SCC115035210 | N/A | Controlador de Carga Solar MPPT Victron SCC115035210
+controlador-de-carga-solar-mppt-victron-scc115045212 | controladores | Victron | SCC115045212 | N/A | Controlador de Carga Solar MPPT Victron SCC115045212
+controlador-de-carga-solar-mppt-victron-scc115045222 | controladores | Victron | SCC115045222 | N/A | Controlador de Carga Solar MPPT Victron SCC115045222
+controlador-de-carga-solar-mppt-victron-scc115060211 | controladores | Victron | SCC115060211 | N/A | Controlador de Carga Solar MPPT Victron SCC115060211
+controlador-de-carga-solar-mppt-victron-scc115060311 | controladores | Victron | SCC115060311 | N/A | Controlador de Carga Solar MPPT Victron SCC115060311
+controlador-de-carga-solar-mppt-victron-scc115070211 | controladores | Victron | SCC115070211 | N/A | Controlador de Carga Solar MPPT Victron SCC115070211
+controlador-de-carga-solar-mppt-victron-scc115070411 | controladores | Victron | SCC115070411 | N/A | Controlador de Carga Solar MPPT Victron SCC115070411
+controlador-de-carga-solar-mppt-victron-scc115070511 | controladores | Victron | SCC115070511 | N/A | Controlador de Carga Solar MPPT Victron SCC115070511
+controlador-de-carga-solar-mppt-victron-scc115085411 | controladores | Victron | SCC115085411 | N/A | Controlador de Carga Solar MPPT Victron SCC115085411
+controlador-de-carga-solar-mppt-victron-scc115110411 | controladores | Victron | SCC115110411 | N/A | Controlador de Carga Solar MPPT Victron SCC115110411
+controlador-de-carga-solar-mppt-victron-scc115110420 | controladores | Victron | SCC115110420 | N/A | Controlador de Carga Solar MPPT Victron SCC115110420
+controlador-de-carga-solar-mppt-victron-scc115110511 | controladores | Victron | SCC115110511 | N/A | Controlador de Carga Solar MPPT Victron SCC115110511
+controlador-de-carga-solar-mppt-victron-scc125060221 | controladores | Victron | SCC125060221 | N/A | Controlador de Carga Solar MPPT Victron SCC125060221
+controlador-de-carga-solar-mppt-victron-scc125060321 | controladores | Victron | SCC125060321 | N/A | Controlador de Carga Solar MPPT Victron SCC125060321
+controlador-de-carga-solar-mppt-victron-scc125070221 | controladores | Victron | SCC125070221 | N/A | Controlador de Carga Solar MPPT Victron SCC125070221
+controlador-de-carga-solar-mppt-victron-scc125070421 | controladores | Victron | SCC125070421 | N/A | Controlador de Carga Solar MPPT Victron SCC125070421
+controlador-de-carga-solar-mppt-victron-scc125070441 | controladores | Victron | SCC125070441 | N/A | Controlador de Carga Solar MPPT Victron SCC125070441
+controlador-de-carga-solar-mppt-victron-scc125070521 | controladores | Victron | SCC125070521 | N/A | Controlador de Carga Solar MPPT Victron SCC125070521
+controlador-de-carga-solar-mppt-victron-scc125085411 | controladores | Victron | SCC125085411 | N/A | Controlador de Carga Solar MPPT Victron SCC125085411
+controlador-de-carga-solar-mppt-victron-scc125085511 | controladores | Victron | SCC125085511 | N/A | Controlador de Carga Solar MPPT Victron SCC125085511
+controlador-de-carga-solar-mppt-victron-scc125110412 | controladores | Victron | SCC125110412 | N/A | Controlador de Carga Solar MPPT Victron SCC125110412
+controlador-de-carga-solar-mppt-victron-scc125110441 | controladores | Victron | SCC125110441 | N/A | Controlador de Carga Solar MPPT Victron SCC125110441
+controlador-de-carga-solar-mppt-victron-scc125110512 | controladores | Victron | SCC125110512 | N/A | Controlador de Carga Solar MPPT Victron SCC125110512
+controlador-de-carga-solar-mppt-victron-scc145110512 | controladores | Victron | SCC145110512 | N/A | Controlador de Carga Solar MPPT Victron SCC145110512
+controlador-de-carga-solar-mppt-victron-scc145120510 | controladores | Victron | SCC145120510 | N/A | Controlador de Carga Solar MPPT Victron SCC145120510
+controlador-de-carga-solar-mppt-victron-scc145120512 | controladores | Victron | SCC145120512 | N/A | Controlador de Carga Solar MPPT Victron SCC145120512
+controlador-de-carga-solar-pwm-victron-30a-scc040030020 | controladores | Victron | SCC040030020 | 30A | Controlador de Carga Solar PWM Victron 30A SCC040030020
+controlador-de-carga-solar-pwm-victron-5a-scc010005000 | controladores | Victron | SCC010005000 | 5A | Controlador de Carga Solar PWM Victron 5A SCC010005000
+controlador-de-carga-solar-pwm-victron-scc010005010 | controladores | Victron | SCC010005010 | N/A | Controlador de Carga Solar PWM Victron SCC010005010
+controlador-de-carga-solar-pwm-victron-scc010005050 | controladores | Victron | SCC010005050 | N/A | Controlador de Carga Solar PWM Victron SCC010005050
+controlador-de-carga-solar-pwm-victron-scc010010000 | controladores | Victron | SCC010010000 | N/A | Controlador de Carga Solar PWM Victron SCC010010000
+controlador-de-carga-solar-pwm-victron-scc010010010 | controladores | Victron | SCC010010010 | N/A | Controlador de Carga Solar PWM Victron SCC010010010
+controlador-de-carga-solar-pwm-victron-scc010010050 | controladores | Victron | SCC010010050 | N/A | Controlador de Carga Solar PWM Victron SCC010010050
+controlador-de-carga-solar-pwm-victron-scc010020020 | controladores | Victron | SCC010020020 | N/A | Controlador de Carga Solar PWM Victron SCC010020020
+controlador-de-carga-solar-pwm-victron-scc010020050 | controladores | Victron | SCC010020050 | N/A | Controlador de Carga Solar PWM Victron SCC010020050
+controlador-de-carga-solar-pwm-victron-scc010020060 | controladores | Victron | SCC010020060 | N/A | Controlador de Carga Solar PWM Victron SCC010020060
+controlador-de-carga-solar-pwm-victron-scc010020110 | controladores | Victron | SCC010020110 | N/A | Controlador de Carga Solar PWM Victron SCC010020110
+controlador-de-carga-solar-pwm-victron-scc010030010 | controladores | Victron | SCC010030010 | N/A | Controlador de Carga Solar PWM Victron SCC010030010
+controlador-de-carga-solar-pwm-victron-scc010030020 | controladores | Victron | SCC010030020 | N/A | Controlador de Carga Solar PWM Victron SCC010030020
+controlador-de-carga-solar-pwm-victron-scc010030050 | controladores | Victron | SCC010030050 | N/A | Controlador de Carga Solar PWM Victron SCC010030050
+controlador-de-carga-solar-pwm-victron-scc040010050 | controladores | Victron | SCC040010050 | N/A | Controlador de Carga Solar PWM Victron SCC040010050
+controlador-de-carga-solar-pwm-victron-scc040020050 | controladores | Victron | SCC040020050 | N/A | Controlador de Carga Solar PWM Victron SCC040020050
+controlador-de-carga-solar-pwm-victron-scc040030050 | controladores | Victron | SCC040030050 | N/A | Controlador de Carga Solar PWM Victron SCC040030050
+controlador-de-carga-solar-pwm-victron-scc940100100 | controladores | Victron | SCC940100100 | N/A | Controlador de Carga Solar PWM Victron SCC940100100
+controlador-de-carga-solar-pwm-victron-scc940100200 | controladores | Victron | SCC940100200 | N/A | Controlador de Carga Solar PWM Victron SCC940100200
+controlador-de-carga-solar-victron-scc900650010 | controladores | Victron | SCC900650010 | N/A | Controlador de Carga Solar Victron SCC900650010
+controlador-mppt-100a | controladores | Victron |  |  | Controlador MPPT 100A
+modulo-inalambrico-victron-bpp900200400 | accesorios | Victron | BPP900200400 | N/A | M├│dulo Inal├ímbrico Victron BPP900200400
+modulo-inalambrico-victron-precios-agosto-2026 | accesorios | Victron | Precios agosto 2026 | N/A | M├│dulo Inal├ímbrico Victron Precios agosto 2026
+pantalla-victron-1700524 | accesorios | Victron |  | N/A | Pantalla Victron 1700524
+pantalla-victron-1700525 | accesorios | Victron |  | N/A | Pantalla Victron 1700525
+pantalla-victron-1700526 | accesorios | Victron |  | N/A | Pantalla Victron 1700526
+pantalla-victron-1700532 | accesorios | Victron |  | N/A | Pantalla Victron 1700532
+pantalla-victron-50a-bpp900460050 | accesorios | Victron | BPP900460050 | 50A | Pantalla Victron 50A BPP900460050
+pantalla-victron-50w-bpp900465050 | accesorios | Victron | BPP900465050 | 50W | Pantalla Victron 50W BPP900465050
+pantalla-victron-70w-bpp900465070 | accesorios | Victron | BPP900465070 | 70W | Pantalla Victron 70W BPP900465070
+pantalla-victron-9004801a-bpp010300100r | accesorios | Victron | BPP010300100R | 9004801A | Pantalla Victron 9004801A BPP010300100R
+pantalla-victron-bpp900450120 | accesorios | Victron | BPP900450120 | N/A | Pantalla Victron BPP900450120
+pantalla-victron-bpp900455050 | accesorios | Victron | BPP900455050 | N/A | Pantalla Victron BPP900455050
+pantalla-victron-bpp900455070 | accesorios | Victron | BPP900455070 | N/A | Pantalla Victron BPP900455070
+pantalla-victron-bpp900455150 | accesorios | Victron | BPP900455150 | N/A | Pantalla Victron BPP900455150
+pantalla-victron-bpp900455170 | accesorios | Victron | BPP900455170 | N/A | Pantalla Victron BPP900455170
+pantalla-victron-bpp900462050 | accesorios | Victron | BPP900462050 | N/A | Pantalla Victron BPP900462050
+pantalla-victron-bpp900462070 | accesorios | Victron | BPP900462070 | N/A | Pantalla Victron BPP900462070
+pantalla-victron-bpp900495100 | accesorios | Victron | BPP900495100 | N/A | Pantalla Victron BPP900495100
+pantalla-victron-bpp900800150 | accesorios | Victron | BPP900800150 | N/A | Pantalla Victron BPP900800150
+cats: {"controladores":64,"accesorios":19}
+
+## hoymiles-hms.jpg (4)
+inversor-solar-hibrido-hoymiles-7-68kw-usg1 | inversores | Hoymiles | USG1 | 7,68kW | Inversor Solar H├¡brido Hoymiles 7,68kW USG1
+microinversor-solar-hoymiles-110va-110vac | inversores | Hoymiles | 110VAC | 110VA | Microinversor Solar Hoymiles 110VA 110VAC
+microinversor-solar-hoymiles-1kw-1000-2t | inversores | Hoymiles | 1000-2T | 1kW | Microinversor Solar Hoymiles 1kW 1000-2T
+microinversor-solar-hoymiles-360w-2000-b | inversores | Hoymiles | 2000-B | 360W | Microinversor Solar Hoymiles 360W 2000-B
+cats: {"inversores":4}
+
+## goodwe-sdt (36)
+inversor-solar-off-grid-goodwe-3-5kw-gw3500l-eo | inversores | GoodWe | GW3500L-EO | 3,5kW | Inversor Solar Off-Grid GoodWe 3,5kW GW3500L-EO
+inversor-solar-on-grid-goodwe-100kw-gw100k-gt | inversores | GoodWe | GW100K-GT | 100kW | Inversor Solar On-Grid GoodWe 100kW GW100K-GT
+inversor-solar-on-grid-goodwe-10kw-gw10k-sdt-30 | inversores | GoodWe | GW10K-SDT-30 | 10kW | Inversor Solar On-Grid GoodWe 10kW GW10K-SDT-30
+inversor-solar-on-grid-goodwe-110kw-gw110k-gt | inversores | GoodWe | GW110K-GT | 110kW | Inversor Solar On-Grid GoodWe 110kW GW110K-GT
+inversor-solar-on-grid-goodwe-125kw-gw125k-gt | inversores | GoodWe | GW125K-GT | 125kW | Inversor Solar On-Grid GoodWe 125kW GW125K-GT
+inversor-solar-on-grid-goodwe-12kw-gw12k-sdt-30 | inversores | GoodWe | GW12K-SDT-30 | 12kW | Inversor Solar On-Grid GoodWe 12kW GW12K-SDT-30
+inversor-solar-on-grid-goodwe-12kw-gw12klv-mt | inversores | GoodWe | GW12KLV-MT | 12kW | Inversor Solar On-Grid GoodWe 12kW GW12KLV-MT
+inversor-solar-on-grid-goodwe-12kw-gw12klv-sdt-c30 | inversores | GoodWe | GW12KLV-SDT-C30 | 12kW | Inversor Solar On-Grid GoodWe 12kW GW12KLV-SDT-C30
+inversor-solar-on-grid-goodwe-136kw-gw136k-hth | inversores | GoodWe | GW136K-HTH | 136kW | Inversor Solar On-Grid GoodWe 136kW GW136K-HTH
+inversor-solar-on-grid-goodwe-15kw-gw15k-sdt-30 | inversores | GoodWe | GW15K-SDT-30 | 15kW | Inversor Solar On-Grid GoodWe 15kW GW15K-SDT-30
+inversor-solar-on-grid-goodwe-15kw-gw15klv-mt | inversores | GoodWe | GW15KLV-MT | 15kW | Inversor Solar On-Grid GoodWe 15kW GW15KLV-MT
+inversor-solar-on-grid-goodwe-17kw-gw17k-sdt-30 | inversores | GoodWe | GW17K-SDT-30 | 17kW | Inversor Solar On-Grid GoodWe 17kW GW17K-SDT-30
+inversor-solar-on-grid-goodwe-17kw-gw17klv-sdt-c30 | inversores | GoodWe | GW17KLV-SDT-C30 | 17kW | Inversor Solar On-Grid GoodWe 17kW GW17KLV-SDT-C30
+inversor-solar-on-grid-goodwe-20kw-gw20k-sdt-30 | inversores | GoodWe | GW20K-SDT-30 | 20kW | Inversor Solar On-Grid GoodWe 20kW GW20K-SDT-30
+inversor-solar-on-grid-goodwe-23kw-gw23klv-sdt-br30 | inversores | GoodWe | GW23KLV-SDT-BR30 | 23kW | Inversor Solar On-Grid GoodWe 23kW GW23KLV-SDT-BR30
+inversor-solar-on-grid-goodwe-25kw-gw25k-sdt-c30 | inversores | GoodWe | GW25K-SDT-C30 | 25kW | Inversor Solar On-Grid GoodWe 25kW GW25K-SDT-C30
+inversor-solar-on-grid-goodwe-30kw-gw30k-sdt-c30 | inversores | GoodWe | GW30K-SDT-C30 | 30kW | Inversor Solar On-Grid GoodWe 30kW GW30K-SDT-C30
+inversor-solar-on-grid-goodwe-30kw-gw30kls-mt | inversores | GoodWe | GW30KLS-MT | 30kW | Inversor Solar On-Grid GoodWe 30kW GW30KLS-MT
+inversor-solar-on-grid-goodwe-320kw-gw320k-ut | inversores | GoodWe | GW320K-UT | 320kW | Inversor Solar On-Grid GoodWe 320kW GW320K-UT
+inversor-solar-on-grid-goodwe-33kw-gw33k-sdt-c30 | inversores | GoodWe | GW33K-SDT-C30 | 33kW | Inversor Solar On-Grid GoodWe 33kW GW33K-SDT-C30
+inversor-solar-on-grid-goodwe-350kw-gw350k-ut | inversores | GoodWe | GW350K-UT | 350kW | Inversor Solar On-Grid GoodWe 350kW GW350K-UT
+inversor-solar-on-grid-goodwe-35kw-gw35kls-mt | inversores | GoodWe | GW35KLS-MT | 35kW | Inversor Solar On-Grid GoodWe 35kW GW35KLS-MT
+inversor-solar-on-grid-goodwe-36kw-gw36k-sdt-c30 | inversores | GoodWe | GW36K-SDT-C30 | 36kW | Inversor Solar On-Grid GoodWe 36kW GW36K-SDT-C30
+inversor-solar-on-grid-goodwe-37-5kw-gw37 | inversores | GoodWe | GW37 | 37,5kW | Inversor Solar On-Grid GoodWe 37,5kW GW37
+inversor-solar-on-grid-goodwe-40kw-gw40k-sdt-c30 | inversores | GoodWe | GW40K-SDT-C30 | 40kW | Inversor Solar On-Grid GoodWe 40kW GW40K-SDT-C30
+inversor-solar-on-grid-goodwe-50kw-gw50k-smt-l-g10 | inversores | GoodWe | GW50K-SMT-L-G10 | 50kW | Inversor Solar On-Grid GoodWe 50kW GW50K-SMT-L-G10
+inversor-solar-on-grid-goodwe-5kw-gw5000-ms-us30 | inversores | GoodWe | GW5000-MS-US30 | 5kW | Inversor Solar On-Grid GoodWe 5kW GW5000-MS-US30
+inversor-solar-on-grid-goodwe-73kw-gw73klv-ht | inversores | GoodWe | GW73KLV-HT | 73kW | Inversor Solar On-Grid GoodWe 73kW GW73KLV-HT
+inversor-solar-on-grid-goodwe-75kw-gw75k-gt-lv-g10 | inversores | GoodWe | GW75K-GT-LV-G10 | 75kW | Inversor Solar On-Grid GoodWe 75kW GW75K-GT-LV-G10
+inversor-solar-on-grid-goodwe-75kw-gw75k-smt | inversores | GoodWe | GW75K-SMT | 75kW | Inversor Solar On-Grid GoodWe 75kW GW75K-SMT
+inversor-solar-on-grid-goodwe-8-5kw-afci | inversores | GoodWe | AFCI | 8,5kW | Inversor Solar On-Grid GoodWe 8,5kW AFCI
+inversor-solar-on-grid-goodwe-80kw-gw80k-smt | inversores | GoodWe | GW80K-SMT | 80kW | Inversor Solar On-Grid GoodWe 80kW GW80K-SMT
+inversor-solar-on-grid-goodwe-8kw-gw8000-sdt-30 | inversores | GoodWe | GW8000-SDT-30 | 8kW | Inversor Solar On-Grid GoodWe 8kW GW8000-SDT-30
+inversor-solar-on-grid-goodwe-9-6kw-gw9600-ms-us30 | inversores | GoodWe | GW9600-MS-US30 | 9,6kW | Inversor Solar On-Grid GoodWe 9,6kW GW9600-MS-US30
+inversor-solar-on-grid-goodwe-90a-ct90-45-5 | inversores | GoodWe | CT90/45-5 | 90A | Inversor Solar On-Grid GoodWe 90A CT90/45-5
+microinversor-solar-goodwe-2kw-gw2000-mis | inversores | GoodWe | GW2000-MIS | 2kW | Microinversor Solar GoodWe 2kW GW2000-MIS
+cats: {"inversores":36}
+
+## reflector led solar 200W (3)
+reflector-solar-led-200w-blanco | reflectores |  | RSL-200W-20AH-BL |  | Reflector Solar 200W 20Ah Blanco
+reflector-solar-led-200w-calido | reflectores |  | RSL-200W-20AH-CA |  | Reflector Solar 200W 20Ah Calido
+reflector-solar-led-200w-rgb | reflectores |  | RSL-200W-20AH-RGB |  | Reflector Solar 200W 20Ah RGB
+cats: {"reflectores":3}

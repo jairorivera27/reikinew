@@ -42,6 +42,7 @@ const GOOGLE_CATEGORY_BY_INTERNAL = {
 
 const args = new Set(process.argv.slice(2));
 const doInsert = args.has('--insert');
+const exportArg = [...args].find((a) => a.startsWith('--export='));
 const limitArg = [...args].find((a) => a.startsWith('--limit='));
 const LIMIT = limitArg ? Number(limitArg.split('=')[1]) : null;
 
@@ -101,6 +102,17 @@ function loadCategoryNames() {
   }
 }
 
+/** Frases que solo tienen sentido en la web (PDF de ficha, WhatsApp, aviso de foto de serie). */
+const MENCIONA_FICHA = /\bpdf\b|ficha t[eé]cnica|hoja de datos|whatsapp|foto es de referencia|\/fichas\//i;
+
+function sinReferenciasWeb(texto) {
+  return texto
+    .split(/(?<=[.!?])\s+/)
+    .filter((frase) => !MENCIONA_FICHA.test(frase))
+    .join(' ')
+    .trim();
+}
+
 function isTruthyDraft(v) {
   return v === true || v === 'true';
 }
@@ -153,13 +165,25 @@ function toMerchantInput(data, slug, categoryNames) {
 
   /** @type {string[]} */
   const additionalImageLinks = [];
-  if (promoImagen && promoImagen !== image && !isWeakImage(promoImagen)) {
+  if (promoImagen && promoImagen !== image && !isWeakImage(promoImagen) && !/\.pdf($|\?)/i.test(promoImagen)) {
     additionalImageLinks.push(promoImagen);
   }
 
+  // Descripción para Google: sin las frases que solo tienen sentido en la web
+  // (botón de ficha / WhatsApp / aviso de foto de serie) + especificaciones clave.
+  const specsKV = (data.specifications || []).filter(
+    (s) => s.includes(':') && !/^(Fuente|Especificación principal: especificación no disponible)/i.test(s)
+  );
+  // Los PDF (fichas técnicas) viven solo en la web: nunca se mencionan ni enlazan en Merchant.
+  const baseDesc = sinReferenciasWeb(String(data.seoDescription || data.description || data.title || ''));
   const description =
-    String(data.seoDescription || data.description || data.title || '').trim() ||
-    String(data.title);
+    [baseDesc || String(data.title), specsKV.length ? 'Especificaciones: ' + specsKV.slice(0, 12).join('; ') + '.' : '']
+      .filter(Boolean)
+      .join(' ');
+  const productHighlights = specsKV
+    .filter((s) => !MENCIONA_FICHA.test(s))
+    .slice(0, 10)
+    .map((s) => s.slice(0, 150));
 
   const mpn = String(data.model || data.sku || '').trim() || undefined;
 
@@ -178,6 +202,7 @@ function toMerchantInput(data, slug, categoryNames) {
       stock: data.stock || 'disponible',
       productType: categoryNames[category] || category || undefined,
       googleProductCategory: GOOGLE_CATEGORY_BY_INTERNAL[category],
+      productHighlights,
     },
   };
 }
@@ -223,6 +248,11 @@ async function main() {
 
   let { ready, skipped } = loadCatalog();
   console.log(`Publicables con imagen+precio: ${ready.length}`);
+  if (exportArg) {
+    const destino = exportArg.split('=')[1];
+    fs.writeFileSync(destino, JSON.stringify(ready.map((r) => buildMerchantProductResource(r.input ?? r)), null, 1));
+    console.log('Payloads exportados a', destino);
+  }
   console.log(`Omitidos: ${skipped.length}`);
 
   if (LIMIT && Number.isFinite(LIMIT) && LIMIT > 0) {

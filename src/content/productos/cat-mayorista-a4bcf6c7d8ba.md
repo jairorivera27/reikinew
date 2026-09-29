@@ -1,7 +1,7 @@
 ---
 title: "HUAWEI OPTIMIZER MERC-1300W-P long input cable"
 description: "Equipo Huawei Smart PV: inversor, optimizador o accesorio de campo para maximizar energía, seguridad y monitorización. Verifique tabla de compatibilidad del fabricante con su inversor y país."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$413.100"
 specifications:
@@ -12,6 +12,9 @@ specifications:
 brand: "Huawei"
 stock: "disponible"
 order: 5067
+imageAlt: "Huawei – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **HUAWEI OPTIMIZER MERC-1300W-P long input cable** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

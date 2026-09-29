@@ -1,7 +1,7 @@
 ---
 title: "Microinversor Solar Growatt 1700537"
 description: "Microinversor Solar Growatt 1700537. Equipo para conversión de energía a nivel de módulo fotovoltaico. Marca: Growatt; modelo: 1700537; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/growatt-mod.jpg"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$1.061.550"
 specifications:
@@ -21,6 +21,9 @@ seoKeywords:
   - "comprar microinversor solar colombia"
   - "precio microinversor solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "Growatt 1700537 N/A – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Microinversor Solar Growatt 1700537** de Growatt · N/A.
 

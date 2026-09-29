@@ -1,6 +1,6 @@
 ---
 title: "Batería Solar Litio GoodWe 51.2VDC 280Ah GW14"
-description: "Batería Solar Litio GoodWe 51.2VDC 280Ah GW14. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Marca: GoodWe; modelo: GW14; especificación principal: 51.2VDC 280Ah. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
+description: "Batería litio GoodWe GW14. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. La foto es de referencia de la serie GoodWe Lynx. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-tienda/baterias/goodwe-lynxl.png"
 category: "baterias"
 price: "$13.795.469"
@@ -24,6 +24,11 @@ seoKeywords:
   - "comprar batería solar colombia"
   - "precio batería solar colombia"
   - "equipos de energía solar colombia"
+imagenSerieRef: "GoodWe Lynx"
+faqs:
+  - pregunta: "¿Es compatible con mi inversor?"
+    respuesta: "El voltaje del banco debe coincidir con el del inversor y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
+fichaPdf: "/fichas/fabricantes/goodwe-lynx-a-g3-14kwh-datasheet.pdf"
 ---
 **Batería Solar Litio GoodWe 51.2VDC 280Ah GW14** de GoodWe · 51.2VDC 280Ah.
 

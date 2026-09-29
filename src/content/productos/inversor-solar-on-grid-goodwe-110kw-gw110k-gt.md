@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid GoodWe 110kW GW110K-GT"
 description: "Inversor Solar On-Grid GoodWe 110kW GW110K-GT. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW110K-GT; especificación principal: 110kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$17.381.000"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "GoodWe GW110K-GT 110kW – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Inversor Solar On-Grid GoodWe 110kW GW110K-GT** de GoodWe · 110kW.
 

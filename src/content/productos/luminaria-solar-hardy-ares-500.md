@@ -1,0 +1,69 @@
+---
+title: "Luminaria Solar Hardy Ares 500 – 20 W reales · 3.000 lm"
+description: "Luminaria solar integrada para alumbrado público Hardy Ares 500 de 20 W reales y 3.000 lm (150 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 25 Ah y panel 28 W / 6 V monocristalino (integrado, 670 × 280 mm), con autonomía de 2 – 3 noches con carga completa. Se instala a 6 – 8 m de altura y ilumina 80 – 120 m². Protección IP65 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de 2024)."
+image: "/images/productos-estudio/hardy-ares-500.webp"
+imageThumb: "/images/productos-estudio/hardy-ares-500-thumb.webp"
+imageAlt: "Luminaria Solar Hardy Ares 500 – 20 W reales · 3.000 lm – Reiki Energía Solar"
+category: "reflectores"
+price: "$475.000"
+specifications:
+  - "Tipo: Luminaria solar integrada para alumbrado público"
+  - "Potencia real: 20 W"
+  - "Flujo luminoso: 3.000 lm"
+  - "Eficacia luminosa: 150 lm/W"
+  - "Temperatura de color: 6500 K (luz fría)"
+  - "CRI: > 70"
+  - "Vida útil LED: 90.000 h"
+  - "Batería: LiFePO4 3,2 V / 25 Ah"
+  - "Panel solar: 28 W / 6 V monocristalino (integrado, 670 × 280 mm)"
+  - "Tiempo de carga: 6 – 8 h de sol pleno"
+  - "Autonomía: 2 – 3 noches con carga completa"
+  - "Controlador de carga: MPPT integrado"
+  - "Grado de protección: IP65 / IK08"
+  - "Temperatura de operación: -10 °C a 30 °C"
+  - "Material: Aluminio"
+  - "Dimensiones: 740 × 310 × 85 mm"
+  - "Peso: 8 kg"
+  - "Altura de instalación recomendada: 6 – 8 m"
+  - "Distancia entre postes: 20 – 25 m"
+  - "Área de cobertura: 80 – 120 m²"
+  - "RETILAP: Producto certificado RETILAP (Resolución 40150 de 2024)"
+brand: "Hardy Solar"
+model: "Ares 500"
+sku: "HARDY-ARES-500"
+power: "20 W"
+stock: "disponible"
+order: 31
+updatedAt: "2026-09-28"
+imagen_provisional: true
+fichaPdf: "/fichas/hardy-ares-500-ficha-tecnica.pdf"
+seoKeywords:
+  - "luminaria solar"
+  - "hardy ares 500"
+  - "lámpara solar para calle"
+  - "alumbrado público solar"
+  - "luminaria solar retilap"
+  - "luminaria solar colombia"
+  - "comprar luminaria solar medellín"
+faqs:
+  - pregunta: "¿Cuántos vatios reales tiene la Ares 500?"
+    respuesta: "20 W reales, con un flujo de 3.000 lm. Para comparar luminarias solares, fíjate en los lúmenes y en los vatios reales, no en el número del modelo."
+  - pregunta: "¿Cuántas horas alumbra y cuánto tarda en cargar?"
+    respuesta: "Autonomía: 2 – 3 noches con carga completa. Carga completa en 6 – 8 h de sol pleno. En días nublados la carga es menor; por eso la batería LiFePO4 guarda reserva para más de una noche en los modelos que lo indican."
+  - pregunta: "¿A qué altura se instala y cuánto espacio ilumina?"
+    respuesta: "Altura recomendada: 6 – 8 m. Distancia entre postes: 20 – 25 m. Cobertura: 80 – 120 m²."
+  - pregunta: "¿Necesita cableado o conexión a la red eléctrica?"
+    respuesta: "No. Panel, batería y controlador vienen integrados en el mismo cuerpo. Solo se fija en el poste, muro o soporte y enciende automáticamente al anochecer."
+  - pregunta: "¿Qué incluye?"
+    respuesta: "Luminaria solar integrada, brazo de montaje, control remoto, tornillos y anclajes, manual de instalación. El poste no está incluido."
+  - pregunta: "¿Tiene certificación RETILAP?"
+    respuesta: "Producto certificado RETILAP (Resolución 40150 de 2024)."
+  - pregunta: "¿Dónde se recomienda usar?"
+    respuesta: "Vías y calles, parques y zonas verdes, parcelaciones y conjuntos, fincas y zonas rurales, estacionamientos."
+---
+
+**Luminaria Solar Hardy Ares 500 – 20 W reales · 3.000 lm**
+
+Luminaria solar integrada para alumbrado público Hardy Ares 500 de 20 W reales y 3.000 lm (150 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 25 Ah y panel 28 W / 6 V monocristalino (integrado, 670 × 280 mm), con autonomía de 2 – 3 noches con carga completa. Se instala a 6 – 8 m de altura y ilumina 80 – 120 m². Protección IP65 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de 2024).
+
+Ficha técnica del fabricante: Hardy Solar Energy. Precio con IVA incluido.

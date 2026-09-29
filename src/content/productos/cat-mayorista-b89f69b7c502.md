@@ -1,7 +1,7 @@
 ---
 title: "Accuenergy ACUCT-200R-600: 1A"
 description: "Transformador de corriente (TC) o núcleo dividido Accuenergy para medición de energía, telemetría o protección en AC o según modelo."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$898.350"
 specifications:
@@ -12,6 +12,9 @@ specifications:
 brand: "Accuenergy"
 stock: "disponible"
 order: 5197
+imageAlt: "Accuenergy – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **ACCUENERGY ACUCT-200R-600: 1A** · referencia **Accuenergy** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

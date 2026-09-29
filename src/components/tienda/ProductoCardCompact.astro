@@ -43,10 +43,15 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
   <a class="producto-image-link" href={urlFicha} aria-label={`Ver detalles de ${d.title}`}>
     <div class="producto-image-container">
       <img
-        src={d.image}
-        alt={d.title}
+        src={d.imageThumb || d.image}
+        srcset={d.imageThumb ? `${d.imageThumb} 600w, ${d.image} 1600w` : undefined}
+        sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 280px"
+        alt={d.imageAlt ?? `${d.brand ? d.brand + ' ' : ''}${d.title} – Reiki Energía Solar`}
         class="producto-image"
+        width="600"
+        height="600"
         loading="lazy"
+        decoding="async"
       />
       {d.stock === 'disponible' && (
         <div class="producto-badge disponible">Disponible</div>

@@ -49,3 +49,6 @@ dotted-saga-*.json
 **/credentials/*.json
 
 .vercel
+
+# Inventario crudo de fotos de proveedor (no procesar/publicar desde aquí)
+imagenes-proveedores/

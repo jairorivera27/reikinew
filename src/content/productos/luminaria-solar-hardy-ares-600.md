@@ -1,0 +1,73 @@
+---
+title: "Luminaria Solar Hardy Ares 600 – 22 W reales · 4.070 lm"
+description: "Luminaria solar integrada para alumbrado público Hardy Ares 600 de 22 W reales y 4.070 lm (185 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 40 Ah y panel 40 W monocristalino (integrado, 760 × 280 mm), con autonomía de 2 – 3 noches con carga completa. Se instala a 7 – 9 m de altura y ilumina hasta 60 m². Protección IP65 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024)."
+image: "/images/productos-estudio/hardy-ares-600.webp"
+imageThumb: "/images/productos-estudio/hardy-ares-600-thumb.webp"
+imageAlt: "Luminaria Solar Hardy Ares 600 – 22 W reales · 4.070 lm – Reiki Energía Solar"
+category: "reflectores"
+price: "$506.250"
+specifications:
+  - "Tipo: Luminaria solar integrada para alumbrado público"
+  - "Potencia real: 22 W"
+  - "Flujo luminoso: 4.070 lm"
+  - "Eficacia luminosa: 185 lm/W"
+  - "Temperatura de color: 6500 K (luz blanca fría)"
+  - "CRI: > 70"
+  - "LED: 60 LED SMD 5054"
+  - "Vida útil LED: 90.000 h"
+  - "Batería: LiFePO4 3,2 V / 40 Ah"
+  - "Panel solar: 40 W monocristalino (integrado, 760 × 280 mm)"
+  - "Tiempo de carga: 6 – 8 h de sol pleno"
+  - "Autonomía: 2 – 3 noches con carga completa"
+  - "Controlador de carga: MPPT integrado"
+  - "Grado de protección: IP65 / IK08"
+  - "Temperatura de operación: -10 °C a 30 °C"
+  - "Material: Aluminio de alta resistencia, lente de policarbonato óptico"
+  - "Dimensiones: 938 × 310 × 85 mm"
+  - "Peso: 10,5 kg"
+  - "Altura de instalación recomendada: 7 – 9 m"
+  - "Distancia entre postes: 20 – 25 m"
+  - "Área de cobertura: hasta 60 m²"
+  - "Garantía: 2 años"
+  - "RETILAP: Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024)"
+brand: "Hardy Solar"
+model: "Ares 600"
+sku: "HARDY-ARES-600"
+power: "22 W"
+stock: "disponible"
+order: 30
+updatedAt: "2026-09-28"
+imagen_provisional: true
+fichaPdf: "/fichas/hardy-ares-600-ficha-tecnica.pdf"
+seoKeywords:
+  - "luminaria solar"
+  - "hardy ares 600"
+  - "lámpara solar para calle"
+  - "alumbrado público solar"
+  - "luminaria solar retilap"
+  - "luminaria solar colombia"
+  - "comprar luminaria solar medellín"
+faqs:
+  - pregunta: "¿Cuántos vatios reales tiene la Ares 600?"
+    respuesta: "22 W reales, con un flujo de 4.070 lm. Para comparar luminarias solares, fíjate en los lúmenes y en los vatios reales, no en el número del modelo."
+  - pregunta: "¿Cuántas horas alumbra y cuánto tarda en cargar?"
+    respuesta: "Autonomía: 2 – 3 noches con carga completa. Carga completa en 6 – 8 h de sol pleno. En días nublados la carga es menor; por eso la batería LiFePO4 guarda reserva para más de una noche en los modelos que lo indican."
+  - pregunta: "¿A qué altura se instala y cuánto espacio ilumina?"
+    respuesta: "Altura recomendada: 7 – 9 m. Distancia entre postes: 20 – 25 m. Cobertura: hasta 60 m²."
+  - pregunta: "¿Necesita cableado o conexión a la red eléctrica?"
+    respuesta: "No. Panel, batería y controlador vienen integrados en el mismo cuerpo. Solo se fija en el poste, muro o soporte y enciende automáticamente al anochecer."
+  - pregunta: "¿Qué incluye?"
+    respuesta: "Luminaria solar integrada, brazo de montaje, control remoto, tornillos y anclajes, manual de instalación. El poste no está incluido."
+  - pregunta: "¿Tiene certificación RETILAP?"
+    respuesta: "Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024)."
+  - pregunta: "¿Qué garantía tiene?"
+    respuesta: "2 años de garantía del fabricante (Hardy Solar Energy). Reiki Energía Solar te acompaña en el trámite."
+  - pregunta: "¿Dónde se recomienda usar?"
+    respuesta: "Vías y calles, parques y zonas verdes, parcelaciones y conjuntos, fincas y zonas rurales, estacionamientos."
+---
+
+**Luminaria Solar Hardy Ares 600 – 22 W reales · 4.070 lm**
+
+Luminaria solar integrada para alumbrado público Hardy Ares 600 de 22 W reales y 4.070 lm (185 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 40 Ah y panel 40 W monocristalino (integrado, 760 × 280 mm), con autonomía de 2 – 3 noches con carga completa. Se instala a 7 – 9 m de altura y ilumina hasta 60 m². Protección IP65 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024).
+
+Ficha técnica del fabricante: Hardy Solar Energy. Precio con IVA incluido.

@@ -1,0 +1,60 @@
+{
+  "base": "http://localhost:4321",
+  "report": [
+    {
+      "ok": true,
+      "msg": "GET categoría protecciones-electricas",
+      "detail": "status 200"
+    },
+    {
+      "ok": false,
+      "msg": "Imágenes en categoría protecciones",
+      "detail": "{\"total\":48,\"broken\":9,\"placeholders\":0,\"sample\":[\"/images/productos-tienda/protecciones/suntree-scb8-ac.jpg\",\"/images/Addi.png\",\"/images/productos-tienda/protecciones/suntree-scb8-ac.jpg\",\"/images/Addi.png\",\"/images/productos-tienda/protecciones/suntree-scb8-ac.jpg\"]}"
+    },
+    {
+      "ok": true,
+      "msg": "Agregar desde categoría",
+      "detail": "n=1 title=Breaker Suntree 20A AC SCB8-63-20A1P"
+    },
+    {
+      "ok": true,
+      "msg": "Checkout con items",
+      "detail": ""
+    },
+    {
+      "ok": true,
+      "msg": "Total actualizado",
+      "detail": "$ 13.640 -> $ 27.280"
+    },
+    {
+      "ok": true,
+      "msg": "Validación al pagar sin términos / feedback",
+      "detail": "Debes aceptar los Términos y Condiciones para continuar con tu compra"
+    },
+    {
+      "ok": true,
+      "msg": "Resultado intento de pago Wompi",
+      "detail": "toast=\"Abriendo pasarela de pago segura de Wompi…\" frames=1"
+    },
+    {
+      "ok": false,
+      "msg": "No se encontró link de ficha válido",
+      "detail": "/tienda/categoria/paneles-solares"
+    },
+    {
+      "ok": true,
+      "msg": "POST /api/wompi-integrity responde",
+      "detail": "{\"status\":200,\"text\":\"{\\\"ok\\\":true,\\\"integrity\\\":\\\"91321415db0d6d5d5834aaeb54453a5ee0898e3ada196038ad007511ae05af32\\\"}\"}"
+    },
+    {
+      "ok": true,
+      "msg": "Sin violaciones CSP en consola",
+      "detail": "none"
+    },
+    {
+      "ok": false,
+      "msg": "Sin errores JS graves",
+      "detail": "Failed to load resource: the server responded with a status of 404 ()"
+    }
+  ]
+}

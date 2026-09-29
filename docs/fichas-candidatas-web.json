@@ -1,0 +1,675 @@
+[
+ {
+  "marca": "Victron",
+  "archivo": "victron-quattro-ii-3kva-2x120v-datasheet.pdf",
+  "url": "https://www.victronenergy.com/upload/documents/Datasheet-Quattro-II-3kVA-2x120V-EN-.pdf",
+  "cubre_regex": "(?i)Quattro-II\\s*(12|24)/3000|QUA(12|24)2305130",
+  "cadena_en_pdf": "QUATTROII",
+  "slugs": [
+   "inversor-solar-on-grid-victron-qua122305130",
+   "inversor-solar-on-grid-victron-qua242305130"
+  ],
+  "nota": "Datasheet oficial Quattro-II 2x120V 3000VA (12/3000/120-50/50 y 24/3000/70-50/50). QUA122305130/QUA242305130 = versiones 2x120V."
+ },
+ {
+  "marca": "Victron",
+  "archivo": "victron-quattro-3-10kva-120v-datasheet.pdf",
+  "url": "https://www.victronenergy.com/upload/documents/Datasheet-Quattro-3-10kVA-120V-EN-.pdf",
+  "cubre_regex": "(?i)Quattro\\s*48/3000|QUA483021100",
+  "cadena_en_pdf": "48/3000",
+  "slugs": [
+   "inversor-solar-on-grid-victron-qua483021100"
+  ],
+  "nota": "QUA483021100 = Quattro 48/3000/35-50/50 120V; aparece en datasheet Quattro 3-10kVA 120V."
+ },
+ {
+  "marca": "Victron",
+  "archivo": "victron-multiplus-500-1200va-120v-datasheet.pdf",
+  "url": "https://www.victronenergy.com/upload/documents/Datasheet-MultiPlus-500-1200VA-120V-EN.pdf",
+  "cubre_regex": "(?i)MultiPlus\\s*12/500|PMP121500100",
+  "cadena_en_pdf": "12/500",
+  "slugs": [
+   "inversor-solar-on-grid-victron-pmp121500100"
+  ],
+  "nota": "PMP121500100 = MultiPlus 12/500/20-16 120V (por eso datasheet 120V, no el de 230V)."
+ },
+ {
+  "marca": "Victron",
+  "archivo": "victron-smart-batteryprotect-datasheet.pdf",
+  "url": "https://www.victronenergy.com/upload/documents/Datasheet-Smart-Battery-Protect-65-A--100-A--220-A-EN.pdf",
+  "cubre_regex": "(?i)Smart\\s*BatteryProtect",
+  "cadena_en_pdf": "SMARTBATTERYPROTECT",
+  "slugs": [
+   "protector-de-bateria-victron-12-24v-100a-smart-batteryprotect-12-24v"
+  ],
+  "nota": "Datasheet oficial Smart BatteryProtect 12/24V 65A/100A/220A."
+ },
+ {
+  "marca": "Victron",
+  "archivo": "victron-ve-bus-smart-dongle-manual.pdf",
+  "url": "https://www.victronenergy.com/upload/documents/VE.Bus_Smart_Dongle/106441-VE_Bus_Smart_Dongle-pdf-en.pdf",
+  "cubre_regex": "(?i)VE\\.?Bus\\s*Smart\\s*Dongle",
+  "cadena_en_pdf": "VE.BUSSMARTDONGLE",
+  "slugs": [
+   "adaptador-bluetooth-victron-8-70vdc-ve-bus-smart-dongle"
+  ],
+  "nota": "Victron no publica datasheet para el VE.Bus Smart Dongle; esto es el manual oficial (incluye especificaciones)."
+ },
+ {
+  "marca": "Victron",
+  "archivo": "victron-bluesolar-mppt-150-45-a-150-100-datasheet.pdf",
+  "url": "https://www.victronenergy.com/upload/documents/Datasheet-BlueSolar-charge-controller-MPPT-150-45-up-to-150-100-EN.pdf",
+  "cubre_regex": "SCC0100[67]0[23]00",
+  "cadena_en_pdf": "150/70",
+  "slugs": [
+   "controlador-de-carga-solar-mppt-victron-scc010060200",
+   "controlador-de-carga-solar-mppt-victron-scc010060300",
+   "controlador-de-carga-solar-mppt-victron-scc010070200",
+   "controlador-de-carga-solar-mppt-victron-scc010070300"
+  ],
+  "nota": "Codigos: SCC010060200=BlueSolar MPPT 150/60-Tr, SCC010060300=150/60-MC4, SCC010070200=150/70-Tr, SCC010070300=150/70-MC4. El PDF no lista codigos de pieza, si los modelos 150/60 y 150/70."
+ },
+ {
+  "marca": "Victron",
+  "archivo": "victron-cerbo-gx-datasheet.pdf",
+  "url": "https://www.victronenergy.com/upload/documents/Datasheet-Cerbo-GX-GX-Touch-EN.pdf",
+  "cubre_regex": "BPP900451100",
+  "cadena_en_pdf": "",
+  "slugs": [
+   "sistema-de-monitoreo-solar-victron-bpp900451100"
+  ],
+  "nota": "BPP900451100 = Cerbo GX MK2. PDF oficial SIN capa de texto (vectorizado); verificado por OCR ('Cerbo GX'). La validacion por cadena fallara: aceptar manualmente o por OCR."
+ },
+ {
+  "marca": "Victron",
+  "archivo": "victron-bluesolar-pwm-pro-datasheet.pdf",
+  "url": "https://www.victronenergy.com/upload/documents/Datasheet-BlueSolar-PWM-Pro-Charge-Controllers-EN.pdf",
+  "cubre_regex": "SCC900300000",
+  "cadena_en_pdf": "REMOTEPANEL",
+  "slugs": [
+   "panel-solar-monocristalino-victron-scc900300000"
+  ],
+  "nota": "OJO: SCC900300000 NO es un panel solar sino el 'Remote panel for BlueSolar PWM-Pro'; el datasheet PWM-Pro incluye el Remote Panel. Corregir titulo/categoria del producto."
+ },
+ {
+  "marca": "Kolos",
+  "archivo": "connera-kolosal-catalogo-vde.pdf",
+  "url": "https://cdnc.heyzine.com/flip-book/pdf/76fe07714d7eb6fbe7b7ffd183db3ac9ccc68a76.pdf",
+  "cubre_regex": "(?i)KOLOS3-|KOLOS4-|KOLOS-CFP",
+  "cadena_en_pdf": "KOLOS3123110",
+  "slugs": [
+   "bomba-solar-1100w-kolos3-123-110-20",
+   "bomba-solar-1300w-kolos3-155-130-20",
+   "bomba-solar-1300w-kolos4-112-130-20",
+   "bomba-solar-1500w-kolos3-180-150-20",
+   "bomba-solar-1500w-kolos4-60-150-20",
+   "bomba-solar-600w-kolos3-80-60-7",
+   "bomba-solar-750w-kolos-cfp-750-72",
+   "bomba-solar-750w-kolos3-95-75-11"
+  ],
+  "nota": "Connera no publica fichas individuales; es el catalogo oficial VDE/Connera (sep-2026) con tablas por modelo (verificados KOLOS3-80-60-7, 95-75-11, 123-110-20, 155-130-20, 180-150-20, KOLOS4-60-150-20, 112-130-20, KOLOS-CFP-750-72). Catalogo multi-marca de 6MB alojado en heyzine (URL puede cambiar al publicar nuevo mes)."
+ },
+ {
+  "marca": "Kolos",
+  "archivo": "connera-kol4-mp-manual.pdf",
+  "url": "http://docs.connera.com/MI/MICO_KOLOSAL%204.pdf",
+  "cubre_regex": "(?i)KOL4-\\d+-\\d+-MP",
+  "cadena_en_pdf": "KOL4110220",
+  "slugs": [
+   "bomba-solar-2200w-kol4-110-220-mp",
+   "bomba-solar-4000w-kol4-225-400-mp",
+   "bomba-solar-7500w-kol4-120-750-mp"
+  ],
+  "nota": "Manual de instalacion oficial Connera KOL4-MP (dominio fabricante) con tabla de especificaciones; contiene KOL4-110-220-MP, KOL4-225-400-MP, KOL4-120-750-MP. Alternativa: catalogo VDE (entrada anterior) tambien los incluye."
+ },
+ {
+  "marca": "Kolos",
+  "archivo": "connera-kolosal-pool-catalogo-vde.pdf",
+  "url": "https://cdnc.heyzine.com/flip-book/pdf/06fdde9c751b360391fddc2c18da3f10b667c34c.pdf",
+  "cubre_regex": "(?i)POOL(25|32)-",
+  "cadena_en_pdf": "POOL25500",
+  "slugs": [
+   "bomba-solar-500w-pool25-500-48",
+   "bomba-solar-900w-pool32-900-72"
+  ],
+  "nota": "Catalogo oficial VDE/Connera (bombas/piscina) con POOL25-500-48 y POOL32-900-72 (15MB, heyzine)."
+ },
+ {
+  "marca": "Growatt",
+  "archivo": "growatt-mac-30-36ktl3-xl2-hoja-de-datos.pdf",
+  "url": "https://latam.growatt.com/upload/file/MAC_30-36KTL3-XL2_Hoja_de_datos_MX_202605.pdf",
+  "cubre_regex": "(?i)36KTL3-XL2",
+  "cadena_en_pdf": "",
+  "slugs": [
+   "inversor-solar-on-grid-growatt-36kw-36ktl3-xl2"
+  ],
+  "nota": "Hoja de datos oficial Growatt LatAm (espanol). PDF SIN texto; OCR confirma 'MAC 36KTL3-XL2'. Aceptar manualmente/OCR."
+ },
+ {
+  "marca": "Growatt",
+  "archivo": "growatt-shinewelink-datasheet.pdf",
+  "url": "https://en.growatt.com/upload/file/ShineWeLink_Datasheet_EN_202507.pdf",
+  "cubre_regex": "(?i)ShineWeLink",
+  "cadena_en_pdf": "",
+  "slugs": [
+   "datalogger-growatt-shinewelink-para-microinversores-neo"
+  ],
+  "nota": "Datasheet oficial. PDF SIN texto; OCR confirma 'ShineWeLink'."
+ },
+ {
+  "marca": "Growatt",
+  "archivo": "growatt-apx-hv-battery-datasheet.pdf",
+  "url": "https://en.growatt.com/upload/file/APX_HV_Battery-S0_(MIN-XH)_Datasheet_EN_202405.pdf",
+  "cubre_regex": "(?i)Growatt\\s*380VDC\\s*5\\.0kWh\\s*IP66",
+  "cadena_en_pdf": "IP66",
+  "slugs": [
+   "bateria-solar-litio-growatt-380vdc-5-0kwh-ip66"
+  ],
+  "nota": "Supuesto: modulo APX 5.0P (5kWh, ~385V nominal, IP66). El producto no indica modelo; confirmar."
+ },
+ {
+  "marca": "Growatt",
+  "archivo": "growatt-smart-meter-tpm-ct-e-datasheet.pdf",
+  "url": "https://en.growatt.com/upload/file/Smart_Meter_(SPM-CT-E&TPM-CT-E)_Datasheet_EN_202305.pdf",
+  "cubre_regex": "(?i)Medidor de Energ[ií]a Growatt (100|250)A",
+  "cadena_en_pdf": "TPMCTE",
+  "slugs": [
+   "medidor-de-energia-growatt-100a",
+   "medidor-de-energia-growatt-250a"
+  ],
+  "nota": "Supuesto: medidores Growatt con CT 100A/250A = SPM-CT-E / TPM-CT-E (el PDF lista CT 100A y 250A). Confirmar monofasico/trifasico."
+ },
+ {
+  "marca": "Huawei",
+  "archivo": "huawei-luna2000-5-15-s0-datasheet.pdf",
+  "url": "https://solar.huawei.com/-/media/Solar/attachment/pdf/eu/datasheet/LUNA2000-5-15-S0.pdf",
+  "cubre_regex": "LUNA2000-5-E0|LUNA2000-5KW-C0",
+  "cadena_en_pdf": "LUNA20005E0",
+  "slugs": [
+   "cat-mayorista-3bf55f91e354",
+   "cat-mayorista-940810d7953b"
+  ],
+  "nota": "Datasheet oficial LUNA2000-5/10/15-S0 (modulo LUNA2000-5-E0 y modulo de potencia LUNA2000-5KW-C0)."
+ },
+ {
+  "marca": "Huawei",
+  "archivo": "huawei-luna2000-7-14-21-s1-datasheet.pdf",
+  "url": "https://ske-solar.com/productdata/LUNA2000-S1/01_Datasheets/DataSheet_LUNA2000-7-14-21-S1_V01_2024-06_EN.pdf",
+  "cubre_regex": "LUNA2000-7-E1",
+  "cadena_en_pdf": "LUNA20007E1",
+  "slugs": [
+   "cat-mayorista-3bf55f91e354"
+  ],
+  "nota": "PDF original Huawei (V01 2024-06, EN) alojado en distribuidor SKE. Version en dominio Huawei solo en rumano: https://solar.huawei.com/-/media/SolarV4/solar-version2/europe/ro/professionals/all-products/product/LUNA2000-7-14-21-S1/support/datasheet/LUNA2000-7-14-21-S1.pdf"
+ },
+ {
+  "marca": "Huawei",
+  "archivo": "huawei-sun2000-150k-mg0-datasheet.pdf",
+  "url": "https://solar.huawei.com/-/media/SolarV4/solar-version2/common/professionals/all-products/product/SUN2000-150K-MG0/support/pdf/SUN2000-150K-MG0.pdf",
+  "cubre_regex": "SUN2000-150K-MG0",
+  "cadena_en_pdf": "SUN2000150KMG0",
+  "slugs": [
+   "cat-mayorista-e42b37cb353a"
+  ],
+  "nota": "Datasheet oficial Huawei."
+ },
+ {
+  "marca": "Huawei",
+  "archivo": "huawei-smart-dongle-4g-datasheet.pdf",
+  "url": "https://solar.huawei.com/-/media/SolarV4/solar-version2/common/professionals/all-products/ci/accessories/smart-dongle-4g/datasheet/smart-dongle-4g.pdf",
+  "cubre_regex": "(?i)S(mart\\s*)?DongleB-06",
+  "cadena_en_pdf": "SDONGLEB06",
+  "slugs": [
+   "cat-mayorista-9b8d35185cbf"
+  ],
+  "nota": "Smart Dongle-4G = SDongleB-06(-EU)."
+ },
+ {
+  "marca": "Huawei",
+  "archivo": "huawei-smart-power-sensor-dtsu666-h-datasheet.pdf",
+  "url": "https://solar.huawei.com/admin/asset/v1/pro/view/10b44cb3ac91489981d76e0f752b579c.pdf",
+  "cubre_regex": "SmartPS-250A-T0",
+  "cadena_en_pdf": "DTSU666H250A",
+  "slugs": [
+   "cat-mayorista-d5c555401f8e"
+  ],
+  "nota": "SmartPS-250A-T0 = DTSU666-H 250A/50mA (nuevo nombre comercial); el PDF no usa el nombre SmartPS."
+ },
+ {
+  "marca": "APsystems",
+  "archivo": "apsystems-qt2-208-datasheet.pdf",
+  "url": "https://www.chargesolar.com/documents/APsystems/APsystems_APS-QT2-208V_Datasheet_2025-02-27.pdf",
+  "cubre_regex": "(?i)\\bQT2(-208|-MX)?\\b",
+  "cadena_en_pdf": "QT2208",
+  "slugs": [
+   "apsystems-qt2",
+   "cat-mayorista-82cb6716d11f"
+  ],
+  "nota": "PDF original APsystems (InDesign, sin marca de distribuidor) de la version 208V (Norteamerica/LatAm) alojado en ChargeSolar. APsystems LatAm solo lo sirve via FileCloud. Alternativa oficial APAC (400V): https://global.apsystems.com/wp-content/uploads/2023/04/APsystems-Microinverter-QT2-for-APAC-Datasheet_-Rev1.1_2023-03-24.pdf"
+ },
+ {
+  "marca": "APsystems",
+  "archivo": "apsystems-ds3d-datasheet.pdf",
+  "url": "https://global.apsystems.com/wp-content/uploads/2023/04/APsystems-Microinverter-DS3D-For-APAC-Datasheet_-Rev1.2_2023-03-02.pdf",
+  "cubre_regex": "(?i)\\bAPS(ystems)?\\b.*DS3D",
+  "cadena_en_pdf": "DS3D",
+  "slugs": [
+   "cat-mayorista-b61488631524",
+   "inversor-micro-optimizador"
+  ],
+  "nota": "Datasheet oficial global DS3D (version APAC 230V). No hay PDF directo de la version MX/LatAm (DS3D-MX)."
+ },
+ {
+  "marca": "APsystems",
+  "archivo": "apsystems-ecu-r-datasheet.pdf",
+  "url": "https://global.apsystems.com/wp-content/uploads/2022/09/APsystems-Energy-Communication-Unit-ECU-R-datasheet_Rev3.4_2022-08-30.pdf",
+  "cubre_regex": "ECU-R",
+  "cadena_en_pdf": "ECUR",
+  "slugs": [
+   "sistema-de-monitoreo-solar-apsystems-ecu-r-mx"
+  ],
+  "nota": "Datasheet oficial ECU-R."
+ },
+ {
+  "marca": "Hoymiles",
+  "archivo": "hoymiles-dtu-pro-s-datasheet.pdf",
+  "url": "https://w3oss.hoymiles.com/uploadfile/1/202508/fbe4b5da49.pdf",
+  "cubre_regex": "(?i)DTU Hoymiles",
+  "cadena_en_pdf": "DTUPROS",
+  "slugs": [
+   "dtu-hoymiles-1500w-accesorio-monitor",
+   "dtu-hoymiles-250a-accesorio-monitor",
+   "dtu-hoymiles-accesorio-monitor"
+  ],
+  "nota": "Datasheet oficial DTU-Pro-S. AMBIGUO: los productos 'DTU Hoymiles' no indican modelo (1500W/250A parecen errores de datos); confirmar que sean DTU-Pro-S antes de asignar."
+ },
+ {
+  "marca": "Hoymiles",
+  "archivo": "hoymiles-dtsu666-export-management-datasheet.pdf",
+  "url": "https://wallboxcenter.de/wp-content/uploads/2022/10/Hoymiles-DTSU666-Smartmeter-Datenblatt.pdf",
+  "cubre_regex": "(?i)Hoymiles.*(Electric Meter|DTSU666)",
+  "cadena_en_pdf": "DTSU666",
+  "slugs": [
+   "cat-mayorista-7412edd33a03",
+   "cat-mayorista-fa78e1e70d09"
+  ],
+  "nota": "Datasheet original Hoymiles (Smart Power Export Management, 2021) con medidor DTSU666 y CT; alojado en distribuidor aleman. No se encontro URL directa en hoymiles.com."
+ },
+ {
+  "marca": "Pylontech",
+  "archivo": "pylontech-residential-bess-us-series.pdf",
+  "url": "https://midsummerenergy.co.uk/pdfs/us5000-datasheet.pdf",
+  "cubre_regex": "(?i)Pylontech\\s*(3552Wh|48V\\s*2\\.4kWh)",
+  "cadena_en_pdf": "US3000C",
+  "slugs": [
+   "bateria-solar-litio-pylontech-3552wh-hess",
+   "bateria-solar-litio-pylontech-48v-2-4kwh-1708249"
+  ],
+  "nota": "Brochure/datasheet oficial Pylontech 'Residential BESS rack mounted' con US2000C (2.4kWh) y US3000C (3552Wh = 'HESS' 3.55kWh); alojado en distribuidor. Supuesto: 3552Wh=US3000C y 2.4kWh=US2000C."
+ },
+ {
+  "marca": "Pylontech",
+  "archivo": "pylontech-uf5000-manual.pdf",
+  "url": "https://pylonwebs3.s3.amazonaws.com/upload/2024/09/25/5PMPA08-00204-UF5000%20Installation%20manual-V1.1_20240925123054A047.pdf",
+  "cubre_regex": "UF5000",
+  "cadena_en_pdf": "UF5000",
+  "slugs": [
+   "bateria-solar-litio-pylontech-uf5000"
+  ],
+  "nota": "No hay datasheet publico de UF5000; es el manual oficial (bucket de Pylontech) con especificaciones."
+ },
+ {
+  "marca": "Felicity",
+  "archivo": "felicity-fla24-eu-datasheet.pdf",
+  "url": "https://doc.felicitysolar.com/Datasheet/Battery-en/FLA24100-EU%20FLA24171-EU%20FLA24230-EU%20FLA24280-EU%20FLA24460-EU%20%20Datasheet%20-%20EN.pdf",
+  "cubre_regex": "FLA24171|FLA24280",
+  "cadena_en_pdf": "",
+  "slugs": [
+   "bateria-solar-litio-felicity-24v-4kwh-fla24171",
+   "bateria-solar-litio-felicity-24v-7-15kwh-fla24280-eu"
+  ],
+  "nota": "Datasheet oficial Felicity. PDF SIN texto; OCR confirma FLA24171 y FLA24280."
+ },
+ {
+  "marca": "Felicity",
+  "archivo": "felicity-fla48-eu-100-250-datasheet.pdf",
+  "url": "https://doc.felicitysolar.com/Datasheet/Battery-en/FLA48100-EU%20FLA48171-EU%20FLA48230-EU%20FLA48250-EU%20%20Datasheet%20-%20EN.pdf",
+  "cubre_regex": "FLA48171",
+  "cadena_en_pdf": "",
+  "slugs": [
+   "bateria-solar-litio-felicity-48v-8-75kwh-fla48171-eu"
+  ],
+  "nota": "Datasheet oficial Felicity. PDF SIN texto; OCR confirma FLA48171."
+ },
+ {
+  "marca": "Felicity",
+  "archivo": "felicity-fla48280-eu-datasheet.pdf",
+  "url": "https://doc.felicitysolar.com/Datasheet/Battery-en/FLA48280-EU%20FLA48300-EU%20Datasheet%20-%20EN.pdf",
+  "cubre_regex": "FLA48280",
+  "cadena_en_pdf": "",
+  "slugs": [
+   "bateria-solar-litio-felicity-48v-14-3kwh-fla48280-eu"
+  ],
+  "nota": "Datasheet oficial Felicity. PDF SIN texto; OCR confirma FLA48280."
+ },
+ {
+  "marca": "Felicity",
+  "archivo": "felicity-ivem3048-lv-datasheet.pdf",
+  "url": "https://doc.felicitysolar.com/Datasheet/Inverter-en/IVEM3048-LV%20IVEM5048-LV%20Datasheet%20-%20EN.pdf",
+  "cubre_regex": "IVEM3048",
+  "cadena_en_pdf": "",
+  "slugs": [
+   "inversor-solar-off-grid-felicity-3kw-ivem3048-lv"
+  ],
+  "nota": "Datasheet oficial Felicity. PDF SIN texto; OCR confirma IVEM3048."
+ },
+ {
+  "marca": "Deye",
+  "archivo": "deye-stick-logger-datasheet.pdf",
+  "url": "https://www.deyeinverter.com/deyeinverter/2024/06/20/%E3%80%90b%E3%80%91%E6%9C%8D%E5%8A%A1%E6%8C%87%E5%8D%97-%E9%99%84%E4%BB%B6-%E9%87%87%E9%9B%86%E5%99%A8deye.pdf",
+  "cubre_regex": "(?i)LS4G-3|Datalogger Deye|M[oó]dulo Inal[aá]mbrico Deye",
+  "cadena_en_pdf": "LS4G3",
+  "slugs": [
+   "datalogger-deye-ls4g-3",
+   "datalogger-deye-para-monitoreo-de-inversores-solares",
+   "modulo-inalambrico-deye"
+  ],
+  "nota": "Datasheet oficial Stick Logger (LSW-3, LS4G-3, LSG-3, LSE-3...). Para 'Datalogger Deye para Monitoreo' y 'Modulo Inalambrico Deye' se asume LSW-3 (no indican modelo)."
+ },
+ {
+  "marca": "EPever",
+  "archivo": "epever-tracer-an-50-100a-datasheet.pdf",
+  "url": "https://www.epever.com/wp-content/uploads/2021/05/EPEVER-Datasheet_Tracer-AN-50A-100A.pdf",
+  "cubre_regex": "Tracer-?[68]415AN",
+  "cadena_en_pdf": "TRACER6415AN",
+  "slugs": [
+   "controlador-mppt-60a",
+   "controlador-mppt-80a"
+  ],
+  "nota": "Datasheet oficial Tracer-AN 50-100A (incluye 6415AN y 8415AN)."
+ },
+ {
+  "marca": "EPever",
+  "archivo": "epever-ipt-110-120vac-datasheet.pdf",
+  "url": "https://www.epever.com/wp-content/uploads/2021/09/EPEVER-DataSheet-IPT-100-110-120VAC1.pdf",
+  "cubre_regex": "IPT2000",
+  "cadena_en_pdf": "IPT200041",
+  "slugs": [
+   "epever-ipt2000"
+  ],
+  "nota": "IPT2000-41 esta en el datasheet IPT 100/110/120VAC."
+ },
+ {
+  "marca": "Studer",
+  "archivo": "studer-variotrack-vt65-vt80-datasheet.pdf",
+  "url": "https://studer-innotec.com/wp-content/uploads/2025/09/Studer_variotrack-legacy_vt40_vt65_vt80_A4-WEB-v2.2.1.pdf",
+  "cubre_regex": "(?i)\\bVt\\s*-?(65|80)\\b",
+  "cadena_en_pdf": "VT65",
+  "slugs": [
+   "cat-mayorista-6184c2963746",
+   "cat-mayorista-a1751e95a366"
+  ],
+  "nota": "Datasheet oficial VarioTrack (legacy) VT-40/65/80."
+ },
+ {
+  "marca": "Studer",
+  "archivo": "studer-variostring-datasheet.pdf",
+  "url": "https://studer-innotec.com/wp-content/uploads/2025/09/Studer_variostring_A4_WEB-v2.2.pdf",
+  "cubre_regex": "(?i)\\bVs\\s*-?120\\b",
+  "cadena_en_pdf": "VS120",
+  "slugs": [
+   "cat-mayorista-e2fbad5e2d84"
+  ],
+  "nota": "Datasheet oficial VarioString VS-70/VS-120."
+ },
+ {
+  "marca": "Fronius",
+  "archivo": "fronius-primo-us-datasheet.pdf",
+  "url": "https://www.fronius.com/~/downloads/Solar%20Energy/Datasheets/SE_DS_Fronius_Primo_EN_US.pdf",
+  "cubre_regex": "(?i)Primo\\s*10\\.\\s*0-1\\s*208/240",
+  "cadena_en_pdf": "PRIMO10.0",
+  "slugs": [
+   "cat-mayorista-6f5562cfe157",
+   "cat-mayorista-b08962dedfab"
+  ],
+  "nota": "Datasheet oficial Fronius Primo 3.8-15.0 208-240 (US/UL)."
+ },
+ {
+  "marca": "Fronius",
+  "archivo": "fronius-tauro-eco-d-208-es-mx-datasheet.pdf",
+  "url": "https://krannich-solar.com/fileadmin/user_upload/MX/SE_DS_Fronius_Tauro_D_208_ES_MEX.pdf",
+  "cubre_regex": "(?i)Tauro\\s*Eco\\s*50-3-D",
+  "cadena_en_pdf": "TAUROECO503D",
+  "slugs": [
+   "cat-mayorista-6dfcf1f7069e"
+  ],
+  "nota": "PDF original Fronius (SE_DS_Fronius_Tauro_D_208_ES_MEX, autor Fronius) alojado en Krannich; fronius.com bloquea descarga directa."
+ },
+ {
+  "marca": "Solis",
+  "archivo": "solis-s2-wl-st-flyer.pdf",
+  "url": "https://www.solisinverters.com/uploads/file/S2-WL-ST-Global-Flyer-V4,0.pdf",
+  "cubre_regex": "S2-WL-ST",
+  "cadena_en_pdf": "S2WLST",
+  "slugs": [
+   "cat-mayorista-8707d08ce9f6"
+  ],
+  "nota": "Ficha oficial Solis S2-WL-ST."
+ },
+ {
+  "marca": "Solis",
+  "archivo": "solis-s3-wifi-st-flyer.pdf",
+  "url": "https://www.solisinverters.com/uploads/file/S3-WIFI-ST-Global-Flyer-V3,6.pdf",
+  "cubre_regex": "(?i)S3-WIFI-ST",
+  "cadena_en_pdf": "S3WIFIST",
+  "slugs": [
+   "cat-mayorista-d39390170713"
+  ],
+  "nota": "Ficha oficial Solis S3-WIFI-ST."
+ },
+ {
+  "marca": "Pytes",
+  "archivo": "pytes-e-box-48100r-specs.pdf",
+  "url": "https://www.pytesess.com/public/upload/20250319/3878cac27dd51f5e944cbf307c6116d5.pdf",
+  "cubre_regex": "(?i)E-BOX\\s*48100R",
+  "cadena_en_pdf": "EBOX48100R",
+  "slugs": [
+   "cat-mayorista-91a000febf86",
+   "cat-mayorista-f6d271a3ebc1"
+  ],
+  "nota": "Especificaciones oficiales Pytes E-BOX 48100R."
+ },
+ {
+  "marca": "Pytes",
+  "archivo": "pytes-v5-datasheet.pdf",
+  "url": "https://www.pytesess.com/public/upload/20250319/276285a7380939f2373089ed8cbcb8ef.pdf",
+  "cubre_regex": "(?i)PYTES\\s*V5",
+  "cadena_en_pdf": "V5°",
+  "slugs": [
+   "cat-mayorista-648e6f1b96ee"
+  ],
+  "nota": "Datasheet oficial V5°/V5°α (5.12kWh)."
+ },
+ {
+  "marca": "Soluna",
+  "archivo": "soluna-hv-pack-6k-10k-15k-datasheet.pdf",
+  "url": "https://soluna.co/wp-content/uploads/2025/06/HV-Pack-6K10K15K_compressed.pdf",
+  "cubre_regex": "(?i)Soluna\\s*(6|10|15)K\\s*Pack\\s*HV",
+  "cadena_en_pdf": "PACKHV",
+  "slugs": [
+   "cat-mayorista-598333d32b5e",
+   "cat-mayorista-e8ac1c4e6da5",
+   "cat-mayorista-ee978386fba4"
+  ],
+  "nota": "Datasheet oficial Soluna HV Pack 6K/10K/15K (version comprimida; la completa de 23MB: https://soluna.co/wp-content/uploads/2023/07/HV-Pack-6K10K15K.pdf). No cubre especificamente el WiFi Stick."
+ },
+ {
+  "marca": "Dyness",
+  "archivo": "dyness-bx51100-datasheet.pdf",
+  "url": "https://www.dyness.com/Public/Uploads/uploadfile/files/20241022/DynessBX51100datasheetEN.pdf",
+  "cubre_regex": "BX51100",
+  "cadena_en_pdf": "BX51100",
+  "slugs": [
+   "bateria-solar-litio-dyness-5-12kwh-dyness-bx51100"
+  ],
+  "nota": "Datasheet oficial Dyness BX51100."
+ },
+ {
+  "marca": "BSLBATT",
+  "archivo": "bslbatt-b-lfp48-100e-3u-datasheet.pdf",
+  "url": "https://www.bsl-battery.com/uploads/Datasheet-6-B-LFP48-100E3U-AU.pdf",
+  "cubre_regex": "(?i)BSLBATT-?5\\.12",
+  "cadena_en_pdf": "BLFP48100E",
+  "slugs": [
+   "bateria-solar-lifepo4-bslbatt-51-2v-100ah-5-12kwh-bslbatt-5-12"
+  ],
+  "nota": "Supuesto: BSLBATT 51.2V 100Ah 5.12kWh = B-LFP48-100E 3U (rack). Datasheet oficial (edicion AU)."
+ },
+ {
+  "marca": "JA Solar",
+  "archivo": "ja-jam72d40-lb-datasheet.pdf",
+  "url": "https://www.jasolar.eu/fileadmin/data/4.0/JAM72D40_LB/2024/JAM72D40_LB.pdf",
+  "cubre_regex": "JAM72D40",
+  "cadena_en_pdf": "",
+  "slugs": [
+   "panel-solar-monocristalino-550w"
+  ],
+  "nota": "Datasheet oficial JA Solar JAM72D40 580-605/LB. PDF SIN texto; OCR confirma JAM72D40 y 595."
+ },
+ {
+  "marca": "Astroenergy",
+  "archivo": "astronergy-astro-n5-chsm72n-580-600-datasheet.pdf",
+  "url": "https://www.astronergy.com/wp-content/uploads/2023/08/580600ASTRO-N5_CHSM72NDGF-BH_2278x1134x30_EN_20240601-1.pdf",
+  "cubre_regex": "(?i)Astro\\s*N5",
+  "cadena_en_pdf": "CHSM72N",
+  "slugs": [
+   "astro-n5"
+  ],
+  "nota": "Datasheet oficial ASTRO N5 CHSM72N(DG)/F-BH 580-600W. El producto dice 580-620W: 605-620W corresponde a otra variante (CHSM78N/72N 2382mm); confirmar potencia exacta."
+ },
+ {
+  "marca": "GoodWe",
+  "archivo": "goodwe-ezlogger3000c-datasheet.pdf",
+  "url": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_EzLogger3000C_Datasheet-EN.pdf",
+  "cubre_regex": "(?i)EzLogger\\s*3000C",
+  "cadena_en_pdf": "EZLOGGER3000C",
+  "slugs": [
+   "datalogger-goodwe-ezlogger-3000c-smartl"
+  ],
+  "nota": "Datasheet oficial."
+ },
+ {
+  "marca": "GoodWe",
+  "archivo": "goodwe-ezlogger-pro-datasheet.pdf",
+  "url": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_EzLogger%20Pro_Datasheet-EN.pdf",
+  "cubre_regex": "(?i)EzLogger\\s*Pro",
+  "cadena_en_pdf": "EZLOGGERPRO",
+  "slugs": [
+   "datalogger-goodwe-ezlogger-pro-dispositivo-de-monitoreo-remoto"
+  ],
+  "nota": "Datasheet oficial."
+ },
+ {
+  "marca": "GoodWe",
+  "archivo": "goodwe-ezlogger3000u-datasheet.pdf",
+  "url": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_EzLogger3000U_Datasheet-EN.pdf",
+  "cubre_regex": "(?i)EzLogger\\s*3000U",
+  "cadena_en_pdf": "EZLOGGER3000U",
+  "slugs": [
+   "datalogger-goodwe-ezlogger-3000u-a-smart-datalogger-ezlogger3000u"
+  ],
+  "nota": "Datasheet oficial."
+ },
+ {
+  "marca": "GoodWe",
+  "archivo": "goodwe-sec1000-datasheet.pdf",
+  "url": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SEC1000_Datasheet-EN.pdf",
+  "cubre_regex": "SEC1000S",
+  "cadena_en_pdf": "SEC1000S",
+  "slugs": [
+   "controlador-de-energia-goodwe-sec1000s-para-inversores"
+  ],
+  "nota": "Datasheet oficial SEC1000/SEC1000S."
+ },
+ {
+  "marca": "GoodWe",
+  "archivo": "goodwe-scu3000-datasheet.pdf",
+  "url": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SCU3000_Datasheet-EN.pdf",
+  "cubre_regex": "SCU3000A-S",
+  "cadena_en_pdf": "SCU3000AS",
+  "slugs": [
+   "unidad-de-comunicacion-goodwe-scu3000a-s-para-plantas-fotovoltaicas"
+  ],
+  "nota": "Datasheet oficial SCU3000/SCU3000A(-S)."
+ },
+ {
+  "marca": "GoodWe",
+  "archivo": "goodwe-sdt-g3-25-40kw-datasheet.pdf",
+  "url": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SDT-G3-25-40kW_Datasheet-EN.pdf",
+  "cubre_regex": "GW(30|33|36|40)K-SDT-C30",
+  "cadena_en_pdf": "SDTC30",
+  "slugs": [
+   "inversor-solar-on-grid-goodwe-30kw-gw30k-sdt-c30",
+   "inversor-solar-on-grid-goodwe-33kw-gw33k-sdt-c30",
+   "inversor-solar-on-grid-goodwe-36kw-gw36k-sdt-c30",
+   "inversor-solar-on-grid-goodwe-40kw-gw40k-sdt-c30"
+  ],
+  "nota": "Datasheet oficial SDT G3 25-40kW: lista GW33K/36K/40K-SDT-C30; el 30kW figura como GW30K-SDT-30 (no 'C30')."
+ },
+ {
+  "marca": "GoodWe",
+  "archivo": "goodwe-es-g2-datasheet.pdf",
+  "url": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_ES%20G2_Datasheet-EN.pdf",
+  "cubre_regex": "GW5000-ES-20",
+  "cadena_en_pdf": "GW5000",
+  "slugs": [
+   "inversor-solar-hibrido-goodwe-5kw-gw5000-es-20"
+  ],
+  "nota": "Datasheet oficial ES G2 3-6kW (GW5000-ES-20)."
+ },
+ {
+  "marca": "GoodWe",
+  "archivo": "goodwe-lynx-home-u-datasheet.pdf",
+  "url": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_Lynx%20Home%20U%20Series%20(LV)_5.4-20_Datasheet-EN.pdf",
+  "cubre_regex": "(?i)GoodWe\\s*51,2VDC\\s*5\\.0kWh\\s*IP65",
+  "cadena_en_pdf": "LXU5.420",
+  "slugs": [
+   "bateria-solar-litio-goodwe-51-2vdc-5-0kwh-ip65"
+  ],
+  "nota": "Supuesto: bateria GoodWe 51.2V IP65 = Lynx Home U (modulo LX U5.4-20, 5.4kWh, IP65). El producto dice 5.0kWh; confirmar."
+ },
+ {
+  "marca": "GoodWe",
+  "archivo": "goodwe-lynx-a-g3-14kwh-datasheet.pdf",
+  "url": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_Lynx-A-G3-14kWh_Datasheet-EN.pdf",
+  "cubre_regex": "(?i)280Ah\\s*GW14",
+  "cadena_en_pdf": "GW14.3BATLVG10",
+  "slugs": [
+   "bateria-solar-litio-goodwe-51-2vdc-280ah-gw14"
+  ],
+  "nota": "GW14 280Ah = GW14.3-BAT-LV-G10 (Lynx A G3 / BAT 14.3kWh), modelo presente en el PDF."
+ },
+ {
+  "marca": "Inti",
+  "archivo": "inti-olmo-datasheet.pdf",
+  "url": "http://intipv.com/es/wp-content/uploads/2021/08/Data-Sheet-Olmo-1.pdf",
+  "cubre_regex": "(?i)Inti\\s*(20A\\s*2024|30A\\s*3024)",
+  "cadena_en_pdf": "ICM2024",
+  "slugs": [
+   "controlador-de-carga-solar-mppt-inti-20a-2024",
+   "controlador-de-carga-solar-mppt-inti-30a-3024"
+  ],
+  "nota": "Ficha oficial Inti serie Olmo (ICM-1024/2024/3024). Sitio sin HTTPS."
+ },
+ {
+  "marca": "Inti",
+  "archivo": "inti-cedro-plus-icc-6048150-ficha.pdf",
+  "url": "http://intipv.com/es/wp-content/uploads/2025/05/ICC-6048150-1-1-1.pdf",
+  "cubre_regex": "6048150",
+  "cadena_en_pdf": "ICC6048150",
+  "slugs": [
+   "controlador-de-carga-solar-mppt-inti-60a-6048150"
+  ],
+  "nota": "Ficha oficial Inti Cedro+ ICC-6048150 (espanol). Sitio sin HTTPS."
+ }
+]

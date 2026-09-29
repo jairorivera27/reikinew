@@ -1,7 +1,7 @@
 ---
 title: "Soluna HV Parallel Box"
 description: "Solución de almacenamiento **Soluna** en alto voltaje: packs modulares con BMS integrado y opciones de conectividad (p. ej. Wi‑Fi stick) según referencia, para acoplamiento con inversores homologados por el fabricante."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$504.900"
 specifications:
@@ -13,6 +13,9 @@ specifications:
 brand: "Soluna"
 stock: "disponible"
 order: 5210
+imageAlt: "Soluna – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **SOLUNA HV PARALLEL BOX** · referencia **Soluna** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

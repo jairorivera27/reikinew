@@ -1,7 +1,7 @@
 ---
 title: "Módulo Inalámbrico Growatt 10A Accesorio/Monitor"
-description: "Módulo Inalámbrico Growatt 10A Accesorio/Monitor. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Growatt; modelo: Accesorio/Monitor; especificación principal: 10A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/monitoreo/growatt-shine.jpg"
+description: "Datalogger / módulo de monitoreo Growatt. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+image: "/images/productos-estudio/growatt-shine.webp"
 category: "accesorios"
 price: "$99.216"
 specifications:
@@ -24,6 +24,15 @@ seoKeywords:
   - "comprar sistema de monitoreo solar colombia"
   - "precio sistema de monitoreo solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/growatt-shine-thumb.webp"
+imageAlt: "Growatt Accesorio/Monitor 10A – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/monitoreo/growatt-shine.jpg"
+faqs:
+  - pregunta: "¿Con qué equipos es compatible?"
+    respuesta: "Con los inversores o equipos de la misma marca y serie indicados en la ficha técnica. Escríbenos con la referencia de tu inversor y te confirmamos."
+  - pregunta: "¿Necesita internet?"
+    respuesta: "Sí, se conecta por Wi-Fi, red cableada o 4G según el modelo para enviar los datos a la aplicación del fabricante."
+fichaPdf: "/fichas/reiki/modulo-inalambrico-growatt-10a-accesorio-monitor.pdf"
 ---
 **Módulo Inalámbrico Growatt 10A Accesorio/Monitor** de Growatt · 10A.
 

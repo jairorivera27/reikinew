@@ -1,7 +1,7 @@
 ---
 title: "Victron Phoenix 12/1200"
-description: "Phoenix Victron Energy, 12/1200, 120 V CA, inversor puro para sistemas aislados, con VE.Direct."
-image: "/images/productos-tienda/inversores/victron-phoenix.png"
+description: "Phoenix Victron Energy, 12/1200, 120 V CA, inversor puro para sistemas aislados, con VE.Direct. La foto es de referencia de la serie Victron Phoenix. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
+image: "/images/productos-estudio/victron-phoenix-prov.webp"
 category: "inversores"
 price: "$1.236.200"
 specifications:
@@ -29,6 +29,17 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/victron-phoenix-prov.webp"
+imageAlt: "Victron Phoenix 12/1200 1.2kW – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/victron-phoenix.png"
+imagen_provisional: true
+imagenSerieRef: "Victron Phoenix"
+fichaPdf: "/fichas/fabricantes/victron-datasheet-inverter-ve.direct-250va-1600va-es.pdf"
+faqs:
+  - pregunta: "¿Sirve sin conexión a la red eléctrica?"
+    respuesta: "Sí, está pensado para fincas, cabañas y sitios sin red, alimentado por un banco de baterías que se carga con paneles solares."
+  - pregunta: "¿Quién lo instala?"
+    respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 ---
 
 **Victron Phoenix 12/1200** (ref. **PIN122122500**). Phoenix Victron Energy, 12/1200, 120 V CA, inversor puro para sistemas aislados, con VE.Direct.

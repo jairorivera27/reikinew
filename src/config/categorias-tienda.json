@@ -40,7 +40,8 @@
       "orden": 4,
       "tipoSingular": "Reflector solar",
       "imagenPorDefecto": "/images/placeholders/reflectores.svg",
-      "descripcionSeo": "Reflectores y luminarias solares LED autónomas para exteriores, parqueaderos, fincas y espacios comerciales."
+      "descripcionSeo": "Reflectores y luminarias solares LED autónomas para exteriores, parqueaderos, fincas y espacios comerciales.",
+      "catalogoPdf": "/catalogos/catalogo-iluminacion-solar-reiki-2026.pdf"
     },
     {
       "id": "controladores",
@@ -95,7 +96,9 @@
     "Monitoreo": "accesorios",
     "Medidor": "accesorios",
     "Bomba": "bombeo",
-    "Accesorio": "accesorios"
+    "Accesorio": "accesorios",
+    "Luminaria": "reflectores",
+    "Reflector": "reflectores"
   },
 
   "_notaImagenes": "El Excel no trae URLs de imagen. El importador usa el logo de la marca cuando existe en logosPorMarca; si no, cae al imagenPorDefecto de la categoría y marca el producto con imagenPendiente: true.",

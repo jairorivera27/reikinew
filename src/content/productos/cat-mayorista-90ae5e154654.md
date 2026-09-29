@@ -1,7 +1,7 @@
 ---
 title: "Soluna Conduit Outlet Fitting"
 description: "Solución de almacenamiento **Soluna** en alto voltaje: packs modulares con BMS integrado y opciones de conectividad (p. ej. Wi‑Fi stick) según referencia, para acoplamiento con inversores homologados por el fabricante."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$16.830"
 specifications:
@@ -13,6 +13,9 @@ specifications:
 brand: "Soluna"
 stock: "disponible"
 order: 5211
+imageAlt: "Soluna – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **SOLUNA CONDUIT OUTLET FITTING** · referencia **Soluna** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

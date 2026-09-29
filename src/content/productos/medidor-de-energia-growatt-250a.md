@@ -1,7 +1,7 @@
 ---
 title: "Medidor de Energía Growatt 250A"
-description: "Medidor de Energía Growatt 250A. Equipo para medición y supervisión del consumo y la generación eléctrica. Marca: Growatt; especificación principal: 250A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/monitoreo/growatt-shine.jpg"
+description: "Medidor de energía Growatt. Mide la energía que consumes e inyectas para que el inversor controle la exportación o para monitorear el consumo. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+image: "/images/productos-estudio/growatt-shine.webp"
 category: "accesorios"
 price: "$1.850.450"
 specifications:
@@ -20,6 +20,13 @@ seoKeywords:
   - "comprar medidor de energía colombia"
   - "precio medidor de energía colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/growatt-shine-thumb.webp"
+imageAlt: "Growatt 250A – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/monitoreo/growatt-shine.jpg"
+faqs:
+  - pregunta: "¿Para qué sirve con un inversor solar?"
+    respuesta: "Permite limitar la inyección a la red (inyección cero), gestionar baterías según el consumo real y ver el balance de energía en la aplicación."
+fichaPdf: "/fichas/reiki/medidor-de-energia-growatt-250a.pdf"
 ---
 **Medidor de Energía Growatt 250A** de Growatt · 250A.
 

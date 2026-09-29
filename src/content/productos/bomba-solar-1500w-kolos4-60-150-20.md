@@ -1,7 +1,7 @@
 ---
 title: "Bomba Solar 1500W KOLOS4-60-150-20"
-description: "Bomba Solar 1500W KOLOS4-60-150-20. Equipo para bombeo de agua en aplicaciones solares, agrícolas o residenciales. Modelo: KOLOS4-60-150-20; especificación principal: 1500W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/bombeo/kolos4-sumergible.jpg"
+description: "Bomba solar sumergible Kolos KOLOS4-60-150-20 de 1500 W. Bombea agua directamente con energía solar para riego, ganadería o uso doméstico, sin factura de energía. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
+image: "/images/productos-estudio/kolos4-sumergible-prov.webp"
 category: "bombeo"
 price: "$3.222.669"
 specifications:
@@ -22,6 +22,18 @@ seoKeywords:
   - "comprar bomba solar colombia"
   - "precio bomba solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "Kolos KOLOS4-60-150-20 1500W – Reiki Energía Solar"
+imageThumb: "/images/productos-estudio/kolos4-sumergible-prov.webp"
+imageOriginal: "/images/productos-tienda/bombeo/kolos4-sumergible.jpg"
+imagen_provisional: true
+faqs:
+  - pregunta: "¿Necesita baterías?"
+    respuesta: "Normalmente no: bombea durante las horas de sol y el agua se almacena en un tanque, que funciona como \"batería\". Si necesitas bombear de noche se puede añadir almacenamiento o respaldo de red."
+  - pregunta: "¿Cuántos paneles necesita?"
+    respuesta: "Se instala una potencia de paneles mayor que la de la bomba para arrancar temprano y mantener el caudal en días nublados. La cantidad exacta depende de la profundidad del pozo, la altura del tanque y el caudal diario; lo calculamos contigo."
+  - pregunta: "¿Qué datos necesito para elegir la bomba?"
+    respuesta: "Profundidad del nivel del agua, altura hasta el tanque, distancia de la tubería y litros por día que necesitas. Con eso elegimos el modelo y el controlador correctos."
+fichaPdf: "/fichas/fabricantes/connera-kolosal-catalogo-vde.pdf"
 ---
 **Bomba Solar 1500W KOLOS4-60-150-20** de Multimarca · 1500W.
 

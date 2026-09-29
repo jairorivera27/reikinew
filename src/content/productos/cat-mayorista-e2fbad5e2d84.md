@@ -1,7 +1,7 @@
 ---
 title: "Studer MPPT Solar Charge Controller - Vs 120 - 48V"
-description: "Controlador solar MPPT Studer serie VT/VS: máximo aprovechamiento de campo FV hacia banco de baterías de 48 V (según modelo)."
-image: "/images/productos-tienda/controladores/studer-vs.jpg"
+description: "Controlador solar MPPT Studer serie VT/VS: máximo aprovechamiento de campo FV hacia banco de baterías de 48 V (según modelo). Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+image: "/images/productos-estudio/studer-vs-prov.webp"
 category: "controladores"
 price: "$16.263.900"
 specifications:
@@ -12,6 +12,16 @@ specifications:
 brand: "Studer"
 stock: "disponible"
 order: 5132
+imageThumb: "/images/productos-estudio/studer-vs-prov.webp"
+imageAlt: "Studer – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/controladores/studer-vs.jpg"
+imagen_provisional: true
+faqs:
+  - pregunta: "¿Qué diferencia hay entre MPPT y PWM?"
+    respuesta: "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
+  - pregunta: "¿Sirve para baterías de litio?"
+    respuesta: "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
+fichaPdf: "/fichas/reiki/cat-mayorista-e2fbad5e2d84.pdf"
 ---
 
 **STUDER MPPT SOLAR CHARGE CONTROLLER - VS 120 - 48V** · referencia **Studer** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

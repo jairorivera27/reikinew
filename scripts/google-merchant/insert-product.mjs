@@ -41,6 +41,7 @@ import {
  * @property {string} [googleProductCategory]
  * @property {string} [productType]
  * @property {string[]} [additionalImageLinks]
+ * @property {string[]} [productHighlights]  Máx. 100, 150 caracteres c/u
  * @property {string} [contentLanguage]
  * @property {string} [feedLabel]
  * @property {string} [availabilityDate]  Requerido si stock = pre-orden (ISO date)
@@ -127,6 +128,9 @@ export function buildMerchantProductResource(input) {
     productAttributes.googleProductCategory = String(input.googleProductCategory);
   }
   if (input.productType) productAttributes.productTypes = [String(input.productType)];
+  if (input.productHighlights?.length) {
+    productAttributes.productHighlights = input.productHighlights.slice(0, 100).map((h) => String(h).slice(0, 150));
+  }
   if (input.additionalImageLinks?.length) {
     productAttributes.additionalImageLinks = input.additionalImageLinks.map(toAbsoluteUrl);
   }

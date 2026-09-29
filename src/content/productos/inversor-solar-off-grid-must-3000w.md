@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar Off-Grid Must 3000W"
-description: "Inversor Solar Off-Grid Must 3000W. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: Must; modelo: 3000W; especificación principal: 3000W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/must-pv.png"
+description: "Inversor off-grid Must 3000W de 3000W. Para sistemas aislados de la red: convierte la energía de las baterías en corriente alterna para tus equipos. La foto es de referencia de la serie Must PV. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+image: "/images/productos-estudio/must-pv-prov.webp"
 category: "inversores"
 price: "$1.800.000"
 specifications:
@@ -24,6 +24,17 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/must-pv-prov.webp"
+imageAlt: "Must 3000W 3000W – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/must-pv.png"
+imagen_provisional: true
+imagenSerieRef: "Must PV"
+faqs:
+  - pregunta: "¿Sirve sin conexión a la red eléctrica?"
+    respuesta: "Sí, está pensado para fincas, cabañas y sitios sin red, alimentado por un banco de baterías que se carga con paneles solares."
+  - pregunta: "¿Quién lo instala?"
+    respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+fichaPdf: "/fichas/reiki/inversor-solar-off-grid-must-3000w.pdf"
 ---
 **Inversor Solar Off-Grid Must 3000W** de Must · 3000W.
 

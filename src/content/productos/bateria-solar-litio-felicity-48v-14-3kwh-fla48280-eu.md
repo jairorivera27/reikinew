@@ -1,7 +1,7 @@
 ---
 title: "Batería Solar Litio Felicity 48V 14,3kWh FLA48280-EU"
-description: "Batería Solar Litio Felicity 48V 14,3kWh FLA48280-EU. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Marca: Felicity; modelo: FLA48280-EU; especificación principal: 48V 14,3kWh. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/baterias/felicity-fla48.jpg"
+description: "Batería litio Felicity FLA48280-EU de 14,3 kWh a 48 V. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. La foto es de referencia de la serie Felicity FLA48. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
+image: "/images/productos-estudio/felicity-fla48.webp"
 category: "baterias"
 price: "$9.017.969"
 specifications:
@@ -24,6 +24,17 @@ seoKeywords:
   - "3kwh"
   - "comprar batería solar colombia"
   - "precio batería solar colombia"
+imageThumb: "/images/productos-estudio/felicity-fla48-thumb.webp"
+imageAlt: "Felicity FLA48280-EU 48V 14,3kWh – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/baterias/felicity-fla48.jpg"
+imagen_provisional: true
+imagenSerieRef: "Felicity FLA48"
+faqs:
+  - pregunta: "¿Cuántas horas me respalda?"
+    respuesta: "Con 14,3 kWh y descargándola hasta un 90 % (unos 12,9 kWh útiles), un consumo continuo de 500 W duraría cerca de 26 horas y uno de 1 kW unas 13 horas, sin contar pérdidas del inversor (5–10 %). Nevera, luces, internet y TV suelen sumar 300–600 W."
+  - pregunta: "¿Es compatible con mi inversor?"
+    respuesta: "El voltaje del banco debe coincidir con el del inversor (48 V) y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
+fichaPdf: "/fichas/fabricantes/felicity-fla48280-eu-datasheet.pdf"
 ---
 **Batería Solar Litio Felicity 48V 14,3kWh FLA48280-EU** de Felicity · 48V 14,3kWh.
 

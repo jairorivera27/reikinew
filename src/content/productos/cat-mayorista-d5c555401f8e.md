@@ -1,7 +1,7 @@
 ---
 title: "SmartPS-250A-T0"
-description: "Periférico de protección o alimentación auxiliar Huawei (SmartGuard / SmartPS) para cuadros AC/DC en instalaciones Smart PV según esquema del fabricante."
-image: "/images/productos-tienda/protecciones/generic-mccb.jpg"
+description: "Periférico de protección o alimentación auxiliar Huawei (SmartGuard / SmartPS) para cuadros AC/DC en instalaciones Smart PV según esquema del fabricante. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
+image: "/images/productos-estudio/generic-mccb.webp"
 category: "protecciones"
 price: "$417.690"
 specifications:
@@ -12,6 +12,13 @@ specifications:
 brand: "Huawei"
 stock: "disponible"
 order: 5065
+imageThumb: "/images/productos-estudio/generic-mccb-thumb.webp"
+imageAlt: "Huawei – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/protecciones/generic-mccb.jpg"
+faqs:
+  - pregunta: "¿Cumple RETIE?"
+    respuesta: "Las instalaciones solares en Colombia deben cumplir RETIE; usa protecciones certificadas bajo normas IEC y deja la instalación en manos de un técnico. Reiki te asesora en el diseño del tablero."
+fichaPdf: "/fichas/fabricantes/huawei-smart-power-sensor-dtsu666-h-datasheet.pdf"
 ---
 
 **SmartPS-250A-T0** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

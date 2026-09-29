@@ -1,7 +1,7 @@
 ---
 title: "Solis S2-WL-ST"
 description: "Equipo de monitorización o medida para inversores Solis (logger Wi‑Fi/LAN, EPM, GPRS, medidor + TC, etc.) según referencia exacta."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$247.200"
 specifications:
@@ -12,6 +12,9 @@ specifications:
 brand: "Solis"
 stock: "disponible"
 order: 5100
+imageAlt: "Solis – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **SOLIS S2-WL-ST** · referencia **Solis** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

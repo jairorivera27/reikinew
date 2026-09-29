@@ -152,6 +152,12 @@ const ventana = (() => {
             {categoria.nombre}
           </h1>
           <p class="cat-desc">{categoria.descripcionSeo}</p>
+          {categoria.catalogoPdf && (
+            <a class="cat-catalogo" href={categoria.catalogoPdf} target="_blank" rel="noopener" download>
+              <i class="fas fa-file-pdf" aria-hidden="true"></i>
+              Descargar catálogo de iluminación solar (PDF)
+            </a>
+          )}
           <p class="cat-conteo">
             {page.total} {page.total === 1 ? 'producto' : 'productos'}
             {page.lastPage > 1 && ` · página ${page.currentPage} de ${page.lastPage}`}
@@ -319,6 +325,24 @@ const ventana = (() => {
     max-width: 760px;
     color: #4b5563;
     font-size: 0.98rem;
+  }
+
+  .cat-catalogo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.25rem 0 0.75rem;
+    padding: 0.55rem 1rem;
+    border-radius: 999px;
+    background: #6b2181;
+    color: #fff;
+    font-weight: 600;
+    font-size: 0.92rem;
+    text-decoration: none;
+  }
+
+  .cat-catalogo:hover {
+    background: #561a69;
   }
 
   .cat-conteo {

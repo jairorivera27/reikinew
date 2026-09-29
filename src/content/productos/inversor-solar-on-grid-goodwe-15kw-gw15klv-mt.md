@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid GoodWe 15kW GW15KLV-MT"
 description: "Inversor Solar On-Grid GoodWe 15kW GW15KLV-MT. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW15KLV-MT; especificación principal: 15kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$11.366.250"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "GoodWe GW15KLV-MT 15kW – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Inversor Solar On-Grid GoodWe 15kW GW15KLV-MT** de GoodWe · 15kW.
 

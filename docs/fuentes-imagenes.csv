@@ -1,0 +1,5 @@
+producto,slug,proveedor,url,resolucion,transparente,marca_agua,estado,match_modelo,autorizado,fecha_autorizacion
+"Hoymiles Microinverter Trifasico HMT-2000-4T-208",cat-mayorista-d99eecbc0d48,solaire,https://portal.solaire.com.co/wp-content/uploads/2025/12/NFMI0004.png,2048x1950,sí,no,ok,HMT-2000-4T-208,si,2026-09-28
+"Hoymiles Microinverter HMS-800-2T",cat-mayorista-595127324da8,solaire,https://portal.solaire.com.co/wp-content/uploads/2025/12/NFMI0009.png,1501x1501,sí,no,ok,HMS-800-2T,si,2026-09-28
+"Hoymiles Microinverter HMS-2000-4T",cat-mayorista-dbd01c55a288,solaire,https://portal.solaire.com.co/wp-content/uploads/2025/12/NFMI0008.png,1501x1501,sí,no,ok,HMS-2000-4T,si,2026-09-28
+"Controlador de Carga Solar MPPT Victron SCC110050210",controlador-de-carga-solar-mppt-victron-scc110050210,autosolar,https://cdn.autosolar.co/images/2008191/controlador-carga-smartsolar-mppt-10050-victron-energy.jpg,?,no,no,ok,SmartSolar MPPT 100/50 / SCC110050210,si,2026-09-28

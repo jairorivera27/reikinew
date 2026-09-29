@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid GoodWe 8,5kW AFCI"
 description: "Inversor Solar On-Grid GoodWe 8,5kW AFCI. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: AFCI; especificación principal: 8,5kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$2.583.000"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "GoodWe AFCI 8,5kW – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Inversor Solar On-Grid GoodWe 8,5kW AFCI** de GoodWe · 8,5kW.
 

@@ -1,0 +1,72 @@
+---
+title: "Reflector Solar Hardy Nova 600 – 25 W reales · 5.000 lm"
+description: "Reflector solar profesional LED de alta potencia Hardy Nova 600 de 25 W reales y 5.000 lm (200 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 60 Ah (4.000 ciclos) y panel 60 W / 6 V monocristalino separado, con autonomía de 10 – 12 h. Se instala a 7 – 9 m de altura y ilumina 140 – 160 m². Protección IP65 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024)."
+image: "/images/productos-estudio/hardy-nova-600.webp"
+imageThumb: "/images/productos-estudio/hardy-nova-600-thumb.webp"
+imageAlt: "Reflector Solar Hardy Nova 600 – 25 W reales · 5.000 lm – Reiki Energía Solar"
+category: "reflectores"
+price: "$500.000"
+specifications:
+  - "Tipo: Reflector solar profesional LED de alta potencia"
+  - "Potencia real: 25 W"
+  - "Flujo luminoso: 5.000 lm"
+  - "Eficacia luminosa: 200 lm/W"
+  - "Temperatura de color: 6500 K (luz blanca fría)"
+  - "CRI: > 70"
+  - "Ángulo de apertura: 120°"
+  - "Vida útil LED: 90.000 h"
+  - "Batería: LiFePO4 3,2 V / 60 Ah (4.000 ciclos)"
+  - "Panel solar: 60 W / 6 V monocristalino separado"
+  - "Tiempo de carga: 5 – 6 h de sol directo"
+  - "Autonomía: 10 – 12 h"
+  - "Controlador de carga: MPPT integrado"
+  - "Grado de protección: IP65 / IK08"
+  - "Temperatura de operación: -10 °C a 50 °C"
+  - "Material: Aleación de aluminio + PC, lente de policarbonato"
+  - "Dimensiones: 360 × 256 × 85 mm"
+  - "Altura de instalación recomendada: 7 – 9 m"
+  - "Distancia entre postes: 20 – 25 m"
+  - "Área de cobertura: 140 – 160 m²"
+  - "Garantía: 2 años"
+  - "RETILAP: Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024)"
+brand: "Hardy Solar"
+model: "Nova 600"
+sku: "HARDY-NOVA-600"
+power: "25 W"
+stock: "disponible"
+order: 44
+updatedAt: "2026-09-28"
+imagen_provisional: false
+fichaPdf: "/fichas/hardy-nova-600-ficha-tecnica.pdf"
+seoKeywords:
+  - "luminaria solar"
+  - "hardy nova 600"
+  - "reflector solar led"
+  - "alumbrado público solar"
+  - "luminaria solar retilap"
+  - "luminaria solar colombia"
+  - "comprar luminaria solar medellín"
+faqs:
+  - pregunta: "¿Cuántos vatios reales tiene la Nova 600?"
+    respuesta: "25 W reales, con un flujo de 5.000 lm. Para comparar luminarias solares, fíjate en los lúmenes y en los vatios reales, no en el número del modelo."
+  - pregunta: "¿Cuántas horas alumbra y cuánto tarda en cargar?"
+    respuesta: "Autonomía: 10 – 12 h. Carga completa en 5 – 6 h de sol directo. En días nublados la carga es menor; por eso la batería LiFePO4 guarda reserva para más de una noche en los modelos que lo indican."
+  - pregunta: "¿A qué altura se instala y cuánto espacio ilumina?"
+    respuesta: "Altura recomendada: 7 – 9 m. Distancia entre postes: 20 – 25 m. Cobertura: 140 – 160 m²."
+  - pregunta: "¿Necesita cableado o conexión a la red eléctrica?"
+    respuesta: "No. El panel solar va separado de la lámpara y se conecta con su cable; se orienta hacia el sol. Solo se fija en el poste, muro o soporte y enciende automáticamente al anochecer."
+  - pregunta: "¿Qué incluye?"
+    respuesta: "Reflector solar Nova 600, soporte de montaje ajustable, kit de instalación (soporte y pernos), manual de instalación. El poste no está incluido."
+  - pregunta: "¿Tiene certificación RETILAP?"
+    respuesta: "Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024)."
+  - pregunta: "¿Qué garantía tiene?"
+    respuesta: "2 años de garantía del fabricante (Hardy Solar Energy). Reiki Energía Solar te acompaña en el trámite."
+  - pregunta: "¿Dónde se recomienda usar?"
+    respuesta: "Canchas deportivas, parqueaderos, fachadas, bodegas / áreas industriales, vías y calles, parcelaciones."
+---
+
+**Reflector Solar Hardy Nova 600 – 25 W reales · 5.000 lm**
+
+Reflector solar profesional LED de alta potencia Hardy Nova 600 de 25 W reales y 5.000 lm (200 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 60 Ah (4.000 ciclos) y panel 60 W / 6 V monocristalino separado, con autonomía de 10 – 12 h. Se instala a 7 – 9 m de altura y ilumina 140 – 160 m². Protección IP65 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024).
+
+Ficha técnica del fabricante: Hardy Solar Energy. Precio con IVA incluido.

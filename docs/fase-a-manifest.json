@@ -1,0 +1,987 @@
+{
+  "at": "2026-09-28T23:46:58.597Z",
+  "done": [
+    {
+      "pub": "/images/productos-tienda/paneles-solares/astroenergy-n5-medellin.png",
+      "webp": "/images/productos-estudio/astroenergy-astro-n5-prov.webp",
+      "kb": 12.1,
+      "scale": 1.1538461538461537,
+      "fit": 0.8,
+      "skus": [
+        "astro-n5"
+      ],
+      "title": "Astro N5 580W-620W",
+      "category": "paneles"
+    },
+    {
+      "pub": "/images/productos-tienda/paneles-solares/ja-solar-595w.png",
+      "webp": "/images/productos-estudio/ja-solar-jam72d40-595-lb-prov.webp",
+      "kb": 12.4,
+      "scale": 1.0457516339869282,
+      "fit": 0.8,
+      "skus": [
+        "panel-solar-monocristalino-550w"
+      ],
+      "title": "JA Solar 595W",
+      "category": "paneles"
+    },
+    {
+      "pub": "/images/productos-tienda/paneles-solares/jinko-tiger-neo-585w.png",
+      "webp": "/images/productos-estudio/jinko-solar-jkm585n-72hl4-v-585w-prov.webp",
+      "kb": 9.6,
+      "scale": 1.3,
+      "fit": 0.65,
+      "skus": [
+        "jinko-tiger-neo-585w"
+      ],
+      "title": "Jinko Tiger Neo 585W",
+      "category": "paneles"
+    },
+    {
+      "pub": "/images/productos-tienda/paneles-solares/longi-545w-medellin.png",
+      "webp": "/images/productos-estudio/longi-lr5-72hbd-545m-prov.webp",
+      "kb": 11.5,
+      "scale": 1.2765957446808511,
+      "fit": 0.8,
+      "skus": [
+        "panel-solar-policristalino-450w"
+      ],
+      "title": "LONGi 545W",
+      "category": "paneles"
+    },
+    {
+      "pub": "/images/productos-tienda/paneles-solares/jinkosolar-500w.png",
+      "webp": "/images/productos-estudio/jinko-solar-jkm500m-54hl4-b-prov.webp",
+      "kb": 14.1,
+      "scale": 1.1594202898550725,
+      "fit": 0.8,
+      "skus": [
+        "panel-solar-monocristalino-500w"
+      ],
+      "title": "Panel Solar Monocristalino 500W",
+      "category": "paneles"
+    },
+    {
+      "pub": "/images/productos-tienda/paneles-solares/trina-670w-deg21c.png",
+      "webp": "/images/productos-estudio/trina-solar-tsm-670deg21c-20-670w-prov.webp",
+      "kb": 10.4,
+      "scale": 1.1566265060240963,
+      "fit": 0.8,
+      "skus": [
+        "panel-solar-monocristalino-trina-670w-tsm-670deg21c-20"
+      ],
+      "title": "Panel Solar Monocristalino Trina 670W TSM-670DEG21C.20",
+      "category": "paneles"
+    },
+    {
+      "pub": "/images/productos-tienda/paneles-solares/trinasolar-650w.png",
+      "webp": "/images/productos-estudio/trina-solar-tsm-650deg21c-20-prov.webp",
+      "kb": 10.4,
+      "scale": 1.1566265060240963,
+      "fit": 0.8,
+      "skus": [
+        "panel-solar-monocristalino-600w"
+      ],
+      "title": "Trina Solar 650W",
+      "category": "paneles"
+    },
+    {
+      "pub": "/images/productos-tienda/paneles-solares/trinasolar-700w.png",
+      "webp": "/images/productos-estudio/trina-solar-tsm-700neg21c-20-prov.webp",
+      "kb": 8.6,
+      "scale": 1.1566265060240963,
+      "fit": 0.8,
+      "skus": [
+        "panel-solar-bifacial-600w"
+      ],
+      "title": "Trina Solar 700W",
+      "category": "paneles"
+    },
+    {
+      "pub": "/images/productos-tienda/inversores/apsystems-qt2.png",
+      "webp": "/images/productos-estudio/apsystems-qt2-prov.webp",
+      "kb": 10.7,
+      "scale": 1.2420382165605095,
+      "fit": 0.65,
+      "skus": [
+        "cat-mayorista-82cb6716d11f",
+        "apsystems-qt2"
+      ],
+      "title": "APS Microinversor Trifasico QT2-208",
+      "category": "inversores"
+    },
+    {
+      "pub": "/images/productos-tienda/inversores/apsystems-ds3.png",
+      "webp": "/images/productos-estudio/apsystems-ds3-prov.webp",
+      "kb": 11.8,
+      "scale": 1.1746987951807228,
+      "fit": 0.65,
+      "skus": [
+        "cat-mayorista-b962f7069ab3",
+        "cat-mayorista-b61488631524",
+        "inversor-micro-optimizador",
+        "inversor-solar-off-grid-apsystems-241000bfl",
+        "inversor-solar-off-grid-apsystems-242000bfl",
+        "inversor-solar-off-grid-apsystems-243000bfl",
+        "inversor-solar-off-grid-apsystems-24500bfl",
+        "inversor-solar-off-grid-apsystems-2482000bfl",
+        "inversor-solar-off-grid-apsystems-484000bfl",
+        "inversor-solar-off-grid-apsystems-485000bfl",
+        "inversor-solar-off-grid-apsystems-488000bfl",
+        "microinversor-solar-apsystems-120v",
+        "microinversor-solar-growatt-ds3d-col"
+      ],
+      "title": "APS Microinverter DS3-LV 900W 120V + APS Y3 AC Bus Cable",
+      "category": "inversores"
+    },
+    {
+      "pub": "/images/productos-tienda/inversores/deye-hybrid.png",
+      "webp": "/images/productos-estudio/deye-hybrid-prov.webp",
+      "kb": 5.4,
+      "scale": 1.069042316258352,
+      "fit": 0.8,
+      "skus": [
+        "inversor-hybrido-5kw",
+        "inversor-solar-hibrido-deye-12kw-sun-12k-sg01lp1-us",
+        "inversor-solar-hibrido-deye-8kw-sun-8k-sg01lp1-us"
+      ],
+      "title": "Deye 5kW Híbrido",
+      "category": "inversores"
+    },
+    {
+      "pub": "/images/productos-tienda/inversores/epever-ipt.png",
+      "webp": "/images/productos-estudio/epever-ipt2000-41-t-prov.webp",
+      "kb": 6.1,
+      "scale": 1.162227602905569,
+      "fit": 0.8,
+      "skus": [
+        "epever-ipt2000"
+      ],
+      "title": "Epever IPT2000",
+      "category": "inversores"
+    },
+    {
+      "pub": "/images/productos-tienda/inversores/fronius-primo.jpg",
+      "webp": "/images/productos-estudio/fronius-primo-prov.webp",
+      "kb": 12.9,
+      "scale": 1.167883211678832,
+      "fit": 0.8,
+      "skus": [
+        "cat-mayorista-b08962dedfab",
+        "cat-mayorista-6f5562cfe157",
+        "cat-mayorista-6dfcf1f7069e"
+      ],
+      "title": "Fronius Inversor Primo 10. 0-1 208/240 Lite",
+      "category": "inversores"
+    },
+    {
+      "pub": "/images/productos-tienda/inversores/huawei-sun2000.png",
+      "webp": "/images/productos-estudio/huawei-sun2000-prov.webp",
+      "kb": 4.7,
+      "scale": 1.1764705882352942,
+      "fit": 0.8,
+      "skus": [
+        "inversor-string-10kw",
+        "inversor-hybrido-8kw",
+        "huawei-sun2000-10k-lc0",
+        "huawei-sun2000-20ktl-m3",
+        "huawei-sun2000-8k-lc0",
+        "cat-mayorista-479835eafdcd",
+        "cat-mayorista-011aa38ff63b",
+        "cat-mayorista-e42b37cb353a",
+        "cat-mayorista-aeeee921984f",
+        "cat-mayorista-d93b4767526a",
+        "cat-mayorista-5976fdc3675c",
+        "cat-mayorista-db886da9420b",
+        "cat-mayorista-f6c407d9756a",
+        "cat-mayorista-16abf09e485c",
+        "cat-mayorista-77a53def7b39",
+        "cat-mayorista-63238dda6866",
+        "cat-mayorista-297c1543c156",
+        "cat-mayorista-f2e0b9820012",
+        "cat-mayorista-eb335fe74372",
+        "cat-mayorista-5c63036043b0",
+        "cat-mayorista-a7acbbe9c321",
+        "cat-mayorista-6ab639f72aef",
+        "cat-mayorista-2eb2381727b7"
+      ],
+      "title": "Huawei 36KTL-M3",
+      "category": "inversores"
+    },
+    {
+      "pub": "/images/productos-tienda/inversores/felicity-hybrid.png",
+      "webp": "/images/productos-estudio/felicity-hybrid-prov.webp",
+      "kb": 9.7,
+      "scale": 0.718562874251497,
+      "fit": 0.8,
+      "skus": [
+        "inversor-solar-hibrido-felicity-28kw-3004249",
+        "inversor-solar-hibrido-felicity-8kw-3004616",
+        "inversor-solar-off-grid-felicity-2kw-3004614",
+        "inversor-solar-off-grid-felicity-3kw-ivem3048-lv",
+        "inversor-solar-off-grid-felicity-5kw-3004247"
+      ],
+      "title": "Inversor Solar Híbrido Felicity 28kW 3004249",
+      "category": "inversores"
+    },
+    {
+      "pub": "/images/productos-tienda/inversores/goodwe-es.jpg",
+      "webp": "/images/productos-estudio/goodwe-es-prov.webp",
+      "kb": 2.8,
+      "scale": 0.7717041800643086,
+      "fit": 0.8,
+      "skus": [
+        "inversor-solar-hibrido-goodwe-11-4kw-gw11k4-es-us20",
+        "inversor-solar-hibrido-goodwe-5kw-gw5000-es-20",
+        "inversor-solar-hibrido-goodwe-5kw-gw5000-es-us20",
+        "inversor-solar-hibrido-goodwe-6kw-gw6000-es-us20",
+        "inversor-solar-hibrido-goodwe-7-6kw-gw7600-es-us20",
+        "inversor-solar-hibrido-goodwe-9-6kw-gw9600-es-us20"
+      ],
+      "title": "Inversor Solar Híbrido GoodWe 11,4kW GW11K4-ES-US20",
+      "category": "inversores"
+    },
+    {
+      "pub": "/images/productos-tienda/inversores/goodwe-sdt.jpg",
+      "webp": "/images/productos-estudio/goodwe-sdt-prov.webp",
+      "kb": 2.8,
+      "scale": 0.7717041800643086,
+      "fit": 0.8,
+      "skus": [
+        "inversor-solar-off-grid-goodwe-3-5kw-gw3500l-eo",
+        "inversor-solar-on-grid-goodwe-100kw-gw100k-gt",
+        "inversor-solar-on-grid-goodwe-10kw-gw10k-sdt-30",
+        "inversor-solar-on-grid-goodwe-110kw-gw110k-gt",
+        "inversor-solar-on-grid-goodwe-125kw-gw125k-gt",
+        "inversor-solar-on-grid-goodwe-12kw-gw12k-sdt-30",
+        "inversor-solar-on-grid-goodwe-12kw-gw12klv-mt",
+        "inversor-solar-on-grid-goodwe-12kw-gw12klv-sdt-c30",
+        "inversor-solar-on-grid-goodwe-136kw-gw136k-hth",
+        "inversor-solar-on-grid-goodwe-15kw-gw15k-sdt-30",
+        "inversor-solar-on-grid-goodwe-15kw-gw15klv-mt",
+        "inversor-solar-on-grid-goodwe-17kw-gw17k-sdt-30",
+        "inversor-solar-on-grid-goodwe-17kw-gw17klv-sdt-c30",
+        "inversor-solar-on-grid-goodwe-20kw-gw20k-sdt-30",
+        "inversor-solar-on-grid-goodwe-23kw-gw23klv-sdt-br30",
+        "inversor-solar-on-grid-goodwe-25kw-gw25k-sdt-c30",
+        "inversor-solar-on-grid-goodwe-30kw-gw30k-sdt-c30",
+        "inversor-solar-on-grid-goodwe-30kw-gw30kls-mt",
+        "inversor-solar-on-grid-goodwe-320kw-gw320k-ut",
+        "inversor-solar-on-grid-goodwe-33kw-gw33k-sdt-c30",
+        "inversor-solar-on-grid-goodwe-350kw-gw350k-ut",
+        "inversor-solar-on-grid-goodwe-35kw-gw35kls-mt",
+        "inversor-solar-on-grid-goodwe-36kw-gw36k-sdt-c30",
+        "inversor-solar-on-grid-goodwe-37-5kw-gw37",
+        "inversor-solar-on-grid-goodwe-40kw-gw40k-sdt-c30",
+        "inversor-solar-on-grid-goodwe-50kw-gw50k-smt-l-g10",
+        "inversor-solar-on-grid-goodwe-5kw-gw5000-ms-us30",
+        "inversor-solar-on-grid-goodwe-73kw-gw73klv-ht",
+        "inversor-solar-on-grid-goodwe-75kw-gw75k-gt-lv-g10",
+        "inversor-solar-on-grid-goodwe-75kw-gw75k-smt",
+        "inversor-solar-on-grid-goodwe-8-5kw-afci",
+        "inversor-solar-on-grid-goodwe-80kw-gw80k-smt",
+        "inversor-solar-on-grid-goodwe-8kw-gw8000-sdt-30",
+        "inversor-solar-on-grid-goodwe-9-6kw-gw9600-ms-us30",
+        "inversor-solar-on-grid-goodwe-90a-ct90-45-5",
+        "microinversor-solar-goodwe-2kw-gw2000-mis"
+      ],
+      "title": "Inversor Solar Off-Grid GoodWe 3,5kW GW3500L-EO",
+      "category": "inversores"
+    },
+    {
+      "pub": "/images/productos-tienda/inversores/growatt-mod.jpg",
+      "webp": "/images/productos-estudio/growatt-mod-prov.webp",
+      "kb": 5.9,
+      "scale": 1.1048158640226629,
+      "fit": 0.65,
+      "skus": [
+        "inversor-solar-off-grid-growatt-3000w-3004250",
+        "inversor-solar-on-grid-growatt-10000w-3004285",
+        "inversor-solar-on-grid-growatt-10kw-10ktl3-xl2",
+        "inversor-solar-on-grid-growatt-10kw-min10000tl-x2",
+        "inversor-solar-on-grid-growatt-15000w-3004290",
+        "inversor-solar-on-grid-growatt-15kw-15ktl3-xl2",
+        "inversor-solar-on-grid-growatt-20000w-3004291",
+        "inversor-solar-on-grid-growatt-20kw-20ktl3-xl2",
+        "inversor-solar-on-grid-growatt-25000w-3004292",
+        "inversor-solar-on-grid-growatt-36000w-3004294",
+        "inversor-solar-on-grid-growatt-3600w-3600tl-x2",
+        "inversor-solar-on-grid-growatt-36kw-36ktl3-xl2",
+        "inversor-solar-on-grid-growatt-4200w-3205063",
+        "inversor-solar-on-grid-growatt-50000w-3004295",
+        "inversor-solar-on-grid-growatt-6000w-6000tl-x2",
+        "inversor-solar-on-grid-growatt-75000w-3004296",
+        "inversor-solar-on-grid-growatt-8000w-3205064",
+        "inversor-solar-on-grid-growatt-8000w-8000tl-x2",
+        "microinversor-solar-growatt-1700537"
+      ],
+      "title": "Inversor Solar Off-Grid Growatt 3000W 3004250",
+      "category": "inversores"
+    },
+    {
+      "pub": "/images/productos-tienda/inversores/must-pv.png",
+      "webp": "/images/productos-estudio/must-pv-prov.webp",
+      "kb": 5.9,
+      "scale": 1.1048158640226629,
+      "fit": 0.65,
+      "skus": [
+        "inversor-solar-off-grid-must-3000w",
+        "inversor-solar-on-grid-must-wifi",
+        "inversor-hybrido-3kw"
+      ],
+      "title": "Inversor Solar Off-Grid Must 3000W",
+      "category": "inversores"
+    },
+    {
+      "pub": "/images/productos-tienda/inversores/victron-multiplus.png",
+      "webp": "/images/productos-estudio/victron-multiplus-prov.webp",
+      "kb": 8.6,
+      "scale": 1.080332409972299,
+      "fit": 0.65,
+      "skus": [
+        "inversor-solar-on-grid-victron-3004060",
+        "inversor-solar-on-grid-victron-pmp122120100",
+        "inversor-solar-on-grid-victron-pmp122200102",
+        "inversor-solar-on-grid-victron-pmp122301102",
+        "inversor-solar-on-grid-victron-pmp123021102",
+        "inversor-solar-on-grid-victron-pmp121500100",
+        "inversor-solar-on-grid-victron-pmp121800100",
+        "inversor-solar-on-grid-victron-pmp242200100",
+        "inversor-solar-on-grid-victron-pmp242200102",
+        "inversor-solar-on-grid-victron-pmp242301102",
+        "inversor-solar-on-grid-victron-pmp243021102",
+        "inversor-solar-on-grid-victron-pmp482200100",
+        "inversor-solar-on-grid-victron-pmp122305100",
+        "inversor-solar-on-grid-victron-pmp122305102",
+        "inversor-solar-on-grid-victron-pmp122305120",
+        "inversor-solar-on-grid-victron-pmp122305122",
+        "inversor-solar-on-grid-victron-pmp242305102",
+        "inversor-solar-on-grid-victron-pmp242305130",
+        "inversor-solar-on-grid-victron-pmp242305132",
+        "inversor-solar-on-grid-victron-pmp242505110",
+        "inversor-solar-on-grid-victron-pmp482305100",
+        "inversor-solar-on-grid-victron-pmp482305102",
+        "inversor-solar-on-grid-victron-pmp482505110",
+        "inversor-solar-on-grid-victron-pmp482505300"
+      ],
+      "title": "Inversor Solar On-Grid Victron 3004060",
+      "category": "inversores"
+    },
+    {
+      "pub": "/images/productos-tienda/inversores/studer-xtender.jpg",
+      "webp": "/images/productos-estudio/studer-xtender-prov.webp",
+      "kb": 19.4,
+      "scale": 0.5036726128016789,
+      "fit": 0.8,
+      "skus": [
+        "cat-mayorista-53c46fb07470",
+        "cat-mayorista-e72eaabf9f09"
+      ],
+      "title": "Studer Inverter Charger Xtender Xtm 2600-48V",
+      "category": "inversores"
+    },
+    {
+      "pub": "/images/productos-tienda/inversores/victron-phoenix.png",
+      "webp": "/images/productos-estudio/victron-phoenix-prov.webp",
+      "kb": 8.6,
+      "scale": 1.080332409972299,
+      "fit": 0.65,
+      "skus": [
+        "inversor-solar-on-grid-victron-pin122122500",
+        "inversor-solar-on-grid-victron-pin122122510",
+        "inversor-solar-on-grid-victron-pin122510510",
+        "inversor-solar-on-grid-victron-pin123750510",
+        "inversor-solar-on-grid-victron-pin125010500",
+        "inversor-solar-on-grid-victron-pin125010510",
+        "inversor-solar-on-grid-victron-pin121800500",
+        "inversor-solar-on-grid-victron-pin121800510",
+        "inversor-solar-on-grid-victron-pin242122500",
+        "inversor-solar-on-grid-victron-pin242122510",
+        "inversor-solar-on-grid-victron-pin242510510",
+        "inversor-solar-on-grid-victron-pin243750500",
+        "victron-phoenix-24-375",
+        "inversor-solar-on-grid-victron-pin241800500",
+        "inversor-solar-on-grid-victron-pin241800510",
+        "inversor-solar-on-grid-victron-pin482122500",
+        "inversor-solar-on-grid-victron-pin482510500",
+        "inversor-solar-on-grid-victron-pin483750500"
+      ],
+      "title": "Victron Phoenix 12/1200",
+      "category": "inversores"
+    },
+    {
+      "pub": "/images/productos-tienda/inversores/victron-quattro.png",
+      "webp": "/images/productos-estudio/victron-quattro-prov.webp",
+      "kb": 8.6,
+      "scale": 1.080332409972299,
+      "fit": 0.65,
+      "skus": [
+        "inversor-solar-on-grid-victron-qua125021100",
+        "inversor-solar-on-grid-victron-qua125021102",
+        "inversor-solar-on-grid-victron-qua245023110",
+        "inversor-solar-on-grid-victron-qua483100102",
+        "inversor-solar-on-grid-victron-qua483150100",
+        "inversor-solar-on-grid-victron-qua483021100",
+        "inversor-solar-on-grid-victron-qua482501102",
+        "inversor-solar-on-grid-victron-qua485021100",
+        "victron-quattro-48-5000",
+        "inversor-solar-on-grid-victron-qua122305130",
+        "inversor-solar-on-grid-victron-qua242305130"
+      ],
+      "title": "Victron Quattro 12/5000",
+      "category": "inversores"
+    },
+    {
+      "pub": "/images/productos-tienda/baterias/pylontech-uf5000.png",
+      "webp": "/images/productos-estudio/pylontech-uf5000-prov.webp",
+      "kb": 12,
+      "scale": 1.3,
+      "fit": 0.65,
+      "skus": [
+        "bateria-litio-10kwh",
+        "bateria-solar-litio-pylontech-uf5000",
+        "bateria-litio-stack-15kwh"
+      ],
+      "title": "Batería de Litio 10kWh",
+      "category": "baterias"
+    },
+    {
+      "pub": "/images/productos-tienda/baterias/byd-battery.png",
+      "webp": "/images/productos-estudio/byd-battery-prov.webp",
+      "kb": 12,
+      "scale": 1.3,
+      "fit": 0.65,
+      "skus": [
+        "bateria-litio-20kwh",
+        "cat-mayorista-ddc4198ecf59"
+      ],
+      "title": "Batería de Litio 20kWh",
+      "category": "baterias"
+    },
+    {
+      "pub": "/images/productos-tienda/baterias/pylontech-3kwh-medellin.png",
+      "webp": "/images/productos-estudio/pylontech-3kwh-medellin-prov.webp",
+      "kb": 4.6,
+      "scale": 1.1111111111111112,
+      "fit": 0.65,
+      "skus": [
+        "bateria-litio-3kwh",
+        "bateria-solar-litio-pylontech-48v-2-4kwh-1708249"
+      ],
+      "title": "Batería de Litio 3kWh",
+      "category": "baterias"
+    },
+    {
+      "pub": "/images/productos-tienda/baterias/pylontech-us.png",
+      "webp": "/images/productos-estudio/pylontech-us-prov.webp",
+      "kb": 5.4,
+      "scale": 1.3,
+      "fit": 0.65,
+      "skus": [
+        "bateria-litio-5kwh",
+        "bateria-solar-litio-pylontech-3552wh-hess"
+      ],
+      "title": "Batería de Litio 5kWh",
+      "category": "baterias"
+    },
+    {
+      "pub": "/images/productos-tienda/baterias/bslbatt-5-12.png",
+      "webp": "/images/productos-estudio/bslbatt-bslbatt-5-12-51-2v-100ah-5-12kwh-prov.webp",
+      "kb": 5.4,
+      "scale": 1.3,
+      "fit": 0.65,
+      "skus": [
+        "bateria-solar-lifepo4-bslbatt-51-2v-100ah-5-12kwh-bslbatt-5-12"
+      ],
+      "title": "Batería Solar LiFePO4 BSLBATT 51.2V, 100Ah, 5.12kWh BSLBATT-5.12",
+      "category": "baterias"
+    },
+    {
+      "pub": "/images/productos-tienda/baterias/dyness-bx51100.png",
+      "webp": "/images/productos-estudio/dyness-dyness-bx51100-5-12kwh-prov.webp",
+      "kb": 5.4,
+      "scale": 1.3,
+      "fit": 0.65,
+      "skus": [
+        "bateria-solar-litio-dyness-5-12kwh-dyness-bx51100"
+      ],
+      "title": "Batería Solar Litio Dyness 5,12kWh Dyness-BX51100",
+      "category": "baterias"
+    },
+    {
+      "pub": "/images/productos-tienda/baterias/goodwe-lynxl.png",
+      "webp": "/images/productos-estudio/goodwe-lynxl-prov.webp",
+      "kb": 5.4,
+      "scale": 1.3,
+      "fit": 0.65,
+      "skus": [
+        "bateria-solar-litio-goodwe-51-2vdc-5-0kwh-ip65",
+        "bateria-solar-litio-goodwe-51-2vdc-280ah-gw14"
+      ],
+      "title": "Batería Solar Litio GoodWe 51,2VDC 5.0kWh IP65",
+      "category": "baterias"
+    },
+    {
+      "pub": "/images/productos-tienda/baterias/growatt-ark.png",
+      "webp": "/images/productos-estudio/growatt-ark-prov.webp",
+      "kb": 5.4,
+      "scale": 1.3,
+      "fit": 0.65,
+      "skus": [
+        "bateria-solar-litio-growatt-380vdc-5-0kwh-ip66",
+        "bateria-solar-litio-growatt-51-2v-5-0kwh-ip21"
+      ],
+      "title": "Batería Solar Litio Growatt 380VDC 5.0kWh IP66",
+      "category": "baterias"
+    },
+    {
+      "pub": "/images/productos-tienda/baterias/huawei-luna.png",
+      "webp": "/images/productos-estudio/huawei-luna-prov.webp",
+      "kb": 2.6,
+      "scale": 1.3,
+      "fit": 0.65,
+      "skus": [
+        "cat-mayorista-6809f95a6ec6",
+        "cat-mayorista-3bf55f91e354",
+        "cat-mayorista-940810d7953b"
+      ],
+      "title": "LUNA2000-10kW-C1",
+      "category": "baterias"
+    },
+    {
+      "pub": "/images/productos-tienda/baterias/pytes-battery.png",
+      "webp": "/images/productos-estudio/pytes-battery-prov.webp",
+      "kb": 5.4,
+      "scale": 1.3,
+      "fit": 0.65,
+      "skus": [
+        "cat-mayorista-f6d271a3ebc1",
+        "cat-mayorista-91a000febf86",
+        "cat-mayorista-648e6f1b96ee"
+      ],
+      "title": "PYTES E-BOX 48100R (5.12kWh-51.2V-100Ah) CABLE CORTO",
+      "category": "baterias"
+    },
+    {
+      "pub": "/images/productos-tienda/controladores/victron-smartsolar-mppt.jpg",
+      "webp": "/images/productos-estudio/victron-smartsolar-mppt-prov.webp",
+      "kb": 10,
+      "scale": 1.1403508771929824,
+      "fit": 0.65,
+      "skus": [
+        "controlador-de-carga-solar-mppt-victron-scc010010050r",
+        "controlador-de-carga-solar-mppt-victron-scc010015050r",
+        "controlador-de-carga-solar-mppt-victron-scc010015200r",
+        "controlador-de-carga-solar-mppt-victron-scc010060200",
+        "controlador-de-carga-solar-mppt-victron-scc010060300",
+        "controlador-de-carga-solar-mppt-victron-scc010070200",
+        "controlador-de-carga-solar-mppt-victron-scc010070300",
+        "controlador-de-carga-solar-mppt-victron-scc020030200",
+        "controlador-de-carga-solar-mppt-victron-scc020035000",
+        "controlador-de-carga-solar-mppt-victron-scc020050200",
+        "controlador-de-carga-solar-mppt-victron-scc075010060r",
+        "controlador-de-carga-solar-mppt-victron-scc075015060r",
+        "controlador-de-carga-solar-mppt-victron-scc110015060r",
+        "controlador-de-carga-solar-mppt-victron-scc110020160r",
+        "controlador-de-carga-solar-mppt-victron-scc110020170r",
+        "controlador-de-carga-solar-mppt-victron-scc110030210",
+        "controlador-de-carga-solar-mppt-victron-scc110050210",
+        "controlador-de-carga-solar-mppt-victron-scc115035210",
+        "controlador-de-carga-solar-mppt-victron-scc115045212",
+        "controlador-de-carga-solar-mppt-victron-scc115045222",
+        "controlador-de-carga-solar-mppt-victron-scc115060211",
+        "controlador-de-carga-solar-mppt-victron-scc115060311",
+        "controlador-de-carga-solar-mppt-victron-scc115070211",
+        "controlador-de-carga-solar-mppt-victron-scc115070411",
+        "controlador-de-carga-solar-mppt-victron-scc115070511",
+        "controlador-de-carga-solar-mppt-victron-scc115085411",
+        "controlador-de-carga-solar-mppt-victron-scc115110411",
+        "controlador-de-carga-solar-mppt-victron-scc115110420",
+        "controlador-de-carga-solar-mppt-victron-scc115110511",
+        "controlador-de-carga-solar-mppt-victron-scc125060221",
+        "controlador-de-carga-solar-mppt-victron-scc125060321",
+        "controlador-de-carga-solar-mppt-victron-scc125070221",
+        "controlador-de-carga-solar-mppt-victron-scc125070421",
+        "controlador-de-carga-solar-mppt-victron-scc125070441",
+        "controlador-de-carga-solar-mppt-victron-scc125070521",
+        "controlador-de-carga-solar-mppt-victron-scc125085411",
+        "controlador-de-carga-solar-mppt-victron-scc125085511",
+        "controlador-de-carga-solar-mppt-victron-scc125110412",
+        "controlador-de-carga-solar-mppt-victron-scc125110441",
+        "controlador-de-carga-solar-mppt-victron-scc125110512",
+        "controlador-de-carga-solar-mppt-victron-scc145110512",
+        "controlador-de-carga-solar-mppt-victron-scc145120510",
+        "controlador-de-carga-solar-mppt-victron-scc145120512",
+        "controlador-de-carga-solar-pwm-victron-30a-scc040030020",
+        "controlador-de-carga-solar-pwm-victron-5a-scc010005000",
+        "controlador-de-carga-solar-pwm-victron-scc010005010",
+        "controlador-de-carga-solar-pwm-victron-scc010005050",
+        "controlador-de-carga-solar-pwm-victron-scc010010000",
+        "controlador-de-carga-solar-pwm-victron-scc010010010",
+        "controlador-de-carga-solar-pwm-victron-scc010010050",
+        "controlador-de-carga-solar-pwm-victron-scc010020020",
+        "controlador-de-carga-solar-pwm-victron-scc010020050",
+        "controlador-de-carga-solar-pwm-victron-scc010020060",
+        "controlador-de-carga-solar-pwm-victron-scc010020110",
+        "controlador-de-carga-solar-pwm-victron-scc010030010",
+        "controlador-de-carga-solar-pwm-victron-scc010030020",
+        "controlador-de-carga-solar-pwm-victron-scc010030050",
+        "controlador-de-carga-solar-pwm-victron-scc040010050",
+        "controlador-de-carga-solar-pwm-victron-scc040020050",
+        "controlador-de-carga-solar-pwm-victron-scc040030050",
+        "controlador-de-carga-solar-pwm-victron-scc940100100",
+        "controlador-de-carga-solar-pwm-victron-scc940100200",
+        "controlador-de-carga-solar-victron-scc900650010",
+        "modulo-inalambrico-victron-bpp900200400",
+        "modulo-inalambrico-victron-precios-agosto-2026",
+        "pantalla-victron-1700524",
+        "pantalla-victron-1700525",
+        "pantalla-victron-1700526",
+        "pantalla-victron-1700532",
+        "pantalla-victron-50a-bpp900460050",
+        "pantalla-victron-50w-bpp900465050",
+        "pantalla-victron-70w-bpp900465070",
+        "pantalla-victron-9004801a-bpp010300100r",
+        "pantalla-victron-bpp900450120",
+        "pantalla-victron-bpp900455050",
+        "pantalla-victron-bpp900455070",
+        "pantalla-victron-bpp900455150",
+        "pantalla-victron-bpp900455170",
+        "pantalla-victron-bpp900462050",
+        "pantalla-victron-bpp900462070",
+        "pantalla-victron-bpp900495100",
+        "pantalla-victron-bpp900800150"
+      ],
+      "title": "Controlador de Carga Solar MPPT Victron SCC010010050R",
+      "category": "controladores"
+    },
+    {
+      "pub": "/images/productos-tienda/controladores/controlador-mppt-100a-medellin.png",
+      "webp": "/images/productos-estudio/victron-smartsolar-mppt-100-50-prov.webp",
+      "kb": 9.6,
+      "scale": 1.0684931506849316,
+      "fit": 0.65,
+      "skus": [
+        "controlador-mppt-100a"
+      ],
+      "title": "Controlador MPPT 100A",
+      "category": "controladores"
+    },
+    {
+      "pub": "/images/Productos tienda/Controladores/Controlador MPPT 20A Medellín .png",
+      "webp": "/images/productos-estudio/epever-tracer-2210an-prov.webp",
+      "kb": 11.3,
+      "scale": 1.1403508771929824,
+      "fit": 0.65,
+      "skus": [
+        "controlador-mppt-20a"
+      ],
+      "title": "Controlador MPPT 20A",
+      "category": "controladores"
+    },
+    {
+      "pub": "/images/productos-tienda/controladores/controlador-mppt-40a-medellin.png",
+      "webp": "/images/productos-estudio/epever-tracer-4210an-prov.webp",
+      "kb": 7.9,
+      "scale": 1.0924369747899159,
+      "fit": 0.65,
+      "skus": [
+        "controlador-mppt-40a"
+      ],
+      "title": "Controlador MPPT 40A",
+      "category": "controladores"
+    },
+    {
+      "pub": "/images/Productos tienda/Controladores/Controlador MPPT 60A Medellín .png",
+      "webp": "/images/productos-estudio/epever-tracer-6415an-prov.webp",
+      "kb": 10,
+      "scale": 1.1403508771929824,
+      "fit": 0.65,
+      "skus": [
+        "controlador-mppt-60a"
+      ],
+      "title": "Controlador MPPT 60A",
+      "category": "controladores"
+    },
+    {
+      "pub": "/images/productos-tienda/controladores/controlador-mppt-80a-medellin.png",
+      "webp": "/images/productos-estudio/epever-tracer-8415an-prov.webp",
+      "kb": 9.5,
+      "scale": 1.0743801652892562,
+      "fit": 0.65,
+      "skus": [
+        "controlador-mppt-80a"
+      ],
+      "title": "Controlador MPPT 80A",
+      "category": "controladores"
+    },
+    {
+      "pub": "/images/productos-tienda/controladores/studer-vs.jpg",
+      "webp": "/images/productos-estudio/studer-vs-prov.webp",
+      "kb": 9.5,
+      "scale": 1.0743801652892562,
+      "fit": 0.65,
+      "skus": [
+        "cat-mayorista-e2fbad5e2d84",
+        "cat-mayorista-a1751e95a366",
+        "cat-mayorista-6184c2963746"
+      ],
+      "title": "Studer MPPT Solar Charge Controller - Vs 120 - 48V",
+      "category": "controladores"
+    },
+    {
+      "pub": "/images/productos-tienda/protecciones/generic-mcb-ac.jpg",
+      "webp": "/images/productos-estudio/generic-mcb-ac-prov.webp",
+      "kb": 27.7,
+      "scale": 0.8921933085501859,
+      "fit": 0.8,
+      "skus": [
+        "abrazadera-de-puesta-a-tierra-schletter-conductor-8mm-135003-000",
+        "cat-mayorista-450551e76976",
+        "cat-mayorista-e5134accccc5",
+        "cat-mayorista-b89f69b7c502",
+        "cat-mayorista-0c092893cacf",
+        "cat-mayorista-38f415d74b92",
+        "cat-mayorista-554a8c912fac",
+        "cat-mayorista-4f6dffb2c845",
+        "cat-mayorista-1c90834961f7",
+        "cat-mayorista-d9f27339864a",
+        "cat-mayorista-1b4b3e9159bf",
+        "cat-mayorista-d6c8f3de91a1",
+        "cat-mayorista-5a866630fef1",
+        "cat-mayorista-cd790f420080",
+        "cat-mayorista-81cb93a7f938",
+        "cat-mayorista-7607c19ef34b",
+        "cat-mayorista-acf1d4a2ec5f",
+        "cat-mayorista-8c3f2f2d550e",
+        "cat-mayorista-b8a2ad192705",
+        "cat-mayorista-59328d99833f",
+        "cat-mayorista-1121b2f967a5",
+        "cat-mayorista-542f1c01667c",
+        "cat-mayorista-4456b041b5f7",
+        "cat-mayorista-ca64f43be5f3",
+        "cat-mayorista-8881b56cc6fe",
+        "cat-mayorista-ef4b5702b338",
+        "cat-mayorista-230011e45adc",
+        "cat-mayorista-f8f436284238",
+        "cat-mayorista-7745b8578b05",
+        "cat-mayorista-c6847d547bc2",
+        "cat-mayorista-2b8a086329f8",
+        "cat-mayorista-6fb3e3e4dcdc",
+        "cat-mayorista-9b5024944b74",
+        "cat-mayorista-4c63a793462e",
+        "cat-mayorista-67f802e82020",
+        "cat-mayorista-a6f2b77e8deb",
+        "cat-mayorista-d0fe3efb908d",
+        "cat-mayorista-28f10608151f",
+        "cat-mayorista-f7c92ea2ba32",
+        "cat-mayorista-a496d4bc6145",
+        "cat-mayorista-a4bcf6c7d8ba",
+        "cat-mayorista-0af15aadb96d",
+        "cat-mayorista-8e680568ff18",
+        "cat-mayorista-efb01922ea3a",
+        "cat-mayorista-dffac024ba0d",
+        "cat-mayorista-e0ed5bdbb374",
+        "cat-mayorista-7f766d732530",
+        "cat-mayorista-30e3454a43a1",
+        "cat-mayorista-39bb7da66882",
+        "cat-mayorista-d50170a2ede4",
+        "cat-mayorista-b0ceb6a7dd95",
+        "cat-mayorista-a0c8fb599131",
+        "cat-mayorista-d185fa908422",
+        "cat-mayorista-a098e36ee42b",
+        "cat-mayorista-8891f45e70b8",
+        "cat-mayorista-69d57647fb0f",
+        "cat-mayorista-90ae5e154654",
+        "cat-mayorista-e16804a4f36d",
+        "cat-mayorista-802f0f345d4d",
+        "cat-mayorista-33b662988d35",
+        "cat-mayorista-6a590e229a07",
+        "cat-mayorista-ce71d1e2bcd0",
+        "cat-mayorista-a7b26bbbeba0",
+        "cat-mayorista-1c76f2d7940a",
+        "cat-mayorista-d9259ee059d7",
+        "cat-mayorista-81d8b91d2aa7",
+        "cat-mayorista-1b745610f88d"
+      ],
+      "title": "Abrazadera de puesta a tierra Schletter Conductor Ø8mm 135003-000",
+      "category": "protecciones"
+    },
+    {
+      "pub": "/images/productos-tienda/protecciones/abb-breaker-dc-100a.png",
+      "webp": "/images/productos-estudio/schneider-c100h-dc-prov.webp",
+      "kb": 15.6,
+      "scale": 1.1650485436893203,
+      "fit": 0.8,
+      "skus": [
+        "proteccion-breaker-100a"
+      ],
+      "title": "Breaker DC 100A",
+      "category": "protecciones"
+    },
+    {
+      "pub": "/images/productos-tienda/protecciones/abb-breaker-dc-32a.png",
+      "webp": "/images/productos-estudio/schneider-c32h-dc-prov.webp",
+      "kb": 7.6,
+      "scale": 1.1650485436893203,
+      "fit": 0.8,
+      "skus": [
+        "proteccion-breaker-32a"
+      ],
+      "title": "Breaker DC 32A",
+      "category": "protecciones"
+    },
+    {
+      "pub": "/images/productos-tienda/protecciones/abb-breaker-dc-63a.png",
+      "webp": "/images/productos-estudio/schneider-c63h-dc-prov.webp",
+      "kb": 7.5,
+      "scale": 1.1650485436893203,
+      "fit": 0.8,
+      "skus": [
+        "proteccion-breaker-63a"
+      ],
+      "title": "Breaker DC 63A",
+      "category": "protecciones"
+    },
+    {
+      "pub": "/images/productos-tienda/protecciones/suntree-scb8-ac.jpg",
+      "webp": "/images/productos-estudio/suntree-scb8-ac-prov.webp",
+      "kb": 27.7,
+      "scale": 0.8921933085501859,
+      "fit": 0.8,
+      "skus": [
+        "breaker-suntree-100a-ac-scb8-63-100a3p",
+        "breaker-suntree-16a-ac-scb8-63-16a1p",
+        "breaker-suntree-16a-ac-scb8-63-16a2p",
+        "breaker-suntree-20a-ac-scb8-63-20a1p",
+        "breaker-suntree-20a-ac-scb8-63-20a2p",
+        "breaker-suntree-232a-ac-scb8-63-232a2p",
+        "breaker-suntree-25a-ac-5504177",
+        "breaker-suntree-25a-ac-5504183",
+        "breaker-suntree-25a-ac-scb8-63-25a1p",
+        "breaker-suntree-32a-ac-5504178",
+        "breaker-suntree-32a-ac-5504184",
+        "breaker-suntree-32a-ac-scb8-63-32a1p",
+        "breaker-suntree-40a-ac-5504179",
+        "breaker-suntree-40a-ac-5504196",
+        "breaker-suntree-40a-ac-scb8-63-40a2p",
+        "breaker-suntree-50a-ac-5504181",
+        "breaker-suntree-50a-ac-scb8-63-50a1p",
+        "breaker-suntree-50a-ac-scb8-63-50a2p",
+        "breaker-suntree-63a-ac-5504198",
+        "breaker-suntree-63a-ac-scb8-63-63a2p",
+        "breaker-suntree-63a-ac-scb8le-63"
+      ],
+      "title": "Breaker Suntree 100A AC SCB8-63-100A3P",
+      "category": "protecciones"
+    },
+    {
+      "pub": "/images/productos-tienda/protecciones/abb-fuseholder-100a.png",
+      "webp": "/images/productos-estudio/abb-fuseholder-100a-prov.webp",
+      "kb": 7.8,
+      "scale": 1.1650485436893203,
+      "fit": 0.8,
+      "skus": [
+        "proteccion-fusible-100a",
+        "proteccion-fusible-200a"
+      ],
+      "title": "Fusible DC 100A con Portafusible",
+      "category": "protecciones"
+    },
+    {
+      "pub": "/images/productos-tienda/protecciones/suntree-sq8-switch.jpg",
+      "webp": "/images/productos-estudio/suntree-sq8-switch-prov.webp",
+      "kb": 27.7,
+      "scale": 0.8921933085501859,
+      "fit": 0.8,
+      "skus": [
+        "switch-suntree-100a-ac-sq8m-125",
+        "switch-suntree-125a-ac-sq8m-125",
+        "switch-suntree-40a-ac-sq8t-63",
+        "switch-suntree-50a-ac-sq8t-63",
+        "switch-suntree-63a-ac-sq8t-63"
+      ],
+      "title": "Switch Suntree 100A AC SQ8M-125",
+      "category": "protecciones"
+    },
+    {
+      "pub": "/images/productos-tienda/bombeo/kolos3-sumergible.jpg",
+      "webp": "/images/productos-estudio/kolos3-sumergible-prov.webp",
+      "kb": 15,
+      "scale": 1.0126582278481013,
+      "fit": 0.8,
+      "skus": [
+        "bomba-solar-1100w-kolos3-123-110-20",
+        "bomba-solar-1300w-kolos3-155-130-20",
+        "bomba-solar-1500w-kolos3-180-150-20",
+        "bomba-solar-600w-kolos3-80-60-7",
+        "bomba-solar-750w-kolos3-95-75-11"
+      ],
+      "title": "Bomba Solar 1100W KOLOS3-123-110-20",
+      "category": "bombeo"
+    },
+    {
+      "pub": "/images/productos-tienda/bombeo/kolos4-sumergible.jpg",
+      "webp": "/images/productos-estudio/kolos4-sumergible-prov.webp",
+      "kb": 17.1,
+      "scale": 0.9213051823416507,
+      "fit": 0.8,
+      "skus": [
+        "bomba-solar-1300w-kolos4-112-130-20",
+        "bomba-solar-1500w-kolos4-60-150-20",
+        "bomba-solar-2200w-kol4-110-220-mp",
+        "bomba-solar-4000w-kol4-225-400-mp",
+        "bomba-solar-7500w-kol4-120-750-mp"
+      ],
+      "title": "Bomba Solar 1300W KOLOS4-112-130-20",
+      "category": "bombeo"
+    },
+    {
+      "pub": "/images/productos-tienda/bombeo/kolos-pool.jpg",
+      "webp": "/images/productos-estudio/kolos-pool-prov.webp",
+      "kb": 18,
+      "scale": 0.9856262833675564,
+      "fit": 0.8,
+      "skus": [
+        "bomba-solar-500w-pool25-500-48",
+        "bomba-solar-900w-pool32-900-72"
+      ],
+      "title": "Bomba Solar 500W POOL25-500-48",
+      "category": "bombeo"
+    },
+    {
+      "pub": "/images/productos-tienda/bombeo/kolos-cfp-horizontal.png",
+      "webp": "/images/productos-estudio/kolos-kolos-cfp-750-72-750w-prov.webp",
+      "kb": 24.1,
+      "scale": 1.196319018404908,
+      "fit": 0.65,
+      "skus": [
+        "bomba-solar-750w-kolos-cfp-750-72"
+      ],
+      "title": "Bomba Solar 750W KOLOS-CFP-750-72",
+      "category": "bombeo"
+    },
+    {
+      "pub": "/images/Productos tienda/Luminarias/Lumionaria solar tipo jardin 90w.jpeg",
+      "webp": "/images/productos-estudio/lsj-90w-15ah-prov.webp",
+      "kb": 27.3,
+      "scale": 0.6241872561768531,
+      "fit": 0.8,
+      "skus": [
+        "luminaria-solar-jardin-90w"
+      ],
+      "title": "Luminaria Solar Tipo Jardin 90W 15Ah",
+      "category": "reflectores"
+    }
+  ],
+  "skipped": [],
+  "metrics": {
+    "total": 575,
+    "definitiva": 171,
+    "provisional": 402,
+    "sin": 2,
+    "pctDef": "29.7",
+    "pctProv": "69.9",
+    "pctSin": "0.3"
+  }
+}

@@ -1,0 +1,73 @@
+---
+title: "Reflector Solar Hardy Nova 200 – 9 W reales · 1.530 lm"
+description: "Reflector solar profesional LED Hardy Nova 200 de 9 W reales y 1.530 lm (170 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 25 Ah y panel 30 W / 6 V monocristalino separado (360 × 290 mm), con autonomía de 3 – 4 días con tiempo nublado. Se instala a 3 – 4 m de altura y ilumina hasta 60 m². Protección IP65 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024)."
+image: "/images/productos-estudio/hardy-nova-200.webp"
+imageThumb: "/images/productos-estudio/hardy-nova-200-thumb.webp"
+imageAlt: "Reflector Solar Hardy Nova 200 – 9 W reales · 1.530 lm – Reiki Energía Solar"
+category: "reflectores"
+price: "$300.000"
+specifications:
+  - "Tipo: Reflector solar profesional LED"
+  - "Potencia real: 9 W"
+  - "Flujo luminoso: 1.530 lm"
+  - "Eficacia luminosa: 170 lm/W"
+  - "Temperatura de color: 6500 K (luz blanca fría)"
+  - "CRI: > 70"
+  - "LED: 144 LED SMD 3030"
+  - "Ángulo de apertura: 90°"
+  - "Batería: LiFePO4 3,2 V / 25 Ah"
+  - "Panel solar: 30 W / 6 V monocristalino separado (360 × 290 mm)"
+  - "Tiempo de carga: 4 – 6 h de sol pleno"
+  - "Autonomía: 3 – 4 días con tiempo nublado"
+  - "Controlador de carga: MPPT integrado"
+  - "Modos de operación: Control de luz (anochecer–amanecer) o control de tiempo (hasta 12 h)"
+  - "Grado de protección: IP65 / IK08"
+  - "Temperatura de operación: -10 °C a 50 °C"
+  - "Material: ABS de alta resistencia, lente de policarbonato"
+  - "Dimensiones: 300 × 213 × 61 mm"
+  - "Altura de instalación recomendada: 3 – 4 m"
+  - "Área de cobertura: hasta 60 m²"
+  - "Garantía: 2 años"
+  - "RETILAP: Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024)"
+brand: "Hardy Solar"
+model: "Nova 200"
+sku: "HARDY-NOVA-200"
+power: "9 W"
+stock: "disponible"
+order: 43
+updatedAt: "2026-09-28"
+imagen_provisional: true
+imagenSerieRef: "Hardy Nova"
+fichaPdf: "/fichas/hardy-nova-200-ficha-tecnica.pdf"
+seoKeywords:
+  - "luminaria solar"
+  - "hardy nova 200"
+  - "reflector solar led"
+  - "alumbrado público solar"
+  - "luminaria solar retilap"
+  - "luminaria solar colombia"
+  - "comprar luminaria solar medellín"
+faqs:
+  - pregunta: "¿Cuántos vatios reales tiene la Nova 200?"
+    respuesta: "9 W reales, con un flujo de 1.530 lm. Para comparar luminarias solares, fíjate en los lúmenes y en los vatios reales, no en el número del modelo."
+  - pregunta: "¿Cuántas horas alumbra y cuánto tarda en cargar?"
+    respuesta: "Autonomía: 3 – 4 días con tiempo nublado. Carga completa en 4 – 6 h de sol pleno. En días nublados la carga es menor; por eso la batería LiFePO4 guarda reserva para más de una noche en los modelos que lo indican."
+  - pregunta: "¿A qué altura se instala y cuánto espacio ilumina?"
+    respuesta: "Altura recomendada: 3 – 4 m. Cobertura: hasta 60 m²."
+  - pregunta: "¿Necesita cableado o conexión a la red eléctrica?"
+    respuesta: "No. El panel solar va separado de la lámpara y se conecta con su cable; se orienta hacia el sol. Solo se fija en el poste, muro o soporte y enciende automáticamente al anochecer."
+  - pregunta: "¿Qué incluye?"
+    respuesta: "Reflector solar Nova 200, panel solar monocristalino 30 W, soporte de montaje ajustable, control remoto, tornillos y anclajes, manual de instalación. El poste no está incluido."
+  - pregunta: "¿Tiene certificación RETILAP?"
+    respuesta: "Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024)."
+  - pregunta: "¿Qué garantía tiene?"
+    respuesta: "2 años de garantía del fabricante (Hardy Solar Energy). Reiki Energía Solar te acompaña en el trámite."
+  - pregunta: "¿Dónde se recomienda usar?"
+    respuesta: "Parques y plazas, jardines, fincas y zonas rurales."
+---
+
+**Reflector Solar Hardy Nova 200 – 9 W reales · 1.530 lm**
+
+Reflector solar profesional LED Hardy Nova 200 de 9 W reales y 1.530 lm (170 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 25 Ah y panel 30 W / 6 V monocristalino separado (360 × 290 mm), con autonomía de 3 – 4 días con tiempo nublado. Se instala a 3 – 4 m de altura y ilumina hasta 60 m². Protección IP65 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024).
+
+Ficha técnica del fabricante: Hardy Solar Energy. Precio con IVA incluido.

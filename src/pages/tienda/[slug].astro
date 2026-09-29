@@ -84,13 +84,44 @@ const grupoCatalogo = grupoDelCatalogo(specs);
 const grupos = [...(grupoCatalogo ? [grupoCatalogo] : []), ...(serie?.grupos ?? [])];
 
 /** La garantía de la serie es un dato verificado; la de categoría es solo referencia. */
-const garantiaSerie = serie?.grupos
-  .find((g) => g.titulo.toLowerCase().includes('garantía'))
-  ?.filas.map((f) => `${f.clave}: ${f.valor}`)
-  .join(' · ');
+// Garantía verificada: la de la serie o, si no hay serie, la que trae la ficha del producto.
+const garantiaProducto = d.specifications
+  .find((s) => /^garant[ií]a\s*:/i.test(s))
+  ?.replace(/^garant[ií]a\s*:\s*/i, '');
+const garantiaSerie =
+  serie?.grupos
+    .find((g) => g.titulo.toLowerCase().includes('garantía'))
+    ?.filas.map((f) => `${f.clave}: ${f.valor}`)
+    .join(' · ') ?? (garantiaProducto ? `${garantiaProducto} de garantía del fabricante.` : undefined);
 const garantiaCategoria = garantiaDeCategoria(d.category);
 const certificaciones = certificacionesDeCategoria(d.category);
-const faqs = faqsDe(d.category);
+// Primero las preguntas del producto; luego las de la categoría que no repitan pregunta.
+const faqsProducto = d.faqs ?? [];
+// Palabras clave de una pregunta (sin tildes ni palabras vacías) para descartar preguntas
+// de categoría que dicen lo mismo con otras palabras ("¿Cuántas horas me respalda?" ≈
+// "¿Cuántas horas de respaldo me da esta batería?").
+const VACIAS = new Set(['que', 'como', 'cual', 'cuanto', 'cuanta', 'cuantos', 'cuantas', 'para', 'esta', 'este', 'puedo', 'tiene', 'sirve', 'con', 'mi', 'me', 'los', 'las', 'del', 'una', 'uno', 'por', 'sin', 'sus', 'da']);
+const SINONIMOS: Record<string, string> = { agrega: 'amplia', sumar: 'amplia', bateri: 'banco', respal: 'horas', autono: 'horas', dura: 'horas', ventaj: 'difere' };
+const claves = (q: string) =>
+  new Set(
+    q
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[̀-ͯ]/g, '')
+      .replace(/[^a-z0-9 ]/g, ' ')
+      .split(/\s+/)
+      .filter((w) => w.length > 2 && !VACIAS.has(w))
+      .map((w) => SINONIMOS[w.slice(0, 6)] ?? w.slice(0, 6))
+  );
+const clavesProducto = faqsProducto.map((p) => claves(p.pregunta));
+const repetida = (q: string) => {
+  const c = claves(q);
+  return clavesProducto.some((k) => [...c].filter((w) => k.has(w)).length >= Math.min(2, c.size, k.size));
+};
+const faqs = [...faqsProducto, ...faqsDe(d.category).filter((f) => !repetida(f.pregunta))].slice(
+  0,
+  faqsProducto.length ? Math.max(10, faqsProducto.length) : undefined
+);
 
 const mensajeFichaTecnica = encodeURIComponent(
   `Hola, necesito la ficha técnica completa de: ${d.title}${d.model ? ` (${d.model})` : ''}`
@@ -163,10 +194,28 @@ const precioUnitario = etiquetaPrecioPorUnidad(
         )}
 
         <article class="ficha">
-          <div class="ficha-media">
-            <img src={d.image} alt={d.title} width="520" height="400" fetchpriority="high" decoding="async" />
+          <div class={`ficha-media${d.imagen_provisional ? ' ficha-media--provisional' : ''}`}>
+            <img
+              src={d.imagen_provisional ? (d.imageThumb || d.image) : d.image}
+              srcset={
+                d.imagen_provisional
+                  ? undefined
+                  : d.imageThumb
+                    ? `${d.imageThumb} 600w, ${d.image} 1600w`
+                    : undefined
+              }
+              sizes={d.imagen_provisional ? undefined : '(max-width: 768px) 92vw, 520px'}
+              alt={d.imageAlt ?? `${d.brand ? d.brand + ' ' : ''}${d.title} – Reiki Energía Solar`}
+              width={d.imagen_provisional ? 600 : 1600}
+              height={d.imagen_provisional ? 600 : 1600}
+              fetchpriority="high"
+              decoding="async"
+            />
             <span class={`ficha-badge ${stock}`}>{etiquetasStock[stock] ?? 'Disponible'}</span>
             {enLiquidacion && <span class="ficha-badge-descuento">-{d.descuentoPct}%</span>}
+            {d.imagenSerieRef && (
+              <p class="ficha-serie-ref">Imagen de referencia de la serie {d.imagenSerieRef}</p>
+            )}
           </div>
 
           <div class="ficha-info">
@@ -213,6 +262,12 @@ const precioUnitario = etiquetaPrecioPorUnidad(
             </p>
 
             <div class="ficha-acciones">
+              {d.fichaPdf && (
+                <a class="ficha-btn-secundario" href={d.fichaPdf.startsWith('/') ? d.fichaPdf : `/${d.fichaPdf.replace(/^docs\//, '')}`} target="_blank" rel="noopener noreferrer">
+                  <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                  Ficha técnica (PDF)
+                </a>
+              )}
               <div class="quantity-controls" data-product-id={producto.slug}>
                 <button class="qty-btn minus" type="button" aria-label="Disminuir cantidad">-</button>
                 <input type="number" class="qty-input" value="1" min="1" readonly aria-label="Cantidad" />
@@ -277,6 +332,21 @@ const precioUnitario = etiquetaPrecioPorUnidad(
                     Datos de la serie <strong>{serie.nombre}</strong>, tomados de la hoja de datos
                     del fabricante (<a href={serie.url} rel="noopener nofollow" target="_blank">{serie.fuente}</a>).
                     Los valores pueden variar según la variante exacta del modelo.
+                  </p>
+                ) : d.fichaPdf?.startsWith('/fichas/reiki/') ? (
+                  <p class="specs-fuente">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <a href={d.fichaPdf} target="_blank" rel="noopener">Descargar ficha técnica Reiki (PDF)</a>.
+                    ¿Necesitás la hoja original del fabricante?
+                    <a href={`${CONTACT_WHATSAPP_URL}?text=${mensajeFichaTecnica}`} rel="noopener" target="_blank">Pedila por WhatsApp</a>.
+                  </p>
+                ) : d.fichaPdf ? (
+                  <p class="specs-fuente">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    Datos tomados de la ficha técnica del fabricante.
+                    <a href={d.fichaPdf.startsWith('/') ? d.fichaPdf : `/${d.fichaPdf.replace(/^docs\//, '')}`} target="_blank" rel="noopener">
+                      Descargar ficha técnica (PDF)
+                    </a>
                   </p>
                 ) : (
                   <p class="specs-fuente specs-fuente-solicitud">
@@ -614,6 +684,7 @@ const precioUnitario = etiquetaPrecioPorUnidad(
     border-radius: 18px;
     padding: 1.5rem;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     min-height: 340px;
@@ -624,6 +695,22 @@ const precioUnitario = etiquetaPrecioPorUnidad(
     height: auto;
     max-height: 400px;
     object-fit: contain;
+  }
+
+  .ficha-media--provisional img {
+    max-height: 360px;
+    image-rendering: auto;
+    cursor: default;
+  }
+
+  .ficha-serie-ref {
+    width: 100%;
+    margin: 0.75rem 0 0;
+    font-size: 0.75rem;
+    line-height: 1.35;
+    color: #64748b;
+    text-align: center;
+    font-weight: 400;
   }
 
   .ficha-badge {
@@ -796,6 +883,26 @@ const precioUnitario = etiquetaPrecioPorUnidad(
   .ficha-btn-primario:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(107, 33, 129, 0.42);
+  }
+
+  .ficha-btn-secundario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.75rem 1.15rem;
+    border-radius: 50px;
+    border: 2px solid #6b2181;
+    background: #fff;
+    color: #6b2181;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-family: inherit;
+  }
+
+  .ficha-btn-secundario:hover {
+    background: #f5eef8;
   }
 
   .ficha-btn-whatsapp {

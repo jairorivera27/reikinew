@@ -1,7 +1,7 @@
 ---
 title: "Huawei Backup BOX-B0 (single Phase)"
 description: "Equipo Huawei Smart PV: inversor, optimizador o accesorio de campo para maximizar energía, seguridad y monitorización. Verifique tabla de compatibilidad del fabricante con su inversor y país."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$2.692.800"
 specifications:
@@ -12,6 +12,9 @@ specifications:
 brand: "Huawei"
 stock: "disponible"
 order: 5068
+imageAlt: "Huawei – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **HUAWEI BACKUP BOX-B0 (SINGLE PHASE)** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid GoodWe 75kW GW75K-GT-LV-G10"
 description: "Inversor Solar On-Grid GoodWe 75kW GW75K-GT-LV-G10. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW75K-GT-LV-G10; especificación principal: 75kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$16.226.000"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "GoodWe GW75K-GT-LV-G10 75kW – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Inversor Solar On-Grid GoodWe 75kW GW75K-GT-LV-G10** de GoodWe · 75kW.
 

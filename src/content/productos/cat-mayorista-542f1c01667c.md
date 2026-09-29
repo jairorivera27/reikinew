@@ -1,7 +1,7 @@
 ---
 title: "Fronius Sensor Wind Speed"
 description: "Sensor o periférico de monitorización Fronius (Datamanager, Smart Meter, sonda térmica/anemómetro) para inversores y Solar.web."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$260.100"
 specifications:
@@ -12,6 +12,9 @@ specifications:
 brand: "Fronius"
 stock: "disponible"
 order: 5114
+imageAlt: "Fronius – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **FRONIUS SENSOR WIND SPEED** · referencia **Fronius** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

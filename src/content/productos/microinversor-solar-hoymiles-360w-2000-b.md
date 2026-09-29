@@ -1,7 +1,7 @@
 ---
 title: "Microinversor Solar Hoymiles 360W 2000-B"
 description: "Microinversor Solar Hoymiles 360W 2000-B. Equipo para conversión de energía a nivel de módulo fotovoltaico. Marca: Hoymiles; modelo: 2000-B; especificación principal: 360W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/hoymiles-hms.jpg"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$1.676.829"
 specifications:
@@ -23,6 +23,9 @@ seoKeywords:
   - "comprar microinversor solar colombia"
   - "precio microinversor solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "Hoymiles 2000-B 360W – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Microinversor Solar Hoymiles 360W 2000-B** de Hoymiles · 360W.
 

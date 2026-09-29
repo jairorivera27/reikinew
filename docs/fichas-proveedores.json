@@ -1,0 +1,1744 @@
+{
+ "bateria-solar-litio-felicity-12v-1-28kwh-1880812": {
+  "fuente": "https://autosolar.co/baterias-de-litio-12v/bateria-litio-felicity-solar-128kwh-12v-100a-fla12100",
+  "specs": {
+   "Dimensiones": "295 x 201 x 199 mm",
+   "Energía útil almacenada": "1.250 %",
+   "Peso": "10 Kg",
+   "Voltaje": "12 V"
+  },
+  "bullets": [
+   "Modelo de la batería: FLA12100",
+   "Energía nominal: 1.28 kWh",
+   "Voltaje nominal: 12.8V",
+   "Corriente máxima de carga/descarga (15s): 150A",
+   "Escalabilidad: Max. 16 unidades en paralelo (20.48 kWh)",
+   "Profundidad de descarga (DOD): > 95%",
+   "Grado de protección: IP21",
+   "Ciclos de vida: > 6000 ciclos",
+   "Dimensiones: 295 x 201 x 199 mm",
+   "Peso: 10 kg"
+  ],
+  "pdf": "/fichas/proveedores/fichas-tecnicas-bateria-litio-felicity-solar-serie-fla.pdf",
+  "match": "exacto"
+ },
+ "bateria-solar-litio-felicity-12v-2-56kwh-1880813": {
+  "fuente": "https://autosolar.co/baterias-de-litio-12v/bateria-litio-felicity-solar-256kwh-12v-200a-fla12200",
+  "specs": {
+   "Energía útil almacenada": "2.500 %",
+   "Voltaje": "12 V"
+  },
+  "bullets": [
+   "Modelo de la batería: FLA12200",
+   "Energía nominal: 2.56 kWh",
+   "Voltaje nominal: 12.8V",
+   "Corriente máxima de carga/descarga (15s): 200A",
+   "Escalabilidad: Max. 16 unidades en paralelo (40.96 kWh)",
+   "Profundidad de descarga (DOD): > 95%",
+   "Grado de protección: IP21",
+   "Ciclos de vida: > 6000 ciclos",
+   "Dimensiones: 295 x 201 x 199 mm",
+   "Peso: 10 kg"
+  ],
+  "pdf": "/fichas/proveedores/fichas-tecnicas-bateria-litio-felicity-solar-serie-fla.pdf",
+  "match": "exacto"
+ },
+ "bateria-solar-litio-felicity-24v-2-56kwh-1880833": {
+  "fuente": "https://autosolar.co/baterias-de-litio-24v/bateria-litio-felicity-solar-256kwh-24v-100a-fla24100",
+  "specs": {
+   "Energía útil almacenada": "2.500 %",
+   "Voltaje": "24 V"
+  },
+  "bullets": [
+   "Modelo: FLA24100",
+   "Capacidad: 2,56 kWh",
+   "Tipo de batería: LiFePO4",
+   "Tensión nominal: 25,6 V",
+   "Tensión de funcionamiento: 22,4 - 28,8 V",
+   "Corriente de carga/descarga recomendada: 100 A",
+   "Corriente de carga/descarga recomendada: 150 A",
+   "Profundidad de descarga (DoD): 95 %",
+   "Escalabilidad: Hasta 15 unidades en paralelo (38,4 kWh)",
+   "Comunicación: RS485/CAN",
+   "Peso: 27 kg",
+   "Dimensiones: 454 x 380 x 154 mm"
+  ],
+  "pdf": "/fichas/proveedores/ficha-tecnica-batera-litio-felicity-solar-2-56kwh-24vv-100a-fla24100.pdf",
+  "match": "exacto"
+ },
+ "bateria-solar-litio-felicity-24v-5-9kwh-1880846": {
+  "fuente": "https://autosolar.co/baterias-de-litio/bateria-litio-felicity-solar-59kwh-24v-230a-fla-24230-eu",
+  "specs": {
+   "Energía útil almacenada": "5.900 %",
+   "Voltaje": "24 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tcnica-batera-litio-felicity-solar-5.9kwh-24v-230a-fla-24230-eu.pdf",
+  "match": "exacto"
+ },
+ "bateria-solar-litio-felicity-24v-7-5kwh-1880814": {
+  "fuente": "https://autosolar.co/baterias-de-litio-24v/bateria-litio-felicity-solar-75kwh-24v-300a-fla-24300",
+  "specs": {
+   "Dimensiones": "295 x 201 x 199 mm",
+   "Energía útil almacenada": "10 %",
+   "Peso": "71 Kg",
+   "Voltaje": "24 V"
+  },
+  "bullets": [
+   "Modelo de la batería: FLA24300",
+   "Energía nominal: 7.5  kWh",
+   "Voltaje nominal: 25.6V",
+   "Corriente máxima de carga/descarga (15s): 200A",
+   "Escalabilidad: Max. 16 unidades en paralelo (60 kWh)",
+   "Profundidad de descarga (DOD): > 95%",
+   "Grado de protección: IP21",
+   "Ciclos de vida: > 6000 ciclos",
+   "Dimensiones: 700 X 430 X 253 mm",
+   "Peso: 71 kg"
+  ],
+  "pdf": "/fichas/proveedores/ficha-tecnica-batera-litio-felicity-solar-7.5kwh-12v-300a-fla-24300.pdf",
+  "match": "exacto"
+ },
+ "bateria-solar-litio-felicity-48v-11-8kwh-1880845": {
+  "fuente": "https://autosolar.co/baterias-de-litio/bateria-litio-felicity-solar-118kwh-512v-fla48230-eu",
+  "specs": {
+   "Energía útil almacenada": "95 %",
+   "Voltaje": "51.2 V"
+  },
+  "bullets": [
+   "Tecnología de batería: LiFePO4.",
+   "Energía y tensión nominal: 11,8 kWh y 51,2 V.",
+   "Rango de tensión de operación: 44,8 a 57,6 V.",
+   "Corriente máxima continua de carga/descarga: 150 A; pico de 200 A durante 15 segundos.",
+   "Profundidad de descarga y ciclos: ≥95 % DOD y ≥6.000 ciclos.",
+   "Escalabilidad: hasta 15 unidades en paralelo, equivalentes a 177 kWh.",
+   "Comunicación y monitoreo: RS485/CAN y conectividad WiFi.",
+   "Protección y temperatura: IP21; carga de 0 °C a +55 °C y descarga de -20 °C a +55 °C.",
+   "Instalación y dimensiones: montaje en pared o suelo; 783 × 450 × 274 mm y 97 kg."
+  ],
+  "pdf": "/fichas/proveedores/ficha-tecnica-batera-litio-felicity-solar-fla48230-eu.pdf",
+  "match": "exacto"
+ },
+ "bateria-solar-litio-felicity-48v-16kwh-1880836": {
+  "fuente": "https://autosolar.co/baterias-de-litio/bateria-litio-felicity-solar-16kwh-512v-314a-fla48314-eu",
+  "specs": {
+   "Energía útil almacenada": "95 %",
+   "Voltaje": "51.2 V"
+  },
+  "bullets": [
+   "Tecnología y energía nominal: LiFePO4, 16 kWh.",
+   "Tensión nominal: 51,2 V.",
+   "Rango de operación: 44,8 a 57,6 V.",
+   "Corriente máxima continua de carga/descarga: 160 A.",
+   "Corriente y potencia pico: 300 A y 8.000 W durante 15 segundos.",
+   "Profundidad de descarga y ciclos: ≥95 % DOD y ≥8.000 ciclos.",
+   "Escalabilidad: hasta 15 unidades en paralelo, equivalentes a 240 kWh nominales.",
+   "Comunicación y monitoreo: RS485/CAN, WiFi/Bluetooth y pantalla LCD+LED.",
+   "Instalación: sobre suelo; IP21; dimensiones de 435 × 880 × 247 mm y peso de 121,5 kg."
+  ],
+  "pdf": "/fichas/proveedores/ficha_tcnica_batera_litio_felicity_solar_16kwh_51-2v_314a_fla48314.pdf",
+  "match": "exacto"
+ },
+ "bateria-solar-litio-felicity-48v-5-12kwh-1880816": {
+  "fuente": "https://autosolar.co/baterias-de-litio/bateria-litio-felicity-solar-512kwh-512v-100a-fla48100-eu",
+  "specs": {
+   "Energía útil almacenada": "95 %",
+   "Voltaje": "51.2 V"
+  },
+  "bullets": [
+   "Tecnología de batería: LiFePO4.",
+   "Energía nominal: 5,12 kWh.",
+   "Tensión nominal: 51,2 V.",
+   "Rango de operación: 44,8 a 57,6 V.",
+   "Corriente máxima continua de carga/descarga: 100 A.",
+   "Corriente pico: 150 A durante 15 segundos, con potencia máxima de 7.500 W durante ese intervalo.",
+   "Profundidad de descarga: igual o superior al 95 %.",
+   "Escalabilidad: hasta 15 unidades en paralelo, equivalentes a 76,8 kWh de capacidad nominal.",
+   "Comunicación y monitoreo: RS485/CAN, WiFi integrado y pantalla LCD+LED."
+  ],
+  "pdf": "/fichas/proveedores/bateria-fla48100-eu-fla48250-eu-cambio.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-16a-dc-5504146": {
+  "fuente": "https://autosolar.co/breakers-dc/breaker-solar-dc-4x16a-1200v-suntree",
+  "specs": {},
+  "bullets": [
+   "Peso. 0.12Kg",
+   "Tensión nominal. 1250V",
+   "Tensión nominal de funcionamiento. 24V, 48V, 125V,375V, 500V, 550V,600V,800V",
+   "Corriente nominal del marco. 63A",
+   "Número de polos. 1P, 2P, 3P, 4P",
+   "Vida mecánica. 20000 tiempos",
+   "Capacidad de interrupción del corto circuito. 6KA",
+   "Protecciones. IP40, IP20"
+  ],
+  "pdf": "/fichas/proveedores/ficha-tecnica-breaker-dc-suntree.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-20a-dc-5504131": {
+  "fuente": "https://autosolar.co/breakers-dc/breaker-solar-dc-4x20a-1200v-suntree",
+  "specs": {},
+  "bullets": [
+   "Tensión nominal: 1200V CC",
+   "Corriente nominal: 20A",
+   "Número de polos: 4",
+   "Capacidad de ruptura de cortocircuito: 6 kA",
+   "Grado de protección: IP40 e IP20",
+   "Vida mecánica: 2000 veces",
+   "Rango de temperatura de trabajo: -30°C - 85°C",
+   "Humedad relativa máxima: 95%",
+   "Peso: 0.12kg/P"
+  ],
+  "pdf": "/fichas/proveedores/ficha-tecnica-breaker-dc-suntree.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-20a-dc-5504140": {
+  "fuente": "https://autosolar.co/breakers-dc/breaker-solar-dc-2x20a-800v-suntree",
+  "specs": {},
+  "bullets": [
+   "Peso . 0.12Kg",
+   "Tensión nominal . 1250V",
+   "Tensión nominal de funcionamiento . 24V, 48V, 125V,375V, 500V, 550V,600V,800V",
+   "Corriente nominal del marco . 63A",
+   "Número de polos . 1P, 2P, 3P, 4P",
+   "Vida mecánica. 20000 tiempos",
+   "Capacidad de interrupción del corto circuito. 6KA",
+   "Protecciones. IP40, IP20"
+  ],
+  "pdf": "/fichas/proveedores/ficha--tecnica--breaker--dc--suntree.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-20a-dc-5504148": {
+  "fuente": "https://autosolar.co/breakers-dc/breaker-solar-dc-2x20a-600v-suntree",
+  "specs": {},
+  "bullets": [
+   "Peso . 0.12Kg",
+   "Tensión nominal . 1250V",
+   "Tensión nominal de funcionamiento . 24V, 48V, 125V,375V, 500V, 550V,600V,800V",
+   "Corriente nominal del marco . 63A",
+   "Número de polos . 1P, 2P, 3P, 4P",
+   "Vida mecánica. 20000 tiempos",
+   "Capacidad de interrupción del corto circuito. 6KA",
+   "Protecciones. IP40, IP20"
+  ],
+  "pdf": "/fichas/proveedores/ficha--tecnica--breaker--dc--suntree.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-25a-ac-5504177": {
+  "fuente": "https://autosolar.co/breakers-ac/breaker-solar-ac-2x25a-400vac-suntree",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-breakers-ac-suntree-1-.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-25a-ac-5504183": {
+  "fuente": "https://autosolar.co/breakers-ac/breaker-solar-ac-3x25a-400vac-suntree",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-breakers-ac-suntree-1-.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-25a-dc-5504133": {
+  "fuente": "https://autosolar.co/breakers-dc/breaker-solar-dc-4x25a-1200v-suntree",
+  "specs": {},
+  "bullets": [
+   "Peso. 0.12Kg",
+   "Tensión nominal . 1250V",
+   "Tensión nominal de funcionamiento . 24V, 48V, 125V,375V, 500V, 550V,600V,800V",
+   "Corriente nominal del marco . 63A",
+   "Número de polos . 1P, 2P, 3P, 4P",
+   "Vida mecánica. 20000 tiempos",
+   "Capacidad de interrupción del corto circuito. 6KA",
+   "Protecciones. IP40, IP20"
+  ],
+  "pdf": "/fichas/proveedores/ficha-tecnica-breaker-dc-suntree.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-25a-dc-5504141": {
+  "fuente": "https://autosolar.co/breakers-dc/breaker-solar-dc-2x25a-800v-suntree",
+  "specs": {},
+  "bullets": [
+   "Tensión nominal: 1250V",
+   "Tensión nominal de funcionamiento: 24V, 48V, 125V,375V, 500V, 550V,600V,800V",
+   "Corriente nominal del marco: 63A",
+   "Número de polos: 2P",
+   "Vida mecánica: 20000 tiempos",
+   "Capacidad de interrupción del corto circuito: 6KA",
+   "Protecciones: IP40, IP20",
+   "Peso: 0.12Kg"
+  ],
+  "pdf": "/fichas/proveedores/ficha--tecnica--breaker--dc--suntree.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-25a-dc-5504149": {
+  "fuente": "https://autosolar.co/breakers-dc/breaker-solar-dc-2x25a-600v-suntree",
+  "specs": {},
+  "bullets": [
+   "Peso . 0.12Kg",
+   "Tensión nominal . 1250V",
+   "Tensión nominal de funcionamiento . 24V, 48V, 125V,375V, 500V, 550V,600V,800V",
+   "Corriente nominal del marco . 63A",
+   "Número de polos . 1P, 2P, 3P, 4P",
+   "Vida mecánica. 20000 tiempos",
+   "Capacidad de interrupción del corto circuito. 6KA",
+   "Protecciones. IP40, IP20"
+  ],
+  "pdf": "/fichas/proveedores/ficha--tecnica--breaker--dc--suntree.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-25a-dc-5504209": {
+  "fuente": "https://autosolar.co/breakers-dc/breaker-solar-dc-2x25a-1000v-suntree",
+  "specs": {},
+  "bullets": [
+   "➮ Número de polos : 2",
+   "➮ Voltaje nominal: 1000VDC",
+   "➮ Corriente nominal de funcionamiento : 25A",
+   "➮ Tensión nominal de resistencia: 1250V",
+   "➮ Vida mecánica : 30000 usos",
+   "➮ Vida eléctrica : 1000 usos",
+   "➮ Protección : IP40",
+   "➮ Peso : 0.36kg",
+   "➮ Temperatura ambiente de funcionamiento : -40℃-85℃"
+  ],
+  "pdf": "/fichas/proveedores/ficha-tcnica-breaker-solar-dc-2x25a-1000v-suntree.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-32a-ac-5504178": {
+  "fuente": "https://autosolar.co/breakers-ac/breaker-solar-ac-2x32a-400vac-suntree",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-breakers-ac-suntree-1-.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-32a-ac-5504184": {
+  "fuente": "https://autosolar.co/breakers-ac/breaker-solar-ac-3x32a-400vac-suntree",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-breakers-ac-suntree-1-.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-32a-dc-5504142": {
+  "fuente": "https://autosolar.co/breakers-dc/breaker-solar-dc-2x32a-800v-suntree",
+  "specs": {},
+  "bullets": [
+   "Peso . 0.12Kg",
+   "Tensión nominal . 1250V",
+   "Tensión nominal de funcionamiento . 24V, 48V, 125V,375V, 500V, 550V,600V,800V",
+   "Corriente nominal del marco . 63A",
+   "Número de polos . 1P, 2P, 3P, 4P",
+   "Vida mecánica. 20000 tiempos",
+   "Capacidad de interrupción del corto circuito . 6KA",
+   "Protecciones . IP40, IP20"
+  ],
+  "pdf": "/fichas/proveedores/ficha-tecnica-breaker-dc-suntree.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-32a-dc-5504147": {
+  "fuente": "https://autosolar.co/breakers-dc/breaker-solar-dc-4x32a-1200v-suntree",
+  "specs": {},
+  "bullets": [
+   "Tensión nominal: 1200V CC",
+   "Corriente nominal: 32A",
+   "Número de polos: 4",
+   "Capacidad de ruptura de cortocircuito: 6 kA",
+   "Grado de protección: IP40 e IP20",
+   "Vida mecánica: 2000 veces",
+   "Rango de temperatura de trabajo: -30°C - 85°C",
+   "Humedad relativa máxima: 95%",
+   "Peso: 0.12kg/P"
+  ],
+  "pdf": "/fichas/proveedores/ficha-tecnica-breaker-dc-suntree.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-32a-dc-5504210": {
+  "fuente": "https://autosolar.co/breakers-dc/breaker-solar-dc-2x32a-1000v-suntree",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/breaker-solar-dc-2x32a-1000v-suntree.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-32a-dc-5504231": {
+  "fuente": "https://autosolar.co/breakers/breaker-solar-dc-2x32a-600v-suntree",
+  "specs": {},
+  "bullets": [
+   "Modelo: SL7N-63.",
+   "Número de polos: 2P.",
+   "Corriente nominal: 32 A.",
+   "Tensión operativa: 600 VDC.",
+   "Capacidad de ruptura: 6 kA.",
+   "Grado de protección: IP40, con IP20 en los bornes.",
+   "Vida mecánica y eléctrica: 20.000 y 1.500 operaciones, respectivamente, para esta tensión.",
+   "Construcción y cumplimiento: carcasa V0 según UL94, partes conductoras de cobre, RoHS, IEC 60947-2 y GB/T14048.2."
+  ],
+  "pdf": "/fichas/proveedores/ficha-tecnica-breaker-dc-mcb-sl7n-63-suntree.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-40a-ac-5504179": {
+  "fuente": "https://autosolar.co/breakers-ac/breaker-solar-ac-2x40a-400vac-suntree",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-breakers-ac-suntree-1-.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-40a-ac-5504196": {
+  "fuente": "https://autosolar.co/breakers-ac/breaker-solar-ac-3x40a-400vac-suntree",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-breakers-ac-suntree-1-.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-50a-ac-5504181": {
+  "fuente": "https://autosolar.co/breakers-ac/breaker-solar-ac-2x50a-400vac-suntree",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-breakers-ac-suntree-1-.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-50a-dc-5504144": {
+  "fuente": "https://autosolar.co/breakers-dc/breaker-solar-dc-2x50a-800v-suntree",
+  "specs": {},
+  "bullets": [
+   "Tensión nominal: 8 00V CC",
+   "Corriente nominal: 50 A",
+   "Número de polos: 2",
+   "Capacidad de ruptura de cortocircuito: 6 kA",
+   "Grado de protección: IP40 e IP20",
+   "Vida mecánica: 2000 veces",
+   "Rango de temperatura de trabajo: -30°C - 85°C",
+   "Humedad relativa máxima: 95%",
+   "Peso: 0.12kg/P"
+  ],
+  "pdf": "/fichas/proveedores/ficha-tecnica-breaker-dc-suntree.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-63a-ac-5504198": {
+  "fuente": "https://autosolar.co/breakers-ac/breaker-solar-ac-3x63a-400vac-suntree",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-breakers-ac-suntree-1-.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-63a-dc-5504145": {
+  "fuente": "https://autosolar.co/breakers-dc/breaker-solar-dc-2x63a-800v-suntree",
+  "specs": {},
+  "bullets": [
+   "Tensión nominal: 8 00V CC",
+   "Corriente nominal: 63 A",
+   "Número de polos: 2",
+   "Capacidad de ruptura de cortocircuito: 6 kA",
+   "Grado de protección: IP40 e IP20",
+   "Vida mecánica: 2000 veces",
+   "Rango de temperatura de trabajo: -30°C - 85°C",
+   "Humedad relativa máxima: 95%",
+   "Peso: 0.12kg/P"
+  ],
+  "pdf": "/fichas/proveedores/ficha-tecnica-breaker-dc-suntree.pdf",
+  "match": "exacto"
+ },
+ "breaker-suntree-80a-dc-5504211": {
+  "fuente": "https://autosolar.co/breakers-dc/breaker-solar-dc-1x80a-250v-suntree",
+  "specs": {},
+  "bullets": [
+   "Su característica de 1 polo, hace que ocupe menos espacio en el tablero eléctrico, permitiendo la instalación de más circuitos en un mismo gabinete",
+   "➮ Número de polos : 1",
+   "➮ Corriente nominal de funcionamiento A : 80A",
+   "➮ Voltaje nominal : 250V",
+   "➮ Vida mecánica : 30000 usos",
+   "➮ Vida eléctrica: 1000 veces",
+   "➮ Grado de protección : IP40",
+   "➮ Peso : 0.36kg"
+  ],
+  "pdf": "/fichas/proveedores/ficha-tcnica-breaker-solar-dc-1x80a-250v-suntree.pdf",
+  "match": "exacto"
+ },
+ "cat-mayorista-011aa38ff63b": {
+  "fuente": "Solaire NFIN0044",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0044-ficha.pdf",
+  "match": "exacto"
+ },
+ "cat-mayorista-16abf09e485c": {
+  "fuente": "Solaire NFIN0030",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0030-ficha.pdf",
+  "match": "exacto"
+ },
+ "cat-mayorista-297c1543c156": {
+  "fuente": "Solaire NFIN0006",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0006-ficha.pdf",
+  "match": "exacto"
+ },
+ "cat-mayorista-2eb2381727b7": {
+  "fuente": "Solaire NFIN0041",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0041-ficha.pdf",
+  "match": "exacto"
+ },
+ "cat-mayorista-479835eafdcd": {
+  "fuente": "Solaire NFIN0054",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0054-ficha.pdf",
+  "match": "exacto"
+ },
+ "cat-mayorista-5976fdc3675c": {
+  "fuente": "Solaire NFIN0018",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0018-ficha.pdf",
+  "match": "exacto"
+ },
+ "cat-mayorista-5c63036043b0": {
+  "fuente": "Solaire NFIN0005",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0005-ficha.pdf",
+  "match": "exacto"
+ },
+ "cat-mayorista-63238dda6866": {
+  "fuente": "Solaire NFIN0001",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0001-ficha.pdf",
+  "match": "exacto"
+ },
+ "cat-mayorista-6809f95a6ec6": {
+  "fuente": "Solaire NFAC0003",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfac0003-ficha.pdf",
+  "match": "exacto"
+ },
+ "cat-mayorista-77a53def7b39": {
+  "fuente": "Solaire NFIN0007",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0007-ficha.pdf",
+  "match": "exacto"
+ },
+ "cat-mayorista-a7acbbe9c321": {
+  "fuente": "Solaire NFIN0008",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0008-ficha.pdf",
+  "match": "exacto"
+ },
+ "cat-mayorista-aeeee921984f": {
+  "fuente": "Solaire NFIN0031",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0031-ficha.pdf",
+  "match": "exacto"
+ },
+ "cat-mayorista-d93b4767526a": {
+  "fuente": "Solaire NFIN0009",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0009-ficha.pdf",
+  "match": "exacto"
+ },
+ "cat-mayorista-db886da9420b": {
+  "fuente": "Solaire NFIN0002",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0002-ficha.pdf",
+  "match": "exacto"
+ },
+ "cat-mayorista-eb335fe74372": {
+  "fuente": "Solaire NFIN0063",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0063-ficha.pdf",
+  "match": "exacto"
+ },
+ "cat-mayorista-f6c407d9756a": {
+  "fuente": "Solaire NFIN0070",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0070-ficha.pdf",
+  "match": "exacto"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc010010050r": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/bluesolar-mppt-10015-retail",
+  "specs": {
+   "Corriente máxima": "15 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Salida a 12V en caso de disponer de paneles y baterías a 12V. En caso de disponer de paneles y baterías a 24V, la salida de consumo será a 24V",
+   "Voltaje": "12 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-blusolar-mppt-100-15-retail.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc010015050r": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/bluesolar-mppt-10015-retail",
+  "specs": {
+   "Corriente máxima": "15 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Salida a 12V en caso de disponer de paneles y baterías a 12V. En caso de disponer de paneles y baterías a 24V, la salida de consumo será a 24V",
+   "Voltaje": "12 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-blusolar-mppt-100-15-retail.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc010015200r": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/bluesolar-mppt-10015-retail",
+  "specs": {
+   "Corriente máxima": "15 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Salida a 12V en caso de disponer de paneles y baterías a 12V. En caso de disponer de paneles y baterías a 24V, la salida de consumo será a 24V",
+   "Voltaje": "12 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-blusolar-mppt-100-15-retail.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc020030200": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-smartsolar-mppt-10030-victron-energy",
+  "specs": {
+   "Corriente máxima": "30 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "100 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-mppt-smart-100-30-y-50.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc020035000": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/bluesolar-mppt-15035",
+  "specs": {
+   "Corriente máxima": "35 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "12 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-blusolar-mppt-150-35.pdf",
+  "match": "exacto"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc020050200": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-bluesolar-mppt-10050-victron-energy",
+  "specs": {
+   "Corriente máxima": "50 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "24 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-blue-solar-mppt-100-30a-50a.pdf",
+  "match": "exacto"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc075010060r": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-smartsolar-mppt-10020-retail-victron-energy",
+  "specs": {
+   "Corriente máxima": "20 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Salida a 12V en caso de disponer de paneles y baterías a 12V. En caso de disponer de paneles y baterías a 24V, la salida de consumo será a 24V",
+   "Voltaje": "100 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-mppt-smart-75-10-a-100-20.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc075015060r": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-smartsolar-mppt-10020-retail-victron-energy",
+  "specs": {
+   "Corriente máxima": "20 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Salida a 12V en caso de disponer de paneles y baterías a 12V. En caso de disponer de paneles y baterías a 24V, la salida de consumo será a 24V",
+   "Voltaje": "100 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-mppt-smart-75-10-a-100-20.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc110015060r": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/bluesolar-mppt-10015-retail",
+  "specs": {
+   "Corriente máxima": "15 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Salida a 12V en caso de disponer de paneles y baterías a 12V. En caso de disponer de paneles y baterías a 24V, la salida de consumo será a 24V",
+   "Voltaje": "12 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-blusolar-mppt-100-15-retail.pdf",
+  "match": "exacto"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc110020160r": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-smartsolar-mppt-10020-retail-victron-energy",
+  "specs": {
+   "Corriente máxima": "20 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Salida a 12V en caso de disponer de paneles y baterías a 12V. En caso de disponer de paneles y baterías a 24V, la salida de consumo será a 24V",
+   "Voltaje": "100 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-mppt-smart-75-10-a-100-20.pdf",
+  "match": "exacto"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc110020170r": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-smartsolar-mppt-10020-retail-victron-energy",
+  "specs": {
+   "Corriente máxima": "20 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Salida a 12V en caso de disponer de paneles y baterías a 12V. En caso de disponer de paneles y baterías a 24V, la salida de consumo será a 24V",
+   "Voltaje": "100 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-mppt-smart-75-10-a-100-20.pdf",
+  "match": "exacto"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc110030210": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-smartsolar-mppt-10030-victron-energy",
+  "specs": {
+   "Corriente máxima": "30 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "100 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-mppt-smart-100-30-y-50.pdf",
+  "match": "exacto"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115035210": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/bluesolar-mppt-15035",
+  "specs": {
+   "Corriente máxima": "35 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "12 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-blusolar-mppt-150-35.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115045212": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-bluesolar-mppt-15045-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "45 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "150 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-blue-solar-mppt-150-45a-70a.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115045222": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-bluesolar-mppt-15045-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "45 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "150 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-blue-solar-mppt-150-45a-70a.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115060211": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-bluesolar-mppt-15060-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "60 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "150 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-blue-solar-mppt-150-45a-70a.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115060311": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-bluesolar-mppt-15060-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "60 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "150 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-blue-solar-mppt-150-45a-70a.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115070211": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-bluesolar-mppt-15070-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "70 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "150 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-blue-solar-mppt-150-45a-70a.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115070411": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-bluesolar-mppt-15070-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "70 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "150 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-blue-solar-mppt-150-45a-70a.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115070511": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-bluesolar-mppt-15070-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "70 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "150 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-blue-solar-mppt-150-45a-70a.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115085411": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-smartsolar-mppt-15085-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "85 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "150 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-smartsolar-mppt-150-45-a-150-100.pdf",
+  "match": "exacto"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115110411": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-smartsolar-mppt-15085-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "85 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "150 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-smartsolar-mppt-150-45-a-150-100.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115110420": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-smartsolar-mppt-15085-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "85 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "150 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-smartsolar-mppt-150-45-a-150-100.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115110511": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-smartsolar-mppt-15085-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "85 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "150 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-smartsolar-mppt-150-45-a-150-100.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125060221": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-smartsolar-mppt-25060-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "60 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-mppt-smart-250-60-a-100.pdf",
+  "match": "exacto"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125060321": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-smartsolar-mppt-25060-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "60 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-mppt-smart-250-60-a-100.pdf",
+  "match": "exacto"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125070221": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/smartsolar-mppt-25070-tr",
+  "specs": {
+   "Corriente máxima": "70 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "12 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-smartsolar-mppt-250-70-tr.pdf",
+  "match": "exacto"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125070421": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/smartsolar-mppt-25070-tr",
+  "specs": {
+   "Corriente máxima": "70 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "12 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-smartsolar-mppt-250-70-tr.pdf",
+  "match": "exacto"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125070441": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/smartsolar-mppt-25070-tr",
+  "specs": {
+   "Corriente máxima": "70 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "12 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-smartsolar-mppt-250-70-tr.pdf",
+  "match": "exacto"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125070521": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/smartsolar-mppt-25070-tr",
+  "specs": {
+   "Corriente máxima": "70 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua.",
+   "Voltaje": "12 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-smartsolar-mppt-250-70-tr.pdf",
+  "match": "exacto"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125085411": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-smartsolar-mppt-25085-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "85 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua."
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-mppt-smart-250-60-a-100.pdf",
+  "match": "exacto"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125085511": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-smartsolar-mppt-25085-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "85 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua."
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-mppt-smart-250-60-a-100.pdf",
+  "match": "exacto"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125110412": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-smartsolar-mppt-25085-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "85 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua."
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-mppt-smart-250-60-a-100.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125110441": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-smartsolar-mppt-25085-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "85 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua."
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-mppt-smart-250-60-a-100.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125110512": {
+  "fuente": "https://autosolar.co/controladores-de-carga-mppt/controlador-carga-smartsolar-mppt-25085-tr-victron-energy",
+  "specs": {
+   "Corriente máxima": "85 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Sin salida de consumo en Corriente Continua."
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/victron-mppt-smart-250-60-a-100.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-pwm-victron-30a-scc040030020": {
+  "fuente": "https://autosolar.co/controladores-de-carga-pwm/controlador-carga-bluesolar-pwm-lcdusb-1224v-30a-victron-energy",
+  "specs": {
+   "Corriente máxima": "30 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Salida a 12V en caso de disponer de paneles y baterías a 12V. En caso de disponer de paneles y baterías a 24V, la salida de consumo será a 24V",
+   "Voltaje": "24 V",
+   "Voltaje de entrada": "Igual al de baterías, 12V y 24V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-2008026.pdf",
+  "match": "exacto"
+ },
+ "controlador-de-carga-solar-pwm-victron-scc040010050": {
+  "fuente": "https://autosolar.co/controladores-de-carga-pwm/controlador-carga-bluesolar-pwm-lcdusb-1224v-30a-victron-energy",
+  "specs": {
+   "Corriente máxima": "30 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Salida a 12V en caso de disponer de paneles y baterías a 12V. En caso de disponer de paneles y baterías a 24V, la salida de consumo será a 24V",
+   "Voltaje": "24 V",
+   "Voltaje de entrada": "Igual al de baterías, 12V y 24V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-2008026.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-pwm-victron-scc040020050": {
+  "fuente": "https://autosolar.co/controladores-de-carga-pwm/controlador-carga-bluesolar-pwm-lcdusb-1224v-30a-victron-energy",
+  "specs": {
+   "Corriente máxima": "30 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Salida a 12V en caso de disponer de paneles y baterías a 12V. En caso de disponer de paneles y baterías a 24V, la salida de consumo será a 24V",
+   "Voltaje": "24 V",
+   "Voltaje de entrada": "Igual al de baterías, 12V y 24V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-2008026.pdf",
+  "match": "serie"
+ },
+ "controlador-de-carga-solar-pwm-victron-scc040030050": {
+  "fuente": "https://autosolar.co/controladores-de-carga-pwm/controlador-carga-bluesolar-pwm-lcdusb-1224v-30a-victron-energy",
+  "specs": {
+   "Corriente máxima": "30 A",
+   "Garantía": "1 año",
+   "Salida de consumo en DC": "Salida a 12V en caso de disponer de paneles y baterías a 12V. En caso de disponer de paneles y baterías a 24V, la salida de consumo será a 24V",
+   "Voltaje": "24 V",
+   "Voltaje de entrada": "Igual al de baterías, 12V y 24V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-2008026.pdf",
+  "match": "exacto"
+ },
+ "dps-supresor-suntree-40ka-dc-5504116": {
+  "fuente": "https://autosolar.co/descargador-de-sobretension/dps-solar-dc-3p-1200vdc-2040ka-suntree",
+  "specs": {},
+  "bullets": [
+   "Tensión nominal: 800V CC",
+   "Número de polos: 2",
+   "Corriente de descarga nominal: 20kA",
+   "Tiempo de respuesta: <25",
+   "Grado de protección: IP20",
+   "Temperatura ambiente: -40°C - +70°C"
+  ],
+  "pdf": "/fichas/proveedores/ficha-tecnica-dps-dc-suntree.pdf",
+  "match": "exacto"
+ },
+ "dps-supresor-suntree-40ka-dc-5504138": {
+  "fuente": "https://autosolar.co/descargador-de-sobretension/dps-solar-dc-2p-800vdc-2040ka-suntree",
+  "specs": {},
+  "bullets": [
+   "Tensión nominal: 800V CC",
+   "Número de polos: 2",
+   "Corriente de descarga nominal: 20kA",
+   "Tiempo de respuesta: <25",
+   "Grado de protección: IP20",
+   "Temperatura ambiente: -40°C - +70°C"
+  ],
+  "pdf": "/fichas/proveedores/ficha-tecnica-dps-dc-suntree.pdf",
+  "match": "exacto"
+ },
+ "huawei-sun2000-10k-lc0": {
+  "fuente": "Solaire NFIN0044",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0044-ficha.pdf",
+  "match": "exacto"
+ },
+ "huawei-sun2000-20ktl-m3": {
+  "fuente": "Solaire NFIN0031",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0031-ficha.pdf",
+  "match": "exacto"
+ },
+ "huawei-sun2000-8k-lc0": {
+  "fuente": "Solaire NFIN0041",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0041-ficha.pdf",
+  "match": "exacto"
+ },
+ "inversor-hybrido-8kw": {
+  "fuente": "Solaire NFIN0006",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0006-ficha.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-hibrido-felicity-28kw-3004249": {
+  "fuente": "https://autosolar.co/inversores-solares-hibridos/inversor-hibrido-felicity-28kw-230v-trifasico-mppt",
+  "specs": {
+   "Dimensiones": "940×582×340",
+   "Peso": "87 Kg",
+   "Potencia de salida continuada": "50.000 W",
+   "Potencia máxima": "50.000 W",
+   "Rango de funcionamiento del MPP": "550-850",
+   "Voltaje": "205 V"
+  },
+  "bullets": [
+   "Diseño robusto, resistente y duradero, ideal para usar en aplicaciones exteriores sin inconvenientes, gracias a su grado de protección IP65."
+  ],
+  "pdf": "/fichas/proveedores/ficha-ficha-tcnica-inversor-hbrido-felicity-28kw-160-800v-4-mppt.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-hibrido-felicity-8kw-3004616": {
+  "fuente": "https://autosolar.co/inversores-solares-hibridos/inversor-hibrido-felicity-solar-8000w-48v-ivgm8klp2g1",
+  "specs": {
+   "Potencia de salida continuada": "8.000 W",
+   "Potencia máxima": "8.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-inversor-hibrido-felicity-solar-ivgm8klp2g1.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-off-grid-felicity-2kw-3004614": {
+  "fuente": "https://autosolar.co/inversores-cargadores-24v/inversor-cargador-felicity-solar-2000w-24v-ivcm2024-lv",
+  "specs": {
+   "Dimensiones": "340 × 290 × 124 mm",
+   "Eficiencia": "90 %",
+   "Peso": "7 Kg",
+   "Potencia de salida continuada": "2.000 W",
+   "Potencia máxima": "2.000 W",
+   "Rango de funcionamiento del MPP": "30-120",
+   "Voltaje": "24 V"
+  },
+  "bullets": [
+   "Potencia de salida certificada. 2000 VA / 2000 W",
+   "Voltaje nominal de entrada CC. 24V",
+   "Voltaje nominal de entrada. 100/120 V CA",
+   "Frecuencia nominal de entrada. 50 Hz / 60 Hz",
+   "Max. Corriente de sobrecarga de derivación. 24A",
+   "Max. Corriente del inversor/rectificador. 20A / 2000W",
+   "Rango de voltaje de entrada. 65-140 V CA",
+   "Corriente máxima de carga. 15A",
+   "Rango de temperatura de funcionamiento. -10°C - 55°C",
+   "Dimensiones. 422 x 372 x 198 mm",
+   "Peso. 6.5 kg"
+  ],
+  "pdf": "/fichas/proveedores/manual-de-usuario-inversor-cargador-felicity-solar-2000w-24v-ivcm2024-lv.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-off-grid-growatt-3000w-3004250": {
+  "fuente": "https://autosolar.co/inversores-cargadores-24v/inversor-cargador-growatt-spf-3000tl-lvm-24v",
+  "specs": {
+   "Potencia de salida continuada": "3.000 W",
+   "Potencia máxima": "6.000 W",
+   "Voltaje": "24 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/fichatecnica-lvm-1-.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-off-grid-tensite-6-5kw-3004117": {
+  "fuente": "https://autosolar.co/inversores-cargadores-48v/inversor-cargador-6500w-48v-tensite-max",
+  "specs": {
+   "Dimensiones": "158.4 x 503.6 x 530.8",
+   "Peso": "20 Kg",
+   "Potencia de salida continuada": "6.500 W",
+   "Potencia máxima": "6.500 W",
+   "Rango de funcionamiento del MPP": "90-230",
+   "Voltaje": "48 V"
+  },
+  "bullets": [
+   "➤ Modelo. 6500VA / 6500W a 48V",
+   "➤   Potencia nominal. 6500VA/6500W",
+   "➤ Voltaje . 120 VAC",
+   "➤ Eficiencia. 91%",
+   "➤ Voltaje de la batería . 48 VDC",
+   "➤ Temperatura de funcionamiento . -10°C a 50°C.",
+   "➤   Funcionamiento . En paralelo con 6 unidades.",
+   "➤   Puerto de comunicación reservado para BMS (RS485, CAN-BUS o RS232)."
+  ],
+  "pdf": "/fichas/proveedores/ficha-tecnica-inversor-tensite-max.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-on-grid-growatt-10000w-3004285": {
+  "fuente": "https://autosolar.co/inversores-on-grid-trifasicos/inversor-on-grid-10000w-growatt-mid-10tl3-xl2",
+  "specs": {
+   "Peso": "31 Kg",
+   "Potencia de salida continuada": "20.000 W",
+   "Potencia máxima": "10.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/mid_6-12ktl3-xl2_hoja_de_datos_mx.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-on-grid-growatt-10kw-10ktl3-xl2": {
+  "fuente": "https://autosolar.co/inversores-on-grid-trifasicos/inversor-on-grid-15000w-growatt-mid-15ktl3-xl2",
+  "specs": {
+   "Potencia de salida continuada": "15.000 W",
+   "Potencia máxima": "15.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/mid_15-25ktl3-xl2_hoja_de_datos_mx_2.pdf",
+  "match": "serie"
+ },
+ "inversor-solar-on-grid-growatt-10kw-min10000tl-x2": {
+  "fuente": "https://autosolar.co/inversores-on-grid-bifasicos/inversor-on-grid-10000w-growatt-min-10000tl-x2",
+  "specs": {
+   "Eficiencia": "98 %",
+   "Peso": "20 Kg",
+   "Potencia de salida continuada": "10.000 W",
+   "Potencia máxima": "15.000 W",
+   "Rango de funcionamiento del MPP": "60-550V",
+   "Voltaje": "220 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-inversor-10000tl-x2-growatt-min.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-on-grid-growatt-15000w-3004290": {
+  "fuente": "https://autosolar.co/inversores-on-grid-trifasicos/inversor-on-grid-15000w-growatt-mid-15ktl3-xl2",
+  "specs": {
+   "Potencia de salida continuada": "15.000 W",
+   "Potencia máxima": "15.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/mid_15-25ktl3-xl2_hoja_de_datos_mx_2.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-on-grid-growatt-15kw-15ktl3-xl2": {
+  "fuente": "https://autosolar.co/inversores-on-grid-trifasicos/inversor-on-grid-15000w-growatt-mid-15ktl3-xl2",
+  "specs": {
+   "Potencia de salida continuada": "15.000 W",
+   "Potencia máxima": "15.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/mid_15-25ktl3-xl2_hoja_de_datos_mx_2.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-on-grid-growatt-20000w-3004291": {
+  "fuente": "https://autosolar.co/inversores-on-grid-trifasicos/inversor-on-grid-20000w-growatt-mid-20k-tl3-xl2",
+  "specs": {
+   "Dimensiones": "580 x 435 x 230",
+   "Peso": "37 Kg",
+   "Potencia de salida continuada": "20.000 W",
+   "Potencia máxima": "30.000 W",
+   "Rango de funcionamiento del MPP": "200-800",
+   "Voltaje": "550 V"
+  },
+  "bullets": [
+   "Máxima potencia fotovoltaica: 30000W",
+   "Voltaje nominal: 550V",
+   "Rango de voltaje MPPT: 200 - 800V",
+   "Voltaje de arranque: 200V",
+   "Potencia nominal CA: 20000W",
+   "Corriente máxima de salida: 58.2A (127V)",
+   "Humedad relativa: 0~100%",
+   "Dimensiones: 580 x 435 x 230 mm",
+   "Peso: 37kg"
+  ],
+  "pdf": "/fichas/proveedores/mid_15-25ktl3-xl2_hoja_de_datos_mx_2.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-on-grid-growatt-20kw-20ktl3-xl2": {
+  "fuente": "https://autosolar.co/inversores-on-grid-trifasicos/inversor-on-grid-20000w-growatt-mid-20k-tl3-xl2",
+  "specs": {
+   "Dimensiones": "580 x 435 x 230",
+   "Peso": "37 Kg",
+   "Potencia de salida continuada": "20.000 W",
+   "Potencia máxima": "30.000 W",
+   "Rango de funcionamiento del MPP": "200-800",
+   "Voltaje": "550 V"
+  },
+  "bullets": [
+   "Máxima potencia fotovoltaica: 30000W",
+   "Voltaje nominal: 550V",
+   "Rango de voltaje MPPT: 200 - 800V",
+   "Voltaje de arranque: 200V",
+   "Potencia nominal CA: 20000W",
+   "Corriente máxima de salida: 58.2A (127V)",
+   "Humedad relativa: 0~100%",
+   "Dimensiones: 580 x 435 x 230 mm",
+   "Peso: 37kg"
+  ],
+  "pdf": "/fichas/proveedores/mid_15-25ktl3-xl2_hoja_de_datos_mx_2.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-on-grid-growatt-25000w-3004292": {
+  "fuente": "https://autosolar.co/inversores-on-grid-trifasicos/inversor-on-grid-25000w-growatt-mid-25ktl3-xl2",
+  "specs": {
+   "Potencia de salida continuada": "25.000 W",
+   "Potencia máxima": "25.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/mid_15-25ktl3-xl2_hoja_de_datos_mx_2.pdf",
+  "match": "serie"
+ },
+ "inversor-solar-on-grid-growatt-36000w-3004294": {
+  "fuente": "https://autosolar.co/inversores-on-grid-trifasicos/inversor-on-grid-36000w-growatt-mac-36ktl3-xl2",
+  "specs": {
+   "Dimensiones": "680 x 508 x 281mm",
+   "Eficiencia": "99 %",
+   "Peso": "52 Kg",
+   "Potencia de salida continuada": "36.000 W",
+   "Potencia máxima": "36.000 W",
+   "Rango de funcionamiento del MPP": "200V - 1000V",
+   "Voltaje": "48 V"
+  },
+  "bullets": [
+   "Potencia fotovoltaica máxima recomendada: 46800W",
+   "Voltaje máximo de CC: 1100V",
+   "Voltaje de arranque: 250V",
+   "Voltaje nominal: 360V",
+   "Rango de voltaje MPPT: 200V - 1000V",
+   "Potencia nominal de salida de CA: 36000W",
+   "Eficiencia máxima: 98.8%",
+   "Rango de temperatura de funcionamiento: –25°C - +60°C",
+   "Grado de protección: IP65",
+   "Dimensiones: 680 x 508 x 281mm",
+   "Peso: 52kg"
+  ],
+  "pdf": "/fichas/proveedores/mac_30-36ktl3-xl2_hoja_de_datos_mx_202506.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-on-grid-growatt-3600w-3600tl-x2": {
+  "fuente": "https://autosolar.co/inversores-on-grid-bifasicos/inversor-on-grid-6000w-growatt-min-6000tl-x2",
+  "specs": {
+   "Eficiencia": "98 %",
+   "Peso": "11 Kg",
+   "Potencia de salida continuada": "6.000 W",
+   "Potencia máxima": "9.000 W",
+   "Rango de funcionamiento del MPP": "40V-550V",
+   "Voltaje": "240 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-del-inversor--min.pdf",
+  "match": "serie"
+ },
+ "inversor-solar-on-grid-growatt-4200w-3205063": {
+  "fuente": "https://autosolar.co/inversores-on-grid-bifasicos/inversor-on-grid-4200w-growatt-min-4200tl-x2",
+  "specs": {
+   "Dimensiones": "375/350/158mm",
+   "Eficiencia": "98 %",
+   "Peso": "11 Kg",
+   "Potencia de salida continuada": "4.200 W",
+   "Potencia máxima": "4.200 W",
+   "Rango de funcionamiento del MPP": "40V-550V",
+   "Voltaje": "220 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-del-inversor--min.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-on-grid-growatt-50000w-3004295": {
+  "fuente": "https://autosolar.co/inversores-on-grid-trifasicos/inversor-on-grid-50000w-growatt-max-50ktl3-xl2",
+  "specs": {
+   "Dimensiones": "970/640/345mm",
+   "Eficiencia": "98 %",
+   "Potencia de salida continuada": "50.000 W",
+   "Potencia máxima": "75.000 W",
+   "Voltaje": "550 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/fichatecnica-50kw.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-on-grid-growatt-6000w-6000tl-x2": {
+  "fuente": "https://autosolar.co/inversores-on-grid-bifasicos/inversor-on-grid-6000w-growatt-min-6000tl-x2",
+  "specs": {
+   "Eficiencia": "98 %",
+   "Peso": "11 Kg",
+   "Potencia de salida continuada": "6.000 W",
+   "Potencia máxima": "9.000 W",
+   "Rango de funcionamiento del MPP": "40V-550V",
+   "Voltaje": "240 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-del-inversor--min.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-on-grid-growatt-75000w-3004296": {
+  "fuente": "https://autosolar.co/inversores-on-grid-trifasicos/inversor-on-grid-75000w-growatt-max-75ktl3-xl",
+  "specs": {
+   "Potencia de salida continuada": "75.000 W",
+   "Potencia máxima": "112.500 W",
+   "Voltaje": "550V"
+  },
+  "bullets": [
+   "Máxima potencia fotovoltaica: 112500W",
+   "Voltaje nominal: 550V",
+   "Rango de voltaje MPPT: 180V – 850VDC",
+   "Voltaje de arranque: 195V",
+   "Máxima corriente MPPT: 40A",
+   "Peso: 84kg",
+   "Potencia nominal CA: 75000W",
+   "Corriente máxima de salida: 196.9A / 220V",
+   "Humedad relativa: 0 ~ 100%"
+  ],
+  "pdf": "/fichas/proveedores/fichatecnica-50kw.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-on-grid-growatt-8000w-3205064": {
+  "fuente": "https://autosolar.co/inversores-on-grid-trifasicos/inversor-on-grid-8000w-growatt-mid-8k-tl3-xl2",
+  "specs": {
+   "Eficiencia": "98 %",
+   "Peso": "24 Kg",
+   "Potencia de salida continuada": "8.000 W",
+   "Potencia máxima": "10.400 W",
+   "Rango de funcionamiento del MPP": "160-800V",
+   "Voltaje": "600 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/inversor-growatt-mid-8000-tl3-xl2.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-on-grid-growatt-8000w-8000tl-x2": {
+  "fuente": "https://autosolar.co/inversores-on-grid-bifasicos/inversor-on-grid-6000w-growatt-min-6000tl-x2",
+  "specs": {
+   "Eficiencia": "98 %",
+   "Peso": "11 Kg",
+   "Potencia de salida continuada": "6.000 W",
+   "Potencia máxima": "9.000 W",
+   "Rango de funcionamiento del MPP": "40V-550V",
+   "Voltaje": "240 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica-del-inversor--min.pdf",
+  "match": "serie"
+ },
+ "inversor-solar-on-grid-victron-pmp122200102": {
+  "fuente": "https://autosolar.co/inversores-cargadores-12v/inversor-multiplus-compact-12v-2000va-80-50-120v-vebus-victron-energy",
+  "specs": {
+   "Peso": "13 Kg",
+   "Potencia de salida continuada": "2 W",
+   "Potencia máxima": "2.000 W",
+   "Voltaje": "12 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/datasheet-multiplus-inverter-charger_2kva-and-3kva-120v-us-es.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-on-grid-victron-pmp122305100": {
+  "fuente": "https://autosolar.co/inversores-cargadores/multiplus-ii-48500070-95-120v",
+  "specs": {
+   "Peso": "32 Kg",
+   "Potencia de salida continuada": "5.000 W",
+   "Potencia máxima": "5.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tcnica-multiplusii-48-5000-70-95-120v.pdf",
+  "match": "serie"
+ },
+ "inversor-solar-on-grid-victron-pmp122305102": {
+  "fuente": "https://autosolar.co/inversores-cargadores/multiplus-ii-48500070-95-120v",
+  "specs": {
+   "Peso": "32 Kg",
+   "Potencia de salida continuada": "5.000 W",
+   "Potencia máxima": "5.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tcnica-multiplusii-48-5000-70-95-120v.pdf",
+  "match": "serie"
+ },
+ "inversor-solar-on-grid-victron-pmp122305120": {
+  "fuente": "https://autosolar.co/inversores-cargadores/multiplus-ii-48500070-95-120v",
+  "specs": {
+   "Peso": "32 Kg",
+   "Potencia de salida continuada": "5.000 W",
+   "Potencia máxima": "5.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tcnica-multiplusii-48-5000-70-95-120v.pdf",
+  "match": "serie"
+ },
+ "inversor-solar-on-grid-victron-pmp122305122": {
+  "fuente": "https://autosolar.co/inversores-cargadores/multiplus-ii-48500070-95-120v",
+  "specs": {
+   "Peso": "32 Kg",
+   "Potencia de salida continuada": "5.000 W",
+   "Potencia máxima": "5.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tcnica-multiplusii-48-5000-70-95-120v.pdf",
+  "match": "serie"
+ },
+ "inversor-solar-on-grid-victron-pmp242200102": {
+  "fuente": "https://autosolar.co/inversores-cargadores-12v/inversor-multiplus-compact-12v-2000va-80-50-120v-vebus-victron-energy",
+  "specs": {
+   "Peso": "13 Kg",
+   "Potencia de salida continuada": "2 W",
+   "Potencia máxima": "2.000 W",
+   "Voltaje": "12 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/datasheet-multiplus-inverter-charger_2kva-and-3kva-120v-us-es.pdf",
+  "match": "serie"
+ },
+ "inversor-solar-on-grid-victron-pmp242305102": {
+  "fuente": "https://autosolar.co/inversores-cargadores/multiplus-ii-48500070-95-120v",
+  "specs": {
+   "Peso": "32 Kg",
+   "Potencia de salida continuada": "5.000 W",
+   "Potencia máxima": "5.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tcnica-multiplusii-48-5000-70-95-120v.pdf",
+  "match": "serie"
+ },
+ "inversor-solar-on-grid-victron-pmp242305130": {
+  "fuente": "https://autosolar.co/inversores-cargadores/multiplus-ii-48500070-95-120v",
+  "specs": {
+   "Peso": "32 Kg",
+   "Potencia de salida continuada": "5.000 W",
+   "Potencia máxima": "5.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tcnica-multiplusii-48-5000-70-95-120v.pdf",
+  "match": "serie"
+ },
+ "inversor-solar-on-grid-victron-pmp242305132": {
+  "fuente": "https://autosolar.co/inversores-cargadores/multiplus-ii-48500070-95-120v",
+  "specs": {
+   "Peso": "32 Kg",
+   "Potencia de salida continuada": "5.000 W",
+   "Potencia máxima": "5.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tcnica-multiplusii-48-5000-70-95-120v.pdf",
+  "match": "serie"
+ },
+ "inversor-solar-on-grid-victron-pmp242505110": {
+  "fuente": "https://autosolar.co/inversores-cargadores/multiplus-ii-48500070-95-120v",
+  "specs": {
+   "Peso": "32 Kg",
+   "Potencia de salida continuada": "5.000 W",
+   "Potencia máxima": "5.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tcnica-multiplusii-48-5000-70-95-120v.pdf",
+  "match": "serie"
+ },
+ "inversor-solar-on-grid-victron-pmp482305100": {
+  "fuente": "https://autosolar.co/inversores-cargadores/multiplus-ii-48500070-95-120v",
+  "specs": {
+   "Peso": "32 Kg",
+   "Potencia de salida continuada": "5.000 W",
+   "Potencia máxima": "5.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tcnica-multiplusii-48-5000-70-95-120v.pdf",
+  "match": "serie"
+ },
+ "inversor-solar-on-grid-victron-pmp482305102": {
+  "fuente": "https://autosolar.co/inversores-cargadores/multiplus-ii-48500070-95-120v",
+  "specs": {
+   "Peso": "32 Kg",
+   "Potencia de salida continuada": "5.000 W",
+   "Potencia máxima": "5.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tcnica-multiplusii-48-5000-70-95-120v.pdf",
+  "match": "serie"
+ },
+ "inversor-solar-on-grid-victron-pmp482505110": {
+  "fuente": "https://autosolar.co/inversores-cargadores/multiplus-ii-48500070-95-120v",
+  "specs": {
+   "Peso": "32 Kg",
+   "Potencia de salida continuada": "5.000 W",
+   "Potencia máxima": "5.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tcnica-multiplusii-48-5000-70-95-120v.pdf",
+  "match": "exacto"
+ },
+ "inversor-solar-on-grid-victron-pmp482505300": {
+  "fuente": "https://autosolar.co/inversores-cargadores/multiplus-ii-48500070-95-120v",
+  "specs": {
+   "Peso": "32 Kg",
+   "Potencia de salida continuada": "5.000 W",
+   "Potencia máxima": "5.000 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tcnica-multiplusii-48-5000-70-95-120v.pdf",
+  "match": "exacto"
+ },
+ "inversor-string-10kw": {
+  "fuente": "Solaire NFIN0030",
+  "specs": {},
+  "bullets": [],
+  "pdf": "/fichas/proveedores/solaire-nfin0030-ficha.pdf",
+  "match": "exacto"
+ },
+ "panel-solar-bifacial-n-type-ja-solar-625w-1002139": {
+  "fuente": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
+  "specs": {
+   "Dimensiones": "2382 ± 2mm x 1134± 2mm x 30± 1mm",
+   "Eficiencia": "23 %",
+   "Peso": "33 Kg",
+   "Potencia máxima": "625 W",
+   "Tipo de célula": "Bifacial",
+   "Voltaje": "24 V"
+  },
+  "bullets": [
+   "Potencia máxima nominal (Pmáx.). 625 W",
+   "Tensión de circuito abierto (Voc). 48,70 V",
+   "Tensión de potencia máxima (Vmp). 40,45 V",
+   "Corriente de cortocircuito (Isc). 16,15 A",
+   "Corriente de potencia máxima (Imp). 15,45 A",
+   "Eficiencia del módulo. 23,1 %",
+   "Tolerancia de potencia. 0- +3 %",
+   "Grado de protección. IP68, 3 diodos",
+   "Peso. 33.1kg",
+   "Dimensiones. 2382 ± 2mm x 1134± 2mm x 30± 1mm"
+  ],
+  "pdf": "/fichas/proveedores/ficha-tcnica-panel-solar-bifacial-625w-deep-blue-4.0-n-type-ja-solar.pdf",
+  "match": "exacto"
+ },
+ "panel-solar-bifacial-n-type-ja-solar-715w-1002140": {
+  "fuente": "https://autosolar.co/paneles-solares/panel-solar-bifacial-715w-deep-blue-40-n-type-ja-solar",
+  "specs": {
+   "Dimensiones": "2384 ­x 1303 ­x 33 mm",
+   "Eficiencia": "23 %",
+   "Garantía": "12",
+   "Potencia máxima": "715 W",
+   "Tipo de célula": "Mono",
+   "Voltaje": "48 V"
+  },
+  "bullets": [
+   "Máxima potencia (Pmax): 715W",
+   "Nivel de eficiencia: 23,0%",
+   "Corriente de potencia máxima (Imp): 17.44A",
+   "Voltaje de potencia máxima (Vmp): 41V",
+   "Corriente de cortocircuito (Isc): 20.03A",
+   "Voltaje de circuito abierto (Voc): 48.80V",
+   "Temperatura de funcionamiento: -40°C/ +85°C",
+   "Dimensiones: 2384 ­x 1303 ­x 33 mm",
+   "Peso: 38.2kg"
+  ],
+  "pdf": "/fichas/proveedores/ficha-tecnica-panel-solar-bifacial-715w-deep-blue-4.0-n-type-ja-solar.pdf",
+  "match": "exacto"
+ },
+ "panel-solar-bifacial-n-type-ja-solar-720w-1002142": {
+  "fuente": "https://autosolar.co/paneles-solares/panel-solar-bifacial-720w-deep-blue-40-n-type-ja-solar",
+  "specs": {
+   "Potencia máxima": "-3 W",
+   "Voltaje": "48 V"
+  },
+  "bullets": [
+   "Peso: 38.2kg",
+   "Dimensión: 2384±2mm ­x 1303±2mm ­x 33±1mm",
+   "Tamaño de sección transversal del cable: 4 mm² (IEC), 12 AWG(UL)",
+   "Número de células: 132 (6x22",
+   "Caja de conexiones: IP68, 3 diodos",
+   "Conector: QC 4.10-351/ MC4-EVO2A",
+   "Longitud del cable (incluido el conector): Vertical: 300 mm(+)/400 mm(-);Horizontal: 1500 mm(+)/1500 mm(-)",
+   "Vidrio delantero / Vidrio trasero : 2,0 mm/2,0 mm",
+   "Información sobre el embalaje: 36 unidades/palé, 594 unidades/contenedor HQ de 40 pies"
+  ],
+  "pdf": "/fichas/proveedores/ficha-tecnica-panel-solar-bifacial-715w-deep-blue-4.0-n-type-ja-solar.pdf",
+  "match": "exacto"
+ },
+ "panel-solar-bifacial-n-type-tensite-620w-1002141": {
+  "fuente": "https://autosolar.co/paneles-solares/panel-solar-bifacial-620w-n-type-tensite",
+  "specs": {
+   "Corriente a máxima potencia (IMP)": "17 A",
+   "Corriente en cortocircuito ISC": "16 A",
+   "Dimensiones": "2384 x 1134 x 30 mm",
+   "Eficiencia": "23 %",
+   "Garantía": "15 años",
+   "Marco": "Aluminio anodizado / Negro",
+   "Peso": "33 Kg",
+   "Potencia máxima": "620 W",
+   "Tensión en circuito abierto": "48 V",
+   "Tensión máxima potencia": "40 V",
+   "Tipo de célula": "N-Type (182x91mm)",
+   "Voltaje": "48.1 V"
+  },
+  "bullets": [],
+  "pdf": "/fichas/proveedores/ficha-tecnica---tensite---em610-620ph-.pdf",
+  "match": "exacto"
+ },
+ "panel-solar-bifacial-n-type-tensite-710w-1002138": {
+  "fuente": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
+  "specs": {
+   "Dimensiones": "2384 x 1303 x 35 mm",
+   "Eficiencia": "23 %",
+   "Garantía": "10 años",
+   "Marco": "Aluminio anodizado / plata",
+   "Peso": "38 Kg",
+   "Potencia máxima": "710 W",
+   "Tipo de célula": "132 (6x11x2) / silicio monocristalino",
+   "Voltaje": "24 V"
+  },
+  "bullets": [
+   "Máxima potencia: 710W",
+   "Corriente de potencia máxima: 17.45A",
+   "Voltaje de potencia máxima: 40.69V",
+   "Nivel de eficiencia: 22.86%",
+   "Corriente de cortocircuito: 18.45A",
+   "Voltaje de circuito abierto: 48.94V",
+   "Temperatura de funcionamiento: -40°C/ +85°C",
+   "Dimensiones: 2384 x 1303 x 35 mm",
+   "Peso: 37.7 kg"
+  ],
+  "pdf": "/fichas/proveedores/ficha_tecnica_em710-ph.pdf",
+  "match": "exacto"
+ },
+ "panel-solar-monocristalino-tensite-240w-1002223": {
+  "fuente": "https://autosolar.co/paneles-solares-12v/panel-solar-monocristalino-240w-tensite",
+  "specs": {
+   "Dimensiones": "1568 x 770 x 330 mm",
+   "Eficiencia": "20 %",
+   "Garantía": "15 años",
+   "Potencia máxima": "240 W",
+   "Tipo de célula": "Monocristalino",
+   "Voltaje": "12 V"
+  },
+  "bullets": [
+   "Máxima potencia. 240W",
+   "Corriente de potencia máxima. 5.90A",
+   "Voltaje de potencia máxima . 40.70V",
+   "Corriente de cortocircuito. 6.30A",
+   "Voltaje de circuito abierto (Voc). 48.40V",
+   "Nivel de eficiencia. 19.8%",
+   "Temperatura de funcionamiento. 45°C",
+   "Voltaje máximo del sistema. 1000V / DC",
+   "Máxima capacidad del fusible en serie. 10A",
+   "Números de diodos . 2",
+   "Dimensiones.  1568 x 770 x 30mm",
+   "Garantía.  15 años"
+  ],
+  "pdf": "/fichas/proveedores/ficha_tecnica_em240_ph.pdf",
+  "match": "exacto"
+ }
+}

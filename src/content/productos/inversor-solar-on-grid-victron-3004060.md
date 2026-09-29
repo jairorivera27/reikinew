@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid Victron 3004060"
 description: "Inversor Solar On-Grid Victron 3004060. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: Victron; modelo: 3004060; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/victron-multiplus.png"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$2.722.970"
 specifications:
@@ -22,6 +22,9 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "Victron 3004060 N/A – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Inversor Solar On-Grid Victron 3004060** de Victron · N/A.
 

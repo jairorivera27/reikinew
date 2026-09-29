@@ -1,7 +1,7 @@
 ---
 title: "HOYMILES AC TRUNK CABLE 20T_20L_10 AWG-2.2m"
 description: "Accesorio de cableado o conexión CA/CC para sistemas con microinversores Hoymiles: troncal, tapas, herramientas de desconexión o extensiones homologadas por el fabricante."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$154.530"
 specifications:
@@ -12,6 +12,9 @@ specifications:
 brand: "Hoymiles"
 stock: "disponible"
 order: 5037
+imageAlt: "Hoymiles – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **HOYMILES AC TRUNK CABLE 20T_20L_10 AWG-2.2m** · referencia **Hoymiles** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

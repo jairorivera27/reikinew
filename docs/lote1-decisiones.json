@@ -1,0 +1,407 @@
+{
+ "controlador-de-carga-solar-mppt-victron-scc010010050r": {
+  "src": "imagenes-proveedores/autosolar/victron/scc010015050r/01-controlador-carga-bluesolar-mppt-10015-retail-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron BlueSolar MPPT"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc010015050r": {
+  "src": "imagenes-proveedores/autosolar/victron/scc010015050r/01-controlador-carga-bluesolar-mppt-10015-retail-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron BlueSolar MPPT"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc010015200r": {
+  "src": "imagenes-proveedores/autosolar/victron/scc010015050r/01-controlador-carga-bluesolar-mppt-10015-retail-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron BlueSolar MPPT"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc020030200": {
+  "src": "imagenes-proveedores/autosolar/victron/scc010010050r/01-controlador-carga-smartsolar-mppt-10030-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron MPPT 100/30"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc020035000": {
+  "src": "imagenes-proveedores/autosolar/victron/scc115035210/01-controlador-carga-bluesolar-mppt-15035-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "controlador-de-carga-solar-mppt-victron-scc020050200": {
+  "src": "imagenes-proveedores/autosolar/victron/scc010005000/01-controlador-carga-bluesolar-mppt-10050-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "controlador-de-carga-solar-mppt-victron-scc075010060r": {
+  "src": "imagenes-proveedores/autosolar/victron/scc110020160r/01-controlador-carga-smartsolar-mppt-10020-retail-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron SmartSolar MPPT"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc075015060r": {
+  "src": "imagenes-proveedores/autosolar/victron/scc110020160r/01-controlador-carga-smartsolar-mppt-10020-retail-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron SmartSolar MPPT"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc110015060r": {
+  "src": "imagenes-proveedores/autosolar/victron/scc010015050r/01-controlador-carga-bluesolar-mppt-10015-retail-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "controlador-de-carga-solar-mppt-victron-scc110020160r": {
+  "src": "imagenes-proveedores/autosolar/victron/scc110020160r/01-controlador-carga-smartsolar-mppt-10020-retail-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "controlador-de-carga-solar-mppt-victron-scc110020170r": {
+  "src": "imagenes-proveedores/autosolar/victron/scc110020160r/01-controlador-carga-smartsolar-mppt-10020-retail-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "controlador-de-carga-solar-mppt-victron-scc110030210": {
+  "src": "imagenes-proveedores/autosolar/victron/scc010010050r/01-controlador-carga-smartsolar-mppt-10030-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115035210": {
+  "src": "imagenes-proveedores/autosolar/victron/scc115035210/01-controlador-carga-bluesolar-mppt-15035-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron MPPT 150/35"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115045212": {
+  "src": "imagenes-proveedores/autosolar/victron/scc115045212/01-controlador-carga-bluesolar-mppt-15045-tr-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron MPPT 150/45-Tr"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115045222": {
+  "src": "imagenes-proveedores/autosolar/victron/scc115045212/01-controlador-carga-bluesolar-mppt-15045-tr-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron MPPT 150/45-Tr"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115060211": {
+  "src": "imagenes-proveedores/autosolar/victron/scc115060211/01-controlador-carga-bluesolar-mppt-15060-tr-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron MPPT 150/60-Tr"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115060311": {
+  "src": "imagenes-proveedores/autosolar/victron/scc115060211/01-controlador-carga-bluesolar-mppt-15060-tr-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron MPPT 150/60-Tr"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115070211": {
+  "src": "imagenes-proveedores/autosolar/victron/scc115070211/01-controlador-carga-bluesolar-mppt-15070-tr-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron MPPT 150/70-Tr"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115070411": {
+  "src": "imagenes-proveedores/autosolar/victron/scc115070211/01-controlador-carga-bluesolar-mppt-15070-tr-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron MPPT 150/70-Tr"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115070511": {
+  "src": "imagenes-proveedores/autosolar/victron/scc115070211/01-controlador-carga-bluesolar-mppt-15070-tr-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron MPPT 150/70-Tr"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115085411": {
+  "src": "imagenes-proveedores/autosolar/victron/scc115085411/01-controlador-carga-smartsolar-mppt-15085-tr-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115110411": {
+  "src": "imagenes-proveedores/autosolar/victron/scc115085411/01-controlador-carga-smartsolar-mppt-15085-tr-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron SmartSolar MPPT 150V-Tr"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115110420": {
+  "src": "imagenes-proveedores/autosolar/victron/scc115085411/01-controlador-carga-smartsolar-mppt-15085-tr-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron SmartSolar MPPT 150V-Tr"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc115110511": {
+  "src": "imagenes-proveedores/autosolar/victron/scc115085411/01-controlador-carga-smartsolar-mppt-15085-tr-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron SmartSolar MPPT 150V-Tr"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125060221": {
+  "src": "imagenes-proveedores/autosolar/victron/scc125060221/01-controlador-carga-smartsolar-mppt-25060-tr-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125060321": {
+  "src": "imagenes-proveedores/autosolar/victron/scc125060221/01-controlador-carga-smartsolar-mppt-25060-tr-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125070221": {
+  "src": "imagenes-proveedores/autosolar/victron/scc125070221/01-controlador-carga-smartsolar-mppt-25070-tr-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125070421": {
+  "src": "imagenes-proveedores/autosolar/victron/scc125070221/01-controlador-carga-smartsolar-mppt-25070-tr-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125070441": {
+  "src": "imagenes-proveedores/autosolar/victron/scc125070221/01-controlador-carga-smartsolar-mppt-25070-tr-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125070521": {
+  "src": "imagenes-proveedores/autosolar/victron/scc125070221/01-controlador-carga-smartsolar-mppt-25070-tr-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125085411": {
+  "src": "imagenes-proveedores/autosolar/victron/scc125085411/01-controlador-carga-smartsolar-mppt-25085-tr-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125085511": {
+  "src": "imagenes-proveedores/autosolar/victron/scc125085411/01-controlador-carga-smartsolar-mppt-25085-tr-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125110412": {
+  "src": "imagenes-proveedores/autosolar/victron/scc125085411/01-controlador-carga-smartsolar-mppt-25085-tr-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron SmartSolar MPPT 250V-Tr"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125110441": {
+  "src": "imagenes-proveedores/autosolar/victron/scc125085411/01-controlador-carga-smartsolar-mppt-25085-tr-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron SmartSolar MPPT 250V-Tr"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc125110512": {
+  "src": "imagenes-proveedores/autosolar/victron/scc125085411/01-controlador-carga-smartsolar-mppt-25085-tr-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron SmartSolar MPPT 250V-Tr"
+ },
+ "controlador-de-carga-solar-pwm-victron-30a-scc040030020": {
+  "src": "imagenes-proveedores/autosolar/victron/scc040030020/01-controlador-carga-bluesolar-pwm-lcdusb-1224v-30a-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "controlador-de-carga-solar-pwm-victron-scc040030050": {
+  "src": "imagenes-proveedores/autosolar/victron/scc040030020/01-controlador-carga-bluesolar-pwm-lcdusb-1224v-30a-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "controlador-de-carga-solar-pwm-victron-scc040010050": {
+  "src": "imagenes-proveedores/autosolar/victron/scc040030020/01-controlador-carga-bluesolar-pwm-lcdusb-1224v-30a-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron BlueSolar PWM LCD&USB"
+ },
+ "controlador-de-carga-solar-pwm-victron-scc040020050": {
+  "src": "imagenes-proveedores/autosolar/victron/scc040030020/01-controlador-carga-bluesolar-pwm-lcdusb-1224v-30a-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron BlueSolar PWM LCD&USB"
+ },
+ "inversor-solar-on-grid-victron-pmp122200102": {
+  "src": "imagenes-proveedores/autosolar/victron/multiplus-12-500/01-inversor-multiplus-compact-12v-2000va-80-50-120v-vebus-victron-energy.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "inversor-solar-on-grid-victron-pmp242200102": {
+  "src": "imagenes-proveedores/autosolar/victron/multiplus-12-500/01-inversor-multiplus-compact-12v-2000va-80-50-120v-vebus-victron-energy.jpg",
+  "match": "serie",
+  "serieRef": "Victron MultiPlus Compact"
+ },
+ "inversor-solar-on-grid-victron-pmp482505110": {
+  "src": "imagenes-proveedores/autosolar/victron/multiplus-ii-48-5000/01-multiplus-ii-48500070-95-120v-6866a8f909ad4.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "inversor-solar-on-grid-victron-pmp482505300": {
+  "src": "imagenes-proveedores/autosolar/victron/multiplus-ii-48-5000/01-multiplus-ii-48500070-95-120v-6866a8f909ad4.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "inversor-solar-on-grid-victron-pmp122305100": {
+  "src": "imagenes-proveedores/autosolar/victron/multiplus-ii-48-5000/01-multiplus-ii-48500070-95-120v-6866a8f909ad4.jpg",
+  "match": "serie",
+  "serieRef": "Victron MultiPlus-II"
+ },
+ "inversor-solar-on-grid-victron-pmp122305102": {
+  "src": "imagenes-proveedores/autosolar/victron/multiplus-ii-48-5000/01-multiplus-ii-48500070-95-120v-6866a8f909ad4.jpg",
+  "match": "serie",
+  "serieRef": "Victron MultiPlus-II"
+ },
+ "inversor-solar-on-grid-victron-pmp122305120": {
+  "src": "imagenes-proveedores/autosolar/victron/multiplus-ii-48-5000/01-multiplus-ii-48500070-95-120v-6866a8f909ad4.jpg",
+  "match": "serie",
+  "serieRef": "Victron MultiPlus-II"
+ },
+ "inversor-solar-on-grid-victron-pmp122305122": {
+  "src": "imagenes-proveedores/autosolar/victron/multiplus-ii-48-5000/01-multiplus-ii-48500070-95-120v-6866a8f909ad4.jpg",
+  "match": "serie",
+  "serieRef": "Victron MultiPlus-II"
+ },
+ "inversor-solar-on-grid-victron-pmp242305102": {
+  "src": "imagenes-proveedores/autosolar/victron/multiplus-ii-48-5000/01-multiplus-ii-48500070-95-120v-6866a8f909ad4.jpg",
+  "match": "serie",
+  "serieRef": "Victron MultiPlus-II"
+ },
+ "inversor-solar-on-grid-victron-pmp242305130": {
+  "src": "imagenes-proveedores/autosolar/victron/multiplus-ii-48-5000/01-multiplus-ii-48500070-95-120v-6866a8f909ad4.jpg",
+  "match": "serie",
+  "serieRef": "Victron MultiPlus-II"
+ },
+ "inversor-solar-on-grid-victron-pmp242305132": {
+  "src": "imagenes-proveedores/autosolar/victron/multiplus-ii-48-5000/01-multiplus-ii-48500070-95-120v-6866a8f909ad4.jpg",
+  "match": "serie",
+  "serieRef": "Victron MultiPlus-II"
+ },
+ "inversor-solar-on-grid-victron-pmp242505110": {
+  "src": "imagenes-proveedores/autosolar/victron/multiplus-ii-48-5000/01-multiplus-ii-48500070-95-120v-6866a8f909ad4.jpg",
+  "match": "serie",
+  "serieRef": "Victron MultiPlus-II"
+ },
+ "inversor-solar-on-grid-victron-pmp482305100": {
+  "src": "imagenes-proveedores/autosolar/victron/multiplus-ii-48-5000/01-multiplus-ii-48500070-95-120v-6866a8f909ad4.jpg",
+  "match": "serie",
+  "serieRef": "Victron MultiPlus-II"
+ },
+ "inversor-solar-on-grid-victron-pmp482305102": {
+  "src": "imagenes-proveedores/autosolar/victron/multiplus-ii-48-5000/01-multiplus-ii-48500070-95-120v-6866a8f909ad4.jpg",
+  "match": "serie",
+  "serieRef": "Victron MultiPlus-II"
+ },
+ "inversor-solar-on-grid-growatt-10kw-10ktl3-xl2": {
+  "src": "imagenes-proveedores/autosolar/growatt/10ktl3-xl2/01-inversor-on-grid-15000w-growatt-mid-15tl3-xl2.jpg",
+  "match": "serie",
+  "serieRef": "Growatt MID TL3-XL2"
+ },
+ "inversor-solar-on-grid-growatt-10kw-min10000tl-x2": {
+  "src": "imagenes-proveedores/autosolar/growatt/min10000tl-x2/01-inversor-on-grid-10000w-growatt-min-10000tl-x2.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "inversor-solar-on-grid-growatt-15kw-15ktl3-xl2": {
+  "src": "imagenes-proveedores/autosolar/growatt/10ktl3-xl2/01-inversor-on-grid-15000w-growatt-mid-15tl3-xl2.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "inversor-solar-on-grid-growatt-20kw-20ktl3-xl2": {
+  "src": "imagenes-proveedores/autosolar/growatt/20ktl3-xl2/01-inversor-on-grid-20000w-growatt-mid-20k-tl3-xl2-699df7ff8ecd6.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "inversor-solar-on-grid-growatt-3600w-3600tl-x2": {
+  "src": "imagenes-proveedores/autosolar/growatt/3600tl-x2/01-inversor-on-grid-6000w-growatt-min-6000tl-x2.jpg",
+  "match": "serie",
+  "serieRef": "Growatt MIN TL-X2"
+ },
+ "inversor-solar-on-grid-growatt-6000w-6000tl-x2": {
+  "src": "imagenes-proveedores/autosolar/growatt/3600tl-x2/01-inversor-on-grid-6000w-growatt-min-6000tl-x2.jpg",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "inversor-solar-on-grid-growatt-8000w-8000tl-x2": {
+  "src": "imagenes-proveedores/autosolar/growatt/3600tl-x2/01-inversor-on-grid-6000w-growatt-min-6000tl-x2.jpg",
+  "match": "serie",
+  "serieRef": "Growatt MIN TL-X2"
+ },
+ "cat-mayorista-011aa38ff63b": {
+  "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-011aa38ff63b/01-NFIN0044.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "cat-mayorista-16abf09e485c": {
+  "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-16abf09e485c/01-NFIN0030.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "cat-mayorista-297c1543c156": {
+  "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-297c1543c156/01-NFIN0006.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "cat-mayorista-2eb2381727b7": {
+  "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-2eb2381727b7/01-NFIN0041.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "cat-mayorista-479835eafdcd": {
+  "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-479835eafdcd/01-NFIN0054.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "cat-mayorista-5976fdc3675c": {
+  "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-5976fdc3675c/01-NFIN0018.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "cat-mayorista-5c63036043b0": {
+  "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-5c63036043b0/01-NFIN0005.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "cat-mayorista-63238dda6866": {
+  "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-63238dda6866/01-NFIN0001.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "cat-mayorista-6809f95a6ec6": {
+  "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-6809f95a6ec6/01-NFAC0003.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "cat-mayorista-77a53def7b39": {
+  "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-77a53def7b39/01-NFIN0007.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "cat-mayorista-a7acbbe9c321": {
+  "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-a7acbbe9c321/01-NFIN0008.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "cat-mayorista-aeeee921984f": {
+  "src": "imagenes-proveedores/solaire/huawei/sun2000-20ktl-m3/01-NFIN0031.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "cat-mayorista-d93b4767526a": {
+  "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-d93b4767526a/01-NFIN0009.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "cat-mayorista-db886da9420b": {
+  "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-db886da9420b/01-NFIN0002.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "cat-mayorista-eb335fe74372": {
+  "src": "imagenes-proveedores/solaire/huawei/sun2000-50ktl-m3/01-NFIN0063.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "cat-mayorista-f6c407d9756a": {
+  "src": "imagenes-proveedores/solaire/huawei/cat-mayorista-f6c407d9756a/01-NFIN0070.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "huawei-sun2000-10k-lc0": {
+  "src": "imagenes-proveedores/solaire/huawei/sun2000-10k-lc0/01-NFIN0044.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "huawei-sun2000-20ktl-m3": {
+  "src": "imagenes-proveedores/solaire/huawei/sun2000-20ktl-m3/01-NFIN0031.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "huawei-sun2000-8k-lc0": {
+  "src": "imagenes-proveedores/solaire/huawei/sun2000-8k-lc0/01-NFIN0041.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "inversor-hybrido-8kw": {
+  "src": "imagenes-proveedores/solaire/huawei/sun2000-4ktl-l1/01-NFIN0006.png",
+  "match": "exacto",
+  "serieRef": null
+ },
+ "inversor-string-10kw": {
+  "src": "imagenes-proveedores/solaire/huawei/sun2000-36ktl-m3/01-NFIN0030.png",
+  "match": "exacto",
+  "serieRef": null
+ }
+}

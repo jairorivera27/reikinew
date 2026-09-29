@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid GoodWe 5kW GW5000-MS-US30"
 description: "Inversor Solar On-Grid GoodWe 5kW GW5000-MS-US30. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW5000-MS-US30; especificación principal: 5kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$4.137.000"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "GoodWe GW5000-MS-US30 5kW – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Inversor Solar On-Grid GoodWe 5kW GW5000-MS-US30** de GoodWe · 5kW.
 

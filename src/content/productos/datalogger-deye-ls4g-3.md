@@ -1,7 +1,7 @@
 ---
 title: "Datalogger Deye LS4G-3"
-description: "Datalogger Deye LS4G-3. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Deye; modelo: LS4G-3; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/monitoreo/deye-logger.jpg"
+description: "Datalogger / módulo de monitoreo Deye LS4G-3. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
+image: "/images/productos-estudio/deye-logger.webp"
 category: "accesorios"
 price: "$1.468.162"
 specifications:
@@ -23,6 +23,15 @@ seoKeywords:
   - "comprar sistema de monitoreo solar colombia"
   - "precio sistema de monitoreo solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/deye-logger-thumb.webp"
+imageAlt: "Deye LS4G-3 N/A – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/monitoreo/deye-logger.jpg"
+faqs:
+  - pregunta: "¿Con qué equipos es compatible?"
+    respuesta: "Con los inversores o equipos de la misma marca y serie indicados en la ficha técnica. Escríbenos con la referencia de tu inversor y te confirmamos."
+  - pregunta: "¿Necesita internet?"
+    respuesta: "Sí, se conecta por Wi-Fi, red cableada o 4G según el modelo para enviar los datos a la aplicación del fabricante."
+fichaPdf: "/fichas/fabricantes/deye-stick-logger-datasheet.pdf"
 ---
 **Datalogger Deye LS4G-3** de Deye · N/A.
 

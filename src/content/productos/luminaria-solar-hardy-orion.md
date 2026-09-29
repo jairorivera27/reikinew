@@ -1,0 +1,72 @@
+---
+title: "Luminaria Solar Hardy Orion – 35 W reales · 7.700 lm"
+description: "Luminaria solar para alumbrado exterior (serie Orion) Hardy Orion de 35 W reales y 7.700 lm (≥ 220 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 80 Ah (4.000 ciclos) y panel 80 W / 5 V monocristalino separado (670 × 710 mm), con autonomía de hasta 12 h al 100 %; hasta 36 h en modo 30 %. Se instala a 8 – 10 m de altura y ilumina 240 m² (referencial). Protección IP66 / IK08 para exterior. Versión para evaluación RETILAP (Res. 40150 de 2024), ensayo EVERFINE."
+image: "/images/productos-estudio/hardy-orion.webp"
+imageThumb: "/images/productos-estudio/hardy-orion-thumb.webp"
+imageAlt: "Luminaria Solar Hardy Orion – 35 W reales · 7.700 lm – Reiki Energía Solar"
+category: "reflectores"
+price: "$1.237.500"
+specifications:
+  - "Tipo: Luminaria solar para alumbrado exterior (serie Orion)"
+  - "Potencia real: 35 W"
+  - "Flujo luminoso: 7.700 lm"
+  - "Eficacia luminosa: ≥ 220 lm/W"
+  - "Temperatura de color: 6500 K (luz blanca fría)"
+  - "CRI: ≥ 70"
+  - "LED: 60 LED SMD 5054"
+  - "Ángulo de apertura: T3M / 140° × 70°"
+  - "Vida útil LED: 90.000 h"
+  - "Batería: LiFePO4 3,2 V / 80 Ah (4.000 ciclos)"
+  - "Panel solar: 80 W / 5 V monocristalino separado (670 × 710 mm)"
+  - "Tiempo de carga: 4 – 8 h de sol pleno"
+  - "Autonomía: hasta 12 h al 100 %; hasta 36 h en modo 30 %"
+  - "Controlador de carga: MPPT integrado"
+  - "Modos de operación: Sensor de movimiento (100 % / 30 %), programado (100 % 5 h + 50 % 7 h), nocturno 30 %"
+  - "Grado de protección: IP66 / IK08"
+  - "Temperatura de operación: -10 °C a 60 °C"
+  - "Material: Aluminio de alta resistencia"
+  - "Dimensiones: 515 × 210 × 80 mm"
+  - "Altura de instalación recomendada: 8 – 10 m"
+  - "Distancia entre postes: 16 – 25 m"
+  - "Área de cobertura: 240 m² (referencial)"
+  - "Garantía: 3 años"
+  - "RETILAP: Versión para evaluación RETILAP (Res. 40150 de 2024), ensayo EVERFINE"
+brand: "Hardy Solar"
+model: "Orion"
+sku: "HARDY-ORION"
+power: "35 W"
+stock: "disponible"
+order: 40
+updatedAt: "2026-09-28"
+imagen_provisional: true
+fichaPdf: "/fichas/hardy-orion-ficha-tecnica.pdf"
+seoKeywords:
+  - "luminaria solar"
+  - "hardy orion"
+  - "lámpara solar para calle"
+  - "alumbrado público solar"
+  - "luminaria solar retilap"
+  - "luminaria solar colombia"
+  - "comprar luminaria solar medellín"
+faqs:
+  - pregunta: "¿Cuántos vatios reales tiene la Orion?"
+    respuesta: "35 W reales, con un flujo de 7.700 lm. Para comparar luminarias solares, fíjate en los lúmenes y en los vatios reales, no en el número del modelo."
+  - pregunta: "¿Cuántas horas alumbra y cuánto tarda en cargar?"
+    respuesta: "Autonomía: hasta 12 h al 100 %; hasta 36 h en modo 30 %. Carga completa en 4 – 8 h de sol pleno. En días nublados la carga es menor; por eso la batería LiFePO4 guarda reserva para más de una noche en los modelos que lo indican."
+  - pregunta: "¿A qué altura se instala y cuánto espacio ilumina?"
+    respuesta: "Altura recomendada: 8 – 10 m. Distancia entre postes: 16 – 25 m. Cobertura: 240 m² (referencial)."
+  - pregunta: "¿Necesita cableado o conexión a la red eléctrica?"
+    respuesta: "No. El panel solar va separado de la lámpara y se conecta con su cable; se orienta hacia el sol. Solo se fija en el poste, muro o soporte y enciende automáticamente al anochecer."
+  - pregunta: "¿Tiene certificación RETILAP?"
+    respuesta: "Versión para evaluación RETILAP (Res. 40150 de 2024), ensayo EVERFINE."
+  - pregunta: "¿Qué garantía tiene?"
+    respuesta: "3 años de garantía del fabricante (Hardy Solar Energy). Reiki Energía Solar te acompaña en el trámite."
+  - pregunta: "¿Dónde se recomienda usar?"
+    respuesta: "Vías, espacios industriales, zonas extensas."
+---
+
+**Luminaria Solar Hardy Orion – 35 W reales · 7.700 lm**
+
+Luminaria solar para alumbrado exterior (serie Orion) Hardy Orion de 35 W reales y 7.700 lm (≥ 220 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 80 Ah (4.000 ciclos) y panel 80 W / 5 V monocristalino separado (670 × 710 mm), con autonomía de hasta 12 h al 100 %; hasta 36 h en modo 30 %. Se instala a 8 – 10 m de altura y ilumina 240 m² (referencial). Protección IP66 / IK08 para exterior. Versión para evaluación RETILAP (Res. 40150 de 2024), ensayo EVERFINE.
+
+Ficha técnica del fabricante: Hardy Solar Energy. Precio con IVA incluido.
