@@ -1,7 +1,7 @@
 ---
 title: "SUN2000-10K-LC0"
 description: "Inversor Huawei SUN2000 serie LC0: string inverter trifásico para aplicaciones comerciales e industriales, con amplio rango MPPT y alta eficiencia según potencia nominal del modelo."
-image: "/images/productos-tienda/inversores/huawei-sun2000.png"
+image: "/images/productos-estudio/huawei-sun2000-prov.webp"
 category: "inversores"
 price: "$5.584.500"
 specifications:
@@ -13,6 +13,11 @@ specifications:
 brand: "Huawei"
 stock: "disponible"
 order: 5044
+imageThumb: "/images/productos-estudio/huawei-sun2000-prov.webp"
+imageAlt: "Huawei – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/huawei-sun2000.png"
+imagen_provisional: true
+imagenSerieRef: "Huawei SUN2000"
 ---
 
 **SUN2000-10K-LC0** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

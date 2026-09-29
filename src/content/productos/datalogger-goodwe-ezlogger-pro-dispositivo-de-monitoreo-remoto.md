@@ -1,7 +1,7 @@
 ---
 title: "Datalogger GoodWe Ezlogger Pro Dispositivo de monitoreo remoto Ethernet c"
 description: "Datalogger GoodWe Ezlogger Pro Dispositivo de monitoreo remoto Ethernet c. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: GoodWe; modelo: Ezlogger Pro Dispositivo de monitoreo remoto Ethernet c; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/monitoreo/goodwe-ezlogger.jpg"
+image: "/images/productos-estudio/goodwe-ezlogger.webp"
 category: "accesorios"
 price: "$932.960"
 specifications:
@@ -23,6 +23,11 @@ seoKeywords:
   - "comprar sistema de monitoreo solar colombia"
   - "precio sistema de monitoreo solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/goodwe-ezlogger-thumb.webp"
+imageAlt: "GoodWe Ezlogger Pro Dispositivo de monitoreo remoto Ethernet c N/A – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/monitoreo/goodwe-ezlogger.jpg"
+imagen_provisional: true
+imagenSerieRef: "GoodWe EzLogger"
 ---
 **Datalogger GoodWe Ezlogger Pro Dispositivo de monitoreo remoto Ethernet c** de GoodWe · N/A.
 

@@ -1,7 +1,7 @@
 ---
 title: "Astro N5 580W-620W"
 description: "Panel solar Astroenergy serie N5, rango de potencia 580W a 620W, alta eficiencia y confiabilidad."
-image: "/images/productos-tienda/paneles-solares/astroenergy-n5-medellin.png"
+image: "/images/productos-estudio/astroenergy-astro-n5-prov.webp"
 category: "paneles"
 price: "$589.000"
 specifications:
@@ -20,6 +20,10 @@ seoKeywords:
   - "panel solar topcon 580w 620w colombia"
   - "modulo astroenergy n5 garantia 25 anos"
   - "panel astroenergy para proyecto fotovoltaico"
+imageThumb: "/images/productos-estudio/astroenergy-astro-n5-prov.webp"
+imageAlt: "Astroenergy Astro N5 – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/paneles-solares/astroenergy-n5-medellin.png"
+imagen_provisional: true
 ---
 
 Serie Astro N5 de Astroenergy, paneles solares de alta potencia y tecnología TOPCon para proyectos exigentes.

@@ -1,7 +1,7 @@
 ---
 title: "Huawei 36KTL-M3"
 description: "Inversor Huawei SUN2000-36KTL-M3, potencia trifásica para proyectos comerciales e industriales."
-image: "/images/productos-tienda/inversores/huawei-sun2000.png"
+image: "/images/productos-estudio/huawei-sun2000-prov.webp"
 category: "inversores"
 price: "$12.300.000"
 specifications:
@@ -13,6 +13,11 @@ brand: "Huawei"
 model: "SUN2000-36KTL-M3"
 stock: "disponible"
 order: 4
+imageThumb: "/images/productos-estudio/huawei-sun2000-prov.webp"
+imageAlt: "Huawei SUN2000-36KTL-M3 – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/huawei-sun2000.png"
+imagen_provisional: true
+imagenSerieRef: "Huawei SUN2000"
 ---
 
 Inversor comercial Huawei de 36kW, alta eficiencia y múltiples MPPT para maximizar la producción en grandes techos.

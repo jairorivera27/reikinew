@@ -1,7 +1,7 @@
 ---
 title: "Breaker Leader 125A DC"
 description: "Breaker Leader 125A DC. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Leader; especificación principal: 125A DC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/protecciones/leader-breaker.jpg"
+image: "/images/productos-estudio/leader-breaker.webp"
 category: "protecciones"
 price: "$59.500"
 specifications:
@@ -21,6 +21,9 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/leader-breaker-thumb.webp"
+imageAlt: "Leader 125A DC – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/protecciones/leader-breaker.jpg"
 ---
 **Breaker Leader 125A DC** de Leader · 125A DC.
 

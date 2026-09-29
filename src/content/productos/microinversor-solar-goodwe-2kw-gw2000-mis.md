@@ -1,7 +1,7 @@
 ---
 title: "Microinversor Solar GoodWe 2kW GW2000-MIS"
 description: "Microinversor Solar GoodWe 2kW GW2000-MIS. Equipo para conversión de energía a nivel de módulo fotovoltaico. Marca: GoodWe; modelo: GW2000-MIS; especificación principal: 2kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$1.155.000"
 specifications:
@@ -23,6 +23,9 @@ seoKeywords:
   - "comprar microinversor solar colombia"
   - "precio microinversor solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "GoodWe GW2000-MIS 2kW – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Microinversor Solar GoodWe 2kW GW2000-MIS** de GoodWe · 2kW.
 

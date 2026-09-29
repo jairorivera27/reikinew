@@ -1,7 +1,7 @@
 ---
 title: "Victron Quattro 48/5000"
 description: "Quattro Victron Energy, 48/5000, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus."
-image: "/images/productos-tienda/inversores/victron-quattro.png"
+image: "/images/productos-estudio/victron-quattro-prov.webp"
 category: "inversores"
 price: "$7.090.475"
 specifications:
@@ -31,6 +31,11 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/victron-quattro-prov.webp"
+imageAlt: "Victron Quattro 48/5000 5kW – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/victron-quattro.png"
+imagen_provisional: true
+imagenSerieRef: "Victron Quattro"
 ---
 
 **Victron Quattro 48/5000** (ref. **QUA482501102**). Quattro Victron Energy, 48/5000, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus.

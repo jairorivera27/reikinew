@@ -1,7 +1,7 @@
 ---
 title: "DPS Supresor Suntree 40kA DC 5504138"
 description: "DPS Supresor Suntree 40kA DC 5504138. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Suntree; modelo: 5504138; especificación principal: 40kA DC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/protecciones/suntree-spd-dc.jpg"
+image: "/images/productos-estudio/suntree-spd-dc.webp"
 category: "protecciones"
 price: "$76.926"
 specifications:
@@ -23,6 +23,9 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/suntree-spd-dc-thumb.webp"
+imageAlt: "Suntree 5504138 40kA DC – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/protecciones/suntree-spd-dc.jpg"
 ---
 **DPS Supresor Suntree 40kA DC 5504138** de Suntree · 40kA DC.
 

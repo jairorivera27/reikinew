@@ -24,6 +24,7 @@ seoKeywords:
   - "2vdc 5.0kwh"
   - "comprar batería solar colombia"
   - "precio batería solar colombia"
+imagenSerieRef: "GoodWe Lynx"
 ---
 **Batería Solar Litio GoodWe 51,2VDC 5.0kWh IP65** de GoodWe · 51,2VDC 5.0kWh.
 

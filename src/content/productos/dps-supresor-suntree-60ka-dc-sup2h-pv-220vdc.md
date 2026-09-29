@@ -1,7 +1,7 @@
 ---
 title: "DPS Supresor Suntree 60kA DC SUP2H-PV-220VDC"
 description: "DPS Supresor Suntree 60kA DC SUP2H-PV-220VDC. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Suntree; modelo: SUP2H-PV-220VDC; especificación principal: 60kA DC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/protecciones/suntree-spd-dc.jpg"
+image: "/images/productos-estudio/suntree-spd-dc.webp"
 category: "protecciones"
 price: "$180.866"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/suntree-spd-dc-thumb.webp"
+imageAlt: "Suntree SUP2H-PV-220VDC 60kA DC – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/protecciones/suntree-spd-dc.jpg"
 ---
 **DPS Supresor Suntree 60kA DC SUP2H-PV-220VDC** de Suntree · 60kA DC.
 

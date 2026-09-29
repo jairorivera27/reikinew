@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid GoodWe 37,5kW GW37"
 description: "Inversor Solar On-Grid GoodWe 37,5kW GW37. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW37; especificación principal: 37,5kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$8.239.000"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "GoodWe GW37 37,5kW – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Inversor Solar On-Grid GoodWe 37,5kW GW37** de GoodWe · 37,5kW.
 

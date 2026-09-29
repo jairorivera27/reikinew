@@ -1,7 +1,7 @@
 ---
 title: "Batería Solar Litio Felicity 24V 5.9kWh 1880846"
 description: "Batería Solar Litio Felicity 24V 5.9kWh 1880846. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Marca: Felicity; modelo: 1880846; especificación principal: 24V 5.9kWh. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/baterias/felicity-fla24.jpg"
+image: "/images/productos-estudio/felicity-fla24.webp"
 category: "baterias"
 price: "$4.276.562"
 specifications:
@@ -23,6 +23,11 @@ seoKeywords:
   - "comprar batería solar colombia"
   - "precio batería solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/felicity-fla24-thumb.webp"
+imageAlt: "Felicity 1880846 24V 5.9kWh – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/baterias/felicity-fla24.jpg"
+imagen_provisional: true
+imagenSerieRef: "Felicity FLA24"
 ---
 **Batería Solar Litio Felicity 24V 5.9kWh 1880846** de Felicity · 24V 5.9kWh.
 

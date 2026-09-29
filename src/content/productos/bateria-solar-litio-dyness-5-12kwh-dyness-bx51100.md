@@ -1,7 +1,7 @@
 ---
 title: "Batería Solar Litio Dyness 5,12kWh Dyness-BX51100"
 description: "Batería Solar Litio Dyness 5,12kWh Dyness-BX51100. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Marca: Dyness; modelo: Dyness-BX51100; especificación principal: 5,12kWh. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/baterias/dyness-bx51100.png"
+image: "/images/productos-estudio/dyness-dyness-bx51100-5-12kwh-prov.webp"
 category: "baterias"
 price: "$4.239.375"
 specifications:
@@ -24,6 +24,10 @@ seoKeywords:
   - "12kwh"
   - "comprar batería solar colombia"
   - "precio batería solar colombia"
+imageThumb: "/images/productos-estudio/dyness-dyness-bx51100-5-12kwh-prov.webp"
+imageAlt: "Dyness Dyness-BX51100 5,12kWh – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/baterias/dyness-bx51100.png"
+imagen_provisional: true
 ---
 **Batería Solar Litio Dyness 5,12kWh Dyness-BX51100** de Dyness · 5,12kWh.
 

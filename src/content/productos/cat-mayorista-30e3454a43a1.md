@@ -1,7 +1,7 @@
 ---
 title: "Sdongle A-05 4G-$ Sdongle a -05 Wlan"
 description: "Dongle de comunicaciones Huawei para inversores SUN2000: conectividad 4G o Wi‑Fi según referencia, para telemetría remota sin cableado LAN permanente."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$295.290"
 specifications:
@@ -12,6 +12,9 @@ specifications:
 brand: "Huawei"
 stock: "disponible"
 order: 5059
+imageAlt: "Huawei – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **SDONGLE A-05 4G-$ SDONGLE A -05 WLAN** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

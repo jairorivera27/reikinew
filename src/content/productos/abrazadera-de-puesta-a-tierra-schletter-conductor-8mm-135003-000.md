@@ -1,7 +1,7 @@
 ---
 title: "Abrazadera de puesta a tierra Schletter Conductor Ø8mm 135003-000"
 description: "Abrazadera de puesta a tierra Schletter Conductor Ø8mm 135003-000. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Schletter; modelo: 135003-000; especificación principal: Conductor Ø8mm. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$18.065"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "Schletter 135003-000 Conductor Ø8mm – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Abrazadera de puesta a tierra Schletter Conductor Ø8mm 135003-000** de Schletter · Conductor Ø8mm.
 

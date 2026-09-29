@@ -1,7 +1,7 @@
 ---
 title: "LONGi 545W"
 description: "Panel solar LONGi LR5-72HBD-545M de 545W, eficiencia líder en la industria y tecnología Hi-MO 5."
-image: "/images/productos-tienda/paneles-solares/longi-545w-medellin.png"
+image: "/images/productos-estudio/longi-lr5-72hbd-545m-prov.webp"
 category: "paneles"
 price: "$559.000"
 specifications:
@@ -20,6 +20,10 @@ seoKeywords:
   - "panel bifacial 545w para industria colombia"
   - "modulo longi 545w garantia 25 anos"
   - "panel solar 545w envio nacional colombia"
+imageThumb: "/images/productos-estudio/longi-lr5-72hbd-545m-prov.webp"
+imageAlt: "LONGi LR5-72HBD-545M – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/paneles-solares/longi-545w-medellin.png"
+imagen_provisional: true
 ---
 
 Panel LONGi de 545W, reconocido mundialmente por su fiabilidad y excelente coeficiente de temperatura.

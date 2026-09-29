@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar Off-Grid Felicity 3kW IVEM3048-LV"
 description: "Inversor Solar Off-Grid Felicity 3kW IVEM3048-LV. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: Felicity; modelo: IVEM3048-LV; especificación principal: 3kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/felicity-hybrid.png"
+image: "/images/productos-estudio/felicity-hybrid-prov.webp"
 category: "inversores"
 price: "$1.347.402"
 specifications:
@@ -24,6 +24,11 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/felicity-hybrid-prov.webp"
+imageAlt: "Felicity IVEM3048-LV 3kW – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/felicity-hybrid.png"
+imagen_provisional: true
+imagenSerieRef: "Felicity Hybrid"
 ---
 **Inversor Solar Off-Grid Felicity 3kW IVEM3048-LV** de Felicity · 3kW.
 

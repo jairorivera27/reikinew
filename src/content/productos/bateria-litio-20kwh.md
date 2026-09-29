@@ -1,7 +1,7 @@
 ---
 title: "Batería de Litio 20kWh"
 description: "Batería de litio de gran capacidad 20kWh para sistemas comerciales e industriales. Máxima autonomía y confiabilidad."
-image: "/images/productos-tienda/baterias/byd-battery.png"
+image: "/images/productos-estudio/byd-battery-prov.webp"
 category: "baterias"
 price: "$41.500.000"
 specifications:
@@ -16,6 +16,10 @@ brand: "BYD"
 model: "B-Box Pro 20kWh"
 stock: "disponible"
 order: 9
+imageThumb: "/images/productos-estudio/byd-battery-prov.webp"
+imageAlt: "BYD B-Box Pro 20kWh – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/baterias/byd-battery.png"
+imagen_provisional: true
 ---
 
 Batería de litio de gran capacidad para sistemas comerciales e industriales. Máxima autonomía y rendimiento para proyectos grandes.

@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid Must WIFI"
 description: "Inversor Solar On-Grid Must WIFI. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: Must; modelo: WIFI; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/must-pv.png"
+image: "/images/productos-estudio/must-pv-prov.webp"
 category: "inversores"
 price: "$250.000"
 specifications:
@@ -23,6 +23,11 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/must-pv-prov.webp"
+imageAlt: "Must WIFI N/A – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/must-pv.png"
+imagen_provisional: true
+imagenSerieRef: "Must PV"
 ---
 **Inversor Solar On-Grid Must WIFI** de Must · N/A.
 

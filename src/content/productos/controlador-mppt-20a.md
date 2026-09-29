@@ -1,7 +1,7 @@
 ---
 title: "Controlador MPPT 20A"
 description: "Controlador de carga solar MPPT compacto de 20 amperios. Ideal para sistemas solares pequeños y portátiles."
-image: "/images/Productos tienda/Controladores/Controlador MPPT 20A Medellín .png"
+image: "/images/productos-estudio/epever-tracer-2210an-prov.webp"
 category: "controladores"
 price: "$279.000"
 specifications:
@@ -16,6 +16,10 @@ brand: "EPever"
 model: "Tracer-2210AN"
 stock: "disponible"
 order: 3
+imageThumb: "/images/productos-estudio/epever-tracer-2210an-prov.webp"
+imageAlt: "EPever Tracer-2210AN – Reiki Energía Solar"
+imageOriginal: "/images/Productos tienda/Controladores/Controlador MPPT 20A Medellín .png"
+imagen_provisional: true
 ---
 
 Controlador MPPT compacto y económico, perfecto para sistemas solares pequeños, caravanas y aplicaciones portátiles.

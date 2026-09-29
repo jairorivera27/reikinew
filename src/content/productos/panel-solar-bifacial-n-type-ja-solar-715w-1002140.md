@@ -1,7 +1,7 @@
 ---
 title: "Panel Solar Bifacial N-Type JA Solar 715W 1002140"
 description: "Panel Solar Bifacial N-Type JA Solar 715W 1002140. Equipo para generación de energía solar fotovoltaica. Marca: JA Solar; modelo: 1002140; especificación principal: 715W. Compara potencia, tecnología y compatibilidad antes de instalar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/paneles-solares/ja-solar-715w-bifacial.jpg"
+image: "/images/productos-estudio/ja-solar-1002140-715w.webp"
 category: "paneles"
 price: "$514.432"
 specifications:
@@ -23,6 +23,9 @@ seoKeywords:
   - "comprar panel solar colombia"
   - "precio panel solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/ja-solar-1002140-715w-thumb.webp"
+imageAlt: "JA Solar 1002140 715W – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/paneles-solares/ja-solar-715w-bifacial.jpg"
 ---
 **Panel Solar Bifacial N-Type JA Solar 715W 1002140** de JA Solar · 715W.
 

@@ -1,7 +1,7 @@
 ---
 title: "DPS Supresor Leader 385VA AC"
 description: "DPS Supresor Leader 385VA AC. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Leader; especificación principal: 385VA AC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/protecciones/leader-dps.jpg"
+image: "/images/productos-estudio/leader-dps.webp"
 category: "protecciones"
 price: "$111.562"
 specifications:
@@ -21,6 +21,9 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/leader-dps-thumb.webp"
+imageAlt: "Leader 385VA AC – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/protecciones/leader-dps.jpg"
 ---
 **DPS Supresor Leader 385VA AC** de Leader · 385VA AC.
 

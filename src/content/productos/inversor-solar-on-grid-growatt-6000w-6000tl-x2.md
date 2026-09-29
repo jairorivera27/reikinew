@@ -24,6 +24,7 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imagenSerieRef: "Growatt MOD"
 ---
 **Inversor Solar On-Grid Growatt 6000W 6000TL-X2** de Growatt · 6000W.
 

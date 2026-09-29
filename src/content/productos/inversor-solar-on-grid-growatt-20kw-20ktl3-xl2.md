@@ -24,6 +24,7 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imagenSerieRef: "Growatt MOD"
 ---
 **Inversor Solar On-Grid Growatt 20kW 20KTL3-XL2** de Growatt · 20kW.
 

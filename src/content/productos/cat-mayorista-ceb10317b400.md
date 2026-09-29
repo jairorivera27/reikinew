@@ -1,7 +1,7 @@
 ---
 title: "Solis Monitoreo S3-LAN-ST"
 description: "Equipo de monitorización o medida para inversores Solis (logger Wi‑Fi/LAN, EPM, GPRS, medidor + TC, etc.) según referencia exacta."
-image: "/images/productos-tienda/monitoreo/solis-datamanager.jpg"
+image: "/images/productos-estudio/solis-datamanager.webp"
 category: "accesorios"
 price: "$270.376"
 specifications:
@@ -12,6 +12,9 @@ specifications:
 brand: "Solis"
 stock: "disponible"
 order: 5102
+imageThumb: "/images/productos-estudio/solis-datamanager-thumb.webp"
+imageAlt: "Solis – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/monitoreo/solis-datamanager.jpg"
 ---
 
 **SOLIS MONITOREO S3-LAN-ST** · referencia **Solis** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

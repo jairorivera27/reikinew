@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar Híbrido Deye 8kW SUN-8K-SG01LP1-US"
 description: "Inversor Solar Híbrido Deye 8kW SUN-8K-SG01LP1-US. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: Deye; modelo: SUN-8K-SG01LP1-US; especificación principal: 8kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/deye-hybrid.png"
+image: "/images/productos-estudio/deye-hybrid-prov.webp"
 category: "inversores"
 price: "$9.750.000"
 specifications:
@@ -24,6 +24,11 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/deye-hybrid-prov.webp"
+imageAlt: "Deye SUN-8K-SG01LP1-US 8kW – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/deye-hybrid.png"
+imagen_provisional: true
+imagenSerieRef: "Deye Hybrid"
 ---
 **Inversor Solar Híbrido Deye 8kW SUN-8K-SG01LP1-US** de Deye · 8kW.
 

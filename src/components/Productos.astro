@@ -118,7 +118,16 @@ function cardMeta(producto: CollectionEntry<'productos'>) {
             return (
               <a href={href} class="producto-card" data-astro-prefetch>
                 <div class="producto-image">
-                  <img src={d.image} alt={d.title} loading="lazy">
+                  <img
+                    src={d.imageThumb || d.image}
+                    srcset={d.imageThumb ? `${d.imageThumb} 600w, ${d.image} 1600w` : undefined}
+                    sizes="(max-width: 640px) 45vw, 280px"
+                    alt={d.imageAlt ?? d.title}
+                    width="600"
+                    height="600"
+                    loading="lazy"
+                    decoding="async"
+                  >
                   {enPromo && (
                     <div class="producto-badge-descuento">-{d.descuentoPct}%</div>
                   )}

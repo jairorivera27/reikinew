@@ -1,7 +1,7 @@
 ---
 title: "Hoymiles Microinverter HMS-1600-4T-$ Hoymiles Trifasico Hmt Cable Terminal Connector"
 description: "Microinversor Hoymiles HMS-1600-4T con arquitectura cuatro MPPT para plantas residenciales y pequeña comercial con monitoreo granular por módulo."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$53.550"
 specifications:
@@ -14,6 +14,9 @@ brand: "Hoymiles"
 model: "HOYMILES MICROINVERTER HMS-1600-4T-$ HOYMILES TRIFASICO HMT CABLE TERMIN"
 stock: "disponible"
 order: 5019
+imageAlt: "Hoymiles HOYMILES MICROINVERTER HMS-1600-4T-$ HOYMILES TRIFASICO HMT CABLE TERMIN – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **HOYMILES MICROINVERTER HMS-1600-4T-$ HOYMILES TRIFASICO HMT CABLE TERMINAL CONNECTOR** · referencia **Hoymiles** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

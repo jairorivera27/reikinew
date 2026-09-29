@@ -24,6 +24,8 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+draft: true
+imagenPendiente: true
 ---
 **Inversor Solar On-Grid GoodWe 3kW GW3000-XS-30** de GoodWe · 3kW.
 

@@ -1,7 +1,7 @@
 ---
 title: "APS Microinversor Trifasico QT2-208"
 description: "Microinversor trifásico APsystems QT2 para tensión 208 V trifásica, con múltiples MPPT y supervisión vía ECU."
-image: "/images/productos-tienda/inversores/apsystems-qt2.png"
+image: "/images/productos-estudio/apsystems-qt2-prov.webp"
 category: "inversores"
 price: "$2.289.600"
 specifications:
@@ -12,6 +12,10 @@ specifications:
 brand: "APsystems"
 stock: "disponible"
 order: 5003
+imageThumb: "/images/productos-estudio/apsystems-qt2-prov.webp"
+imageAlt: "APsystems – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/apsystems-qt2.png"
+imagen_provisional: true
 ---
 
 **APS MICROINVERSOR TRIFASICO QT2-208** · referencia **APsystems** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

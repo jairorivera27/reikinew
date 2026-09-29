@@ -1,7 +1,7 @@
 ---
 title: "Hoymiles Three-Phase Electric Meter DTSU666NEW-VIA CT-3*100A-$ Hoymiles Three-Phase Electric Meter DTSU666NEW-VIA CT-3*250A"
 description: "Medidor de energía Hoymiles para monitorización de inyección/consumo en instalaciones con microinversores; versiones monofásicas, bifásicas o trifásicas con TC externos."
-image: "/images/productos-tienda/protecciones/generic-mccb.jpg"
+image: "/images/productos-estudio/generic-mccb.webp"
 category: "protecciones"
 price: "$1.048.050"
 specifications:
@@ -13,6 +13,9 @@ brand: "Hoymiles"
 model: "HOYMILES THREE-PHASE ELECTRIC METER DTSU666NEW-VIA CT-3*100A-$ HOYMILES "
 stock: "disponible"
 order: 5034
+imageThumb: "/images/productos-estudio/generic-mccb-thumb.webp"
+imageAlt: "Hoymiles HOYMILES THREE-PHASE ELECTRIC METER DTSU666NEW-VIA CT-3*100A-$ HOYMILES – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/protecciones/generic-mccb.jpg"
 ---
 
 **HOYMILES THREE-PHASE ELECTRIC METER DTSU666NEW-VIA CT-3*100A-$ HOYMILES THREE-PHASE ELECTRIC METER DTSU666NEW-VIA CT-3*250A** · referencia **Hoymiles** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

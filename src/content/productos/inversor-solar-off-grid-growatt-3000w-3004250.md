@@ -23,6 +23,7 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imagenSerieRef: "Growatt MOD"
 ---
 **Inversor Solar Off-Grid Growatt 3000W 3004250** de Growatt · 3000W.
 

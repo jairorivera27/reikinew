@@ -1,7 +1,7 @@
 ---
 title: "SOLIS CTS 1P-1XCT CLAMP 100-$ SOLIS-3P-3xCT CLAMP 2000"
 description: "Equipo de monitorización o medida para inversores Solis (logger Wi‑Fi/LAN, EPM, GPRS, medidor + TC, etc.) según referencia exacta."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$2.286.600"
 specifications:
@@ -12,6 +12,9 @@ specifications:
 brand: "Solis"
 stock: "disponible"
 order: 5111
+imageAlt: "Solis – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **SOLIS CTS 1P-1XCT CLAMP 100-$ SOLIS-3P-3xCT CLAMP 2000** · referencia **Solis** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

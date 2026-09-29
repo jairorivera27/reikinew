@@ -1,7 +1,7 @@
 ---
 title: "Hoymiles Trifasico Hmt Trunk Connector"
 description: "Microinversor trifásico Hoymiles serie HMT para conexión a red trifásica, con seguimiento MPPT por canal y monitoreo remoto vía DTU."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$91.800"
 specifications:
@@ -12,6 +12,9 @@ specifications:
 brand: "Hoymiles"
 stock: "disponible"
 order: 5022
+imageAlt: "Hoymiles – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **HOYMILES TRIFASICO HMT TRUNK CONNECTOR** · referencia **Hoymiles** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

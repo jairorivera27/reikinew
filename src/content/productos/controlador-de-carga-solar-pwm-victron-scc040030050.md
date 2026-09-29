@@ -1,7 +1,7 @@
 ---
 title: "Controlador de Carga Solar PWM Victron SCC040030050"
 description: "Controlador de Carga Solar PWM Victron SCC040030050. Equipo para regulación y gestión de la carga en sistemas fotovoltaicos. Marca: Victron; modelo: SCC040030050; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/controladores/victron-smartsolar-mppt.jpg"
+image: "/images/placeholders/controladores.svg"
 category: "controladores"
 price: "$190.181"
 specifications:
@@ -23,6 +23,9 @@ seoKeywords:
   - "comprar controlador solar colombia"
   - "precio controlador solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "Victron SCC040030050 N/A – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Controlador de Carga Solar PWM Victron SCC040030050** de Victron · N/A.
 

@@ -1,7 +1,7 @@
 ---
 title: "Victron MultiPlus 12/500"
 description: "MultiPlus Victron Energy, 12/500, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus."
-image: "/images/productos-tienda/inversores/victron-multiplus.png"
+image: "/images/productos-estudio/victron-multiplus-prov.webp"
 category: "inversores"
 price: "$1.227.888"
 specifications:
@@ -30,6 +30,11 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/victron-multiplus-prov.webp"
+imageAlt: "Victron MultiPlus 12/500 500W – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/victron-multiplus.png"
+imagen_provisional: true
+imagenSerieRef: "Victron MultiPlus"
 ---
 
 **Victron MultiPlus 12/500** (ref. **PMP121500100**). MultiPlus Victron Energy, 12/500, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus.

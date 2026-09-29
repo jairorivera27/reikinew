@@ -1,7 +1,7 @@
 ---
 title: "Panel Solar Bifacial N-Type Tensite 710W 1002138"
 description: "Panel Solar Bifacial N-Type Tensite 710W 1002138. Equipo para generación de energía solar fotovoltaica. Marca: Tensite; modelo: 1002138; especificación principal: 710W. Compara potencia, tecnología y compatibilidad antes de instalar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/paneles-solares/tensite-710w-bifacial.jpg"
+image: "/images/productos-estudio/tensite-1002138-710w.webp"
 category: "paneles"
 price: "$463.624"
 specifications:
@@ -23,6 +23,9 @@ seoKeywords:
   - "comprar panel solar colombia"
   - "precio panel solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/tensite-1002138-710w-thumb.webp"
+imageAlt: "Tensite 1002138 710W – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/paneles-solares/tensite-710w-bifacial.jpg"
 ---
 **Panel Solar Bifacial N-Type Tensite 710W 1002138** de Tensite · 710W.
 

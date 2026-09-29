@@ -1,7 +1,7 @@
 ---
 title: "Victron Phoenix 12/1200"
 description: "Phoenix Victron Energy, 12/1200, 120 V CA, inversor puro para sistemas aislados, con VE.Direct."
-image: "/images/productos-tienda/inversores/victron-phoenix.png"
+image: "/images/productos-estudio/victron-phoenix-prov.webp"
 category: "inversores"
 price: "$1.269.275"
 specifications:
@@ -30,6 +30,11 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/victron-phoenix-prov.webp"
+imageAlt: "Victron Phoenix 12/1200 1.2kW – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/victron-phoenix.png"
+imagen_provisional: true
+imagenSerieRef: "Victron Phoenix"
 ---
 
 **Victron Phoenix 12/1200** (ref. **PIN122122510**). Phoenix Victron Energy, 12/1200, 120 V CA, inversor puro para sistemas aislados, con VE.Direct.

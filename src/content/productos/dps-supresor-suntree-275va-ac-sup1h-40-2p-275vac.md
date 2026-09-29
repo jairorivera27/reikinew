@@ -1,7 +1,7 @@
 ---
 title: "DPS Supresor Suntree 275VA AC SUP1H-40-2P-275VAC"
 description: "DPS Supresor Suntree 275VA AC SUP1H-40-2P-275VAC. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Suntree; modelo: SUP1H-40-2P-275VAC; especificación principal: 275VA AC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/protecciones/suntree-spd-ac.jpg"
+image: "/images/productos-estudio/suntree-spd-ac.webp"
 category: "protecciones"
 price: "$63.413"
 specifications:
@@ -24,6 +24,10 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/suntree-spd-ac-thumb.webp"
+imageAlt: "Suntree SUP1H-40-2P-275VAC 275VA AC – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/protecciones/suntree-spd-ac.jpg"
+imagen_provisional: true
 ---
 **DPS Supresor Suntree 275VA AC SUP1H-40-2P-275VAC** de Suntree · 275VA AC.
 

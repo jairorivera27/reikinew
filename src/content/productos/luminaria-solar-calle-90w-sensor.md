@@ -1,7 +1,7 @@
 ---
 title: "Luminaria Solar de Calle 90W 15Ah con Sensor"
 description: "Luminaria solar de calle 90W con bateria de 15Ah y sensor de movimiento para vias y zonas comunes."
-image: "/images/Productos tienda/Luminarias/Luminaria solar 90W.jpeg"
+image: "/images/productos-estudio/lcs-90w-15ah-sm.webp"
 category: "reflectores"
 price: "$247.000"
 specifications:
@@ -13,6 +13,9 @@ specifications:
 model: "LCS-90W-15AH-SM"
 stock: "disponible"
 order: 18
+imageThumb: "/images/productos-estudio/lcs-90w-15ah-sm-thumb.webp"
+imageAlt: "LCS-90W-15AH-SM – Reiki Energía Solar"
+imageOriginal: "/images/Productos tienda/Luminarias/Luminaria solar 90W.jpeg"
 ---
 
 Luminaria solar de mayor potencia para cubrir espacios amplios con funcionamiento automatico nocturno.

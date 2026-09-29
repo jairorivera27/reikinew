@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid GoodWe 23kW GW23KLV-SDT-BR30"
 description: "Inversor Solar On-Grid GoodWe 23kW GW23KLV-SDT-BR30. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW23KLV-SDT-BR30; especificación principal: 23kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
+image: "/images/productos-estudio/goodwe-sdt-prov.webp"
 category: "inversores"
 price: "$5.859.000"
 specifications:
@@ -24,6 +24,10 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/goodwe-sdt-prov.webp"
+imageAlt: "GoodWe GW23KLV-SDT-BR30 23kW – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
+imagen_provisional: true
 ---
 **Inversor Solar On-Grid GoodWe 23kW GW23KLV-SDT-BR30** de GoodWe · 23kW.
 

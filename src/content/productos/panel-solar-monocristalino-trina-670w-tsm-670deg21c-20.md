@@ -1,7 +1,7 @@
 ---
 title: "Panel Solar Monocristalino Trina 670W TSM-670DEG21C.20"
 description: "Panel Solar Monocristalino Trina 670W TSM-670DEG21C.20. Equipo para generación de energía solar fotovoltaica. Marca: Trina; modelo: TSM-670DEG21C.20; especificación principal: 670W. Compara potencia, tecnología y compatibilidad antes de instalar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/paneles-solares/trina-670w-deg21c.png"
+image: "/images/productos-estudio/trina-solar-tsm-670deg21c-20-670w-prov.webp"
 category: "paneles"
 price: "$543.750"
 specifications:
@@ -24,6 +24,10 @@ seoKeywords:
   - "comprar panel solar colombia"
   - "precio panel solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/trina-solar-tsm-670deg21c-20-670w-prov.webp"
+imageAlt: "Trina Solar TSM-670DEG21C.20 670W – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/paneles-solares/trina-670w-deg21c.png"
+imagen_provisional: true
 ---
 **Panel Solar Monocristalino Trina 670W TSM-670DEG21C.20** de Trina · 670W.
 

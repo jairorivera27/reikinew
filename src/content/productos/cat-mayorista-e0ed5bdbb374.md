@@ -1,7 +1,7 @@
 ---
 title: "Pytes Comm Cable 3.5M"
 description: "Sistema o módulo de almacenamiento en litio (LiFePO₄ típico) para acoplamiento con inversores compatibles; BMS, expansión y cableado según referencia Pytes o BYD."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$38.250"
 specifications:
@@ -13,6 +13,9 @@ specifications:
 brand: "Pytes"
 stock: "disponible"
 order: 5206
+imageAlt: "Pytes – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **PYTES COMM CABLE 3.5M** · referencia **Pytes** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

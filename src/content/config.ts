@@ -21,6 +21,12 @@ const productosCollection = defineCollection({
     title: z.string(),
     description: z.string(),
     image: z.string(),
+    /** Alt SEO de la foto de producto (estudio). */
+    imageAlt: z.string().optional(),
+    /** Miniatura 600×600 WebP (opcional). */
+    imageThumb: z.string().optional(),
+    /** Ruta pública de la foto original antes del pipeline estudio. */
+    imageOriginal: z.string().optional(),
     /** Los ids deben coincidir con src/config/categorias-tienda.json. */
     category: z.enum([
       'paneles',
@@ -54,6 +60,12 @@ const productosCollection = defineCollection({
     draft: z.boolean().optional(),
     /** Marca productos que entraron con logo de marca o placeholder en vez de foto real. */
     imagenPendiente: z.boolean().optional(),
+    /** Foto estudio provisional (fuente <1000px, sin upscale agresivo). */
+    imagen_provisional: z.boolean().optional(),
+    /** Caption bajo la foto: imagen de referencia de la serie (Grupo 2). */
+    imagenSerieRef: z.string().optional(),
+    /** Ruta relativa a ficha técnica PDF (docs/fichas/…). */
+    fichaPdf: z.string().optional(),
     updatedAt: z.string().optional(),
     /**
      * Desempate opcional en el carrusel del inicio (1 = primero dentro de su grupo).

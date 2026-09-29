@@ -1,7 +1,7 @@
 ---
 title: "Luminaria Solar Tipo Jardin 90W 15Ah"
 description: "Luminaria solar tipo jardin de 90W con bateria de 15Ah para senderos y zonas verdes."
-image: "/images/Productos tienda/Luminarias/Lumionaria solar tipo jardin 90w.jpeg"
+image: "/images/productos-estudio/lsj-90w-15ah-prov.webp"
 category: "reflectores"
 price: "$240.500"
 specifications:
@@ -13,6 +13,10 @@ specifications:
 model: "LSJ-90W-15AH"
 stock: "disponible"
 order: 19
+imageThumb: "/images/productos-estudio/lsj-90w-15ah-prov.webp"
+imageAlt: "LSJ-90W-15AH – Reiki Energía Solar"
+imageOriginal: "/images/Productos tienda/Luminarias/Lumionaria solar tipo jardin 90w.jpeg"
+imagen_provisional: true
 ---
 
 Luminaria solar tipo jardin con buena cobertura y diseno funcional para espacios exteriores.

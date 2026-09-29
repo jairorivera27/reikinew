@@ -1,7 +1,7 @@
 ---
 title: "SUN2000-330KTL-H1"
 description: "Inversor central / string de gran formato Huawei SUN2000 para plantas de megavatios o grandes comerciales: arquitectura de alta tensión, múltiples MPPT y telemetría con SmartLogger."
-image: "/images/productos-tienda/inversores/huawei-sun2000.png"
+image: "/images/productos-estudio/huawei-sun2000-prov.webp"
 category: "inversores"
 price: "$48.883.500"
 specifications:
@@ -12,6 +12,11 @@ specifications:
 brand: "Huawei"
 stock: "disponible"
 order: 5055
+imageThumb: "/images/productos-estudio/huawei-sun2000-prov.webp"
+imageAlt: "Huawei – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/huawei-sun2000.png"
+imagen_provisional: true
+imagenSerieRef: "Huawei SUN2000"
 ---
 
 **SUN2000-330KTL-H1** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

@@ -1,7 +1,7 @@
 ---
 title: "Microinversor Solar Hoymiles 110VA 110VAC"
 description: "Microinversor Solar Hoymiles 110VA 110VAC. Equipo para conversión de energía a nivel de módulo fotovoltaico. Marca: Hoymiles; modelo: 110VAC; especificación principal: 110VA. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/hoymiles-hms.jpg"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$1.006.098"
 specifications:
@@ -23,6 +23,9 @@ seoKeywords:
   - "comprar microinversor solar colombia"
   - "precio microinversor solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "Hoymiles 110VAC 110VA – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Microinversor Solar Hoymiles 110VA 110VAC** de Hoymiles · 110VA.
 

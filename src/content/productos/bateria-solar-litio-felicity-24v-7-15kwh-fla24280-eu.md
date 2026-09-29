@@ -1,7 +1,7 @@
 ---
 title: "Batería Solar Litio Felicity 24V 7,15kWh FLA24280-EU"
 description: "Batería Solar Litio Felicity 24V 7,15kWh FLA24280-EU. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Marca: Felicity; modelo: FLA24280-EU; especificación principal: 24V 7,15kWh. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/baterias/felicity-fla24.jpg"
+image: "/images/productos-estudio/felicity-fla24.webp"
 category: "baterias"
 price: "$4.834.375"
 specifications:
@@ -24,6 +24,11 @@ seoKeywords:
   - "15kwh"
   - "comprar batería solar colombia"
   - "precio batería solar colombia"
+imageThumb: "/images/productos-estudio/felicity-fla24-thumb.webp"
+imageAlt: "Felicity FLA24280-EU 24V 7,15kWh – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/baterias/felicity-fla24.jpg"
+imagen_provisional: true
+imagenSerieRef: "Felicity FLA24"
 ---
 **Batería Solar Litio Felicity 24V 7,15kWh FLA24280-EU** de Felicity · 24V 7,15kWh.
 

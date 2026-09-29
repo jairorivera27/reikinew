@@ -1,7 +1,7 @@
 ---
 title: "Adaptador Bluetooth Victron 8–70VDC VE.Bus Smart Dongle"
 description: "Adaptador Bluetooth Victron 8–70VDC VE.Bus Smart Dongle. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Victron; modelo: VE.Bus Smart Dongle; especificación principal: 8–70VDC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/monitoreo/victron-cerbo-gx.jpg"
+image: "/images/productos-estudio/victron-cerbo-gx.webp"
 category: "accesorios"
 price: "$465.435"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar sistema de monitoreo solar colombia"
   - "precio sistema de monitoreo solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/victron-cerbo-gx-thumb.webp"
+imageAlt: "Victron VE.Bus Smart Dongle 8–70VDC – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/monitoreo/victron-cerbo-gx.jpg"
 ---
 **Adaptador Bluetooth Victron 8–70VDC VE.Bus Smart Dongle** de Victron · 8–70VDC.
 

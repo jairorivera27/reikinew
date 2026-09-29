@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid GoodWe 20kW GW20K-SDT-30"
 description: "Inversor Solar On-Grid GoodWe 20kW GW20K-SDT-30. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW20K-SDT-30; especificación principal: 20kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
+image: "/images/productos-estudio/goodwe-sdt-prov.webp"
 category: "inversores"
 price: "$5.124.000"
 specifications:
@@ -24,6 +24,10 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/goodwe-sdt-prov.webp"
+imageAlt: "GoodWe GW20K-SDT-30 20kW – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
+imagen_provisional: true
 ---
 **Inversor Solar On-Grid GoodWe 20kW GW20K-SDT-30** de GoodWe · 20kW.
 

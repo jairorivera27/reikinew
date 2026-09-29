@@ -1,7 +1,7 @@
 ---
 title: "Pantalla Victron 1700526"
 description: "Pantalla Victron 1700526. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Victron; modelo: 1700526; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/controladores/victron-smartsolar-mppt.jpg"
+image: "/images/placeholders/accesorios.svg"
 category: "accesorios"
 price: "$1.055.061"
 specifications:
@@ -22,6 +22,9 @@ seoKeywords:
   - "comprar sistema de monitoreo solar colombia"
   - "precio sistema de monitoreo solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "Victron 1700526 N/A – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Pantalla Victron 1700526** de Victron · N/A.
 

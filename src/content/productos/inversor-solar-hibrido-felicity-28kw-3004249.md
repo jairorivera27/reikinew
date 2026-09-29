@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar Híbrido Felicity 28kW 3004249"
 description: "Inversor Solar Híbrido Felicity 28kW 3004249. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: Felicity; modelo: 3004249; especificación principal: 28kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/felicity-hybrid.png"
+image: "/images/productos-estudio/felicity-hybrid-prov.webp"
 category: "inversores"
 price: "$18.292.682"
 specifications:
@@ -23,6 +23,11 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/felicity-hybrid-prov.webp"
+imageAlt: "Felicity 3004249 28kW – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/felicity-hybrid.png"
+imagen_provisional: true
+imagenSerieRef: "Felicity Hybrid"
 ---
 **Inversor Solar Híbrido Felicity 28kW 3004249** de Felicity · 28kW.
 

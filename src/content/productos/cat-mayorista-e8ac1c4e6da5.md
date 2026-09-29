@@ -1,7 +1,7 @@
 ---
 title: "Soluna 10K Pack HV + Soluna HV WIFI Stick"
 description: "Solución de almacenamiento **Soluna** en alto voltaje: packs modulares con BMS integrado y opciones de conectividad (p. ej. Wi‑Fi stick) según referencia, para acoplamiento con inversores homologados por el fabricante."
-image: "/images/productos-tienda/baterias/soluna-battery.png"
+image: "/images/productos-estudio/soluna-battery.webp"
 category: "baterias"
 price: "$17.518.500"
 specifications:
@@ -13,6 +13,9 @@ specifications:
 brand: "Soluna"
 stock: "disponible"
 order: 5213
+imageThumb: "/images/productos-estudio/soluna-battery-thumb.webp"
+imageAlt: "Soluna – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/baterias/soluna-battery.png"
 ---
 
 **SOLUNA 10K PACK HV + SOLUNA HV WIFI STICK** · referencia **Soluna** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

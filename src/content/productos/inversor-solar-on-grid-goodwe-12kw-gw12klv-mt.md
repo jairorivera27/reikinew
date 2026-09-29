@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid GoodWe 12kW GW12KLV-MT"
 description: "Inversor Solar On-Grid GoodWe 12kW GW12KLV-MT. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW12KLV-MT; especificación principal: 12kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$5.468.750"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "GoodWe GW12KLV-MT 12kW – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Inversor Solar On-Grid GoodWe 12kW GW12KLV-MT** de GoodWe · 12kW.
 

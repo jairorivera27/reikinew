@@ -1,7 +1,7 @@
 ---
 title: "Batería de Litio 10kWh"
 description: "Batería de litio de 10kWh con tecnología LiFePO4, perfecta para sistemas residenciales y comerciales pequeños que requieren mayor autonomía."
-image: "/images/productos-tienda/baterias/pylontech-uf5000.png"
+image: "/images/productos-estudio/pylontech-uf5000-prov.webp"
 category: "baterias"
 price: "$23.900.000"
 specifications:
@@ -16,6 +16,11 @@ brand: "Pylontech"
 model: "US10000"
 stock: "disponible"
 order: 8
+imageThumb: "/images/productos-estudio/pylontech-uf5000-prov.webp"
+imageAlt: "Pylontech US10000 – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/baterias/pylontech-uf5000.png"
+imagen_provisional: true
+imagenSerieRef: "Pylontech UF"
 ---
 
 Batería de litio de gran capacidad, ideal para sistemas que requieren mayor autonomía energética. Perfecta para viviendas grandes o pequeños comercios.

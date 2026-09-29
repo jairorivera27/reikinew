@@ -1,7 +1,7 @@
 ---
 title: "Victron Phoenix 24/375"
 description: "Inversor Victron Phoenix 24/375 VE.Direct, referencia PIN243750500, salida sinusoidal pura."
-image: "/images/productos-tienda/inversores/victron-phoenix.png"
+image: "/images/productos-estudio/victron-phoenix-prov.webp"
 category: "inversores"
 price: "$920.000"
 specifications:
@@ -13,6 +13,11 @@ brand: "Victron"
 model: "Phoenix 24/375"
 stock: "disponible"
 order: 7
+imageThumb: "/images/productos-estudio/victron-phoenix-prov.webp"
+imageAlt: "Victron Phoenix 24/375 – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/victron-phoenix.png"
+imagen_provisional: true
+imagenSerieRef: "Victron Phoenix"
 ---
 
 Inversor de onda sinusoidal pura Victron Phoenix, alta eficiencia y potencia de arranque para cargas difíciles.

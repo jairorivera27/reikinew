@@ -1,7 +1,7 @@
 ---
 title: "Studer Battery Status Processor With 500 A Shunt And 5M Cable - Bsp 500"
 description: "Equipo Studer Innotec (BSP, RCC, cables): periféricos para supervisión de batería, control remoto o integración de sistema Xtender/MPPT."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$2.738.700"
 specifications:
@@ -11,6 +11,9 @@ specifications:
 brand: "Studer"
 stock: "disponible"
 order: 5129
+imageAlt: "Studer – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **STUDER BATTERY STATUS PROCESSOR WITH 500 A SHUNT AND 5M CABLE - BSP 500** · referencia **Studer** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

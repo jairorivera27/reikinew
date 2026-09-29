@@ -1,7 +1,7 @@
 ---
 title: "Victron MultiPlus-II 48/5000"
 description: "MultiPlus-II Victron Energy, 48/5000, 120 V CA, inversor-cargador para sistemas híbridos y aislados."
-image: "/images/productos-tienda/inversores/victron-multiplus.png"
+image: "/images/productos-estudio/victron-multiplus-prov.webp"
 category: "inversores"
 price: "$4.713.188"
 specifications:
@@ -29,6 +29,11 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/victron-multiplus-prov.webp"
+imageAlt: "Victron MultiPlus-II 48/5000 5kW – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/victron-multiplus.png"
+imagen_provisional: true
+imagenSerieRef: "Victron MultiPlus"
 ---
 
 **Victron MultiPlus-II 48/5000** (ref. **PMP482505110**). MultiPlus-II Victron Energy, 48/5000, 120 V CA, inversor-cargador para sistemas híbridos y aislados.

@@ -24,6 +24,7 @@ seoKeywords:
   - "comprar batería solar colombia"
   - "precio batería solar colombia"
   - "equipos de energía solar colombia"
+imagenSerieRef: "Growatt ARK"
 ---
 **Batería Solar Litio Growatt 380VDC 5.0kWh IP66** de Growatt · 380VDC 5.0kWh.
 

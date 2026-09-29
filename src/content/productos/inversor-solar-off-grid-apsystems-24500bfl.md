@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar Off-Grid APsystems 24500BFL"
 description: "Inversor Solar Off-Grid APsystems 24500BFL. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: APsystems; modelo: 24500BFL; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/apsystems-ds3.png"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$946.312"
 specifications:
@@ -23,6 +23,9 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "APsystems 24500BFL N/A – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Inversor Solar Off-Grid APsystems 24500BFL** de APsystems · N/A.
 

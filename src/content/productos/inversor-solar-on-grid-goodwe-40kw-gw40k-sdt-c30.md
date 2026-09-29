@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid GoodWe 40kW GW40K-SDT-C30"
 description: "Inversor Solar On-Grid GoodWe 40kW GW40K-SDT-C30. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW40K-SDT-C30; especificación principal: 40kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
+image: "/images/productos-estudio/goodwe-sdt-prov.webp"
 category: "inversores"
 price: "$6.720.000"
 specifications:
@@ -24,6 +24,10 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/goodwe-sdt-prov.webp"
+imageAlt: "GoodWe GW40K-SDT-C30 40kW – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
+imagen_provisional: true
 ---
 **Inversor Solar On-Grid GoodWe 40kW GW40K-SDT-C30** de GoodWe · 40kW.
 

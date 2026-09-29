@@ -1,7 +1,7 @@
 ---
 title: "APS DC Connector Cap MC4 Female"
 description: "Accesorio original APsystems para microinversores (tapas de bus, ECU de comunicación, CTS de corriente, conectores o herramientas). Garantiza mecánica y normativa del conjunto certificado."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$4.136"
 specifications:
@@ -12,6 +12,9 @@ specifications:
 brand: "APsystems"
 stock: "disponible"
 order: 5012
+imageAlt: "APsystems – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **APS DC CONNECTOR CAP MC4 FEMALE** · referencia **APsystems** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

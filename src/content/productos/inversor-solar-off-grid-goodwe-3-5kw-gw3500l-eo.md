@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar Off-Grid GoodWe 3,5kW GW3500L-EO"
 description: "Inversor Solar Off-Grid GoodWe 3,5kW GW3500L-EO. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW3500L-EO; especificación principal: 3,5kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$2.821.000"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "GoodWe GW3500L-EO 3,5kW – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Inversor Solar Off-Grid GoodWe 3,5kW GW3500L-EO** de GoodWe · 3,5kW.
 

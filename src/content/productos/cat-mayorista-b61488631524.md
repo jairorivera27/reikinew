@@ -1,7 +1,7 @@
 ---
 title: "APS Microinverter DS3D 2000W 220V + APS Y3 AC Bus Cable"
 description: "Microinversor dual de tercera generación APsystems DS3D: dos canales MPPT independientes, hasta ~2000 W de salida según región, comunicación Zigbee cifrada y encapsulado IP67."
-image: "/images/productos-tienda/inversores/apsystems-ds3.png"
+image: "/images/productos-estudio/apsystems-ds3-prov.webp"
 category: "inversores"
 price: "$2.004.990"
 specifications:
@@ -13,6 +13,11 @@ specifications:
 brand: "APsystems"
 stock: "disponible"
 order: 5001
+imageThumb: "/images/productos-estudio/apsystems-ds3-prov.webp"
+imageAlt: "APsystems – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/apsystems-ds3.png"
+imagen_provisional: true
+imagenSerieRef: "APsystems DS3"
 ---
 
 **APS MICROINVERTER DS3D 2000W 220V + APS Y3 AC BUS CABLE** · referencia **APsystems** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

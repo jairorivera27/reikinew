@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar Híbrido GoodWe 5kW GW5000-ES-US20"
 description: "Inversor Solar Híbrido GoodWe 5kW GW5000-ES-US20. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW5000-ES-US20; especificación principal: 5kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/goodwe-es.jpg"
+image: "/images/productos-estudio/goodwe-es-prov.webp"
 category: "inversores"
 price: "$6.489.000"
 specifications:
@@ -24,6 +24,11 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/goodwe-es-prov.webp"
+imageAlt: "GoodWe GW5000-ES-US20 5kW – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/goodwe-es.jpg"
+imagen_provisional: true
+imagenSerieRef: "GoodWe ES"
 ---
 **Inversor Solar Híbrido GoodWe 5kW GW5000-ES-US20** de GoodWe · 5kW.
 

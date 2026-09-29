@@ -1,7 +1,7 @@
 ---
 title: "Batería Solar Litio Felicity 12V 1,28kWh 1880812"
 description: "Batería Solar Litio Felicity 12V 1,28kWh 1880812. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Marca: Felicity; modelo: 1880812; especificación principal: 12V 1,28kWh. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/baterias/felicity-12v.jpg"
+image: "/images/productos-estudio/felicity-12v.webp"
 category: "baterias"
 price: "$1.115.625"
 specifications:
@@ -23,6 +23,10 @@ seoKeywords:
   - "28kwh"
   - "comprar batería solar colombia"
   - "precio batería solar colombia"
+imageThumb: "/images/productos-estudio/felicity-12v-thumb.webp"
+imageAlt: "Felicity 1880812 12V 1,28kWh – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/baterias/felicity-12v.jpg"
+imagen_provisional: true
 ---
 **Batería Solar Litio Felicity 12V 1,28kWh 1880812** de Felicity · 12V 1,28kWh.
 

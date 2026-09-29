@@ -1,7 +1,7 @@
 ---
 title: "DTU Hoymiles 250A Accesorio/Monitor"
 description: "DTU Hoymiles 250A Accesorio/Monitor. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Hoymiles; modelo: Accesorio/Monitor; especificación principal: 250A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/monitoreo/hoymiles-dtu.jpg"
+image: "/images/productos-estudio/hoymiles-dtu.webp"
 category: "accesorios"
 price: "$1.559.187"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar sistema de monitoreo solar colombia"
   - "precio sistema de monitoreo solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/hoymiles-dtu-thumb.webp"
+imageAlt: "Hoymiles Accesorio/Monitor 250A – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/monitoreo/hoymiles-dtu.jpg"
 ---
 **DTU Hoymiles 250A Accesorio/Monitor** de Hoymiles · 250A.
 

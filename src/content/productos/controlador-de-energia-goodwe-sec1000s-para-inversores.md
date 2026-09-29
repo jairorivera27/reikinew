@@ -1,7 +1,7 @@
 ---
 title: "Controlador de Energía GoodWe SEC1000S para Inversores"
 description: "Controlador de Energía GoodWe SEC1000S para Inversores. Equipo para control y optimización del flujo de energía del sistema. Marca: GoodWe; modelo: SEC1000S; especificación principal: ≤10W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/monitoreo/goodwe-ezlogger.jpg"
+image: "/images/productos-estudio/goodwe-ezlogger.webp"
 category: "accesorios"
 price: "$3.015.460"
 specifications:
@@ -24,6 +24,11 @@ seoKeywords:
   - "comprar controlador de energía colombia"
   - "precio controlador de energía colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/goodwe-ezlogger-thumb.webp"
+imageAlt: "GoodWe SEC1000S ≤10W – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/monitoreo/goodwe-ezlogger.jpg"
+imagen_provisional: true
+imagenSerieRef: "GoodWe EzLogger"
 ---
 **Controlador de Energía GoodWe SEC1000S para Inversores** de GoodWe · ≤10W.
 

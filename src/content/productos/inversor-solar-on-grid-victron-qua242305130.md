@@ -1,7 +1,7 @@
 ---
 title: "Victron Quattro-II 24/3000"
 description: "Quattro-II Victron Energy, 24/3000, 2x120 V CA, inversor-cargador para sistemas híbridos y aislados."
-image: "/images/productos-tienda/inversores/victron-quattro.png"
+image: "/images/productos-estudio/victron-quattro-prov.webp"
 category: "inversores"
 price: "$5.196.888"
 specifications:
@@ -29,6 +29,11 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/victron-quattro-prov.webp"
+imageAlt: "Victron Quattro-II 24/3000 3kW – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/victron-quattro.png"
+imagen_provisional: true
+imagenSerieRef: "Victron Quattro"
 ---
 
 **Victron Quattro-II 24/3000** (ref. **QUA242305130**). Quattro-II Victron Energy, 24/3000, 2x120 V CA, inversor-cargador para sistemas híbridos y aislados.

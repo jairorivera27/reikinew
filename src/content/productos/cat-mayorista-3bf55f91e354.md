@@ -1,7 +1,7 @@
 ---
 title: "LUNA2000-5-E0-$ LUNA2000-7-E1"
 description: "Módulo o sistema de almacenamiento Huawei LUNA2000 (LiFePO₄, alta tensión según serie): expansión modular, BMS integrado y acoplamiento con inversores Huawei híbridos compatibles."
-image: "/images/productos-tienda/baterias/huawei-luna.png"
+image: "/images/productos-estudio/huawei-luna-prov.webp"
 category: "baterias"
 price: "$14.535.000"
 specifications:
@@ -13,6 +13,11 @@ specifications:
 brand: "Huawei"
 stock: "disponible"
 order: 5062
+imageThumb: "/images/productos-estudio/huawei-luna-prov.webp"
+imageAlt: "Huawei – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/baterias/huawei-luna.png"
+imagen_provisional: true
+imagenSerieRef: "Huawei LUNA"
 ---
 
 **LUNA2000-5-E0-$ LUNA2000-7-E1** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

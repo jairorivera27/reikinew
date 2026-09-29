@@ -1,7 +1,7 @@
 ---
 title: "Breaker Suntree 32A DC SL7N-63-32A2P-800VDC"
 description: "Breaker Suntree 32A DC SL7N-63-32A2P-800VDC. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Suntree; modelo: SL7N-63-32A2P-800VDC; especificación principal: 32A DC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
+image: "/images/productos-estudio/suntree-sl7n-dc.webp"
 category: "protecciones"
 price: "$140.569"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/suntree-sl7n-dc-thumb.webp"
+imageAlt: "Suntree SL7N-63-32A2P-800VDC 32A DC – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
 ---
 **Breaker Suntree 32A DC SL7N-63-32A2P-800VDC** de Suntree · 32A DC.
 

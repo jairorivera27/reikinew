@@ -24,6 +24,7 @@ seoKeywords:
   - "comprar batería solar colombia"
   - "precio batería solar colombia"
   - "equipos de energía solar colombia"
+imagenSerieRef: "GoodWe Lynx"
 ---
 **Batería Solar Litio GoodWe 51.2VDC 280Ah GW14** de GoodWe · 51.2VDC 280Ah.
 

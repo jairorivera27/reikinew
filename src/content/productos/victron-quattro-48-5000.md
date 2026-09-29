@@ -1,7 +1,7 @@
 ---
 title: "Victron Quattro 48/5000"
 description: "Inversor Cargador Victron Quattro 48/5000/70-100/100 230V VE.Bus, referencia QUA485021100."
-image: "/images/productos-tienda/inversores/victron-quattro.png"
+image: "/images/productos-estudio/victron-quattro-prov.webp"
 category: "inversores"
 price: "$9.950.000"
 specifications:
@@ -13,6 +13,11 @@ brand: "Victron"
 model: "Quattro 48/5000"
 stock: "disponible"
 order: 6
+imageThumb: "/images/productos-estudio/victron-quattro-prov.webp"
+imageAlt: "Victron Quattro 48/5000 – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/victron-quattro.png"
+imagen_provisional: true
+imagenSerieRef: "Victron Quattro"
 ---
 
 El Victron Quattro 48/5000 es un inversor cargador avanzado con dos entradas de CA y dos salidas de CA, ideal para sistemas complejos.

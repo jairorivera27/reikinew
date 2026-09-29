@@ -24,6 +24,7 @@ seoKeywords:
   - "2v 5.0kwh"
   - "comprar batería solar colombia"
   - "precio batería solar colombia"
+imagenSerieRef: "Growatt ARK"
 ---
 **Batería Solar Litio Growatt 51,2V 5.0kWh IP21** de Growatt · 51,2V 5.0kWh.
 

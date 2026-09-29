@@ -1,7 +1,7 @@
 ---
 title: "Hoymiles Single-Phase Electric Meter DDSU666NEW-VIA CT-100A"
 description: "Medidor de energía Hoymiles para monitorización de inyección/consumo en instalaciones con microinversores; versiones monofásicas, bifásicas o trifásicas con TC externos."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$581.400"
 specifications:
@@ -12,6 +12,9 @@ specifications:
 brand: "Hoymiles"
 stock: "disponible"
 order: 5032
+imageAlt: "Hoymiles – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **HOYMILES SINGLE-PHASE ELECTRIC METER DDSU666NEW-VIA CT-100A** · referencia **Hoymiles** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

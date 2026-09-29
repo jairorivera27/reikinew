@@ -1,7 +1,7 @@
 ---
 title: "BYD Battery Box Premium LV Bmu"
 description: "Sistema o módulo de almacenamiento en litio (LiFePO₄ típico) para acoplamiento con inversores compatibles; BMS, expansión y cableado según referencia Pytes o BYD."
-image: "/images/productos-tienda/baterias/byd-battery.png"
+image: "/images/productos-estudio/byd-battery-prov.webp"
 category: "baterias"
 price: "$963.900"
 specifications:
@@ -13,6 +13,10 @@ specifications:
 brand: "BYD"
 stock: "disponible"
 order: 5203
+imageThumb: "/images/productos-estudio/byd-battery-prov.webp"
+imageAlt: "BYD – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/baterias/byd-battery.png"
+imagen_provisional: true
 ---
 
 **BYD BATTERY BOX PREMIUM LV BMU** · referencia **BYD** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

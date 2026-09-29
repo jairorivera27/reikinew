@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar Híbrido GoodWe 7,6kW GW7600-ES-US20"
 description: "Inversor Solar Híbrido GoodWe 7,6kW GW7600-ES-US20. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW7600-ES-US20; especificación principal: 7,6kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/goodwe-es.jpg"
+image: "/images/productos-estudio/goodwe-es-prov.webp"
 category: "inversores"
 price: "$6.902.000"
 specifications:
@@ -24,6 +24,11 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/goodwe-es-prov.webp"
+imageAlt: "GoodWe GW7600-ES-US20 7,6kW – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/goodwe-es.jpg"
+imagen_provisional: true
+imagenSerieRef: "GoodWe ES"
 ---
 **Inversor Solar Híbrido GoodWe 7,6kW GW7600-ES-US20** de GoodWe · 7,6kW.
 

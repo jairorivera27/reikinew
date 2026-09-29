@@ -1,7 +1,7 @@
 ---
 title: "Batería Solar Litio Felicity 48V 14,3kWh FLA48280-EU"
 description: "Batería Solar Litio Felicity 48V 14,3kWh FLA48280-EU. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Marca: Felicity; modelo: FLA48280-EU; especificación principal: 48V 14,3kWh. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/baterias/felicity-fla48.jpg"
+image: "/images/productos-estudio/felicity-fla48.webp"
 category: "baterias"
 price: "$9.017.969"
 specifications:
@@ -24,6 +24,11 @@ seoKeywords:
   - "3kwh"
   - "comprar batería solar colombia"
   - "precio batería solar colombia"
+imageThumb: "/images/productos-estudio/felicity-fla48-thumb.webp"
+imageAlt: "Felicity FLA48280-EU 48V 14,3kWh – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/baterias/felicity-fla48.jpg"
+imagen_provisional: true
+imagenSerieRef: "Felicity FLA48"
 ---
 **Batería Solar Litio Felicity 48V 14,3kWh FLA48280-EU** de Felicity · 48V 14,3kWh.
 

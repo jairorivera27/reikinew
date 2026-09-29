@@ -163,10 +163,28 @@ const precioUnitario = etiquetaPrecioPorUnidad(
         )}
 
         <article class="ficha">
-          <div class="ficha-media">
-            <img src={d.image} alt={d.title} width="520" height="400" fetchpriority="high" decoding="async" />
+          <div class={`ficha-media${d.imagen_provisional ? ' ficha-media--provisional' : ''}`}>
+            <img
+              src={d.imagen_provisional ? (d.imageThumb || d.image) : d.image}
+              srcset={
+                d.imagen_provisional
+                  ? undefined
+                  : d.imageThumb
+                    ? `${d.imageThumb} 600w, ${d.image} 1600w`
+                    : undefined
+              }
+              sizes={d.imagen_provisional ? undefined : '(max-width: 768px) 92vw, 520px'}
+              alt={d.imageAlt ?? `${d.brand ? d.brand + ' ' : ''}${d.title} – Reiki Energía Solar`}
+              width={d.imagen_provisional ? 600 : 1600}
+              height={d.imagen_provisional ? 600 : 1600}
+              fetchpriority="high"
+              decoding="async"
+            />
             <span class={`ficha-badge ${stock}`}>{etiquetasStock[stock] ?? 'Disponible'}</span>
             {enLiquidacion && <span class="ficha-badge-descuento">-{d.descuentoPct}%</span>}
+            {d.imagenSerieRef && (
+              <p class="ficha-serie-ref">Imagen de referencia de la serie {d.imagenSerieRef}</p>
+            )}
           </div>
 
           <div class="ficha-info">
@@ -213,6 +231,12 @@ const precioUnitario = etiquetaPrecioPorUnidad(
             </p>
 
             <div class="ficha-acciones">
+              {d.fichaPdf && (
+                <a class="ficha-btn-secundario" href={d.fichaPdf.startsWith('/') ? d.fichaPdf : `/${d.fichaPdf.replace(/^docs\//, '')}`} target="_blank" rel="noopener noreferrer">
+                  <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                  Ficha técnica (PDF)
+                </a>
+              )}
               <div class="quantity-controls" data-product-id={producto.slug}>
                 <button class="qty-btn minus" type="button" aria-label="Disminuir cantidad">-</button>
                 <input type="number" class="qty-input" value="1" min="1" readonly aria-label="Cantidad" />
@@ -626,6 +650,21 @@ const precioUnitario = etiquetaPrecioPorUnidad(
     object-fit: contain;
   }
 
+  .ficha-media--provisional img {
+    max-height: 360px;
+    image-rendering: auto;
+    cursor: default;
+  }
+
+  .ficha-serie-ref {
+    margin: 0.75rem 0 0;
+    font-size: 0.75rem;
+    line-height: 1.35;
+    color: #64748b;
+    text-align: center;
+    font-weight: 400;
+  }
+
   .ficha-badge {
     position: absolute;
     top: 1rem;
@@ -796,6 +835,26 @@ const precioUnitario = etiquetaPrecioPorUnidad(
   .ficha-btn-primario:hover {
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(107, 33, 129, 0.42);
+  }
+
+  .ficha-btn-secundario {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.75rem 1.15rem;
+    border-radius: 50px;
+    border: 2px solid #6b2181;
+    background: #fff;
+    color: #6b2181;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-family: inherit;
+  }
+
+  .ficha-btn-secundario:hover {
+    background: #f5eef8;
   }
 
   .ficha-btn-whatsapp {

@@ -1,7 +1,7 @@
 ---
 title: "Sistema de Monitoreo Solar APsystems ECU-R-MX"
 description: "Sistema de Monitoreo Solar APsystems ECU-R-MX. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: APsystems; modelo: ECU-R-MX; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/monitoreo/apsystems-ecu.jpg"
+image: "/images/productos-estudio/apsystems-ecu.webp"
 category: "accesorios"
 price: "$1.069.250"
 specifications:
@@ -22,6 +22,9 @@ seoKeywords:
   - "comprar sistema de monitoreo solar colombia"
   - "precio sistema de monitoreo solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/apsystems-ecu-thumb.webp"
+imageAlt: "APsystems ECU-R-MX N/A – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/monitoreo/apsystems-ecu.jpg"
 ---
 **Sistema de Monitoreo Solar APsystems ECU-R-MX** de APsystems · N/A.
 

@@ -1,7 +1,7 @@
 ---
 title: "Batería Solar LiFePO4 BSLBATT 51.2V, 100Ah, 5.12kWh BSLBATT-5.12"
 description: "Batería Solar LiFePO4 BSLBATT 51.2V, 100Ah, 5.12kWh BSLBATT-5.12. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Marca: BSLBATT; modelo: BSLBATT-5.12; especificación principal: 51.2V, 100Ah, 5.12kWh. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/baterias/bslbatt-5-12.png"
+image: "/images/productos-estudio/bslbatt-bslbatt-5-12-51-2v-100ah-5-12kwh-prov.webp"
 category: "baterias"
 price: "$4.388.125"
 specifications:
@@ -24,6 +24,10 @@ seoKeywords:
   - "100ah"
   - "5.12kwh"
   - "comprar batería solar colombia"
+imageThumb: "/images/productos-estudio/bslbatt-bslbatt-5-12-51-2v-100ah-5-12kwh-prov.webp"
+imageAlt: "BSLBATT BSLBATT-5.12 51.2V, 100Ah, 5.12kWh – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/baterias/bslbatt-5-12.png"
+imagen_provisional: true
 ---
 **Batería Solar LiFePO4 BSLBATT 51.2V, 100Ah, 5.12kWh BSLBATT-5.12** de BSLBATT · 51.2V, 100Ah, 5.12kWh.
 

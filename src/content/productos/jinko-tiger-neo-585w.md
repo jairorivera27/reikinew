@@ -1,7 +1,7 @@
 ---
 title: "Jinko Tiger Neo 585W"
 description: "Panel solar Jinko Solar JKM585N-72HL4-V de 585W, tecnología N-Type Tiger Neo para máxima eficiencia."
-image: "/images/productos-tienda/paneles-solares/jinko-tiger-neo-585w.png"
+image: "/images/productos-estudio/jinko-solar-jkm585n-72hl4-v-585w-prov.webp"
 category: "paneles"
 price: "$431.250"
 specifications:
@@ -26,6 +26,10 @@ promoImagen: "/images/placeholders/promo-liquidacion.svg"
 sku: "JKM585N-72HL4-V"
 power: "585W"
 updatedAt: "2026-09-10"
+imageThumb: "/images/productos-estudio/jinko-solar-jkm585n-72hl4-v-585w-prov.webp"
+imageAlt: "Jinko Solar JKM585N-72HL4-V 585W – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/paneles-solares/jinko-tiger-neo-585w.png"
+imagen_provisional: true
 ---
 
 Panel Jinko Solar Tiger Neo de 585W, ofrece un rendimiento superior en altas temperaturas y condiciones de baja radiación.

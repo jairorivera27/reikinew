@@ -1,7 +1,7 @@
 ---
 title: "Microinversor Solar APsystems 120V"
 description: "Microinversor Solar APsystems 120V. Equipo para conversión de energía a nivel de módulo fotovoltaico. Marca: APsystems; modelo: 120V; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/apsystems-ds3.png"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$1.192.625"
 specifications:
@@ -22,6 +22,9 @@ seoKeywords:
   - "comprar microinversor solar colombia"
   - "precio microinversor solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "APsystems 120V N/A – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Microinversor Solar APsystems 120V** de APsystems · N/A.
 

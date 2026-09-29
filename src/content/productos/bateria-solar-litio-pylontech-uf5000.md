@@ -1,7 +1,7 @@
 ---
 title: "Batería Solar Litio Pylontech UF5000"
 description: "Batería Solar Litio Pylontech UF5000. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Marca: Pylontech; modelo: UF5000; especificación principal: especificación no disponible. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/baterias/pylontech-uf5000.png"
+image: "/images/productos-estudio/pylontech-uf5000-prov.webp"
 category: "baterias"
 price: "$5.182.926"
 specifications:
@@ -23,6 +23,11 @@ seoKeywords:
   - "comprar batería solar colombia"
   - "precio batería solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/pylontech-uf5000-prov.webp"
+imageAlt: "Pylontech UF5000 N/A – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/baterias/pylontech-uf5000.png"
+imagen_provisional: true
+imagenSerieRef: "Pylontech UF"
 ---
 **Batería Solar Litio Pylontech UF5000** de Pylontech · N/A.
 

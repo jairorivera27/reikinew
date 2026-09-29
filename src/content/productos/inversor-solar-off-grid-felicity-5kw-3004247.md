@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar Off-Grid Felicity 5kW 3004247"
 description: "Inversor Solar Off-Grid Felicity 5kW 3004247. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: Felicity; modelo: 3004247; especificación principal: 5kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/felicity-hybrid.png"
+image: "/images/productos-estudio/felicity-hybrid-prov.webp"
 category: "inversores"
 price: "$1.785.714"
 specifications:
@@ -23,6 +23,11 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/felicity-hybrid-prov.webp"
+imageAlt: "Felicity 3004247 5kW – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/felicity-hybrid.png"
+imagen_provisional: true
+imagenSerieRef: "Felicity Hybrid"
 ---
 **Inversor Solar Off-Grid Felicity 5kW 3004247** de Felicity · 5kW.
 

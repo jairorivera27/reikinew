@@ -1,7 +1,7 @@
 ---
 title: "Smart DongleB-06-EU"
 description: "Dongle de comunicaciones Huawei para inversores SUN2000: conectividad 4G o Wi‑Fi según referencia, para telemetría remota sin cableado LAN permanente."
-image: "/images/productos-tienda/monitoreo/huawei-smartlogger.jpg"
+image: "/images/productos-estudio/huawei-smartlogger.webp"
 category: "accesorios"
 price: "$711.450"
 specifications:
@@ -12,6 +12,9 @@ specifications:
 brand: "Huawei"
 stock: "disponible"
 order: 5060
+imageThumb: "/images/productos-estudio/huawei-smartlogger-thumb.webp"
+imageAlt: "Huawei – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/monitoreo/huawei-smartlogger.jpg"
 ---
 
 **Smart DongleB-06-EU** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

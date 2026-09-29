@@ -1,7 +1,7 @@
 ---
 title: "Sistema de Monitoreo Solar Victron BPP900451100"
 description: "Sistema de Monitoreo Solar Victron BPP900451100. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Victron; modelo: BPP900451100; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/monitoreo/victron-cerbo-gx.jpg"
+image: "/images/productos-estudio/victron-cerbo-gx.webp"
 category: "accesorios"
 price: "$1.367.734"
 specifications:
@@ -22,6 +22,9 @@ seoKeywords:
   - "comprar sistema de monitoreo solar colombia"
   - "precio sistema de monitoreo solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/victron-cerbo-gx-thumb.webp"
+imageAlt: "Victron BPP900451100 N/A – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/monitoreo/victron-cerbo-gx.jpg"
 ---
 **Sistema de Monitoreo Solar Victron BPP900451100** de Victron · N/A.
 

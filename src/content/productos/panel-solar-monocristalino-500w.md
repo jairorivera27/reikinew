@@ -1,7 +1,7 @@
 ---
 title: "Panel Solar Monocristalino 500W"
 description: "Panel solar monocristalino de 500W con tecnología PERC, ideal para instalaciones residenciales. Alta eficiencia y durabilidad garantizada."
-image: "/images/productos-tienda/paneles-solares/jinkosolar-500w.png"
+image: "/images/productos-estudio/jinko-solar-jkm500m-54hl4-b-prov.webp"
 category: "paneles"
 price: "$529.000"
 specifications:
@@ -23,6 +23,10 @@ seoKeywords:
   - "panel solar 500w para casa colombia"
   - "panel 500w monocristalino perc garantia 25 anos"
   - "modulo fotovoltaico 500w envio nacional colombia"
+imageThumb: "/images/productos-estudio/jinko-solar-jkm500m-54hl4-b-prov.webp"
+imageAlt: "Jinko Solar JKM500M-54HL4-B – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/paneles-solares/jinkosolar-500w.png"
+imagen_provisional: true
 ---
 
 Panel solar monocristalino de 500W con excelente relación precio-rendimiento. Perfecto para instalaciones residenciales y pequeñas comerciales.

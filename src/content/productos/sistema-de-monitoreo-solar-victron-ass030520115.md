@@ -1,7 +1,7 @@
 ---
 title: "Sistema de Monitoreo Solar Victron ASS030520115"
 description: "Sistema de Monitoreo Solar Victron ASS030520115. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Victron; modelo: ASS030520115; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/monitoreo/victron-cerbo-gx.jpg"
+image: "/images/productos-estudio/victron-cerbo-gx.webp"
 category: "accesorios"
 price: "$777.345"
 specifications:
@@ -22,6 +22,9 @@ seoKeywords:
   - "comprar sistema de monitoreo solar colombia"
   - "precio sistema de monitoreo solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/victron-cerbo-gx-thumb.webp"
+imageAlt: "Victron ASS030520115 N/A – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/monitoreo/victron-cerbo-gx.jpg"
 ---
 **Sistema de Monitoreo Solar Victron ASS030520115** de Victron · N/A.
 

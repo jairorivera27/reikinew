@@ -1,7 +1,7 @@
 ---
 title: "Breaker Suntree 80A DC 5504211"
 description: "Breaker Suntree 80A DC 5504211. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Suntree; modelo: 5504211; especificación principal: 80A DC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
+image: "/images/productos-estudio/suntree-sl7n-dc.webp"
 category: "protecciones"
 price: "$41.687"
 specifications:
@@ -23,6 +23,9 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/suntree-sl7n-dc-thumb.webp"
+imageAlt: "Suntree 5504211 80A DC – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
 ---
 **Breaker Suntree 80A DC 5504211** de Suntree · 80A DC.
 

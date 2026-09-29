@@ -1,7 +1,7 @@
 ---
 title: "Must PV30-1524"
 description: "Inversor Must PV30-1524 LVHM, eficiente y robusto para sistemas aislados y de respaldo."
-image: "/images/productos-tienda/inversores/must-pv.png"
+image: "/images/productos-estudio/must-pv-prov.webp"
 category: "inversores"
 price: "$1.390.000"
 specifications:
@@ -13,6 +13,11 @@ brand: "Must"
 model: "PV30-1524 LVHM"
 stock: "disponible"
 order: 1
+imageThumb: "/images/productos-estudio/must-pv-prov.webp"
+imageAlt: "Must PV30-1524 LVHM – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/must-pv.png"
+imagen_provisional: true
+imagenSerieRef: "Must PV"
 ---
 
 Inversor Must PV30-1524 LVHM, una solución económica y confiable para tus necesidades de energía solar básica.

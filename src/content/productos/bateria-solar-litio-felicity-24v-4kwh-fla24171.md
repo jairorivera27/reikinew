@@ -1,7 +1,7 @@
 ---
 title: "Batería Solar Litio Felicity 24V 4kWh FLA24171"
 description: "Batería Solar Litio Felicity 24V 4kWh FLA24171. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Marca: Felicity; modelo: FLA24171; especificación principal: 24V 4kWh. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/baterias/felicity-fla24.jpg"
+image: "/images/productos-estudio/felicity-fla24.webp"
 category: "baterias"
 price: "$3.718.750"
 specifications:
@@ -24,6 +24,11 @@ seoKeywords:
   - "comprar batería solar colombia"
   - "precio batería solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/felicity-fla24-thumb.webp"
+imageAlt: "Felicity FLA24171 24V 4kWh – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/baterias/felicity-fla24.jpg"
+imagen_provisional: true
+imagenSerieRef: "Felicity FLA24"
 ---
 **Batería Solar Litio Felicity 24V 4kWh FLA24171** de Felicity · 24V 4kWh.
 

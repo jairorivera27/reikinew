@@ -1,7 +1,7 @@
 ---
 title: "Panel Solar Monocristalino Must 2000W LEYU"
 description: "Panel Solar Monocristalino Must 2000W LEYU. Equipo para generación de energía solar fotovoltaica. Marca: Must; modelo: LEYU; especificación principal: 2000W. Compara potencia, tecnología y compatibilidad antes de instalar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/paneles-solares/must-panel-mono.jpg"
+image: "/images/productos-estudio/must-leyu-2000w.webp"
 category: "paneles"
 price: "$1.467.500"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar panel solar colombia"
   - "precio panel solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/must-leyu-2000w-thumb.webp"
+imageAlt: "Must LEYU 2000W – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/paneles-solares/must-panel-mono.jpg"
 ---
 **Panel Solar Monocristalino Must 2000W LEYU** de Must · 2000W.
 

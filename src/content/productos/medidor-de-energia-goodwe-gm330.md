@@ -22,6 +22,8 @@ seoKeywords:
   - "comprar medidor de energía colombia"
   - "precio medidor de energía colombia"
   - "equipos de energía solar colombia"
+draft: true
+imagenPendiente: true
 ---
 **Medidor de Energía GoodWe GM330** de GoodWe · N/A.
 

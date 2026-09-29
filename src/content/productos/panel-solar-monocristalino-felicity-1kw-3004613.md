@@ -1,7 +1,7 @@
 ---
 title: "Panel Solar Monocristalino Felicity 1kW 3004613"
 description: "Panel Solar Monocristalino Felicity 1kW 3004613. Equipo para generación de energía solar fotovoltaica. Marca: Felicity; modelo: 3004613; especificación principal: 1kW. Compara potencia, tecnología y compatibilidad antes de instalar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/paneles-solares/felicity-panel-mono.jpg"
+image: "/images/productos-estudio/felicity-3004613-1kw.webp"
 category: "paneles"
 price: "$811.689"
 specifications:
@@ -23,6 +23,9 @@ seoKeywords:
   - "comprar panel solar colombia"
   - "precio panel solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/felicity-3004613-1kw-thumb.webp"
+imageAlt: "Felicity 3004613 1kW – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/paneles-solares/felicity-panel-mono.jpg"
 ---
 **Panel Solar Monocristalino Felicity 1kW 3004613** de Felicity · 1kW.
 

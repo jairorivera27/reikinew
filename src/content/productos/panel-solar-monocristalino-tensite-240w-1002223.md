@@ -1,7 +1,7 @@
 ---
 title: "Panel Solar Monocristalino Tensite 240W 1002223"
 description: "Panel Solar Monocristalino Tensite 240W 1002223. Equipo para generación de energía solar fotovoltaica. Marca: Tensite; modelo: 1002223; especificación principal: 240W. Compara potencia, tecnología y compatibilidad antes de instalar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/paneles-solares/tensite-240w-mono.jpg"
+image: "/images/productos-estudio/tensite-1002223-240w.webp"
 category: "paneles"
 price: "$243.688"
 specifications:
@@ -23,6 +23,9 @@ seoKeywords:
   - "comprar panel solar colombia"
   - "precio panel solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/tensite-1002223-240w-thumb.webp"
+imageAlt: "Tensite 1002223 240W – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/paneles-solares/tensite-240w-mono.jpg"
 ---
 **Panel Solar Monocristalino Tensite 240W 1002223** de Tensite · 240W.
 

@@ -1,7 +1,7 @@
 ---
 title: "Breaker Suntree 25A AC SCB8-63-25A1P"
 description: "Breaker Suntree 25A AC SCB8-63-25A1P. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Suntree; modelo: SCB8-63-25A1P; especificación principal: 25A AC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/protecciones/suntree-scb8-ac.jpg"
+image: "/images/productos-estudio/suntree-scb8-ac-prov.webp"
 category: "protecciones"
 price: "$13.640"
 specifications:
@@ -24,6 +24,10 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/suntree-scb8-ac-prov.webp"
+imageAlt: "Suntree SCB8-63-25A1P 25A AC – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/protecciones/suntree-scb8-ac.jpg"
+imagen_provisional: true
 ---
 **Breaker Suntree 25A AC SCB8-63-25A1P** de Suntree · 25A AC.
 

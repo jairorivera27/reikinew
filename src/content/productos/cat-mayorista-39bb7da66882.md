@@ -1,7 +1,7 @@
 ---
 title: "SmartGuard-63A-S0"
 description: "Periférico de protección o alimentación auxiliar Huawei (SmartGuard / SmartPS) para cuadros AC/DC en instalaciones Smart PV según esquema del fabricante."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$2.998.800"
 specifications:
@@ -12,6 +12,9 @@ specifications:
 brand: "Huawei"
 stock: "disponible"
 order: 5064
+imageAlt: "Huawei – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **SmartGuard-63A-S0** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

@@ -1,7 +1,7 @@
 ---
 title: "Breaker Suntree 100A DC SL7N-125D-100A1P"
 description: "Breaker Suntree 100A DC SL7N-125D-100A1P. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Suntree; modelo: SL7N-125D-100A1P; especificación principal: 100A DC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
+image: "/images/productos-estudio/suntree-sl7n-dc.webp"
 category: "protecciones"
 price: "$68.254"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/suntree-sl7n-dc-thumb.webp"
+imageAlt: "Suntree SL7N-125D-100A1P 100A DC – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
 ---
 **Breaker Suntree 100A DC SL7N-125D-100A1P** de Suntree · 100A DC.
 

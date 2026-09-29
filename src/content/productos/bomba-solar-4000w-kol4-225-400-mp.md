@@ -1,7 +1,7 @@
 ---
 title: "Bomba Solar 4000W KOL4-225-400-MP"
 description: "Bomba Solar 4000W KOL4-225-400-MP. Equipo para bombeo de agua en aplicaciones solares, agrícolas o residenciales. Modelo: KOL4-225-400-MP; especificación principal: 4000W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/bombeo/kolos4-sumergible.jpg"
+image: "/images/productos-estudio/kolos4-sumergible-prov.webp"
 category: "bombeo"
 price: "$6.808.288"
 specifications:
@@ -22,6 +22,10 @@ seoKeywords:
   - "comprar bomba solar colombia"
   - "precio bomba solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/kolos4-sumergible-prov.webp"
+imageAlt: "Kolos KOL4-225-400-MP 4000W – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/bombeo/kolos4-sumergible.jpg"
+imagen_provisional: true
 ---
 **Bomba Solar 4000W KOL4-225-400-MP** de Multimarca · 4000W.
 

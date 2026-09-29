@@ -1,7 +1,7 @@
 ---
 title: "APS Communication Unit ECU-R"
 description: "Accesorio original APsystems para microinversores (tapas de bus, ECU de comunicación, CTS de corriente, conectores o herramientas). Garantiza mecánica y normativa del conjunto certificado."
-image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
 price: "$1.089.150"
 specifications:
@@ -12,6 +12,9 @@ specifications:
 brand: "APsystems"
 stock: "disponible"
 order: 5007
+imageAlt: "APsystems – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 
 **APS COMMUNICATION UNIT ECU-R** · referencia **APsystems** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

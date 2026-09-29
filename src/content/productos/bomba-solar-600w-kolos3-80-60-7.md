@@ -1,7 +1,7 @@
 ---
 title: "Bomba Solar 600W KOLOS3-80-60-7"
 description: "Bomba Solar 600W KOLOS3-80-60-7. Equipo para bombeo de agua en aplicaciones solares, agrícolas o residenciales. Modelo: KOLOS3-80-60-7; especificación principal: 600W. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/bombeo/kolos3-sumergible.jpg"
+image: "/images/productos-estudio/kolos3-sumergible-prov.webp"
 category: "bombeo"
 price: "$2.609.819"
 specifications:
@@ -22,6 +22,10 @@ seoKeywords:
   - "comprar bomba solar colombia"
   - "precio bomba solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/kolos3-sumergible-prov.webp"
+imageAlt: "Kolos KOLOS3-80-60-7 600W – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/bombeo/kolos3-sumergible.jpg"
+imagen_provisional: true
 ---
 **Bomba Solar 600W KOLOS3-80-60-7** de Multimarca · 600W.
 

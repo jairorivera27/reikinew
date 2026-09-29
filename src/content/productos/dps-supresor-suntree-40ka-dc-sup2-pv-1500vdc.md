@@ -1,7 +1,7 @@
 ---
 title: "DPS Supresor Suntree 40kA DC SUP2-PV-1500VDC"
 description: "DPS Supresor Suntree 40kA DC SUP2-PV-1500VDC. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Suntree; modelo: SUP2-PV-1500VDC; especificación principal: 40kA DC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/protecciones/suntree-spd-dc.jpg"
+image: "/images/productos-estudio/suntree-spd-dc.webp"
 category: "protecciones"
 price: "$332.159"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/suntree-spd-dc-thumb.webp"
+imageAlt: "Suntree SUP2-PV-1500VDC 40kA DC – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/protecciones/suntree-spd-dc.jpg"
 ---
 **DPS Supresor Suntree 40kA DC SUP2-PV-1500VDC** de Suntree · 40kA DC.
 

@@ -1,7 +1,7 @@
 ---
 title: "Breaker Suntree 40A DC SL7N-63-40A1P-180VDC"
 description: "Breaker Suntree 40A DC SL7N-63-40A1P-180VDC. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Marca: Suntree; modelo: SL7N-63-40A1P-180VDC; especificación principal: 40A DC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
+image: "/images/productos-estudio/suntree-sl7n-dc.webp"
 category: "protecciones"
 price: "$42.275"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar protección eléctrica solar colombia"
   - "precio protección eléctrica solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/suntree-sl7n-dc-thumb.webp"
+imageAlt: "Suntree SL7N-63-40A1P-180VDC 40A DC – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
 ---
 **Breaker Suntree 40A DC SL7N-63-40A1P-180VDC** de Suntree · 40A DC.
 

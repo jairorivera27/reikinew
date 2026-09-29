@@ -1,7 +1,7 @@
 ---
 title: "Monitor de Baterías Victron BMV-712 Smart con Bluetooth"
 description: "Monitor de Baterías Victron BMV-712 Smart con Bluetooth. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Victron; modelo: BMV-712 Smart; especificación principal: 6.5–70VDC, shunt 500A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/monitoreo/victron-cerbo-gx.jpg"
+image: "/images/productos-estudio/victron-cerbo-gx.webp"
 category: "accesorios"
 price: "$789.028"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "shunt 500a"
   - "comprar sistema de monitoreo solar colombia"
   - "precio sistema de monitoreo solar colombia"
+imageThumb: "/images/productos-estudio/victron-cerbo-gx-thumb.webp"
+imageAlt: "Victron BMV-712 Smart 6.5–70VDC, shunt 500A – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/monitoreo/victron-cerbo-gx.jpg"
 ---
 **Monitor de Baterías Victron BMV-712 Smart con Bluetooth** de Victron · 6.5–70VDC, shunt 500A.
 

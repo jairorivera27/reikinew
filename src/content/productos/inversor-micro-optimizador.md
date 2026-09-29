@@ -1,7 +1,7 @@
 ---
 title: "Apsystems DS3D"
 description: "Microinversor Apsystems DS3D-MX, máxima potencia para dos paneles de alta capacidad."
-image: "/images/productos-tienda/inversores/apsystems-ds3.png"
+image: "/images/productos-estudio/apsystems-ds3-prov.webp"
 category: "inversores"
 price: "$1.290.000"
 specifications:
@@ -13,6 +13,11 @@ brand: "APsystems"
 model: "DS3D-MX"
 stock: "disponible"
 order: 5
+imageThumb: "/images/productos-estudio/apsystems-ds3-prov.webp"
+imageAlt: "APsystems DS3D-MX – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/inversores/apsystems-ds3.png"
+imagen_provisional: true
+imagenSerieRef: "APsystems DS3"
 ---
 
 Microinversor dual Apsystems DS3D, ideal para maximizar la producción individual de cada panel y facilitar la expansión.

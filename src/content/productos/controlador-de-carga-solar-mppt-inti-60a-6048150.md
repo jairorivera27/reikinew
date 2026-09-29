@@ -1,7 +1,7 @@
 ---
 title: "Controlador de Carga Solar MPPT Inti 60A 6048150"
 description: "Controlador de Carga Solar MPPT Inti 60A 6048150. Equipo para regulación y gestión de la carga en sistemas fotovoltaicos. Marca: Inti; modelo: 6048150; especificación principal: 60A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/controladores/inti-mppt.jpg"
+image: "/images/productos-estudio/inti-mppt-60a.webp"
 category: "controladores"
 price: "$1.088.062"
 specifications:
@@ -23,6 +23,9 @@ seoKeywords:
   - "comprar controlador solar colombia"
   - "precio controlador solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "Inti 6048150 60A – Reiki Energía Solar"
+imageThumb: "/images/productos-estudio/inti-mppt-60a-thumb.webp"
+imageOriginal: "/images/productos-tienda/controladores/inti-mppt.jpg"
 ---
 **Controlador de Carga Solar MPPT Inti 60A 6048150** de Inti · 60A.
 

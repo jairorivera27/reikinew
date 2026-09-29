@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar Híbrido Hoymiles 7,68kW USG1"
 description: "Inversor Solar Híbrido Hoymiles 7,68kW USG1. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: Hoymiles; modelo: USG1; especificación principal: 7,68kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/hoymiles-hms.jpg"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$11.153.100"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "68kw"
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
+imageAlt: "Hoymiles USG1 7,68kW – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Inversor Solar Híbrido Hoymiles 7,68kW USG1** de Hoymiles · 7,68kW.
 

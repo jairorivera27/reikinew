@@ -1,7 +1,7 @@
 ---
 title: "Batería Solar Litio Pylontech 48V 2.4kWh 1708249"
 description: "Batería Solar Litio Pylontech 48V 2.4kWh 1708249. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Marca: Pylontech; modelo: 1708249; especificación principal: 48V 2.4kWh. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/baterias/pylontech-3kwh-medellin.png"
+image: "/images/productos-estudio/pylontech-3kwh-medellin-prov.webp"
 category: "baterias"
 price: "$3.766.269"
 specifications:
@@ -23,6 +23,10 @@ seoKeywords:
   - "comprar batería solar colombia"
   - "precio batería solar colombia"
   - "equipos de energía solar colombia"
+imageThumb: "/images/productos-estudio/pylontech-3kwh-medellin-prov.webp"
+imageAlt: "Pylontech 1708249 48V 2.4kWh – Reiki Energía Solar"
+imageOriginal: "/images/productos-tienda/baterias/pylontech-3kwh-medellin.png"
+imagen_provisional: true
 ---
 **Batería Solar Litio Pylontech 48V 2.4kWh 1708249** de Pylontech · 48V 2.4kWh.
 

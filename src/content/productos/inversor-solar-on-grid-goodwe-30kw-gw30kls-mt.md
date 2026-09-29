@@ -1,7 +1,7 @@
 ---
 title: "Inversor Solar On-Grid GoodWe 30kW GW30KLS-MT"
 description: "Inversor Solar On-Grid GoodWe 30kW GW30KLS-MT. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW30KLS-MT; especificación principal: 30kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
-image: "/images/productos-tienda/inversores/goodwe-sdt.jpg"
+image: "/images/placeholders/inversores.svg"
 category: "inversores"
 price: "$6.321.000"
 specifications:
@@ -24,6 +24,9 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
+imageAlt: "GoodWe GW30KLS-MT 30kW – Reiki Energía Solar"
+draft: true
+imagenPendiente: true
 ---
 **Inversor Solar On-Grid GoodWe 30kW GW30KLS-MT** de GoodWe · 30kW.
 
