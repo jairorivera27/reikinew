@@ -4,7 +4,7 @@ title: "Solis Inversor S6-GR1P6K-S"
 description: "Inversor string on-grid Solis: doble o múltiple MPPT, monitorización y protecciones integradas para instalaciones residenciales, comerciales o grandes según referencia."
 image: "/images/livoltek.png"
 category: "inversores"
-price: "$3.908.850"
+price: "$1.946.800"
 specifications:
   - "Potencia y número de MPPT según modelo (monofásico GR1P / S6)"
   - "Rango de tensión CC y CA según datasheet Solis del SKU"
@@ -14,6 +14,7 @@ specifications:
 brand: "Solis"
 stock: "disponible"
 order: 5073
+updatedAt: "2026-09-29"
 ---
 
 **SOLIS INVERSOR S6-GR1P6K-S** · referencia **Solis** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

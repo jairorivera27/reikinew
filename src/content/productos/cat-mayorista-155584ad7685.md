@@ -4,7 +4,7 @@ title: "Solis Inversor S5-GR3P5K-LV"
 description: "Inversor string on-grid Solis: doble o múltiple MPPT, monitorización y protecciones integradas para instalaciones residenciales, comerciales o grandes según referencia."
 image: "/images/livoltek.png"
 category: "inversores"
-price: "$9.254.550"
+price: "$6.229.700"
 specifications:
   - "Potencia y número de MPPT según modelo (trifásico GR3P)"
   - "Rango de tensión CC y CA según datasheet Solis del SKU"
@@ -14,6 +14,7 @@ specifications:
 brand: "Solis"
 stock: "disponible"
 order: 5077
+updatedAt: "2026-09-29"
 ---
 
 **SOLIS INVERSOR S5-GR3P5K-LV** · referencia **Solis** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.
