@@ -1,0 +1,71 @@
+---
+title: "Reflector Solar Hardy Vega 1000 – 100 W reales · 14.000 lm"
+description: "Reflector solar profesional para canchas deportivas Hardy Vega 1000 de 100 W reales y 14.000 lm (140 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 80 Ah y panel 80 W / 6 V monocristalino separado, con autonomía de 12 – 14 h. Se instala a 8 – 12 m de altura y ilumina 600 – 800 m² por reflector. Protección IP66 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024)."
+image: "/images/productos-estudio/hardy-vega-1000.webp"
+imageThumb: "/images/productos-estudio/hardy-vega-1000-thumb.webp"
+imageAlt: "Reflector Solar Hardy Vega 1000 – 100 W reales · 14.000 lm – Reiki Energía Solar"
+category: "reflectores"
+price: "$850.000"
+specifications:
+  - "Tipo: Reflector solar profesional para canchas deportivas"
+  - "Potencia real: 100 W"
+  - "Flujo luminoso: 14.000 lm"
+  - "Eficacia luminosa: 140 lm/W"
+  - "Temperatura de color: 6500 K"
+  - "CRI: > 70"
+  - "Ángulo de apertura: 120°"
+  - "Vida útil LED: 90.000 h"
+  - "Batería: LiFePO4 3,2 V / 80 Ah"
+  - "Panel solar: 80 W / 6 V monocristalino separado"
+  - "Tiempo de carga: 5 – 6 h de sol directo"
+  - "Autonomía: 12 – 14 h"
+  - "Grado de protección: IP66 / IK08"
+  - "Temperatura de operación: -10 °C a 50 °C"
+  - "Material: Aluminio fundido"
+  - "Dimensiones: 358 × 320 × 60 mm"
+  - "Altura de instalación recomendada: 8 – 12 m"
+  - "Distancia entre postes: 20 – 30 m"
+  - "Área de cobertura: 600 – 800 m² por reflector"
+  - "Garantía: 2 años"
+  - "RETILAP: Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024)"
+brand: "Hardy Solar"
+model: "Vega 1000"
+sku: "HARDY-VEGA-1000"
+power: "100 W"
+stock: "disponible"
+order: 45
+updatedAt: "2026-09-28"
+imagen_provisional: false
+fichaPdf: "/fichas/hardy-vega-1000-ficha-tecnica.pdf"
+seoKeywords:
+  - "luminaria solar"
+  - "hardy vega 1000"
+  - "reflector solar led"
+  - "alumbrado público solar"
+  - "luminaria solar retilap"
+  - "luminaria solar colombia"
+  - "comprar luminaria solar medellín"
+faqs:
+  - pregunta: "¿Cuántos vatios reales tiene la Vega 1000?"
+    respuesta: "100 W reales, con un flujo de 14.000 lm. Para comparar luminarias solares, fíjate en los lúmenes y en los vatios reales, no en el número del modelo."
+  - pregunta: "¿Cuántas horas alumbra y cuánto tarda en cargar?"
+    respuesta: "Autonomía: 12 – 14 h. Carga completa en 5 – 6 h de sol directo. En días nublados la carga es menor; por eso la batería LiFePO4 guarda reserva para más de una noche en los modelos que lo indican."
+  - pregunta: "¿A qué altura se instala y cuánto espacio ilumina?"
+    respuesta: "Altura recomendada: 8 – 12 m. Distancia entre postes: 20 – 30 m. Cobertura: 600 – 800 m² por reflector."
+  - pregunta: "¿Necesita cableado o conexión a la red eléctrica?"
+    respuesta: "No. El panel solar va separado de la lámpara y se conecta con su cable; se orienta hacia el sol. Solo se fija en el poste, muro o soporte y enciende automáticamente al anochecer."
+  - pregunta: "¿Qué incluye?"
+    respuesta: "Reflector solar Vega 1000, panel solar monocristalino 80 W, soporte de montaje ajustable, kit de instalación, manual de usuario. El poste no está incluido."
+  - pregunta: "¿Tiene certificación RETILAP?"
+    respuesta: "Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024)."
+  - pregunta: "¿Qué garantía tiene?"
+    respuesta: "2 años de garantía del fabricante (Hardy Solar Energy). Reiki Energía Solar te acompaña en el trámite."
+  - pregunta: "¿Dónde se recomienda usar?"
+    respuesta: "Canchas deportivas, parqueaderos, fachadas, bodegas y áreas industriales, zonas verdes y parques."
+---
+
+**Reflector Solar Hardy Vega 1000 – 100 W reales · 14.000 lm**
+
+Reflector solar profesional para canchas deportivas Hardy Vega 1000 de 100 W reales y 14.000 lm (140 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 80 Ah y panel 80 W / 6 V monocristalino separado, con autonomía de 12 – 14 h. Se instala a 8 – 12 m de altura y ilumina 600 – 800 m² por reflector. Protección IP66 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024).
+
+Ficha técnica del fabricante: Hardy Solar Energy. Precio con IVA incluido.

@@ -389,7 +389,7 @@
     "controladores": ["RETIE", "IEC 62109"],
     "protecciones": ["RETIE", "IEC 60947 / IEC 61643"],
     "bombeo": ["RETIE"],
-    "reflectores": ["RETIE"],
+    "reflectores": ["RETILAP (Resolución 40150 de 2024) para alumbrado exterior", "RETIE"],
     "accesorios": ["Compatibilidad con el equipo principal del sistema"]
   },
 

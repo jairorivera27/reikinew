@@ -13,6 +13,8 @@ export interface CategoriaTienda {
   tipoSingular: string;
   imagenPorDefecto: string;
   descripcionSeo: string;
+  /** Catálogo PDF descargable de la categoría (opcional). */
+  catalogoPdf?: string;
 }
 
 export const CATEGORIAS: CategoriaTienda[] = [...config.categorias].sort((a, b) => a.orden - b.orden);

@@ -84,13 +84,25 @@ const grupoCatalogo = grupoDelCatalogo(specs);
 const grupos = [...(grupoCatalogo ? [grupoCatalogo] : []), ...(serie?.grupos ?? [])];
 
 /** La garantía de la serie es un dato verificado; la de categoría es solo referencia. */
-const garantiaSerie = serie?.grupos
-  .find((g) => g.titulo.toLowerCase().includes('garantía'))
-  ?.filas.map((f) => `${f.clave}: ${f.valor}`)
-  .join(' · ');
+// Garantía verificada: la de la serie o, si no hay serie, la que trae la ficha del producto.
+const garantiaProducto = d.specifications
+  .find((s) => /^garant[ií]a\s*:/i.test(s))
+  ?.replace(/^garant[ií]a\s*:\s*/i, '');
+const garantiaSerie =
+  serie?.grupos
+    .find((g) => g.titulo.toLowerCase().includes('garantía'))
+    ?.filas.map((f) => `${f.clave}: ${f.valor}`)
+    .join(' · ') ?? (garantiaProducto ? `${garantiaProducto} de garantía del fabricante.` : undefined);
 const garantiaCategoria = garantiaDeCategoria(d.category);
 const certificaciones = certificacionesDeCategoria(d.category);
-const faqs = faqsDe(d.category);
+// Primero las preguntas del producto; luego las de la categoría que no repitan pregunta.
+const faqsProducto = d.faqs ?? [];
+const faqs = [
+  ...faqsProducto,
+  ...faqsDe(d.category).filter(
+    (f) => !faqsProducto.some((p) => p.pregunta.trim().toLowerCase() === f.pregunta.trim().toLowerCase())
+  ),
+];
 
 const mensajeFichaTecnica = encodeURIComponent(
   `Hola, necesito la ficha técnica completa de: ${d.title}${d.model ? ` (${d.model})` : ''}`
@@ -301,6 +313,14 @@ const precioUnitario = etiquetaPrecioPorUnidad(
                     Datos de la serie <strong>{serie.nombre}</strong>, tomados de la hoja de datos
                     del fabricante (<a href={serie.url} rel="noopener nofollow" target="_blank">{serie.fuente}</a>).
                     Los valores pueden variar según la variante exacta del modelo.
+                  </p>
+                ) : d.fichaPdf ? (
+                  <p class="specs-fuente">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    Datos tomados de la ficha técnica del fabricante.
+                    <a href={d.fichaPdf.startsWith('/') ? d.fichaPdf : `/${d.fichaPdf.replace(/^docs\//, '')}`} target="_blank" rel="noopener">
+                      Descargar ficha técnica (PDF)
+                    </a>
                   </p>
                 ) : (
                   <p class="specs-fuente specs-fuente-solicitud">

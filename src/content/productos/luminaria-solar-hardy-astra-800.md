@@ -1,0 +1,71 @@
+---
+title: "Luminaria Solar Hardy Astra 800 – 14 W reales · 2.590 lm"
+description: "Lámpara solar integrada para alumbrado público autónomo Hardy Astra 800 de 14 W reales y 2.590 lm (185 lm/W). Se comercializa como \"800 W equivalente\"; la potencia real medida es 14 W. Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 20 Ah, con autonomía de hasta 12 h. Se instala a 5 – 6 m de altura y ilumina hasta 100 m². Protección IP66 / IK08 para exterior. Producto certificado RETILAP (Cumple Resolución 40150 de mayo 03 de 2024)."
+image: "/images/productos-estudio/hardy-astra-800.webp"
+imageThumb: "/images/productos-estudio/hardy-astra-800-thumb.webp"
+imageAlt: "Luminaria Solar Hardy Astra 800 – 14 W reales · 2.590 lm – Reiki Energía Solar"
+category: "reflectores"
+price: "$337.500"
+specifications:
+  - "Tipo: Lámpara solar integrada para alumbrado público autónomo"
+  - "Potencia real: 14 W"
+  - "Potencia equivalente (comercial): 800 W"
+  - "Flujo luminoso: 2.590 lm"
+  - "Eficacia luminosa: 185 lm/W"
+  - "Temperatura de color: 6500 K (luz blanca fría)"
+  - "CRI: > 70"
+  - "Vida útil LED: 90.000 h"
+  - "Batería: LiFePO4 3,2 V / 20 Ah"
+  - "Tiempo de carga: 6 – 8 h de sol pleno"
+  - "Autonomía: hasta 12 h"
+  - "Controlador de carga: PWM integrado"
+  - "Modos de operación: Automático, sensor PIR configurable, control remoto"
+  - "Grado de protección: IP66 / IK08"
+  - "Temperatura de operación: -10 °C a 30 °C"
+  - "Dimensiones: 531 × 340 × 160 mm"
+  - "Altura de instalación recomendada: 5 – 6 m"
+  - "Distancia entre postes: 15 – 18 m"
+  - "Área de cobertura: hasta 100 m²"
+  - "Garantía: 2 años"
+  - "RETILAP: Producto certificado RETILAP (Cumple Resolución 40150 de mayo 03 de 2024)"
+brand: "Hardy Solar"
+model: "Astra 800"
+sku: "HARDY-ASTRA-800"
+power: "14 W"
+stock: "disponible"
+order: 36
+updatedAt: "2026-09-28"
+imagen_provisional: true
+fichaPdf: "/fichas/hardy-astra-800-ficha-tecnica.pdf"
+seoKeywords:
+  - "luminaria solar"
+  - "hardy astra 800"
+  - "lámpara solar para calle"
+  - "alumbrado público solar"
+  - "luminaria solar retilap"
+  - "luminaria solar colombia"
+  - "comprar luminaria solar medellín"
+faqs:
+  - pregunta: "¿Cuántos vatios reales tiene la Astra 800?"
+    respuesta: "14 W reales (el \"800 W\" es una potencia equivalente comercial, no el consumo real), con un flujo de 2.590 lm. Para comparar luminarias solares, fíjate en los lúmenes y en los vatios reales, no en el número del modelo."
+  - pregunta: "¿Cuántas horas alumbra y cuánto tarda en cargar?"
+    respuesta: "Autonomía: hasta 12 h. Carga completa en 6 – 8 h de sol pleno. En días nublados la carga es menor; por eso la batería LiFePO4 guarda reserva para más de una noche en los modelos que lo indican."
+  - pregunta: "¿A qué altura se instala y cuánto espacio ilumina?"
+    respuesta: "Altura recomendada: 5 – 6 m. Distancia entre postes: 15 – 18 m. Cobertura: hasta 100 m²."
+  - pregunta: "¿Necesita cableado o conexión a la red eléctrica?"
+    respuesta: "No. Panel, batería y controlador vienen integrados en el mismo cuerpo. Solo se fija en el poste, muro o soporte y enciende automáticamente al anochecer."
+  - pregunta: "¿Qué incluye?"
+    respuesta: "Luminaria solar integrada, control remoto. El poste no está incluido."
+  - pregunta: "¿Tiene certificación RETILAP?"
+    respuesta: "Producto certificado RETILAP (Cumple Resolución 40150 de mayo 03 de 2024)."
+  - pregunta: "¿Qué garantía tiene?"
+    respuesta: "2 años de garantía del fabricante (Hardy Solar Energy). Reiki Energía Solar te acompaña en el trámite."
+  - pregunta: "¿Dónde se recomienda usar?"
+    respuesta: "Vías residenciales, parques, parcelaciones y conjuntos."
+---
+
+**Luminaria Solar Hardy Astra 800 – 14 W reales · 2.590 lm**
+
+Lámpara solar integrada para alumbrado público autónomo Hardy Astra 800 de 14 W reales y 2.590 lm (185 lm/W). Se comercializa como "800 W equivalente"; la potencia real medida es 14 W. Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 20 Ah, con autonomía de hasta 12 h. Se instala a 5 – 6 m de altura y ilumina hasta 100 m². Protección IP66 / IK08 para exterior. Producto certificado RETILAP (Cumple Resolución 40150 de mayo 03 de 2024).
+
+Ficha técnica del fabricante: Hardy Solar Energy. Precio con IVA incluido.

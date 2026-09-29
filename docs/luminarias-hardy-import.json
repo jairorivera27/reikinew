@@ -1,0 +1,130 @@
+[
+ {
+  "id": "ares-600",
+  "titulo": "Luminaria Solar Hardy Ares 600 – 22 W reales · 4.070 lm",
+  "distribuidor": 405000,
+  "venta": 506250,
+  "provisional": true,
+  "ficha": true
+ },
+ {
+  "id": "ares-500",
+  "titulo": "Luminaria Solar Hardy Ares 500 – 20 W reales · 3.000 lm",
+  "distribuidor": 380000,
+  "venta": 475000,
+  "provisional": true,
+  "ficha": true
+ },
+ {
+  "id": "stellar-500",
+  "titulo": "Luminaria Solar Hardy Stellar 500 – 13 W reales · 2.405 lm",
+  "distribuidor": 320000,
+  "venta": 400000,
+  "provisional": true,
+  "ficha": true
+ },
+ {
+  "id": "solaris-2000",
+  "titulo": "Luminaria Solar Hardy Solaris 2000 – 30 W reales · 6.300 lm",
+  "distribuidor": 420000,
+  "venta": 525000,
+  "provisional": true,
+  "ficha": true
+ },
+ {
+  "id": "astra-400",
+  "titulo": "Luminaria Solar Hardy Astra 400 · 2.000 lm",
+  "distribuidor": 210000,
+  "venta": 262500,
+  "provisional": true,
+  "ficha": false
+ },
+ {
+  "id": "astra-600",
+  "titulo": "Luminaria Solar Hardy Astra 600 – 10 W reales · 1.850 lm",
+  "distribuidor": 235000,
+  "venta": 293750,
+  "provisional": true,
+  "ficha": true
+ },
+ {
+  "id": "astra-800",
+  "titulo": "Luminaria Solar Hardy Astra 800 – 14 W reales · 2.590 lm",
+  "distribuidor": 270000,
+  "venta": 337500,
+  "provisional": true,
+  "ficha": true
+ },
+ {
+  "id": "urban-300",
+  "titulo": "Luminaria Solar Hardy Urban 300 – 17 W reales · 3.145 lm",
+  "distribuidor": 395000,
+  "venta": 493750,
+  "provisional": true,
+  "ficha": true
+ },
+ {
+  "id": "urban-400",
+  "titulo": "Luminaria Solar Hardy Urban 400 – 22 W reales · 4.070 lm",
+  "distribuidor": 420000,
+  "venta": 525000,
+  "provisional": true,
+  "ficha": true
+ },
+ {
+  "id": "lumina-800",
+  "titulo": "Luminaria Solar Hardy Lumina 800 – 30 W reales · 6.150 lm",
+  "distribuidor": 560000,
+  "venta": 700000,
+  "provisional": true,
+  "ficha": true
+ },
+ {
+  "id": "orion",
+  "titulo": "Luminaria Solar Hardy Orion – 35 W reales · 7.700 lm",
+  "distribuidor": 990000,
+  "venta": 1237500,
+  "provisional": true,
+  "ficha": true
+ },
+ {
+  "id": "sirius",
+  "titulo": "Lámpara Solar Colgante Hardy Sirius – 20 W reales · 3.600 lm",
+  "distribuidor": 260000,
+  "venta": 325000,
+  "provisional": true,
+  "ficha": true
+ },
+ {
+  "id": "nova-100",
+  "titulo": "Reflector Solar Hardy Nova 100 – 9 W reales · 1.530 lm",
+  "distribuidor": 120000,
+  "venta": 150000,
+  "provisional": true,
+  "ficha": true
+ },
+ {
+  "id": "nova-200",
+  "titulo": "Reflector Solar Hardy Nova 200 – 9 W reales · 1.530 lm",
+  "distribuidor": 240000,
+  "venta": 300000,
+  "provisional": true,
+  "ficha": true
+ },
+ {
+  "id": "nova-600",
+  "titulo": "Reflector Solar Hardy Nova 600 – 25 W reales · 5.000 lm",
+  "distribuidor": 400000,
+  "venta": 500000,
+  "provisional": false,
+  "ficha": true
+ },
+ {
+  "id": "vega-1000",
+  "titulo": "Reflector Solar Hardy Vega 1000 – 100 W reales · 14.000 lm",
+  "distribuidor": 680000,
+  "venta": 850000,
+  "provisional": false,
+  "ficha": true
+ }
+]

@@ -66,6 +66,11 @@ const productosCollection = defineCollection({
     imagenSerieRef: z.string().optional(),
     /** Ruta relativa a ficha técnica PDF (docs/fichas/…). */
     fichaPdf: z.string().optional(),
+    /** Preguntas frecuentes propias del producto (se muestran antes de las de la categoría). */
+    faqs: z
+      .array(z.object({ pregunta: z.string(), respuesta: z.string() }))
+      .max(10)
+      .optional(),
     updatedAt: z.string().optional(),
     /**
      * Desempate opcional en el carrusel del inicio (1 = primero dentro de su grupo).
