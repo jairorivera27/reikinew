@@ -177,7 +177,7 @@ const precioUnitario = etiquetaPrecioPorUnidad(
 
         {enLiquidacion && (
           <section class="promo-banner" aria-labelledby="promo-titulo">
-            <img class="promo-banner-img" src={d.promoImagen} alt="" role="presentation" loading="eager" decoding="async" />
+            {d.promoImagen && <img class="promo-banner-img" src={d.promoImagen} alt="" role="presentation" loading="eager" decoding="async" />}
             <div class="promo-banner-contenido">
               <p class="promo-etiqueta">{d.promocion}</p>
               <p class="promo-descuento">

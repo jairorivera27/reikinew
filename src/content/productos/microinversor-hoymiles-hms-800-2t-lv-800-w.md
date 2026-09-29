@@ -26,5 +26,6 @@ faqs:
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 fichaPdf: "/fichas/reiki/microinversor-hoymiles-hms-800-2t-lv-800-w.pdf"
+promocion: "Precio especial"
 ---
 

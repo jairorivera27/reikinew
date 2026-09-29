@@ -28,6 +28,9 @@ faqs:
     respuesta: "Un sistema con este inversor de 50 kW y unos 55 kWp de paneles genera del orden de 7.425 kWh al mes (4,5 horas de sol pico en promedio), así que cubre consumos de esa magnitud. Te dimensionamos el sistema con tu factura."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+precioAnterior: "$15.625.000"
+descuentoPct: 20
+promocion: "Precio rebajado"
 ---
 
 **SUN2000-50KTL-M3** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

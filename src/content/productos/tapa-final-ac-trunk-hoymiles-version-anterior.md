@@ -20,5 +20,6 @@ fichaPdf: "/fichas/fabricantes/amara-001-0004-ficha-tecnica.pdf"
 faqs:
   - pregunta: "¿Es compatible con mi equipo?"
     respuesta: "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
+promocion: "Precio especial"
 ---
 

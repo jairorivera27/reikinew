@@ -26,5 +26,6 @@ faqs:
   - pregunta: "¿Necesita internet?"
     respuesta: "Sí, se conecta por Wi-Fi, red cableada o 4G según el modelo para enviar los datos a la aplicación del fabricante."
 fichaPdf: "/fichas/reiki/dtu-hoymiles-dtu-pro-s-wifi-para-monitoreo-de-microinversores.pdf"
+promocion: "Precio especial"
 ---
 

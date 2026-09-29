@@ -9,7 +9,7 @@ import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
 export const DESCUENTOS_URL = '/tienda/descuentos';
-export const DESCUENTOS_NOMBRE = 'Descuentos';
+export const DESCUENTOS_NOMBRE = 'Promociones';
 export const DESCUENTOS_ICONO = 'fas fa-tags';
 
 export type ProductoRebajado = CollectionEntry<'productos'>;
@@ -26,6 +26,27 @@ export async function getProductosRebajados(): Promise<ProductoRebajado[]> {
     ({ data }) => data.draft !== true && estaRebajado(data)
   );
   return productos.sort((a, b) => (b.data.descuentoPct ?? 0) - (a.data.descuentoPct ?? 0));
+}
+
+/**
+ * En promoción: rebajado (precio anterior real + %) o con etiqueta de promoción sin rebaja
+ * (p. ej. "Precio especial · stock inmediato"). Nunca se inventa un precio anterior.
+ */
+export function enPromocion(data: CollectionEntry<'productos'>['data']): boolean {
+  return estaRebajado(data) || Boolean(data.promocion);
+}
+
+/** Todo lo que va en la página de promociones: primero los rebajados (mayor % primero). */
+export async function getProductosEnPromocion(): Promise<ProductoRebajado[]> {
+  const productos = await getCollection(
+    'productos',
+    ({ data }) => data.draft !== true && data.stock !== 'agotado' && enPromocion(data)
+  );
+  return productos.sort(
+    (a, b) =>
+      (b.data.descuentoPct ?? 0) - (a.data.descuentoPct ?? 0) ||
+      String(a.data.category).localeCompare(String(b.data.category))
+  );
 }
 
 /** Cuánto se ahorra en pesos, para mostrarlo junto al porcentaje. */

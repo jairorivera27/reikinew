@@ -16,5 +16,6 @@ order: 7000
 updatedAt: "2026-09-29"
 draft: true
 imagenPendiente: true
+promocion: "Precio especial"
 ---
 

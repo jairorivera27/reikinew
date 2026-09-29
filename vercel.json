@@ -73,6 +73,11 @@
       "source": "/tienda/categoria/cargadores-para-carro/(.*)",
       "destination": "/tienda/categoria/accesorios/$1",
       "permanent": true
+    },
+    {
+      "source": "/tienda/promociones",
+      "destination": "/tienda/descuentos",
+      "permanent": false
     }
   ]
 }

@@ -17,5 +17,6 @@ updatedAt: "2026-09-29"
 draft: true
 imagenPendiente: true
 fichaPdf: "/fichas/fabricantes/amara-006-0002-ficha-tecnica.pdf"
+promocion: "Precio especial"
 ---
 

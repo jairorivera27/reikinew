@@ -29,5 +29,6 @@ faqs:
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 fichaPdf: "/fichas/reiki/inversor-on-grid-solis-50k-lv-5g-50-kw-trifasico-220-v.pdf"
+promocion: "Precio especial"
 ---
 

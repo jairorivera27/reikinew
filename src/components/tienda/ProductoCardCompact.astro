@@ -63,6 +63,7 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
         <div class="producto-badge pre-orden">Pre-orden</div>
       )}
       {enLiquidacion && <div class="producto-badge-descuento">-{d.descuentoPct}%</div>}
+      {!enLiquidacion && d.promocion && <div class="producto-badge-descuento producto-badge-promo">{d.promocion}</div>}
       {valor?.destacado && (
         <div class="producto-badge-valor" title="Mejor relación calidad-precio de su categoría">
           <i class="fas fa-award" aria-hidden="true"></i>
@@ -538,4 +539,5 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
       font-size: 0.9125rem;
     }
   }
+  .producto-badge-promo { font-size: 0.68rem; max-width: 60%; line-height: 1.2; text-align: center; }
 </style>

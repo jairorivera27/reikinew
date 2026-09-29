@@ -6,7 +6,7 @@ import PagoConfianza from './PagoConfianza.astro';
 import { CATEGORIAS, urlCategoria } from '../config/categorias-tienda';
 import { calcularValor, ordenarPorValor, type ResultadoValor } from '../utils/calidadPrecio';
 import { ordenarInversoresPorTipoYPotencia } from '../utils/productCardCompactMeta';
-import { DESCUENTOS_URL, estaRebajado } from '../utils/descuentos';
+import { DESCUENTOS_URL, estaRebajado, enPromocion } from '../utils/descuentos';
 
 /** Tope de tarjetas por carrusel: el resto se ve en el listado paginado de la categoría. */
 const MAX_POR_CARRUSEL = 12;
@@ -18,6 +18,7 @@ const rebajados = productos
   .filter((p) => estaRebajado(p.data))
   .sort((a, b) => (b.data.descuentoPct ?? 0) - (a.data.descuentoPct ?? 0));
 const descuentoMaximo = Math.max(0, ...rebajados.map((p) => p.data.descuentoPct ?? 0));
+const enPromo = productos.filter((p) => p.data.stock !== 'agotado' && enPromocion(p.data));
 
 const valores = new Map<string, ResultadoValor>();
 
@@ -154,14 +155,14 @@ const marcasLoop = [...marcasConSrc, ...marcasConSrc];
             <i class="fas fa-list"></i>
             Categorías
           </h3>
-          {rebajados.length > 0 && (
+          {enPromo.length > 0 && (
             <a href={DESCUENTOS_URL} class="sidebar-descuentos">
               <i class="fas fa-tags" aria-hidden="true"></i>
               <span class="sidebar-descuentos-texto">
-                <strong>Descuentos</strong>
-                hasta -{descuentoMaximo}%
+                <strong>Promociones</strong>
+                {descuentoMaximo > 0 ? `hasta -${descuentoMaximo}%` : 'precio especial'}
               </span>
-              <span class="sidebar-descuentos-num">{rebajados.length}</span>
+              <span class="sidebar-descuentos-num">{enPromo.length}</span>
             </a>
           )}
 
@@ -179,14 +180,14 @@ const marcasLoop = [...marcasConSrc, ...marcasConSrc];
 
       <!-- Contenido principal -->
       <div class="tienda-content">
-    {rebajados.length > 0 && (
+    {enPromo.length > 0 && (
       <a href={DESCUENTOS_URL} class="banner-descuentos">
         <span class="banner-descuentos-icono">
           <i class="fas fa-tags" aria-hidden="true"></i>
         </span>
         <span class="banner-descuentos-texto">
-          <strong>Descuentos hasta -{descuentoMaximo}%</strong>
-          {rebajados.length} {rebajados.length === 1 ? 'equipo' : 'equipos'} en liquidación · stock limitado
+          <strong>Promociones{descuentoMaximo > 0 ? ` · hasta -${descuentoMaximo}%` : ''}</strong>
+          {enPromo.length} {enPromo.length === 1 ? 'equipo' : 'equipos'} con descuento o precio especial · stock limitado
         </span>
         <span class="banner-descuentos-cta">
           Ver ofertas

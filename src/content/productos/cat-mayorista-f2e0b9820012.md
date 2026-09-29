@@ -22,6 +22,9 @@ faqs:
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 fichaPdf: "/fichas/reiki/cat-mayorista-f2e0b9820012.pdf"
 updatedAt: "2026-09-29"
+precioAnterior: "$25.290.900"
+descuentoPct: 3
+promocion: "Precio rebajado"
 ---
 
 **SUN2000-50K-MGL0** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

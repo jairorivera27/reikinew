@@ -23,5 +23,6 @@ faqs:
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 fichaPdf: "/fichas/fabricantes/amara-202-0006-ficha-tecnica.pdf"
+promocion: "Precio especial"
 ---
 

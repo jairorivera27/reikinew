@@ -15,6 +15,7 @@ brand: "Solis"
 stock: "disponible"
 order: 5073
 updatedAt: "2026-09-29"
+promocion: "Precio especial"
 ---
 
 **SOLIS INVERSOR S6-GR1P6K-S** · referencia **Solis** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

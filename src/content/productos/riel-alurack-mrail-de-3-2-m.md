@@ -20,5 +20,6 @@ faqs:
   - pregunta: "¿Es compatible con mi equipo?"
     respuesta: "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
 fichaPdf: "/fichas/reiki/riel-alurack-mrail-de-3-2-m.pdf"
+promocion: "Precio especial"
 ---
 

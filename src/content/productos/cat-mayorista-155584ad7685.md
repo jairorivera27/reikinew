@@ -15,6 +15,7 @@ brand: "Solis"
 stock: "disponible"
 order: 5077
 updatedAt: "2026-09-29"
+promocion: "Precio especial"
 ---
 
 **SOLIS INVERSOR S5-GR3P5K-LV** · referencia **Solis** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

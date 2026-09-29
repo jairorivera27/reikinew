@@ -16,6 +16,7 @@ imageAlt: "Hoymiles – Reiki Energía Solar"
 draft: true
 imagenPendiente: true
 updatedAt: "2026-09-29"
+promocion: "Precio especial"
 ---
 
 **HOYMILES SPLIT PHASE ELECTRIC METER DTSU666 NEW VIA CT 2*100A** · referencia **Hoymiles** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

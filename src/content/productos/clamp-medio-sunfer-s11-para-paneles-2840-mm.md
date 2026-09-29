@@ -20,5 +20,6 @@ faqs:
   - pregunta: "¿Es compatible con mi equipo?"
     respuesta: "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
 fichaPdf: "/fichas/reiki/clamp-medio-sunfer-s11-para-paneles-2840-mm.pdf"
+promocion: "Precio especial"
 ---
 
