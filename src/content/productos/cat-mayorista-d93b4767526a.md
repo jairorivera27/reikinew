@@ -1,5 +1,5 @@
 ---
-title: "SUN2000-215KTL-H0"
+title: "Inversor On-Grid Huawei SUN2000-215KTL-H0 215 kW Trifásico"
 description: "Inversor central / string de gran formato Huawei SUN2000 para plantas de megavatios o grandes comerciales: arquitectura de alta tensión, múltiples MPPT y telemetría con SmartLogger. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/huawei-sun2000-215ktl-h0.webp"
 category: "inversores"

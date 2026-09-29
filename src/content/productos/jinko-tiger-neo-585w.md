@@ -1,5 +1,5 @@
 ---
-title: "Jinko Tiger Neo 585W"
+title: "Panel Solar Jinko Tiger Neo JKM585N-72HL4-V 585W"
 description: "Panel solar Jinko Solar JKM585N-72HL4-V de 585W, tecnología N-Type Tiger Neo para máxima eficiencia. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/jinko-solar-jkm585n-72hl4-v-585w-prov.webp"
 category: "paneles"

@@ -1,5 +1,5 @@
 ---
-title: "Deye 5kW Híbrido"
+title: "Inversor Híbrido Deye SUN-5K-SG01LP1-US 5 kW"
 description: "Inversor Deye SUN-5K-SG01LP1-US híbrido de 5kW, la solución todo en uno para gestión inteligente de energía. La foto es de referencia de la serie Deye Hybrid. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/deye-hybrid-prov.webp"
 category: "inversores"

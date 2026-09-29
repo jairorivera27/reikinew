@@ -1,5 +1,5 @@
 ---
-title: "Controlador MPPT 40A"
+title: "Controlador de Carga MPPT EPever Tracer 4210AN 40A"
 description: "Controlador de carga solar MPPT de 40 amperios con pantalla LCD. Máxima eficiencia de carga y protección completa del sistema. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/epever-tracer-4210an-prov.webp"
 category: "controladores"

@@ -55,6 +55,8 @@ const productosCollection = defineCollection({
     /** Especificación técnica principal tal como viene del catálogo (ej. "48V, 100Ah"). */
     power: z.string().optional(),
     stock: z.enum(['disponible', 'agotado', 'pre-orden']).optional(),
+    /** Fecha estimada de llegada (AAAA-MM-DD). Google Merchant la exige para productos en pre-orden. */
+    fechaDisponibilidad: z.coerce.string().optional(),
     order: z.number().optional(),
     /** Oculta el producto de la tienda, los listados y el sitemap. */
     draft: z.boolean().optional(),

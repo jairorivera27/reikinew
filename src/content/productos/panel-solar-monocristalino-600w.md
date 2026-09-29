@@ -1,5 +1,5 @@
 ---
-title: "Trina Solar 650W"
+title: "Panel Solar Trina Vertex TSM-650DEG21C.20 650W Bifacial"
 description: "Panel solar Trina Solar TSM-650DEG21C.20 de 650W de generación de energía, tecnología Vertex para alta potencia. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/trina-solar-tsm-650deg21c-20-prov.webp"
 category: "paneles"

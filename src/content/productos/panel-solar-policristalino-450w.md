@@ -1,5 +1,5 @@
 ---
-title: "LONGi 545W"
+title: "Panel Solar LONGi LR5-72HBD-545M 545W Bifacial"
 description: "Panel solar LONGi LR5-72HBD-545M de 545W, eficiencia líder en la industria y tecnología Hi-MO 5. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/longi-lr5-72hbd-545m-prov.webp"
 category: "paneles"
