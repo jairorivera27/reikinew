@@ -1,6 +1,6 @@
 ---
 title: "Controlador de Energía GoodWe SEC1000S para Inversores"
-description: "Accesorio GoodWe SEC1000S. Complemento para instalaciones solares. La foto es de referencia de la serie GoodWe EzLogger. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. La foto es de referencia de la serie GoodWe EzLogger. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Accesorio GoodWe SEC1000S. Complemento para instalaciones solares. La foto es de referencia de la serie GoodWe EzLogger. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie GoodWe EzLogger. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/goodwe-ezlogger.webp"
 category: "accesorios"
 price: "$3.015.460"
@@ -32,6 +32,7 @@ imagenSerieRef: "GoodWe EzLogger"
 faqs:
   - pregunta: "¿Es compatible con mi equipo?"
     respuesta: "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
+fichaPdf: "/fichas/fabricantes/goodwe-sec1000-datasheet.pdf"
 ---
 **Controlador de Energía GoodWe SEC1000S para Inversores** de GoodWe · ≤10W.
 

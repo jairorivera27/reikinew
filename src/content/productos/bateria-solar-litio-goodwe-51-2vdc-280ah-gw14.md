@@ -1,6 +1,6 @@
 ---
 title: "Batería Solar Litio GoodWe 51.2VDC 280Ah GW14"
-description: "Batería litio GoodWe GW14. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. La foto es de referencia de la serie GoodWe Lynx. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Batería litio GoodWe GW14. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. La foto es de referencia de la serie GoodWe Lynx. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-tienda/baterias/goodwe-lynxl.png"
 category: "baterias"
 price: "$13.795.469"
@@ -28,6 +28,7 @@ imagenSerieRef: "GoodWe Lynx"
 faqs:
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
+fichaPdf: "/fichas/fabricantes/goodwe-lynx-a-g3-14kwh-datasheet.pdf"
 ---
 **Batería Solar Litio GoodWe 51.2VDC 280Ah GW14** de GoodWe · 51.2VDC 280Ah.
 

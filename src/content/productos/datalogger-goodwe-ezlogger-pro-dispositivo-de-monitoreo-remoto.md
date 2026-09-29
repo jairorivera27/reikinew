@@ -1,6 +1,6 @@
 ---
 title: "Datalogger GoodWe Ezlogger Pro Dispositivo de monitoreo remoto Ethernet c"
-description: "Datalogger / módulo de monitoreo GoodWe Ezlogger Pro Dispositivo de monitoreo remoto Ethernet c. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. La foto es de referencia de la serie GoodWe EzLogger. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Datalogger / módulo de monitoreo GoodWe Ezlogger Pro Dispositivo de monitoreo remoto Ethernet c. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. La foto es de referencia de la serie GoodWe EzLogger. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/goodwe-ezlogger.webp"
 category: "accesorios"
 price: "$932.960"
@@ -33,6 +33,7 @@ faqs:
     respuesta: "Con los inversores o equipos de la misma marca y serie indicados en la ficha técnica. Escríbenos con la referencia de tu inversor y te confirmamos."
   - pregunta: "¿Necesita internet?"
     respuesta: "Sí, se conecta por Wi-Fi, red cableada o 4G según el modelo para enviar los datos a la aplicación del fabricante."
+fichaPdf: "/fichas/fabricantes/goodwe-ezlogger-pro-datasheet.pdf"
 ---
 **Datalogger GoodWe Ezlogger Pro Dispositivo de monitoreo remoto Ethernet c** de GoodWe · N/A.
 

@@ -1,6 +1,6 @@
 ---
 title: "Bomba Solar 500W POOL25-500-48"
-description: "Bomba solar de superficie Kolos POOL25-500-48 de 500 W. Bombea agua directamente con energía solar para riego, ganadería o uso doméstico, sin factura de energía. La foto es de referencia de la serie Kolos Pool. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Bomba solar de superficie Kolos POOL25-500-48 de 500 W. Bombea agua directamente con energía solar para riego, ganadería o uso doméstico, sin factura de energía. La foto es de referencia de la serie Kolos Pool. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/kolos-pool-prov.webp"
 category: "bombeo"
 price: "$3.177.151"
@@ -34,6 +34,7 @@ faqs:
     respuesta: "Se instala una potencia de paneles mayor que la de la bomba para arrancar temprano y mantener el caudal en días nublados. La cantidad exacta depende de la profundidad del pozo, la altura del tanque y el caudal diario; lo calculamos contigo."
   - pregunta: "¿Qué datos necesito para elegir la bomba?"
     respuesta: "Profundidad del nivel del agua, altura hasta el tanque, distancia de la tubería y litros por día que necesitas. Con eso elegimos el modelo y el controlador correctos."
+fichaPdf: "/fichas/fabricantes/connera-kolosal-pool-catalogo-vde.pdf"
 ---
 **Bomba Solar 500W POOL25-500-48** de Multimarca · 500W.
 

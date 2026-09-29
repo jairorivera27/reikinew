@@ -1,6 +1,6 @@
 ---
 title: "Epever IPT2000"
-description: "Inversor Onda Pura Epever IPT2000-41[T], referencia IPT2000-41[T], potencia de ~2kW. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Inversor Onda Pura Epever IPT2000-41[T], referencia IPT2000-41[T], potencia de ~2kW. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/epever-ipt2000-41-t-prov.webp"
 category: "inversores"
 price: "$1.990.000"
@@ -20,6 +20,7 @@ imagen_provisional: true
 faqs:
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+fichaPdf: "/fichas/fabricantes/epever-ipt-110-120vac-datasheet.pdf"
 ---
 
 Inversor Epever IPT2000 de onda sinusoidal pura, robusto y confiable para aplicaciones fuera de red.

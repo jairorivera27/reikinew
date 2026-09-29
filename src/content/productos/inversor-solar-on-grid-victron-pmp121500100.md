@@ -1,6 +1,6 @@
 ---
 title: "Victron MultiPlus 12/500"
-description: "MultiPlus Victron Energy, 12/500, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus. La foto es de referencia de la serie Victron MultiPlus. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "MultiPlus Victron Energy, 12/500, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus. La foto es de referencia de la serie Victron MultiPlus. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-multiplus-prov.webp"
 category: "inversores"
 price: "$1.227.888"
@@ -42,6 +42,7 @@ faqs:
     respuesta: "Debe coincidir el voltaje del banco (12 V) y, para litio, el protocolo de comunicación del BMS. Te confirmamos la compatibilidad antes de la compra."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+fichaPdf: "/fichas/fabricantes/victron-multiplus-500-1200va-120v-datasheet.pdf"
 ---
 
 **Victron MultiPlus 12/500** (ref. **PMP121500100**). MultiPlus Victron Energy, 12/500, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus.

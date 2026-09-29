@@ -1,6 +1,6 @@
 ---
 title: "Inversor Solar On-Grid GoodWe 30kW GW30K-SDT-C30"
-description: "Inversor on-grid (conectado a red) GoodWe GW30K-SDT-C30 de 30kW. Convierte la energía de tus paneles para el consumo de la casa o el negocio y entrega los excedentes a la red, sin baterías. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Inversor on-grid (conectado a red) GoodWe GW30K-SDT-C30 de 30kW. Convierte la energía de tus paneles para el consumo de la casa o el negocio y entrega los excedentes a la red, sin baterías. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/goodwe-sdt-prov.webp"
 category: "inversores"
 price: "$5.439.000"
@@ -37,6 +37,7 @@ faqs:
     respuesta: "Un sistema con este inversor de 30 kW y unos 33 kWp de paneles genera del orden de 4.455 kWh al mes (4,5 horas de sol pico en promedio), así que cubre consumos de esa magnitud. Te dimensionamos el sistema con tu factura."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+fichaPdf: "/fichas/fabricantes/goodwe-sdt-g3-25-40kw-datasheet.pdf"
 ---
 **Inversor Solar On-Grid GoodWe 30kW GW30K-SDT-C30** de GoodWe · 30kW.
 

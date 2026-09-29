@@ -1,6 +1,6 @@
 ---
 title: "Hoymiles Three-Phase Electric Meter DTSU666NEW-VIA CT-3*100A-$ Hoymiles Three-Phase Electric Meter DTSU666NEW-VIA CT-3*250A"
-description: "Medidor de energía Hoymiles para monitorización de inyección/consumo en instalaciones con microinversores; versiones monofásicas, bifásicas o trifásicas con TC externos. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Medidor de energía Hoymiles para monitorización de inyección/consumo en instalaciones con microinversores; versiones monofásicas, bifásicas o trifásicas con TC externos. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/generic-mccb.webp"
 category: "protecciones"
 price: "$1.048.050"
@@ -19,6 +19,7 @@ imageOriginal: "/images/productos-tienda/protecciones/generic-mccb.jpg"
 faqs:
   - pregunta: "¿Cumple RETIE?"
     respuesta: "Las instalaciones solares en Colombia deben cumplir RETIE; usa protecciones certificadas bajo normas IEC y deja la instalación en manos de un técnico. Reiki te asesora en el diseño del tablero."
+fichaPdf: "/fichas/fabricantes/hoymiles-dtsu666-export-management-datasheet.pdf"
 ---
 
 **HOYMILES THREE-PHASE ELECTRIC METER DTSU666NEW-VIA CT-3*100A-$ HOYMILES THREE-PHASE ELECTRIC METER DTSU666NEW-VIA CT-3*250A** · referencia **Hoymiles** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

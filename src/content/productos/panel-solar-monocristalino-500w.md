@@ -36,6 +36,7 @@ faqs:
     respuesta: "Dimensiones: 2176 x 1098 x 35 mm. Peso: 26.5 kg. Verifica el espacio disponible en tu cubierta antes de comprar."
   - pregunta: "¿Sirve para sistemas conectados a la red y para sistemas aislados?"
     respuesta: "Sí. Con un inversor on-grid entrega energía a la casa y a la red (autogeneración, con trámite ante el operador de red); con un inversor híbrido u off-grid carga baterías. Lo importante es que el voltaje del arreglo sea compatible con el inversor o el controlador."
+fichaPdf: "/fichas/reiki/panel-solar-monocristalino-500w.pdf"
 ---
 
 Panel solar monocristalino de 500W con excelente relación precio-rendimiento. Perfecto para instalaciones residenciales y pequeñas comerciales.

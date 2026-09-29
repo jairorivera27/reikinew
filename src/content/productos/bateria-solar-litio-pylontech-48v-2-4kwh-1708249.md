@@ -32,6 +32,7 @@ faqs:
     respuesta: "Con 2,4 kWh y descargándola hasta un 90 % (unos 2,2 kWh útiles), un consumo continuo de 500 W duraría cerca de 4,3 horas y uno de 1 kW unas 2,2 horas, sin contar pérdidas del inversor (5–10 %). Nevera, luces, internet y TV suelen sumar 300–600 W."
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor (48 V) y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
+fichaPdf: "/fichas/reiki/bateria-solar-litio-pylontech-48v-2-4kwh-1708249.pdf"
 ---
 **Batería Solar Litio Pylontech 48V 2.4kWh 1708249** de Pylontech · 48V 2.4kWh.
 

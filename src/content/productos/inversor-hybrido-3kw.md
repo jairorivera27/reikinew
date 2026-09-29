@@ -23,6 +23,7 @@ faqs:
     respuesta: "Sí, está pensado para fincas, cabañas y sitios sin red, alimentado por un banco de baterías que se carga con paneles solares."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+fichaPdf: "/fichas/reiki/inversor-hybrido-3kw.pdf"
 ---
 
 Inversor Must PV30-1524 LVHM, una solución económica y confiable para tus necesidades de energía solar básica.

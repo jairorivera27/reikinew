@@ -333,6 +333,13 @@ const precioUnitario = etiquetaPrecioPorUnidad(
                     del fabricante (<a href={serie.url} rel="noopener nofollow" target="_blank">{serie.fuente}</a>).
                     Los valores pueden variar según la variante exacta del modelo.
                   </p>
+                ) : d.fichaPdf?.startsWith('/fichas/reiki/') ? (
+                  <p class="specs-fuente">
+                    <i class="fas fa-file-pdf" aria-hidden="true"></i>
+                    <a href={d.fichaPdf} target="_blank" rel="noopener">Descargar ficha técnica Reiki (PDF)</a>.
+                    ¿Necesitás la hoja original del fabricante?
+                    <a href={`${CONTACT_WHATSAPP_URL}?text=${mensajeFichaTecnica}`} rel="noopener" target="_blank">Pedila por WhatsApp</a>.
+                  </p>
                 ) : d.fichaPdf ? (
                   <p class="specs-fuente">
                     <i class="fas fa-file-pdf" aria-hidden="true"></i>

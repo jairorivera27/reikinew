@@ -33,6 +33,7 @@ faqs:
     respuesta: "Sí, está pensado para fincas, cabañas y sitios sin red, alimentado por un banco de baterías que se carga con paneles solares."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+fichaPdf: "/fichas/reiki/inversor-solar-off-grid-felicity-5kw-3004247.pdf"
 ---
 **Inversor Solar Off-Grid Felicity 5kW 3004247** de Felicity · 5kW.
 

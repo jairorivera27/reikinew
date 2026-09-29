@@ -1,6 +1,6 @@
 ---
-title: "Sistema de Monitoreo Solar Victron BPP900451100"
-description: "Datalogger / módulo de monitoreo Victron BPP900451100. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+title: "Victron Cerbo GX MK2 BPP900451100 – Centro de Monitoreo y Control"
+description: "Victron Cerbo GX MK2 (BPP900451100): centro de monitoreo y control que conecta inversores, cargadores, controladores MPPT y baterías Victron para verlos y configurarlos en VRM desde el celular. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-cerbo-gx.webp"
 category: "accesorios"
 price: "$1.367.734"
@@ -25,11 +25,14 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/victron-cerbo-gx-thumb.webp"
 imageAlt: "Victron BPP900451100 N/A – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/monitoreo/victron-cerbo-gx.jpg"
+fichaPdf: "/fichas/fabricantes/victron-cerbo-gx-datasheet.pdf"
 faqs:
-  - pregunta: "¿Con qué equipos es compatible?"
-    respuesta: "Con los inversores o equipos de la misma marca y serie indicados en la ficha técnica. Escríbenos con la referencia de tu inversor y te confirmamos."
+  - pregunta: "¿Para qué sirve el Cerbo GX?"
+    respuesta: "Reúne en un solo lugar la información de los equipos Victron del sistema (inversores, MPPT, baterías, monitores) y permite verlos y configurarlos localmente o por internet en el portal VRM."
   - pregunta: "¿Necesita internet?"
-    respuesta: "Sí, se conecta por Wi-Fi, red cableada o 4G según el modelo para enviar los datos a la aplicación del fabricante."
+    respuesta: "Para el monitoreo remoto en VRM sí (Wi-Fi o Ethernet). Localmente funciona sin internet."
+  - pregunta: "¿Es compatible con mis equipos?"
+    respuesta: "Con los equipos Victron que tengan puerto VE.Bus, VE.Direct o VE.Can, y con varias baterías de litio de otras marcas. Envíanos tu lista de equipos y te confirmamos."
 ---
 **Sistema de Monitoreo Solar Victron BPP900451100** de Victron · N/A.
 

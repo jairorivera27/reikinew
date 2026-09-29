@@ -1,6 +1,6 @@
 ---
 title: "Batería Solar Litio Pylontech 3552Wh HESS"
-description: "Batería litio Pylontech HESS. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Batería litio Pylontech HESS. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/pylontech-us-prov.webp"
 category: "baterias"
 price: "$5.182.926"
@@ -31,6 +31,7 @@ imagen_provisional: true
 faqs:
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
+fichaPdf: "/fichas/fabricantes/pylontech-residential-bess-us-series.pdf"
 ---
 **Batería Solar Litio Pylontech 3552Wh HESS** de Pylontech · 3552Wh.
 

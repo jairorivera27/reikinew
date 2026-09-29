@@ -1,6 +1,6 @@
 ---
 title: "Bomba Solar 1300W KOLOS3-155-130-20"
-description: "Bomba solar sumergible Kolos KOLOS3-155-130-20 de 1300 W. Bombea agua directamente con energía solar para riego, ganadería o uso doméstico, sin factura de energía. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Bomba solar sumergible Kolos KOLOS3-155-130-20 de 1300 W. Bombea agua directamente con energía solar para riego, ganadería o uso doméstico, sin factura de energía. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/kolos3-sumergible-prov.webp"
 category: "bombeo"
 price: "$3.222.669"
@@ -33,6 +33,7 @@ faqs:
     respuesta: "Se instala una potencia de paneles mayor que la de la bomba para arrancar temprano y mantener el caudal en días nublados. La cantidad exacta depende de la profundidad del pozo, la altura del tanque y el caudal diario; lo calculamos contigo."
   - pregunta: "¿Qué datos necesito para elegir la bomba?"
     respuesta: "Profundidad del nivel del agua, altura hasta el tanque, distancia de la tubería y litros por día que necesitas. Con eso elegimos el modelo y el controlador correctos."
+fichaPdf: "/fichas/fabricantes/connera-kolosal-catalogo-vde.pdf"
 ---
 **Bomba Solar 1300W KOLOS3-155-130-20** de Multimarca · 1300W.
 

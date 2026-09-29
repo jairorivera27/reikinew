@@ -32,6 +32,7 @@ faqs:
     respuesta: "Depende del número de entradas del modelo (revisa la ficha técnica). Cada entrada tiene su propio seguimiento MPPT y admite un panel."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+fichaPdf: "/fichas/reiki/microinversor-solar-growatt-ds3d-col.pdf"
 ---
 **Microinversor Solar Growatt DS3D-COL** de Growatt · N/A.
 

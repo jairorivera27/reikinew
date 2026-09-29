@@ -157,9 +157,19 @@ function toMerchantInput(data, slug, categoryNames) {
     additionalImageLinks.push(promoImagen);
   }
 
+  // Descripción para Google: sin las frases que solo tienen sentido en la web
+  // (botón de ficha / WhatsApp / aviso de foto de serie) + especificaciones clave.
+  const specsKV = (data.specifications || []).filter(
+    (s) => s.includes(':') && !/^(Fuente|Especificación principal: especificación no disponible)/i.test(s)
+  );
+  const baseDesc = String(data.seoDescription || data.description || data.title || '')
+    .replace(/\s*(Descarga la ficha técnica[^.]*\.|Si necesitas la hoja de datos completa[^.]*\.|La foto es de referencia[^.]*\.)/g, '')
+    .trim();
   const description =
-    String(data.seoDescription || data.description || data.title || '').trim() ||
-    String(data.title);
+    [baseDesc || String(data.title), specsKV.length ? 'Especificaciones: ' + specsKV.slice(0, 12).join('; ') + '.' : '']
+      .filter(Boolean)
+      .join(' ');
+  const productHighlights = specsKV.slice(0, 10).map((s) => s.slice(0, 150));
 
   const mpn = String(data.model || data.sku || '').trim() || undefined;
 
@@ -178,6 +188,7 @@ function toMerchantInput(data, slug, categoryNames) {
       stock: data.stock || 'disponible',
       productType: categoryNames[category] || category || undefined,
       googleProductCategory: GOOGLE_CATEGORY_BY_INTERNAL[category],
+      productHighlights,
     },
   };
 }

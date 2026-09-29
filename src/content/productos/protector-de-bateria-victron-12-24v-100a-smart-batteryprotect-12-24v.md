@@ -1,6 +1,6 @@
 ---
 title: "Protector de batería Victron 12/24V, 100A Smart BatteryProtect 12/24V-100A"
-description: "Protección eléctrica Victron Smart BatteryProtect 12/24V-100A de 100 A. Componente de protección para sistemas solares. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Protección eléctrica Victron Smart BatteryProtect 12/24V-100A de 100 A. Componente de protección para sistemas solares. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-smart-batteryprotect-12-24v-100a-12-24v-100a.webp"
 category: "protecciones"
 price: "$303.300"
@@ -30,6 +30,7 @@ imageOriginal: "/images/productos-tienda/protecciones/victron-batteryprotect.jpg
 faqs:
   - pregunta: "¿Cumple RETIE?"
     respuesta: "Las instalaciones solares en Colombia deben cumplir RETIE; usa protecciones certificadas bajo normas IEC y deja la instalación en manos de un técnico. Reiki te asesora en el diseño del tablero."
+fichaPdf: "/fichas/fabricantes/victron-smart-batteryprotect-datasheet.pdf"
 ---
 **Protector de batería Victron 12/24V, 100A Smart BatteryProtect 12/24V-100A** de Victron · 12/24V, 100A.
 

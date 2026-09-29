@@ -38,6 +38,7 @@ faqs:
     respuesta: "El fabricante no ha entregado aún la ficha técnica de este modelo; consúltanos antes de usarlo en proyectos de alumbrado público."
   - pregunta: "¿Dónde se recomienda usar?"
     respuesta: "Vías residenciales, parques, parcelaciones y fincas."
+fichaPdf: "/fichas/reiki/luminaria-solar-hardy-astra-400.pdf"
 ---
 
 **Luminaria Solar Hardy Astra 400 · 2.000 lm**

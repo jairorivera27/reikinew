@@ -1,6 +1,6 @@
 ---
 title: "Batería Solar LiFePO4 BSLBATT 51.2V, 100Ah, 5.12kWh BSLBATT-5.12"
-description: "Batería LiFePO4 BSLBATT BSLBATT-5.12 de 5.12 kWh. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Batería LiFePO4 BSLBATT BSLBATT-5.12 de 5.12 kWh. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/bslbatt-bslbatt-5-12-51-2v-100ah-5-12kwh-prov.webp"
 category: "baterias"
 price: "$4.388.125"
@@ -35,6 +35,7 @@ faqs:
     respuesta: "El voltaje del banco debe coincidir con el del inversor y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
   - pregunta: "¿Qué ventajas tiene el LiFePO4?"
     respuesta: "Es la química de litio más segura para uso residencial: soporta miles de ciclos, no requiere mantenimiento y entrega casi toda su capacidad, a diferencia de las baterías de plomo."
+fichaPdf: "/fichas/fabricantes/bslbatt-b-lfp48-100e-3u-datasheet.pdf"
 ---
 **Batería Solar LiFePO4 BSLBATT 51.2V, 100Ah, 5.12kWh BSLBATT-5.12** de BSLBATT · 51.2V, 100Ah, 5.12kWh.
 

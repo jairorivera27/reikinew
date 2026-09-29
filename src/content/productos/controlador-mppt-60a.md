@@ -1,6 +1,6 @@
 ---
 title: "Controlador MPPT 60A"
-description: "Controlador de carga solar MPPT de 60 amperios con comunicación Bluetooth. Control desde smartphone y monitoreo avanzado. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Controlador de carga solar MPPT de 60 amperios con comunicación Bluetooth. Control desde smartphone y monitoreo avanzado. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/epever-tracer-6415an-prov.webp"
 category: "controladores"
 price: "$869.000"
@@ -29,6 +29,7 @@ faqs:
     respuesta: "12V/24V/48V auto. El voltaje de circuito abierto del arreglo, en su punto más frío, nunca debe superarlo."
   - pregunta: "¿Sirve para baterías de litio?"
     respuesta: "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
+fichaPdf: "/fichas/fabricantes/epever-tracer-an-50-100a-datasheet.pdf"
 ---
 
 Controlador MPPT profesional con comunicación Bluetooth para monitoreo y control desde tu smartphone. Perfecto para sistemas solares de alta potencia.

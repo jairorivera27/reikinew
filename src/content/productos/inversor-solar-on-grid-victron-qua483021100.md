@@ -1,6 +1,6 @@
 ---
 title: "Victron Quattro 48/3000"
-description: "Quattro Victron Energy, 48/3000, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus. La foto es de referencia de la serie Victron Quattro. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Quattro Victron Energy, 48/3000, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus. La foto es de referencia de la serie Victron Quattro. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-quattro-prov.webp"
 category: "inversores"
 price: "$5.519.412"
@@ -44,6 +44,7 @@ faqs:
     respuesta: "Un sistema con este inversor de 3 kW y unos 3,3 kWp de paneles genera del orden de 446 kWh al mes (4,5 horas de sol pico en promedio), así que cubre consumos de esa magnitud. Te dimensionamos el sistema con tu factura."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+fichaPdf: "/fichas/fabricantes/victron-quattro-3-10kva-120v-datasheet.pdf"
 ---
 
 **Victron Quattro 48/3000** (ref. **QUA483021100**). Quattro Victron Energy, 48/3000, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus.

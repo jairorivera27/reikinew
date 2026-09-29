@@ -1,6 +1,6 @@
 ---
 title: "Controlador de Carga Solar MPPT Inti 20A 2024"
-description: "Controlador de carga solar MPPT Inti de 20 A. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Controlador de carga solar MPPT Inti de 20 A. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-tienda/controladores/inti-mppt.jpg"
 category: "controladores"
 price: "$297.500"
@@ -30,6 +30,7 @@ faqs:
     respuesta: "Con 20 A de carga admite aproximadamente 270 W de paneles con batería de 12 V, 540 W a 24 V y 1.080 W a 48 V. Además hay que respetar el voltaje máximo de entrada del controlador (ver ficha técnica)."
   - pregunta: "¿Sirve para baterías de litio?"
     respuesta: "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
+fichaPdf: "/fichas/fabricantes/inti-olmo-datasheet.pdf"
 ---
 **Controlador de Carga Solar MPPT Inti 20A 2024** de Inti · 20A.
 

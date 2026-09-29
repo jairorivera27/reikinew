@@ -34,6 +34,7 @@ faqs:
     respuesta: "Sí, está pensado para fincas, cabañas y sitios sin red, alimentado por un banco de baterías que se carga con paneles solares."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+fichaPdf: "/fichas/reiki/inversor-solar-off-grid-must-3000w.pdf"
 ---
 **Inversor Solar Off-Grid Must 3000W** de Must · 3000W.
 

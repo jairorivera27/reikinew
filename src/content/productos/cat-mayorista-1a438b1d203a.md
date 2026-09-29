@@ -18,6 +18,7 @@ imageOriginal: "/images/productos-tienda/protecciones/suntree-siso-dc.jpg"
 faqs:
   - pregunta: "¿Cumple RETIE?"
     respuesta: "Las instalaciones solares en Colombia deben cumplir RETIE; usa protecciones certificadas bajo normas IEC y deja la instalación en manos de un técnico. Reiki te asesora en el diseño del tablero."
+fichaPdf: "/fichas/reiki/cat-mayorista-1a438b1d203a.pdf"
 ---
 
 **HOYMILES AC TRUNK PORT DISCONNECT TOOL** · referencia **Hoymiles** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

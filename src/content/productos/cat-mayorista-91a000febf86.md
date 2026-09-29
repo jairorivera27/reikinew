@@ -1,6 +1,6 @@
 ---
 title: "PYTES E-BOX 48100R (5.12kWh-51.2V-100Ah) CABLE LARGO"
-description: "Sistema o módulo de almacenamiento en litio (LiFePO₄ típico) para acoplamiento con inversores compatibles; BMS, expansión y cableado según referencia Pytes o BYD. La foto es de referencia de la serie Pytes. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Sistema o módulo de almacenamiento en litio (LiFePO₄ típico) para acoplamiento con inversores compatibles; BMS, expansión y cableado según referencia Pytes o BYD. La foto es de referencia de la serie Pytes. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/pytes-battery-prov.webp"
 category: "baterias"
 price: "$5.859.900"
@@ -23,6 +23,7 @@ faqs:
     respuesta: "Con 5,1 kWh y descargándola hasta un 90 % (unos 4,6 kWh útiles), un consumo continuo de 500 W duraría cerca de 9,2 horas y uno de 1 kW unas 4,6 horas, sin contar pérdidas del inversor (5–10 %). Nevera, luces, internet y TV suelen sumar 300–600 W."
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
+fichaPdf: "/fichas/fabricantes/pytes-e-box-48100r-specs.pdf"
 ---
 
 **PYTES E-BOX 48100R (5.12kWh-51.2V-100Ah) CABLE LARGO** · referencia **Pytes** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

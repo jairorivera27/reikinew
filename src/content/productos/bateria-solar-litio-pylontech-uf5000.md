@@ -1,6 +1,6 @@
 ---
 title: "Batería Solar Litio Pylontech UF5000"
-description: "Batería litio Pylontech UF5000. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. La foto es de referencia de la serie Pylontech UF. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Batería litio Pylontech UF5000. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. La foto es de referencia de la serie Pylontech UF. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/pylontech-uf5000-prov.webp"
 category: "baterias"
 price: "$5.182.926"
@@ -31,6 +31,7 @@ imagenSerieRef: "Pylontech UF"
 faqs:
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
+fichaPdf: "/fichas/fabricantes/pylontech-uf5000-manual.pdf"
 ---
 **Batería Solar Litio Pylontech UF5000** de Pylontech · N/A.
 

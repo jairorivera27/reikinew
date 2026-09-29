@@ -1,8 +1,8 @@
 ---
-title: "Panel Solar Monocristalino Victron SCC900300000"
-description: "Panel solar Victron SCC900300000 (monocristalino). Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+title: "Panel Remoto Victron para Controlador BlueSolar PWM-Pro SCC900300000"
+description: "Panel remoto (display) Victron SCC900300000 para los controladores de carga BlueSolar PWM-Pro: muestra el estado de carga y permite ajustar parámetros a distancia. No es un panel solar. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-bluesolar-mono-scc900300000.webp"
-category: "paneles"
+category: "accesorios"
 price: "$190.181"
 specifications:
   - "Tipo: Monocristalino"
@@ -26,9 +26,12 @@ seoKeywords:
 imageThumb: "/images/productos-estudio/victron-bluesolar-mono-scc900300000-thumb.webp"
 imageAlt: "Victron SCC900300000 N/A – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/paneles-solares/victron-bluesolar-mono.jpg"
+fichaPdf: "/fichas/fabricantes/victron-bluesolar-pwm-pro-datasheet.pdf"
 faqs:
-  - pregunta: "¿Sirve para sistemas conectados a la red y para sistemas aislados?"
-    respuesta: "Sí. Con un inversor on-grid entrega energía a la casa y a la red (autogeneración, con trámite ante el operador de red); con un inversor híbrido u off-grid carga baterías. Lo importante es que el voltaje del arreglo sea compatible con el inversor o el controlador."
+  - pregunta: "¿Es un panel solar?"
+    respuesta: "No. Es el panel remoto (pantalla) para los controladores Victron BlueSolar PWM-Pro; no genera energía."
+  - pregunta: "¿Con qué controladores funciona?"
+    respuesta: "Con los controladores Victron BlueSolar PWM-Pro indicados en la ficha técnica. Envíanos la referencia de tu controlador y te confirmamos."
 ---
 **Panel Solar Monocristalino Victron SCC900300000** de Victron · N/A.
 

@@ -1,0 +1,318 @@
+{
+ "cat-mayorista-b61488631524": {
+  "pdf": "/fichas/fabricantes/apsystems-ds3d-datasheet.pdf",
+  "fuente": "https://global.apsystems.com/wp-content/uploads/2023/04/APsystems-Microinverter-DS3D-For-APAC-Datasheet_-Rev1.2_2023-03-02.pdf"
+ },
+ "cat-mayorista-7412edd33a03": {
+  "pdf": "/fichas/fabricantes/hoymiles-dtsu666-export-management-datasheet.pdf",
+  "fuente": "https://wallboxcenter.de/wp-content/uploads/2022/10/Hoymiles-DTSU666-Smartmeter-Datenblatt.pdf"
+ },
+ "cat-mayorista-8707d08ce9f6": {
+  "pdf": "/fichas/fabricantes/solis-s2-wl-st-flyer.pdf",
+  "fuente": "https://www.solisinverters.com/uploads/file/S2-WL-ST-Global-Flyer-V4,0.pdf"
+ },
+ "cat-mayorista-e42b37cb353a": {
+  "pdf": "/fichas/fabricantes/huawei-sun2000-150k-mg0-datasheet.pdf",
+  "fuente": "https://solar.huawei.com/-/media/SolarV4/solar-version2/common/professionals/all-products/product/SUN2000-150K-MG0/support/pdf/SUN2000-150K-MG0.pdf"
+ },
+ "controlador-mppt-60a": {
+  "pdf": "/fichas/fabricantes/epever-tracer-an-50-100a-datasheet.pdf",
+  "fuente": "https://www.epever.com/wp-content/uploads/2021/05/EPEVER-Datasheet_Tracer-AN-50A-100A.pdf"
+ },
+ "bomba-solar-900w-pool32-900-72": {
+  "pdf": "/fichas/fabricantes/connera-kolosal-pool-catalogo-vde.pdf",
+  "fuente": "https://cdnc.heyzine.com/flip-book/pdf/06fdde9c751b360391fddc2c18da3f10b667c34c.pdf"
+ },
+ "inversor-solar-on-grid-victron-qua242305130": {
+  "pdf": "/fichas/fabricantes/victron-quattro-ii-3kva-2x120v-datasheet.pdf",
+  "fuente": "https://www.victronenergy.com/upload/documents/Datasheet-Quattro-II-3kVA-2x120V-EN-.pdf"
+ },
+ "controlador-de-carga-solar-mppt-inti-20a-2024": {
+  "pdf": "/fichas/fabricantes/inti-olmo-datasheet.pdf",
+  "fuente": "http://intipv.com/es/wp-content/uploads/2021/08/Data-Sheet-Olmo-1.pdf"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc010070300": {
+  "pdf": "/fichas/fabricantes/victron-bluesolar-mppt-150-45-a-150-100-datasheet.pdf",
+  "fuente": "https://www.victronenergy.com/upload/documents/Datasheet-BlueSolar-charge-controller-MPPT-150-45-up-to-150-100-EN.pdf"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc010070200": {
+  "pdf": "/fichas/fabricantes/victron-bluesolar-mppt-150-45-a-150-100-datasheet.pdf",
+  "fuente": "https://www.victronenergy.com/upload/documents/Datasheet-BlueSolar-charge-controller-MPPT-150-45-up-to-150-100-EN.pdf"
+ },
+ "cat-mayorista-6dfcf1f7069e": {
+  "pdf": "/fichas/fabricantes/fronius-tauro-eco-d-208-es-mx-datasheet.pdf",
+  "fuente": "https://krannich-solar.com/fileadmin/user_upload/MX/SE_DS_Fronius_Tauro_D_208_ES_MEX.pdf"
+ },
+ "panel-solar-monocristalino-victron-scc900300000": {
+  "pdf": "/fichas/fabricantes/victron-bluesolar-pwm-pro-datasheet.pdf",
+  "fuente": "https://www.victronenergy.com/upload/documents/Datasheet-BlueSolar-PWM-Pro-Charge-Controllers-EN.pdf"
+ },
+ "protector-de-bateria-victron-12-24v-100a-smart-batteryprotect-12-24v": {
+  "pdf": "/fichas/fabricantes/victron-smart-batteryprotect-datasheet.pdf",
+  "fuente": "https://www.victronenergy.com/upload/documents/Datasheet-Smart-Battery-Protect-65-A--100-A--220-A-EN.pdf"
+ },
+ "epever-ipt2000": {
+  "pdf": "/fichas/fabricantes/epever-ipt-110-120vac-datasheet.pdf",
+  "fuente": "https://www.epever.com/wp-content/uploads/2021/09/EPEVER-DataSheet-IPT-100-110-120VAC1.pdf"
+ },
+ "cat-mayorista-ee978386fba4": {
+  "pdf": "/fichas/fabricantes/soluna-hv-pack-6k-10k-15k-datasheet.pdf",
+  "fuente": "https://soluna.co/wp-content/uploads/2025/06/HV-Pack-6K10K15K_compressed.pdf"
+ },
+ "bomba-solar-1500w-kolos4-60-150-20": {
+  "pdf": "/fichas/fabricantes/connera-kolosal-catalogo-vde.pdf",
+  "fuente": "https://cdnc.heyzine.com/flip-book/pdf/76fe07714d7eb6fbe7b7ffd183db3ac9ccc68a76.pdf"
+ },
+ "cat-mayorista-f6d271a3ebc1": {
+  "pdf": "/fichas/fabricantes/pytes-e-box-48100r-specs.pdf",
+  "fuente": "https://www.pytesess.com/public/upload/20250319/3878cac27dd51f5e944cbf307c6116d5.pdf"
+ },
+ "cat-mayorista-91a000febf86": {
+  "pdf": "/fichas/fabricantes/pytes-e-box-48100r-specs.pdf",
+  "fuente": "https://www.pytesess.com/public/upload/20250319/3878cac27dd51f5e944cbf307c6116d5.pdf"
+ },
+ "adaptador-bluetooth-victron-8-70vdc-ve-bus-smart-dongle": {
+  "pdf": "/fichas/fabricantes/victron-ve-bus-smart-dongle-manual.pdf",
+  "fuente": "https://www.victronenergy.com/upload/documents/VE.Bus_Smart_Dongle/106441-VE_Bus_Smart_Dongle-pdf-en.pdf"
+ },
+ "inversor-solar-on-grid-goodwe-36kw-gw36k-sdt-c30": {
+  "pdf": "/fichas/fabricantes/goodwe-sdt-g3-25-40kw-datasheet.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SDT-G3-25-40kW_Datasheet-EN.pdf"
+ },
+ "inversor-micro-optimizador": {
+  "pdf": "/fichas/fabricantes/apsystems-ds3d-datasheet.pdf",
+  "fuente": "https://global.apsystems.com/wp-content/uploads/2023/04/APsystems-Microinverter-DS3D-For-APAC-Datasheet_-Rev1.2_2023-03-02.pdf"
+ },
+ "bateria-solar-litio-goodwe-51-2vdc-280ah-gw14": {
+  "pdf": "/fichas/fabricantes/goodwe-lynx-a-g3-14kwh-datasheet.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_Lynx-A-G3-14kWh_Datasheet-EN.pdf"
+ },
+ "cat-mayorista-598333d32b5e": {
+  "pdf": "/fichas/fabricantes/soluna-hv-pack-6k-10k-15k-datasheet.pdf",
+  "fuente": "https://soluna.co/wp-content/uploads/2025/06/HV-Pack-6K10K15K_compressed.pdf"
+ },
+ "cat-mayorista-d39390170713": {
+  "pdf": "/fichas/fabricantes/solis-s3-wifi-st-flyer.pdf",
+  "fuente": "https://www.solisinverters.com/uploads/file/S3-WIFI-ST-Global-Flyer-V3,6.pdf"
+ },
+ "bomba-solar-1500w-kolos3-180-150-20": {
+  "pdf": "/fichas/fabricantes/connera-kolosal-catalogo-vde.pdf",
+  "fuente": "https://cdnc.heyzine.com/flip-book/pdf/76fe07714d7eb6fbe7b7ffd183db3ac9ccc68a76.pdf"
+ },
+ "inversor-solar-on-grid-growatt-36kw-36ktl3-xl2": {
+  "pdf": "/fichas/fabricantes/growatt-mac-30-36ktl3-xl2-hoja-de-datos.pdf",
+  "fuente": "https://latam.growatt.com/upload/file/MAC_30-36KTL3-XL2_Hoja_de_datos_MX_202605.pdf"
+ },
+ "panel-solar-monocristalino-550w": {
+  "pdf": "/fichas/fabricantes/ja-jam72d40-lb-datasheet.pdf",
+  "fuente": "https://www.jasolar.eu/fileadmin/data/4.0/JAM72D40_LB/2024/JAM72D40_LB.pdf"
+ },
+ "inversor-solar-off-grid-felicity-3kw-ivem3048-lv": {
+  "pdf": "/fichas/fabricantes/felicity-ivem3048-lv-datasheet.pdf",
+  "fuente": "https://doc.felicitysolar.com/Datasheet/Inverter-en/IVEM3048-LV%20IVEM5048-LV%20Datasheet%20-%20EN.pdf"
+ },
+ "datalogger-goodwe-ezlogger-3000u-a-smart-datalogger-ezlogger3000u": {
+  "pdf": "/fichas/fabricantes/goodwe-ezlogger3000u-datasheet.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_EzLogger3000U_Datasheet-EN.pdf"
+ },
+ "unidad-de-comunicacion-goodwe-scu3000a-s-para-plantas-fotovoltaicas": {
+  "pdf": "/fichas/fabricantes/goodwe-scu3000-datasheet.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SCU3000_Datasheet-EN.pdf"
+ },
+ "datalogger-deye-ls4g-3": {
+  "pdf": "/fichas/fabricantes/deye-stick-logger-datasheet.pdf",
+  "fuente": "https://www.deyeinverter.com/deyeinverter/2024/06/20/%E3%80%90b%E3%80%91%E6%9C%8D%E5%8A%A1%E6%8C%87%E5%8D%97-%E9%99%84%E4%BB%B6-%E9%87%87%E9%9B%86%E5%99%A8deye.pdf"
+ },
+ "bateria-solar-litio-felicity-48v-8-75kwh-fla48171-eu": {
+  "pdf": "/fichas/fabricantes/felicity-fla48-eu-100-250-datasheet.pdf",
+  "fuente": "https://doc.felicitysolar.com/Datasheet/Battery-en/FLA48100-EU%20FLA48171-EU%20FLA48230-EU%20FLA48250-EU%20%20Datasheet%20-%20EN.pdf"
+ },
+ "bateria-solar-litio-felicity-24v-7-15kwh-fla24280-eu": {
+  "pdf": "/fichas/fabricantes/felicity-fla24-eu-datasheet.pdf",
+  "fuente": "https://doc.felicitysolar.com/Datasheet/Battery-en/FLA24100-EU%20FLA24171-EU%20FLA24230-EU%20FLA24280-EU%20FLA24460-EU%20%20Datasheet%20-%20EN.pdf"
+ },
+ "bomba-solar-1100w-kolos3-123-110-20": {
+  "pdf": "/fichas/fabricantes/connera-kolosal-catalogo-vde.pdf",
+  "fuente": "https://cdnc.heyzine.com/flip-book/pdf/76fe07714d7eb6fbe7b7ffd183db3ac9ccc68a76.pdf"
+ },
+ "controlador-mppt-80a": {
+  "pdf": "/fichas/fabricantes/epever-tracer-an-50-100a-datasheet.pdf",
+  "fuente": "https://www.epever.com/wp-content/uploads/2021/05/EPEVER-Datasheet_Tracer-AN-50A-100A.pdf"
+ },
+ "inversor-solar-on-grid-goodwe-40kw-gw40k-sdt-c30": {
+  "pdf": "/fichas/fabricantes/goodwe-sdt-g3-25-40kw-datasheet.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SDT-G3-25-40kW_Datasheet-EN.pdf"
+ },
+ "cat-mayorista-b08962dedfab": {
+  "pdf": "/fichas/fabricantes/fronius-primo-us-datasheet.pdf",
+  "fuente": "https://www.fronius.com/~/downloads/Solar%20Energy/Datasheets/SE_DS_Fronius_Primo_EN_US.pdf"
+ },
+ "cat-mayorista-940810d7953b": {
+  "pdf": "/fichas/fabricantes/huawei-luna2000-5-15-s0-datasheet.pdf",
+  "fuente": "https://solar.huawei.com/-/media/Solar/attachment/pdf/eu/datasheet/LUNA2000-5-15-S0.pdf"
+ },
+ "bomba-solar-1300w-kolos4-112-130-20": {
+  "pdf": "/fichas/fabricantes/connera-kolosal-catalogo-vde.pdf",
+  "fuente": "https://cdnc.heyzine.com/flip-book/pdf/76fe07714d7eb6fbe7b7ffd183db3ac9ccc68a76.pdf"
+ },
+ "cat-mayorista-a1751e95a366": {
+  "pdf": "/fichas/fabricantes/studer-variotrack-vt65-vt80-datasheet.pdf",
+  "fuente": "https://studer-innotec.com/wp-content/uploads/2025/09/Studer_variotrack-legacy_vt40_vt65_vt80_A4-WEB-v2.2.1.pdf"
+ },
+ "inversor-solar-on-grid-goodwe-33kw-gw33k-sdt-c30": {
+  "pdf": "/fichas/fabricantes/goodwe-sdt-g3-25-40kw-datasheet.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SDT-G3-25-40kW_Datasheet-EN.pdf"
+ },
+ "bateria-solar-litio-pylontech-3552wh-hess": {
+  "pdf": "/fichas/fabricantes/pylontech-residential-bess-us-series.pdf",
+  "fuente": "https://midsummerenergy.co.uk/pdfs/us5000-datasheet.pdf"
+ },
+ "datalogger-growatt-shinewelink-para-microinversores-neo": {
+  "pdf": "/fichas/fabricantes/growatt-shinewelink-datasheet.pdf",
+  "fuente": "https://en.growatt.com/upload/file/ShineWeLink_Datasheet_EN_202507.pdf"
+ },
+ "inversor-solar-hibrido-goodwe-5kw-gw5000-es-20": {
+  "pdf": "/fichas/fabricantes/goodwe-es-g2-datasheet.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_ES%20G2_Datasheet-EN.pdf"
+ },
+ "sistema-de-monitoreo-solar-victron-bpp900451100": {
+  "pdf": "/fichas/fabricantes/victron-cerbo-gx-datasheet.pdf",
+  "fuente": "https://www.victronenergy.com/upload/documents/Datasheet-Cerbo-GX-GX-Touch-EN.pdf"
+ },
+ "cat-mayorista-648e6f1b96ee": {
+  "pdf": "/fichas/fabricantes/pytes-v5-datasheet.pdf",
+  "fuente": "https://www.pytesess.com/public/upload/20250319/276285a7380939f2373089ed8cbcb8ef.pdf"
+ },
+ "cat-mayorista-6f5562cfe157": {
+  "pdf": "/fichas/fabricantes/fronius-primo-us-datasheet.pdf",
+  "fuente": "https://www.fronius.com/~/downloads/Solar%20Energy/Datasheets/SE_DS_Fronius_Primo_EN_US.pdf"
+ },
+ "bomba-solar-600w-kolos3-80-60-7": {
+  "pdf": "/fichas/fabricantes/connera-kolosal-catalogo-vde.pdf",
+  "fuente": "https://cdnc.heyzine.com/flip-book/pdf/76fe07714d7eb6fbe7b7ffd183db3ac9ccc68a76.pdf"
+ },
+ "bateria-solar-litio-felicity-24v-4kwh-fla24171": {
+  "pdf": "/fichas/fabricantes/felicity-fla24-eu-datasheet.pdf",
+  "fuente": "https://doc.felicitysolar.com/Datasheet/Battery-en/FLA24100-EU%20FLA24171-EU%20FLA24230-EU%20FLA24280-EU%20FLA24460-EU%20%20Datasheet%20-%20EN.pdf"
+ },
+ "inversor-solar-on-grid-goodwe-30kw-gw30k-sdt-c30": {
+  "pdf": "/fichas/fabricantes/goodwe-sdt-g3-25-40kw-datasheet.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SDT-G3-25-40kW_Datasheet-EN.pdf"
+ },
+ "controlador-de-energia-goodwe-sec1000s-para-inversores": {
+  "pdf": "/fichas/fabricantes/goodwe-sec1000-datasheet.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_SEC1000_Datasheet-EN.pdf"
+ },
+ "inversor-solar-on-grid-victron-qua483021100": {
+  "pdf": "/fichas/fabricantes/victron-quattro-3-10kva-120v-datasheet.pdf",
+  "fuente": "https://www.victronenergy.com/upload/documents/Datasheet-Quattro-3-10kVA-120V-EN-.pdf"
+ },
+ "sistema-de-monitoreo-solar-apsystems-ecu-r-mx": {
+  "pdf": "/fichas/fabricantes/apsystems-ecu-r-datasheet.pdf",
+  "fuente": "https://global.apsystems.com/wp-content/uploads/2022/09/APsystems-Energy-Communication-Unit-ECU-R-datasheet_Rev3.4_2022-08-30.pdf"
+ },
+ "bomba-solar-750w-kolos-cfp-750-72": {
+  "pdf": "/fichas/fabricantes/connera-kolosal-catalogo-vde.pdf",
+  "fuente": "https://cdnc.heyzine.com/flip-book/pdf/76fe07714d7eb6fbe7b7ffd183db3ac9ccc68a76.pdf"
+ },
+ "controlador-de-carga-solar-mppt-inti-30a-3024": {
+  "pdf": "/fichas/fabricantes/inti-olmo-datasheet.pdf",
+  "fuente": "http://intipv.com/es/wp-content/uploads/2021/08/Data-Sheet-Olmo-1.pdf"
+ },
+ "bomba-solar-7500w-kol4-120-750-mp": {
+  "pdf": "/fichas/fabricantes/connera-kol4-mp-manual.pdf",
+  "fuente": "http://docs.connera.com/MI/MICO_KOLOSAL%204.pdf"
+ },
+ "bateria-solar-litio-dyness-5-12kwh-dyness-bx51100": {
+  "pdf": "/fichas/fabricantes/dyness-bx51100-datasheet.pdf",
+  "fuente": "https://www.dyness.com/Public/Uploads/uploadfile/files/20241022/DynessBX51100datasheetEN.pdf"
+ },
+ "controlador-de-carga-solar-mppt-inti-60a-6048150": {
+  "pdf": "/fichas/fabricantes/inti-cedro-plus-icc-6048150-ficha.pdf",
+  "fuente": "http://intipv.com/es/wp-content/uploads/2025/05/ICC-6048150-1-1-1.pdf"
+ },
+ "bomba-solar-1300w-kolos3-155-130-20": {
+  "pdf": "/fichas/fabricantes/connera-kolosal-catalogo-vde.pdf",
+  "fuente": "https://cdnc.heyzine.com/flip-book/pdf/76fe07714d7eb6fbe7b7ffd183db3ac9ccc68a76.pdf"
+ },
+ "datalogger-goodwe-ezlogger-3000c-smartl": {
+  "pdf": "/fichas/fabricantes/goodwe-ezlogger3000c-datasheet.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_EzLogger3000C_Datasheet-EN.pdf"
+ },
+ "bomba-solar-750w-kolos3-95-75-11": {
+  "pdf": "/fichas/fabricantes/connera-kolosal-catalogo-vde.pdf",
+  "fuente": "https://cdnc.heyzine.com/flip-book/pdf/76fe07714d7eb6fbe7b7ffd183db3ac9ccc68a76.pdf"
+ },
+ "cat-mayorista-e8ac1c4e6da5": {
+  "pdf": "/fichas/fabricantes/soluna-hv-pack-6k-10k-15k-datasheet.pdf",
+  "fuente": "https://soluna.co/wp-content/uploads/2025/06/HV-Pack-6K10K15K_compressed.pdf"
+ },
+ "cat-mayorista-6184c2963746": {
+  "pdf": "/fichas/fabricantes/studer-variotrack-vt65-vt80-datasheet.pdf",
+  "fuente": "https://studer-innotec.com/wp-content/uploads/2025/09/Studer_variotrack-legacy_vt40_vt65_vt80_A4-WEB-v2.2.1.pdf"
+ },
+ "bateria-solar-litio-felicity-48v-14-3kwh-fla48280-eu": {
+  "pdf": "/fichas/fabricantes/felicity-fla48280-eu-datasheet.pdf",
+  "fuente": "https://doc.felicitysolar.com/Datasheet/Battery-en/FLA48280-EU%20FLA48300-EU%20Datasheet%20-%20EN.pdf"
+ },
+ "bateria-solar-litio-growatt-380vdc-5-0kwh-ip66": {
+  "pdf": "/fichas/fabricantes/growatt-apx-hv-battery-datasheet.pdf",
+  "fuente": "https://en.growatt.com/upload/file/APX_HV_Battery-S0_(MIN-XH)_Datasheet_EN_202405.pdf"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc010060200": {
+  "pdf": "/fichas/fabricantes/victron-bluesolar-mppt-150-45-a-150-100-datasheet.pdf",
+  "fuente": "https://www.victronenergy.com/upload/documents/Datasheet-BlueSolar-charge-controller-MPPT-150-45-up-to-150-100-EN.pdf"
+ },
+ "inversor-solar-on-grid-victron-qua122305130": {
+  "pdf": "/fichas/fabricantes/victron-quattro-ii-3kva-2x120v-datasheet.pdf",
+  "fuente": "https://www.victronenergy.com/upload/documents/Datasheet-Quattro-II-3kVA-2x120V-EN-.pdf"
+ },
+ "bomba-solar-2200w-kol4-110-220-mp": {
+  "pdf": "/fichas/fabricantes/connera-kol4-mp-manual.pdf",
+  "fuente": "http://docs.connera.com/MI/MICO_KOLOSAL%204.pdf"
+ },
+ "cat-mayorista-3bf55f91e354": {
+  "pdf": "/fichas/fabricantes/huawei-luna2000-7-14-21-s1-datasheet.pdf",
+  "fuente": "https://ske-solar.com/productdata/LUNA2000-S1/01_Datasheets/DataSheet_LUNA2000-7-14-21-S1_V01_2024-06_EN.pdf"
+ },
+ "bomba-solar-500w-pool25-500-48": {
+  "pdf": "/fichas/fabricantes/connera-kolosal-pool-catalogo-vde.pdf",
+  "fuente": "https://cdnc.heyzine.com/flip-book/pdf/06fdde9c751b360391fddc2c18da3f10b667c34c.pdf"
+ },
+ "cat-mayorista-fa78e1e70d09": {
+  "pdf": "/fichas/fabricantes/hoymiles-dtsu666-export-management-datasheet.pdf",
+  "fuente": "https://wallboxcenter.de/wp-content/uploads/2022/10/Hoymiles-DTSU666-Smartmeter-Datenblatt.pdf"
+ },
+ "cat-mayorista-d5c555401f8e": {
+  "pdf": "/fichas/fabricantes/huawei-smart-power-sensor-dtsu666-h-datasheet.pdf",
+  "fuente": "https://solar.huawei.com/admin/asset/v1/pro/view/10b44cb3ac91489981d76e0f752b579c.pdf"
+ },
+ "cat-mayorista-9b8d35185cbf": {
+  "pdf": "/fichas/fabricantes/huawei-smart-dongle-4g-datasheet.pdf",
+  "fuente": "https://solar.huawei.com/-/media/SolarV4/solar-version2/common/professionals/all-products/ci/accessories/smart-dongle-4g/datasheet/smart-dongle-4g.pdf"
+ },
+ "datalogger-goodwe-ezlogger-pro-dispositivo-de-monitoreo-remoto": {
+  "pdf": "/fichas/fabricantes/goodwe-ezlogger-pro-datasheet.pdf",
+  "fuente": "https://en.goodwe.com/Ftp/EN/Downloads/Datasheet/GW_EzLogger%20Pro_Datasheet-EN.pdf"
+ },
+ "bomba-solar-4000w-kol4-225-400-mp": {
+  "pdf": "/fichas/fabricantes/connera-kol4-mp-manual.pdf",
+  "fuente": "http://docs.connera.com/MI/MICO_KOLOSAL%204.pdf"
+ },
+ "bateria-solar-litio-pylontech-uf5000": {
+  "pdf": "/fichas/fabricantes/pylontech-uf5000-manual.pdf",
+  "fuente": "https://pylonwebs3.s3.amazonaws.com/upload/2024/09/25/5PMPA08-00204-UF5000%20Installation%20manual-V1.1_20240925123054A047.pdf"
+ },
+ "inversor-solar-on-grid-victron-pmp121500100": {
+  "pdf": "/fichas/fabricantes/victron-multiplus-500-1200va-120v-datasheet.pdf",
+  "fuente": "https://www.victronenergy.com/upload/documents/Datasheet-MultiPlus-500-1200VA-120V-EN.pdf"
+ },
+ "controlador-de-carga-solar-mppt-victron-scc010060300": {
+  "pdf": "/fichas/fabricantes/victron-bluesolar-mppt-150-45-a-150-100-datasheet.pdf",
+  "fuente": "https://www.victronenergy.com/upload/documents/Datasheet-BlueSolar-charge-controller-MPPT-150-45-up-to-150-100-EN.pdf"
+ },
+ "bateria-solar-lifepo4-bslbatt-51-2v-100ah-5-12kwh-bslbatt-5-12": {
+  "pdf": "/fichas/fabricantes/bslbatt-b-lfp48-100e-3u-datasheet.pdf",
+  "fuente": "https://www.bsl-battery.com/uploads/Datasheet-6-B-LFP48-100E3U-AU.pdf"
+ }
+}

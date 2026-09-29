@@ -1,6 +1,6 @@
 ---
 title: "PYTES V5° LiFePO4 battery 5000 (5.12kWh-51.2V-100Ah-75A)"
-description: "Sistema o módulo de almacenamiento en litio (LiFePO₄ típico) para acoplamiento con inversores compatibles; BMS, expansión y cableado según referencia Pytes o BYD. La foto es de referencia de la serie Pytes. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Sistema o módulo de almacenamiento en litio (LiFePO₄ típico) para acoplamiento con inversores compatibles; BMS, expansión y cableado según referencia Pytes o BYD. La foto es de referencia de la serie Pytes. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/pytes-battery-prov.webp"
 category: "baterias"
 price: "$5.706.900"
@@ -25,6 +25,7 @@ faqs:
     respuesta: "El voltaje del banco debe coincidir con el del inversor y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
   - pregunta: "¿Qué ventajas tiene el LiFePO4?"
     respuesta: "Es la química de litio más segura para uso residencial: soporta miles de ciclos, no requiere mantenimiento y entrega casi toda su capacidad, a diferencia de las baterías de plomo."
+fichaPdf: "/fichas/fabricantes/pytes-v5-datasheet.pdf"
 ---
 
 **PYTES V5° LiFePO4 battery 5000 (5.12kWh-51.2V-100Ah-75A)** · referencia **Pytes** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

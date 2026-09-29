@@ -1,6 +1,6 @@
 ---
 title: "LUNA2000-5-E0-$ LUNA2000-7-E1"
-description: "Módulo o sistema de almacenamiento Huawei LUNA2000 (LiFePO₄, alta tensión según serie): expansión modular, BMS integrado y acoplamiento con inversores Huawei híbridos compatibles. La foto es de referencia de la serie Huawei LUNA. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Módulo o sistema de almacenamiento Huawei LUNA2000 (LiFePO₄, alta tensión según serie): expansión modular, BMS integrado y acoplamiento con inversores Huawei híbridos compatibles. La foto es de referencia de la serie Huawei LUNA. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/huawei-luna-prov.webp"
 category: "baterias"
 price: "$14.535.000"
@@ -25,6 +25,7 @@ faqs:
     respuesta: "El voltaje del banco debe coincidir con el del inversor y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
   - pregunta: "¿Qué ventajas tiene el LiFePO4?"
     respuesta: "Es la química de litio más segura para uso residencial: soporta miles de ciclos, no requiere mantenimiento y entrega casi toda su capacidad, a diferencia de las baterías de plomo."
+fichaPdf: "/fichas/fabricantes/huawei-luna2000-7-14-21-s1-datasheet.pdf"
 ---
 
 **LUNA2000-5-E0-$ LUNA2000-7-E1** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

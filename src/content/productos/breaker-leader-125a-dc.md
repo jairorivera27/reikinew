@@ -31,6 +31,7 @@ faqs:
     respuesta: "Del lado de paneles, la protección debe soportar al menos 1,25 veces la corriente de cortocircuito (Isc) del string y no superar la corriente máxima que admite el cable. Del lado AC se elige según la corriente de salida del inversor."
   - pregunta: "¿Cumple RETIE?"
     respuesta: "Las instalaciones solares en Colombia deben cumplir RETIE; usa protecciones certificadas bajo normas IEC y deja la instalación en manos de un técnico. Reiki te asesora en el diseño del tablero."
+fichaPdf: "/fichas/reiki/breaker-leader-125a-dc.pdf"
 ---
 **Breaker Leader 125A DC** de Leader · 125A DC.
 

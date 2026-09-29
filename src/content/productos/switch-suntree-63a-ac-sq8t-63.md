@@ -31,6 +31,7 @@ imagen_provisional: true
 faqs:
   - pregunta: "¿Cumple RETIE?"
     respuesta: "Las instalaciones solares en Colombia deben cumplir RETIE; usa protecciones certificadas bajo normas IEC y deja la instalación en manos de un técnico. Reiki te asesora en el diseño del tablero."
+fichaPdf: "/fichas/reiki/switch-suntree-63a-ac-sq8t-63.pdf"
 ---
 **Switch Suntree 63A AC SQ8T-63** de Suntree · 63A AC.
 

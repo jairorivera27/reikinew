@@ -28,6 +28,7 @@ imageOriginal: "/images/productos-tienda/protecciones/growatt-wifi.jpg"
 faqs:
   - pregunta: "¿Cumple RETIE?"
     respuesta: "Las instalaciones solares en Colombia deben cumplir RETIE; usa protecciones certificadas bajo normas IEC y deja la instalación en manos de un técnico. Reiki te asesora en el diseño del tablero."
+fichaPdf: "/fichas/reiki/proteccion-electrica-solar-growatt-wifi.pdf"
 ---
 **Protección Eléctrica Solar Growatt WIFI** de Growatt · N/A.
 

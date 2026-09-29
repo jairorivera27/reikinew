@@ -1,6 +1,6 @@
 ---
 title: "Controlador de Carga Solar MPPT Inti 60A 6048150"
-description: "Controlador de carga solar MPPT Inti de 60 A. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+description: "Controlador de carga solar MPPT Inti de 60 A. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/inti-mppt-60a.webp"
 category: "controladores"
 price: "$1.088.062"
@@ -33,6 +33,7 @@ faqs:
     respuesta: "Con 60 A de carga admite aproximadamente 810 W de paneles con batería de 12 V, 1.620 W a 24 V y 3.240 W a 48 V. Además hay que respetar el voltaje máximo de entrada del controlador (ver ficha técnica)."
   - pregunta: "¿Sirve para baterías de litio?"
     respuesta: "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
+fichaPdf: "/fichas/fabricantes/inti-cedro-plus-icc-6048150-ficha.pdf"
 ---
 **Controlador de Carga Solar MPPT Inti 60A 6048150** de Inti · 60A.
 

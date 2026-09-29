@@ -29,6 +29,7 @@ faqs:
     respuesta: "1 polos. En DC se suele usar un polo por conductor (positivo y negativo); en AC depende de si el circuito es monofásico, bifásico o trifásico."
   - pregunta: "¿Cumple RETIE?"
     respuesta: "Las instalaciones solares en Colombia deben cumplir RETIE; usa protecciones certificadas bajo normas IEC y deja la instalación en manos de un técnico. Reiki te asesora en el diseño del tablero."
+fichaPdf: "/fichas/reiki/proteccion-breaker-63a.pdf"
 ---
 
 Interruptor termomagnético DC para protección de circuitos solares. Certificado y de alta calidad para máxima seguridad.
