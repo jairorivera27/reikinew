@@ -265,3 +265,35 @@ export async function notifyAddiReturnUnverified(orderId, snapshot = {}) {
   const notified = await notifyOrder(order, 'ownerNotifiedReturn', { unverified: true });
   return { ok: true, orderId: id, notified, unverified: true, phone: order.client?.phone };
 }
+
+/**
+ * Cliente vuelve de Wompi con APPROVED en UI.
+ * Si no hay WOMPI_PRIVATE_KEY en el servidor, igual avisamos con el formulario
+ * (el pedido idealmente ya existe por /api/register-checkout).
+ */
+export async function notifyWompiReturnUnverified(snapshot = {}) {
+  const orderId = String(snapshot.orderId || snapshot.reference || '').trim();
+  if (!orderId) return { ok: false, reason: 'no_order_id' };
+
+  const phone = String(snapshot.client?.phone || '').trim();
+  const name = String(snapshot.client?.fullName || '').trim();
+  if (!phone && !name) return { ok: false, reason: 'no_client' };
+
+  const order = await upsertCheckoutSnapshot({
+    orderId,
+    gateway: 'wompi',
+    status: 'pending_verify',
+    totalAmount: snapshot.totalAmount,
+    items: snapshot.items,
+    client: snapshot.client,
+    shippingAddress: snapshot.shippingAddress,
+    wompiTransactionId: snapshot.wompiTransactionId || null,
+  });
+
+  if (order.ownerNotified) {
+    return { ok: true, orderId, already: true, phone: order.client?.phone };
+  }
+
+  const notified = await notifyOrder(order, 'ownerNotifiedReturn', { unverified: true });
+  return { ok: true, orderId, notified, unverified: true, phone: order.client?.phone };
+}

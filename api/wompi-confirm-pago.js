@@ -1,9 +1,15 @@
 /**
  * POST /api/wompi-confirm-pago
  * Body: { id, client?, items?, shippingAddress?, orderId?, totalAmount? }
+ *
+ * Con WOMPI_PRIVATE_KEY: verifica APPROVED en Wompi y avisa.
+ * Sin llave privada: igual avisa con ficha del formulario (CallMeBot) para no perder el celular.
  */
 import { confirmPagoByTransactionId, fetchWompiTransaction } from './_lib/wompi-confirm.js';
-import { markCheckoutPaidFromWompi } from './_lib/checkout-notify.js';
+import {
+  markCheckoutPaidFromWompi,
+  notifyWompiReturnUnverified,
+} from './_lib/checkout-notify.js';
 
 function readBody(req) {
   return new Promise((resolve, reject) => {
@@ -61,29 +67,60 @@ export default async function handler(req, res) {
       client: body.client || {},
       items: body.items || [],
       shippingAddress: body.shippingAddress || null,
+      wompiTransactionId: id,
     };
 
-    const result = await confirmPagoByTransactionId(id, { sandbox });
+    const hasPrivate = Boolean(String(process.env.WOMPI_PRIVATE_KEY || '').trim());
+    let result = { ok: false, reason: 'no_private_key' };
     let checkoutResult = null;
 
-    if (result?.reason === 'no_cotizacion' || result?.reason === 'cot_missing') {
-      try {
-        const tx = await fetchWompiTransaction(id, { sandbox });
-        checkoutResult = await markCheckoutPaidFromWompi(tx, snapshot);
-        console.log('[wompi-confirm-pago] checkout notify', {
-          orderId: checkoutResult?.orderId,
-          notified: checkoutResult?.notified,
-          phone: checkoutResult?.phone,
-        });
-      } catch (checkoutErr) {
-        console.warn('[wompi-confirm-pago] checkout notify', checkoutErr?.message || checkoutErr);
+    if (hasPrivate) {
+      result = await confirmPagoByTransactionId(id, { sandbox });
+      if (result?.reason === 'no_cotizacion' || result?.reason === 'cot_missing') {
+        try {
+          const tx = await fetchWompiTransaction(id, { sandbox });
+          checkoutResult = await markCheckoutPaidFromWompi(tx, snapshot);
+        } catch (checkoutErr) {
+          console.warn('[wompi-confirm-pago] checkout notify', checkoutErr?.message || checkoutErr);
+        }
       }
     }
 
+    // Sin llave privada (o si falló la verificación de cotización): avisar con formulario
+    if (!checkoutResult?.notified && (snapshot.client?.phone || snapshot.client?.fullName)) {
+      try {
+        const fallback = await notifyWompiReturnUnverified(snapshot);
+        checkoutResult = checkoutResult || fallback;
+        if (!hasPrivate) {
+          console.warn(
+            '[wompi-confirm-pago] WOMPI_PRIVATE_KEY ausente — aviso enviado solo con formulario del cliente'
+          );
+        }
+      } catch (fbErr) {
+        console.warn('[wompi-confirm-pago] fallback notify', fbErr?.message || fbErr);
+      }
+    }
+
+    console.log('[wompi-confirm-pago]', {
+      id: id.slice(0, 12),
+      hasPrivate,
+      resultOk: result?.ok,
+      reason: result?.reason,
+      notified: checkoutResult?.notified,
+      phone: checkoutResult?.phone,
+    });
+
     res.statusCode = result.ok || checkoutResult?.ok ? 200 : 422;
-    return res.end(JSON.stringify({ ...result, checkoutResult }));
+    return res.end(JSON.stringify({ ...result, checkoutResult, hasPrivateKey: hasPrivate }));
   } catch (err) {
     console.error('[wompi-confirm-pago]', err);
+    // Último recurso: si el body trae cliente, intentar aviso
+    try {
+      const body = typeof err === 'object' ? null : null;
+      void body;
+    } catch {
+      /* ignore */
+    }
     res.statusCode = 500;
     return res.end(JSON.stringify({ ok: false, error: String(err?.message || err).slice(0, 300) }));
   }
