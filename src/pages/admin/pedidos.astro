@@ -1,0 +1,432 @@
+---
+import SEO from '../../components/SEO.astro';
+import FontAwesome from '../../components/FontAwesome.astro';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Pedidos tienda | Admin Reiki</title>
+    <FontAwesome />
+    <SEO
+      title="Pedidos tienda | Admin Reiki"
+      description="Panel interno de pedidos."
+      canonical="/admin/pedidos"
+      noindex={true}
+      schemaType="WebPage"
+    />
+  </head>
+  <body class="admin-body">
+    <main class="admin-main">
+      <header class="admin-header">
+        <div>
+          <p class="admin-eyebrow">Reiki · interno</p>
+          <h1>Pedidos de la tienda</h1>
+        </div>
+        <button type="button" id="admin-logout" class="admin-btn admin-btn--ghost" hidden>Salir</button>
+      </header>
+
+      <section id="admin-login" class="admin-card" hidden>
+        <h2>Acceso</h2>
+        <p class="admin-help">Usa el valor de <code>ADMIN_ORDERS_SECRET</code> de Vercel.</p>
+        <form id="admin-login-form" class="admin-login-form">
+          <label>
+            Contraseña
+            <input type="password" name="secret" id="admin-secret" autocomplete="current-password" required />
+          </label>
+          <button type="submit" class="admin-btn">Entrar</button>
+        </form>
+        <p id="admin-login-error" class="admin-error" hidden></p>
+      </section>
+
+      <section id="admin-panel" hidden>
+        <form id="admin-filters" class="admin-filters admin-card">
+          <label>
+            Días
+            <input type="number" name="dias" id="f-dias" min="1" max="90" value="7" />
+          </label>
+          <label>
+            Fecha
+            <input type="date" name="fecha" id="f-fecha" />
+          </label>
+          <label>
+            Documento
+            <input type="text" name="documento" id="f-documento" inputmode="numeric" placeholder="Cédula" />
+          </label>
+          <label>
+            Nombre
+            <input type="text" name="nombre" id="f-nombre" placeholder="Cliente" />
+          </label>
+          <div class="admin-filter-actions">
+            <button type="submit" class="admin-btn">Buscar</button>
+            <button type="button" id="admin-hoy" class="admin-btn admin-btn--ghost">Hoy</button>
+          </div>
+        </form>
+
+        <p id="admin-status" class="admin-status" aria-live="polite">Cargando…</p>
+
+        <div class="admin-table-wrap">
+          <table class="admin-table" id="admin-table">
+            <thead>
+              <tr>
+                <th>Fecha</th>
+                <th>Pasarela</th>
+                <th>Estado</th>
+                <th>Cliente</th>
+                <th>Celular</th>
+                <th>Documento</th>
+                <th>Total</th>
+                <th>Pedido</th>
+                <th>Productos</th>
+              </tr>
+            </thead>
+            <tbody id="admin-tbody"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <script is:inline>
+      (function () {
+        var LS_KEY = 'reiki_admin_orders_secret';
+        var loginEl = document.getElementById('admin-login');
+        var panelEl = document.getElementById('admin-panel');
+        var logoutBtn = document.getElementById('admin-logout');
+        var loginForm = document.getElementById('admin-login-form');
+        var loginErr = document.getElementById('admin-login-error');
+        var statusEl = document.getElementById('admin-status');
+        var tbody = document.getElementById('admin-tbody');
+        var filters = document.getElementById('admin-filters');
+
+        function getSecret() {
+          try {
+            return String(sessionStorage.getItem(LS_KEY) || '').trim();
+          } catch (_e) {
+            return '';
+          }
+        }
+
+        function setSecret(v) {
+          try {
+            if (v) sessionStorage.setItem(LS_KEY, v);
+            else sessionStorage.removeItem(LS_KEY);
+          } catch (_e) {}
+        }
+
+        function showLogin(msg) {
+          loginEl.hidden = false;
+          panelEl.hidden = true;
+          logoutBtn.hidden = true;
+          if (msg) {
+            loginErr.hidden = false;
+            loginErr.textContent = msg;
+          } else {
+            loginErr.hidden = true;
+            loginErr.textContent = '';
+          }
+        }
+
+        function showPanel() {
+          loginEl.hidden = true;
+          panelEl.hidden = false;
+          logoutBtn.hidden = false;
+        }
+
+        function formatCop(n) {
+          var v = Math.round(Number(n) || 0);
+          return v ? '$ ' + v.toLocaleString('es-CO') : '—';
+        }
+
+        function formatWhen(iso) {
+          if (!iso) return '—';
+          try {
+            return new Date(iso).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
+          } catch (_e) {
+            return String(iso);
+          }
+        }
+
+        function itemsText(items) {
+          if (!Array.isArray(items) || !items.length) return '—';
+          return items
+            .slice(0, 6)
+            .map(function (it) {
+              return (it.quantity || 1) + '× ' + (it.name || it.title || it.sku || 'Producto');
+            })
+            .join('; ');
+        }
+
+        function waLink(phone) {
+          var dig = String(phone || '').replace(/\D/g, '');
+          if (dig.length === 10 && dig.charAt(0) === '3') dig = '57' + dig;
+          if (!dig) return '';
+          return 'https://wa.me/' + dig;
+        }
+
+        function renderOrders(orders) {
+          tbody.innerHTML = '';
+          if (!orders.length) {
+            statusEl.textContent = 'Sin pedidos para estos filtros.';
+            return;
+          }
+          statusEl.textContent = orders.length + ' pedido(s)';
+          orders.forEach(function (o) {
+            var tr = document.createElement('tr');
+            var phone = (o.client && o.client.phone) || '';
+            var wa = waLink(phone);
+            var phoneHtml = phone
+              ? wa
+                ? '<a href="' + wa + '" target="_blank" rel="noopener">' + phone + '</a>'
+                : phone
+              : '—';
+            tr.innerHTML =
+              '<td>' +
+              formatWhen(o.paidAt || o.createdAt) +
+              '</td>' +
+              '<td>' +
+              String(o.gateway || '—').toUpperCase() +
+              '</td>' +
+              '<td>' +
+              String(o.status || '—') +
+              '</td>' +
+              '<td>' +
+              ((o.client && o.client.fullName) || '—') +
+              '<div class="admin-muted">' +
+              ((o.client && o.client.email) || '') +
+              '</div></td>' +
+              '<td class="admin-phone">' +
+              phoneHtml +
+              '</td>' +
+              '<td>' +
+              ((o.client && o.client.idNumber) || '—') +
+              '</td>' +
+              '<td>' +
+              formatCop(o.totalAmount) +
+              '</td>' +
+              '<td><code>' +
+              (o.orderId || '—') +
+              '</code></td>' +
+              '<td class="admin-items">' +
+              itemsText(o.items) +
+              '</td>';
+            tbody.appendChild(tr);
+          });
+        }
+
+        async function loadOrders() {
+          var secret = getSecret();
+          if (!secret) {
+            showLogin();
+            return;
+          }
+          showPanel();
+          statusEl.textContent = 'Cargando…';
+          var params = new URLSearchParams();
+          var dias = document.getElementById('f-dias').value || '7';
+          var fecha = document.getElementById('f-fecha').value || '';
+          var documento = document.getElementById('f-documento').value || '';
+          var nombre = document.getElementById('f-nombre').value || '';
+          params.set('dias', dias);
+          if (fecha) params.set('fecha', fecha);
+          if (documento) params.set('documento', documento.replace(/\D/g, ''));
+          if (nombre) params.set('nombre', nombre.trim());
+
+          try {
+            var res = await fetch('/api/orders-search?' + params.toString(), {
+              headers: { Authorization: 'Bearer ' + secret },
+            });
+            var json = await res.json().catch(function () {
+              return {};
+            });
+            if (res.status === 401) {
+              setSecret('');
+              showLogin(json.error || 'Contraseña incorrecta o ADMIN_ORDERS_SECRET no configurado.');
+              return;
+            }
+            if (!res.ok || !json.ok) {
+              statusEl.textContent = json.error || 'Error al cargar pedidos.';
+              tbody.innerHTML = '';
+              return;
+            }
+            renderOrders(Array.isArray(json.orders) ? json.orders : []);
+          } catch (err) {
+            statusEl.textContent = 'No se pudo contactar el servidor.';
+            tbody.innerHTML = '';
+          }
+        }
+
+        loginForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          var v = String(document.getElementById('admin-secret').value || '').trim();
+          if (!v) return;
+          setSecret(v);
+          loadOrders();
+        });
+
+        logoutBtn.addEventListener('click', function () {
+          setSecret('');
+          document.getElementById('admin-secret').value = '';
+          showLogin();
+        });
+
+        filters.addEventListener('submit', function (e) {
+          e.preventDefault();
+          loadOrders();
+        });
+
+        document.getElementById('admin-hoy').addEventListener('click', function () {
+          var today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Bogota' });
+          document.getElementById('f-fecha').value = today;
+          document.getElementById('f-dias').value = '1';
+          loadOrders();
+        });
+
+        if (getSecret()) loadOrders();
+        else showLogin();
+      })();
+    </script>
+
+    <style>
+      .admin-body {
+        margin: 0;
+        font-family: 'Segoe UI', system-ui, sans-serif;
+        background: #f4f6f5;
+        color: #1a2e28;
+        min-height: 100vh;
+      }
+      .admin-main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 1.5rem 1rem 3rem;
+      }
+      .admin-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 1rem;
+        margin-bottom: 1.25rem;
+      }
+      .admin-eyebrow {
+        margin: 0 0 0.25rem;
+        font-size: 0.8rem;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: #5a7268;
+      }
+      .admin-header h1 {
+        margin: 0;
+        font-size: 1.55rem;
+      }
+      .admin-card {
+        background: #fff;
+        border: 1px solid #d7e0db;
+        border-radius: 12px;
+        padding: 1.15rem 1.25rem;
+        margin-bottom: 1rem;
+      }
+      .admin-help {
+        color: #5a7268;
+        font-size: 0.92rem;
+      }
+      .admin-login-form {
+        display: grid;
+        gap: 0.75rem;
+        max-width: 360px;
+      }
+      .admin-login-form label,
+      .admin-filters label {
+        display: grid;
+        gap: 0.35rem;
+        font-size: 0.88rem;
+        font-weight: 600;
+      }
+      .admin-login-form input,
+      .admin-filters input {
+        font: inherit;
+        padding: 0.55rem 0.7rem;
+        border: 1px solid #c5d2cb;
+        border-radius: 8px;
+      }
+      .admin-btn {
+        border: 0;
+        border-radius: 8px;
+        background: #1f6b4a;
+        color: #fff;
+        font: inherit;
+        font-weight: 600;
+        padding: 0.55rem 1rem;
+        cursor: pointer;
+      }
+      .admin-btn--ghost {
+        background: transparent;
+        color: #1f6b4a;
+        border: 1px solid #9fbaad;
+      }
+      .admin-error {
+        color: #a32020;
+        margin-top: 0.75rem;
+      }
+      .admin-filters {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 0.75rem 1rem;
+        align-items: end;
+      }
+      .admin-filter-actions {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      .admin-status {
+        margin: 0 0 0.75rem;
+        color: #5a7268;
+      }
+      .admin-table-wrap {
+        overflow-x: auto;
+        background: #fff;
+        border: 1px solid #d7e0db;
+        border-radius: 12px;
+      }
+      .admin-table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.88rem;
+      }
+      .admin-table th,
+      .admin-table td {
+        text-align: left;
+        padding: 0.7rem 0.75rem;
+        border-bottom: 1px solid #e6eee9;
+        vertical-align: top;
+      }
+      .admin-table th {
+        background: #eef5f1;
+        font-size: 0.78rem;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        color: #456257;
+      }
+      .admin-phone a {
+        color: #1f6b4a;
+        font-weight: 700;
+        text-decoration: none;
+      }
+      .admin-muted {
+        color: #6b8077;
+        font-size: 0.8rem;
+        font-weight: 400;
+        margin-top: 0.15rem;
+      }
+      .admin-items {
+        max-width: 260px;
+      }
+      code {
+        font-size: 0.78rem;
+        word-break: break-all;
+      }
+    </style>
+  </body>
+</html>

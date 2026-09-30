@@ -18,19 +18,22 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const root = path.join(__dirname, '..');
 
 function loadEnvFile() {
-  const envPath = path.join(root, '.env');
-  if (!fs.existsSync(envPath)) return;
-  for (const line of fs.readFileSync(envPath, 'utf8').split(/\r?\n/)) {
-    const t = line.trim();
-    if (!t || t.startsWith('#')) continue;
-    const eq = t.indexOf('=');
-    if (eq <= 0) continue;
-    const key = t.slice(0, eq).trim();
-    let val = t.slice(eq + 1).trim();
-    if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
-      val = val.slice(1, -1);
+  for (const name of ['.env', '.env.vercel.production', '.env.local']) {
+    const envPath = path.join(root, name);
+    if (!fs.existsSync(envPath)) continue;
+    for (const line of fs.readFileSync(envPath, 'utf8').split(/\r?\n/)) {
+      const t = line.trim();
+      if (!t || t.startsWith('#')) continue;
+      const eq = t.indexOf('=');
+      if (eq <= 0) continue;
+      const key = t.slice(0, eq).trim();
+      let val = t.slice(eq + 1).trim();
+      if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
+        val = val.slice(1, -1);
+      }
+      if (!val || val === '[SENSITIVE]') continue;
+      if (!process.env[key]) process.env[key] = val;
     }
-    if (!process.env[key]) process.env[key] = val;
   }
 }
 
@@ -41,7 +44,10 @@ function parseArgs(argv) {
     if (a === '--nombre' || a === '-n') out.nombre = argv[++i];
     else if (a === '--documento' || a === '--doc' || a === '-d') out.documento = argv[++i];
     else if (a === '--fecha' || a === '-f') out.fecha = argv[++i];
-    else if (a === '--dias') out.dias = Number(argv[++i]) || 3;
+    else if (a === '--hoy') {
+      out.fecha = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Bogota' });
+      out.dias = 1;
+    } else if (a === '--dias') out.dias = Number(argv[++i]) || 3;
     else if (a === '--help' || a === '-h') out.help = true;
   }
   return out;
@@ -74,7 +80,9 @@ loadEnvFile();
 const args = parseArgs(process.argv.slice(2));
 if (args.help) {
   console.log(`Uso:
-  node scripts/buscar-compra.mjs --nombre "..." --fecha YYYY-MM-DD --documento ...
+  node scripts/buscar-compra.mjs --hoy
+  node scripts/buscar-compra.mjs --documento 1234567890
+  node scripts/buscar-compra.mjs --nombre "..." --fecha YYYY-MM-DD
   node scripts/buscar-compra.mjs --dias 3`);
   process.exit(0);
 }
