@@ -2,6 +2,7 @@
 title: "Breaker Suntree 20A DC 5504131"
 description: "Interruptor termomagnético (breaker) Suntree DC de 20 A. Protege el circuito contra sobrecargas y cortocircuitos y permite desconectarlo para mantenimiento. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/breaker-solar-dc-4x20a-1200v-suntree.webp"
+imageCard: "/images/productos-estudio/breaker-solar-dc-4x20a-1200v-suntree-card.webp"
 category: "protecciones"
 price: "$124.362"
 specifications:

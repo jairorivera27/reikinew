@@ -2,6 +2,7 @@
 title: "Medidor Inteligente Huawei SmartPS-250A-T0 (DTSU666-H 250A)"
 description: "Periférico de protección o alimentación auxiliar Huawei (SmartGuard / SmartPS) para cuadros AC/DC en instalaciones Smart PV según esquema del fabricante. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/generic-mccb.webp"
+imageCard: "/images/productos-estudio/generic-mccb-card.webp"
 category: "protecciones"
 price: "$417.690"
 specifications:

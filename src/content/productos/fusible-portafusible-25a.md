@@ -3,6 +3,7 @@ draft: true
 title: "Fusible/Portafusible 25A"
 description: "Fusible/Portafusible 25A. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Especificación principal: 25A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/generic-pv-fuse.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-pv-fuse-card.webp"
 category: "protecciones"
 price: "$32.226"
 specifications:

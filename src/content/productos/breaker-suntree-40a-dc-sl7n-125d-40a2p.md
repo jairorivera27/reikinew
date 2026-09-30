@@ -2,6 +2,7 @@
 title: "Breaker Suntree 40A DC SL7N-125D-40A2P"
 description: "Interruptor termomagnético (breaker) Suntree SL7N-125D-40A2P DC de 40 A. Protege el circuito contra sobrecargas y cortocircuitos y permite desconectarlo para mantenimiento. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/suntree-sl7n-dc.webp"
+imageCard: "/images/productos-estudio/suntree-sl7n-dc-card.webp"
 category: "protecciones"
 price: "$136.404"
 specifications:

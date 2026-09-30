@@ -3,6 +3,7 @@ draft: true
 title: "Breaker 63A AC 63A1P"
 description: "Breaker 63A AC 63A1P. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Modelo: 63A1P; especificación principal: 63A AC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-mcb-ac-card.webp"
 category: "protecciones"
 price: "$16.348"
 specifications:

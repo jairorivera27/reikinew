@@ -2,6 +2,7 @@
 title: "Batería de Litio Pylontech US3000 3 kWh 48V"
 description: "Batería de litio compacta de 3kWh con tecnología LiFePO4. Perfecta para sistemas residenciales pequeños y portátiles. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/pylontech-3kwh-medellin-prov.webp"
+imageCard: "/images/productos-estudio/pylontech-3kwh-medellin-prov-card.webp"
 category: "baterias"
 price: "$7.490.000"
 specifications:

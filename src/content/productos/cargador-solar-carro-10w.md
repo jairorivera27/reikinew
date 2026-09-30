@@ -2,6 +2,7 @@
 title: "Cargador Solar para Carro 10W"
 description: "Cargador solar portátil compacto para batería de carro 12V con panel solar plegable. Ideal para mantenimiento y emergencias."
 image: "/images/Productos tienda/Cargador de Carros/Cargador Solar para Carro 10W Powertech Medellín.png"
+imageCard: "/images/Productos tienda/Cargador de Carros/Cargador Solar para Carro 10W Powertech Medellín-card.webp"
 category: "accesorios"
 draft: true
 price: "$149.000"

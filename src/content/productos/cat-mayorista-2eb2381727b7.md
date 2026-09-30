@@ -2,6 +2,7 @@
 title: "Inversor Híbrido Huawei SUN2000-8K-LC0 8 kW"
 description: "Inversor Huawei SUN2000 serie LC0: string inverter trifásico para aplicaciones comerciales e industriales, con amplio rango MPPT y alta eficiencia según potencia nominal del modelo. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/huawei-sun2000-8k-lc0.webp"
+imageCard: "/images/productos-estudio/huawei-sun2000-8k-lc0-card.webp"
 category: "inversores"
 price: "$4.681.800"
 specifications:

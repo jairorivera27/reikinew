@@ -2,6 +2,7 @@
 title: "Panel Solar JA Solar JAM66D45-605/LB 605W Bifacial"
 description: "Panel Solar JA Solar JAM66D45-605/LB 605W Bifacial. 12 años garantía por manufactura / 30 años garantía contra potencia lineal. Modulo Monocristalino Bifacial tipo N con tecnología HalfCell, 132 celdas, técnologia multibusbar, Mejor rendimiento anti-sombreado, mejor tolerancia a cargas mecanicas. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. La foto es de referencia de la serie JA Solar JAM66D45 (DeepBlue 4.0 Pro). Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/panel-solar-ja-solar-jam66d45-605-lb-605w-bifacial.webp"
+imageCard: "/images/productos-estudio/panel-solar-ja-solar-jam66d45-605-lb-605w-bifacial-card.webp"
 imageAlt: "Panel Solar JA Solar JAM66D45-605/LB 605W Bifacial – Reiki Energía Solar"
 category: "paneles"
 price: "$321.500"

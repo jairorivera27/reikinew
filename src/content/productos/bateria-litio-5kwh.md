@@ -2,6 +2,7 @@
 title: "Batería de Litio Pylontech US5000 4,8 kWh 48V"
 description: "Batería de litio de 5kWh con tecnología LiFePO4, ideal para sistemas de respaldo y almacenamiento de energía solar residencial. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/pylontech-us-prov.webp"
+imageCard: "/images/productos-estudio/pylontech-us-prov-card.webp"
 category: "baterias"
 price: "$5.437.824"
 specifications:

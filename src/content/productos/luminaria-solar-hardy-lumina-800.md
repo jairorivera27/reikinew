@@ -2,6 +2,7 @@
 title: "Luminaria Solar Hardy Lumina 800 – 30 W reales · 6.150 lm"
 description: "Luminaria solar para alumbrado público Hardy Lumina 800 de 30 W reales y 6.150 lm (205 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 50 Ah y panel 60 W / 6 V monocristalino (680 × 350 mm). Se instala a 6 – 8 m de altura y ilumina 100 – 120 m². Protección IP66 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de 2024)."
 image: "/images/productos-estudio/hardy-lumina-800.webp"
+imageCard: "/images/productos-estudio/hardy-lumina-800-card.webp"
 imageThumb: "/images/productos-estudio/hardy-lumina-800-thumb.webp"
 imageAlt: "Luminaria Solar Hardy Lumina 800 – 30 W reales · 6.150 lm – Reiki Energía Solar"
 category: "reflectores"

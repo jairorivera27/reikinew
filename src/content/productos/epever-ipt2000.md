@@ -2,6 +2,7 @@
 title: "Inversor de Onda Pura EPever IPT2000-41 2000 W"
 description: "Inversor Onda Pura Epever IPT2000-41[T], referencia IPT2000-41[T], potencia de ~2kW. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/epever-ipt2000-41-t-prov.webp"
+imageCard: "/images/productos-estudio/epever-ipt2000-41-t-prov-card.webp"
 category: "inversores"
 price: "$1.990.000"
 specifications:

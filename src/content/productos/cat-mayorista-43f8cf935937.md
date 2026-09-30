@@ -3,6 +3,7 @@ draft: true
 title: "Solis Inversor S6-GU333K-EHV"
 description: "Inversor string on-grid Solis: doble o múltiple MPPT, monitorización y protecciones integradas para instalaciones residenciales, comerciales o grandes según referencia."
 image: "/images/livoltek.png"
+imageCard: "/images/livoltek-card.webp"
 category: "inversores"
 price: "$45.453.900"
 specifications:

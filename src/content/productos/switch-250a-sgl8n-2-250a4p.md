@@ -3,6 +3,7 @@ draft: true
 title: "Switch 250A SGL8N-2-250A4P"
 description: "Switch 250A SGL8N-2-250A4P. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Modelo: SGL8N-2-250A4P; especificación principal: 250A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/suntree-sq8-switch.jpg"
+imageCard: "/images/productos-tienda/protecciones/suntree-sq8-switch-card.webp"
 category: "protecciones"
 price: "$1.244.971"
 specifications:

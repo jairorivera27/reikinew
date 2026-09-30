@@ -2,6 +2,7 @@
 title: "Microinversor Hoymiles HMS-800-2T LV 800 W"
 description: "Microinversor Hoymiles HMS-800-2T LV 800 W. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. La foto es de referencia de la serie Hoymiles HMS-2T. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/hoymiles-hms-800-2t.webp"
+imageCard: "/images/productos-estudio/hoymiles-hms-800-2t-card.webp"
 imageThumb: "/images/productos-estudio/hoymiles-hms-800-2t-thumb.webp"
 imageAlt: "Microinversor Hoymiles HMS-800-2T LV 800 W – Reiki Energía Solar"
 category: "inversores"

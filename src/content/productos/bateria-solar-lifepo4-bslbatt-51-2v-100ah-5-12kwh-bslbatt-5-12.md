@@ -2,6 +2,7 @@
 title: "Batería Solar LiFePO4 BSLBATT 51.2V, 100Ah, 5.12kWh BSLBATT-5.12"
 description: "Batería LiFePO4 BSLBATT BSLBATT-5.12 de 5.12 kWh. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/bslbatt-bslbatt-5-12-51-2v-100ah-5-12kwh-prov.webp"
+imageCard: "/images/productos-estudio/bslbatt-bslbatt-5-12-51-2v-100ah-5-12kwh-prov-card.webp"
 category: "baterias"
 price: "$4.388.125"
 specifications:

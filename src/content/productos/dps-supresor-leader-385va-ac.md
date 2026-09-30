@@ -2,6 +2,7 @@
 title: "DPS Supresor Leader 385VA AC"
 description: "Protector contra sobretensiones (DPS) Leader AC. Desvía a tierra las sobretensiones por rayos y maniobras antes de que dañen inversores, controladores y paneles. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/leader-dps.webp"
+imageCard: "/images/productos-estudio/leader-dps-card.webp"
 category: "protecciones"
 price: "$111.562"
 specifications:

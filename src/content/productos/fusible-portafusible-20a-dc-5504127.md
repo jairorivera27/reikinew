@@ -3,6 +3,7 @@ draft: true
 title: "Fusible/Portafusible 20A DC 5504127"
 description: "Fusible/Portafusible 20A DC 5504127. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Modelo: 5504127; especificación principal: 20A DC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/generic-pv-fuse.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-pv-fuse-card.webp"
 category: "protecciones"
 price: "$4.980"
 specifications:

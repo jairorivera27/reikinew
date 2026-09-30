@@ -2,6 +2,7 @@
 title: "Medidor de Energía Growatt 100A"
 description: "Medidor de energía Growatt. Mide la energía que consumes e inyectas para que el inversor controle la exportación o para monitorear el consumo. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/growatt-shine.webp"
+imageCard: "/images/productos-estudio/growatt-shine-card.webp"
 category: "accesorios"
 price: "$1.269.879"
 specifications:

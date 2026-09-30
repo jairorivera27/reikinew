@@ -3,6 +3,7 @@ draft: true
 title: "Solis Inversor 60K-LV-5G"
 description: "Inversor string on-grid Solis: doble o múltiple MPPT, monitorización y protecciones integradas para instalaciones residenciales, comerciales o grandes según referencia."
 image: "/images/livoltek.png"
+imageCard: "/images/livoltek-card.webp"
 category: "inversores"
 price: "$14.771.746"
 specifications:

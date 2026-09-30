@@ -43,8 +43,8 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
   <a class="producto-image-link" href={urlFicha} aria-label={`Ver detalles de ${d.title}`}>
     <div class="producto-image-container">
       <img
-        src={d.imageThumb || d.image}
-        srcset={d.imageThumb ? `${d.imageThumb} 600w, ${d.image} 1600w` : undefined}
+        src={d.imageCard || d.imageThumb || d.image}
+        srcset={d.imageCard ? undefined : d.imageThumb ? `${d.imageThumb} 600w, ${d.image} 1600w` : undefined}
         sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 280px"
         alt={d.imageAlt ?? `${d.brand ? d.brand + ' ' : ''}${d.title} – Reiki Energía Solar`}
         class="producto-image"
@@ -91,7 +91,7 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
         {d.price}{muestraMasIva ? <span class="producto-mas-iva"> + IVA</span> : ''}
         {enLiquidacion && <span class="producto-price-anterior">{d.precioAnterior}</span>}
       </div>
-      {precioUnitario && <p class="producto-precio-unitario">{precioUnitario}</p>}
+      <p class="producto-precio-unitario" aria-hidden={precioUnitario ? undefined : "true"}>{precioUnitario || "\u00a0"}</p>
       <p class="producto-addi-hint">
         <span>{addiHint}</span>
         <img src="/images/Addi.png" alt="Addi" class="producto-addi-logo" loading="lazy" decoding="async" />
@@ -168,15 +168,14 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
     width: 100%;
     height: 196px;
     overflow: hidden;
-    background: #f3f4f6;
+    background: #f3f5f7; /* igual al borde del fondo de estudio de las miniaturas */
     cursor: pointer;
   }
 
   .producto-image {
     width: 100%;
     height: 100%;
-    object-fit: contain;
-    padding: 0.2rem;
+    object-fit: cover; /* la miniatura ya viene con la proporción de la tarjeta */
     transition: transform 0.45s ease;
   }
 
@@ -229,7 +228,7 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
     flex-direction: column;
     gap: 0.5rem;
     min-height: 0;
-    flex: 0 0 auto;
+    flex: 1 1 auto; /* todas las tarjetas de una fila miden lo mismo */
   }
 
   .producto-image-link {
@@ -272,6 +271,7 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    min-height: calc(0.95rem * 1.35 * 2); /* siempre reserva 2 líneas */
   }
 
   .producto-marca-gris {
@@ -301,13 +301,15 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
     color: #64748b;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     word-break: break-word;
+    min-height: calc(0.78rem * 1.38 * 2 + 0.9rem + 2px); /* siempre reserva 2 líneas */
   }
 
   .producto-footer-compact {
+    margin-top: auto; /* precio y botones siempre alineados abajo */
     padding-top: 0.65rem;
     border-top: 1px solid #e5e7eb;
     display: flex;

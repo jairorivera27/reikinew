@@ -2,6 +2,7 @@
 title: "Batería Solar Litio Felicity 24V 2,56kWh 1880833"
 description: "Batería LiFePO4 Felicity de 2,56 kWh a 25,6 V. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/bateria-litio-felicity-solar-256kwh-24v-100a-fla24100.webp"
+imageCard: "/images/productos-estudio/bateria-litio-felicity-solar-256kwh-24v-100a-fla24100-card.webp"
 category: "baterias"
 price: "$2.603.125"
 specifications:

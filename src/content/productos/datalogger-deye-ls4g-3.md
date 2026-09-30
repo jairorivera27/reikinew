@@ -2,6 +2,7 @@
 title: "Datalogger Deye LS4G-3"
 description: "Datalogger / módulo de monitoreo Deye LS4G-3. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/deye-logger.webp"
+imageCard: "/images/productos-estudio/deye-logger-card.webp"
 category: "accesorios"
 price: "$1.468.162"
 specifications:

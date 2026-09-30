@@ -2,6 +2,7 @@
 title: "Batería Solar Litio Felicity 12V 2,56kWh 1880813"
 description: "Batería litio Felicity de 2.56 kWh a 12.8V. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/bateria-litio-felicity-solar-256kwh-12v-200a-fla12200.webp"
+imageCard: "/images/productos-estudio/bateria-litio-felicity-solar-256kwh-12v-200a-fla12200-card.webp"
 category: "baterias"
 price: "$2.045.312"
 specifications:

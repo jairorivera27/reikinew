@@ -2,6 +2,7 @@
 title: "Medidor de Energía Eastron 3VA 3202011"
 description: "Medidor de energía Eastron. Mide la energía que consumes e inyectas para que el inversor controle la exportación o para monitorear el consumo. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/eastron-meter.webp"
+imageCard: "/images/productos-estudio/eastron-meter-card.webp"
 category: "accesorios"
 price: "$598.544"
 specifications:

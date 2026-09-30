@@ -2,6 +2,7 @@
 title: "Sistema de Monitoreo Solar Victron ASS030520115"
 description: "Datalogger / módulo de monitoreo Victron ASS030520115. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/victron-cerbo-gx.webp"
+imageCard: "/images/productos-estudio/victron-cerbo-gx-card.webp"
 category: "accesorios"
 price: "$777.345"
 specifications:

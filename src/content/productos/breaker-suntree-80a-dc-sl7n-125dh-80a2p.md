@@ -2,6 +2,7 @@
 title: "Breaker Suntree 80A DC SL7N-125DH-80A2P"
 description: "Interruptor termomagnético (breaker) Suntree SL7N-125DH-80A2P DC de 80 A. Protege el circuito contra sobrecargas y cortocircuitos y permite desconectarlo para mantenimiento. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/suntree-sl7n-dc.webp"
+imageCard: "/images/productos-estudio/suntree-sl7n-dc-card.webp"
 category: "protecciones"
 price: "$163.424"
 specifications:

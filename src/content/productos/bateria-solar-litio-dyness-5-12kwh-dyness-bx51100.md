@@ -2,6 +2,7 @@
 title: "Batería Solar Litio Dyness 5,12kWh Dyness-BX51100"
 description: "Batería litio Dyness Dyness-BX51100 de 5,12 kWh. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/dyness-dyness-bx51100-5-12kwh-prov.webp"
+imageCard: "/images/productos-estudio/dyness-dyness-bx51100-5-12kwh-prov-card.webp"
 category: "baterias"
 price: "$4.239.375"
 specifications:

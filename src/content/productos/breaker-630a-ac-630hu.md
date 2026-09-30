@@ -3,6 +3,7 @@ draft: true
 title: "Breaker 630A AC 630HU"
 description: "Breaker 630A AC 630HU. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Modelo: 630HU; especificación principal: 630A AC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/generic-mccb.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-mccb-card.webp"
 category: "protecciones"
 price: "$1.705.046"
 specifications:

@@ -2,6 +2,7 @@
 title: "DPS Solar Suntree 800VDC 2P SUP2H8-PV-2P-800VDC"
 description: "DPS Solar Suntree 800VDC 2P SUP2H8-PV-2P-800VDC. Producto para protección contra sobretensiones transitorias en circuitos fotovoltaicos DC de dos polos. Marca: Suntree; modelo: SUP2H8-PV-2P-800VDC; especificación principal: 800VDC, 2P. Verifique compatibilidad y condiciones de instalación. Disponible para proyectos solares en Colombia. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/suntree-spd-dc.webp"
+imageCard: "/images/productos-estudio/suntree-spd-dc-card.webp"
 category: "protecciones"
 price: "$135.727"
 specifications:

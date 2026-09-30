@@ -2,6 +2,7 @@
 title: "Batería Solar Litio Felicity 24V 7.5kWh 1880814"
 description: "Batería litio Felicity de 7.5 kWh a 25.6V. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/bateria-litio-felicity-solar-375kwh-12v-300a-fla-24300.webp"
+imageCard: "/images/productos-estudio/bateria-litio-felicity-solar-375kwh-12v-300a-fla-24300-card.webp"
 category: "baterias"
 price: "$5.392.188"
 specifications:

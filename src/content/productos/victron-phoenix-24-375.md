@@ -2,6 +2,7 @@
 title: "Victron Phoenix 24/375"
 description: "Inversor Victron Phoenix 24/375 VE.Direct, referencia PIN243750500, salida sinusoidal pura. La foto es de referencia de la serie Victron Phoenix. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-phoenix-prov.webp"
+imageCard: "/images/productos-estudio/victron-phoenix-prov-card.webp"
 category: "inversores"
 price: "$920.000"
 specifications:

@@ -1,10 +1,10 @@
 """
-Miniaturas consistentes para las tarjetas de la tienda (600×600, fondo blanco puro).
+Miniaturas consistentes para las tarjetas de la tienda (640×410, la proporción de la tarjeta; mismo fondo de estudio).
 
 A partir de la imagen de estudio 1600×1600 de cada producto:
-  1) quita el fondo radial #FFF→#EEF0F3 (división por el fondo conocido → blanco),
-  2) detecta el contorno del producto y lo recorta,
-  3) lo centra en 600×600 ocupando SIEMPRE la misma caja (82 %), con una sombra suave uniforme.
+  1) detecta el contorno del producto por sus aristas (funciona también con equipos blancos),
+  2) recorta ese rectángulo con su sombra y lo funde en un fondo de estudio nuevo,
+  3) lo centra ocupando SIEMPRE la misma caja (84 % del alto / 74 % del ancho).
 Así todos los productos se ven del mismo tamaño en las tarjetas, sin importar cómo vino la foto.
 
 Uso: python3 scripts/normalizar-miniaturas.py [--muestra DIR] [--solo slug,...]
@@ -18,13 +18,15 @@ PROD = os.path.join(ROOT, 'src', 'content', 'productos')
 PUB = os.path.join(ROOT, 'public')
 MUESTRA = sys.argv[sys.argv.index('--muestra') + 1] if '--muestra' in sys.argv else None
 SOLO = set(sys.argv[sys.argv.index('--solo') + 1].split(',')) if '--solo' in sys.argv else None
-T = 600
-CAJA = 0.82
+T = 600          # (compatibilidad)
+W_T, H_T = 640, 410  # misma proporción que la foto de la tarjeta (306×196)
+CAJA_ALTO, CAJA_ANCHO = 0.84, 0.74
 
 
-def fondo_radial(n):
-    y, x = np.mgrid[0:n, 0:n].astype(np.float32)
-    t = np.minimum(1, np.sqrt((x - (n - 1) / 2) ** 2 + (y - n * 0.46) ** 2) / (n * 0.72))
+def fondo_radial(n, alto=None):
+    alto = alto or n
+    y, x = np.mgrid[0:alto, 0:n].astype(np.float32)
+    t = np.minimum(1, np.sqrt((x - (n - 1) / 2) ** 2 + (y - alto * 0.46) ** 2) / (max(n, alto) * 0.72))
     s = t * t * (3 - 2 * t)
     c0 = np.array([255, 255, 255], np.float32); c1 = np.array([0xEE, 0xF0, 0xF3], np.float32)
     return c0 + (c1 - c0) * s[..., None]
@@ -33,40 +35,42 @@ def fondo_radial(n):
 _BG = {}
 
 
-def a_blanco(im):
-    a = np.asarray(im.convert('RGB'), np.float32)
-    n = a.shape[0]
-    if a.shape[0] == a.shape[1] and n >= 800:
-        if n not in _BG: _BG[n] = fondo_radial(n)
-        a = np.clip(a / _BG[n] * 255.0, 0, 255)
-    # todo lo casi blanco y sin color → blanco puro (se va el fondo y la sombra vieja)
-    mx, mn = a.max(2), a.min(2)
-    fondo = (mn >= 222) & (mx - mn <= 12)
-    a[fondo] = 255
-    return a
+def caja_producto(a):
+    """Contorno del producto por bordes: el fondo de estudio y la sombra son suaves (sin bordes),
+    el producto siempre tiene aristas, aunque sea blanco."""
+    from scipy import ndimage
+    g = ndimage.gaussian_filter(a.mean(2), 1.0)
+    mag = np.hypot(ndimage.sobel(g, 0), ndimage.sobel(g, 1)) / 8.0
+    borde = mag > 2.2
+    borde = ndimage.binary_opening(borde, iterations=1) | (mag > 6)
+    ys, xs = np.where(borde)
+    if len(xs) < 80: return None
+    x0, x1 = np.percentile(xs, [0.2, 99.8]); y0, y1 = np.percentile(ys, [0.2, 99.8])
+    return int(x0), int(y0), int(x1), int(y1)
 
 
 def normalizar(src, dst):
-    a = a_blanco(Image.open(src))
-    mn = a.min(2); sat = a.max(2) - mn
-    obj = (mn < 222) | (sat > 12)
-    ys, xs = np.where(obj)
-    if len(xs) < 50: return False
-    # recorte robusto (ignora motas sueltas)
-    x0, x1 = np.percentile(xs, [0.3, 99.7]).astype(int); y0, y1 = np.percentile(ys, [0.3, 99.7]).astype(int)
-    crop = Image.fromarray(a[y0:y1 + 1, x0:x1 + 1].astype(np.uint8))
-    esc = min(T * CAJA / crop.width, T * CAJA / crop.height, 2.5)
+    im = Image.open(src).convert('RGB')
+    a = np.asarray(im, np.float32)
+    caja = caja_producto(a)
+    if not caja: return False
+    x0, y0, x1, y1 = caja
+    w, h = x1 - x0, y1 - y0
+    pad = int(max(w, h) * 0.04)
+    x0, y0 = max(0, x0 - pad), max(0, y0 - pad); x1, y1 = min(im.width, x1 + pad), min(im.height, y1 + pad)
+    crop = im.crop((x0, y0, x1, y1))
+    esc = min(W_T * CAJA_ANCHO / crop.width, H_T * CAJA_ALTO / crop.height, 2.5)
     crop = crop.resize((max(1, round(crop.width * esc)), max(1, round(crop.height * esc))), Image.LANCZOS)
-    lienzo = Image.new('RGB', (T, T), 'white')
-    x = (T - crop.width) // 2; y = (T - crop.height) // 2 - 8
-    sombra = Image.new('L', (T, T), 0)
-    ImageDraw.Draw(sombra).ellipse((T / 2 - crop.width * 0.38, y + crop.height - 6, T / 2 + crop.width * 0.38, y + crop.height + 14), fill=60)
-    lienzo = Image.composite(Image.new('RGB', (T, T), (170, 175, 182)), lienzo, sombra.filter(ImageFilter.GaussianBlur(9)))
-    # pegar con multiplicar: el blanco del recorte no tapa la sombra
-    base = np.asarray(lienzo, np.float32); capa = np.full_like(base, 255)
-    capa[y:y + crop.height, x:x + crop.width] = np.asarray(crop, np.float32)
-    out = Image.fromarray((base * capa / 255).astype(np.uint8))
-    out.save(dst, 'WEBP', quality=86, method=6)
+    # bordes del recorte difuminados para que se funda con el fondo nuevo
+    m = Image.new('L', crop.size, 255)
+    f = max(4, int(min(crop.size) * 0.06))
+    m = Image.new('L', (crop.width - 2 * f, crop.height - 2 * f), 255) if crop.width > 2 * f and crop.height > 2 * f else m
+    alfa = Image.new('L', crop.size, 0); alfa.paste(m, (f, f) if m.size != crop.size else (0, 0))
+    alfa = alfa.filter(ImageFilter.GaussianBlur(f / 2))
+    fondo = Image.fromarray(fondo_radial(W_T, H_T).astype(np.uint8))
+    x = (W_T - crop.width) // 2; y = (H_T - crop.height) // 2 - 3
+    fondo.paste(crop, (x, y), alfa)
+    fondo.save(dst, 'WEBP', quality=86, method=6)
     return True
 
 

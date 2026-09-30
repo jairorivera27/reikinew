@@ -2,6 +2,7 @@
 title: "Controlador de Carga MPPT Victron 100A"
 description: "Controlador de carga solar MPPT profesional de 100 amperios. Para instalaciones comerciales e industriales de gran escala. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/victron-smartsolar-mppt-100-50-prov.webp"
+imageCard: "/images/productos-estudio/victron-smartsolar-mppt-100-50-prov-card.webp"
 category: "controladores"
 price: "$1.289.000"
 specifications:

@@ -2,6 +2,7 @@
 title: "Panel Solar JA Solar JAM72D40-595/LB 595W Bifacial"
 description: "Panel solar JA Solar JAM72D40-595/LB de 595W, diseñado para maximizar la producción de energía en espacios reducidos. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/ja-solar-jam72d40-595-lb-prov.webp"
+imageCard: "/images/productos-estudio/ja-solar-jam72d40-595-lb-prov-card.webp"
 category: "paneles"
 price: "$609.000"
 specifications:

@@ -2,6 +2,7 @@
 title: "Inversor Solar On-Grid Growatt 36000W 3004294"
 description: "Inversor on-grid (conectado a red) Growatt de 36000W. Convierte la energía de tus paneles para el consumo de la casa o el negocio y entrega los excedentes a la red, sin baterías. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/growatt-mac-36ktl3-xl.webp"
+imageCard: "/images/productos-estudio/growatt-mac-36ktl3-xl-card.webp"
 category: "inversores"
 price: "$9.264.686"
 specifications:

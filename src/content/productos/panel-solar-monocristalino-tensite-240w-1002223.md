@@ -2,6 +2,7 @@
 title: "Panel Solar Monocristalino Tensite 240W 1002223"
 description: "Panel solar Tensite de 240 W (monocristalino). Genera en promedio unos 1,1 kWh al día y cerca de 32 kWh al mes en Colombia. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/panel-solar-monocristalino-240w-tensite.webp"
+imageCard: "/images/productos-estudio/panel-solar-monocristalino-240w-tensite-card.webp"
 category: "paneles"
 price: "$243.688"
 specifications:

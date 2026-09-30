@@ -2,6 +2,7 @@
 title: "Inversor Solar Híbrido Deye 8kW SUN-8K-SG01LP1-US"
 description: "Inversor híbrido Deye SUN-8K-SG01LP1-US de 8kW. Trabaja con paneles, baterías y red: aprovecha el sol de día, guarda energía y te respalda cuando hay cortes. La foto es de referencia de la serie Deye Hybrid. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/deye-hybrid-prov.webp"
+imageCard: "/images/productos-estudio/deye-hybrid-prov-card.webp"
 category: "inversores"
 price: "$9.750.000"
 specifications:

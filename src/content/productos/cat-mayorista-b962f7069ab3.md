@@ -2,6 +2,7 @@
 title: "APS Microinverter DS3-LV 900W 120V + APS Y3 AC Bus Cable"
 description: "Microinversor APsystems DS3-LV para redes 120 V: formato dual microinverso, MPPT por entrada y protecciones integradas según manual del fabricante. La foto es de referencia de la serie APsystems DS3. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/apsystems-ds3-prov.webp"
+imageCard: "/images/productos-estudio/apsystems-ds3-prov-card.webp"
 category: "inversores"
 price: "$1.160.700"
 specifications:

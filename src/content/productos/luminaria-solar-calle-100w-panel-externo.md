@@ -1,7 +1,8 @@
 ---
 title: "Luminaria Solar de Calle 100W 20Ah con Panel Externo"
 description: "Luminaria solar de calle 100W con bateria de 20Ah y panel externo para mayor captacion solar. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
-image: "/images/productos-estudio/lcs-100w-20ah-pe.webp"
+image: "/images/productos-estudio/masterlights-lcs-100w.webp"
+imageCard: "/images/productos-estudio/masterlights-lcs-100w-card.webp"
 category: "reflectores"
 price: "$416.000"
 specifications:
@@ -13,7 +14,7 @@ specifications:
 model: "LCS-100W-20AH-PE"
 stock: "disponible"
 order: 20
-imageThumb: "/images/productos-estudio/lcs-100w-20ah-pe-thumb.webp"
+imageThumb: "/images/productos-estudio/masterlights-lcs-100w-thumb.webp"
 imageAlt: "LCS-100W-20AH-PE – Reiki Energía Solar"
 imageOriginal: "/images/Productos tienda/Luminarias/Luminaria solar 100w.jpeg"
 faqs:
@@ -24,6 +25,8 @@ faqs:
   - pregunta: "¿Necesita cableado?"
     respuesta: "No. El panel solar carga la batería integrada y el equipo se enciende automáticamente al oscurecer."
 fichaPdf: "/fichas/reiki/luminaria-solar-calle-100w-panel-externo.pdf"
+imagen_provisional: false
+brand: "Master Lights"
 ---
 
 Luminaria solar con panel externo para mejorar rendimiento energetico en instalaciones exigentes.

@@ -2,6 +2,7 @@
 title: "Luminaria Solar Hardy Solaris 2000 – 30 W reales · 6.300 lm"
 description: "Lámpara solar de alta potencia para espacios industriales y áreas extensas Hardy Solaris 2000 de 30 W reales y 6.300 lm (210 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 40 Ah y panel 50 W / 6 V monocristalino (775 × 334 mm), con autonomía de 12 – 18 h de iluminación. Se instala a 6 – 8 m de altura y ilumina 240 m². Protección IP65 / IK08 para exterior. Producto certificado RETILAP (Resolución 40117 de 2024)."
 image: "/images/productos-estudio/hardy-solaris-2000.webp"
+imageCard: "/images/productos-estudio/hardy-solaris-2000-card.webp"
 imageThumb: "/images/productos-estudio/hardy-solaris-2000-thumb.webp"
 imageAlt: "Luminaria Solar Hardy Solaris 2000 – 30 W reales · 6.300 lm – Reiki Energía Solar"
 category: "reflectores"

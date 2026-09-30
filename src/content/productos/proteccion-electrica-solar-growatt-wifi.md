@@ -2,6 +2,7 @@
 title: "Protección Eléctrica Solar Growatt WIFI"
 description: "Protección eléctrica Growatt WIFI. Componente de protección para sistemas solares. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/growatt-wifi-n-a.webp"
+imageCard: "/images/productos-estudio/growatt-wifi-n-a-card.webp"
 category: "protecciones"
 price: "$636.204"
 specifications:

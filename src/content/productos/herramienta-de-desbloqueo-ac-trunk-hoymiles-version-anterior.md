@@ -2,6 +2,7 @@
 title: "Herramienta de Desbloqueo AC Trunk Hoymiles (versión anterior)"
 description: "Herramienta de Desbloqueo AC Trunk Hoymiles (versión anterior). 1 año de garantía por fabricante. Accesorios de desconexión de tapa superior de AC Trunk Connector. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/herramienta-de-desbloqueo-ac-trunk-hoymiles-version-anterior.webp"
+imageCard: "/images/productos-estudio/herramienta-de-desbloqueo-ac-trunk-hoymiles-version-anterior-card.webp"
 imageThumb: "/images/productos-estudio/herramienta-de-desbloqueo-ac-trunk-hoymiles-version-anterior-thumb.webp"
 imageAlt: "Herramienta de Desbloqueo AC Trunk Hoymiles (versión anterior) – Reiki Energía Solar"
 category: "accesorios"

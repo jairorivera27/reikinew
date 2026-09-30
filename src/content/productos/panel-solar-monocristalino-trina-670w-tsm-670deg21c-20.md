@@ -2,6 +2,7 @@
 title: "Panel Solar Monocristalino Trina 670W TSM-670DEG21C.20"
 description: "Panel solar Trina Solar TSM-670DEG21C.20 de 670 W (monocristalino). Genera en promedio unos 3 kWh al día y cerca de 90 kWh al mes en Colombia. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/trina-solar-tsm-670deg21c-20-670w-prov.webp"
+imageCard: "/images/productos-estudio/trina-solar-tsm-670deg21c-20-670w-prov-card.webp"
 category: "paneles"
 price: "$543.750"
 specifications:

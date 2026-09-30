@@ -2,6 +2,7 @@
 title: "Breaker DC 32A"
 description: "Interruptor termomagnético DC de 32 amperios para protección de sistemas solares pequeños y medianos. Certificado y confiable. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/schneider-c32h-dc-prov.webp"
+imageCard: "/images/productos-estudio/schneider-c32h-dc-prov-card.webp"
 category: "protecciones"
 price: "$69.000"
 specifications:

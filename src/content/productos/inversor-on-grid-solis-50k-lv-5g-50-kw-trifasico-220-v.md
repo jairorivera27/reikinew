@@ -2,6 +2,7 @@
 title: "Inversor On-Grid Solis 50K-LV-5G 50 kW Trifásico 220 V"
 description: "Inversor On-Grid Solis 50K-LV-5G 50 kW Trifásico 220 V. Inversor Trifasico con 6 MPPT, 208/220Vac y eficiencia máxima de 98,5%. 5 años de garantía por fabricante. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/inversor-on-grid-solis-50k-lv-5g-50-kw-trifasico-220-v.webp"
+imageCard: "/images/productos-estudio/inversor-on-grid-solis-50k-lv-5g-50-kw-trifasico-220-v-card.webp"
 imageThumb: "/images/productos-estudio/inversor-on-grid-solis-50k-lv-5g-50-kw-trifasico-220-v-thumb.webp"
 imageAlt: "Inversor On-Grid Solis 50K-LV-5G 50 kW Trifásico 220 V – Reiki Energía Solar"
 category: "inversores"

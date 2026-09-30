@@ -2,6 +2,7 @@
 title: "DTU Hoymiles DTU-Pro-S WiFi para Monitoreo de Microinversores"
 description: "DTU Hoymiles DTU-Pro-S WiFi para Monitoreo de Microinversores. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. La foto es de referencia de la serie Hoymiles DTU. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/hoymiles-dtu.webp"
+imageCard: "/images/productos-estudio/hoymiles-dtu-card.webp"
 imageThumb: "/images/productos-estudio/hoymiles-dtu-thumb.webp"
 imageAlt: "DTU Hoymiles DTU-Pro-S WiFi para Monitoreo de Microinversores – Reiki Energía Solar"
 category: "accesorios"

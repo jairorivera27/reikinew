@@ -2,6 +2,7 @@
 title: "Panel Solar Trina Vertex N TSM-NE19R 605W"
 description: "Panel Solar Trina Vertex N TSM-NE19R 605W. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. La foto es de referencia de la serie Trina Vertex N. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/panel-solar-trina-vertex-n-tsm-ne19r-605w.webp"
+imageCard: "/images/productos-estudio/panel-solar-trina-vertex-n-tsm-ne19r-605w-card.webp"
 imageThumb: "/images/productos-estudio/panel-solar-trina-vertex-n-tsm-ne19r-605w-thumb.webp"
 imageAlt: "Panel Solar Trina Vertex N TSM-NE19R 605W – Reiki Energía Solar"
 category: "paneles"

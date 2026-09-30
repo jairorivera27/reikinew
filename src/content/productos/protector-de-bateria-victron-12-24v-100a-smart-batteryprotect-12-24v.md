@@ -2,6 +2,7 @@
 title: "Protector de batería Victron 12/24V, 100A Smart BatteryProtect 12/24V-100A"
 description: "Protección eléctrica Victron Smart BatteryProtect 12/24V-100A de 100 A. Componente de protección para sistemas solares. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-smart-batteryprotect-12-24v-100a-12-24v-100a.webp"
+imageCard: "/images/productos-estudio/victron-smart-batteryprotect-12-24v-100a-12-24v-100a-card.webp"
 category: "protecciones"
 price: "$303.300"
 specifications:

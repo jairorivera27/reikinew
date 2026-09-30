@@ -2,6 +2,7 @@
 title: "Lámpara Solar Colgante Hardy Sirius – 20 W reales · 3.600 lm"
 description: "Lámpara solar colgante tipo campana (UFO) Hardy Sirius de 20 W reales y 3.600 lm (180 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 25 Ah y panel 30 W / 6 V monocristalino separado (600 × 350 mm), con autonomía de 12 – 18 h de iluminación. Se instala a 3 – 4 m de altura y ilumina hasta 40 m². Protección IP65 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024)."
 image: "/images/productos-estudio/hardy-sirius.webp"
+imageCard: "/images/productos-estudio/hardy-sirius-card.webp"
 imageThumb: "/images/productos-estudio/hardy-sirius-thumb.webp"
 imageAlt: "Lámpara Solar Colgante Hardy Sirius – 20 W reales · 3.600 lm – Reiki Energía Solar"
 category: "reflectores"

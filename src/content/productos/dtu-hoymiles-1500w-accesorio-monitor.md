@@ -2,6 +2,7 @@
 title: "DTU Hoymiles 1500W Accesorio/Monitor"
 description: "Datalogger / módulo de monitoreo Hoymiles. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/hoymiles-dtu.webp"
+imageCard: "/images/productos-estudio/hoymiles-dtu-card.webp"
 category: "accesorios"
 price: "$2.034.112"
 specifications:

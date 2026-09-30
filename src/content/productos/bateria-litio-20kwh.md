@@ -2,6 +2,7 @@
 title: "Batería de Litio 20kWh"
 description: "Batería de litio de gran capacidad 20kWh para sistemas comerciales e industriales. Máxima autonomía y confiabilidad. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/byd-battery-prov.webp"
+imageCard: "/images/productos-estudio/byd-battery-prov-card.webp"
 category: "baterias"
 price: "$41.500.000"
 specifications:

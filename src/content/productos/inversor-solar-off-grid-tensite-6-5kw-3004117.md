@@ -2,6 +2,7 @@
 title: "Inversor Solar Off-Grid Tensite 6.5kW 3004117"
 description: "Inversor off-grid Tensite de 6.5kW. Para sistemas aislados de la red: convierte la energía de las baterías en corriente alterna para tus equipos. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/inversor-cargador-6500w-48v-tensite-max.webp"
+imageCard: "/images/productos-estudio/inversor-cargador-6500w-48v-tensite-max-card.webp"
 category: "inversores"
 price: "$3.508.415"
 specifications:

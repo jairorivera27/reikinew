@@ -2,6 +2,7 @@
 title: "BYD Battery Box Premium LV Bmu"
 description: "Sistema o módulo de almacenamiento en litio (LiFePO₄ típico) para acoplamiento con inversores compatibles; BMS, expansión y cableado según referencia Pytes o BYD. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/byd-battery-prov.webp"
+imageCard: "/images/productos-estudio/byd-battery-prov-card.webp"
 category: "baterias"
 price: "$963.900"
 specifications:

@@ -1,7 +1,8 @@
 ---
 title: "Reflector Solar 400W 40Ah"
 description: "Reflector solar 400W con bateria de 40Ah para iluminacion de alto alcance en exteriores. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
-image: "/images/productos-estudio/rsl-400w-40ah.webp"
+image: "/images/productos-estudio/masterlights-reflector-400w.webp"
+imageCard: "/images/productos-estudio/masterlights-reflector-400w-card.webp"
 category: "reflectores"
 price: "$520.000"
 specifications:
@@ -13,7 +14,7 @@ specifications:
 model: "RSL-400W-40AH"
 stock: "disponible"
 order: 15
-imageThumb: "/images/productos-estudio/rsl-400w-40ah-thumb.webp"
+imageThumb: "/images/productos-estudio/masterlights-reflector-400w-thumb.webp"
 imageAlt: "RSL-400W-40AH – Reiki Energía Solar"
 imageOriginal: "/images/Productos tienda/Luminarias/reflector led solar 400W.jpeg"
 faqs:
@@ -24,6 +25,8 @@ faqs:
   - pregunta: "¿Necesita cableado?"
     respuesta: "No. El panel solar carga la batería integrada y el equipo se enciende automáticamente al oscurecer."
 fichaPdf: "/fichas/reiki/reflector-solar-led-400w.pdf"
+imagen_provisional: true
+brand: "Master Lights"
 ---
 
 Reflector solar de alta potencia para proyectos que requieren gran cobertura e iluminacion constante.

@@ -2,6 +2,7 @@
 title: "Victron MultiPlus-II 48/5000"
 description: "MultiPlus-II Victron Energy, 48/5000, 120 V CA, inversor-cargador para sistemas híbridos y aislados. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-multiplus-ii-48-5000.webp"
+imageCard: "/images/productos-estudio/victron-multiplus-ii-48-5000-card.webp"
 category: "inversores"
 price: "$4.713.188"
 specifications:

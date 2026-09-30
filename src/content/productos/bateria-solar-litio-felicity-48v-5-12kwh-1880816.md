@@ -2,6 +2,7 @@
 title: "Batería Solar Litio Felicity 48V 5.12kWh 1880816"
 description: "Batería LiFePO4 Felicity de 5,12 kWh a 51,2 V. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/bateria-litio-felicity-solar-512kwh-512v-100a-fla48100.webp"
+imageCard: "/images/productos-estudio/bateria-litio-felicity-solar-512kwh-512v-100a-fla48100-card.webp"
 category: "baterias"
 price: "$4.183.594"
 specifications:

@@ -2,6 +2,7 @@
 title: "Batería Solar Litio GoodWe 51,2VDC 5.0kWh IP65"
 description: "Batería litio GoodWe IP65 de 5.0 kWh. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. La foto es de referencia de la serie GoodWe Lynx. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-tienda/baterias/goodwe-lynxl.png"
+imageCard: "/images/productos-tienda/baterias/goodwe-lynxl-card.webp"
 category: "baterias"
 price: "$7.204.409"
 specifications:

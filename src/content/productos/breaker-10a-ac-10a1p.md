@@ -3,6 +3,7 @@ draft: true
 title: "Breaker 10A AC 10A1P"
 description: "Breaker 10A AC 10A1P. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Modelo: 10A1P; especificación principal: 10A AC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-mcb-ac-card.webp"
 category: "protecciones"
 price: "$15.046"
 specifications:

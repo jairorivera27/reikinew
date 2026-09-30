@@ -2,6 +2,7 @@
 title: "Cable de Conexión Troncal Hoymiles HMT"
 description: "Cable de Conexión Troncal Hoymiles HMT. Cable Troncal de AC personalizada con conectores para línea troncal de HMT. 1 año de garantía por fabricante. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/cable-de-conexion-troncal-hoymiles-hmt.webp"
+imageCard: "/images/productos-estudio/cable-de-conexion-troncal-hoymiles-hmt-card.webp"
 imageThumb: "/images/productos-estudio/cable-de-conexion-troncal-hoymiles-hmt-thumb.webp"
 imageAlt: "Cable de Conexión Troncal Hoymiles HMT – Reiki Energía Solar"
 category: "accesorios"

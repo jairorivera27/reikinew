@@ -2,6 +2,7 @@
 title: "Inversor Solar Híbrido Felicity 8kW 3004616"
 description: "Inversor híbrido Felicity de 8kW. Trabaja con paneles, baterías y red: aprovecha el sol de día, guarda energía y te respalda cuando hay cortes. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/inversor-hibrido-felicity-solar-8000w-48v-ivgm8klp2g1.webp"
+imageCard: "/images/productos-estudio/inversor-hibrido-felicity-solar-8000w-48v-ivgm8klp2g1-card.webp"
 category: "inversores"
 price: "$5.194.805"
 specifications:

@@ -2,6 +2,7 @@
 title: "Breaker Suntree 32A AC 5504178"
 description: "Interruptor termomagnético (breaker) Suntree AC de 32 A. Protege el circuito contra sobrecargas y cortocircuitos y permite desconectarlo para mantenimiento. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/breaker-solar-ac-2x32a-400vac-suntree.webp"
+imageCard: "/images/productos-estudio/breaker-solar-ac-2x32a-400vac-suntree-card.webp"
 category: "protecciones"
 price: "$14.087"
 specifications:

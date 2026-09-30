@@ -3,6 +3,7 @@ draft: true
 title: "s3 logger"
 description: "Componente de balance de sistemas (BOS) para instalaciones fotovoltaicas. Referencia **s3 logger** (Genérico)."
 image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-mcb-ac-card.webp"
 category: "protecciones"
 price: "$5.206.650"
 specifications:

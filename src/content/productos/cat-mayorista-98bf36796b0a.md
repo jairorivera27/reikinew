@@ -3,6 +3,7 @@ draft: true
 title: "3P -3XCT Clamp 1000 (CTS 1000A)"
 description: "Juego de núcleos o abrazaderas de corriente (CT) para medición trifásica en monitorización Solis o cuadros con medidor externo; rango nominal según amperaje del código."
 image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-mcb-ac-card.webp"
 category: "protecciones"
 price: "$1.050.600"
 specifications:

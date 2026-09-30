@@ -119,8 +119,8 @@ function cardMeta(producto: CollectionEntry<'productos'>) {
               <a href={href} class="producto-card" data-astro-prefetch>
                 <div class="producto-image">
                   <img
-                    src={d.imageThumb || d.image}
-                    srcset={d.imageThumb ? `${d.imageThumb} 600w, ${d.image} 1600w` : undefined}
+                    src={d.imageCard || d.imageThumb || d.image}
+                    srcset={d.imageCard ? undefined : d.imageThumb ? `${d.imageThumb} 600w, ${d.image} 1600w` : undefined}
                     sizes="(max-width: 640px) 45vw, 280px"
                     alt={d.imageAlt ?? d.title}
                     width="600"

@@ -3,6 +3,7 @@ draft: true
 title: "Fusible/Portafusible 15A"
 description: "Fusible/Portafusible 15A. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Especificación principal: 15A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/generic-pv-fuse.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-pv-fuse-card.webp"
 category: "protecciones"
 price: "$14.280"
 specifications:

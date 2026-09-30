@@ -2,6 +2,7 @@
 title: "Reflector Solar Hardy Nova 600 – 25 W reales · 5.000 lm"
 description: "Reflector solar profesional LED de alta potencia Hardy Nova 600 de 25 W reales y 5.000 lm (200 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 60 Ah (4.000 ciclos) y panel 60 W / 6 V monocristalino separado, con autonomía de 10 – 12 h. Se instala a 7 – 9 m de altura y ilumina 140 – 160 m². Protección IP65 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024)."
 image: "/images/productos-estudio/hardy-nova-600.webp"
+imageCard: "/images/productos-estudio/hardy-nova-600-card.webp"
 imageThumb: "/images/productos-estudio/hardy-nova-600-thumb.webp"
 imageAlt: "Reflector Solar Hardy Nova 600 – 25 W reales · 5.000 lm – Reiki Energía Solar"
 category: "reflectores"

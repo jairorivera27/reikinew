@@ -2,6 +2,7 @@
 title: "Panel Solar Monocristalino 500W"
 description: "Panel solar monocristalino de 500W con tecnología PERC, ideal para instalaciones residenciales. Alta eficiencia y durabilidad garantizada. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/jinko-solar-jkm500m-54hl4-b-prov.webp"
+imageCard: "/images/productos-estudio/jinko-solar-jkm500m-54hl4-b-prov-card.webp"
 category: "paneles"
 price: "$529.000"
 specifications:

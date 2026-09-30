@@ -55,7 +55,7 @@ const productosJSON = JSON.stringify(
       description: p.data.description,
       price: p.data.price,
       image: p.data.image,
-      imageThumb: p.data.imageThumb || p.data.image,
+      imageThumb: p.data.imageCard || p.data.imageThumb || p.data.image,
       imageAlt: p.data.imageAlt || p.data.title,
       brand: p.data.brand || '',
       model: p.data.model || '',
@@ -2330,7 +2330,7 @@ const marcasLoop = [...marcasConSrc, ...marcasConSrc];
         <div class="producto-card" data-product-slug="${escapar(p.slug)}">
           <a class="producto-image-link" href="${escapar(p.url)}" aria-label="Ver detalles de ${escapar(p.title)}">
             <div class="producto-image-container">
-              <img src="${escapar(p.imageThumb || p.image)}" srcset="${escapar(p.imageThumb || p.image)} 600w, ${escapar(p.image)} 1600w" sizes="(max-width: 640px) 45vw, 280px" alt="${escapar(p.imageAlt || p.title)}" class="producto-image" width="600" height="600" loading="lazy" decoding="async" />
+              <img src="${escapar(p.imageThumb || p.image)}" alt="${escapar(p.imageAlt || p.title)}" class="producto-image" width="600" height="600" loading="lazy" decoding="async" />
               <div class="producto-badge ${escapar(p.stock)}">${stock}</div>
             </div>
           </a>

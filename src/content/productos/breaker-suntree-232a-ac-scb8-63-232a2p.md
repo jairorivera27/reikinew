@@ -2,6 +2,7 @@
 title: "Breaker Suntree 232A AC SCB8-63-232A2P"
 description: "Interruptor termomagnético (breaker) Suntree SCB8-63-232A2P AC de 232 A. Protege el circuito contra sobrecargas y cortocircuitos y permite desconectarlo para mantenimiento. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/suntree-scb8-ac-prov.webp"
+imageCard: "/images/productos-estudio/suntree-scb8-ac-prov-card.webp"
 category: "protecciones"
 price: "$27.281"
 specifications:

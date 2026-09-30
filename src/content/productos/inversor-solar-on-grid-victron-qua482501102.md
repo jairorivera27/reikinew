@@ -2,6 +2,7 @@
 title: "Victron Quattro 48/5000"
 description: "Quattro Victron Energy, 48/5000, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus. La foto es de referencia de la serie Victron Quattro. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-quattro-prov.webp"
+imageCard: "/images/productos-estudio/victron-quattro-prov-card.webp"
 category: "inversores"
 price: "$7.090.475"
 specifications:

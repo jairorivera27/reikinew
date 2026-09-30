@@ -2,6 +2,7 @@
 title: "Fusible DC 200A con Portafusible"
 description: "Fusible DC de 200 amperios con portafusible para protección de sistemas solares industriales de muy alta potencia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/abb-fuseholder-100a-prov.webp"
+imageCard: "/images/productos-estudio/abb-fuseholder-100a-prov-card.webp"
 category: "protecciones"
 price: "$229.000"
 specifications:

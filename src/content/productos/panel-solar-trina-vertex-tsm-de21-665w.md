@@ -2,6 +2,7 @@
 title: "Panel Solar Trina Vertex TSM-DE21 665W"
 description: "Panel Solar Trina Vertex TSM-DE21 665W. 12 años garantia por manufactura / 25 años garantía contra potencia lineal. Módulo MONO-PERC de alta eficiencia con tecnología HalfCell, 132 celdas, Tecnología multibusbar, Mejor rendimiento anti-sombreado y menor temperatura de operación . Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. La foto es de referencia de la serie Trina Vertex 670W. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/trina-solar-tsm-670deg21c-20-670w-prov.webp"
+imageCard: "/images/productos-estudio/trina-solar-tsm-670deg21c-20-670w-prov-card.webp"
 imageThumb: "/images/productos-estudio/trina-solar-tsm-670deg21c-20-670w-prov.webp"
 imageAlt: "Panel Solar Trina Vertex TSM-DE21 665W – Reiki Energía Solar"
 category: "paneles"

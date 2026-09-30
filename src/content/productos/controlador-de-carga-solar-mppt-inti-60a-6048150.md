@@ -2,6 +2,7 @@
 title: "Controlador de Carga Solar MPPT Inti 60A 6048150"
 description: "Controlador de carga solar MPPT Inti de 60 A. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/inti-mppt-60a.webp"
+imageCard: "/images/productos-estudio/inti-mppt-60a-card.webp"
 category: "controladores"
 price: "$1.088.062"
 specifications:

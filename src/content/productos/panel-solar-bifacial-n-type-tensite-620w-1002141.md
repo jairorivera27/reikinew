@@ -2,6 +2,7 @@
 title: "Panel Solar Bifacial N-Type Tensite 620W 1002141"
 description: "Panel solar Tensite de 620 W (bifacial, celdas N-Type). Genera en promedio unos 2,8 kWh al día y cerca de 84 kWh al mes en Colombia. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/panel-solar-bifacial-620w-n-type-tensite.webp"
+imageCard: "/images/productos-estudio/panel-solar-bifacial-620w-n-type-tensite-card.webp"
 category: "paneles"
 price: "$426.954"
 specifications:

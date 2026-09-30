@@ -2,6 +2,7 @@
 title: "Medidor de Energía Must 9001012"
 description: "Medidor de energía Must. Mide la energía que consumes e inyectas para que el inversor controle la exportación o para monitorear el consumo. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/eastron-meter.webp"
+imageCard: "/images/productos-estudio/eastron-meter-card.webp"
 category: "accesorios"
 price: "$20.616.750"
 specifications:

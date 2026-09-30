@@ -2,6 +2,7 @@
 title: "Luminaria Solar Hardy Astra 600 – 10 W reales · 1.850 lm"
 description: "Lámpara solar integrada para alumbrado público Hardy Astra 600 de 10 W reales y 1.850 lm (185 lm/W). Se comercializa como \"600 W equivalente\"; la potencia real medida es 10 W. Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 50 Ah, con autonomía de hasta 12 h. Se instala a 5 – 6 m de altura y ilumina hasta 70 m². Protección IP65 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024)."
 image: "/images/productos-estudio/hardy-astra-600.webp"
+imageCard: "/images/productos-estudio/hardy-astra-600-card.webp"
 imageThumb: "/images/productos-estudio/hardy-astra-600-thumb.webp"
 imageAlt: "Luminaria Solar Hardy Astra 600 – 10 W reales · 1.850 lm – Reiki Energía Solar"
 category: "reflectores"

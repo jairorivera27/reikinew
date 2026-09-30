@@ -2,6 +2,7 @@
 title: "Hoymiles Microinverter Trifasico HMT-2000-4T-208"
 description: "Microinversor trifásico Hoymiles serie HMT para conexión a red trifásica, con seguimiento MPPT por canal y monitoreo remoto vía DTU. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/hoymiles-hmt-2000-4t-208.webp"
+imageCard: "/images/productos-estudio/hoymiles-hmt-2000-4t-208-card.webp"
 category: "inversores"
 price: "$1.233.750"
 specifications:

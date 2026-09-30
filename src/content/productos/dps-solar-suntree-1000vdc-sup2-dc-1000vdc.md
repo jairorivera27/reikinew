@@ -2,6 +2,7 @@
 title: "DPS Solar Suntree 1000VDC SUP2-DC-1000VDC"
 description: "DPS Solar Suntree 1000VDC SUP2-DC-1000VDC. Producto para protección contra sobretensiones transitorias en circuitos fotovoltaicos DC. Marca: Suntree; modelo: SUP2-DC-1000VDC; especificación principal: 1000VDC. Verifique compatibilidad y condiciones de instalación. Disponible para proyectos solares en Colombia. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/suntree-spd-dc.webp"
+imageCard: "/images/productos-estudio/suntree-spd-dc-card.webp"
 category: "protecciones"
 price: "$366.156"
 specifications:

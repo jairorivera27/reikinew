@@ -2,6 +2,7 @@
 title: "Panel Solar Bifacial N-Type JA Solar 715W 1002140"
 description: "Panel solar JA Solar de 715 W (bifacial, celdas N-Type). Genera en promedio unos 3,2 kWh al día y cerca de 97 kWh al mes en Colombia. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/panel-solar-bifacial-715w-deep-blue-40-n-type-ja-solar.webp"
+imageCard: "/images/productos-estudio/panel-solar-bifacial-715w-deep-blue-40-n-type-ja-solar-card.webp"
 category: "paneles"
 price: "$514.432"
 specifications:

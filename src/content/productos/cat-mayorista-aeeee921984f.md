@@ -2,6 +2,7 @@
 title: "Inversor On-Grid Huawei SUN2000-20KTL-M3 20 kW Trifásico"
 description: "Inversor string trifásico Huawei SUN2000 KTL-M3 para plantas comerciales e industriales: varios MPPT, monitorización y compatibilidad con SmartLogger según proyecto. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/huawei-sun2000-20ktl-m3.webp"
+imageCard: "/images/productos-estudio/huawei-sun2000-20ktl-m3-card.webp"
 category: "inversores"
 price: "$8.500.000"
 specifications:

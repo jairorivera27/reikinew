@@ -3,6 +3,7 @@ draft: true
 title: "Breaker 50A AC 50A1P"
 description: "Breaker 50A AC 50A1P. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Modelo: 50A1P; especificación principal: 50A AC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-mcb-ac-card.webp"
 category: "protecciones"
 price: "$16.348"
 specifications:

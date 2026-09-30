@@ -2,6 +2,7 @@
 title: "Luminaria Solar Hardy Urban 300 – 17 W reales · 3.145 lm"
 description: "Luminaria solar integrada de alto desempeño Hardy Urban 300 de 17 W reales y 3.145 lm (185 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 20 Ah (≥ 2.000 ciclos) y panel Monocristalino integrado, con autonomía de 3 – 4 días nublados. Se instala a 4 – 6 m de altura. Protección IP65 / IK08 para exterior. Diseñado para RETILAP (Res. 40150 de 2024), certificación en proceso."
 image: "/images/productos-estudio/hardy-urban-300.webp"
+imageCard: "/images/productos-estudio/hardy-urban-300-card.webp"
 imageThumb: "/images/productos-estudio/hardy-urban-300-thumb.webp"
 imageAlt: "Luminaria Solar Hardy Urban 300 – 17 W reales · 3.145 lm – Reiki Energía Solar"
 category: "reflectores"

@@ -2,6 +2,7 @@
 title: "Breaker Suntree 100A AC SCB8-63-100A3P"
 description: "Interruptor termomagnético (breaker) Suntree SCB8-63-100A3P AC de 100 A. Protege el circuito contra sobrecargas y cortocircuitos y permite desconectarlo para mantenimiento. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/suntree-scb8-ac-prov.webp"
+imageCard: "/images/productos-estudio/suntree-scb8-ac-prov-card.webp"
 category: "protecciones"
 price: "$94.129"
 specifications:

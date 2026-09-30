@@ -24,6 +24,8 @@ const productosCollection = defineCollection({
     /** Alt SEO de la foto de producto (estudio). */
     imageAlt: z.string().optional(),
     /** Miniatura 600×600 WebP (opcional). */
+    /** Miniatura normalizada para tarjetas (producto siempre del mismo tamaño). */
+    imageCard: z.string().optional(),
     imageThumb: z.string().optional(),
     /** Ruta pública de la foto original antes del pipeline estudio. */
     imageOriginal: z.string().optional(),

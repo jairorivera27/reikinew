@@ -2,6 +2,7 @@
 title: "Medidor Monofásico Solis AGF-AE-D/200"
 description: "Medidor Monofásico Solis AGF-AE-D/200. 1 año de garantía por fabricante. Medidor de energía para conexión en semidirecta, para inversores bifasicos de 480V/220V. Pantalla LCD, medidor con CT´s. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/medidor-monofasico-solis-agf-ae-d-200.webp"
+imageCard: "/images/productos-estudio/medidor-monofasico-solis-agf-ae-d-200-card.webp"
 imageAlt: "Medidor Monofásico Solis AGF-AE-D/200 – Reiki Energía Solar"
 category: "accesorios"
 price: "$354.500"

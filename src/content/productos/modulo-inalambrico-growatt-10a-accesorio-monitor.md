@@ -2,6 +2,7 @@
 title: "Módulo Inalámbrico Growatt 10A Accesorio/Monitor"
 description: "Datalogger / módulo de monitoreo Growatt. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/growatt-shine.webp"
+imageCard: "/images/productos-estudio/growatt-shine-card.webp"
 category: "accesorios"
 price: "$99.216"
 specifications:

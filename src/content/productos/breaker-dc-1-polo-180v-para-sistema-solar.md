@@ -3,6 +3,7 @@ draft: true
 title: "Breaker DC 1 Polo 180V para Sistema Solar"
 description: "Breaker DC 1 Polo 180V para Sistema Solar. Producto para seccionamiento y protección de circuitos DC en sistemas fotovoltaicos. Especificación principal: 180VDC, 1P. Verifique compatibilidad y condiciones de instalación. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/suntree-sl7n-dc.jpg"
+imageCard: "/images/productos-tienda/protecciones/suntree-sl7n-dc-card.webp"
 category: "protecciones"
 price: "$385.002"
 specifications:

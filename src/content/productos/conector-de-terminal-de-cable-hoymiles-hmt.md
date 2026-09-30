@@ -2,6 +2,7 @@
 title: "Conector de Terminal de Cable Hoymiles HMT"
 description: "Conector de Terminal de Cable Hoymiles HMT. Tapa de protección de ramal. 1 año de garantía por fabricante. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/conector-de-terminal-de-cable-hoymiles-hmt.webp"
+imageCard: "/images/productos-estudio/conector-de-terminal-de-cable-hoymiles-hmt-card.webp"
 imageAlt: "Conector de Terminal de Cable Hoymiles HMT – Reiki Energía Solar"
 category: "accesorios"
 price: "$20.400"

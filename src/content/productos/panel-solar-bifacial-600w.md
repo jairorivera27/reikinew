@@ -2,6 +2,7 @@
 title: "Panel Solar Trina Vertex N TSM-700NEG21C.20 700W Bifacial"
 description: "Panel solar Trina Solar TSM-700NEG21C.20 (Vertex N) de 700W, la máxima potencia para tu sistema solar. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/trina-solar-tsm-700neg21c-20-prov.webp"
+imageCard: "/images/productos-estudio/trina-solar-tsm-700neg21c-20-prov-card.webp"
 category: "paneles"
 price: "$739.000"
 specifications:

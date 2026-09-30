@@ -2,6 +2,7 @@
 title: "Soluna 6K Pack HV + Soluna HV WIFI Stick"
 description: "Solución de almacenamiento **Soluna** en alto voltaje: packs modulares con BMS integrado y opciones de conectividad (p. ej. Wi‑Fi stick) según referencia, para acoplamiento con inversores homologados por el fabricante. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/soluna-battery.webp"
+imageCard: "/images/productos-estudio/soluna-battery-card.webp"
 category: "baterias"
 price: "$13.311.000"
 specifications:

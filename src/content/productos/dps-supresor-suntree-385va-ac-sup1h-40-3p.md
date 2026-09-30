@@ -2,6 +2,7 @@
 title: "DPS Supresor Suntree 385VA AC SUP1H-40-3P"
 description: "Protector contra sobretensiones (DPS) Suntree SUP1H-40-3P AC, 3 polos. Desvía a tierra las sobretensiones por rayos y maniobras antes de que dañen inversores, controladores y paneles. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/suntree-spd-ac.webp"
+imageCard: "/images/productos-estudio/suntree-spd-ac-card.webp"
 category: "protecciones"
 price: "$123.492"
 specifications:

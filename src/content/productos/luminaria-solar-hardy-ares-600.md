@@ -2,6 +2,7 @@
 title: "Luminaria Solar Hardy Ares 600 – 22 W reales · 4.070 lm"
 description: "Luminaria solar integrada para alumbrado público Hardy Ares 600 de 22 W reales y 4.070 lm (185 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 40 Ah y panel 40 W monocristalino (integrado, 760 × 280 mm), con autonomía de 2 – 3 noches con carga completa. Se instala a 7 – 9 m de altura y ilumina hasta 60 m². Protección IP65 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024)."
 image: "/images/productos-estudio/hardy-ares-600.webp"
+imageCard: "/images/productos-estudio/hardy-ares-600-card.webp"
 imageThumb: "/images/productos-estudio/hardy-ares-600-thumb.webp"
 imageAlt: "Luminaria Solar Hardy Ares 600 – 22 W reales · 4.070 lm – Reiki Energía Solar"
 category: "reflectores"

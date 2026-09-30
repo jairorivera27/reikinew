@@ -2,6 +2,7 @@
 title: "Conector de Extensión Hoymiles HMT"
 description: "Conector de Extensión Hoymiles HMT. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/conector-de-extension-hoymiles-hmt.webp"
+imageCard: "/images/productos-estudio/conector-de-extension-hoymiles-hmt-card.webp"
 imageAlt: "Conector de Extensión Hoymiles HMT – Reiki Energía Solar"
 category: "accesorios"
 price: "$20.200"

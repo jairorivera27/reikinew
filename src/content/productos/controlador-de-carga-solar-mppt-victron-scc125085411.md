@@ -2,6 +2,7 @@
 title: "Controlador de Carga Solar MPPT Victron SCC125085411"
 description: "Controlador de carga solar MPPT Victron SCC125085411. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-smartsolar-mppt-25085-tr.webp"
+imageCard: "/images/productos-estudio/victron-smartsolar-mppt-25085-tr-card.webp"
 category: "controladores"
 price: "$2.542.662"
 specifications:

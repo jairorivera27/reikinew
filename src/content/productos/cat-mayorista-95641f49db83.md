@@ -3,6 +3,7 @@ draft: true
 title: "Solis Inversor 75K-LV-5G-PRO"
 description: "Inversor string on-grid Solis: doble o múltiple MPPT, monitorización y protecciones integradas para instalaciones residenciales, comerciales o grandes según referencia."
 image: "/images/livoltek.png"
+imageCard: "/images/livoltek-card.webp"
 category: "inversores"
 price: "$32.197.800"
 specifications:

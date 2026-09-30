@@ -2,6 +2,7 @@
 title: "Solis Monitoreo S2-WL-ST (USB)"
 description: "Equipo de monitorización o medida para inversores Solis (logger Wi‑Fi/LAN, EPM, GPRS, medidor + TC, etc.) según referencia exacta. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/solis-datamanager.webp"
+imageCard: "/images/productos-estudio/solis-datamanager-card.webp"
 category: "accesorios"
 price: "$247.200"
 specifications:

@@ -2,6 +2,7 @@
 title: "Switch Suntree 100A AC SQ8M-125"
 description: "Seccionador Suntree SQ8M-125 AC de 100 A. Permite desconectar con seguridad el circuito para mantenimiento o emergencias. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/suntree-sq8-switch-prov.webp"
+imageCard: "/images/productos-estudio/suntree-sq8-switch-prov-card.webp"
 category: "protecciones"
 price: "$694.514"
 specifications:

@@ -2,6 +2,7 @@
 title: "Smart Dongle 4G Huawei SDongleB-06-EU para Monitoreo"
 description: "Dongle de comunicaciones Huawei para inversores SUN2000: conectividad 4G o Wi‑Fi según referencia, para telemetría remota sin cableado LAN permanente. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/huawei-smartlogger.webp"
+imageCard: "/images/productos-estudio/huawei-smartlogger-card.webp"
 category: "accesorios"
 price: "$711.450"
 specifications:

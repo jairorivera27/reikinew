@@ -2,6 +2,7 @@
 title: "Unidad de Comunicación GoodWe SCU3000A-S para Plantas Fotovoltaicas"
 description: "Datalogger / módulo de monitoreo GoodWe SCU3000A-S. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. La foto es de referencia de la serie GoodWe EzLogger. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/goodwe-ezlogger.webp"
+imageCard: "/images/productos-estudio/goodwe-ezlogger-card.webp"
 category: "accesorios"
 price: "$9.787.750"
 specifications:

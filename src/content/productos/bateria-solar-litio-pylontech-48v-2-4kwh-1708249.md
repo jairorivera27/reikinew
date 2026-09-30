@@ -2,6 +2,7 @@
 title: "Batería Solar Litio Pylontech 48V 2.4kWh 1708249"
 description: "Batería litio Pylontech de 2.4 kWh a 48 V. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/pylontech-3kwh-medellin-prov.webp"
+imageCard: "/images/productos-estudio/pylontech-3kwh-medellin-prov-card.webp"
 category: "baterias"
 price: "$3.766.269"
 specifications:

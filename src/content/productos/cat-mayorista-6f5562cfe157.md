@@ -2,6 +2,7 @@
 title: "Fronius Inversor Primo 10.0-1 208/240"
 description: "Inversor Fronius (Primo, Symo, Tauro): tecnología SnapINverter o plataforma comercial según familia, MPPT múltiples y monitorización Solar.web. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/fronius-primo-prov.webp"
+imageCard: "/images/productos-estudio/fronius-primo-prov-card.webp"
 category: "inversores"
 price: "$14.925.150"
 specifications:

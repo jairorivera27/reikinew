@@ -2,6 +2,7 @@
 title: "Bomba Solar 750W KOLOS3-95-75-11"
 description: "Bomba solar sumergible Kolos KOLOS3-95-75-11 de 750 W. Bombea agua directamente con energía solar para riego, ganadería o uso doméstico, sin factura de energía. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/kolos3-sumergible-prov.webp"
+imageCard: "/images/productos-estudio/kolos3-sumergible-prov-card.webp"
 category: "bombeo"
 price: "$2.723.315"
 specifications:

@@ -2,6 +2,7 @@
 title: "Inversor Híbrido Huawei SUN2000-4KTL-L1 4 kW"
 description: "Inversor Huawei SUN2000-4KTL-L1, tecnología digital y conectividad avanzada para tu hogar. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/huawei-sun2000-4ktl-l1.webp"
+imageCard: "/images/productos-estudio/huawei-sun2000-4ktl-l1-card.webp"
 category: "inversores"
 price: "$4.090.000"
 specifications:

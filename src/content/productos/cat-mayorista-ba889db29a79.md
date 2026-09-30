@@ -3,6 +3,7 @@ draft: true
 title: "Juego Conector MC4 Te Connectivity"
 description: "Conector o herramienta MC4 homologada (TE Connectivity u OEM equivalente) para interconexión de módulos y cableado solar."
 image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-mcb-ac-card.webp"
 category: "protecciones"
 price: "$11.782"
 specifications:

@@ -3,6 +3,7 @@ draft: true
 title: "Breaker 400A AC 400HU"
 description: "Breaker 400A AC 400HU. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Modelo: 400HU; especificación principal: 400A AC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/generic-mccb.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-mccb-card.webp"
 category: "protecciones"
 price: "$1.259.132"
 specifications:
