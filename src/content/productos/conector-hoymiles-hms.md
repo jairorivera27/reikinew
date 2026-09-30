@@ -1,7 +1,7 @@
 ---
 title: "Conector Hoymiles HMS"
-description: "Conector Hoymiles HMS. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia."
-image: "/images/placeholders/accesorios.svg"
+description: "Conector Hoymiles HMS. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+image: "/images/productos-estudio/conector-hoymiles-hms.webp"
 imageAlt: "Conector Hoymiles HMS – Reiki Energía Solar"
 category: "accesorios"
 price: "$20.600"
@@ -13,8 +13,12 @@ sku: "AMZ-001-0015"
 stock: "disponible"
 order: 7000
 updatedAt: "2026-09-29"
-draft: true
-imagenPendiente: true
 promocion: "Precio especial"
+imageThumb: "/images/productos-estudio/conector-hoymiles-hms-thumb.webp"
+imagen_provisional: false
+faqs:
+  - pregunta: "¿Es compatible con mi equipo?"
+    respuesta: "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
+fichaPdf: "/fichas/reiki/conector-hoymiles-hms.pdf"
 ---
 

@@ -153,9 +153,13 @@ const itemListJsonLd = {
                 <p class="desc-item-cat">
                   <i class="fas fa-tag" aria-hidden="true"></i>
                   {nombreCategoria(producto.data.category)}
-                  <span class="desc-item-ahorro">
-                    Ahorrás {formatearCOP(ahorroEnPesos(producto.data))}
-                  </span>
+                  {ahorroEnPesos(producto.data) > 0 ? (
+                    <span class="desc-item-ahorro">
+                      Ahorrás {formatearCOP(ahorroEnPesos(producto.data))}
+                    </span>
+                  ) : (
+                    <span class="desc-item-ahorro">Stock inmediato</span>
+                  )}
                 </p>
                 <ProductoCardCompact producto={producto} />
               </article>
