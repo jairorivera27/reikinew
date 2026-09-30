@@ -27,6 +27,8 @@ function dayKeyFromIso(iso) {
   if (!s) {
     return new Date().toLocaleDateString('en-CA', { timeZone: 'America/Bogota' });
   }
+  // Fecha calendario ya en YYYY-MM-DD: no parsear como UTC (evita correr un día)
+  if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
   try {
     const d = new Date(s);
     if (!Number.isNaN(d.getTime())) {
@@ -35,7 +37,6 @@ function dayKeyFromIso(iso) {
   } catch {
     /* fall through */
   }
-  // Fallback: si viene YYYY-MM-DD… usar los primeros 10 chars
   if (s.length >= 10 && /^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(0, 10);
   return new Date().toLocaleDateString('en-CA', { timeZone: 'America/Bogota' });
 }
@@ -211,14 +212,17 @@ export async function searchCheckoutOrders({ nombre, documento, fecha, dias = 3 
   let daysToScan = [];
   if (fecha) {
     // ±1 día cubre desfase UTC vs Bogotá en índices antiguos
-    daysToScan = ymdRange(fecha, 1, 1);
+    daysToScan = ymdRange(String(fecha).slice(0, 10), 1, 1);
   } else {
-    const today = todayBogotaYmd();
-    // +1 día extra: pedidos indexados con día UTC (desfase Colombia UTC-5)
+    const todayBog = todayBogotaYmd();
+    const todayUtc = new Date().toISOString().slice(0, 10);
     const span = Math.min(days + 1, 31);
+    const uniq = new Set();
     for (let i = 0; i < span; i += 1) {
-      daysToScan.push(addDaysYmd(today, -i));
+      uniq.add(addDaysYmd(todayBog, -i));
+      uniq.add(addDaysYmd(todayUtc, -i));
     }
+    daysToScan = Array.from(uniq);
   }
 
   const seen = new Set();
@@ -245,8 +249,53 @@ export async function searchCheckoutOrders({ nombre, documento, fecha, dias = 3 
     }
   }
 
+  // Rescate: si el índice diario está vacío/roto, escanear claves de pedidos
+  if (!matches.length && !docNorm && !nameNorm && !fecha) {
+    const recovered = await scanCheckoutOrdersFallback(days);
+    matches.push(...recovered);
+  }
+
   matches.sort((a, b) => String(b.updatedAt || b.createdAt).localeCompare(String(a.updatedAt || a.createdAt)));
   return matches;
+}
+
+/**
+ * Fallback cuando las listas chkday:* no tienen IDs (índice dañado o huso horario).
+ */
+async function scanCheckoutOrdersFallback(days = 7) {
+  const redis = getRedis();
+  if (!redis) return [];
+  const out = [];
+  const seen = new Set();
+  try {
+    const keys = await redis.keys('reiki:wa:chk:*');
+    const list = Array.isArray(keys) ? keys : [];
+    const cutoff = Date.now() - Math.min(Math.max(Number(days) || 7, 1), 90) * 86400000;
+    for (const key of list) {
+      const k = String(key || '');
+      // Solo pedidos: reiki:wa:chk:<orderId> (no chkday)
+      if (!k.startsWith('reiki:wa:chk:') || k.startsWith('reiki:wa:chkday:')) continue;
+      const orderId = k.slice('reiki:wa:chk:'.length);
+      if (!orderId || seen.has(orderId)) continue;
+      seen.add(orderId);
+      const order = await getCheckoutOrder(orderId);
+      if (!order) continue;
+      const ts = Date.parse(order.paidAt || order.updatedAt || order.createdAt || '') || 0;
+      if (ts && ts < cutoff) continue;
+      out.push(order);
+      // Reparar índice diario para próximas búsquedas
+      try {
+        const dayBog = dayKeyFromIso(order.createdAt || order.paidAt);
+        await redis.lpush(dayListKey(dayBog), orderId);
+        await redis.expire(dayListKey(dayBog), ORDER_TTL_SEC);
+      } catch {
+        /* ignore repair errors */
+      }
+    }
+  } catch (err) {
+    console.warn('[checkout-order-store] scan fallback', err?.message || err);
+  }
+  return out;
 }
 
 export async function listRecentCheckoutOrders(days = 3) {

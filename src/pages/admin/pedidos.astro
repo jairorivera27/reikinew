@@ -112,9 +112,9 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           </select>
           <select id="f-dias" aria-label="Días">
             <option value="3">Últimos 3 días</option>
-            <option value="7" selected>Últimos 7 días</option>
+            <option value="7">Últimos 7 días</option>
             <option value="15">Últimos 15 días</option>
-            <option value="30">Últimos 30 días</option>
+            <option value="30" selected>Últimos 30 días</option>
           </select>
           <div class="view-toggle" role="group" aria-label="Vista">
             <button type="button" class="view-btn is-active" data-view="kanban">Kanban</button>
@@ -342,7 +342,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
 
         function renderNotesList(notes) {
           if (!notes.length) {
-            return '<p class="notes-empty">Sin notas todavía. Agrega la primera bitácora del contacto.</p>';
+            return '<p class="notes-empty">Sin notas todavia. Agrega la primera bitacora del contacto.</p>';
           }
           return (
             '<ul class="notes-list">' +
@@ -961,11 +961,13 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           if (state.demo) {
             state.orders = MOCKS_DATA.slice();
             renderAll();
+            el.status.textContent = state.orders.length + ' pedidos · modo demo';
             return;
           }
           el.status.textContent = 'Cargando pedidos…';
           try {
-            var res = await fetch('/api/orders-search?dias=' + encodeURIComponent(el.dias.value || '7'), {
+            var dias = el.dias && el.dias.value ? el.dias.value : '30';
+            var res = await fetch('/api/orders-search?dias=' + encodeURIComponent(dias), {
               headers: authHeaders(),
             });
             var json = await res.json().catch(function () {
@@ -978,6 +980,8 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             }
             if (!res.ok || !json.ok) {
               el.status.textContent = json.error || 'Error al cargar.';
+              state.orders = [];
+              renderAll();
               return;
             }
             state.orders = (json.orders || []).map(function (o) {
@@ -985,9 +989,30 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
                 workflowStatus: o.workflowStatus || 'nuevo',
               });
             });
+            // Si el rango corto viene vacío, reintentar 30 días
+            if (!state.orders.length && String(dias) !== '30') {
+              var res2 = await fetch('/api/orders-search?dias=30', { headers: authHeaders() });
+              var json2 = await res2.json().catch(function () {
+                return {};
+              });
+              if (res2.ok && json2.ok && Array.isArray(json2.orders) && json2.orders.length) {
+                state.orders = json2.orders.map(function (o) {
+                  return Object.assign({}, o, { workflowStatus: o.workflowStatus || 'nuevo' });
+                });
+                if (el.dias) el.dias.value = '30';
+              }
+            }
             renderAll();
+            if (!state.orders.length) {
+              el.status.textContent =
+                '0 pedidos en Redis (últimos ' +
+                (el.dias && el.dias.value ? el.dias.value : dias) +
+                ' días). Usa «Ver demo» o revisa KV.';
+            }
           } catch (_e) {
             el.status.textContent = 'No se pudo contactar el servidor.';
+            state.orders = [];
+            renderAll();
           }
         }
 
@@ -1000,15 +1025,9 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           el.login.setAttribute('aria-hidden', isDash ? 'true' : 'false');
           el.dash.setAttribute('aria-hidden', isDash ? 'false' : 'true');
           window.scrollTo(0, 0);
-          if (isDash) {
-            el.dash.classList.remove('view-enter');
-            void el.dash.offsetWidth;
-            el.dash.classList.add('view-enter');
-          } else {
-            el.login.classList.remove('view-enter');
-            void el.login.offsetWidth;
-            el.login.classList.add('view-enter');
-          }
+          // Sin animación de opacity: en algunos navegadores dejaba el dashboard invisible
+          el.dash.classList.remove('view-enter');
+          el.login.classList.remove('view-enter');
         }
 
         function showLogin(msg) {
@@ -1034,7 +1053,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           }
           setSession(user, pass, false);
           // Probar auth con una búsqueda corta
-          fetch('/api/orders-search?dias=1', {
+          fetch('/api/orders-search?dias=30', {
             headers: {
               Authorization: 'Bearer ' + pass,
               'X-Admin-User': user,
@@ -1172,17 +1191,27 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         padding: 1.5rem;
       }
       .view-enter {
-        animation: viewEnter 0.38s ease-out both;
+        /* animación desactivada: opacity:0 dejaba el panel en blanco */
       }
       @keyframes viewEnter {
         from {
-          opacity: 0;
-          transform: translateY(14px);
+          opacity: 1;
+          transform: none;
         }
         to {
           opacity: 1;
-          transform: translateY(0);
+          transform: none;
         }
+      }
+      .dash-wrap:not([hidden]) {
+        opacity: 1 !important;
+        visibility: visible !important;
+      }
+      #board-kanban:not([hidden]),
+      .kanban-board {
+        opacity: 1 !important;
+        visibility: visible !important;
+        min-height: 200px;
       }
       .login-card {
         width: min(420px, 100%);
