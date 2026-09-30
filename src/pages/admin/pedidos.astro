@@ -31,7 +31,14 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           extend: {
             fontFamily: { sans: ['Montserrat', 'ui-sans-serif', 'system-ui', 'sans-serif'] },
             colors: {
-              reiki: { DEFAULT: '#0f6b4c', dark: '#12352c', mint: '#e7f6ef' },
+              reiki: {
+                DEFAULT: '#6b2181',
+                dark: '#4a1a5c',
+                light: '#8b2a9b',
+                mint: '#f5eef8',
+                accent: '#f97316',
+                sun: '#facc15',
+              },
             },
           },
         },
@@ -344,7 +351,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             '</strong></div>' +
             '<div class="' +
             card +
-            '"><p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Valor hoy</p><strong class="mt-1 block text-xl font-extrabold text-emerald-600">' +
+            '"><p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Valor hoy</p><strong class="mt-1 block text-xl font-extrabold metric-money">' +
             (m.valorHoy ? formatCop(m.valorHoy) : '—') +
             '</strong></div>';
         }
@@ -457,16 +464,16 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
                 return workflowOf(o) === col.key;
               });
               return (
-                '<div class="bg-gray-100/50 p-4 rounded-xl min-h-[500px] flex flex-col gap-4" data-col="' +
+                '<div class="kb-col" data-col="' +
                 col.key +
                 '">' +
                 '<header class="shrink-0">' +
-                '<h2 class="m-0 text-sm font-extrabold text-gray-800 flex items-center gap-2">' +
+                '<h2 class="kb-col-title">' +
                 esc(col.title) +
-                ' <em class="not-italic text-xs font-bold bg-white text-emerald-700 border border-emerald-100 rounded-full px-2 py-0.5">' +
+                ' <em class="kb-col-count">' +
                 items.length +
                 '</em></h2>' +
-                '<span class="text-xs font-medium text-gray-400">' +
+                '<span class="kb-col-hint">' +
                 esc(col.hint) +
                 '</span></header>' +
                 '<div class="flex flex-col gap-4">' +
@@ -896,16 +903,24 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
 
     <style is:global>
       :root {
-        --ink: #12352c;
-        --green: #0f6b4c;
-        --green-2: #159a6a;
-        --mint: #e7f6ef;
-        --sand: #f6f2ea;
-        --line: #d5e5dc;
-        --muted: #5f766c;
-        --card: rgba(255, 255, 255, 0.94);
-        --shadow: 0 16px 40px rgba(18, 53, 44, 0.1);
-        --wa: #128c7e;
+        --ink: #1f1230;
+        --brand: #6b2181;
+        --brand-2: #8b2a9b;
+        --brand-dark: #4a1a5c;
+        --mint: #f5eef8;
+        --sand: #faf7fc;
+        --line: #e8dced;
+        --muted: #6b5f75;
+        --card: rgba(255, 255, 255, 0.96);
+        --shadow: 0 16px 40px rgba(107, 33, 129, 0.12);
+        --accent: #f97316;
+        --sun: #facc15;
+        --ok: #16a34a;
+        --ok-2: #22c55e;
+        --wa: #25d366;
+        /* aliases usados por botones/vistas existentes */
+        --green: var(--brand);
+        --green-2: var(--brand-2);
       }
       * {
         box-sizing: border-box;
@@ -930,9 +945,9 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         z-index: 0;
         pointer-events: none;
         background:
-          radial-gradient(900px 420px at 8% -8%, rgba(21, 154, 106, 0.16), transparent 60%),
-          radial-gradient(700px 360px at 100% 0%, rgba(15, 107, 76, 0.12), transparent 55%),
-          linear-gradient(180deg, #f2faf6, #f6f2ea 50%, #eef5f1);
+          radial-gradient(900px 420px at 8% -8%, rgba(107, 33, 129, 0.14), transparent 60%),
+          radial-gradient(700px 360px at 100% 0%, rgba(249, 115, 22, 0.1), transparent 55%),
+          linear-gradient(180deg, #faf5ff, #faf7fc 50%, #f3eef8);
       }
       .login-wrap,
       .dash-wrap {
@@ -1024,22 +1039,22 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         color: inherit;
       }
       .btn-primary {
-        background: linear-gradient(135deg, var(--green), var(--green-2));
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
         color: #fff;
-        box-shadow: 0 10px 22px rgba(15, 107, 76, 0.22);
+        box-shadow: 0 10px 22px rgba(107, 33, 129, 0.28);
       }
       .btn-primary:disabled {
         opacity: 0.7;
         cursor: wait;
       }
       .btn-secondary {
-        background: #12352c;
+        background: var(--brand-dark);
         color: #fff;
       }
       .btn-ghost {
         background: transparent;
         border: 1px solid var(--line);
-        color: var(--green);
+        color: var(--brand);
       }
       .btn-wa {
         background: var(--wa);
@@ -1125,16 +1140,19 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         line-height: 1.3;
       }
       .oc-badge--amber {
-        background: #fef3c7;
-        color: #92400e;
+        background: linear-gradient(135deg, #fff7ed, #fef9c3);
+        color: #c2410c;
+        border: 1px solid rgba(249, 115, 22, 0.25);
       }
       .oc-badge--ok {
-        background: #d1fae5;
-        color: #065f46;
+        background: #dcfce7;
+        color: #14532d;
+        border: 1px solid rgba(22, 163, 74, 0.25);
       }
       .oc-badge--bad {
         background: #fee2e2;
         color: #991b1b;
+        border: 1px solid rgba(185, 28, 28, 0.2);
       }
       .oc-date {
         font-size: 0.75rem;
@@ -1149,23 +1167,23 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         margin: 0;
         font-size: 1rem;
         font-weight: 800;
-        color: #111827;
+        color: var(--ink);
         line-height: 1.25;
       }
       .oc-meta {
         margin: 0.2rem 0 0;
         font-size: 0.875rem;
-        color: #6b7280;
+        color: var(--muted);
         font-weight: 500;
       }
       .oc-product {
         margin-top: 0.5rem;
         padding: 0.5rem 0.65rem;
-        background: #f9fafb;
-        border: 1px solid #f3f4f6;
+        background: var(--mint);
+        border: 1px solid var(--line);
         border-radius: 0.5rem;
         font-size: 0.875rem;
-        color: #374151;
+        color: #4a1a5c;
         line-height: 1.35;
       }
       .oc-price {
@@ -1173,14 +1191,14 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         text-align: right;
         font-size: 1.125rem;
         font-weight: 800;
-        color: #047857;
+        color: var(--brand);
       }
       .oc-actions {
         display: flex;
         gap: 0.5rem;
         margin-top: 0.25rem;
         padding-top: 0.75rem;
-        border-top: 1px solid #f3f4f6;
+        border-top: 1px solid var(--line);
       }
       .oc-btn {
         display: inline-flex;
@@ -1200,22 +1218,23 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       }
       .oc-btn-wa {
         flex: 1;
-        background: #10b981 !important;
+        background: linear-gradient(135deg, #16a34a, #22c55e) !important;
         color: #fff !important;
-        box-shadow: 0 1px 2px rgba(16, 185, 129, 0.35);
+        box-shadow: 0 1px 2px rgba(22, 163, 74, 0.35);
       }
       .oc-btn-wa:hover {
-        background: #059669 !important;
+        background: linear-gradient(135deg, #15803d, #16a34a) !important;
         color: #fff !important;
       }
       .oc-btn-sec {
         background: #fff;
-        color: #4b5563;
-        border-color: #e5e7eb;
+        color: var(--brand);
+        border-color: var(--line);
         font-weight: 600;
       }
       .oc-btn-sec:hover {
-        background: #f3f4f6;
+        background: var(--mint);
+        border-color: var(--brand);
       }
       .oc-btn-disabled {
         flex: 1;
@@ -1223,6 +1242,54 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         color: #9ca3af;
         cursor: not-allowed;
         font-weight: 600;
+      }
+      .kb-col {
+        background: rgba(245, 238, 248, 0.65);
+        padding: 1rem;
+        border-radius: 0.75rem;
+        min-height: 500px;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        border: 1px solid var(--line);
+      }
+      .kb-col-title {
+        margin: 0;
+        font-size: 0.9rem;
+        font-weight: 800;
+        color: var(--brand-dark);
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .kb-col-count {
+        font-style: normal;
+        font-size: 0.72rem;
+        font-weight: 800;
+        background: linear-gradient(135deg, var(--brand), var(--brand-2));
+        color: #fff;
+        border-radius: 999px;
+        padding: 0.12rem 0.5rem;
+      }
+      .kb-col-hint {
+        display: block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--muted);
+        margin-top: 0.15rem;
+      }
+      #metrics > div {
+        border-color: var(--line) !important;
+      }
+      #metrics > div strong {
+        color: var(--brand-dark);
+      }
+      #metrics .metric-money {
+        color: var(--brand) !important;
+      }
+      #board-kanban > [data-col] {
+        background: rgba(245, 238, 248, 0.65);
+        border: 1px solid var(--line);
       }
       @media (min-width: 768px) {
         #metrics {
