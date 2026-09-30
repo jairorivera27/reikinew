@@ -1,0 +1,165 @@
+[
+  {
+    "orderId": "demo-addi-villa-leyva-001",
+    "gateway": "addi",
+    "status": "approved",
+    "workflowStatus": "nuevo",
+    "totalAmount": 5194805,
+    "createdAt": "2026-09-29T23:26:33.141Z",
+    "paidAt": "2026-09-29T23:40:00.000Z",
+    "client": {
+      "fullName": "Johan Sebastian Martinez Burgos",
+      "email": "martinezburgosjohan@gmail.com",
+      "phone": "3133218383",
+      "idNumber": "1002725935",
+      "idType": "CC"
+    },
+    "shippingAddress": {
+      "lineOne": "Calle 2 # 7 - 88, barrio la palma",
+      "city": "Villa de Leyva",
+      "department": "Boyacá"
+    },
+    "items": [
+      {
+        "sku": "felicity-hybrid-8kw",
+        "name": "Inversor Solar Híbrido Felicity 8kW",
+        "quantity": 1,
+        "unitPrice": 5194805
+      }
+    ]
+  },
+  {
+    "orderId": "demo-wompi-medellin-002",
+    "gateway": "wompi",
+    "status": "approved",
+    "workflowStatus": "en_revision",
+    "totalAmount": 8750000,
+    "createdAt": "2026-09-29T18:12:00.000Z",
+    "paidAt": "2026-09-29T18:18:22.000Z",
+    "client": {
+      "fullName": "Carolina Mejía Restrepo",
+      "email": "carolina.mejia@ejemplo.com",
+      "phone": "3004052638",
+      "idNumber": "43210987",
+      "idType": "CC"
+    },
+    "shippingAddress": {
+      "lineOne": "Cra 43A # 1 Sur - 50, El Poblado",
+      "city": "Medellín",
+      "department": "Antioquia"
+    },
+    "items": [
+      {
+        "sku": "ja-solar-550",
+        "name": "Panel JA Solar 550W Bifacial",
+        "quantity": 8,
+        "unitPrice": 520000
+      },
+      {
+        "sku": "victron-mppt-100-50",
+        "name": "Controlador Victron SmartSolar MPPT 100/50",
+        "quantity": 1,
+        "unitPrice": 1450000
+      },
+      {
+        "sku": "cable-solar-6mm",
+        "name": "Cable solar 6 mm² (rollo 100 m)",
+        "quantity": 1,
+        "unitPrice": 890000
+      }
+    ]
+  },
+  {
+    "orderId": "demo-wompi-bogota-003",
+    "gateway": "wompi",
+    "status": "approved",
+    "workflowStatus": "cerrado",
+    "totalAmount": 12450000,
+    "createdAt": "2026-09-28T15:05:00.000Z",
+    "paidAt": "2026-09-28T15:11:40.000Z",
+    "client": {
+      "fullName": "Andrés Felipe Gómez Quintero",
+      "email": "andres.gomez@empresa.co",
+      "phone": "3105558899",
+      "idNumber": "80123456",
+      "idType": "CC"
+    },
+    "shippingAddress": {
+      "lineOne": "Av. Carrera 7 # 115-60, oficina 402",
+      "city": "Bogotá",
+      "department": "Cundinamarca"
+    },
+    "items": [
+      {
+        "sku": "growatt-mod-10k",
+        "name": "Inversor Growatt MOD 10KTL3-X",
+        "quantity": 1,
+        "unitPrice": 6800000
+      },
+      {
+        "sku": "trina-575",
+        "name": "Panel Trina Vertex S+ 575W",
+        "quantity": 12,
+        "unitPrice": 470000
+      }
+    ]
+  },
+  {
+    "orderId": "demo-addi-envigado-004",
+    "gateway": "addi",
+    "status": "pending",
+    "workflowStatus": "nuevo",
+    "totalAmount": 3250000,
+    "createdAt": "2026-09-30T01:05:00.000Z",
+    "paidAt": null,
+    "client": {
+      "fullName": "Laura Sofía Ramírez Vélez",
+      "email": "laura.ramirez@correo.com",
+      "phone": "3157772211",
+      "idNumber": "1122334455",
+      "idType": "CC"
+    },
+    "shippingAddress": {
+      "lineOne": "Calle 37 Sur # 34-20",
+      "city": "Envigado",
+      "department": "Antioquia"
+    },
+    "items": [
+      {
+        "sku": "bateria-felicity-5kwh",
+        "name": "Batería Litio Felicity 5 kWh",
+        "quantity": 1,
+        "unitPrice": 3250000
+      }
+    ]
+  },
+  {
+    "orderId": "demo-wompi-rionegro-005",
+    "gateway": "wompi",
+    "status": "approved",
+    "workflowStatus": "en_revision",
+    "totalAmount": 1890000,
+    "createdAt": "2026-09-30T14:22:00.000Z",
+    "paidAt": "2026-09-30T14:28:10.000Z",
+    "client": {
+      "fullName": "Diego Armando Castaño",
+      "email": "diego.castano@mail.com",
+      "phone": "3019988776",
+      "idNumber": "71717171",
+      "idType": "CC"
+    },
+    "shippingAddress": {
+      "lineOne": "Vereda Sajonia, Km 3 vía aeropuerto",
+      "city": "Rionegro",
+      "department": "Antioquia"
+    },
+    "items": [
+      {
+        "sku": "luminaria-ares-600",
+        "name": "Luminaria solar Ares 600",
+        "quantity": 6,
+        "unitPrice": 315000
+      }
+    ]
+  }
+]

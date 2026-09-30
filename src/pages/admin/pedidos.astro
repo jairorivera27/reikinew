@@ -1,6 +1,7 @@
 ---
 import SEO from '../../components/SEO.astro';
 import FontAwesome from '../../components/FontAwesome.astro';
+import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
 ---
 
 <!DOCTYPE html>
@@ -8,12 +9,11 @@ import FontAwesome from '../../components/FontAwesome.astro';
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Pedidos tienda | Admin Reiki</title>
+    <title>Dashboard pedidos | Reiki Admin</title>
     <FontAwesome />
     <SEO
-      title="Pedidos tienda | Admin Reiki"
-      description="Panel interno de pedidos."
+      title="Dashboard pedidos | Reiki Admin"
+      description="Gestión interna de pedidos web."
       canonical="/admin/pedidos"
       noindex={true}
       schemaType="WebPage"
@@ -25,102 +25,188 @@ import FontAwesome from '../../components/FontAwesome.astro';
       rel="stylesheet"
     />
   </head>
-  <body class="admin-body">
-    <div class="admin-bg" aria-hidden="true"></div>
+  <body class="dash-body">
+    <div class="dash-bg" aria-hidden="true"></div>
 
-    <main class="admin-main">
-      <header class="admin-top">
-        <div class="admin-brand">
-          <img src="/images/logo.png" alt="Reiki Energía Solar" class="admin-logo" width="160" height="48" />
-          <div>
-            <p class="admin-eyebrow">Panel interno</p>
-            <h1>Pedidos de la tienda</h1>
-          </div>
-        </div>
-        <button type="button" id="admin-logout" class="admin-btn admin-btn--ghost" hidden>Salir</button>
-      </header>
-
-      <section id="admin-login" class="admin-login-card" hidden>
-        <div class="admin-login-mark">
-          <img src="/images/logo.png" alt="" width="120" height="36" />
-        </div>
-        <h2>Acceso asesor</h2>
-        <p class="admin-help">Ingresa la contraseña de administración de pedidos.</p>
-        <form id="admin-login-form" class="admin-login-form">
+    <!-- LOGIN -->
+    <section id="view-login" class="login-wrap">
+      <div class="login-card">
+        <img src="/images/logo.png" alt="Reiki Energía Solar" class="login-logo" width="150" height="45" />
+        <h1>Panel de pedidos</h1>
+        <p class="login-sub">Acceso exclusivo para el equipo Reiki</p>
+        <form id="login-form" class="login-form">
+          <label>
+            Usuario
+            <input type="text" id="login-user" name="user" autocomplete="username" value="admin" required />
+          </label>
           <label>
             Contraseña
-            <input type="password" name="secret" id="admin-secret" autocomplete="current-password" required />
+            <input
+              type="password"
+              id="login-pass"
+              name="password"
+              autocomplete="current-password"
+              required
+            />
           </label>
-          <button type="submit" class="admin-btn admin-btn--block">Entrar</button>
+          <button type="submit" class="btn btn-primary btn-block">Entrar al dashboard</button>
         </form>
-        <p id="admin-login-error" class="admin-error" hidden></p>
-      </section>
+        <button type="button" id="btn-demo" class="btn btn-ghost btn-block">Ver demo con datos de prueba</button>
+        <p id="login-error" class="login-error" hidden></p>
+      </div>
+    </section>
 
-      <section id="admin-panel" hidden>
-        <form id="admin-filters" class="admin-filters">
-          <label>
-            Días
-            <input type="number" name="dias" id="f-dias" min="1" max="90" value="7" />
-          </label>
-          <label>
-            Fecha
-            <input type="date" name="fecha" id="f-fecha" />
-          </label>
-          <label>
-            Documento
-            <input type="text" name="documento" id="f-documento" inputmode="numeric" placeholder="Cédula" />
-          </label>
-          <label>
-            Nombre
-            <input type="text" name="nombre" id="f-nombre" placeholder="Cliente" />
-          </label>
-          <div class="admin-filter-actions">
-            <button type="submit" class="admin-btn">Buscar</button>
-            <button type="button" id="admin-hoy" class="admin-btn admin-btn--ghost">Hoy</button>
+    <!-- DASHBOARD -->
+    <div id="view-dash" class="dash-wrap" hidden>
+      <header class="dash-top">
+        <div class="dash-brand">
+          <img src="/images/logo.png" alt="Reiki" class="dash-logo" />
+          <div>
+            <p class="dash-eyebrow">Reiki Energía Solar · interno</p>
+            <h1>Pedidos web</h1>
           </div>
-        </form>
+        </div>
+        <div class="dash-top-actions">
+          <button type="button" id="btn-refresh" class="btn btn-ghost"><i class="fas fa-sync-alt"></i> Actualizar</button>
+          <button type="button" id="btn-logout" class="btn btn-ghost">Salir</button>
+        </div>
+      </header>
 
-        <p id="admin-status" class="admin-status" aria-live="polite">Cargando…</p>
-        <div id="admin-list" class="admin-list"></div>
+      <section class="metrics" id="metrics" aria-label="Métricas"></section>
+
+      <section class="toolbar">
+        <div class="search-wrap">
+          <i class="fas fa-search" aria-hidden="true"></i>
+          <input
+            type="search"
+            id="q-live"
+            placeholder="Buscar por nombre, celular, cédula, pedido…"
+            autocomplete="off"
+          />
+        </div>
+        <div class="toolbar-filters">
+          <select id="f-gateway" aria-label="Pasarela">
+            <option value="">Todas las pasarelas</option>
+            <option value="addi">Addi</option>
+            <option value="wompi">Wompi</option>
+          </select>
+          <select id="f-dias" aria-label="Días">
+            <option value="3">Últimos 3 días</option>
+            <option value="7" selected>Últimos 7 días</option>
+            <option value="15">Últimos 15 días</option>
+            <option value="30">Últimos 30 días</option>
+          </select>
+          <div class="view-toggle" role="group" aria-label="Vista">
+            <button type="button" class="view-btn is-active" data-view="kanban">Kanban</button>
+            <button type="button" class="view-btn" data-view="lista">Lista</button>
+          </div>
+        </div>
       </section>
-    </main>
 
-    <script is:inline>
+      <p id="dash-status" class="dash-status" aria-live="polite"></p>
+
+      <section id="board-kanban" class="kanban"></section>
+      <section id="board-lista" class="lista" hidden></section>
+    </div>
+
+    <!-- MODAL DETALLE -->
+    <div id="modal" class="modal" hidden>
+      <div class="modal-backdrop" data-close="1"></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <button type="button" class="modal-x" data-close="1" aria-label="Cerrar">&times;</button>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+
+    <script is:inline define:vars={{ MOCKS: pedidosMocks }}>
       (function () {
-        var LS_KEY = 'reiki_admin_orders_secret';
-        var loginEl = document.getElementById('admin-login');
-        var panelEl = document.getElementById('admin-panel');
-        var logoutBtn = document.getElementById('admin-logout');
-        var loginForm = document.getElementById('admin-login-form');
-        var loginErr = document.getElementById('admin-login-error');
-        var statusEl = document.getElementById('admin-status');
-        var listEl = document.getElementById('admin-list');
-        var filters = document.getElementById('admin-filters');
+        var MOCKS_DATA = Array.isArray(MOCKS) ? MOCKS : [];
+
+        var LS_SECRET = 'reiki_admin_orders_secret';
+        var LS_USER = 'reiki_admin_orders_user';
+        var LS_DEMO = 'reiki_admin_orders_demo';
+
+        var state = {
+          orders: [],
+          view: 'kanban',
+          query: '',
+          gateway: '',
+          selectedId: null,
+          demo: false,
+        };
+
+        var el = {
+          login: document.getElementById('view-login'),
+          dash: document.getElementById('view-dash'),
+          loginForm: document.getElementById('login-form'),
+          loginErr: document.getElementById('login-error'),
+          metrics: document.getElementById('metrics'),
+          status: document.getElementById('dash-status'),
+          kanban: document.getElementById('board-kanban'),
+          lista: document.getElementById('board-lista'),
+          modal: document.getElementById('modal'),
+          modalBody: document.getElementById('modal-body'),
+          q: document.getElementById('q-live'),
+          gateway: document.getElementById('f-gateway'),
+          dias: document.getElementById('f-dias'),
+        };
 
         function getSecret() {
           try {
-            return String(sessionStorage.getItem(LS_KEY) || '').trim();
+            return String(sessionStorage.getItem(LS_SECRET) || '').trim();
           } catch (_e) {
             return '';
           }
         }
-        function setSecret(v) {
+        function getUser() {
           try {
-            if (v) sessionStorage.setItem(LS_KEY, v);
-            else sessionStorage.removeItem(LS_KEY);
+            return String(sessionStorage.getItem(LS_USER) || 'admin').trim() || 'admin';
+          } catch (_e) {
+            return 'admin';
+          }
+        }
+        function isDemo() {
+          try {
+            return sessionStorage.getItem(LS_DEMO) === '1';
+          } catch (_e) {
+            return false;
+          }
+        }
+        function setSession(user, secret, demo) {
+          try {
+            if (demo) {
+              sessionStorage.setItem(LS_DEMO, '1');
+              sessionStorage.removeItem(LS_SECRET);
+              sessionStorage.setItem(LS_USER, 'demo');
+            } else {
+              sessionStorage.removeItem(LS_DEMO);
+              sessionStorage.setItem(LS_SECRET, secret);
+              sessionStorage.setItem(LS_USER, user || 'admin');
+            }
           } catch (_e) {}
         }
-        function showLogin(msg) {
-          loginEl.hidden = false;
-          panelEl.hidden = true;
-          logoutBtn.hidden = true;
-          loginErr.hidden = !msg;
-          loginErr.textContent = msg || '';
+        function clearSession() {
+          try {
+            sessionStorage.removeItem(LS_SECRET);
+            sessionStorage.removeItem(LS_USER);
+            sessionStorage.removeItem(LS_DEMO);
+          } catch (_e) {}
         }
-        function showPanel() {
-          loginEl.hidden = true;
-          panelEl.hidden = false;
-          logoutBtn.hidden = false;
+
+        function authHeaders() {
+          return {
+            Authorization: 'Bearer ' + getSecret(),
+            'X-Admin-User': getUser(),
+            'Content-Type': 'application/json',
+          };
+        }
+
+        function esc(s) {
+          return String(s == null ? '' : s)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
         }
         function formatCop(n) {
           var v = Math.round(Number(n) || 0);
@@ -133,7 +219,6 @@ import FontAwesome from '../../components/FontAwesome.astro';
               timeZone: 'America/Bogota',
               day: '2-digit',
               month: 'short',
-              year: 'numeric',
               hour: '2-digit',
               minute: '2-digit',
             });
@@ -141,136 +226,393 @@ import FontAwesome from '../../components/FontAwesome.astro';
             return String(iso);
           }
         }
-        function statusClass(st) {
-          var s = String(st || '').toLowerCase();
-          if (s === 'approved' || s === 'completed' || s === 'pagada') return 'is-ok';
-          if (s.indexOf('pending') !== -1 || s === 'pending_verify') return 'is-wait';
-          if (s.indexOf('reject') !== -1 || s.indexOf('declin') !== -1 || s === 'abandoned') return 'is-bad';
-          return 'is-neutral';
+        function todayBogota() {
+          return new Date().toLocaleDateString('en-CA', { timeZone: 'America/Bogota' });
+        }
+        function isToday(iso) {
+          if (!iso) return false;
+          try {
+            return (
+              new Date(iso).toLocaleDateString('en-CA', { timeZone: 'America/Bogota' }) === todayBogota()
+            );
+          } catch (_e) {
+            return false;
+          }
+        }
+        function workflowOf(o) {
+          return String(o.workflowStatus || 'nuevo').toLowerCase();
         }
         function waLink(phone) {
           var dig = String(phone || '').replace(/\D/g, '');
           if (dig.length === 10 && dig.charAt(0) === '3') dig = '57' + dig;
           return dig ? 'https://wa.me/' + dig : '';
         }
-        function esc(s) {
-          return String(s == null ? '' : s)
-            .replace(/&/g, '&amp;')
-            .replace(/</g, '&lt;')
-            .replace(/>/g, '&gt;')
-            .replace(/"/g, '&quot;');
+        function itemsSubtotal(items) {
+          return (items || []).reduce(function (acc, it) {
+            return acc + Math.round(Number(it.unitPrice || 0) * (Number(it.quantity) || 1));
+          }, 0);
         }
 
-        function renderOrders(orders) {
-          listEl.innerHTML = '';
-          if (!orders.length) {
-            statusEl.textContent = 'Sin pedidos para estos filtros.';
+        function filteredOrders() {
+          var q = state.query.trim().toLowerCase();
+          return state.orders.filter(function (o) {
+            if (state.gateway && String(o.gateway || '').toLowerCase() !== state.gateway) return false;
+            if (!q) return true;
+            var hay = [
+              o.orderId,
+              o.client && o.client.fullName,
+              o.client && o.client.phone,
+              o.client && o.client.email,
+              o.client && o.client.idNumber,
+              o.shippingAddress && o.shippingAddress.city,
+              (o.items || []).map(function (i) {
+                return i.name || i.title;
+              }).join(' '),
+            ]
+              .join(' ')
+              .toLowerCase();
+            return hay.indexOf(q) !== -1;
+          });
+        }
+
+        function computeMetrics(orders) {
+          var nuevos = 0;
+          var revision = 0;
+          var cerradoHoy = 0;
+          var valorHoy = 0;
+          orders.forEach(function (o) {
+            var w = workflowOf(o);
+            if (w === 'nuevo') nuevos += 1;
+            if (w === 'en_revision') revision += 1;
+            var when = o.paidAt || o.createdAt;
+            if (isToday(when) && (String(o.status).toLowerCase() === 'approved' || w === 'cerrado')) {
+              cerradoHoy += 1;
+              valorHoy += Math.round(Number(o.totalAmount) || 0);
+            } else if (isToday(when) && String(o.status).toLowerCase() === 'approved') {
+              valorHoy += Math.round(Number(o.totalAmount) || 0);
+            }
+          });
+          // Valor cerrado hoy: pedidos con paidAt hoy o workflow cerrado hoy
+          valorHoy = 0;
+          cerradoHoy = 0;
+          orders.forEach(function (o) {
+            var when = o.paidAt || o.updatedAt || o.createdAt;
+            if (!isToday(when)) return;
+            if (workflowOf(o) === 'cerrado' || String(o.status || '').toLowerCase() === 'approved') {
+              valorHoy += Math.round(Number(o.totalAmount) || 0);
+              if (workflowOf(o) === 'cerrado' || String(o.status || '').toLowerCase() === 'approved') {
+                cerradoHoy += 1;
+              }
+            }
+          });
+          return { nuevos: nuevos, revision: revision, cerradoHoy: cerradoHoy, valorHoy: valorHoy, total: orders.length };
+        }
+
+        function renderMetrics() {
+          var m = computeMetrics(filteredOrders());
+          el.metrics.innerHTML =
+            '<article class="metric"><p>Nuevos</p><strong>' +
+            m.nuevos +
+            '</strong></article>' +
+            '<article class="metric"><p>En revisión</p><strong>' +
+            m.revision +
+            '</strong></article>' +
+            '<article class="metric"><p>Cerrados / pagos hoy</p><strong>' +
+            m.cerradoHoy +
+            '</strong></article>' +
+            '<article class="metric metric--money"><p>Valor hoy</p><strong>' +
+            formatCop(m.valorHoy) +
+            '</strong></article>';
+        }
+
+        function cardHtml(o) {
+          var phone = (o.client && o.client.phone) || '';
+          var name = (o.client && o.client.fullName) || 'Cliente';
+          var items = o.items || [];
+          var preview = items
+            .slice(0, 2)
+            .map(function (it) {
+              return (it.quantity || 1) + '× ' + (it.name || it.title || 'Producto');
+            })
+            .join(' · ');
+          return (
+            '<button type="button" class="order-card" data-id="' +
+            esc(o.orderId) +
+            '">' +
+            '<div class="order-card-top">' +
+            '<span class="tag tag-gw">' +
+            esc(String(o.gateway || '—').toUpperCase()) +
+            '</span>' +
+            '<span class="tag tag-pay">' +
+            esc(o.status || '—') +
+            '</span>' +
+            '</div>' +
+            '<h3>' +
+            esc(name) +
+            '</h3>' +
+            '<p class="order-phone">' +
+            esc(phone || 'Sin celular') +
+            '</p>' +
+            '<p class="order-preview">' +
+            esc(preview || 'Sin equipos') +
+            '</p>' +
+            '<div class="order-card-foot">' +
+            '<time>' +
+            esc(formatWhen(o.paidAt || o.createdAt)) +
+            '</time>' +
+            '<strong>' +
+            esc(formatCop(o.totalAmount)) +
+            '</strong>' +
+            '</div>' +
+            '</button>'
+          );
+        }
+
+        function renderKanban() {
+          var cols = [
+            { key: 'nuevo', title: 'Nuevo', hint: 'Por contactar' },
+            { key: 'en_revision', title: 'En revisión', hint: 'En gestión' },
+            { key: 'cerrado', title: 'Cerrado', hint: 'Listo / despachado' },
+          ];
+          var list = filteredOrders();
+          el.kanban.innerHTML = cols
+            .map(function (col) {
+              var items = list.filter(function (o) {
+                return workflowOf(o) === col.key;
+              });
+              return (
+                '<div class="kanban-col" data-col="' +
+                col.key +
+                '">' +
+                '<header><h2>' +
+                col.title +
+                ' <em>' +
+                items.length +
+                '</em></h2><span>' +
+                col.hint +
+                '</span></header>' +
+                '<div class="kanban-cards">' +
+                (items.length ? items.map(cardHtml).join('') : '<p class="empty-col">Sin pedidos</p>') +
+                '</div></div>'
+              );
+            })
+            .join('');
+          bindCards(el.kanban);
+        }
+
+        function renderLista() {
+          var list = filteredOrders();
+          if (!list.length) {
+            el.lista.innerHTML = '<p class="empty-col">Sin pedidos</p>';
             return;
           }
-          statusEl.textContent = orders.length + ' pedido(s)';
-          orders.forEach(function (o) {
-            var phone = (o.client && o.client.phone) || '';
-            var wa = waLink(phone);
-            var items = Array.isArray(o.items) ? o.items : [];
-            var itemsHtml = items.length
-              ? '<ul class="admin-items">' +
-                items
-                  .slice(0, 8)
-                  .map(function (it) {
-                    return (
-                      '<li><span>' +
-                      esc(it.quantity || 1) +
-                      '×</span> ' +
-                      esc(it.name || it.title || it.sku || 'Producto') +
-                      '</li>'
-                    );
-                  })
-                  .join('') +
-                '</ul>'
-              : '<p class="admin-muted">Sin detalle de productos</p>';
+          el.lista.innerHTML =
+            '<div class="lista-grid">' + list.map(cardHtml).join('') + '</div>';
+          bindCards(el.lista);
+        }
 
-            var ship = o.shippingAddress || {};
-            var shipLine = [ship.lineOne || ship.address, ship.city].filter(Boolean).join(', ');
-            var pdfBtn =
-              '<button type="button" class="admin-btn admin-btn--pdf" data-order-id="' +
-              esc(o.orderId) +
-              '"><i class="fas fa-file-pdf" aria-hidden="true"></i> Cotización PDF</button>';
-
-            var card = document.createElement('article');
-            card.className = 'admin-order';
-            card.innerHTML =
-              '<div class="admin-order-head">' +
-              '<div class="admin-order-meta">' +
-              '<span class="admin-pill admin-pill--gw">' +
-              esc(String(o.gateway || '—').toUpperCase()) +
-              '</span>' +
-              '<span class="admin-pill ' +
-              statusClass(o.status) +
-              '">' +
-              esc(o.status || '—') +
-              '</span>' +
-              '<time>' +
-              esc(formatWhen(o.paidAt || o.createdAt)) +
-              '</time>' +
-              '</div>' +
-              '<div class="admin-order-total">' +
-              esc(formatCop(o.totalAmount)) +
-              '</div>' +
-              '</div>' +
-              '<div class="admin-order-body">' +
-              '<div class="admin-client">' +
-              '<h2>' +
-              esc((o.client && o.client.fullName) || 'Cliente') +
-              '</h2>' +
-              '<p class="admin-phone-row">' +
-              (phone
-                ? wa
-                  ? '<a class="admin-phone" href="' +
-                    wa +
-                    '" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> ' +
-                    esc(phone) +
-                    '</a>'
-                  : esc(phone)
-                : '<span class="admin-muted">Sin celular</span>') +
-              '</p>' +
-              '<p class="admin-muted">CC ' +
-              esc((o.client && o.client.idNumber) || '—') +
-              (o.client && o.client.email ? ' · ' + esc(o.client.email) : '') +
-              '</p>' +
-              (shipLine ? '<p class="admin-ship"><i class="fas fa-map-marker-alt"></i> ' + esc(shipLine) + '</p>' : '') +
-              '</div>' +
-              '<div class="admin-order-products">' +
-              '<h3>Equipos</h3>' +
-              itemsHtml +
-              '</div>' +
-              '</div>' +
-              '<div class="admin-order-foot">' +
-              '<code title="ID pedido">' +
-              esc(o.orderId || '—') +
-              '</code>' +
-              '<div class="admin-order-actions">' +
-              pdfBtn +
-              '</div>' +
-              '</div>';
-            listEl.appendChild(card);
-          });
-
-          listEl.querySelectorAll('[data-order-id]').forEach(function (btn) {
+        function bindCards(root) {
+          root.querySelectorAll('[data-id]').forEach(function (btn) {
             btn.addEventListener('click', function () {
-              openPdf(btn.getAttribute('data-order-id'), btn);
+              openModal(btn.getAttribute('data-id'));
             });
           });
         }
 
+        function renderAll() {
+          renderMetrics();
+          if (state.view === 'kanban') {
+            el.kanban.hidden = false;
+            el.lista.hidden = true;
+            renderKanban();
+          } else {
+            el.kanban.hidden = true;
+            el.lista.hidden = false;
+            renderLista();
+          }
+          el.status.textContent =
+            filteredOrders().length +
+            ' de ' +
+            state.orders.length +
+            ' pedidos' +
+            (state.demo ? ' · modo demo' : '');
+        }
+
+        function findOrder(id) {
+          return state.orders.find(function (o) {
+            return o.orderId === id;
+          });
+        }
+
+        function openModal(id) {
+          var o = findOrder(id);
+          if (!o) return;
+          state.selectedId = id;
+          var c = o.client || {};
+          var ship = o.shippingAddress || {};
+          var items = o.items || [];
+          var sub = itemsSubtotal(items) || Number(o.totalAmount) || 0;
+          var wa = waLink(c.phone);
+          var wf = workflowOf(o);
+
+          var itemsRows = items.length
+            ? items
+                .map(function (it) {
+                  var line = Math.round(Number(it.unitPrice || 0) * (Number(it.quantity) || 1));
+                  return (
+                    '<tr><td>' +
+                    esc(it.name || it.title || it.sku) +
+                    '</td><td>' +
+                    esc(it.quantity || 1) +
+                    '</td><td>' +
+                    esc(formatCop(it.unitPrice)) +
+                    '</td><td>' +
+                    esc(formatCop(line)) +
+                    '</td></tr>'
+                  );
+                })
+                .join('')
+            : '<tr><td colspan="4">Sin detalle de equipos</td></tr>';
+
+          el.modalBody.innerHTML =
+            '<p class="modal-kicker">' +
+            esc(String(o.gateway || '').toUpperCase()) +
+            ' · ' +
+            esc(o.status || '—') +
+            '</p>' +
+            '<h2 id="modal-title">' +
+            esc(c.fullName || 'Pedido') +
+            '</h2>' +
+            '<p class="modal-when">' +
+            esc(formatWhen(o.paidAt || o.createdAt)) +
+            ' · ID <code>' +
+            esc(o.orderId) +
+            '</code></p>' +
+            '<div class="modal-grid">' +
+            '<section class="modal-block">' +
+            '<h3>Datos del cliente</h3>' +
+            '<dl>' +
+            '<div><dt>Nombre</dt><dd>' +
+            esc(c.fullName || '—') +
+            '</dd></div>' +
+            '<div><dt>Celular</dt><dd>' +
+            esc(c.phone || '—') +
+            '</dd></div>' +
+            '<div><dt>Correo</dt><dd>' +
+            esc(c.email || '—') +
+            '</dd></div>' +
+            '<div><dt>Documento</dt><dd>CC ' +
+            esc(c.idNumber || '—') +
+            '</dd></div>' +
+            '<div><dt>Dirección</dt><dd>' +
+            esc([ship.lineOne, ship.city, ship.department].filter(Boolean).join(', ') || '—') +
+            '</dd></div>' +
+            '</dl>' +
+            '</section>' +
+            '<section class="modal-block">' +
+            '<h3>Cotización de la compra</h3>' +
+            '<div class="table-wrap"><table><thead><tr><th>Equipo</th><th>Cant.</th><th>Unit.</th><th>Total</th></tr></thead><tbody>' +
+            itemsRows +
+            '</tbody></table></div>' +
+            '<div class="totals">' +
+            '<div><span>Subtotal equipos</span><strong>' +
+            esc(formatCop(sub)) +
+            '</strong></div>' +
+            '<div><span>Total pedido</span><strong class="total-big">' +
+            esc(formatCop(o.totalAmount || sub)) +
+            '</strong></div>' +
+            '</div>' +
+            '</section>' +
+            '</div>' +
+            '<div class="modal-actions">' +
+            (wa
+              ? '<a class="btn btn-wa" href="' +
+                wa +
+                '" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> Contactar cliente</a>'
+              : '') +
+            '<button type="button" class="btn btn-ghost" data-pdf="' +
+            esc(o.orderId) +
+            '"><i class="fas fa-file-pdf"></i> Ver PDF</button>' +
+            (wf !== 'en_revision'
+              ? '<button type="button" class="btn btn-secondary" data-wf="en_revision">En revisión</button>'
+              : '') +
+            (wf !== 'cerrado'
+              ? '<button type="button" class="btn btn-primary" data-wf="cerrado">Marcar cerrado</button>'
+              : '') +
+            (wf !== 'nuevo'
+              ? '<button type="button" class="btn btn-ghost" data-wf="nuevo">Volver a nuevo</button>'
+              : '') +
+            '</div>';
+
+          el.modal.hidden = false;
+          document.body.style.overflow = 'hidden';
+
+          el.modalBody.querySelectorAll('[data-wf]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              setWorkflow(o.orderId, btn.getAttribute('data-wf'));
+            });
+          });
+          var pdfBtn = el.modalBody.querySelector('[data-pdf]');
+          if (pdfBtn) {
+            pdfBtn.addEventListener('click', function () {
+              openPdf(o.orderId, pdfBtn);
+            });
+          }
+        }
+
+        function closeModal() {
+          el.modal.hidden = true;
+          document.body.style.overflow = '';
+          state.selectedId = null;
+        }
+
+        async function setWorkflow(orderId, workflowStatus) {
+          if (state.demo) {
+            var o = findOrder(orderId);
+            if (o) {
+              o.workflowStatus = workflowStatus;
+              o.workflowUpdatedAt = new Date().toISOString();
+            }
+            renderAll();
+            openModal(orderId);
+            return;
+          }
+          try {
+            var res = await fetch('/api/order-status', {
+              method: 'POST',
+              headers: authHeaders(),
+              body: JSON.stringify({ orderId: orderId, workflowStatus: workflowStatus }),
+            });
+            var json = await res.json().catch(function () {
+              return {};
+            });
+            if (!res.ok || !json.ok) {
+              alert(json.error || 'No se pudo actualizar el estado.');
+              return;
+            }
+            var idx = state.orders.findIndex(function (x) {
+              return x.orderId === orderId;
+            });
+            if (idx >= 0 && json.order) state.orders[idx] = json.order;
+            else if (idx >= 0) state.orders[idx].workflowStatus = workflowStatus;
+            renderAll();
+            openModal(orderId);
+          } catch (_e) {
+            alert('Error de red al actualizar.');
+          }
+        }
+
         async function openPdf(orderId, btn) {
-          var secret = getSecret();
-          if (!secret || !orderId) return;
+          if (state.demo) {
+            alert('En modo demo el PDF real se genera solo con pedidos de producción.');
+            return;
+          }
           var prev = btn.innerHTML;
           btn.disabled = true;
           btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generando…';
           try {
             var res = await fetch('/api/order-pdf?orderId=' + encodeURIComponent(orderId), {
-              headers: { Authorization: 'Bearer ' + secret },
+              headers: authHeaders(),
             });
             var json = await res.json().catch(function () {
               return {};
@@ -281,7 +623,7 @@ import FontAwesome from '../../components/FontAwesome.astro';
             }
             window.open(json.pdfUrl, '_blank', 'noopener');
           } catch (_e) {
-            alert('Error de red al generar el PDF.');
+            alert('Error de red al generar PDF.');
           } finally {
             btn.disabled = false;
             btn.innerHTML = prev;
@@ -289,410 +631,649 @@ import FontAwesome from '../../components/FontAwesome.astro';
         }
 
         async function loadOrders() {
-          var secret = getSecret();
-          if (!secret) {
-            showLogin();
+          state.demo = isDemo();
+          if (state.demo) {
+            state.orders = MOCKS_DATA.slice();
+            renderAll();
             return;
           }
-          showPanel();
-          statusEl.textContent = 'Cargando…';
-          listEl.innerHTML = '';
-          var params = new URLSearchParams();
-          params.set('dias', document.getElementById('f-dias').value || '7');
-          var fecha = document.getElementById('f-fecha').value || '';
-          var documento = document.getElementById('f-documento').value || '';
-          var nombre = document.getElementById('f-nombre').value || '';
-          if (fecha) params.set('fecha', fecha);
-          if (documento) params.set('documento', documento.replace(/\D/g, ''));
-          if (nombre) params.set('nombre', nombre.trim());
+          el.status.textContent = 'Cargando pedidos…';
           try {
-            var res = await fetch('/api/orders-search?' + params.toString(), {
-              headers: { Authorization: 'Bearer ' + secret },
+            var res = await fetch('/api/orders-search?dias=' + encodeURIComponent(el.dias.value || '7'), {
+              headers: authHeaders(),
             });
             var json = await res.json().catch(function () {
               return {};
             });
             if (res.status === 401) {
-              setSecret('');
-              showLogin(json.error || 'Contraseña incorrecta o secret no configurado.');
+              clearSession();
+              showLogin(json.error || 'Sesión inválida. Vuelve a entrar.');
               return;
             }
             if (!res.ok || !json.ok) {
-              statusEl.textContent = json.error || 'Error al cargar pedidos.';
+              el.status.textContent = json.error || 'Error al cargar.';
               return;
             }
-            renderOrders(Array.isArray(json.orders) ? json.orders : []);
+            state.orders = (json.orders || []).map(function (o) {
+              return Object.assign({}, o, {
+                workflowStatus: o.workflowStatus || 'nuevo',
+              });
+            });
+            renderAll();
           } catch (_e) {
-            statusEl.textContent = 'No se pudo contactar el servidor.';
+            el.status.textContent = 'No se pudo contactar el servidor.';
           }
         }
 
-        loginForm.addEventListener('submit', function (e) {
+        function showLogin(msg) {
+          el.login.hidden = false;
+          el.dash.hidden = true;
+          closeModal();
+          el.loginErr.hidden = !msg;
+          el.loginErr.textContent = msg || '';
+        }
+        function showDash() {
+          el.login.hidden = true;
+          el.dash.hidden = false;
+          loadOrders();
+        }
+
+        el.loginForm.addEventListener('submit', function (e) {
           e.preventDefault();
-          var v = String(document.getElementById('admin-secret').value || '').trim();
-          if (!v) return;
-          setSecret(v);
-          loadOrders();
-        });
-        logoutBtn.addEventListener('click', function () {
-          setSecret('');
-          document.getElementById('admin-secret').value = '';
-          showLogin();
-        });
-        filters.addEventListener('submit', function (e) {
-          e.preventDefault();
-          loadOrders();
-        });
-        document.getElementById('admin-hoy').addEventListener('click', function () {
-          document.getElementById('f-fecha').value = new Date().toLocaleDateString('en-CA', {
-            timeZone: 'America/Bogota',
-          });
-          document.getElementById('f-dias').value = '1';
-          loadOrders();
+          var user = String(document.getElementById('login-user').value || '').trim() || 'admin';
+          var pass = String(document.getElementById('login-pass').value || '').trim();
+          if (!pass) return;
+          setSession(user, pass, false);
+          // Probar auth con una búsqueda corta
+          fetch('/api/orders-search?dias=1', {
+            headers: {
+              Authorization: 'Bearer ' + pass,
+              'X-Admin-User': user,
+            },
+          })
+            .then(function (r) {
+              return r.json().then(function (j) {
+                return { r: r, j: j };
+              });
+            })
+            .then(function (x) {
+              if (x.r.status === 401) {
+                clearSession();
+                showLogin(x.j.error || 'Usuario o contraseña incorrectos.');
+                return;
+              }
+              showDash();
+            })
+            .catch(function () {
+              clearSession();
+              showLogin('No se pudo validar el acceso.');
+            });
         });
 
-        if (getSecret()) loadOrders();
+        document.getElementById('btn-demo').addEventListener('click', function () {
+          setSession('demo', '', true);
+          showDash();
+        });
+        document.getElementById('btn-logout').addEventListener('click', function () {
+          clearSession();
+          showLogin();
+        });
+        document.getElementById('btn-refresh').addEventListener('click', loadOrders);
+
+        el.q.addEventListener('input', function () {
+          state.query = el.q.value || '';
+          renderAll();
+        });
+        el.gateway.addEventListener('change', function () {
+          state.gateway = el.gateway.value || '';
+          renderAll();
+        });
+        el.dias.addEventListener('change', function () {
+          if (!state.demo) loadOrders();
+        });
+
+        document.querySelectorAll('.view-btn').forEach(function (btn) {
+          btn.addEventListener('click', function () {
+            document.querySelectorAll('.view-btn').forEach(function (b) {
+              b.classList.remove('is-active');
+            });
+            btn.classList.add('is-active');
+            state.view = btn.getAttribute('data-view') || 'kanban';
+            renderAll();
+          });
+        });
+
+        el.modal.addEventListener('click', function (e) {
+          if (e.target && e.target.getAttribute('data-close')) closeModal();
+        });
+        document.addEventListener('keydown', function (e) {
+          if (e.key === 'Escape' && !el.modal.hidden) closeModal();
+        });
+
+        if (isDemo() || getSecret()) showDash();
         else showLogin();
       })();
     </script>
 
     <style>
       :root {
-        --reiki-ink: #12352c;
-        --reiki-green: #0f6b4c;
-        --reiki-green-2: #159a6a;
-        --reiki-mint: #e8f6ef;
-        --reiki-sand: #f7f3eb;
-        --reiki-line: #d5e5dc;
-        --reiki-muted: #5f766c;
-        --reiki-card: rgba(255, 255, 255, 0.92);
-        --reiki-shadow: 0 18px 40px rgba(18, 53, 44, 0.1);
+        --ink: #12352c;
+        --green: #0f6b4c;
+        --green-2: #159a6a;
+        --mint: #e7f6ef;
+        --sand: #f6f2ea;
+        --line: #d5e5dc;
+        --muted: #5f766c;
+        --card: rgba(255, 255, 255, 0.94);
+        --shadow: 0 16px 40px rgba(18, 53, 44, 0.1);
+        --wa: #128c7e;
       }
       * {
         box-sizing: border-box;
       }
-      .admin-body {
+      .dash-body {
         margin: 0;
         min-height: 100vh;
-        font-family: Montserrat, 'Helvetica Neue', Helvetica, Arial, sans-serif;
-        color: var(--reiki-ink);
-        background: var(--reiki-sand);
+        font-family: Montserrat, Helvetica, Arial, sans-serif;
+        color: var(--ink);
+        background: var(--sand);
       }
-      .admin-bg {
+      .dash-bg {
         position: fixed;
         inset: 0;
         z-index: 0;
-        background:
-          radial-gradient(900px 420px at 10% -10%, rgba(21, 154, 106, 0.18), transparent 60%),
-          radial-gradient(700px 380px at 100% 0%, rgba(15, 107, 76, 0.14), transparent 55%),
-          linear-gradient(180deg, #f3faf6 0%, #f7f3eb 45%, #eef5f1 100%);
         pointer-events: none;
+        background:
+          radial-gradient(900px 420px at 8% -8%, rgba(21, 154, 106, 0.16), transparent 60%),
+          radial-gradient(700px 360px at 100% 0%, rgba(15, 107, 76, 0.12), transparent 55%),
+          linear-gradient(180deg, #f2faf6, #f6f2ea 50%, #eef5f1);
       }
-      .admin-main {
+      .login-wrap,
+      .dash-wrap {
         position: relative;
         z-index: 1;
-        max-width: 980px;
-        margin: 0 auto;
-        padding: 1.35rem 1rem 3.5rem;
       }
-      .admin-top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        gap: 1rem;
-        margin-bottom: 1.35rem;
+      .login-wrap {
+        min-height: 100vh;
+        display: grid;
+        place-items: center;
+        padding: 1.5rem;
       }
-      .admin-brand {
-        display: flex;
-        align-items: center;
-        gap: 0.95rem;
-      }
-      .admin-logo {
-        display: block;
-        height: 46px;
-        width: auto;
-        object-fit: contain;
-      }
-      .admin-eyebrow {
-        margin: 0 0 0.15rem;
-        font-size: 0.72rem;
-        letter-spacing: 0.08em;
-        text-transform: uppercase;
-        color: var(--reiki-muted);
-        font-weight: 700;
-      }
-      .admin-top h1 {
-        margin: 0;
-        font-size: clamp(1.25rem, 3vw, 1.7rem);
-        font-weight: 800;
-        letter-spacing: -0.02em;
-      }
-      .admin-login-card,
-      .admin-filters,
-      .admin-order {
-        background: var(--reiki-card);
-        border: 1px solid var(--reiki-line);
-        border-radius: 18px;
-        box-shadow: var(--reiki-shadow);
-        backdrop-filter: blur(8px);
-      }
-      .admin-login-card {
-        max-width: 420px;
-        margin: 2.5rem auto 0;
-        padding: 1.6rem 1.4rem 1.5rem;
+      .login-card {
+        width: min(420px, 100%);
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        padding: 1.75rem 1.4rem 1.5rem;
         text-align: center;
       }
-      .admin-login-mark {
+      .login-logo {
+        height: 44px;
+        width: auto;
         margin-bottom: 0.75rem;
       }
-      .admin-login-card h2 {
-        margin: 0 0 0.35rem;
-        font-size: 1.25rem;
+      .login-card h1 {
+        margin: 0;
+        font-size: 1.35rem;
+        font-weight: 800;
       }
-      .admin-help {
-        color: var(--reiki-muted);
+      .login-sub {
+        margin: 0.35rem 0 1.1rem;
+        color: var(--muted);
         font-size: 0.92rem;
-        margin: 0 0 1rem;
       }
-      .admin-login-form {
+      .login-form {
         display: grid;
-        gap: 0.8rem;
+        gap: 0.75rem;
         text-align: left;
+        margin-bottom: 0.65rem;
       }
       label {
         display: grid;
-        gap: 0.35rem;
-        font-size: 0.82rem;
+        gap: 0.3rem;
+        font-size: 0.8rem;
         font-weight: 700;
-        color: var(--reiki-muted);
+        color: var(--muted);
       }
-      input {
+      input,
+      select {
         font: inherit;
         padding: 0.7rem 0.8rem;
-        border: 1px solid var(--reiki-line);
         border-radius: 12px;
+        border: 1px solid var(--line);
         background: #fff;
-        color: var(--reiki-ink);
+        color: var(--ink);
       }
-      input:focus {
-        outline: 2px solid rgba(21, 154, 106, 0.35);
-        border-color: var(--reiki-green-2);
+      .login-error {
+        color: #a32020;
+        margin: 0.75rem 0 0;
+        font-size: 0.88rem;
       }
-      .admin-btn {
-        border: 0;
-        border-radius: 999px;
-        background: linear-gradient(135deg, var(--reiki-green), var(--reiki-green-2));
-        color: #fff;
-        font: inherit;
-        font-weight: 700;
-        padding: 0.7rem 1.15rem;
-        cursor: pointer;
+      .btn {
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        gap: 0.45rem;
+        gap: 0.4rem;
+        border: 0;
+        border-radius: 999px;
+        font: inherit;
+        font-weight: 700;
+        padding: 0.7rem 1.1rem;
+        cursor: pointer;
+        text-decoration: none;
+        color: inherit;
+      }
+      .btn-primary {
+        background: linear-gradient(135deg, var(--green), var(--green-2));
+        color: #fff;
         box-shadow: 0 10px 22px rgba(15, 107, 76, 0.22);
       }
-      .admin-btn:disabled {
-        opacity: 0.7;
-        cursor: wait;
-      }
-      .admin-btn--block {
-        width: 100%;
-      }
-      .admin-btn--ghost {
-        background: transparent;
-        color: var(--reiki-green);
-        border: 1px solid var(--reiki-line);
-        box-shadow: none;
-      }
-      .admin-btn--pdf {
-        background: #fff;
-        color: var(--reiki-green);
-        border: 1px solid #b7d8c8;
-        box-shadow: none;
-      }
-      .admin-btn--pdf:hover {
-        background: var(--reiki-mint);
-      }
-      .admin-error {
-        color: #a32020;
-        margin-top: 0.85rem;
-        font-size: 0.9rem;
-      }
-      .admin-filters {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-        gap: 0.75rem 1rem;
-        align-items: end;
-        padding: 1rem 1.1rem;
-        margin-bottom: 1rem;
-      }
-      .admin-filter-actions {
-        display: flex;
-        gap: 0.5rem;
-        flex-wrap: wrap;
-      }
-      .admin-status {
-        margin: 0 0 0.85rem;
-        color: var(--reiki-muted);
-        font-weight: 600;
-        font-size: 0.92rem;
-      }
-      .admin-list {
-        display: grid;
-        gap: 1rem;
-      }
-      .admin-order {
-        padding: 1.1rem 1.15rem 1rem;
-        overflow: hidden;
-      }
-      .admin-order-head {
-        display: flex;
-        justify-content: space-between;
-        gap: 1rem;
-        align-items: flex-start;
-        margin-bottom: 0.95rem;
-      }
-      .admin-order-meta {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.4rem;
-        align-items: center;
-      }
-      .admin-order-meta time {
-        font-size: 0.82rem;
-        color: var(--reiki-muted);
-        font-weight: 600;
-        margin-left: 0.15rem;
-      }
-      .admin-pill {
-        display: inline-flex;
-        align-items: center;
-        border-radius: 999px;
-        padding: 0.28rem 0.65rem;
-        font-size: 0.72rem;
-        font-weight: 800;
-        letter-spacing: 0.03em;
-        text-transform: uppercase;
-      }
-      .admin-pill--gw {
+      .btn-secondary {
         background: #12352c;
         color: #fff;
       }
-      .admin-pill.is-ok {
-        background: #d8f5e5;
-        color: #0b6a45;
+      .btn-ghost {
+        background: transparent;
+        border: 1px solid var(--line);
+        color: var(--green);
       }
-      .admin-pill.is-wait {
-        background: #fff3d6;
-        color: #8a5b00;
+      .btn-wa {
+        background: var(--wa);
+        color: #fff;
       }
-      .admin-pill.is-bad {
-        background: #ffe1e1;
-        color: #9b1c1c;
+      .btn-block {
+        width: 100%;
       }
-      .admin-pill.is-neutral {
-        background: #e8eee9;
-        color: #456257;
+      .dash-wrap {
+        max-width: 1180px;
+        margin: 0 auto;
+        padding: 1.2rem 1rem 3rem;
       }
-      .admin-order-total {
-        font-size: 1.2rem;
-        font-weight: 800;
-        color: var(--reiki-green);
-        white-space: nowrap;
+      .dash-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: center;
+        margin-bottom: 1.1rem;
       }
-      .admin-order-body {
-        display: grid;
-        grid-template-columns: 1.1fr 1fr;
-        gap: 1rem 1.25rem;
+      .dash-brand {
+        display: flex;
+        gap: 0.85rem;
+        align-items: center;
       }
-      .admin-client h2 {
-        margin: 0 0 0.35rem;
-        font-size: 1.12rem;
-        font-weight: 800;
+      .dash-logo {
+        height: 42px;
+        width: auto;
       }
-      .admin-phone-row {
-        margin: 0 0 0.35rem;
-      }
-      .admin-phone {
-        color: #128c7e;
-        font-weight: 800;
-        text-decoration: none;
-        font-size: 1.05rem;
-      }
-      .admin-phone:hover {
-        text-decoration: underline;
-      }
-      .admin-muted {
+      .dash-eyebrow {
         margin: 0;
-        color: var(--reiki-muted);
-        font-size: 0.86rem;
-        font-weight: 500;
-      }
-      .admin-ship {
-        margin: 0.55rem 0 0;
-        font-size: 0.88rem;
-        color: var(--reiki-ink);
-      }
-      .admin-order-products h3 {
-        margin: 0 0 0.45rem;
-        font-size: 0.78rem;
-        letter-spacing: 0.06em;
+        font-size: 0.7rem;
+        letter-spacing: 0.07em;
         text-transform: uppercase;
-        color: var(--reiki-muted);
+        color: var(--muted);
+        font-weight: 700;
       }
-      .admin-items {
-        list-style: none;
+      .dash-top h1 {
         margin: 0;
-        padding: 0;
+        font-size: clamp(1.25rem, 3vw, 1.65rem);
+        font-weight: 800;
+      }
+      .dash-top-actions {
+        display: flex;
+        gap: 0.45rem;
+      }
+      .metrics {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.75rem;
+        margin-bottom: 1rem;
+      }
+      .metric {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 0.95rem 1rem;
+        box-shadow: var(--shadow);
+      }
+      .metric p {
+        margin: 0 0 0.25rem;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .metric strong {
+        font-size: 1.45rem;
+        font-weight: 800;
+      }
+      .metric--money strong {
+        color: var(--green);
+        font-size: 1.2rem;
+      }
+      .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.75rem;
+      }
+      .search-wrap {
+        flex: 1 1 260px;
+        display: flex;
+        align-items: center;
+        gap: 0.55rem;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        padding: 0.35rem 0.9rem;
+      }
+      .search-wrap i {
+        color: var(--muted);
+      }
+      .search-wrap input {
+        border: 0;
+        padding: 0.55rem 0;
+        width: 100%;
+        outline: none;
+      }
+      .toolbar-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .view-toggle {
+        display: inline-flex;
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        overflow: hidden;
+      }
+      .view-btn {
+        border: 0;
+        background: transparent;
+        font: inherit;
+        font-weight: 700;
+        font-size: 0.82rem;
+        padding: 0.55rem 0.85rem;
+        cursor: pointer;
+        color: var(--muted);
+      }
+      .view-btn.is-active {
+        background: var(--mint);
+        color: var(--green);
+      }
+      .dash-status {
+        margin: 0 0 0.75rem;
+        color: var(--muted);
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      .kanban {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 0.85rem;
+        align-items: start;
+      }
+      .kanban-col {
+        background: rgba(255, 255, 255, 0.55);
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        padding: 0.75rem;
+        min-height: 220px;
+      }
+      .kanban-col header {
+        margin-bottom: 0.65rem;
+      }
+      .kanban-col h2 {
+        margin: 0;
+        font-size: 0.95rem;
+        font-weight: 800;
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+      }
+      .kanban-col h2 em {
+        font-style: normal;
+        background: var(--mint);
+        color: var(--green);
+        border-radius: 999px;
+        padding: 0.1rem 0.45rem;
+        font-size: 0.78rem;
+      }
+      .kanban-col header span {
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 600;
+      }
+      .kanban-cards,
+      .lista-grid {
+        display: grid;
+        gap: 0.65rem;
+      }
+      .lista-grid {
+        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      }
+      .order-card {
+        width: 100%;
+        text-align: left;
+        border: 1px solid var(--line);
+        background: #fff;
+        border-radius: 14px;
+        padding: 0.85rem 0.9rem;
+        cursor: pointer;
+        box-shadow: 0 8px 18px rgba(18, 53, 44, 0.05);
+        transition: transform 0.15s ease, box-shadow 0.15s ease;
+        font: inherit;
+        color: inherit;
+      }
+      .order-card:hover {
+        transform: translateY(-2px);
+        box-shadow: var(--shadow);
+      }
+      .order-card-top {
+        display: flex;
+        gap: 0.35rem;
+        margin-bottom: 0.45rem;
+      }
+      .tag {
+        font-size: 0.68rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.03em;
+        border-radius: 999px;
+        padding: 0.2rem 0.5rem;
+      }
+      .tag-gw {
+        background: #12352c;
+        color: #fff;
+      }
+      .tag-pay {
+        background: var(--mint);
+        color: var(--green);
+      }
+      .order-card h3 {
+        margin: 0 0 0.2rem;
+        font-size: 0.98rem;
+        font-weight: 800;
+      }
+      .order-phone {
+        margin: 0 0 0.35rem;
+        color: var(--wa);
+        font-weight: 700;
+        font-size: 0.92rem;
+      }
+      .order-preview {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.82rem;
+        font-weight: 600;
+        min-height: 2.2em;
+      }
+      .order-card-foot {
+        margin-top: 0.65rem;
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        align-items: center;
+      }
+      .order-card-foot time {
+        color: var(--muted);
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+      .order-card-foot strong {
+        color: var(--green);
+        font-size: 0.95rem;
+      }
+      .empty-col {
+        margin: 0.5rem 0;
+        color: var(--muted);
+        font-size: 0.88rem;
+        text-align: center;
+      }
+      .modal[hidden] {
+        display: none !important;
+      }
+      .modal {
+        position: fixed;
+        inset: 0;
+        z-index: 50;
+        display: grid;
+        place-items: center;
+        padding: 1rem;
+      }
+      .modal-backdrop {
+        position: absolute;
+        inset: 0;
+        background: rgba(12, 32, 26, 0.45);
+        backdrop-filter: blur(3px);
+      }
+      .modal-card {
+        position: relative;
+        z-index: 1;
+        width: min(860px, 100%);
+        max-height: min(90vh, 920px);
+        overflow: auto;
+        background: #fff;
+        border-radius: 20px;
+        box-shadow: var(--shadow);
+        padding: 1.25rem 1.2rem 1.35rem;
+      }
+      .modal-x {
+        position: absolute;
+        top: 0.55rem;
+        right: 0.7rem;
+        border: 0;
+        background: transparent;
+        font-size: 1.6rem;
+        cursor: pointer;
+        color: var(--muted);
+        line-height: 1;
+      }
+      .modal-kicker {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+      .modal-card h2 {
+        margin: 0.2rem 0 0.25rem;
+        font-size: 1.35rem;
+        font-weight: 800;
+      }
+      .modal-when {
+        margin: 0 0 1rem;
+        color: var(--muted);
+        font-size: 0.86rem;
+      }
+      .modal-grid {
+        display: grid;
+        grid-template-columns: 1fr 1.15fr;
+        gap: 1rem;
+      }
+      .modal-block {
+        background: #f8fbf9;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 0.9rem 0.95rem;
+      }
+      .modal-block h3 {
+        margin: 0 0 0.65rem;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+      }
+      .modal-block dl {
+        margin: 0;
+        display: grid;
+        gap: 0.55rem;
+      }
+      .modal-block dt {
+        font-size: 0.72rem;
+        color: var(--muted);
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+      .modal-block dd {
+        margin: 0.1rem 0 0;
+        font-weight: 700;
+      }
+      .table-wrap {
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 0.84rem;
+      }
+      th,
+      td {
+        text-align: left;
+        padding: 0.45rem 0.35rem;
+        border-bottom: 1px solid var(--line);
+      }
+      th {
+        color: var(--muted);
+        font-size: 0.72rem;
+        text-transform: uppercase;
+      }
+      .totals {
+        margin-top: 0.75rem;
         display: grid;
         gap: 0.35rem;
       }
-      .admin-items li {
-        background: var(--reiki-mint);
-        border-radius: 10px;
-        padding: 0.45rem 0.65rem;
-        font-size: 0.9rem;
-        font-weight: 600;
-      }
-      .admin-items li span {
-        color: var(--reiki-green);
-        font-weight: 800;
-      }
-      .admin-order-foot {
-        margin-top: 1rem;
-        padding-top: 0.85rem;
-        border-top: 1px solid var(--reiki-line);
+      .totals div {
         display: flex;
         justify-content: space-between;
         gap: 0.75rem;
-        align-items: center;
-        flex-wrap: wrap;
+        font-size: 0.9rem;
       }
-      .admin-order-foot code {
-        font-size: 0.72rem;
-        color: var(--reiki-muted);
-        word-break: break-all;
-        max-width: 100%;
+      .total-big {
+        color: var(--green);
+        font-size: 1.1rem;
       }
-      .admin-order-actions {
+      .modal-actions {
+        margin-top: 1rem;
         display: flex;
-        gap: 0.5rem;
         flex-wrap: wrap;
+        gap: 0.5rem;
       }
-      @media (max-width: 720px) {
-        .admin-brand {
-          align-items: flex-start;
+      @media (max-width: 900px) {
+        .metrics {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
         }
-        .admin-logo {
-          height: 38px;
-        }
-        .admin-order-body {
+        .kanban {
           grid-template-columns: 1fr;
         }
-        .admin-order-head {
-          flex-direction: column;
+        .modal-grid {
+          grid-template-columns: 1fr;
         }
       }
     </style>

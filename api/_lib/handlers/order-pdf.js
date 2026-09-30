@@ -1,20 +1,6 @@
-/**
- * GET /api/checkout?accion=order-pdf&orderId=
- * Header: Authorization: Bearer <ADMIN_ORDERS_SECRET>
- *
- * Crea (o reutiliza) una cotización PDF Reiki a partir del pedido del carrito
- * y devuelve { pdfUrl, numero }.
- */
+import { adminAuthOk } from '../admin-auth.js';
 import { getCheckoutOrder, patchCheckoutOrder } from '../checkout-order-store.js';
 import { createCotizacion, getCotizacion } from '../cotizacion-store.js';
-
-function authOk(req) {
-  const secret = String(process.env.ADMIN_ORDERS_SECRET || '').trim();
-  if (!secret) return false;
-  const h = String(req.headers.authorization || req.headers.Authorization || '').trim();
-  if (h.toLowerCase().startsWith('bearer ')) return h.slice(7).trim() === secret;
-  return false;
-}
 
 function parseQuery(req) {
   try {
@@ -30,7 +16,7 @@ export default async function handler(req, res) {
     res.statusCode = 405;
     return res.end(JSON.stringify({ ok: false, error: 'Solo GET.' }));
   }
-  if (!authOk(req)) {
+  if (!adminAuthOk(req)) {
     res.statusCode = 401;
     return res.end(JSON.stringify({ ok: false, error: 'No autorizado.' }));
   }

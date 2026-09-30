@@ -66,6 +66,7 @@ export async function saveCheckoutOrder(input) {
     wompiTransactionId: input.wompiTransactionId || null,
     addiApplicationId: input.addiApplicationId || null,
     ownerNotified: Boolean(input.ownerNotified),
+    workflowStatus: String(input.workflowStatus || 'nuevo').toLowerCase(),
     createdAt,
     updatedAt: createdAt,
     paidAt: input.paidAt || null,

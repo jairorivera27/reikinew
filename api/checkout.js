@@ -10,12 +10,14 @@ import registerCheckout from './_lib/handlers/register-checkout.js';
 import ordersSearch from './_lib/handlers/orders-search.js';
 import addiConfirmOrder from './_lib/handlers/addi-confirm-order.js';
 import orderPdf from './_lib/handlers/order-pdf.js';
+import orderStatus from './_lib/handlers/order-status.js';
 
 const HANDLERS = {
   register: registerCheckout,
   search: ordersSearch,
   'addi-confirm': addiConfirmOrder,
   'order-pdf': orderPdf,
+  'order-status': orderStatus,
 };
 
 export default async function handler(req, res) {
