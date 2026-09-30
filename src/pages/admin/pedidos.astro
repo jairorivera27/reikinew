@@ -273,21 +273,21 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         }
 
         function firstProductName(o) {
-          var items = (o && o.items) || [];
+          var items = Array.isArray(o && o.items) ? o.items : [];
           if (!items.length) return 'producto solar';
-          var it = items[0];
+          var it = items[0] || {};
           return String(it.name || it.title || it.sku || 'producto solar').trim() || 'producto solar';
         }
 
         function waPrefillMessage(o) {
-          var name = (o.client && o.client.fullName) || 'Cliente';
+          var name = ((o && o.client && o.client.fullName) || 'Cliente').trim() || 'Cliente';
           var product = firstProductName(o);
           return (
             'Hola ' +
             name +
-            ', recibimos tu solicitud en Reiki Energía Solar por el ' +
+            ', recibimos tu solicitud en Reiki Energia Solar por el ' +
             product +
-            '. ¿Tienes unos minutos para asesorarte?'
+            '. Tienes unos minutos para asesorarte?'
           );
         }
 
@@ -296,23 +296,31 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         }
 
         function loadNotes(orderId) {
-          var o = findOrder(orderId);
-          if (o && Array.isArray(o.notes) && o.notes.length) return o.notes.slice();
+          try {
+            var o = typeof findOrder === 'function' ? findOrder(orderId) : null;
+            if (o && Array.isArray(o.notes) && o.notes.length) return o.notes.slice();
+          } catch (_e) {
+            /* ignore */
+          }
           try {
             var raw = localStorage.getItem(notesStorageKey(orderId));
             var parsed = raw ? JSON.parse(raw) : [];
             return Array.isArray(parsed) ? parsed : [];
-          } catch (_e) {
+          } catch (_e2) {
             return [];
           }
         }
 
         function persistNotesLocal(orderId, notes) {
-          var o = findOrder(orderId);
-          if (o) o.notes = notes;
+          try {
+            var o = typeof findOrder === 'function' ? findOrder(orderId) : null;
+            if (o) o.notes = notes;
+          } catch (_e) {
+            /* ignore */
+          }
           try {
             localStorage.setItem(notesStorageKey(orderId), JSON.stringify(notes));
-          } catch (_e) {
+          } catch (_e2) {
             /* ignore quota */
           }
         }
@@ -505,21 +513,28 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         }
 
         function cardHtml(o) {
+          o = o || {};
           var phone = (o.client && o.client.phone) || '';
           var doc =
             (o.client &&
               (o.client.document || o.client.docNumber || o.client.cedula || o.client.idNumber)) ||
             '';
           var name = (o.client && o.client.fullName) || 'Cliente';
-          var items = o.items || [];
+          var items = Array.isArray(o.items) ? o.items : [];
           var preview = items
             .slice(0, 2)
             .map(function (it) {
+              it = it || {};
               return (it.quantity || 1) + 'x ' + (it.name || it.title || 'Producto');
             })
             .join(' · ');
-          var meta = [phone, doc].filter(Boolean).join(' · ') || 'Sin celular / cédula';
-          var wa = waLink(phone, waPrefillMessage(o));
+          var meta = [phone, doc].filter(Boolean).join(' · ') || 'Sin celular / cedula';
+          var wa = '';
+          try {
+            wa = waLink(phone, waPrefillMessage(o));
+          } catch (_waErr) {
+            wa = waLink(phone);
+          }
           return (
             '<div class="order-card oc-card" data-id="' +
             esc(o.orderId) +
@@ -561,52 +576,99 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         function renderKanban() {
           var cols = [
             { key: 'nuevo', title: 'Nuevo', hint: 'Por contactar' },
-            { key: 'en_revision', title: 'En revisión', hint: 'En gestión' },
+            { key: 'en_revision', title: 'En revision', hint: 'En gestion' },
             { key: 'cerrado', title: 'Cerrado', hint: 'Listo / despachado' },
           ];
-          var list = filteredOrders();
-          el.kanban.className = 'grid grid-cols-1 md:grid-cols-3 gap-6 items-start';
-          el.kanban.innerHTML = cols
-            .map(function (col) {
-              var items = list.filter(function (o) {
-                return workflowOf(o) === col.key;
-              });
-              return (
-                '<div class="kb-col" data-col="' +
-                col.key +
-                '">' +
-                '<header class="shrink-0">' +
-                '<h2 class="kb-col-title">' +
-                esc(col.title) +
-                ' <em class="kb-col-count">' +
-                items.length +
-                '</em></h2>' +
-                '<span class="kb-col-hint">' +
-                esc(col.hint) +
-                '</span></header>' +
-                '<div class="flex flex-col gap-4">' +
-                (items.length
-                  ? items.map(cardHtml).join('')
-                  : '<p class="text-center text-sm text-gray-400 py-8">Sin pedidos</p>') +
-                '</div></div>'
-              );
-            })
-            .join('');
-          bindCards(el.kanban);
+          var list = [];
+          try {
+            list = filteredOrders();
+          } catch (_e) {
+            list = state.orders || [];
+          }
+          el.kanban.className = 'kanban-board';
+          try {
+            el.kanban.innerHTML = cols
+              .map(function (col) {
+                var items = list.filter(function (o) {
+                  return workflowOf(o) === col.key;
+                });
+                var cardsHtml = '';
+                if (items.length) {
+                  cardsHtml = items
+                    .map(function (ord) {
+                      try {
+                        return cardHtml(ord);
+                      } catch (_cardErr) {
+                        return (
+                          '<div class="order-card oc-card" data-id="' +
+                          esc(ord && ord.orderId) +
+                          '"><h3 class="oc-name">' +
+                          esc((ord && ord.client && ord.client.fullName) || 'Pedido') +
+                          '</h3><p class="oc-meta">Error al pintar tarjeta</p></div>'
+                        );
+                      }
+                    })
+                    .join('');
+                } else {
+                  cardsHtml = '<p class="kb-empty">Sin pedidos</p>';
+                }
+                return (
+                  '<div class="kb-col" data-col="' +
+                  col.key +
+                  '">' +
+                  '<header class="kb-col-head">' +
+                  '<h2 class="kb-col-title">' +
+                  esc(col.title) +
+                  ' <em class="kb-col-count">' +
+                  items.length +
+                  '</em></h2>' +
+                  '<span class="kb-col-hint">' +
+                  esc(col.hint) +
+                  '</span></header>' +
+                  '<div class="kb-cards">' +
+                  cardsHtml +
+                  '</div></div>'
+                );
+              })
+              .join('');
+            bindCards(el.kanban);
+          } catch (err) {
+            console.error('[pedidos] renderKanban', err);
+            el.kanban.innerHTML =
+              '<p class="kb-empty">No se pudo cargar el tablero. Revisa la consola.</p>';
+          }
         }
 
         function renderLista() {
-          var list = filteredOrders();
+          var list = [];
+          try {
+            list = filteredOrders();
+          } catch (_e) {
+            list = state.orders || [];
+          }
           el.lista.className = '';
           if (!list.length) {
-            el.lista.innerHTML = '<p class="text-center text-sm text-gray-400 py-8">Sin pedidos</p>';
+            el.lista.innerHTML = '<p class="kb-empty">Sin pedidos</p>';
             return;
           }
-          el.lista.innerHTML =
-            '<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4">' +
-            list.map(cardHtml).join('') +
-            '</div>';
-          bindCards(el.lista);
+          try {
+            el.lista.innerHTML =
+              '<div class="lista-grid">' +
+              list
+                .map(function (ord) {
+                  try {
+                    return cardHtml(ord);
+                  } catch (_e) {
+                    return '';
+                  }
+                })
+                .join('') +
+              '</div>';
+            bindCards(el.lista);
+          } catch (err) {
+            console.error('[pedidos] renderLista', err);
+            el.lista.innerHTML = '<p class="kb-empty">No se pudo cargar la lista.</p>';
+          }
         }
 
         function bindCards(root) {
@@ -645,22 +707,34 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         }
 
         function renderAll() {
-          renderMetrics();
-          if (state.view === 'kanban') {
-            el.kanban.hidden = false;
-            el.lista.hidden = true;
-            renderKanban();
-          } else {
-            el.kanban.hidden = true;
-            el.lista.hidden = false;
-            renderLista();
+          try {
+            renderMetrics();
+          } catch (err) {
+            console.error('[pedidos] renderMetrics', err);
           }
-          el.status.textContent =
-            filteredOrders().length +
-            ' de ' +
-            state.orders.length +
-            ' pedidos' +
-            (state.demo ? ' · modo demo' : '');
+          try {
+            if (state.view === 'kanban') {
+              el.kanban.hidden = false;
+              el.lista.hidden = true;
+              renderKanban();
+            } else {
+              el.kanban.hidden = true;
+              el.lista.hidden = false;
+              renderLista();
+            }
+          } catch (err) {
+            console.error('[pedidos] render board', err);
+          }
+          try {
+            el.status.textContent =
+              filteredOrders().length +
+              ' de ' +
+              state.orders.length +
+              ' pedidos' +
+              (state.demo ? ' · modo demo' : '');
+          } catch (_e) {
+            el.status.textContent = (state.orders || []).length + ' pedidos';
+          }
         }
 
         function findOrder(id) {
