@@ -325,6 +325,16 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             '</strong></article>';
         }
 
+        function payLabel(st) {
+          var s = String(st || '').toLowerCase();
+          if (s === 'approved' || s === 'completed') return 'Aprobado';
+          if (s === 'pending_verify') return 'Por verificar';
+          if (s === 'pending') return 'Pendiente';
+          if (s.indexOf('reject') !== -1 || s.indexOf('declin') !== -1) return 'Rechazado';
+          if (s === 'abandoned') return 'Abandonado';
+          return st || '—';
+        }
+
         function cardHtml(o) {
           var phone = (o.client && o.client.phone) || '';
           var name = (o.client && o.client.fullName) || 'Cliente';
@@ -335,23 +345,24 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
               return (it.quantity || 1) + '× ' + (it.name || it.title || 'Producto');
             })
             .join(' · ');
+          var wa = waLink(phone);
           return (
-            '<button type="button" class="order-card" data-id="' +
+            '<article class="order-card" data-id="' +
             esc(o.orderId) +
-            '">' +
+            '" role="button" tabindex="0">' +
             '<div class="order-card-top">' +
             '<span class="tag tag-gw">' +
             esc(String(o.gateway || '—').toUpperCase()) +
             '</span>' +
             '<span class="tag tag-pay">' +
-            esc(o.status || '—') +
+            esc(payLabel(o.status)) +
             '</span>' +
             '</div>' +
             '<h3>' +
             esc(name) +
             '</h3>' +
             '<p class="order-phone">' +
-            esc(phone || 'Sin celular') +
+            (phone ? esc(phone) : '<span class="muted-inline">Sin celular</span>') +
             '</p>' +
             '<p class="order-preview">' +
             esc(preview || 'Sin equipos') +
@@ -364,7 +375,20 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             esc(formatCop(o.totalAmount)) +
             '</strong>' +
             '</div>' +
-            '</button>'
+            '<div class="order-card-actions">' +
+            (wa
+              ? '<a class="mini-btn mini-wa" href="' +
+                wa +
+                '" target="_blank" rel="noopener" data-stop="1"><i class="fab fa-whatsapp"></i> WhatsApp</a>'
+              : '') +
+            '<button type="button" class="mini-btn mini-pdf" data-pdf="' +
+            esc(o.orderId) +
+            '" data-stop="1"><i class="fas fa-file-pdf"></i> PDF</button>' +
+            '<button type="button" class="mini-btn mini-open" data-open="' +
+            esc(o.orderId) +
+            '">Ver detalle</button>' +
+            '</div>' +
+            '</article>'
           );
         }
 
@@ -412,9 +436,36 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         }
 
         function bindCards(root) {
-          root.querySelectorAll('[data-id]').forEach(function (btn) {
-            btn.addEventListener('click', function () {
-              openModal(btn.getAttribute('data-id'));
+          root.querySelectorAll('.order-card').forEach(function (card) {
+            card.addEventListener('click', function (e) {
+              var t = e.target;
+              if (t && t.closest && t.closest('[data-stop]')) return;
+              openModal(card.getAttribute('data-id'));
+            });
+            card.addEventListener('keydown', function (e) {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                openModal(card.getAttribute('data-id'));
+              }
+            });
+          });
+          root.querySelectorAll('[data-pdf]').forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+              openPdf(btn.getAttribute('data-pdf'), btn);
+            });
+          });
+          root.querySelectorAll('[data-open]').forEach(function (btn) {
+            btn.addEventListener('click', function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+              openModal(btn.getAttribute('data-open'));
+            });
+          });
+          root.querySelectorAll('a[data-stop]').forEach(function (a) {
+            a.addEventListener('click', function (e) {
+              e.stopPropagation();
             });
           });
         }
@@ -755,7 +806,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       })();
     </script>
 
-    <style>
+    <style is:global>
       :root {
         --ink: #12352c;
         --green: #0f6b4c;
@@ -1062,13 +1113,14 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         text-align: left;
         border: 1px solid var(--line);
         background: #fff;
-        border-radius: 14px;
-        padding: 0.85rem 0.9rem;
+        border-radius: 16px;
+        padding: 1rem 1rem 0.9rem;
         cursor: pointer;
-        box-shadow: 0 8px 18px rgba(18, 53, 44, 0.05);
+        box-shadow: 0 10px 24px rgba(18, 53, 44, 0.07);
         transition: transform 0.15s ease, box-shadow 0.15s ease;
         font: inherit;
         color: inherit;
+        display: block;
       }
       .order-card:hover {
         transform: translateY(-2px);
@@ -1076,16 +1128,20 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       }
       .order-card-top {
         display: flex;
-        gap: 0.35rem;
-        margin-bottom: 0.45rem;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 0.65rem;
       }
       .tag {
+        display: inline-flex;
+        align-items: center;
         font-size: 0.68rem;
         font-weight: 800;
         text-transform: uppercase;
         letter-spacing: 0.03em;
         border-radius: 999px;
-        padding: 0.2rem 0.5rem;
+        padding: 0.28rem 0.6rem;
+        line-height: 1.1;
       }
       .tag-gw {
         background: #12352c;
@@ -1096,25 +1152,33 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         color: var(--green);
       }
       .order-card h3 {
-        margin: 0 0 0.2rem;
-        font-size: 0.98rem;
+        margin: 0 0 0.3rem;
+        font-size: 1.02rem;
         font-weight: 800;
+        line-height: 1.25;
       }
       .order-phone {
-        margin: 0 0 0.35rem;
+        margin: 0 0 0.45rem;
         color: var(--wa);
-        font-weight: 700;
-        font-size: 0.92rem;
+        font-weight: 800;
+        font-size: 1rem;
+      }
+      .muted-inline {
+        color: var(--muted);
+        font-weight: 600;
       }
       .order-preview {
         margin: 0;
         color: var(--muted);
-        font-size: 0.82rem;
+        font-size: 0.84rem;
         font-weight: 600;
-        min-height: 2.2em;
+        line-height: 1.35;
+        min-height: 2.3em;
       }
       .order-card-foot {
-        margin-top: 0.65rem;
+        margin-top: 0.75rem;
+        padding-top: 0.65rem;
+        border-top: 1px solid var(--line);
         display: flex;
         justify-content: space-between;
         gap: 0.5rem;
@@ -1122,12 +1186,49 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       }
       .order-card-foot time {
         color: var(--muted);
-        font-size: 0.75rem;
+        font-size: 0.76rem;
         font-weight: 600;
       }
       .order-card-foot strong {
         color: var(--green);
-        font-size: 0.95rem;
+        font-size: 1rem;
+        font-weight: 800;
+      }
+      .order-card-actions {
+        margin-top: 0.7rem;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+      }
+      .mini-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.3rem;
+        border-radius: 999px;
+        border: 1px solid var(--line);
+        background: #fff;
+        color: var(--ink);
+        font: inherit;
+        font-size: 0.75rem;
+        font-weight: 700;
+        padding: 0.4rem 0.7rem;
+        cursor: pointer;
+        text-decoration: none;
+      }
+      .mini-wa {
+        background: #e8f8f3;
+        border-color: #b7e4d5;
+        color: var(--wa);
+      }
+      .mini-pdf {
+        color: #9b1c1c;
+        border-color: #f0c7c7;
+        background: #fff5f5;
+      }
+      .mini-open {
+        color: var(--green);
+        border-color: #b7d8c8;
+        background: var(--mint);
       }
       .empty-col {
         margin: 0.5rem 0;
