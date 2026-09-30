@@ -18,32 +18,46 @@ import FontAwesome from '../../components/FontAwesome.astro';
       noindex={true}
       schemaType="WebPage"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body class="admin-body">
+    <div class="admin-bg" aria-hidden="true"></div>
+
     <main class="admin-main">
-      <header class="admin-header">
-        <div>
-          <p class="admin-eyebrow">Reiki · interno</p>
-          <h1>Pedidos de la tienda</h1>
+      <header class="admin-top">
+        <div class="admin-brand">
+          <img src="/images/logo.png" alt="Reiki Energía Solar" class="admin-logo" width="160" height="48" />
+          <div>
+            <p class="admin-eyebrow">Panel interno</p>
+            <h1>Pedidos de la tienda</h1>
+          </div>
         </div>
         <button type="button" id="admin-logout" class="admin-btn admin-btn--ghost" hidden>Salir</button>
       </header>
 
-      <section id="admin-login" class="admin-card" hidden>
-        <h2>Acceso</h2>
-        <p class="admin-help">Usa el valor de <code>ADMIN_ORDERS_SECRET</code> de Vercel.</p>
+      <section id="admin-login" class="admin-login-card" hidden>
+        <div class="admin-login-mark">
+          <img src="/images/logo.png" alt="" width="120" height="36" />
+        </div>
+        <h2>Acceso asesor</h2>
+        <p class="admin-help">Ingresa la contraseña de administración de pedidos.</p>
         <form id="admin-login-form" class="admin-login-form">
           <label>
             Contraseña
             <input type="password" name="secret" id="admin-secret" autocomplete="current-password" required />
           </label>
-          <button type="submit" class="admin-btn">Entrar</button>
+          <button type="submit" class="admin-btn admin-btn--block">Entrar</button>
         </form>
         <p id="admin-login-error" class="admin-error" hidden></p>
       </section>
 
       <section id="admin-panel" hidden>
-        <form id="admin-filters" class="admin-filters admin-card">
+        <form id="admin-filters" class="admin-filters">
           <label>
             Días
             <input type="number" name="dias" id="f-dias" min="1" max="90" value="7" />
@@ -67,25 +81,7 @@ import FontAwesome from '../../components/FontAwesome.astro';
         </form>
 
         <p id="admin-status" class="admin-status" aria-live="polite">Cargando…</p>
-
-        <div class="admin-table-wrap">
-          <table class="admin-table" id="admin-table">
-            <thead>
-              <tr>
-                <th>Fecha</th>
-                <th>Pasarela</th>
-                <th>Estado</th>
-                <th>Cliente</th>
-                <th>Celular</th>
-                <th>Documento</th>
-                <th>Total</th>
-                <th>Pedido</th>
-                <th>Productos</th>
-              </tr>
-            </thead>
-            <tbody id="admin-tbody"></tbody>
-          </table>
-        </div>
+        <div id="admin-list" class="admin-list"></div>
       </section>
     </main>
 
@@ -98,7 +94,7 @@ import FontAwesome from '../../components/FontAwesome.astro';
         var loginForm = document.getElementById('admin-login-form');
         var loginErr = document.getElementById('admin-login-error');
         var statusEl = document.getElementById('admin-status');
-        var tbody = document.getElementById('admin-tbody');
+        var listEl = document.getElementById('admin-list');
         var filters = document.getElementById('admin-filters');
 
         function getSecret() {
@@ -108,112 +104,188 @@ import FontAwesome from '../../components/FontAwesome.astro';
             return '';
           }
         }
-
         function setSecret(v) {
           try {
             if (v) sessionStorage.setItem(LS_KEY, v);
             else sessionStorage.removeItem(LS_KEY);
           } catch (_e) {}
         }
-
         function showLogin(msg) {
           loginEl.hidden = false;
           panelEl.hidden = true;
           logoutBtn.hidden = true;
-          if (msg) {
-            loginErr.hidden = false;
-            loginErr.textContent = msg;
-          } else {
-            loginErr.hidden = true;
-            loginErr.textContent = '';
-          }
+          loginErr.hidden = !msg;
+          loginErr.textContent = msg || '';
         }
-
         function showPanel() {
           loginEl.hidden = true;
           panelEl.hidden = false;
           logoutBtn.hidden = false;
         }
-
         function formatCop(n) {
           var v = Math.round(Number(n) || 0);
           return v ? '$ ' + v.toLocaleString('es-CO') : '—';
         }
-
         function formatWhen(iso) {
           if (!iso) return '—';
           try {
-            return new Date(iso).toLocaleString('es-CO', { timeZone: 'America/Bogota' });
+            return new Date(iso).toLocaleString('es-CO', {
+              timeZone: 'America/Bogota',
+              day: '2-digit',
+              month: 'short',
+              year: 'numeric',
+              hour: '2-digit',
+              minute: '2-digit',
+            });
           } catch (_e) {
             return String(iso);
           }
         }
-
-        function itemsText(items) {
-          if (!Array.isArray(items) || !items.length) return '—';
-          return items
-            .slice(0, 6)
-            .map(function (it) {
-              return (it.quantity || 1) + '× ' + (it.name || it.title || it.sku || 'Producto');
-            })
-            .join('; ');
+        function statusClass(st) {
+          var s = String(st || '').toLowerCase();
+          if (s === 'approved' || s === 'completed' || s === 'pagada') return 'is-ok';
+          if (s.indexOf('pending') !== -1 || s === 'pending_verify') return 'is-wait';
+          if (s.indexOf('reject') !== -1 || s.indexOf('declin') !== -1 || s === 'abandoned') return 'is-bad';
+          return 'is-neutral';
         }
-
         function waLink(phone) {
           var dig = String(phone || '').replace(/\D/g, '');
           if (dig.length === 10 && dig.charAt(0) === '3') dig = '57' + dig;
-          if (!dig) return '';
-          return 'https://wa.me/' + dig;
+          return dig ? 'https://wa.me/' + dig : '';
+        }
+        function esc(s) {
+          return String(s == null ? '' : s)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
         }
 
         function renderOrders(orders) {
-          tbody.innerHTML = '';
+          listEl.innerHTML = '';
           if (!orders.length) {
             statusEl.textContent = 'Sin pedidos para estos filtros.';
             return;
           }
           statusEl.textContent = orders.length + ' pedido(s)';
           orders.forEach(function (o) {
-            var tr = document.createElement('tr');
             var phone = (o.client && o.client.phone) || '';
             var wa = waLink(phone);
-            var phoneHtml = phone
-              ? wa
-                ? '<a href="' + wa + '" target="_blank" rel="noopener">' + phone + '</a>'
-                : phone
-              : '—';
-            tr.innerHTML =
-              '<td>' +
-              formatWhen(o.paidAt || o.createdAt) +
-              '</td>' +
-              '<td>' +
-              String(o.gateway || '—').toUpperCase() +
-              '</td>' +
-              '<td>' +
-              String(o.status || '—') +
-              '</td>' +
-              '<td>' +
-              ((o.client && o.client.fullName) || '—') +
-              '<div class="admin-muted">' +
-              ((o.client && o.client.email) || '') +
-              '</div></td>' +
-              '<td class="admin-phone">' +
-              phoneHtml +
-              '</td>' +
-              '<td>' +
-              ((o.client && o.client.idNumber) || '—') +
-              '</td>' +
-              '<td>' +
-              formatCop(o.totalAmount) +
-              '</td>' +
-              '<td><code>' +
-              (o.orderId || '—') +
-              '</code></td>' +
-              '<td class="admin-items">' +
-              itemsText(o.items) +
-              '</td>';
-            tbody.appendChild(tr);
+            var items = Array.isArray(o.items) ? o.items : [];
+            var itemsHtml = items.length
+              ? '<ul class="admin-items">' +
+                items
+                  .slice(0, 8)
+                  .map(function (it) {
+                    return (
+                      '<li><span>' +
+                      esc(it.quantity || 1) +
+                      '×</span> ' +
+                      esc(it.name || it.title || it.sku || 'Producto') +
+                      '</li>'
+                    );
+                  })
+                  .join('') +
+                '</ul>'
+              : '<p class="admin-muted">Sin detalle de productos</p>';
+
+            var ship = o.shippingAddress || {};
+            var shipLine = [ship.lineOne || ship.address, ship.city].filter(Boolean).join(', ');
+            var pdfBtn =
+              '<button type="button" class="admin-btn admin-btn--pdf" data-order-id="' +
+              esc(o.orderId) +
+              '"><i class="fas fa-file-pdf" aria-hidden="true"></i> Cotización PDF</button>';
+
+            var card = document.createElement('article');
+            card.className = 'admin-order';
+            card.innerHTML =
+              '<div class="admin-order-head">' +
+              '<div class="admin-order-meta">' +
+              '<span class="admin-pill admin-pill--gw">' +
+              esc(String(o.gateway || '—').toUpperCase()) +
+              '</span>' +
+              '<span class="admin-pill ' +
+              statusClass(o.status) +
+              '">' +
+              esc(o.status || '—') +
+              '</span>' +
+              '<time>' +
+              esc(formatWhen(o.paidAt || o.createdAt)) +
+              '</time>' +
+              '</div>' +
+              '<div class="admin-order-total">' +
+              esc(formatCop(o.totalAmount)) +
+              '</div>' +
+              '</div>' +
+              '<div class="admin-order-body">' +
+              '<div class="admin-client">' +
+              '<h2>' +
+              esc((o.client && o.client.fullName) || 'Cliente') +
+              '</h2>' +
+              '<p class="admin-phone-row">' +
+              (phone
+                ? wa
+                  ? '<a class="admin-phone" href="' +
+                    wa +
+                    '" target="_blank" rel="noopener"><i class="fab fa-whatsapp"></i> ' +
+                    esc(phone) +
+                    '</a>'
+                  : esc(phone)
+                : '<span class="admin-muted">Sin celular</span>') +
+              '</p>' +
+              '<p class="admin-muted">CC ' +
+              esc((o.client && o.client.idNumber) || '—') +
+              (o.client && o.client.email ? ' · ' + esc(o.client.email) : '') +
+              '</p>' +
+              (shipLine ? '<p class="admin-ship"><i class="fas fa-map-marker-alt"></i> ' + esc(shipLine) + '</p>' : '') +
+              '</div>' +
+              '<div class="admin-order-products">' +
+              '<h3>Equipos</h3>' +
+              itemsHtml +
+              '</div>' +
+              '</div>' +
+              '<div class="admin-order-foot">' +
+              '<code title="ID pedido">' +
+              esc(o.orderId || '—') +
+              '</code>' +
+              '<div class="admin-order-actions">' +
+              pdfBtn +
+              '</div>' +
+              '</div>';
+            listEl.appendChild(card);
           });
+
+          listEl.querySelectorAll('[data-order-id]').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+              openPdf(btn.getAttribute('data-order-id'), btn);
+            });
+          });
+        }
+
+        async function openPdf(orderId, btn) {
+          var secret = getSecret();
+          if (!secret || !orderId) return;
+          var prev = btn.innerHTML;
+          btn.disabled = true;
+          btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generando…';
+          try {
+            var res = await fetch('/api/order-pdf?orderId=' + encodeURIComponent(orderId), {
+              headers: { Authorization: 'Bearer ' + secret },
+            });
+            var json = await res.json().catch(function () {
+              return {};
+            });
+            if (!res.ok || !json.pdfUrl) {
+              alert(json.error || 'No se pudo generar el PDF.');
+              return;
+            }
+            window.open(json.pdfUrl, '_blank', 'noopener');
+          } catch (_e) {
+            alert('Error de red al generar el PDF.');
+          } finally {
+            btn.disabled = false;
+            btn.innerHTML = prev;
+          }
         }
 
         async function loadOrders() {
@@ -224,16 +296,15 @@ import FontAwesome from '../../components/FontAwesome.astro';
           }
           showPanel();
           statusEl.textContent = 'Cargando…';
+          listEl.innerHTML = '';
           var params = new URLSearchParams();
-          var dias = document.getElementById('f-dias').value || '7';
+          params.set('dias', document.getElementById('f-dias').value || '7');
           var fecha = document.getElementById('f-fecha').value || '';
           var documento = document.getElementById('f-documento').value || '';
           var nombre = document.getElementById('f-nombre').value || '';
-          params.set('dias', dias);
           if (fecha) params.set('fecha', fecha);
           if (documento) params.set('documento', documento.replace(/\D/g, ''));
           if (nombre) params.set('nombre', nombre.trim());
-
           try {
             var res = await fetch('/api/orders-search?' + params.toString(), {
               headers: { Authorization: 'Bearer ' + secret },
@@ -243,18 +314,16 @@ import FontAwesome from '../../components/FontAwesome.astro';
             });
             if (res.status === 401) {
               setSecret('');
-              showLogin(json.error || 'Contraseña incorrecta o ADMIN_ORDERS_SECRET no configurado.');
+              showLogin(json.error || 'Contraseña incorrecta o secret no configurado.');
               return;
             }
             if (!res.ok || !json.ok) {
               statusEl.textContent = json.error || 'Error al cargar pedidos.';
-              tbody.innerHTML = '';
               return;
             }
             renderOrders(Array.isArray(json.orders) ? json.orders : []);
-          } catch (err) {
+          } catch (_e) {
             statusEl.textContent = 'No se pudo contactar el servidor.';
-            tbody.innerHTML = '';
           }
         }
 
@@ -265,21 +334,19 @@ import FontAwesome from '../../components/FontAwesome.astro';
           setSecret(v);
           loadOrders();
         });
-
         logoutBtn.addEventListener('click', function () {
           setSecret('');
           document.getElementById('admin-secret').value = '';
           showLogin();
         });
-
         filters.addEventListener('submit', function (e) {
           e.preventDefault();
           loadOrders();
         });
-
         document.getElementById('admin-hoy').addEventListener('click', function () {
-          var today = new Date().toLocaleDateString('en-CA', { timeZone: 'America/Bogota' });
-          document.getElementById('f-fecha').value = today;
+          document.getElementById('f-fecha').value = new Date().toLocaleDateString('en-CA', {
+            timeZone: 'America/Bogota',
+          });
           document.getElementById('f-dias').value = '1';
           loadOrders();
         });
@@ -290,90 +357,176 @@ import FontAwesome from '../../components/FontAwesome.astro';
     </script>
 
     <style>
+      :root {
+        --reiki-ink: #12352c;
+        --reiki-green: #0f6b4c;
+        --reiki-green-2: #159a6a;
+        --reiki-mint: #e8f6ef;
+        --reiki-sand: #f7f3eb;
+        --reiki-line: #d5e5dc;
+        --reiki-muted: #5f766c;
+        --reiki-card: rgba(255, 255, 255, 0.92);
+        --reiki-shadow: 0 18px 40px rgba(18, 53, 44, 0.1);
+      }
+      * {
+        box-sizing: border-box;
+      }
       .admin-body {
         margin: 0;
-        font-family: 'Segoe UI', system-ui, sans-serif;
-        background: #f4f6f5;
-        color: #1a2e28;
         min-height: 100vh;
+        font-family: Montserrat, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+        color: var(--reiki-ink);
+        background: var(--reiki-sand);
+      }
+      .admin-bg {
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        background:
+          radial-gradient(900px 420px at 10% -10%, rgba(21, 154, 106, 0.18), transparent 60%),
+          radial-gradient(700px 380px at 100% 0%, rgba(15, 107, 76, 0.14), transparent 55%),
+          linear-gradient(180deg, #f3faf6 0%, #f7f3eb 45%, #eef5f1 100%);
+        pointer-events: none;
       }
       .admin-main {
-        max-width: 1200px;
+        position: relative;
+        z-index: 1;
+        max-width: 980px;
         margin: 0 auto;
-        padding: 1.5rem 1rem 3rem;
+        padding: 1.35rem 1rem 3.5rem;
       }
-      .admin-header {
+      .admin-top {
         display: flex;
         justify-content: space-between;
-        align-items: flex-start;
+        align-items: center;
         gap: 1rem;
-        margin-bottom: 1.25rem;
+        margin-bottom: 1.35rem;
+      }
+      .admin-brand {
+        display: flex;
+        align-items: center;
+        gap: 0.95rem;
+      }
+      .admin-logo {
+        display: block;
+        height: 46px;
+        width: auto;
+        object-fit: contain;
       }
       .admin-eyebrow {
-        margin: 0 0 0.25rem;
-        font-size: 0.8rem;
-        letter-spacing: 0.04em;
+        margin: 0 0 0.15rem;
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
         text-transform: uppercase;
-        color: #5a7268;
+        color: var(--reiki-muted);
+        font-weight: 700;
       }
-      .admin-header h1 {
+      .admin-top h1 {
         margin: 0;
-        font-size: 1.55rem;
+        font-size: clamp(1.25rem, 3vw, 1.7rem);
+        font-weight: 800;
+        letter-spacing: -0.02em;
       }
-      .admin-card {
-        background: #fff;
-        border: 1px solid #d7e0db;
-        border-radius: 12px;
-        padding: 1.15rem 1.25rem;
-        margin-bottom: 1rem;
+      .admin-login-card,
+      .admin-filters,
+      .admin-order {
+        background: var(--reiki-card);
+        border: 1px solid var(--reiki-line);
+        border-radius: 18px;
+        box-shadow: var(--reiki-shadow);
+        backdrop-filter: blur(8px);
+      }
+      .admin-login-card {
+        max-width: 420px;
+        margin: 2.5rem auto 0;
+        padding: 1.6rem 1.4rem 1.5rem;
+        text-align: center;
+      }
+      .admin-login-mark {
+        margin-bottom: 0.75rem;
+      }
+      .admin-login-card h2 {
+        margin: 0 0 0.35rem;
+        font-size: 1.25rem;
       }
       .admin-help {
-        color: #5a7268;
+        color: var(--reiki-muted);
         font-size: 0.92rem;
+        margin: 0 0 1rem;
       }
       .admin-login-form {
         display: grid;
-        gap: 0.75rem;
-        max-width: 360px;
+        gap: 0.8rem;
+        text-align: left;
       }
-      .admin-login-form label,
-      .admin-filters label {
+      label {
         display: grid;
         gap: 0.35rem;
-        font-size: 0.88rem;
-        font-weight: 600;
+        font-size: 0.82rem;
+        font-weight: 700;
+        color: var(--reiki-muted);
       }
-      .admin-login-form input,
-      .admin-filters input {
+      input {
         font: inherit;
-        padding: 0.55rem 0.7rem;
-        border: 1px solid #c5d2cb;
-        border-radius: 8px;
+        padding: 0.7rem 0.8rem;
+        border: 1px solid var(--reiki-line);
+        border-radius: 12px;
+        background: #fff;
+        color: var(--reiki-ink);
+      }
+      input:focus {
+        outline: 2px solid rgba(21, 154, 106, 0.35);
+        border-color: var(--reiki-green-2);
       }
       .admin-btn {
         border: 0;
-        border-radius: 8px;
-        background: #1f6b4a;
+        border-radius: 999px;
+        background: linear-gradient(135deg, var(--reiki-green), var(--reiki-green-2));
         color: #fff;
         font: inherit;
-        font-weight: 600;
-        padding: 0.55rem 1rem;
+        font-weight: 700;
+        padding: 0.7rem 1.15rem;
         cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.45rem;
+        box-shadow: 0 10px 22px rgba(15, 107, 76, 0.22);
+      }
+      .admin-btn:disabled {
+        opacity: 0.7;
+        cursor: wait;
+      }
+      .admin-btn--block {
+        width: 100%;
       }
       .admin-btn--ghost {
         background: transparent;
-        color: #1f6b4a;
-        border: 1px solid #9fbaad;
+        color: var(--reiki-green);
+        border: 1px solid var(--reiki-line);
+        box-shadow: none;
+      }
+      .admin-btn--pdf {
+        background: #fff;
+        color: var(--reiki-green);
+        border: 1px solid #b7d8c8;
+        box-shadow: none;
+      }
+      .admin-btn--pdf:hover {
+        background: var(--reiki-mint);
       }
       .admin-error {
         color: #a32020;
-        margin-top: 0.75rem;
+        margin-top: 0.85rem;
+        font-size: 0.9rem;
       }
       .admin-filters {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
         gap: 0.75rem 1rem;
         align-items: end;
+        padding: 1rem 1.1rem;
+        margin-bottom: 1rem;
       }
       .admin-filter-actions {
         display: flex;
@@ -381,51 +534,166 @@ import FontAwesome from '../../components/FontAwesome.astro';
         flex-wrap: wrap;
       }
       .admin-status {
-        margin: 0 0 0.75rem;
-        color: #5a7268;
+        margin: 0 0 0.85rem;
+        color: var(--reiki-muted);
+        font-weight: 600;
+        font-size: 0.92rem;
       }
-      .admin-table-wrap {
-        overflow-x: auto;
-        background: #fff;
-        border: 1px solid #d7e0db;
-        border-radius: 12px;
+      .admin-list {
+        display: grid;
+        gap: 1rem;
       }
-      .admin-table {
-        width: 100%;
-        border-collapse: collapse;
-        font-size: 0.88rem;
+      .admin-order {
+        padding: 1.1rem 1.15rem 1rem;
+        overflow: hidden;
       }
-      .admin-table th,
-      .admin-table td {
-        text-align: left;
-        padding: 0.7rem 0.75rem;
-        border-bottom: 1px solid #e6eee9;
-        vertical-align: top;
+      .admin-order-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 1rem;
+        align-items: flex-start;
+        margin-bottom: 0.95rem;
       }
-      .admin-table th {
-        background: #eef5f1;
-        font-size: 0.78rem;
-        text-transform: uppercase;
+      .admin-order-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        align-items: center;
+      }
+      .admin-order-meta time {
+        font-size: 0.82rem;
+        color: var(--reiki-muted);
+        font-weight: 600;
+        margin-left: 0.15rem;
+      }
+      .admin-pill {
+        display: inline-flex;
+        align-items: center;
+        border-radius: 999px;
+        padding: 0.28rem 0.65rem;
+        font-size: 0.72rem;
+        font-weight: 800;
         letter-spacing: 0.03em;
+        text-transform: uppercase;
+      }
+      .admin-pill--gw {
+        background: #12352c;
+        color: #fff;
+      }
+      .admin-pill.is-ok {
+        background: #d8f5e5;
+        color: #0b6a45;
+      }
+      .admin-pill.is-wait {
+        background: #fff3d6;
+        color: #8a5b00;
+      }
+      .admin-pill.is-bad {
+        background: #ffe1e1;
+        color: #9b1c1c;
+      }
+      .admin-pill.is-neutral {
+        background: #e8eee9;
         color: #456257;
       }
-      .admin-phone a {
-        color: #1f6b4a;
-        font-weight: 700;
+      .admin-order-total {
+        font-size: 1.2rem;
+        font-weight: 800;
+        color: var(--reiki-green);
+        white-space: nowrap;
+      }
+      .admin-order-body {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 1rem 1.25rem;
+      }
+      .admin-client h2 {
+        margin: 0 0 0.35rem;
+        font-size: 1.12rem;
+        font-weight: 800;
+      }
+      .admin-phone-row {
+        margin: 0 0 0.35rem;
+      }
+      .admin-phone {
+        color: #128c7e;
+        font-weight: 800;
         text-decoration: none;
+        font-size: 1.05rem;
+      }
+      .admin-phone:hover {
+        text-decoration: underline;
       }
       .admin-muted {
-        color: #6b8077;
-        font-size: 0.8rem;
-        font-weight: 400;
-        margin-top: 0.15rem;
+        margin: 0;
+        color: var(--reiki-muted);
+        font-size: 0.86rem;
+        font-weight: 500;
+      }
+      .admin-ship {
+        margin: 0.55rem 0 0;
+        font-size: 0.88rem;
+        color: var(--reiki-ink);
+      }
+      .admin-order-products h3 {
+        margin: 0 0 0.45rem;
+        font-size: 0.78rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--reiki-muted);
       }
       .admin-items {
-        max-width: 260px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 0.35rem;
       }
-      code {
-        font-size: 0.78rem;
+      .admin-items li {
+        background: var(--reiki-mint);
+        border-radius: 10px;
+        padding: 0.45rem 0.65rem;
+        font-size: 0.9rem;
+        font-weight: 600;
+      }
+      .admin-items li span {
+        color: var(--reiki-green);
+        font-weight: 800;
+      }
+      .admin-order-foot {
+        margin-top: 1rem;
+        padding-top: 0.85rem;
+        border-top: 1px solid var(--reiki-line);
+        display: flex;
+        justify-content: space-between;
+        gap: 0.75rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .admin-order-foot code {
+        font-size: 0.72rem;
+        color: var(--reiki-muted);
         word-break: break-all;
+        max-width: 100%;
+      }
+      .admin-order-actions {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+      }
+      @media (max-width: 720px) {
+        .admin-brand {
+          align-items: flex-start;
+        }
+        .admin-logo {
+          height: 38px;
+        }
+        .admin-order-body {
+          grid-template-columns: 1fr;
+        }
+        .admin-order-head {
+          flex-direction: column;
+        }
       }
     </style>
   </body>

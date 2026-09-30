@@ -4,15 +4,18 @@
  *   POST /api/register-checkout   → ?accion=register
  *   GET  /api/orders-search        → ?accion=search
  *   POST /api/addi-confirm-order   → ?accion=addi-confirm
+ *   GET  /api/order-pdf            → ?accion=order-pdf
  */
 import registerCheckout from './_lib/handlers/register-checkout.js';
 import ordersSearch from './_lib/handlers/orders-search.js';
 import addiConfirmOrder from './_lib/handlers/addi-confirm-order.js';
+import orderPdf from './_lib/handlers/order-pdf.js';
 
 const HANDLERS = {
   register: registerCheckout,
   search: ordersSearch,
   'addi-confirm': addiConfirmOrder,
+  'order-pdf': orderPdf,
 };
 
 export default async function handler(req, res) {

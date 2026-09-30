@@ -41,6 +41,10 @@
       "destination": "/api/checkout?accion=addi-confirm"
     },
     {
+      "source": "/api/order-pdf",
+      "destination": "/api/checkout?accion=order-pdf"
+    },
+    {
       "source": "/cotizacion/:id.pdf",
       "destination": "/api/cotizacion-download?id=:id"
     }

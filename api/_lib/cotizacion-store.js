@@ -214,7 +214,7 @@ export async function createCotizacion(opts) {
     estado: 'cotizada',
     venceIso: vence.toISOString(),
     validez: validezLabel(),
-    canal: opts.origen === 'web' ? 'Web' : 'WhatsApp',
+    canal: opts.origen === 'web' ? 'Web' : opts.origen === 'tienda_pedido' ? 'Tienda' : 'WhatsApp',
     asesor: 'Equipo comercial Reiki',
     link_compra: linkCompra,
     pdfUrl,
