@@ -262,11 +262,119 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         function workflowOf(o) {
           return String(o.workflowStatus || 'nuevo').toLowerCase();
         }
-        function waLink(phone) {
+        function waLink(phone, text) {
           var dig = String(phone || '').replace(/\D/g, '');
           if (dig.length === 10 && dig.charAt(0) === '3') dig = '57' + dig;
-          return dig ? 'https://wa.me/' + dig : '';
+          if (!dig) return '';
+          var url = 'https://wa.me/' + dig;
+          var msg = String(text || '').trim();
+          if (msg) url += '?text=' + encodeURIComponent(msg);
+          return url;
         }
+
+        function firstProductName(o) {
+          var items = (o && o.items) || [];
+          if (!items.length) return 'producto solar';
+          var it = items[0];
+          return String(it.name || it.title || it.sku || 'producto solar').trim() || 'producto solar';
+        }
+
+        function waPrefillMessage(o) {
+          var name = (o.client && o.client.fullName) || 'Cliente';
+          var product = firstProductName(o);
+          return (
+            'Hola ' +
+            name +
+            ', recibimos tu solicitud en Reiki Energía Solar por el ' +
+            product +
+            '. ¿Tienes unos minutos para asesorarte?'
+          );
+        }
+
+        function notesStorageKey(orderId) {
+          return 'reiki_admin_order_notes_' + String(orderId || '');
+        }
+
+        function loadNotes(orderId) {
+          var o = findOrder(orderId);
+          if (o && Array.isArray(o.notes) && o.notes.length) return o.notes.slice();
+          try {
+            var raw = localStorage.getItem(notesStorageKey(orderId));
+            var parsed = raw ? JSON.parse(raw) : [];
+            return Array.isArray(parsed) ? parsed : [];
+          } catch (_e) {
+            return [];
+          }
+        }
+
+        function persistNotesLocal(orderId, notes) {
+          var o = findOrder(orderId);
+          if (o) o.notes = notes;
+          try {
+            localStorage.setItem(notesStorageKey(orderId), JSON.stringify(notes));
+          } catch (_e) {
+            /* ignore quota */
+          }
+        }
+
+        function formatNoteWhen(iso) {
+          if (!iso) return '';
+          try {
+            return new Date(iso).toLocaleString('es-CO', {
+              timeZone: 'America/Bogota',
+              day: '2-digit',
+              month: 'short',
+              hour: '2-digit',
+              minute: '2-digit',
+            });
+          } catch (_e) {
+            return String(iso);
+          }
+        }
+
+        function renderNotesList(notes) {
+          if (!notes.length) {
+            return '<p class="notes-empty">Sin notas todavía. Agrega la primera bitácora del contacto.</p>';
+          }
+          return (
+            '<ul class="notes-list">' +
+            notes
+              .map(function (n) {
+                return (
+                  '<li class="notes-item">' +
+                  '<time>' +
+                  esc(formatNoteWhen(n.at)) +
+                  '</time>' +
+                  '<p>' +
+                  esc(n.text) +
+                  '</p>' +
+                  '</li>'
+                );
+              })
+              .join('') +
+            '</ul>'
+          );
+        }
+
+        function handleSaveNote(orderId) {
+          var ta = el.modalBody.querySelector('#note-input');
+          var listEl = el.modalBody.querySelector('#notes-list-wrap');
+          if (!ta || !listEl) return;
+          var text = String(ta.value || '').trim();
+          if (!text) {
+            ta.focus();
+            return;
+          }
+          var notes = loadNotes(orderId);
+          notes.unshift({ text: text, at: new Date().toISOString() });
+          // Optimistic UI: se refleja al instante en la lista
+          persistNotesLocal(orderId, notes);
+          listEl.innerHTML = renderNotesList(notes);
+          ta.value = '';
+          ta.focus();
+          // TODO: Implementar guardado en Redis KV
+        }
+
         function itemsSubtotal(items) {
           return (items || []).reduce(function (acc, it) {
             return acc + Math.round(Number(it.unitPrice || 0) * (Number(it.quantity) || 1));
@@ -411,7 +519,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             })
             .join(' · ');
           var meta = [phone, doc].filter(Boolean).join(' · ') || 'Sin celular / cédula';
-          var wa = waLink(phone);
+          var wa = waLink(phone, waPrefillMessage(o));
           return (
             '<div class="order-card oc-card" data-id="' +
             esc(o.orderId) +
@@ -569,8 +677,9 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           var ship = o.shippingAddress || {};
           var items = o.items || [];
           var sub = itemsSubtotal(items) || Number(o.totalAmount) || 0;
-          var wa = waLink(c.phone);
+          var wa = waLink(c.phone, waPrefillMessage(o));
           var wf = workflowOf(o);
+          var notes = loadNotes(o.orderId);
 
           var itemsRows = items.length
             ? items
@@ -641,6 +750,17 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             '</div>' +
             '</section>' +
             '</div>' +
+            '<section class="modal-block notes-block">' +
+            '<h3>Bitácora / Notas internas</h3>' +
+            '<div id="notes-list-wrap">' +
+            renderNotesList(notes) +
+            '</div>' +
+            '<label class="notes-label" for="note-input">Nueva nota</label>' +
+            '<textarea id="note-input" class="notes-textarea" rows="3" placeholder="Ej: Cliente pidió llamada mañana a las 10 a.m."></textarea>' +
+            '<div class="notes-save-row">' +
+            '<button type="button" class="btn btn-primary" id="btn-save-note">Guardar nota</button>' +
+            '</div>' +
+            '</section>' +
             '<div class="modal-actions">' +
             (wa
               ? '<a class="btn btn-wa" href="' +
@@ -673,6 +793,21 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           if (pdfBtn) {
             pdfBtn.addEventListener('click', function () {
               openPdf(o.orderId, pdfBtn);
+            });
+          }
+          var saveNoteBtn = el.modalBody.querySelector('#btn-save-note');
+          if (saveNoteBtn) {
+            saveNoteBtn.addEventListener('click', function () {
+              handleSaveNote(o.orderId);
+            });
+          }
+          var noteInput = el.modalBody.querySelector('#note-input');
+          if (noteInput) {
+            noteInput.addEventListener('keydown', function (e) {
+              if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+                e.preventDefault();
+                handleSaveNote(o.orderId);
+              }
             });
           }
         }
@@ -1542,6 +1677,77 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         display: flex;
         flex-wrap: wrap;
         gap: 0.5rem;
+      }
+      .notes-block {
+        margin-top: 1rem;
+      }
+      .notes-label {
+        display: block;
+        margin: 0.85rem 0 0.4rem;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+      }
+      .notes-textarea {
+        width: 100%;
+        box-sizing: border-box;
+        resize: vertical;
+        min-height: 84px;
+        font: inherit;
+        padding: 0.75rem 0.85rem;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        background: #f9fafb;
+        color: var(--ink);
+        line-height: 1.45;
+      }
+      .notes-textarea:focus {
+        outline: 2px solid rgba(107, 33, 129, 0.25);
+        border-color: var(--brand);
+        background: #fff;
+      }
+      .notes-save-row {
+        margin-top: 0.65rem;
+        display: flex;
+        justify-content: flex-end;
+      }
+      .notes-empty {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.88rem;
+        font-weight: 600;
+      }
+      .notes-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 0.55rem;
+        max-height: 220px;
+        overflow: auto;
+      }
+      .notes-item {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 0.65rem 0.75rem;
+      }
+      .notes-item time {
+        display: block;
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--muted);
+        margin-bottom: 0.25rem;
+      }
+      .notes-item p {
+        margin: 0;
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--ink);
+        white-space: pre-wrap;
+        word-break: break-word;
       }
       @media (max-width: 900px) {
         .modal-grid {
