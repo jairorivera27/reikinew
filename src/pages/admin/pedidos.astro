@@ -24,7 +24,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdn.tailwindcss.com"></script>
+    <script is:inline src="https://cdn.tailwindcss.com"></script>
     <script is:inline>
       tailwind.config = {
         theme: {
@@ -366,15 +366,17 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           var s = String(o.status || '').toLowerCase();
           var gw = String(o.gateway || '').toUpperCase() || '—';
           var label = payLabel(o.status);
-          var cls = 'inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ';
-          if (s === 'approved' || s === 'completed') {
-            cls += 'bg-emerald-100 text-emerald-800';
-          } else if (s.indexOf('reject') !== -1 || s.indexOf('declin') !== -1 || s === 'abandoned') {
-            cls += 'bg-rose-100 text-rose-800';
-          } else {
-            cls += 'bg-amber-100 text-amber-800';
-          }
-          return '<span class="' + cls + '">' + esc(gw + ' · ' + label) + '</span>';
+          var tone = 'oc-badge--amber';
+          if (s === 'approved' || s === 'completed') tone = 'oc-badge--ok';
+          else if (s.indexOf('reject') !== -1 || s.indexOf('declin') !== -1 || s === 'abandoned')
+            tone = 'oc-badge--bad';
+          return (
+            '<span class="oc-badge ' +
+            tone +
+            '">' +
+            esc(gw + ' · ' + label) +
+            '</span>'
+          );
         }
 
         function payLabel(st) {
@@ -389,7 +391,10 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
 
         function cardHtml(o) {
           var phone = (o.client && o.client.phone) || '';
-          var doc = (o.client && (o.client.document || o.client.docNumber || o.client.cedula)) || '';
+          var doc =
+            (o.client &&
+              (o.client.document || o.client.docNumber || o.client.cedula || o.client.idNumber)) ||
+            '';
           var name = (o.client && o.client.fullName) || 'Cliente';
           var items = o.items || [];
           var preview = items
@@ -401,43 +406,40 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           var meta = [phone, doc].filter(Boolean).join(' · ') || 'Sin celular / cédula';
           var wa = waLink(phone);
           return (
-            '<div class="order-card bg-white rounded-xl shadow-sm border border-gray-200 p-4 hover:shadow-md transition-all flex flex-col gap-3 cursor-pointer text-left" data-id="' +
+            '<div class="order-card oc-card" data-id="' +
             esc(o.orderId) +
             '" role="button" tabindex="0">' +
-            '<div class="flex justify-between items-start mb-1">' +
+            '<div class="oc-head">' +
             statusBadge(o) +
-            '<span class="text-xs text-gray-400 shrink-0 ml-2">' +
+            '<span class="oc-date">' +
             esc(formatCardDate(o.paidAt || o.createdAt)) +
-            '</span>' +
-            '</div>' +
-            '<div>' +
-            '<h3 class="text-base font-bold text-gray-900 leading-tight m-0">' +
+            '</span></div>' +
+            '<div class="oc-body">' +
+            '<h3 class="oc-name">' +
             esc(name) +
             '</h3>' +
-            '<p class="text-sm text-gray-500 mt-0.5 mb-0">' +
+            '<p class="oc-meta">' +
             esc(meta) +
             '</p>' +
-            '<div class="mt-2 p-2 bg-gray-50 rounded-lg border border-gray-100 text-sm text-gray-700">' +
+            '<div class="oc-product">' +
             esc(preview || 'Sin equipos') +
-            '</div>' +
-            '</div>' +
-            '<div class="text-lg font-bold text-emerald-700 mt-1 text-right">' +
+            '</div></div>' +
+            '<div class="oc-price">' +
             esc(formatCop(o.totalAmount)) +
             '</div>' +
-            '<div class="flex gap-2 mt-2 pt-3 border-t border-gray-100">' +
+            '<div class="oc-actions">' +
             (wa
               ? '<a href="' +
                 wa +
-                '" target="_blank" rel="noopener" data-stop="1" class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-white flex justify-center items-center gap-1.5 py-2 rounded-lg text-sm font-semibold transition-colors shadow-sm"><i class="fab fa-whatsapp"></i> WhatsApp</a>'
-              : '<span class="flex-1 bg-gray-100 text-gray-400 flex justify-center items-center py-2 rounded-lg text-sm font-semibold cursor-not-allowed">Sin WhatsApp</span>') +
+                '" target="_blank" rel="noopener" data-stop="1" class="oc-btn oc-btn-wa"><i class="fab fa-whatsapp"></i> WhatsApp</a>'
+              : '<span class="oc-btn oc-btn-disabled">Sin WhatsApp</span>') +
             '<button type="button" data-pdf="' +
             esc(o.orderId) +
-            '" data-stop="1" class="px-3 py-2 text-gray-600 hover:bg-gray-100 border border-gray-200 rounded-lg text-sm font-medium transition-colors">PDF</button>' +
+            '" data-stop="1" class="oc-btn oc-btn-sec">PDF</button>' +
             '<button type="button" data-open="' +
             esc(o.orderId) +
-            '" class="px-3 py-2 text-gray-600 hover:bg-gray-100 border border-gray-200 rounded-lg text-sm font-medium transition-colors">Detalle</button>' +
-            '</div>' +
-            '</div>'
+            '" class="oc-btn oc-btn-sec">Detalle</button>' +
+            '</div></div>'
           );
         }
 
@@ -1084,25 +1086,143 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         flex-direction: column;
         gap: 1rem;
       }
-      .order-card {
+      .order-card,
+      .oc-card {
         font: inherit;
         color: inherit;
         width: 100%;
         display: flex !important;
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.75rem;
         background: #fff !important;
-        padding: 1.25rem !important;
+        padding: 1rem !important;
         border-radius: 0.75rem !important;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+        box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06) !important;
         border: 1px solid #e5e7eb !important;
         position: relative;
         text-align: left;
         cursor: pointer;
         transition: box-shadow 0.15s ease;
       }
-      .order-card:hover {
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.12) !important;
+      .order-card:hover,
+      .oc-card:hover {
+        box-shadow: 0 6px 16px rgba(15, 23, 42, 0.1) !important;
+      }
+      .oc-head {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin-bottom: 0.15rem;
+      }
+      .oc-badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 0.15rem 0.65rem;
+        border-radius: 999px;
+        font-size: 0.72rem;
+        font-weight: 700;
+        line-height: 1.3;
+      }
+      .oc-badge--amber {
+        background: #fef3c7;
+        color: #92400e;
+      }
+      .oc-badge--ok {
+        background: #d1fae5;
+        color: #065f46;
+      }
+      .oc-badge--bad {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+      .oc-date {
+        font-size: 0.75rem;
+        color: #9ca3af;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .oc-body {
+        min-width: 0;
+      }
+      .oc-name {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 800;
+        color: #111827;
+        line-height: 1.25;
+      }
+      .oc-meta {
+        margin: 0.2rem 0 0;
+        font-size: 0.875rem;
+        color: #6b7280;
+        font-weight: 500;
+      }
+      .oc-product {
+        margin-top: 0.5rem;
+        padding: 0.5rem 0.65rem;
+        background: #f9fafb;
+        border: 1px solid #f3f4f6;
+        border-radius: 0.5rem;
+        font-size: 0.875rem;
+        color: #374151;
+        line-height: 1.35;
+      }
+      .oc-price {
+        margin-top: 0.15rem;
+        text-align: right;
+        font-size: 1.125rem;
+        font-weight: 800;
+        color: #047857;
+      }
+      .oc-actions {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: 0.25rem;
+        padding-top: 0.75rem;
+        border-top: 1px solid #f3f4f6;
+      }
+      .oc-btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.35rem;
+        border-radius: 0.5rem;
+        font: inherit;
+        font-size: 0.875rem;
+        font-weight: 700;
+        padding: 0.5rem 0.75rem;
+        cursor: pointer;
+        text-decoration: none !important;
+        border: 1px solid transparent;
+        transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+        line-height: 1.2;
+      }
+      .oc-btn-wa {
+        flex: 1;
+        background: #10b981 !important;
+        color: #fff !important;
+        box-shadow: 0 1px 2px rgba(16, 185, 129, 0.35);
+      }
+      .oc-btn-wa:hover {
+        background: #059669 !important;
+        color: #fff !important;
+      }
+      .oc-btn-sec {
+        background: #fff;
+        color: #4b5563;
+        border-color: #e5e7eb;
+        font-weight: 600;
+      }
+      .oc-btn-sec:hover {
+        background: #f3f4f6;
+      }
+      .oc-btn-disabled {
+        flex: 1;
+        background: #f3f4f6;
+        color: #9ca3af;
+        cursor: not-allowed;
+        font-weight: 600;
       }
       @media (min-width: 768px) {
         #metrics {
