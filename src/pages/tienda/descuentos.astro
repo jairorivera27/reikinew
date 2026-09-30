@@ -14,22 +14,25 @@ import {
   DESCUENTOS_URL,
   ahorroEnPesos,
   formatearCOP,
-  getProductosRebajados,
+  getProductosEnPromocion,
+  estaRebajado,
 } from '../../utils/descuentos';
 
-const productos = await getProductosRebajados();
+const productos = await getProductosEnPromocion();
+const rebajados = productos.filter((p) => estaRebajado(p.data));
+const especiales = productos.length - rebajados.length;
 
 const ahorroTotal = productos.reduce((suma, p) => suma + ahorroEnPesos(p.data), 0);
-const descuentoMaximo = Math.max(0, ...productos.map((p) => p.data.descuentoPct ?? 0));
+const descuentoMaximo = Math.max(0, ...rebajados.map((p) => p.data.descuentoPct ?? 0));
 
 /** Categorías que hoy tienen al menos un producto rebajado. */
 const categoriasConOferta = CATEGORIAS.filter((c) =>
   productos.some((p) => p.data.category === c.id)
 );
 
-const metaTitle = `Descuentos en Equipos Solares | Reiki Solar`;
+const metaTitle = `Promociones en Equipos Solares | Reiki Solar`;
 const metaDescription = productos.length
-  ? `${productos.length} equipos solares rebajados hasta -${descuentoMaximo}%: paneles, inversores y baterías con precio de liquidación. Envío nacional en Colombia.`
+  ? `${productos.length} equipos solares en promoción: descuentos hasta -${descuentoMaximo}% y precios especiales con stock inmediato. Envío nacional en Colombia.`
   : 'Consulta las promociones vigentes en equipos solares de Reiki Solar.';
 
 const migas = [
@@ -109,15 +112,18 @@ const itemListJsonLd = {
         <header class="desc-hero">
           <span class="desc-hero-tag">
             <i class="fas fa-bolt" aria-hidden="true"></i>
-            Liquidación
+            Promociones
           </span>
           <h1>
-            Descuentos hasta
-            <strong>-{descuentoMaximo}%</strong>
+            Promociones
+            {descuentoMaximo > 0 && <strong>hasta -{descuentoMaximo}%</strong>}
           </h1>
           <p class="desc-hero-sub">
-            {productos.length} {productos.length === 1 ? 'equipo rebajado' : 'equipos rebajados'} con
-            precio de liquidación. Stock limitado: cuando se agota, el precio vuelve a su valor normal.
+            {[
+              rebajados.length > 0 ? `${rebajados.length} ${rebajados.length === 1 ? 'equipo rebajado' : 'equipos rebajados'}` : '',
+              especiales > 0 ? `${especiales} ${especiales === 1 ? 'equipo' : 'equipos'} con precio especial y stock inmediato` : '',
+            ].filter(Boolean).join(' y ')}.
+            Unidades limitadas: cuando se agotan, el precio vuelve a su valor normal.
           </p>
 
           {ahorroTotal > 0 && (
@@ -129,7 +135,7 @@ const itemListJsonLd = {
         </header>
 
         {categoriasConOferta.length > 1 && (
-          <nav class="desc-chips" aria-label="Categorías con descuento">
+          <nav class="desc-chips" aria-label="Categorías con promociones">
             {categoriasConOferta.map((c) => (
               <a href={urlCategoria(c.id)} class="desc-chip">
                 <i class={c.icono} aria-hidden="true"></i>
@@ -147,9 +153,13 @@ const itemListJsonLd = {
                 <p class="desc-item-cat">
                   <i class="fas fa-tag" aria-hidden="true"></i>
                   {nombreCategoria(producto.data.category)}
-                  <span class="desc-item-ahorro">
-                    Ahorrás {formatearCOP(ahorroEnPesos(producto.data))}
-                  </span>
+                  {ahorroEnPesos(producto.data) > 0 ? (
+                    <span class="desc-item-ahorro">
+                      Ahorrás {formatearCOP(ahorroEnPesos(producto.data))}
+                    </span>
+                  ) : (
+                    <span class="desc-item-ahorro">Stock inmediato</span>
+                  )}
                 </p>
                 <ProductoCardCompact producto={producto} />
               </article>

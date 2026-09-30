@@ -3,7 +3,7 @@ title: "Inversor On-Grid Huawei SUN2000-50KTL-M3 50 kW Trifásico"
 description: "Inversor string trifásico Huawei SUN2000 KTL-M3 para plantas comerciales e industriales: varios MPPT, monitorización y compatibilidad con SmartLogger según proyecto. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/huawei-sun2000-50ktl-m3.webp"
 category: "inversores"
-price: "$15.625.000"
+price: "$12.525.900"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 50kW"
@@ -13,7 +13,7 @@ stock: "disponible"
 order: 5049
 sku: "SUN2000-50KTL-M3"
 power: "50kW"
-updatedAt: "2026-09-10"
+updatedAt: "2026-09-29"
 imageThumb: "/images/productos-estudio/huawei-sun2000-50ktl-m3-thumb.webp"
 imageAlt: "Huawei SUN2000-50KTL-M3 – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/huawei/sun2000-50ktl-m3/01-NFIN0063.png"
@@ -28,6 +28,9 @@ faqs:
     respuesta: "Un sistema con este inversor de 50 kW y unos 55 kWp de paneles genera del orden de 7.425 kWh al mes (4,5 horas de sol pico en promedio), así que cubre consumos de esa magnitud. Te dimensionamos el sistema con tu factura."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+precioAnterior: "$15.625.000"
+descuentoPct: 20
+promocion: "Precio rebajado"
 ---
 
 **SUN2000-50KTL-M3** · referencia **Huawei** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

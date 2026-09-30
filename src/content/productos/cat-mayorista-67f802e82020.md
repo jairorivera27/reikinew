@@ -3,7 +3,7 @@ title: "Hoymiles Split Phase Electric Meter DTSU666 New Via CT 2*100A"
 description: "Medidor de energía Hoymiles para monitorización de inyección/consumo en instalaciones con microinversores; versiones monofásicas, bifásicas o trifásicas con TC externos."
 image: "/images/placeholders/protecciones.svg"
 category: "protecciones"
-price: "$994.500"
+price: "$808.600"
 specifications:
   - "Clase de medida y rangos de corriente según modelo (100 A, 250 A, etc.)"
   - "Conexión vía VIA/CT según referencia; revisar esquema de TC incluidos"
@@ -15,6 +15,8 @@ order: 5036
 imageAlt: "Hoymiles – Reiki Energía Solar"
 draft: true
 imagenPendiente: true
+updatedAt: "2026-09-29"
+promocion: "Precio especial"
 ---
 
 **HOYMILES SPLIT PHASE ELECTRIC METER DTSU666 NEW VIA CT 2*100A** · referencia **Hoymiles** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

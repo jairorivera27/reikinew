@@ -1,10 +1,9 @@
 ---
-draft: true
 title: "Solis Inversor S5-GR3P5K-LV"
-description: "Inversor string on-grid Solis: doble o múltiple MPPT, monitorización y protecciones integradas para instalaciones residenciales, comerciales o grandes según referencia."
-image: "/images/livoltek.png"
+description: "Inversor string on-grid Solis: doble o múltiple MPPT, monitorización y protecciones integradas para instalaciones residenciales, comerciales o grandes según referencia. La foto es de referencia de la serie Solis S5-GR3P LV. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
+image: "/images/productos-estudio/cat-mayorista-155584ad7685.webp"
 category: "inversores"
-price: "$9.254.550"
+price: "$6.229.700"
 specifications:
   - "Potencia y número de MPPT según modelo (trifásico GR3P)"
   - "Rango de tensión CC y CA según datasheet Solis del SKU"
@@ -14,6 +13,17 @@ specifications:
 brand: "Solis"
 stock: "disponible"
 order: 5077
+updatedAt: "2026-09-29"
+promocion: "Precio especial"
+imageThumb: "/images/productos-estudio/cat-mayorista-155584ad7685-thumb.webp"
+imagen_provisional: true
+imagenSerieRef: "Solis S5-GR3P LV"
+faqs:
+  - pregunta: "¿Es monofásico, bifásico o trifásico?"
+    respuesta: "Es trifásico. Debe coincidir con la conexión eléctrica de tu predio (lo ves en tu factura o en el tablero)."
+  - pregunta: "¿Quién lo instala?"
+    respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+fichaPdf: "/fichas/reiki/cat-mayorista-155584ad7685.pdf"
 ---
 
 **SOLIS INVERSOR S5-GR3P5K-LV** · referencia **Solis** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.
