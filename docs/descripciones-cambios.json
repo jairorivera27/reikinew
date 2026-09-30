@@ -1,824 +1,8 @@
 [
  {
-  "slug": "controlador-de-carga-solar-mppt-inti-20a-2024",
-  "antes": "Controlador de carga solar MPPT Inti de 20 A. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "despues": "Controlador de carga solar MPPT Inti de 20 A. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Cuántos paneles admite?",
-    "Con 20 A de carga admite aproximadamente 270 W de paneles con batería de 12 V, 540 W a 24 V y 1.080 W a 48 V. Además hay que respetar el voltaje máximo de entrada del controlador (ver ficha técnica)."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-inti-30a-3024",
-  "antes": "Controlador de carga solar MPPT Inti de 30 A. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "despues": "Controlador de carga solar MPPT Inti de 30 A. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Cuántos paneles admite?",
-    "Con 30 A de carga admite aproximadamente 405 W de paneles con batería de 12 V, 810 W a 24 V y 1.620 W a 48 V. Además hay que respetar el voltaje máximo de entrada del controlador (ver ficha técnica)."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-inti-60a-6048150",
-  "antes": "Controlador de carga solar MPPT Inti de 60 A. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "despues": "Controlador de carga solar MPPT Inti de 60 A. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Cuántos paneles admite?",
-    "Con 60 A de carga admite aproximadamente 810 W de paneles con batería de 12 V, 1.620 W a 24 V y 3.240 W a 48 V. Además hay que respetar el voltaje máximo de entrada del controlador (ver ficha técnica)."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc010010050r",
-  "antes": "Controlador de carga solar MPPT Victron SCC010010050R. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron BlueSolar MPPT. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC010010050R. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron BlueSolar MPPT. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron BlueSolar MPPT. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc010015050r",
-  "antes": "Controlador de carga solar MPPT Victron SCC010015050R. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron BlueSolar MPPT. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC010015050R. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron BlueSolar MPPT. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron BlueSolar MPPT. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc010015200r",
-  "antes": "Controlador de carga solar MPPT Victron SCC010015200R. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron BlueSolar MPPT. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC010015200R. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron BlueSolar MPPT. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron BlueSolar MPPT. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc010060200",
-  "antes": "Controlador de carga solar MPPT Victron SCC010060200. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "despues": "Controlador de carga solar MPPT Victron SCC010060200. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc010060300",
-  "antes": "Controlador de carga solar MPPT Victron SCC010060300. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "despues": "Controlador de carga solar MPPT Victron SCC010060300. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc010070200",
-  "antes": "Controlador de carga solar MPPT Victron SCC010070200. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "despues": "Controlador de carga solar MPPT Victron SCC010070200. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc010070300",
-  "antes": "Controlador de carga solar MPPT Victron SCC010070300. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "despues": "Controlador de carga solar MPPT Victron SCC010070300. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc020030200",
-  "antes": "Controlador de carga solar MPPT Victron SCC020030200. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 100/30. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC020030200. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 100/30. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron MPPT 100/30. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc020035000",
-  "antes": "Controlador de carga solar MPPT Victron SCC020035000. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC020035000. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc020050200",
-  "antes": "Controlador de carga solar MPPT Victron SCC020050200. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC020050200. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc075010060r",
-  "antes": "Controlador de carga solar MPPT Victron SCC075010060R. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron SmartSolar MPPT. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC075010060R. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron SmartSolar MPPT. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron SmartSolar MPPT. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc075015060r",
-  "antes": "Controlador de carga solar MPPT Victron SCC075015060R. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron SmartSolar MPPT. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC075015060R. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron SmartSolar MPPT. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron SmartSolar MPPT. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc110015060r",
-  "antes": "Controlador de carga solar MPPT Victron SCC110015060R. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC110015060R. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc110020160r",
-  "antes": "Controlador de carga solar MPPT Victron SCC110020160R. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC110020160R. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc110020170r",
-  "antes": "Controlador de carga solar MPPT Victron SCC110020170R. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC110020170R. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc110030210",
-  "antes": "Controlador de carga solar MPPT Victron SCC110030210. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC110030210. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc110050210",
-  "antes": "Controlador de carga solar MPPT Victron SCC110050210 (SmartSolar MPPT 100/50). Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC110050210 (SmartSolar MPPT 100/50). Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc115035210",
-  "antes": "Controlador de carga solar MPPT Victron SCC115035210. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 150/35. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC115035210. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 150/35. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron MPPT 150/35. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc115045212",
-  "antes": "Controlador de carga solar MPPT Victron SCC115045212. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 150/45-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC115045212. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 150/45-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron MPPT 150/45-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc115045222",
-  "antes": "Controlador de carga solar MPPT Victron SCC115045222. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 150/45-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC115045222. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 150/45-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron MPPT 150/45-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc115060211",
-  "antes": "Controlador de carga solar MPPT Victron SCC115060211. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 150/60-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC115060211. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 150/60-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron MPPT 150/60-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc115060311",
-  "antes": "Controlador de carga solar MPPT Victron SCC115060311. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 150/60-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC115060311. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 150/60-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron MPPT 150/60-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc115070211",
-  "antes": "Controlador de carga solar MPPT Victron SCC115070211. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 150/70-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC115070211. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 150/70-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron MPPT 150/70-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc115070411",
-  "antes": "Controlador de carga solar MPPT Victron SCC115070411. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 150/70-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC115070411. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 150/70-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron MPPT 150/70-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc115070511",
-  "antes": "Controlador de carga solar MPPT Victron SCC115070511. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 150/70-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC115070511. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron MPPT 150/70-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron MPPT 150/70-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc115085411",
-  "antes": "Controlador de carga solar MPPT Victron SCC115085411. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC115085411. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc115110411",
-  "antes": "Controlador de carga solar MPPT Victron SCC115110411. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron SmartSolar MPPT 150V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC115110411. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron SmartSolar MPPT 150V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron SmartSolar MPPT 150V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc115110420",
-  "antes": "Controlador de carga solar MPPT Victron SCC115110420. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron SmartSolar MPPT 150V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC115110420. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron SmartSolar MPPT 150V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron SmartSolar MPPT 150V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc115110511",
-  "antes": "Controlador de carga solar MPPT Victron SCC115110511. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron SmartSolar MPPT 150V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC115110511. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron SmartSolar MPPT 150V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron SmartSolar MPPT 150V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc125060221",
-  "antes": "Controlador de carga solar MPPT Victron SCC125060221. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC125060221. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc125060321",
-  "antes": "Controlador de carga solar MPPT Victron SCC125060321. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC125060321. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc125070221",
-  "antes": "Controlador de carga solar MPPT Victron SCC125070221. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC125070221. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc125070421",
-  "antes": "Controlador de carga solar MPPT Victron SCC125070421. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC125070421. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc125070441",
-  "antes": "Controlador de carga solar MPPT Victron SCC125070441. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC125070441. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc125070521",
-  "antes": "Controlador de carga solar MPPT Victron SCC125070521. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC125070521. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc125085411",
-  "antes": "Controlador de carga solar MPPT Victron SCC125085411. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC125085411. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc125085511",
-  "antes": "Controlador de carga solar MPPT Victron SCC125085511. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC125085511. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc125110412",
-  "antes": "Controlador de carga solar MPPT Victron SCC125110412. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron SmartSolar MPPT 250V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC125110412. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron SmartSolar MPPT 250V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron SmartSolar MPPT 250V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc125110441",
-  "antes": "Controlador de carga solar MPPT Victron SCC125110441. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron SmartSolar MPPT 250V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC125110441. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron SmartSolar MPPT 250V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron SmartSolar MPPT 250V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc125110512",
-  "antes": "Controlador de carga solar MPPT Victron SCC125110512. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron SmartSolar MPPT 250V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC125110512. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron SmartSolar MPPT 250V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron SmartSolar MPPT 250V-Tr. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc145110512",
-  "antes": "Controlador de carga solar MPPT Victron SCC145110512. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC145110512. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc145120510",
-  "antes": "Controlador de carga solar MPPT Victron SCC145120510. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC145120510. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-mppt-victron-scc145120512",
-  "antes": "Controlador de carga solar MPPT Victron SCC145120512. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar MPPT Victron SCC145120512. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-pwm-victron-30a-scc040030020",
-  "antes": "Controlador de carga solar PWM Victron SCC040030020 de 30 A. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar PWM Victron SCC040030020 de 30 A. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué paneles puedo usar con un controlador PWM?",
-    "Paneles cuyo voltaje de trabajo corresponda a la batería: paneles de 12 V (36 celdas) para baterías de 12 V y el doble en serie para 24 V. Con paneles de 60/72 celdas conviene un controlador MPPT."
-   ],
-   [
-    "¿Cuántos paneles admite?",
-    "Con 30 A de carga admite aproximadamente 405 W de paneles con batería de 12 V y 810 W a 24 V. Además hay que respetar el voltaje máximo de entrada del controlador (ver ficha técnica)."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-pwm-victron-scc040010050",
-  "antes": "Controlador de carga solar PWM Victron SCC040010050. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron BlueSolar PWM LCD&USB. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar PWM Victron SCC040010050. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron BlueSolar PWM LCD&USB. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron BlueSolar PWM LCD&USB. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué paneles puedo usar con un controlador PWM?",
-    "Paneles cuyo voltaje de trabajo corresponda a la batería: paneles de 12 V (36 celdas) para baterías de 12 V y el doble en serie para 24 V. Con paneles de 60/72 celdas conviene un controlador MPPT."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-pwm-victron-scc040020050",
-  "antes": "Controlador de carga solar PWM Victron SCC040020050. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron BlueSolar PWM LCD&USB. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar PWM Victron SCC040020050. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. La foto es de referencia de la serie Victron BlueSolar PWM LCD&USB. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. La foto es de referencia de la serie Victron BlueSolar PWM LCD&USB. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué paneles puedo usar con un controlador PWM?",
-    "Paneles cuyo voltaje de trabajo corresponda a la batería: paneles de 12 V (36 celdas) para baterías de 12 V y el doble en serie para 24 V. Con paneles de 60/72 celdas conviene un controlador MPPT."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-carga-solar-pwm-victron-scc040030050",
-  "antes": "Controlador de carga solar PWM Victron SCC040030050. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "despues": "Controlador de carga solar PWM Victron SCC040030050. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
-  "faqs": [
-   [
-    "¿Qué paneles puedo usar con un controlador PWM?",
-    "Paneles cuyo voltaje de trabajo corresponda a la batería: paneles de 12 V (36 celdas) para baterías de 12 V y el doble en serie para 24 V. Con paneles de 60/72 celdas conviene un controlador MPPT."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-   ]
-  ],
-  "specs_nuevas": []
- },
- {
-  "slug": "controlador-de-energia-goodwe-sec1000s-para-inversores",
-  "antes": "Accesorio GoodWe SEC1000S. Complemento para instalaciones solares. La foto es de referencia de la serie GoodWe EzLogger. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "despues": "Accesorio GoodWe SEC1000S. Complemento para instalaciones solares. La foto es de referencia de la serie GoodWe EzLogger. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. La foto es de referencia de la serie GoodWe EzLogger. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
+  "slug": "cable-ac-trunk-hoymiles-12-10-awg-version-anterior",
+  "antes": "Cable AC Trunk Hoymiles 12/10 AWG (versión anterior). 1 año de garantía por fabricante. Cable ramal para conectar el microinversor a la caja de distribución. En el cable hay conectores AC Trunk espaciados segun intervalos. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia.",
+  "despues": "Cable AC Trunk Hoymiles 12/10 AWG (versión anterior). 1 año de garantía por fabricante. Cable ramal para conectar el microinversor a la caja de distribución. En el cable hay conectores AC Trunk espaciados segun intervalos. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. La foto es de referencia de la serie Hoymiles AC Trunk. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
   "faqs": [
    [
     "¿Es compatible con mi equipo?",
@@ -828,121 +12,245 @@
   "specs_nuevas": []
  },
  {
-  "slug": "controlador-mppt-100a",
-  "antes": "Controlador de carga solar MPPT profesional de 100 amperios. Para instalaciones comerciales e industriales de gran escala. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "despues": "Controlador de carga solar MPPT profesional de 100 amperios. Para instalaciones comerciales e industriales de gran escala. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
+  "slug": "cable-de-conexion-hoymiles-hms-2-3-m",
+  "antes": "Cable de Conexión Hoymiles HMS 2,3 m. 1 año de garantía por fabricante. Cable Troncal de AC personalizada con conectores para línea troncal de HMS. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia.",
+  "despues": "Cable de Conexión Hoymiles HMS 2,3 m. 1 año de garantía por fabricante. Cable Troncal de AC personalizada con conectores para línea troncal de HMS. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. La foto es de referencia de la serie Hoymiles HMS Connection Cable. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
   "faqs": [
    [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Cuántos paneles admite?",
-    "Con 100 A de carga admite aproximadamente 1.350 W de paneles con batería de 12 V, 2.700 W a 24 V y 5.400 W a 48 V. Además hay que respetar el voltaje máximo de entrada del controlador (ver ficha técnica)."
-   ],
-   [
-    "¿Cuál es el voltaje máximo de paneles?",
-    "12V/24V/48V auto. El voltaje de circuito abierto del arreglo, en su punto más frío, nunca debe superarlo."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
+    "¿Es compatible con mi equipo?",
+    "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
    ]
   ],
   "specs_nuevas": []
  },
  {
-  "slug": "controlador-mppt-20a",
-  "antes": "Controlador de carga solar MPPT compacto de 20 amperios. Ideal para sistemas solares pequeños y portátiles. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "despues": "Controlador de carga solar MPPT compacto de 20 amperios. Ideal para sistemas solares pequeños y portátiles. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
+  "slug": "cat-mayorista-155584ad7685",
+  "antes": "Inversor string on-grid Solis: doble o múltiple MPPT, monitorización y protecciones integradas para instalaciones residenciales, comerciales o grandes según referencia.",
+  "despues": "Inversor string on-grid Solis: doble o múltiple MPPT, monitorización y protecciones integradas para instalaciones residenciales, comerciales o grandes según referencia. La foto es de referencia de la serie Solis S5-GR3P LV. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
   "faqs": [
    [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
+    "¿Es monofásico, bifásico o trifásico?",
+    "Es trifásico. Debe coincidir con la conexión eléctrica de tu predio (lo ves en tu factura o en el tablero)."
    ],
    [
-    "¿Cuántos paneles admite?",
-    "Con 20 A de carga admite aproximadamente 270 W de paneles con batería de 12 V, 540 W a 24 V y 1.080 W a 48 V. Además hay que respetar el voltaje máximo de entrada del controlador (ver ficha técnica)."
-   ],
-   [
-    "¿Cuál es el voltaje máximo de paneles?",
-    "12V/24V auto. El voltaje de circuito abierto del arreglo, en su punto más frío, nunca debe superarlo."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
+    "¿Quién lo instala?",
+    "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
    ]
   ],
   "specs_nuevas": []
  },
  {
-  "slug": "controlador-mppt-40a",
-  "antes": "Controlador de carga solar MPPT de 40 amperios con pantalla LCD. Máxima eficiencia de carga y protección completa del sistema. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "despues": "Controlador de carga solar MPPT de 40 amperios con pantalla LCD. Máxima eficiencia de carga y protección completa del sistema. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
+  "slug": "cat-mayorista-5d8e08561d07",
+  "antes": "Inversor string on-grid Solis: doble o múltiple MPPT, monitorización y protecciones integradas para instalaciones residenciales, comerciales o grandes según referencia.",
+  "despues": "Inversor string on-grid Solis: doble o múltiple MPPT, monitorización y protecciones integradas para instalaciones residenciales, comerciales o grandes según referencia. La foto es de referencia de la serie Solis S6-GR1P-S. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
   "faqs": [
    [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
+    "¿Es monofásico, bifásico o trifásico?",
+    "Es monofásico. Debe coincidir con la conexión eléctrica de tu predio (lo ves en tu factura o en el tablero)."
    ],
    [
-    "¿Cuántos paneles admite?",
-    "Con 40 A de carga admite aproximadamente 540 W de paneles con batería de 12 V, 1.080 W a 24 V y 2.160 W a 48 V. Además hay que respetar el voltaje máximo de entrada del controlador (ver ficha técnica)."
-   ],
-   [
-    "¿Cuál es el voltaje máximo de paneles?",
-    "12V/24V auto. El voltaje de circuito abierto del arreglo, en su punto más frío, nunca debe superarlo."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
+    "¿Quién lo instala?",
+    "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
    ]
   ],
   "specs_nuevas": []
  },
  {
-  "slug": "controlador-mppt-60a",
-  "antes": "Controlador de carga solar MPPT de 60 amperios con comunicación Bluetooth. Control desde smartphone y monitoreo avanzado. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "despues": "Controlador de carga solar MPPT de 60 amperios con comunicación Bluetooth. Control desde smartphone y monitoreo avanzado. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
+  "slug": "conector-de-extension-hoymiles-hms",
+  "antes": "Conector de Extensión Hoymiles HMS. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia.",
+  "despues": "Conector de Extensión Hoymiles HMS. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
   "faqs": [
    [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
-   ],
-   [
-    "¿Cuántos paneles admite?",
-    "Con 60 A de carga admite aproximadamente 810 W de paneles con batería de 12 V, 1.620 W a 24 V y 3.240 W a 48 V. Además hay que respetar el voltaje máximo de entrada del controlador (ver ficha técnica)."
-   ],
-   [
-    "¿Cuál es el voltaje máximo de paneles?",
-    "12V/24V/48V auto. El voltaje de circuito abierto del arreglo, en su punto más frío, nunca debe superarlo."
-   ],
-   [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
+    "¿Es compatible con mi equipo?",
+    "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
    ]
   ],
   "specs_nuevas": []
  },
  {
-  "slug": "controlador-mppt-80a",
-  "antes": "Controlador de carga solar MPPT de alta capacidad 80 amperios. Para sistemas solares de gran potencia con comunicación Bluetooth. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
-  "despues": "Controlador de carga solar MPPT de alta capacidad 80 amperios. Para sistemas solares de gran potencia con comunicación Bluetooth. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
+  "slug": "conector-de-extension-hoymiles-hmt",
+  "antes": "Conector de Extensión Hoymiles HMT. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia.",
+  "despues": "Conector de Extensión Hoymiles HMT. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
   "faqs": [
    [
-    "¿Qué diferencia hay entre MPPT y PWM?",
-    "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
+    "¿Es compatible con mi equipo?",
+    "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
+   ]
+  ],
+  "specs_nuevas": []
+ },
+ {
+  "slug": "conector-de-terminal-de-cable-hoymiles-hmt",
+  "antes": "Conector de Terminal de Cable Hoymiles HMT. Tapa de protección de ramal. 1 año de garantía por fabricante. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia.",
+  "despues": "Conector de Terminal de Cable Hoymiles HMT. Tapa de protección de ramal. 1 año de garantía por fabricante. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
+  "faqs": [
+   [
+    "¿Es compatible con mi equipo?",
+    "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
+   ]
+  ],
+  "specs_nuevas": []
+ },
+ {
+  "slug": "conector-hoymiles-hms",
+  "antes": "Conector Hoymiles HMS. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia.",
+  "despues": "Conector Hoymiles HMS. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
+  "faqs": [
+   [
+    "¿Es compatible con mi equipo?",
+    "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
+   ]
+  ],
+  "specs_nuevas": []
+ },
+ {
+  "slug": "conector-troncal-hoymiles-hmt",
+  "antes": "Conector Troncal Hoymiles HMT. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia.",
+  "despues": "Conector Troncal Hoymiles HMT. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
+  "faqs": [
+   [
+    "¿Es compatible con mi equipo?",
+    "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
+   ]
+  ],
+  "specs_nuevas": []
+ },
+ {
+  "slug": "conectores-mc4-te-connectivity-par",
+  "antes": "Conectores MC4 TE Connectivity (par). 2 años de garantía por fabricante. Conector empalme MC4. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia.",
+  "despues": "Conectores MC4 TE Connectivity (par). 2 años de garantía por fabricante. Conector empalme MC4. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. La foto es de referencia de la serie TE SOLARLOK PV4. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
+  "faqs": [
+   [
+    "¿Es compatible con mi equipo?",
+    "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
+   ]
+  ],
+  "specs_nuevas": []
+ },
+ {
+  "slug": "gestor-de-energia-growatt-smart-energy-manager-sem-d",
+  "antes": "Gestor de Energía Growatt Smart Energy Manager SEM-D. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia.",
+  "despues": "Gestor de Energía Growatt Smart Energy Manager SEM-D. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. La foto es de referencia de la serie Growatt SEM. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
+  "faqs": [
+   [
+    "¿Para qué sirve con un inversor solar?",
+    "Permite limitar la inyección a la red (inyección cero), gestionar baterías según el consumo real y ver el balance de energía en la aplicación."
+   ]
+  ],
+  "specs_nuevas": []
+ },
+ {
+  "slug": "inversor-on-grid-solis-s6-gc3p30k04k-lv-nd-30-kw-trifasico",
+  "antes": "Inversor On-Grid Solis S6-GC3P30K04K-LV-ND 30 kW Trifásico. Inversor Trifasico con 4 MPPT y dos entradas por MPPT, 208/220Vac y eficiencia máxima de 97,8%. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia.",
+  "despues": "Inversor On-Grid Solis S6-GC3P30K04K-LV-ND 30 kW Trifásico. Inversor Trifasico con 4 MPPT y dos entradas por MPPT, 208/220Vac y eficiencia máxima de 97,8%. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. La foto es de referencia de la serie Solis S6-GC3P LV. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
+  "faqs": [
+   [
+    "¿Necesita baterías?",
+    "No. Es un inversor conectado a la red: funciona con los paneles y la red eléctrica. Por seguridad se apaga cuando se va la luz (protección anti-isla). Si necesitas respaldo en cortes, elige un inversor híbrido."
    ],
    [
-    "¿Cuántos paneles admite?",
-    "Con 80 A de carga admite aproximadamente 1.080 W de paneles con batería de 12 V, 2.160 W a 24 V y 4.320 W a 48 V. Además hay que respetar el voltaje máximo de entrada del controlador (ver ficha técnica)."
+    "¿Puedo vender los excedentes de energía?",
+    "Sí, en Colombia la autogeneración a pequeña escala (CREG 174 de 2021) permite entregar excedentes con un medidor bidireccional y el trámite ante el operador de red. Reiki te acompaña en la legalización."
    ],
    [
-    "¿Cuál es el voltaje máximo de paneles?",
-    "12V/24V/48V auto. El voltaje de circuito abierto del arreglo, en su punto más frío, nunca debe superarlo."
+    "¿Es monofásico, bifásico o trifásico?",
+    "Es trifásico. Debe coincidir con la conexión eléctrica de tu predio (lo ves en tu factura o en el tablero)."
    ],
    [
-    "¿Sirve para baterías de litio?",
-    "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
+    "¿Para qué consumo alcanza?",
+    "Un sistema con este inversor de 30 kW y unos 33 kWp de paneles genera del orden de 4.455 kWh al mes (4,5 horas de sol pico en promedio), así que cubre consumos de esa magnitud. Te dimensionamos el sistema con tu factura."
+   ],
+   [
+    "¿Quién lo instala?",
+    "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+   ]
+  ],
+  "specs_nuevas": []
+ },
+ {
+  "slug": "medidor-inteligente-growatt-tpm-e-100a",
+  "antes": "Medidor Inteligente Growatt TPM-E 100A. 1 año de garantía por fabricante. Medidor de energía TPM-E para conexión en Estrella directa, para inversores trifásicos de 480/220V. Pantalla LCD max 100A. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia.",
+  "despues": "Medidor Inteligente Growatt TPM-E 100A. 1 año de garantía por fabricante. Medidor de energía TPM-E para conexión en Estrella directa, para inversores trifásicos de 480/220V. Pantalla LCD max 100A. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
+  "faqs": [
+   [
+    "¿Para qué sirve con un inversor solar?",
+    "Permite limitar la inyección a la red (inyección cero), gestionar baterías según el consumo real y ver el balance de energía en la aplicación."
+   ]
+  ],
+  "specs_nuevas": []
+ },
+ {
+  "slug": "medidor-monofasico-solis-agf-ae-d-200",
+  "antes": "Medidor Monofásico Solis AGF-AE-D/200. 1 año de garantía por fabricante. Medidor de energía para conexión en semidirecta, para inversores bifasicos de 480V/220V. Pantalla LCD, medidor con CT´s. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia.",
+  "despues": "Medidor Monofásico Solis AGF-AE-D/200. 1 año de garantía por fabricante. Medidor de energía para conexión en semidirecta, para inversores bifasicos de 480V/220V. Pantalla LCD, medidor con CT´s. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
+  "faqs": [
+   [
+    "¿Para qué sirve con un inversor solar?",
+    "Permite limitar la inyección a la red (inyección cero), gestionar baterías según el consumo real y ver el balance de energía en la aplicación."
+   ]
+  ],
+  "specs_nuevas": []
+ },
+ {
+  "slug": "medidor-solis-epm3-5g-plus-split-phase-control-de-exportacion",
+  "antes": "Medidor Solis EPM3-5G PLUS Split Phase (Control de Exportación). 5 años de garantía por fabricante. Export Power Manager. Limitador de inyección para sistemas trifásicos, conexión hasta 80 inversores, Red 220V, RS485. Monitoreo y Smart Meter incluido. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia.",
+  "despues": "Medidor Solis EPM3-5G PLUS Split Phase (Control de Exportación). 5 años de garantía por fabricante. Export Power Manager. Limitador de inyección para sistemas trifásicos, conexión hasta 80 inversores, Red 220V, RS485. Monitoreo y Smart Meter incluido. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. La foto es de referencia de la serie Solis EPM3-5G. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros.",
+  "faqs": [
+   [
+    "¿Para qué sirve con un inversor solar?",
+    "Permite limitar la inyección a la red (inyección cero), gestionar baterías según el consumo real y ver el balance de energía en la aplicación."
+   ]
+  ],
+  "specs_nuevas": []
+ },
+ {
+  "slug": "panel-solar-ja-solar-jam66d45-605-lb-605w-bifacial",
+  "antes": "Panel Solar JA Solar JAM66D45-605/LB 605W Bifacial. 12 años garantía por manufactura / 30 años garantía contra potencia lineal. Modulo Monocristalino Bifacial tipo N con tecnología HalfCell, 132 celdas, técnologia multibusbar, Mejor rendimiento anti-sombreado, mejor tolerancia a cargas mecanicas. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia.",
+  "despues": "Panel Solar JA Solar JAM66D45-605/LB 605W Bifacial. 12 años garantía por manufactura / 30 años garantía contra potencia lineal. Modulo Monocristalino Bifacial tipo N con tecnología HalfCell, 132 celdas, técnologia multibusbar, Mejor rendimiento anti-sombreado, mejor tolerancia a cargas mecanicas. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. La foto es de referencia de la serie JA Solar JAM66D45 (DeepBlue 4.0 Pro). Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
+  "faqs": [
+   [
+    "¿Cuánta energía genera al día?",
+    "Aproximadamente 2,7 kWh por día (605 W × 4,5 horas de sol pico, promedio conservador para Colombia), unos 82 kWh al mes. La cifra real depende de la ciudad, la orientación, la inclinación y las sombras."
+   ],
+   [
+    "¿Cuántos paneles necesito para mi casa o negocio?",
+    "Divide tu consumo mensual (kWh, en la factura) entre 82 kWh que aporta cada panel. Por ejemplo, para 300 kWh/mes necesitarías unos 4 paneles. Te hacemos el dimensionamiento gratis con tu factura."
+   ],
+   [
+    "¿Qué ventaja tiene que sea bifacial?",
+    "Capta luz por ambas caras: además del sol directo aprovecha la luz reflejada por el piso o la cubierta. La ganancia adicional depende de la altura y del color de la superficie (mayor en cubiertas claras y estructuras elevadas)."
+   ],
+   [
+    "¿Qué tamaño y peso tiene?",
+    "Dimensiones: 1134 x 30 x 2382 mm. Verifica el espacio disponible en tu cubierta antes de comprar."
+   ],
+   [
+    "¿Sirve para sistemas conectados a la red y para sistemas aislados?",
+    "Sí. Con un inversor on-grid entrega energía a la casa y a la red (autogeneración, con trámite ante el operador de red); con un inversor híbrido u off-grid carga baterías. Lo importante es que el voltaje del arreglo sea compatible con el inversor o el controlador."
+   ]
+  ],
+  "specs_nuevas": []
+ },
+ {
+  "slug": "smart-dongle-huawei-sdonglea-05-wlan-fe-para-monitoreo",
+  "antes": "Smart Dongle Huawei SDongleA-05 WLAN-FE para Monitoreo. 2 años de garantía por fabricante. Sistema de monitoreo inteligente con comunicación WLAN/LAN , Plug&Play para una fácil instalación, IP65, Led indicador. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia.",
+  "despues": "Smart Dongle Huawei SDongleA-05 WLAN-FE para Monitoreo. 2 años de garantía por fabricante. Sistema de monitoreo inteligente con comunicación WLAN/LAN , Plug&Play para una fácil instalación, IP65, Led indicador. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
+  "faqs": [
+   [
+    "¿Quién lo instala?",
+    "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+   ]
+  ],
+  "specs_nuevas": []
+ },
+ {
+  "slug": "tapa-de-puerto-ac-trunk-hoymiles-version-anterior",
+  "antes": "Tapa de Puerto AC Trunk Hoymiles (versión anterior). Equipo nuevo con disponibilidad inmediata para envío a toda Colombia.",
+  "despues": "Tapa de Puerto AC Trunk Hoymiles (versión anterior). Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp.",
+  "faqs": [
+   [
+    "¿Es compatible con mi equipo?",
+    "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
    ]
   ],
   "specs_nuevas": []
