@@ -38,7 +38,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       };
     </script>
   </head>
-  <body class="dash-body">
+  <body class="dash-body is-login">
     <div class="dash-bg" aria-hidden="true"></div>
 
     <!-- LOGIN -->
@@ -760,16 +760,34 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           }
         }
 
+        function setView(mode) {
+          var isDash = mode === 'dash';
+          document.body.classList.toggle('is-dashboard', isDash);
+          document.body.classList.toggle('is-login', !isDash);
+          el.login.hidden = isDash;
+          el.dash.hidden = !isDash;
+          el.login.setAttribute('aria-hidden', isDash ? 'true' : 'false');
+          el.dash.setAttribute('aria-hidden', isDash ? 'false' : 'true');
+          window.scrollTo(0, 0);
+          if (isDash) {
+            el.dash.classList.remove('view-enter');
+            void el.dash.offsetWidth;
+            el.dash.classList.add('view-enter');
+          } else {
+            el.login.classList.remove('view-enter');
+            void el.login.offsetWidth;
+            el.login.classList.add('view-enter');
+          }
+        }
+
         function showLogin(msg) {
-          el.login.hidden = false;
-          el.dash.hidden = true;
+          setView('login');
           closeModal();
           el.loginErr.hidden = !msg;
           el.loginErr.textContent = msg || '';
         }
         function showDash() {
-          el.login.hidden = true;
-          el.dash.hidden = false;
+          setView('dash');
           loadOrders();
         }
 
@@ -778,6 +796,11 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           var user = String(document.getElementById('login-user').value || '').trim() || 'admin';
           var pass = String(document.getElementById('login-pass').value || '').trim();
           if (!pass) return;
+          var submitBtn = el.loginForm.querySelector('button[type="submit"]');
+          if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Entrando…';
+          }
           setSession(user, pass, false);
           // Probar auth con una búsqueda corta
           fetch('/api/orders-search?dias=1', {
@@ -802,6 +825,12 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             .catch(function () {
               clearSession();
               showLogin('No se pudo validar el acceso.');
+            })
+            .finally(function () {
+              if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Entrar al dashboard';
+              }
             });
         });
 
@@ -866,12 +895,19 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       * {
         box-sizing: border-box;
       }
+      /* Evita que display:grid/flex pisen el atributo HTML hidden */
+      [hidden] {
+        display: none !important;
+      }
       .dash-body {
         margin: 0;
         min-height: 100vh;
         font-family: Montserrat, Helvetica, Arial, sans-serif;
         color: var(--ink);
         background: var(--sand);
+      }
+      .dash-body.is-login {
+        overflow: hidden;
       }
       .dash-bg {
         position: fixed;
@@ -893,6 +929,19 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         display: grid;
         place-items: center;
         padding: 1.5rem;
+      }
+      .view-enter {
+        animation: viewEnter 0.38s ease-out both;
+      }
+      @keyframes viewEnter {
+        from {
+          opacity: 0;
+          transform: translateY(14px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
       .login-card {
         width: min(420px, 100%);
@@ -964,6 +1013,10 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         color: #fff;
         box-shadow: 0 10px 22px rgba(15, 107, 76, 0.22);
       }
+      .btn-primary:disabled {
+        opacity: 0.7;
+        cursor: wait;
+      }
       .btn-secondary {
         background: #12352c;
         color: #fff;
@@ -984,6 +1037,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         max-width: 1180px;
         margin: 0 auto;
         padding: 1.2rem 1rem 3rem;
+        min-height: 100vh;
       }
       .dash-top {
         display: flex;
