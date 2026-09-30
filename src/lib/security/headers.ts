@@ -12,8 +12,8 @@ export const securityHeaders = {
   'Content-Security-Policy': [
     "default-src 'self'",
     // Wompi checkout widget + Font Awesome kit/jsDelivr
-    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://kit.fontawesome.com https://checkout.wompi.co https://cdnjs.cloudflare.com",
-    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://checkout.wompi.co",
+    "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://kit.fontawesome.com https://checkout.wompi.co https://cdnjs.cloudflare.com https://cdn.tailwindcss.com",
+    "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com https://checkout.wompi.co https://cdn.tailwindcss.com",
     "font-src 'self' data: https://fonts.gstatic.com https://cdn.jsdelivr.net https://cdnjs.cloudflare.com",
     "img-src 'self' data: https:",
     // CallMeBot / WhatsApp notify + Wompi APIs used by widget and integrity endpoint clients
