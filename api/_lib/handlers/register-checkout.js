@@ -5,12 +5,25 @@
  */
 import { readJsonBody } from '../addi.js';
 import { saveCheckoutOrder, cleanDoc } from '../checkout-order-store.js';
+import { isRedisConfigured } from '../whatsapp-redis.js';
 
 export default async function handler(req, res) {
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
   if (req.method !== 'POST') {
     res.statusCode = 405;
     return res.end(JSON.stringify({ ok: false, error: 'Solo POST.' }));
+  }
+
+  if (!isRedisConfigured()) {
+    console.error('[register-checkout] Redis/KV no configurado — el pedido no persistirá entre instancias.');
+    res.statusCode = 503;
+    return res.end(
+      JSON.stringify({
+        ok: false,
+        error: 'Almacenamiento de pedidos no configurado (KV_REST_API_URL/TOKEN).',
+        code: 'REDIS_NOT_CONFIGURED',
+      })
+    );
   }
 
   try {

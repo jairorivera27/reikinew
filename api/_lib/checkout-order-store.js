@@ -24,8 +24,24 @@ export function normalizeName(name) {
 
 function dayKeyFromIso(iso) {
   const s = String(iso || '').trim();
-  if (s.length >= 10) return s.slice(0, 10);
-  return new Date().toISOString().slice(0, 10);
+  if (!s) {
+    return new Date().toLocaleDateString('en-CA', { timeZone: 'America/Bogota' });
+  }
+  try {
+    const d = new Date(s);
+    if (!Number.isNaN(d.getTime())) {
+      return d.toLocaleDateString('en-CA', { timeZone: 'America/Bogota' });
+    }
+  } catch {
+    /* fall through */
+  }
+  // Fallback: si viene YYYY-MM-DD… usar los primeros 10 chars
+  if (s.length >= 10 && /^\d{4}-\d{2}-\d{2}/.test(s)) return s.slice(0, 10);
+  return new Date().toLocaleDateString('en-CA', { timeZone: 'America/Bogota' });
+}
+
+function todayBogotaYmd() {
+  return new Date().toLocaleDateString('en-CA', { timeZone: 'America/Bogota' });
 }
 
 function orderKey(id) {
@@ -78,9 +94,18 @@ export async function saveCheckoutOrder(input) {
   if (redis) {
     try {
       await redis.set(orderKey(orderId), doc, { ex: ORDER_TTL_SEC });
-      const day = dayKeyFromIso(createdAt);
-      await redis.lpush(dayListKey(day), orderId);
-      await redis.expire(dayListKey(day), ORDER_TTL_SEC);
+      const dayBog = dayKeyFromIso(createdAt);
+      const dayUtc =
+        String(createdAt).length >= 10 && /^\d{4}-\d{2}-\d{2}/.test(String(createdAt))
+          ? String(createdAt).slice(0, 10)
+          : dayBog;
+      await redis.lpush(dayListKey(dayBog), orderId);
+      await redis.expire(dayListKey(dayBog), ORDER_TTL_SEC);
+      // Compat: índices viejos usaban día UTC; dual-write evita huecos en búsqueda
+      if (dayUtc !== dayBog) {
+        await redis.lpush(dayListKey(dayUtc), orderId);
+        await redis.expire(dayListKey(dayUtc), ORDER_TTL_SEC);
+      }
     } catch (err) {
       console.warn('[checkout-order-store] redis set', err?.message || err);
     }
@@ -185,10 +210,13 @@ export async function searchCheckoutOrders({ nombre, documento, fecha, dias = 3 
 
   let daysToScan = [];
   if (fecha) {
+    // ±1 día cubre desfase UTC vs Bogotá en índices antiguos
     daysToScan = ymdRange(fecha, 1, 1);
   } else {
-    const today = new Date().toISOString().slice(0, 10);
-    for (let i = 0; i < days; i += 1) {
+    const today = todayBogotaYmd();
+    // +1 día extra: pedidos indexados con día UTC (desfase Colombia UTC-5)
+    const span = Math.min(days + 1, 31);
+    for (let i = 0; i < span; i += 1) {
       daysToScan.push(addDaysYmd(today, -i));
     }
   }
