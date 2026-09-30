@@ -2,6 +2,7 @@
 title: "Victron Quattro 48/5000"
 description: "Inversor Cargador Victron Quattro 48/5000/70-100/100 230V VE.Bus, referencia QUA485021100. La foto es de referencia de la serie Victron Quattro. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-quattro-prov.webp"
+imageCard: "/images/productos-estudio/victron-quattro-prov-card.webp"
 category: "inversores"
 price: "$9.950.000"
 specifications:

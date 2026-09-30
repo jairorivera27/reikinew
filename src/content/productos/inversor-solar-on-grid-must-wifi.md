@@ -2,6 +2,7 @@
 title: "Inversor Solar On-Grid Must WIFI"
 description: "Inversor on-grid (conectado a red) Must WIFI. Convierte la energía de tus paneles para el consumo de la casa o el negocio y entrega los excedentes a la red, sin baterías. La foto es de referencia de la serie Must PV. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/must-pv-prov.webp"
+imageCard: "/images/productos-estudio/must-pv-prov-card.webp"
 category: "inversores"
 price: "$250.000"
 specifications:

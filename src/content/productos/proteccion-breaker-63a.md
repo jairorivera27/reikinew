@@ -2,6 +2,7 @@
 title: "Breaker DC 63A"
 description: "Interruptor termomagnético DC de 63 amperios para protección de sistemas solares. Certificado y de alta calidad. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/schneider-c63h-dc-prov.webp"
+imageCard: "/images/productos-estudio/schneider-c63h-dc-prov-card.webp"
 category: "protecciones"
 price: "$69.000"
 specifications:

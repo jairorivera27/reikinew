@@ -2,6 +2,7 @@
 title: "Huawei Accesorio 02233DXX (SUN2000-2~6KTL-L1)"
 description: "Accesorio Huawei FusionSolar compatible con inversores SUN2000-2~6KTL-L1. Verifique la tabla de compatibilidad del fabricante antes de comprar. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/huawei-smartlogger.webp"
+imageCard: "/images/productos-estudio/huawei-smartlogger-card.webp"
 category: "accesorios"
 price: "$244.800"
 specifications:

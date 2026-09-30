@@ -2,6 +2,7 @@
 title: "Microinversor Solar Growatt DS3D-COL"
 description: "Microinversor Growatt DS3D-COL. Convierte la energía de cada panel de forma independiente: si uno recibe sombra, los demás siguen rindiendo al máximo. La foto es de referencia de la serie APsystems DS3. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/apsystems-ds3-prov.webp"
+imageCard: "/images/productos-estudio/apsystems-ds3-prov-card.webp"
 category: "inversores"
 price: "$1.645.000"
 specifications:

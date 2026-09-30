@@ -2,6 +2,7 @@
 title: "Panel Solar Trina Vertex N TSM-NE19R 620W"
 description: "Panel Solar Trina Vertex N TSM-NE19R 620W. 12 años garantía por manufactura / 25 años garantía contra potencia lineal. Módulo Monocristalino de alta eficiencia con tecnología HalfCell tipo N, 132celdas, Tecnología multibusbar, Mejor rendimiento anti-sombreado y menor temperatura de operación. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. La foto es de referencia de la serie Trina Vertex N. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/panel-solar-trina-vertex-n-tsm-ne19r-620w.webp"
+imageCard: "/images/productos-estudio/panel-solar-trina-vertex-n-tsm-ne19r-620w-card.webp"
 imageThumb: "/images/productos-estudio/panel-solar-trina-vertex-n-tsm-ne19r-620w-thumb.webp"
 imageAlt: "Panel Solar Trina Vertex N TSM-NE19R 620W – Reiki Energía Solar"
 category: "paneles"

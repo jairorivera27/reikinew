@@ -2,6 +2,7 @@
 title: "Breaker DC 100A"
 description: "Interruptor termomagnético DC de 100 amperios para protección de sistemas solares de alta potencia. Certificado y robusto. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/schneider-c100h-dc-prov.webp"
+imageCard: "/images/productos-estudio/schneider-c100h-dc-prov-card.webp"
 category: "protecciones"
 price: "$139.000"
 specifications:

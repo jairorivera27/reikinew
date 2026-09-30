@@ -2,6 +2,7 @@
 title: "Panel Solar Trina Vertex N TSM-NEG19RC.20 600W Bifacial"
 description: "Panel Solar Trina Vertex N TSM-NEG19RC.20 600W Bifacial. 12 años garantía por manufactura / 30 años garantía contra potencia lineal. Módulo Monocristalino bifasial dual glass de alta eficiencia con tecnología HalfCell, 132celdas, Tecnología supermultibusbar, Mejor rendimiento anti-sombreado y menor temperatura de operación. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/panel-solar-trina-vertex-n-tsm-neg19rc-20-600w-bifacial.webp"
+imageCard: "/images/productos-estudio/panel-solar-trina-vertex-n-tsm-neg19rc-20-600w-bifacial-card.webp"
 imageThumb: "/images/productos-estudio/panel-solar-trina-vertex-n-tsm-neg19rc-20-600w-bifacial-thumb.webp"
 imageAlt: "Panel Solar Trina Vertex N TSM-NEG19RC.20 600W Bifacial – Reiki Energía Solar"
 category: "paneles"

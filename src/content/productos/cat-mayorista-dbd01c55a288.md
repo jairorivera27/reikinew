@@ -2,6 +2,7 @@
 title: "Hoymiles Microinverter HMS-2000-4T"
 description: "Microinversor monofásico Hoymiles HMS-2000-4T: cuatro MPPT independientes para hasta cuatro módulos de alta potencia, comunicación inalámbrica con gateway Hoymiles y monitoreo en nube. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/hoymiles-hms-2000-4t.webp"
+imageCard: "/images/productos-estudio/hoymiles-hms-2000-4t-card.webp"
 category: "inversores"
 price: "$1.690.650"
 specifications:

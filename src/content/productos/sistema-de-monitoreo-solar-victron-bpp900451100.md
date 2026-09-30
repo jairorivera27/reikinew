@@ -2,6 +2,7 @@
 title: "Victron Cerbo GX MK2 BPP900451100 – Centro de Monitoreo y Control"
 description: "Victron Cerbo GX MK2 (BPP900451100): centro de monitoreo y control que conecta inversores, cargadores, controladores MPPT y baterías Victron para verlos y configurarlos en VRM desde el celular. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-cerbo-gx.webp"
+imageCard: "/images/productos-estudio/victron-cerbo-gx-card.webp"
 category: "accesorios"
 price: "$1.367.734"
 specifications:

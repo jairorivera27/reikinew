@@ -3,6 +3,7 @@ draft: true
 title: "Breaker 20A AC 20A1P"
 description: "Breaker 20A AC 20A1P. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Modelo: 20A1P; especificación principal: 20A AC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-mcb-ac-card.webp"
 category: "protecciones"
 price: "$14.994"
 specifications:

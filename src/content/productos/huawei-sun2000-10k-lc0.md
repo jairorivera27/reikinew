@@ -2,6 +2,7 @@
 title: "Inversor Híbrido Huawei SUN2000-10K-LC0 10 kW"
 description: "Inversor Huawei SUN2000-10K-LC0 de 10 kW, ideal para proyectos residenciales premium con backup inteligente. Precio no incluye costos de envío. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/huawei-sun2000-10k-lc0.webp"
+imageCard: "/images/productos-estudio/huawei-sun2000-10k-lc0-card.webp"
 category: "inversores"
 price: "$4.790.000"
 specifications:

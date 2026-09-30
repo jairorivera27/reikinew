@@ -2,6 +2,7 @@
 title: "Controlador de Carga Solar MPPT Victron SCC020035000"
 description: "Controlador de carga solar MPPT Victron SCC020035000. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-bluesolar-mppt-15035.webp"
+imageCard: "/images/productos-estudio/victron-bluesolar-mppt-15035-card.webp"
 category: "controladores"
 price: "$777.262"
 specifications:

@@ -2,6 +2,7 @@
 title: "Reflector Solar Hardy Nova 100 – 9 W reales · 1.530 lm"
 description: "Reflector solar profesional LED Hardy Nova 100 de 9 W reales y 1.530 lm (170 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 12 Ah y panel 20 W / 6 V monocristalino separado, con autonomía de 10 – 12 h. Protección IP65 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de 2024)."
 image: "/images/productos-estudio/hardy-nova-100.webp"
+imageCard: "/images/productos-estudio/hardy-nova-100-card.webp"
 imageThumb: "/images/productos-estudio/hardy-nova-100-thumb.webp"
 imageAlt: "Reflector Solar Hardy Nova 100 – 9 W reales · 1.530 lm – Reiki Energía Solar"
 category: "reflectores"

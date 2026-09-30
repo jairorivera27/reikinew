@@ -2,6 +2,7 @@
 title: "Inversor Solar Off-Grid Felicity 2kW 3004614"
 description: "Inversor off-grid Felicity de 2kW. Para sistemas aislados de la red: convierte la energía de las baterías en corriente alterna para tus equipos. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/inversor-cargador-felicity-solar-2000w-24v-ivcm2024-lv.webp"
+imageCard: "/images/productos-estudio/inversor-cargador-felicity-solar-2000w-24v-ivcm2024-lv-card.webp"
 category: "inversores"
 price: "$892.858"
 specifications:

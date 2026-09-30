@@ -2,6 +2,7 @@
 title: "Breaker Suntree 63A AC 5504198"
 description: "Interruptor termomagnético (breaker) Suntree AC de 63 A. Protege el circuito contra sobrecargas y cortocircuitos y permite desconectarlo para mantenimiento. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/breaker-solar-ac-3x63a-400vac-suntree.webp"
+imageCard: "/images/productos-estudio/breaker-solar-ac-3x63a-400vac-suntree-card.webp"
 category: "protecciones"
 price: "$23.731"
 specifications:

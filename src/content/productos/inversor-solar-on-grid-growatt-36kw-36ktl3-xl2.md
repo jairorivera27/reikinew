@@ -2,6 +2,7 @@
 title: "Inversor Solar On-Grid Growatt 36kW 36KTL3-XL2"
 description: "Inversor on-grid (conectado a red) Growatt 36KTL3-XL2 de 36kW, trifásico. Convierte la energía de tus paneles para el consumo de la casa o el negocio y entrega los excedentes a la red, sin baterías. La foto es de referencia de la serie Growatt MOD. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-tienda/inversores/growatt-mod.jpg"
+imageCard: "/images/productos-tienda/inversores/growatt-mod-card.webp"
 category: "inversores"
 price: "$12.048.250"
 specifications:

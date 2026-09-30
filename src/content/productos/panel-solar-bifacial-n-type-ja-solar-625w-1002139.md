@@ -2,6 +2,7 @@
 title: "Panel Solar Bifacial N-Type JA Solar 625W 1002139"
 description: "Panel solar JA Solar de 625 W (bifacial, celdas N-Type). Genera en promedio unos 2,8 kWh al día y cerca de 84 kWh al mes en Colombia. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar.webp"
+imageCard: "/images/productos-estudio/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar-card.webp"
 category: "paneles"
 price: "$450.355"
 specifications:

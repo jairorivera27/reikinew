@@ -2,6 +2,7 @@
 title: "Adaptador Bluetooth Victron 8–70VDC VE.Bus Smart Dongle"
 description: "Datalogger / módulo de monitoreo Victron VE.Bus Smart Dongle. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-cerbo-gx.webp"
+imageCard: "/images/productos-estudio/victron-cerbo-gx-card.webp"
 category: "accesorios"
 price: "$465.435"
 specifications:

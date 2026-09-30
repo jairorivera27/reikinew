@@ -1,7 +1,8 @@
 ---
 title: "Reflector Solar 200W 20Ah RGB"
 description: "Reflector solar 200W RGB con bateria de 20Ah para iluminacion decorativa y funcional en exteriores. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
-image: "/images/productos-estudio/reflector-led-solar-200w.webp"
+image: "/images/productos-estudio/masterlights-reflector-200w.webp"
+imageCard: "/images/productos-estudio/masterlights-reflector-200w-card.webp"
 category: "reflectores"
 price: "$331.500"
 specifications:
@@ -13,7 +14,7 @@ specifications:
 model: "RSL-200W-20AH-RGB"
 stock: "disponible"
 order: 13
-imageThumb: "/images/productos-estudio/reflector-led-solar-200w-thumb.webp"
+imageThumb: "/images/productos-estudio/masterlights-reflector-200w-thumb.webp"
 imageAlt: "RSL-200W-20AH-RGB – Reiki Energía Solar"
 imageOriginal: "/images/Productos tienda/Luminarias/reflector led solar 200W.jpeg"
 imagen_provisional: true
@@ -25,6 +26,7 @@ faqs:
   - pregunta: "¿Necesita cableado?"
     respuesta: "No. El panel solar carga la batería integrada y el equipo se enciende automáticamente al oscurecer."
 fichaPdf: "/fichas/reiki/reflector-solar-led-200w-rgb.pdf"
+brand: "Master Lights"
 ---
 
 Reflector solar RGB de 200W para proyectos decorativos, comerciales y residenciales con autonomia solar.

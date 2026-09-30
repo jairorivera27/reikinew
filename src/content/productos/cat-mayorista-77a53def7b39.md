@@ -2,6 +2,7 @@
 title: "Inversor Híbrido Huawei SUN2000-3KTL-L1 3 kW Monofásico"
 description: "Inversor string monofásico Huawei SUN2000-3KTL-L1 para conexión a red, con doble MPPT, alto rendimiento y protecciones avanzadas (incl. detección de arco según revisión). Compatible con integración de baterías LUNA2000 en configuraciones híbridas admitidas por Huawei. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/huawei-sun2000-3ktl-l1.webp"
+imageCard: "/images/productos-estudio/huawei-sun2000-3ktl-l1-card.webp"
 category: "inversores"
 price: "$2.409.750"
 specifications:

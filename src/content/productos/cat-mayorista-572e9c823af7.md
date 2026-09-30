@@ -3,6 +3,7 @@ draft: true
 title: "SmartLogger3000A00GL"
 description: "Huawei SmartLogger3000: concentrador de datos y gestión para inversores SUN2000 y periféricos (medidores, optimizadores, baterías), con interfaces según variante (GL/AU/EU)."
 image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-mcb-ac-card.webp"
 category: "protecciones"
 price: "$2.708.100"
 specifications:

@@ -2,6 +2,7 @@
 title: "Victron MultiPlus 12/2000"
 description: "MultiPlus Victron Energy, 12/2000, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-multiplus-compact-12-2000.webp"
+imageCard: "/images/productos-estudio/victron-multiplus-compact-12-2000-card.webp"
 category: "inversores"
 price: "$3.993.806"
 specifications:

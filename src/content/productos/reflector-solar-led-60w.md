@@ -1,7 +1,8 @@
 ---
 title: "Reflector Solar 60W 10Ah"
 description: "Reflector solar 60W con bateria de 10Ah para iluminacion de seguridad en exteriores. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
-image: "/images/productos-estudio/rsl-60w-10ah.webp"
+image: "/images/productos-estudio/masterlights-reflector-60w.webp"
+imageCard: "/images/productos-estudio/masterlights-reflector-60w-card.webp"
 category: "reflectores"
 price: "$169.000"
 specifications:
@@ -13,7 +14,7 @@ specifications:
 model: "RSL-60W-10AH"
 stock: "disponible"
 order: 10
-imageThumb: "/images/productos-estudio/rsl-60w-10ah-thumb.webp"
+imageThumb: "/images/productos-estudio/masterlights-reflector-60w-thumb.webp"
 imageAlt: "RSL-60W-10AH – Reiki Energía Solar"
 imageOriginal: "/images/Productos tienda/Luminarias/reflector led solar 60W.jpeg"
 faqs:
@@ -24,6 +25,9 @@ faqs:
   - pregunta: "¿Necesita cableado?"
     respuesta: "No. El panel solar carga la batería integrada y el equipo se enciende automáticamente al oscurecer."
 fichaPdf: "/fichas/reiki/reflector-solar-led-60w.pdf"
+imagen_provisional: true
+brand: "Master Lights"
+imagenSerieRef: "Master Lights reflector solar"
 ---
 
 Reflector solar compacto de 60W, ideal para reforzar iluminacion nocturna con bajo consumo y buena autonomia.

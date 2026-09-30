@@ -2,6 +2,7 @@
 title: "Inversor Solar Híbrido Felicity 28kW 3004249"
 description: "Inversor híbrido Felicity de 28kW. Trabaja con paneles, baterías y red: aprovecha el sol de día, guarda energía y te respalda cuando hay cortes. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/inversor-hibrido-felicity-28kw-160-800v-4-mppt.webp"
+imageCard: "/images/productos-estudio/inversor-hibrido-felicity-28kw-160-800v-4-mppt-card.webp"
 category: "inversores"
 price: "$18.292.682"
 specifications:

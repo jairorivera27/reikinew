@@ -2,6 +2,7 @@
 title: "Centro de Comunicación Victron Ekrano GX con Pantalla de 7 pulgadas"
 description: "Datalogger / módulo de monitoreo Victron Ekrano GX. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-ekrano-gx-pantalla-7-pulgadas.webp"
+imageCard: "/images/productos-estudio/victron-ekrano-gx-pantalla-7-pulgadas-card.webp"
 category: "accesorios"
 price: "$3.109.381"
 specifications:

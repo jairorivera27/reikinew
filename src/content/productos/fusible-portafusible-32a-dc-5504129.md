@@ -3,6 +3,7 @@ draft: true
 title: "Fusible/Portafusible 32A DC 5504129"
 description: "Fusible/Portafusible 32A DC 5504129. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Modelo: 5504129; especificación principal: 32A DC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/generic-pv-fuse.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-pv-fuse-card.webp"
 category: "protecciones"
 price: "$5.531"
 specifications:

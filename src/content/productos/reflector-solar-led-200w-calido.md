@@ -1,7 +1,8 @@
 ---
 title: "Reflector Solar 200W 20Ah Calido"
 description: "Reflector solar 200W luz calida con bateria de 20Ah, ideal para ambientes confortables en exteriores. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
-image: "/images/productos-estudio/reflector-led-solar-200w.webp"
+image: "/images/productos-estudio/masterlights-reflector-200w.webp"
+imageCard: "/images/productos-estudio/masterlights-reflector-200w-card.webp"
 category: "reflectores"
 price: "$318.500"
 specifications:
@@ -13,7 +14,7 @@ specifications:
 model: "RSL-200W-20AH-CA"
 stock: "disponible"
 order: 14
-imageThumb: "/images/productos-estudio/reflector-led-solar-200w-thumb.webp"
+imageThumb: "/images/productos-estudio/masterlights-reflector-200w-thumb.webp"
 imageAlt: "RSL-200W-20AH-CA – Reiki Energía Solar"
 imageOriginal: "/images/Productos tienda/Luminarias/reflector led solar 200W.jpeg"
 imagen_provisional: true
@@ -25,6 +26,7 @@ faqs:
   - pregunta: "¿Necesita cableado?"
     respuesta: "No. El panel solar carga la batería integrada y el equipo se enciende automáticamente al oscurecer."
 fichaPdf: "/fichas/reiki/reflector-solar-led-200w-calido.pdf"
+brand: "Master Lights"
 ---
 
 Reflector solar 200W en tono calido para lograr una iluminacion exterior mas acogedora y eficiente.

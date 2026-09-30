@@ -2,6 +2,7 @@
 title: "Sistema de Monitoreo Solar APsystems ECU-R-MX"
 description: "Datalogger / módulo de monitoreo APsystems ECU-R-MX. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/apsystems-ecu.webp"
+imageCard: "/images/productos-estudio/apsystems-ecu-card.webp"
 category: "accesorios"
 price: "$1.069.250"
 specifications:

@@ -2,6 +2,7 @@
 title: "Sistema de Baterías Stack 15kWh"
 description: "Sistema modular de baterías de litio apilables, permite expandir la capacidad según necesidades. Ideal para instalaciones comerciales. La foto es de referencia de la serie Pylontech UF. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/pylontech-uf5000-prov.webp"
+imageCard: "/images/productos-estudio/pylontech-uf5000-prov-card.webp"
 category: "baterias"
 price: "$36.900.000"
 specifications:

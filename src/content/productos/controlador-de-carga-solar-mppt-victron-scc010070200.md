@@ -2,6 +2,7 @@
 title: "Controlador de Carga Solar MPPT Victron SCC010070200"
 description: "Controlador de carga solar MPPT Victron SCC010070200. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+imageCard: "/images/productos-estudio/victron-smartsolar-mppt-prov-card.webp"
 category: "controladores"
 price: "$1.624.788"
 specifications:

@@ -2,6 +2,7 @@
 title: "Microinversor Hoymiles HMS-1000-2T 1000 W"
 description: "Microinversor Hoymiles HMS-1000-2T 1000 W. 12 años de garantía de fabricante. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/microinversor-hoymiles-hms-1000-2t-1000-w.webp"
+imageCard: "/images/productos-estudio/microinversor-hoymiles-hms-1000-2t-1000-w-card.webp"
 imageThumb: "/images/productos-estudio/microinversor-hoymiles-hms-1000-2t-1000-w-thumb.webp"
 imageAlt: "Microinversor Hoymiles HMS-1000-2T 1000 W – Reiki Energía Solar"
 category: "inversores"

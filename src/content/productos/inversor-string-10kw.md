@@ -2,6 +2,7 @@
 title: "Inversor On-Grid Huawei SUN2000-36KTL-M3 36 kW Trifásico"
 description: "Inversor Huawei SUN2000-36KTL-M3, potencia trifásica para proyectos comerciales e industriales. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/huawei-sun2000-36ktl-m3.webp"
+imageCard: "/images/productos-estudio/huawei-sun2000-36ktl-m3-card.webp"
 category: "inversores"
 price: "$12.300.000"
 specifications:

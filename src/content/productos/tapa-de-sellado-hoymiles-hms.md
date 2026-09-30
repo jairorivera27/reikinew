@@ -2,6 +2,7 @@
 title: "Tapa de Sellado Hoymiles HMS"
 description: "Tapa de Sellado Hoymiles HMS. 1 año de garantía por fabricante, Tapa de protección de ramal. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/tapa-de-sellado-hoymiles-hms.webp"
+imageCard: "/images/productos-estudio/tapa-de-sellado-hoymiles-hms-card.webp"
 imageThumb: "/images/productos-estudio/tapa-de-sellado-hoymiles-hms-thumb.webp"
 imageAlt: "Tapa de Sellado Hoymiles HMS – Reiki Energía Solar"
 category: "accesorios"

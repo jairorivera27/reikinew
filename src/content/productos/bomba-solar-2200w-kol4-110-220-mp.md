@@ -2,6 +2,7 @@
 title: "Bomba Solar 2200W KOL4-110-220-MP"
 description: "Bomba solar sumergible Kolos KOL4-110-220-MP de 2200 W. Bombea agua directamente con energía solar para riego, ganadería o uso doméstico, sin factura de energía. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/kolos4-sumergible-prov.webp"
+imageCard: "/images/productos-estudio/kolos4-sumergible-prov-card.webp"
 category: "bombeo"
 price: "$4.084.972"
 specifications:

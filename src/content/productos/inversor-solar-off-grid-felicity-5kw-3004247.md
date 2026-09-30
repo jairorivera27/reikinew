@@ -2,6 +2,7 @@
 title: "Inversor Solar Off-Grid Felicity 5kW 3004247"
 description: "Inversor off-grid Felicity de 5kW. Para sistemas aislados de la red: convierte la energía de las baterías en corriente alterna para tus equipos. La foto es de referencia de la serie Felicity Hybrid. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/felicity-hybrid-prov.webp"
+imageCard: "/images/productos-estudio/felicity-hybrid-prov-card.webp"
 category: "inversores"
 price: "$1.785.714"
 specifications:

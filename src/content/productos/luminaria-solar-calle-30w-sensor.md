@@ -1,7 +1,8 @@
 ---
 title: "Luminaria Solar de Calle 30W 5Ah con Sensor"
 description: "Luminaria solar de calle 30W con bateria de 5Ah y sensor de movimiento para vias y accesos residenciales. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
-image: "/images/productos-estudio/lcs-30w-5ah-sm.webp"
+image: "/images/productos-estudio/masterlights-lcs-30w.webp"
+imageCard: "/images/productos-estudio/masterlights-lcs-30w-card.webp"
 category: "reflectores"
 price: "$130.000"
 specifications:
@@ -13,7 +14,7 @@ specifications:
 model: "LCS-30W-5AH-SM"
 stock: "disponible"
 order: 17
-imageThumb: "/images/productos-estudio/lcs-30w-5ah-sm-thumb.webp"
+imageThumb: "/images/productos-estudio/masterlights-lcs-30w-thumb.webp"
 imageAlt: "LCS-30W-5AH-SM – Reiki Energía Solar"
 imageOriginal: "/images/Productos tienda/Luminarias/Luminaria solar 30w.jpeg"
 faqs:
@@ -24,6 +25,8 @@ faqs:
   - pregunta: "¿Necesita cableado?"
     respuesta: "No. El panel solar carga la batería integrada y el equipo se enciende automáticamente al oscurecer."
 fichaPdf: "/fichas/reiki/luminaria-solar-calle-30w-sensor.pdf"
+imagen_provisional: false
+brand: "Master Lights"
 ---
 
 Luminaria solar compacta con sensor de movimiento para mejorar seguridad y visibilidad nocturna.

@@ -2,6 +2,7 @@
 title: "Inversor Solar On-Grid Growatt 8000W 3205064"
 description: "Inversor on-grid (conectado a red) Growatt de 8000W. Convierte la energía de tus paneles para el consumo de la casa o el negocio y entrega los excedentes a la red, sin baterías. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/inversor-growatt-mid-8k-tl3-xl2.webp"
+imageCard: "/images/productos-estudio/inversor-growatt-mid-8k-tl3-xl2-card.webp"
 category: "inversores"
 price: "$5.252.738"
 specifications:

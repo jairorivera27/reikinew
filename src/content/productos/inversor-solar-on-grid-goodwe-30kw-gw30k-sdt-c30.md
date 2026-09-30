@@ -2,6 +2,7 @@
 title: "Inversor Solar On-Grid GoodWe 30kW GW30K-SDT-C30"
 description: "Inversor on-grid (conectado a red) GoodWe GW30K-SDT-C30 de 30kW. Convierte la energía de tus paneles para el consumo de la casa o el negocio y entrega los excedentes a la red, sin baterías. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/goodwe-sdt-prov.webp"
+imageCard: "/images/productos-estudio/goodwe-sdt-prov-card.webp"
 category: "inversores"
 price: "$5.439.000"
 specifications:

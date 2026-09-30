@@ -3,6 +3,7 @@ draft: true
 title: "Breaker 32A AC 32A1P"
 description: "Breaker 32A AC 32A1P. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Modelo: 32A1P; especificación principal: 32A AC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-mcb-ac-card.webp"
 category: "protecciones"
 price: "$16.348"
 specifications:

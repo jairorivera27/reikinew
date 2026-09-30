@@ -2,6 +2,7 @@
 title: "Breaker Suntree 63A DC 5504145"
 description: "Interruptor termomagnético (breaker) Suntree DC de 63 A. Protege el circuito contra sobrecargas y cortocircuitos y permite desconectarlo para mantenimiento. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/breaker-solar-dc-2x63a-550v-suntree.webp"
+imageCard: "/images/productos-estudio/breaker-solar-dc-2x63a-550v-suntree-card.webp"
 category: "protecciones"
 price: "$63.377"
 specifications:

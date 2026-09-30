@@ -2,6 +2,7 @@
 title: "Controlador de Carga Solar MPPT Inti 30A 3024"
 description: "Controlador de carga solar MPPT Inti de 30 A. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-tienda/controladores/inti-mppt.jpg"
+imageCard: "/images/productos-tienda/controladores/inti-mppt-card.webp"
 category: "controladores"
 price: "$437.500"
 specifications:

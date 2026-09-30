@@ -2,6 +2,7 @@
 title: "Inversor Solar On-Grid Growatt 15kW 15KTL3-XL2"
 description: "Inversor on-grid (conectado a red) Growatt 15KTL3-XL2 de 15kW, trifásico. Convierte la energía de tus paneles para el consumo de la casa o el negocio y entrega los excedentes a la red, sin baterías. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/growatt-mid-15tl3-xl2.webp"
+imageCard: "/images/productos-estudio/growatt-mid-15tl3-xl2-card.webp"
 category: "inversores"
 price: "$9.337.375"
 specifications:

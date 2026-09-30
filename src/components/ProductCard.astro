@@ -58,10 +58,12 @@ function getSearchText() {
 >
   <div class="producto-image-container">
     <img
-      src={producto.data.imageThumb || producto.data.image}
-      srcset={producto.data.imageThumb
-        ? `${producto.data.imageThumb} 600w, ${producto.data.image} 1600w`
-        : undefined}
+      src={producto.data.imageCard || producto.data.imageThumb || producto.data.image}
+      srcset={producto.data.imageCard
+        ? undefined
+        : producto.data.imageThumb
+          ? `${producto.data.imageThumb} 600w, ${producto.data.image} 1600w`
+          : undefined}
       sizes="(max-width: 640px) 45vw, (max-width: 1024px) 30vw, 280px"
       alt={producto.data.imageAlt ?? `${producto.data.brand ? producto.data.brand + ' ' : ''}${producto.data.title} – Reiki Energía Solar`}
       class="producto-image"

@@ -3,6 +3,7 @@ draft: true
 title: "Solis Hibrido S6-EH1P7.6K-H-US"
 description: "Inversor híbrido Solis: gestión de energía solar, batería y red con MPPT múltiples, protecciones AFCI (según modelo) y alta eficiencia de conversión."
 image: "/images/livoltek.png"
+imageCard: "/images/livoltek-card.webp"
 category: "inversores"
 price: "$14.940.150"
 specifications:

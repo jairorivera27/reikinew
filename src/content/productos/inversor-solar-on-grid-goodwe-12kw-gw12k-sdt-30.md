@@ -2,6 +2,7 @@
 title: "Inversor Solar On-Grid GoodWe 12kW GW12K-SDT-30"
 description: "Inversor on-grid (conectado a red) GoodWe GW12K-SDT-30 de 12kW. Convierte la energía de tus paneles para el consumo de la casa o el negocio y entrega los excedentes a la red, sin baterías. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/goodwe-sdt-prov.webp"
+imageCard: "/images/productos-estudio/goodwe-sdt-prov-card.webp"
 category: "inversores"
 price: "$4.291.000"
 specifications:

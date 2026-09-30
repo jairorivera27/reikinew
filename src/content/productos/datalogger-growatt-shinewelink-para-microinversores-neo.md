@@ -2,6 +2,7 @@
 title: "Datalogger Growatt ShineWeLink para Microinversores NEO"
 description: "Datalogger / módulo de monitoreo Growatt ShineWeLink. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/growatt-shine.webp"
+imageCard: "/images/productos-estudio/growatt-shine-card.webp"
 category: "accesorios"
 price: "$188.303"
 specifications:

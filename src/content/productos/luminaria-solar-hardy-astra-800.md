@@ -2,6 +2,7 @@
 title: "Luminaria Solar Hardy Astra 800 – 14 W reales · 2.590 lm"
 description: "Lámpara solar integrada para alumbrado público autónomo Hardy Astra 800 de 14 W reales y 2.590 lm (185 lm/W). Se comercializa como \"800 W equivalente\"; la potencia real medida es 14 W. Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 20 Ah, con autonomía de hasta 12 h. Se instala a 5 – 6 m de altura y ilumina hasta 100 m². Protección IP66 / IK08 para exterior. Producto certificado RETILAP (Cumple Resolución 40150 de mayo 03 de 2024)."
 image: "/images/productos-estudio/hardy-astra-800.webp"
+imageCard: "/images/productos-estudio/hardy-astra-800-card.webp"
 imageThumb: "/images/productos-estudio/hardy-astra-800-thumb.webp"
 imageAlt: "Luminaria Solar Hardy Astra 800 – 14 W reales · 2.590 lm – Reiki Energía Solar"
 category: "reflectores"

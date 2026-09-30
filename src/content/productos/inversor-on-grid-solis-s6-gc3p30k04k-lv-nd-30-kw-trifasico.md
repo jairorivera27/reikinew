@@ -2,6 +2,7 @@
 title: "Inversor On-Grid Solis S6-GC3P30K04K-LV-ND 30 kW Trifásico"
 description: "Inversor On-Grid Solis S6-GC3P30K04K-LV-ND 30 kW Trifásico. Inversor Trifasico con 4 MPPT y dos entradas por MPPT, 208/220Vac y eficiencia máxima de 97,8%. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. La foto es de referencia de la serie Solis S6-GC3P LV. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/inversor-on-grid-solis-s6-gc3p30k04k-lv-nd-30-kw-trifasico.webp"
+imageCard: "/images/productos-estudio/inversor-on-grid-solis-s6-gc3p30k04k-lv-nd-30-kw-trifasico-card.webp"
 imageAlt: "Inversor On-Grid Solis S6-GC3P30K04K-LV-ND 30 kW Trifásico – Reiki Energía Solar"
 category: "inversores"
 price: "$8.949.000"

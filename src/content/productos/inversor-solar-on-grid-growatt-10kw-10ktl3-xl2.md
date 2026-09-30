@@ -2,6 +2,7 @@
 title: "Inversor Solar On-Grid Growatt 10kW 10KTL3-XL2"
 description: "Inversor on-grid (conectado a red) Growatt 10KTL3-XL2 de 10kW, trifásico. Convierte la energía de tus paneles para el consumo de la casa o el negocio y entrega los excedentes a la red, sin baterías. La foto es de referencia de la serie Growatt MID TL3-XL2. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/growatt-mid-15tl3-xl2.webp"
+imageCard: "/images/productos-estudio/growatt-mid-15tl3-xl2-card.webp"
 category: "inversores"
 price: "$7.982.000"
 specifications:

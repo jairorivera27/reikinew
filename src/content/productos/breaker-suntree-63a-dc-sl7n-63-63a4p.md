@@ -2,6 +2,7 @@
 title: "Breaker Suntree 63A DC SL7N-63-63A4P"
 description: "Interruptor termomagnético (breaker) Suntree SL7N-63-63A4P DC de 63 A. Protege el circuito contra sobrecargas y cortocircuitos y permite desconectarlo para mantenimiento. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/suntree-sl7n-dc.webp"
+imageCard: "/images/productos-estudio/suntree-sl7n-dc-card.webp"
 category: "protecciones"
 price: "$186.176"
 specifications:

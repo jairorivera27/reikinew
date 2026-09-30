@@ -2,6 +2,7 @@
 title: "Medidor Trifásico Hoymiles DTSU666 con CT 3×100A"
 description: "Medidor Trifásico Hoymiles DTSU666 con CT 3×100A. Medidor de energía CHINT DTSU666, Tipo de red 3P, 100A, incluye 3 CT 100A. Conexión RS485. Tipo Riel. 2 años de garantía por fabricante. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/medidor-trifasico-hoymiles-dtsu666-con-ct-3100a.webp"
+imageCard: "/images/productos-estudio/medidor-trifasico-hoymiles-dtsu666-con-ct-3100a-card.webp"
 imageThumb: "/images/productos-estudio/medidor-trifasico-hoymiles-dtsu666-con-ct-3100a-thumb.webp"
 imageAlt: "Medidor Trifásico Hoymiles DTSU666 con CT 3×100A – Reiki Energía Solar"
 category: "accesorios"

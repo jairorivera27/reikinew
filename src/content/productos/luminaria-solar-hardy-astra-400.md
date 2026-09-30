@@ -2,6 +2,7 @@
 title: "Luminaria Solar Hardy Astra 400 · 2.000 lm"
 description: "Lámpara solar integrada para alumbrado Hardy Astra 400 y 2.000 lm. Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 12 Ah y panel 12 W / 6 V monocristalino. Protección IP66 para exterior. Datos del catálogo general de Hardy (el proveedor no entregó ficha técnica de este modelo)."
 image: "/images/productos-estudio/hardy-astra-400.webp"
+imageCard: "/images/productos-estudio/hardy-astra-400-card.webp"
 imageThumb: "/images/productos-estudio/hardy-astra-400-thumb.webp"
 imageAlt: "Luminaria Solar Hardy Astra 400 · 2.000 lm – Reiki Energía Solar"
 category: "reflectores"

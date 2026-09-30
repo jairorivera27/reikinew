@@ -2,6 +2,7 @@
 title: "Luminaria Solar Hardy Ares 500 – 20 W reales · 3.000 lm"
 description: "Luminaria solar integrada para alumbrado público Hardy Ares 500 de 20 W reales y 3.000 lm (150 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 25 Ah y panel 28 W / 6 V monocristalino (integrado, 670 × 280 mm), con autonomía de 2 – 3 noches con carga completa. Se instala a 6 – 8 m de altura y ilumina 80 – 120 m². Protección IP65 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de 2024)."
 image: "/images/productos-estudio/hardy-ares-500.webp"
+imageCard: "/images/productos-estudio/hardy-ares-500-card.webp"
 imageThumb: "/images/productos-estudio/hardy-ares-500-thumb.webp"
 imageAlt: "Luminaria Solar Hardy Ares 500 – 20 W reales · 3.000 lm – Reiki Energía Solar"
 category: "reflectores"

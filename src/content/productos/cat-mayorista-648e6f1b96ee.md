@@ -2,6 +2,7 @@
 title: "Batería Pytes V5° LiFePO4 5,12 kWh 51,2V 100Ah"
 description: "Sistema o módulo de almacenamiento en litio (LiFePO₄ típico) para acoplamiento con inversores compatibles; BMS, expansión y cableado según referencia Pytes o BYD. La foto es de referencia de la serie Pytes. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/pytes-battery-prov.webp"
+imageCard: "/images/productos-estudio/pytes-battery-prov-card.webp"
 category: "baterias"
 price: "$5.706.900"
 specifications:

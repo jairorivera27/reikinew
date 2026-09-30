@@ -2,6 +2,7 @@
 title: "Inversor Cargador Must PV30-1524"
 description: "Inversor Must PV30-1524 LVHM, eficiente y robusto para sistemas aislados y de respaldo. La foto es de referencia de la serie Must PV. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/must-pv-prov.webp"
+imageCard: "/images/productos-estudio/must-pv-prov-card.webp"
 category: "inversores"
 price: "$1.390.000"
 specifications:

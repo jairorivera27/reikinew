@@ -3,6 +3,7 @@ draft: true
 title: "Breaker 250A AC 250HU-3P-125"
 description: "Breaker 250A AC 250HU-3P-125. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Modelo: 250HU-3P-125; especificación principal: 250A AC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/generic-mccb.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-mccb-card.webp"
 category: "protecciones"
 price: "$668.899"
 specifications:

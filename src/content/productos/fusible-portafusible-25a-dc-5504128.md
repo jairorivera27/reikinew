@@ -3,6 +3,7 @@ draft: true
 title: "Fusible/Portafusible 25A DC 5504128"
 description: "Fusible/Portafusible 25A DC 5504128. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Modelo: 5504128; especificación principal: 25A DC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/generic-pv-fuse.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-pv-fuse-card.webp"
 category: "protecciones"
 price: "$5.360"
 specifications:

@@ -2,6 +2,7 @@
 title: "Controlador de Carga MPPT EPever Tracer 6415AN 60A"
 description: "Controlador de carga solar MPPT de 60 amperios con comunicación Bluetooth. Control desde smartphone y monitoreo avanzado. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/epever-tracer-6415an-prov.webp"
+imageCard: "/images/productos-estudio/epever-tracer-6415an-prov-card.webp"
 category: "controladores"
 price: "$869.000"
 specifications:

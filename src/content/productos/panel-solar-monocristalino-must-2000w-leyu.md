@@ -2,6 +2,7 @@
 title: "Panel Solar Monocristalino Must 2000W LEYU"
 description: "Panel solar Must LEYU de 2000 W (monocristalino). Genera en promedio unos 9 kWh al día y cerca de 270 kWh al mes en Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/must-leyu-2000w.webp"
+imageCard: "/images/productos-estudio/must-leyu-2000w-card.webp"
 category: "paneles"
 price: "$1.467.500"
 specifications:

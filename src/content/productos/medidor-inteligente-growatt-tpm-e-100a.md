@@ -2,6 +2,7 @@
 title: "Medidor Inteligente Growatt TPM-E 100A"
 description: "Medidor Inteligente Growatt TPM-E 100A. 1 año de garantía por fabricante. Medidor de energía TPM-E para conexión en Estrella directa, para inversores trifásicos de 480/220V. Pantalla LCD max 100A. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/medidor-inteligente-growatt-tpm-e-100a.webp"
+imageCard: "/images/productos-estudio/medidor-inteligente-growatt-tpm-e-100a-card.webp"
 imageAlt: "Medidor Inteligente Growatt TPM-E 100A – Reiki Energía Solar"
 category: "accesorios"
 price: "$676.000"

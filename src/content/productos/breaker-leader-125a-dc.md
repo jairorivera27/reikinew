@@ -2,6 +2,7 @@
 title: "Breaker Leader 125A DC"
 description: "Interruptor termomagnético (breaker) Leader DC de 125 A. Protege el circuito contra sobrecargas y cortocircuitos y permite desconectarlo para mantenimiento. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/leader-breaker.webp"
+imageCard: "/images/productos-estudio/leader-breaker-card.webp"
 category: "protecciones"
 price: "$59.500"
 specifications:

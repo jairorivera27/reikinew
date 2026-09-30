@@ -2,6 +2,7 @@
 title: "Panel Remoto Victron para Controlador BlueSolar PWM-Pro SCC900300000"
 description: "Panel remoto (display) Victron SCC900300000 para los controladores de carga BlueSolar PWM-Pro: muestra el estado de carga y permite ajustar parámetros a distancia. No es un panel solar. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-bluesolar-mono-scc900300000.webp"
+imageCard: "/images/productos-estudio/victron-bluesolar-mono-scc900300000-card.webp"
 category: "accesorios"
 price: "$190.181"
 specifications:

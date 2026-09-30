@@ -2,6 +2,7 @@
 title: "Victron Quattro-II 12/3000"
 description: "Quattro-II Victron Energy, 12/3000, 2x120 V CA, inversor-cargador para sistemas híbridos y aislados. La foto es de referencia de la serie Victron Quattro. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-quattro-prov.webp"
+imageCard: "/images/productos-estudio/victron-quattro-prov-card.webp"
 category: "inversores"
 price: "$5.469.800"
 specifications:

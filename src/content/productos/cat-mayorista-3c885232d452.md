@@ -3,6 +3,7 @@ draft: true
 title: "Inversor Fronius Symo 12.0-3 208 / 240"
 description: "Inversor Fronius (Primo, Symo, Tauro): tecnología SnapINverter o plataforma comercial según familia, MPPT múltiples y monitorización Solar.web."
 image: "/images/logo-Victron-Energy-Ecogreensolar-1.jpg"
+imageCard: "/images/logo-Victron-Energy-Ecogreensolar-1-card.webp"
 category: "inversores"
 price: "$18.054.000"
 specifications:

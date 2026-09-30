@@ -2,6 +2,7 @@
 title: "Studer MPPT Solar Charge Controller - Vt 80 - 48V"
 description: "Controlador solar MPPT Studer serie VT/VS: máximo aprovechamiento de campo FV hacia banco de baterías de 48 V (según modelo). Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/studer-vs-prov.webp"
+imageCard: "/images/productos-estudio/studer-vs-prov-card.webp"
 category: "controladores"
 price: "$6.762.600"
 specifications:

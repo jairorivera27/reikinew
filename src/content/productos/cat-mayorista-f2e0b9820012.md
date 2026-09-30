@@ -2,6 +2,7 @@
 title: "Inversor On-Grid Huawei SUN2000-50K-MGL0 50 kW Trifásico"
 description: "Inversor central / string de gran formato Huawei SUN2000 para plantas de megavatios o grandes comerciales: arquitectura de alta tensión, múltiples MPPT y telemetría con SmartLogger. La foto es de referencia de la serie Huawei SUN2000. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/huawei-sun2000-prov.webp"
+imageCard: "/images/productos-estudio/huawei-sun2000-prov-card.webp"
 category: "inversores"
 price: "$24.524.900"
 specifications:

@@ -2,6 +2,7 @@
 title: "Luminaria Solar Hardy Orion – 35 W reales · 7.700 lm"
 description: "Luminaria solar para alumbrado exterior (serie Orion) Hardy Orion de 35 W reales y 7.700 lm (≥ 220 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 80 Ah (4.000 ciclos) y panel 80 W / 5 V monocristalino separado (670 × 710 mm), con autonomía de hasta 12 h al 100 %; hasta 36 h en modo 30 %. Se instala a 8 – 10 m de altura y ilumina 240 m² (referencial). Protección IP66 / IK08 para exterior. Versión para evaluación RETILAP (Res. 40150 de 2024), ensayo EVERFINE."
 image: "/images/productos-estudio/hardy-orion.webp"
+imageCard: "/images/productos-estudio/hardy-orion-card.webp"
 imageThumb: "/images/productos-estudio/hardy-orion-thumb.webp"
 imageAlt: "Luminaria Solar Hardy Orion – 35 W reales · 7.700 lm – Reiki Energía Solar"
 category: "reflectores"

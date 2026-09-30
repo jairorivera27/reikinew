@@ -2,6 +2,7 @@
 title: "Batería Solar Litio Growatt 51,2V 5.0kWh IP21"
 description: "Batería litio Growatt IP21 de 5.0 kWh. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. La foto es de referencia de la serie Growatt ARK. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-tienda/baterias/growatt-ark.png"
+imageCard: "/images/productos-tienda/baterias/growatt-ark-card.webp"
 category: "baterias"
 price: "$5.637.849"
 specifications:

@@ -2,6 +2,7 @@
 title: "Reflector Solar Hardy Vega 1000 – 100 W reales · 14.000 lm"
 description: "Reflector solar profesional para canchas deportivas Hardy Vega 1000 de 100 W reales y 14.000 lm (140 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 80 Ah y panel 80 W / 6 V monocristalino separado, con autonomía de 12 – 14 h. Se instala a 8 – 12 m de altura y ilumina 600 – 800 m² por reflector. Protección IP66 / IK08 para exterior. Producto certificado RETILAP (Resolución 40150 de mayo 03 de 2024)."
 image: "/images/productos-estudio/hardy-vega-1000.webp"
+imageCard: "/images/productos-estudio/hardy-vega-1000-card.webp"
 imageThumb: "/images/productos-estudio/hardy-vega-1000-thumb.webp"
 imageAlt: "Reflector Solar Hardy Vega 1000 – 100 W reales · 14.000 lm – Reiki Energía Solar"
 category: "reflectores"

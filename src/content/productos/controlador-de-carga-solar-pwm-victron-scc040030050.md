@@ -2,6 +2,7 @@
 title: "Controlador de Carga Solar PWM Victron SCC040030050"
 description: "Controlador de carga solar PWM Victron SCC040030050. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-bluesolar-pwm-lcdusb-1224v-30a.webp"
+imageCard: "/images/productos-estudio/victron-bluesolar-pwm-lcdusb-1224v-30a-card.webp"
 category: "controladores"
 price: "$190.181"
 specifications:

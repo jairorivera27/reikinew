@@ -2,6 +2,7 @@
 title: "DPS Supresor Suntree 20A DC SHLX-3"
 description: "Protector contra sobretensiones (DPS) Suntree SHLX-3 DC. Desvía a tierra las sobretensiones por rayos y maniobras antes de que dañen inversores, controladores y paneles. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/suntree-spd-dc.webp"
+imageCard: "/images/productos-estudio/suntree-spd-dc-card.webp"
 category: "protecciones"
 price: "$754.906"
 specifications:

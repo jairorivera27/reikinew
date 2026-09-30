@@ -2,6 +2,7 @@
 title: "Panel Solar Monocristalino Felicity 1kW 3004613"
 description: "Panel solar Felicity de 1000 W (monocristalino). Genera en promedio unos 4,5 kWh al día y cerca de 135 kWh al mes en Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/felicity-3004613-1kw.webp"
+imageCard: "/images/productos-estudio/felicity-3004613-1kw-card.webp"
 category: "paneles"
 price: "$811.689"
 specifications:

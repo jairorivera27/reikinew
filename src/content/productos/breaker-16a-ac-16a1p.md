@@ -3,6 +3,7 @@ draft: true
 title: "Breaker 16A AC 16A1P"
 description: "Breaker 16A AC 16A1P. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Modelo: 16A1P; especificación principal: 16A AC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-mcb-ac-card.webp"
 category: "protecciones"
 price: "$15.046"
 specifications:

@@ -2,6 +2,7 @@
 title: "Módulo de Potencia Huawei LUNA2000-10kW-C1 para Batería LUNA2000"
 description: "Módulo o sistema de almacenamiento Huawei LUNA2000 (LiFePO₄, alta tensión según serie): expansión modular, BMS integrado y acoplamiento con inversores Huawei híbridos compatibles. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/huawei-luna2000-10kw-c1.webp"
+imageCard: "/images/productos-estudio/huawei-luna2000-10kw-c1-card.webp"
 category: "baterias"
 price: "$5.385.600"
 specifications:

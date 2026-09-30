@@ -2,6 +2,7 @@
 title: "Medidor Solis EPM3-5G PLUS Split Phase (Control de Exportación)"
 description: "Medidor Solis EPM3-5G PLUS Split Phase (Control de Exportación). 5 años de garantía por fabricante. Export Power Manager. Limitador de inyección para sistemas trifásicos, conexión hasta 80 inversores, Red 220V, RS485. Monitoreo y Smart Meter incluido. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. La foto es de referencia de la serie Solis EPM3-5G. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/medidor-solis-epm3-5g-plus-split-phase-control-de-exportacion.webp"
+imageCard: "/images/productos-estudio/medidor-solis-epm3-5g-plus-split-phase-control-de-exportacion-card.webp"
 imageAlt: "Medidor Solis EPM3-5G PLUS Split Phase (Control de Exportación) – Reiki Energía Solar"
 category: "accesorios"
 price: "$2.151.300"

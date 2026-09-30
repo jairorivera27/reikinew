@@ -2,6 +2,7 @@
 title: "Centro de comunicación Victron 8–70VDC Venus GX"
 description: "Datalogger / módulo de monitoreo Victron Venus GX. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/victron-cerbo-gx.webp"
+imageCard: "/images/productos-estudio/victron-cerbo-gx-card.webp"
 category: "accesorios"
 price: "$983.981"
 specifications:

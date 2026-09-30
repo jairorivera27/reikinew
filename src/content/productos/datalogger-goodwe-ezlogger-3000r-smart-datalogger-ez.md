@@ -2,6 +2,7 @@
 title: "Datalogger GoodWe EzLogger 3000R Smart DataLogger Ez"
 description: "Datalogger / módulo de monitoreo GoodWe EzLogger 3000R Smart DataLogger Ez. Permite ver en el celular la producción y el estado del sistema solar en tiempo real. La foto es de referencia de la serie GoodWe EzLogger. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/goodwe-ezlogger.webp"
+imageCard: "/images/productos-estudio/goodwe-ezlogger-card.webp"
 category: "accesorios"
 price: "$841.330"
 specifications:

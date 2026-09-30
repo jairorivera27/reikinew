@@ -3,6 +3,7 @@ draft: true
 title: "Breaker 40A AC 40A1P"
 description: "Breaker 40A AC 40A1P. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Modelo: 40A1P; especificación principal: 40A AC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/generic-mcb-ac.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-mcb-ac-card.webp"
 category: "protecciones"
 price: "$16.348"
 specifications:

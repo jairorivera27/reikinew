@@ -3,6 +3,7 @@ draft: true
 title: "Breaker 800A AC 800HU"
 description: "Breaker 800A AC 800HU. Equipo para protección y seguridad eléctrica de instalaciones fotovoltaicas. Modelo: 800HU; especificación principal: 800A AC. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/generic-mccb.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-mccb-card.webp"
 category: "protecciones"
 price: "$2.229.680"
 specifications:

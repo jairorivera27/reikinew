@@ -2,6 +2,7 @@
 title: "Hoymiles AC Trunk Port Disconnect Tool"
 description: "Accesorio de cableado o conexión CA/CC para sistemas con microinversores Hoymiles: troncal, tapas, herramientas de desconexión o extensiones homologadas por el fabricante. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/suntree-siso-dc.webp"
+imageCard: "/images/productos-estudio/suntree-siso-dc-card.webp"
 category: "protecciones"
 price: "$19.432"
 specifications:

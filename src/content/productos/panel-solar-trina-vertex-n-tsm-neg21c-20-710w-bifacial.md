@@ -2,6 +2,7 @@
 title: "Panel Solar Trina Vertex N TSM-NEG21C.20 710W Bifacial"
 description: "Panel Solar Trina Vertex N TSM-NEG21C.20 710W Bifacial. 12 años garantia por manufactura / 30 años garantía contra potencia lineal. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/panel-solar-trina-vertex-n-tsm-neg21c-20-710w-bifacial.webp"
+imageCard: "/images/productos-estudio/panel-solar-trina-vertex-n-tsm-neg21c-20-710w-bifacial-card.webp"
 imageThumb: "/images/productos-estudio/panel-solar-trina-vertex-n-tsm-neg21c-20-710w-bifacial-thumb.webp"
 imageAlt: "Panel Solar Trina Vertex N TSM-NEG21C.20 710W Bifacial – Reiki Energía Solar"
 category: "paneles"

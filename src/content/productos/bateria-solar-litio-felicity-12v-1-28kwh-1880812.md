@@ -2,6 +2,7 @@
 title: "Batería Solar Litio Felicity 12V 1,28kWh 1880812"
 description: "Batería litio Felicity de 1.28 kWh a 12.8V. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/bateria-litio-felicity-solar-128kwh-12v-100a-fla12100.webp"
+imageCard: "/images/productos-estudio/bateria-litio-felicity-solar-128kwh-12v-100a-fla12100-card.webp"
 category: "baterias"
 price: "$1.115.625"
 specifications:

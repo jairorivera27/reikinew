@@ -2,6 +2,7 @@
 title: "Batería Solar Litio Felicity 24V 7,15kWh FLA24280-EU"
 description: "Batería litio Felicity FLA24280-EU de 7,15 kWh a 24 V. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. La foto es de referencia de la serie Felicity FLA24. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/felicity-fla24.webp"
+imageCard: "/images/productos-estudio/felicity-fla24-card.webp"
 category: "baterias"
 price: "$4.834.375"
 specifications:

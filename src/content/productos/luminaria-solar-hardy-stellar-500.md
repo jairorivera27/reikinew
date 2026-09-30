@@ -2,6 +2,7 @@
 title: "Luminaria Solar Hardy Stellar 500 – 13 W reales · 2.405 lm"
 description: "Luminaria solar integrada para alumbrado exterior Hardy Stellar 500 de 13 W reales y 2.405 lm (180 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 25 Ah y panel 28 W / 6 V monocristalino (integrado, 600 × 180 mm), con autonomía de 12 – 18 h de iluminación. Se instala a 5 – 6 m de altura. Protección IP65 / IK08 para exterior. Versión para evaluación RETILAP (Resolución 40286 de 2026)."
 image: "/images/productos-estudio/hardy-stellar-500.webp"
+imageCard: "/images/productos-estudio/hardy-stellar-500-card.webp"
 imageThumb: "/images/productos-estudio/hardy-stellar-500-thumb.webp"
 imageAlt: "Luminaria Solar Hardy Stellar 500 – 13 W reales · 2.405 lm – Reiki Energía Solar"
 category: "reflectores"

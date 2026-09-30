@@ -2,6 +2,7 @@
 title: "Gestor de Energía Growatt Smart Energy Manager SEM-D"
 description: "Gestor de Energía Growatt Smart Energy Manager SEM-D. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. La foto es de referencia de la serie Growatt SEM. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/gestor-de-energia-growatt-smart-energy-manager-sem-d.webp"
+imageCard: "/images/productos-estudio/gestor-de-energia-growatt-smart-energy-manager-sem-d-card.webp"
 imageAlt: "Gestor de Energía Growatt Smart Energy Manager SEM-D – Reiki Energía Solar"
 category: "accesorios"
 price: "$1.941.200"

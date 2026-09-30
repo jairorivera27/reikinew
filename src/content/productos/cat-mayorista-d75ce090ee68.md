@@ -2,6 +2,7 @@
 title: "Hoymiles Trifasico Hmt Disconnect Tool"
 description: "Microinversor trifásico Hoymiles serie HMT para conexión a red trifásica, con seguimiento MPPT por canal y monitoreo remoto vía DTU. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/suntree-siso-dc.webp"
+imageCard: "/images/productos-estudio/suntree-siso-dc-card.webp"
 category: "protecciones"
 price: "$53.550"
 specifications:

@@ -2,6 +2,7 @@
 title: "Batería Solar Litio Felicity 48V 8,75kWh FLA48171-EU"
 description: "Batería litio Felicity FLA48171-EU de 8,75 kWh a 48 V. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. La foto es de referencia de la serie Felicity FLA48. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/felicity-fla48.webp"
+imageCard: "/images/productos-estudio/felicity-fla48-card.webp"
 category: "baterias"
 price: "$6.321.875"
 specifications:

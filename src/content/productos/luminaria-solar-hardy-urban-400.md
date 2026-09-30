@@ -2,6 +2,7 @@
 title: "Luminaria Solar Hardy Urban 400 – 22 W reales · 4.070 lm"
 description: "Luminaria solar integrada de alto desempeño Hardy Urban 400 de 22 W reales y 4.070 lm (185 lm/W). Funciona 100 % con energía solar: batería LiFePO4 3,2 V / 25 Ah (≥ 2.000 ciclos) y panel Monocristalino integrado, con autonomía de 3 – 4 días nublados. Se instala a 5 – 6 m de altura. Protección IP65 / IK08 para exterior. Diseñado para RETILAP (Res. 40150 de 2024), certificación en proceso."
 image: "/images/productos-estudio/hardy-urban-400.webp"
+imageCard: "/images/productos-estudio/hardy-urban-400-card.webp"
 imageThumb: "/images/productos-estudio/hardy-urban-400-thumb.webp"
 imageAlt: "Luminaria Solar Hardy Urban 400 – 22 W reales · 4.070 lm – Reiki Energía Solar"
 category: "reflectores"

@@ -2,6 +2,7 @@
 title: "Inversor Solar On-Grid Growatt 50000W 3004295"
 description: "Inversor on-grid (conectado a red) Growatt de 50000W. Convierte la energía de tus paneles para el consumo de la casa o el negocio y entrega los excedentes a la red, sin baterías. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/inversor-growatt-max-50-ktl3-xl-2.webp"
+imageCard: "/images/productos-estudio/inversor-growatt-max-50-ktl3-xl-2-card.webp"
 category: "inversores"
 price: "$13.904.290"
 specifications:

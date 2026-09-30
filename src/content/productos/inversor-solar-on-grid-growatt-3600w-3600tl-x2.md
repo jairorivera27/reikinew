@@ -2,6 +2,7 @@
 title: "Inversor Solar On-Grid Growatt 3600W 3600TL-X2"
 description: "Inversor on-grid (conectado a red) Growatt 3600TL-X2 de 3600W. Convierte la energía de tus paneles para el consumo de la casa o el negocio y entrega los excedentes a la red, sin baterías. La foto es de referencia de la serie Growatt MIN TL-X2. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/growatt-min-6000tl-x2.webp"
+imageCard: "/images/productos-estudio/growatt-min-6000tl-x2-card.webp"
 category: "inversores"
 price: "$2.916.750"
 specifications:

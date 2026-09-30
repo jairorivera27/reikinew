@@ -2,6 +2,7 @@
 title: "Batería Solar Litio Growatt 380VDC 5.0kWh IP66"
 description: "Batería litio Growatt IP66 de 5.0 kWh a 380 V. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. La foto es de referencia de la serie Growatt ARK. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-tienda/baterias/growatt-ark.png"
+imageCard: "/images/productos-tienda/baterias/growatt-ark-card.webp"
 category: "baterias"
 price: "$8.514.301"
 specifications:

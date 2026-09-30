@@ -2,6 +2,7 @@
 title: "DPS Supresor Suntree 40kA DC 5504138"
 description: "Protector contra sobretensiones (DPS) Suntree DC. Desvía a tierra las sobretensiones por rayos y maniobras antes de que dañen inversores, controladores y paneles. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/dps-solar-dc-2p-800vdc-2040ka-suntree.webp"
+imageCard: "/images/productos-estudio/dps-solar-dc-2p-800vdc-2040ka-suntree-card.webp"
 category: "protecciones"
 price: "$76.926"
 specifications:

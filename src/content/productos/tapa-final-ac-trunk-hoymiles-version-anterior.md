@@ -2,6 +2,7 @@
 title: "Tapa Final AC Trunk Hoymiles (versión anterior)"
 description: "Tapa Final AC Trunk Hoymiles (versión anterior). 1 año de garantía por fabricante. Tapa de protección para el AC Trunk Connector final. Equipo nuevo con disponibilidad inmediata para envío a toda Colombia. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/tapa-final-ac-trunk-hoymiles-version-anterior.webp"
+imageCard: "/images/productos-estudio/tapa-final-ac-trunk-hoymiles-version-anterior-card.webp"
 imageThumb: "/images/productos-estudio/tapa-final-ac-trunk-hoymiles-version-anterior-thumb.webp"
 imageAlt: "Tapa Final AC Trunk Hoymiles (versión anterior) – Reiki Energía Solar"
 category: "accesorios"

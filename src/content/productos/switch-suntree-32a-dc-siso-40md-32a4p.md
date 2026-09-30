@@ -2,6 +2,7 @@
 title: "Switch Suntree 32A DC SISO-40MD-32A4P"
 description: "Seccionador Suntree SISO-40MD-32A4P DC de 32 A. Permite desconectar con seguridad el circuito para mantenimiento o emergencias. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/suntree-siso-dc.webp"
+imageCard: "/images/productos-estudio/suntree-siso-dc-card.webp"
 category: "protecciones"
 price: "$150.981"
 specifications:

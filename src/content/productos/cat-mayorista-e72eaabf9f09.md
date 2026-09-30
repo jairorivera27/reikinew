@@ -2,6 +2,7 @@
 title: "Studer Inverter Charger Xtender Xtm 4000-48V"
 description: "Inversor-cargador Studer Xtender: onda senoidal pura, carga de baterías y soporte de red o generador según configuración XTM. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/studer-xtender-prov.webp"
+imageCard: "/images/productos-estudio/studer-xtender-prov-card.webp"
 category: "inversores"
 price: "$17.319.600"
 specifications:

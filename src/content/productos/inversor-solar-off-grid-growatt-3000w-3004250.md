@@ -2,6 +2,7 @@
 title: "Inversor Solar Off-Grid Growatt 3000W 3004250"
 description: "Inversor off-grid Growatt de 3000W. Para sistemas aislados de la red: convierte la energía de las baterías en corriente alterna para tus equipos. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/inversor-cargador-growatt-spf-3000tl-lvm-24v.webp"
+imageCard: "/images/productos-estudio/inversor-cargador-growatt-spf-3000tl-lvm-24v-card.webp"
 category: "inversores"
 price: "$1.938.350"
 specifications:

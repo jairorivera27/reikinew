@@ -2,6 +2,7 @@
 title: "Breaker Suntree 63A AC SCB8LE-63"
 description: "Interruptor termomagnético (breaker) Suntree SCB8LE-63 AC de 63 A. Protege el circuito contra sobrecargas y cortocircuitos y permite desconectarlo para mantenimiento. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
 image: "/images/productos-estudio/suntree-scb8-ac-prov.webp"
+imageCard: "/images/productos-estudio/suntree-scb8-ac-prov-card.webp"
 category: "protecciones"
 price: "$136.248"
 specifications:

@@ -3,6 +3,7 @@ draft: true
 title: "Fusible o Portafusible DC para Sistema Solar Ref. 5504125"
 description: "Fusible o Portafusible DC para Sistema Solar Ref. 5504125. Producto para protección de circuitos de corriente continua en instalaciones fotovoltaicas; confirme si la referencia corresponde al fusible o al portafusible. Modelo: 5504125; especificación principal: DC. Verifique compatibilidad y condiciones de instalación. Disponible para proyectos solares en Colombia."
 image: "/images/productos-tienda/protecciones/generic-pv-fuse.jpg"
+imageCard: "/images/productos-tienda/protecciones/generic-pv-fuse-card.webp"
 category: "protecciones"
 price: "$8.708"
 specifications:

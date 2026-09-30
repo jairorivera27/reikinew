@@ -2,6 +2,7 @@
 title: "Inversor Solar Off-Grid Felicity 3kW IVEM3048-LV"
 description: "Inversor off-grid Felicity IVEM3048-LV de 3kW. Para sistemas aislados de la red: convierte la energía de las baterías en corriente alterna para tus equipos. La foto es de referencia de la serie Felicity Hybrid. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/felicity-hybrid-prov.webp"
+imageCard: "/images/productos-estudio/felicity-hybrid-prov-card.webp"
 category: "inversores"
 price: "$1.347.402"
 specifications:

@@ -2,6 +2,7 @@
 title: "Batería Solar Litio Pylontech 3552Wh HESS"
 description: "Batería litio Pylontech HESS. Guarda la energía de tus paneles para usarla de noche o durante cortes de luz. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
 image: "/images/productos-estudio/pylontech-us-prov.webp"
+imageCard: "/images/productos-estudio/pylontech-us-prov-card.webp"
 category: "baterias"
 price: "$5.182.926"
 specifications:
