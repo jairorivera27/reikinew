@@ -432,13 +432,41 @@ const emailjsTemplateId =
                   String(wompiTxnId || referencia_pedido || '')
               );
             }
-            // Confirmación segura en servidor (GET Wompi + monto + ref cot-…). No marcar desde el cliente.
+            // Confirmación segura + aviso WhatsApp al dueño con ficha del comprador (celular).
             try {
               if (wompiTxnId) {
+                var cartForNotify = Array.isArray(cartSnapshot) ? cartSnapshot : [];
                 await fetch('/api/wompi-confirm-pago', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ id: String(wompiTxnId) }),
+                  body: JSON.stringify({
+                    id: String(wompiTxnId),
+                    orderId: referencia_pedido,
+                    totalAmount: cartForNotify.reduce(function (acc, it) {
+                      var p = parseInt(String(it.price || '').replace(/\D/g, ''), 10) || 0;
+                      var q = parseInt(it.quantity, 10) || 1;
+                      return acc + p * q;
+                    }, 0),
+                    client: {
+                      fullName: datosCliente.nombre,
+                      email: datosCliente.email,
+                      phone: datosCliente.telefono,
+                      idNumber: String(cust.idNumber || '').replace(/\D/g, ''),
+                    },
+                    shippingAddress: {
+                      lineOne: String(cust.addressLine || '').trim(),
+                      city: String(cust.city || '').trim(),
+                      department: String(cust.department || '').trim(),
+                    },
+                    items: cartForNotify.map(function (it) {
+                      return {
+                        sku: it.id || it.slug || '',
+                        name: it.title || it.name || 'Producto',
+                        quantity: parseInt(it.quantity, 10) || 1,
+                        unitPrice: parseInt(String(it.price || '').replace(/\D/g, ''), 10) || 0,
+                      };
+                    }),
+                  }),
                 });
               }
             } catch (_confirmErr) {
@@ -633,27 +661,63 @@ const emailjsTemplateId =
           var params = new URLSearchParams(window.location.search);
           if (tryLocalMock(params)) return;
 
-          // Retorno desde Addi (redirectionUrl)
+          // Retorno desde Addi (redirectionUrl). Addi casi nunca manda ?status=APPROVED.
           if (String(params.get('gateway') || '').toLowerCase() === 'addi') {
             var addiOrder = params.get('orderId') || params.get('order') || '';
             var addiStatus = String(params.get('status') || 'PENDING').toUpperCase();
-            var custAddi = loadLocalJson(LS_CUSTOMER_KEY);
+            var custAddi = loadLocalJson(LS_CUSTOMER_KEY) || {};
+            var cartAddi = loadLocalJson(LS_CART_KEY) || [];
             var refAddi =
               addiOrder ||
               (custAddi && custAddi.orderId) ||
               localStorage.getItem('reiki_checkout_reference') ||
               '';
 
-            if (addiStatus === 'APPROVED' || addiStatus === 'COMPLETED') {
+            // Siempre avisar al dueño con celular + formulario (aunque el status sea PENDING).
+            if (refAddi && addiStatus !== 'REJECTED' && addiStatus !== 'DECLINED' && addiStatus !== 'ABANDONED') {
               try {
                 await fetch('/api/addi-confirm-order', {
                   method: 'POST',
                   headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ orderId: refAddi, status: addiStatus }),
+                  body: JSON.stringify({
+                    orderId: refAddi,
+                    status: addiStatus,
+                    totalAmount: Array.isArray(cartAddi)
+                      ? cartAddi.reduce(function (acc, it) {
+                          var p = parseInt(String(it.price || '').replace(/\D/g, ''), 10) || 0;
+                          var q = parseInt(it.quantity, 10) || 1;
+                          return acc + p * q;
+                        }, 0)
+                      : 0,
+                    client: {
+                      fullName: String(custAddi.fullName || '').trim(),
+                      email: String(custAddi.email || '').trim(),
+                      phone: String(custAddi.phone || '').trim(),
+                      idNumber: String(custAddi.idNumber || '').replace(/\D/g, ''),
+                    },
+                    shippingAddress: {
+                      lineOne: String(custAddi.addressLine || '').trim(),
+                      city: String(custAddi.city || '').trim(),
+                      department: String(custAddi.department || '').trim(),
+                    },
+                    items: Array.isArray(cartAddi)
+                      ? cartAddi.map(function (it) {
+                          return {
+                            sku: it.id || it.slug || '',
+                            name: it.title || it.name || 'Producto',
+                            quantity: parseInt(it.quantity, 10) || 1,
+                            unitPrice: parseInt(String(it.price || '').replace(/\D/g, ''), 10) || 0,
+                          };
+                        })
+                      : [],
+                  }),
                 });
               } catch (_addiConfirm) {
                 /* webhook también confirma */
               }
+            }
+
+            if (addiStatus === 'APPROVED' || addiStatus === 'COMPLETED') {
               setStatus(
                 'success',
                 '¡Solicitud Addi aprobada!',

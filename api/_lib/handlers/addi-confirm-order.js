@@ -1,8 +1,7 @@
 /**
- * POST /api/addi-confirm-order
- * El cliente vuelve de Addi con ?status=APPROVED. Como eso viene del navegador (falsificable),
- * NO marca el pedido como pagado: solo avisa al dueño "sin confirmar". El pago real lo confirma addi-webhook.
- * Body: { orderId, status? }
+ * POST /api/addi-confirm-order → /api/checkout?accion=addi-confirm
+ * Cliente regresa de Addi (a menudo sin ?status=APPROVED).
+ * Guarda formulario + avisa WhatsApp al dueño (celular).
  */
 import { readJsonBody } from '../addi.js';
 import { notifyAddiReturnUnverified } from '../checkout-notify.js';
@@ -22,8 +21,16 @@ export default async function handler(req, res) {
       return res.end(JSON.stringify({ ok: false, error: 'orderId obligatorio.' }));
     }
 
-    const result = await notifyAddiReturnUnverified(orderId);
+    const result = await notifyAddiReturnUnverified(orderId, {
+      status: body.status,
+      client: body.client,
+      items: body.items,
+      shippingAddress: body.shippingAddress,
+      totalAmount: body.totalAmount,
+      applicationId: body.applicationId || body.application_id,
+    });
 
+    console.log('[addi-confirm-order]', { orderId, notified: result.notified, phone: result.phone });
     res.statusCode = 200;
     return res.end(JSON.stringify({ ok: true, ...result }));
   } catch (err) {

@@ -1,8 +1,14 @@
 /**
  * Aviso al dueño cuando un checkout (carrito) queda pagado / aprobado.
+ * Incluye ficha completa del formulario (celular destacado).
  */
-import { getCheckoutOrder, patchCheckoutOrder, saveCheckoutOrder } from './checkout-order-store.js';
-import { notifyOwner, getWhatsAppConfig } from './whatsapp.js';
+import {
+  getCheckoutOrder,
+  patchCheckoutOrder,
+  saveCheckoutOrder,
+  cleanDoc,
+} from './checkout-order-store.js';
+import { notifyOwner, getWhatsAppConfig, formatPhoneCO, parsePhoneCo } from './whatsapp.js';
 
 function formatCop(n) {
   const v = Math.round(Number(n) || 0);
@@ -11,56 +17,67 @@ function formatCop(n) {
 
 function itemsSummary(items) {
   const list = Array.isArray(items) ? items : [];
-  if (!list.length) return '—';
+  if (!list.length) return '(sin detalle de productos)';
   return list
-    .slice(0, 8)
+    .slice(0, 12)
     .map((it) => {
       const qty = it.quantity || 1;
       const name = it.name || it.title || it.sku || 'Producto';
-      return `${qty}× ${name}`;
+      const price = it.unitPrice != null ? ` ${formatCop(it.unitPrice)}` : '';
+      return `• ${qty}× ${name}${price}`;
     })
-    .join('; ');
+    .join('\n');
+}
+
+function formatPhoneDisplay(phone) {
+  const dig = parsePhoneCo(phone) || String(phone || '').replace(/\D/g, '');
+  if (!dig) return 'NO DEJÓ CELULAR';
+  try {
+    return formatPhoneCO(dig);
+  } catch {
+    return dig;
+  }
 }
 
 export function formatCheckoutOwnerMessage(order, { unverified = false } = {}) {
   const gw = String(order.gateway || '').toUpperCase();
   const head = unverified
-    ? `⏳ Cliente regresó de ${gw} diciendo "aprobado" (AÚN SIN CONFIRMAR por ${gw})\n` +
-      `No despaches hasta verlo aprobado en el panel de ${gw === 'ADDI' ? 'aliados.addi.com' : gw}.\n`
+    ? `⏳ Cliente volvió de ${gw} (revisa estado en portal)\n`
     : `✅ PAGO CONFIRMADO ${gw}\n`;
   const addr = order.shippingAddress || {};
-  const line = [addr.lineOne || addr.address, addr.city].filter(Boolean).join(', ');
+  const line = [addr.lineOne || addr.address, addr.city, addr.department]
+    .filter(Boolean)
+    .join(', ');
+  const phoneLine = formatPhoneDisplay(order.client?.phone);
+
   return (
     head +
-    `Pedido: ${order.orderId || order.reference || '—'}\n` +
-    `Total: ${formatCop(order.totalAmount)}\n` +
+    `\n📱 CELULAR: ${phoneLine}\n` +
     `Cliente: ${order.client?.fullName || '—'}\n` +
     `Cédula: ${order.client?.idNumber || '—'}\n` +
-    `Celular: ${order.client?.phone || '—'}\n` +
     `Correo: ${order.client?.email || '—'}\n` +
     (line ? `Envío: ${line}\n` : '') +
-    `Productos: ${itemsSummary(order.items)}\n` +
+    `Pedido: ${order.orderId || order.reference || '—'}\n` +
+    `Total: ${formatCop(order.totalAmount)}\n` +
+    `Productos:\n${itemsSummary(order.items)}\n` +
     (order.wompiTransactionId ? `Tx Wompi: ${order.wompiTransactionId}\n` : '') +
     (order.addiApplicationId ? `Addi app: ${order.addiApplicationId}\n` : '')
   ).trim();
 }
 
-/**
- * Envía el aviso y SOLO marca ownerNotified si WhatsApp lo aceptó
- * (antes se marcaba aunque fallara y el aviso se perdía para siempre).
- */
 async function notifyOrder(order, flagField = 'ownerNotified', opts = {}) {
   if (!order || order[flagField]) return false;
   const cfg = getWhatsAppConfig();
   const addr = order.shippingAddress || {};
+  const phoneDisp = formatPhoneDisplay(order.client?.phone);
   let result = null;
   try {
     result = await notifyOwner(formatCheckoutOwnerMessage(order, opts), cfg, {
       titulo: opts.unverified
-        ? `Addi sin confirmar - pedido ${order.orderId}`
-        : `Pago confirmado ${String(order.gateway || '').toUpperCase()} - ${formatCop(order.totalAmount)}`,
+        ? `Addi pendiente - ${phoneDisp}`
+        : `Pago ${String(order.gateway || '').toUpperCase()} ${formatCop(order.totalAmount)} - ${phoneDisp}`,
       nombre: order.client?.fullName || 'Cliente',
-      ciudad: addr.city || '—',
+      ciudad: addr.city || phoneDisp,
     });
   } catch (err) {
     console.error('[checkout-notify] notifyOwner lanzó error', err?.message || err);
@@ -73,7 +90,9 @@ async function notifyOrder(order, flagField = 'ownerNotified', opts = {}) {
       orderId: order.orderId,
       results: result?.results,
     });
-    await patchCheckoutOrder(order.orderId, { lastNotifyError: JSON.stringify(result?.results || []).slice(0, 500) });
+    await patchCheckoutOrder(order.orderId, {
+      lastNotifyError: JSON.stringify(result?.results || []).slice(0, 500),
+    });
   }
   return delivered;
 }
@@ -87,108 +106,162 @@ function pickWompiCustomer(tx) {
   };
 }
 
-/**
- * @param {object} tx transacción Wompi
- */
-export async function markCheckoutPaidFromWompi(tx) {
-  const status = String(tx?.status || '').toUpperCase();
-  if (status !== 'APPROVED') return { ok: false, reason: 'not_approved' };
+function normalizeClient(client = {}) {
+  return {
+    fullName: String(client.fullName || client.nombre || '').trim(),
+    email: String(client.email || client.correo || '')
+      .trim()
+      .toLowerCase(),
+    phone: String(client.phone || client.cellphone || client.celular || '').trim(),
+    idNumber: cleanDoc(client.idNumber || client.document),
+    idType: String(client.idType || 'CC'),
+  };
+}
 
-  const reference = String(tx.reference || '').trim();
-  if (!reference) return { ok: false, reason: 'no_reference' };
-  if (/^cot-/i.test(reference)) return { ok: false, reason: 'cotizacion_ref' };
+function normalizeItems(items) {
+  if (!Array.isArray(items)) return [];
+  return items.map((it, idx) => ({
+    sku: it.sku || it.id || `item-${idx}`,
+    name: it.name || it.title || 'Producto',
+    quantity: Math.max(1, parseInt(it.quantity, 10) || 1),
+    unitPrice: Math.round(Number(it.unitPrice ?? it.price) || 0) || undefined,
+  }));
+}
 
-  let order = await getCheckoutOrder(reference);
-  if (!order) {
-    const fromTx = pickWompiCustomer(tx);
-    order = await saveCheckoutOrder({
-      orderId: reference,
-      reference,
-      gateway: 'wompi',
-      status: 'approved',
-      totalAmount: Math.round(Number(tx.amount_in_cents ?? tx.amountInCents) / 100) || 0,
-      items: [],
-      client: {
-        fullName: fromTx.fullName,
-        email: fromTx.email,
-        phone: fromTx.phone,
-      },
-      wompiTransactionId: String(tx.id || '').trim() || null,
-      paidAt: new Date().toISOString(),
-    });
-  } else {
-    const fromTx = pickWompiCustomer(tx);
-    order = await patchCheckoutOrder(reference, {
-      status: 'approved',
-      paidAt: order.paidAt || new Date().toISOString(),
-      wompiTransactionId: String(tx.id || '').trim() || order.wompiTransactionId,
-      totalAmount:
-        order.totalAmount ||
-        Math.round(Number(tx.amount_in_cents ?? tx.amountInCents) / 100) ||
-        0,
-      client: {
-        fullName: order.client?.fullName || fromTx.fullName,
-        email: order.client?.email || fromTx.email,
-        phone: order.client?.phone || fromTx.phone,
-      },
+function normalizeShipping(ship) {
+  if (!ship || typeof ship !== 'object') return null;
+  return {
+    lineOne: String(ship.lineOne || ship.addressLine || ship.address || '').trim(),
+    city: String(ship.city || '').trim(),
+    department: String(ship.department || '').trim(),
+  };
+}
+
+export async function upsertCheckoutSnapshot(input = {}) {
+  const orderId = String(input.orderId || input.reference || '').trim();
+  if (!orderId) throw new Error('orderId obligatorio');
+
+  const clientIn = normalizeClient(input.client || {});
+  const itemsIn = normalizeItems(input.items);
+  const shipIn = normalizeShipping(input.shippingAddress);
+  const prev = await getCheckoutOrder(orderId);
+
+  if (!prev) {
+    return saveCheckoutOrder({
+      orderId,
+      reference: orderId,
+      gateway: String(input.gateway || 'wompi').toLowerCase(),
+      status: String(input.status || 'pending').toLowerCase(),
+      totalAmount: Math.round(Number(input.totalAmount) || 0),
+      items: itemsIn,
+      client: clientIn,
+      shippingAddress: shipIn,
+      wompiTransactionId: input.wompiTransactionId || null,
+      addiApplicationId: input.addiApplicationId || null,
+      paidAt: input.paidAt || null,
+      createdAt: input.createdAt || new Date().toISOString(),
     });
   }
 
+  const mergedClient = {
+    fullName: clientIn.fullName || prev.client?.fullName || '',
+    email: clientIn.email || prev.client?.email || '',
+    phone: clientIn.phone || prev.client?.phone || '',
+    idNumber: clientIn.idNumber || prev.client?.idNumber || '',
+    idType: clientIn.idType || prev.client?.idType || 'CC',
+  };
+
+  return patchCheckoutOrder(orderId, {
+    gateway: input.gateway || prev.gateway,
+    status: input.status || prev.status,
+    totalAmount: Math.round(Number(input.totalAmount) || 0) || prev.totalAmount,
+    items: itemsIn.length ? itemsIn : prev.items,
+    client: mergedClient,
+    shippingAddress: shipIn?.lineOne || shipIn?.city ? shipIn : prev.shippingAddress,
+    wompiTransactionId: input.wompiTransactionId || prev.wompiTransactionId,
+    addiApplicationId: input.addiApplicationId || prev.addiApplicationId,
+    paidAt: input.paidAt || prev.paidAt,
+  });
+}
+
+export async function markCheckoutPaidFromWompi(tx, snapshot = {}) {
+  const status = String(tx?.status || '').toUpperCase();
+  if (status !== 'APPROVED') return { ok: false, reason: 'not_approved' };
+
+  const reference = String(tx.reference || snapshot.orderId || snapshot.reference || '').trim();
+  if (!reference) return { ok: false, reason: 'no_reference' };
+  if (/^cot-/i.test(reference)) return { ok: false, reason: 'cotizacion_ref' };
+
+  const fromTx = pickWompiCustomer(tx);
+  const clientSnap = normalizeClient(snapshot.client || {});
+  const order = await upsertCheckoutSnapshot({
+    orderId: reference,
+    gateway: 'wompi',
+    status: 'approved',
+    totalAmount:
+      Math.round(Number(snapshot.totalAmount) || 0) ||
+      Math.round(Number(tx.amount_in_cents ?? tx.amountInCents) / 100) ||
+      0,
+    items: snapshot.items,
+    client: {
+      fullName: clientSnap.fullName || fromTx.fullName,
+      email: clientSnap.email || fromTx.email,
+      phone: clientSnap.phone || fromTx.phone,
+      idNumber: clientSnap.idNumber,
+    },
+    shippingAddress: snapshot.shippingAddress,
+    wompiTransactionId: String(tx.id || '').trim() || null,
+    paidAt: new Date().toISOString(),
+  });
+
   const notified = await notifyOrder(order);
-  return { ok: true, orderId: reference, notified };
+  return { ok: true, orderId: reference, notified, phone: order?.client?.phone || null };
 }
 
 const ADDI_OK = new Set(['APPROVED', 'COMPLETED']);
 
-/**
- * @param {string} orderId
- * @param {{ status?: string, applicationId?: string }} meta
- */
 export async function markCheckoutPaidFromAddi(orderId, meta = {}) {
   const id = String(orderId || '').trim();
   const status = String(meta.status || '').toUpperCase();
   if (!id) return { ok: false, reason: 'no_order_id' };
   if (!ADDI_OK.has(status)) return { ok: false, reason: 'not_approved', status };
 
-  let order = await getCheckoutOrder(id);
-  if (!order) {
-    order = await saveCheckoutOrder({
-      orderId: id,
-      reference: id,
-      gateway: 'addi',
-      status: 'approved',
-      totalAmount: 0,
-      items: [],
-      client: {},
-      addiApplicationId: meta.applicationId || null,
-      paidAt: new Date().toISOString(),
-    });
-  } else {
-    order = await patchCheckoutOrder(id, {
-      status: 'approved',
-      paidAt: order.paidAt || new Date().toISOString(),
-      addiApplicationId: meta.applicationId || order.addiApplicationId,
-    });
-  }
+  const order = await upsertCheckoutSnapshot({
+    orderId: id,
+    gateway: 'addi',
+    status: 'approved',
+    totalAmount: meta.totalAmount,
+    items: meta.items,
+    client: meta.client,
+    shippingAddress: meta.shippingAddress,
+    addiApplicationId: meta.applicationId || null,
+    paidAt: new Date().toISOString(),
+  });
 
   const notified = await notifyOrder(order);
-  return { ok: true, orderId: id, notified };
+  return { ok: true, orderId: id, notified, phone: order?.client?.phone || null };
 }
 
-/**
- * El navegador del cliente dice que Addi aprobó (parámetro ?status= de la URL).
- * Eso lo puede falsificar cualquiera, así que NO marca el pedido como pagado:
- * solo avisa "sin confirmar" (una vez) si el pedido existe y fue creado por addi-checkout.
- * La confirmación real llega por /api/addi-webhook.
- */
-export async function notifyAddiReturnUnverified(orderId) {
+export async function notifyAddiReturnUnverified(orderId, snapshot = {}) {
   const id = String(orderId || '').trim();
   if (!id) return { ok: false, reason: 'no_order_id' };
-  const order = await getCheckoutOrder(id);
-  if (!order || order.gateway !== 'addi') return { ok: false, reason: 'unknown_order' };
+
+  const order = await upsertCheckoutSnapshot({
+    orderId: id,
+    gateway: 'addi',
+    status: snapshot.status || 'pending',
+    totalAmount: snapshot.totalAmount,
+    items: snapshot.items,
+    client: snapshot.client,
+    shippingAddress: snapshot.shippingAddress,
+    addiApplicationId: snapshot.applicationId,
+  });
+
   if (order.status === 'approved' || order.status === 'completed') {
-    return { ok: true, orderId: id, already: true };
+    const notified = await notifyOrder(order);
+    return { ok: true, orderId: id, notified, alreadyApproved: true, phone: order.client?.phone };
   }
+
   const notified = await notifyOrder(order, 'ownerNotifiedReturn', { unverified: true });
-  return { ok: true, orderId: id, notified, unverified: true };
+  return { ok: true, orderId: id, notified, unverified: true, phone: order.client?.phone };
 }

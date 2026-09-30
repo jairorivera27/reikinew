@@ -75,9 +75,18 @@ export default async function handler(req, res) {
           reference,
         });
         let checkoutResult = null;
-        if (result?.reason === 'no_cotizacion') {
+        if (
+          result?.reason === 'no_cotizacion' ||
+          result?.reason === 'cot_missing' ||
+          (!result?.ok && reference && !/^cot-/i.test(reference))
+        ) {
           checkoutResult = await markCheckoutPaidFromWompi(tx);
         }
+        console.log('[wompi-events] checkout notify', {
+          orderId: checkoutResult?.orderId,
+          notified: checkoutResult?.notified,
+          phone: checkoutResult?.phone,
+        });
         res.statusCode = 200;
         return res.end(JSON.stringify({ ok: true, result, checkoutResult }));
       }
