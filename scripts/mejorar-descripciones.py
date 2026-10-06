@@ -372,8 +372,27 @@ def reflectores(d):
     return desc, faqs
 
 
+def aires_acondicionados(d):
+    mm, mod = marca_modelo(d)
+    t = d['texto']
+    btu = d['kv'].get('capacidad_btu') or d['kv'].get('capacidad') or None
+    desc = f'Aire acondicionado {mm} {mod}'.replace('  ', ' ').strip() + (f', {btu}' if btu else '') + '.'
+    desc += ' Compatible con sistemas solares para climatizar reduciendo el consumo de red.'
+    faqs = [
+        ('¿Funciona directo con paneles solares?', 'Depende del modelo: algunos equipos DC se alimentan directo de paneles o baterías, '
+         'y los equipos AC convencionales funcionan con la energía que entrega tu inversor solar (on-grid, híbrido u off-grid). '
+         'Te confirmamos la compatibilidad con tu sistema antes de la compra.'),
+        ('¿Cuánta energía consume?', 'Depende de la capacidad (BTU) y de la eficiencia del equipo. Con el consumo en la ficha técnica '
+         'te ayudamos a calcular cuántos paneles o qué capacidad de inversor necesitas para operarlo.'),
+        ('¿Quién lo instala?', 'La instalación eléctrica y de refrigeración debe hacerla un técnico certificado. Reiki te puede conectar '
+         'con instaladores de confianza en tu zona.'),
+    ]
+    return desc, faqs
+
+
 PLANTILLAS = {'paneles': paneles, 'inversores': inversores, 'baterias': baterias, 'controladores': controladores,
-              'protecciones': protecciones, 'bombeo': bombeo, 'accesorios': accesorios, 'reflectores': reflectores}
+              'protecciones': protecciones, 'bombeo': bombeo, 'accesorios': accesorios, 'reflectores': reflectores,
+              'aires-acondicionados': aires_acondicionados}
 
 
 def construir(d):

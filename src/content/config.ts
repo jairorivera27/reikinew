@@ -39,6 +39,7 @@ const productosCollection = defineCollection({
       'protecciones',
       'bombeo',
       'accesorios',
+      'aires-acondicionados',
     ]),
     price: z.string(),
     /** Precio antes de la rebaja. Si está presente, la ficha muestra el bloque de liquidación. */
@@ -57,6 +58,10 @@ const productosCollection = defineCollection({
     /** Especificación técnica principal tal como viene del catálogo (ej. "48V, 100Ah"). */
     power: z.string().optional(),
     stock: z.enum(['disponible', 'agotado', 'pre-orden']).optional(),
+    /** Últimas unidades según el proveedor. Solo cambia la etiqueta (ámbar) cuando stock = "disponible". */
+    stockBajo: z.boolean().optional(),
+    /** Ruta pública al certificado del fabricante (RETIE, garantía, etc.), aparte de la ficha técnica. */
+    certificadoPdf: z.string().optional(),
     /** Fecha estimada de llegada (AAAA-MM-DD). Google Merchant la exige para productos en pre-orden. */
     fechaDisponibilidad: z.coerce.string().optional(),
     order: z.number().optional(),

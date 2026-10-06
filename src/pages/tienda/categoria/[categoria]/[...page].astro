@@ -24,6 +24,10 @@ import { calcularFacetas, type FacetasCategoria } from '../../../../utils/faceta
 
 export const getStaticPaths = (async ({ paginate }) => {
   const productos = await getCollection('productos', ({ data }) => data.draft !== true);
+  const conteos: Record<string, number> = {};
+  for (const p of productos) {
+    conteos[p.data.category] = (conteos[p.data.category] ?? 0) + 1;
+  }
 
   return CATEGORIAS.flatMap((categoria) => {
     const items = productos.filter((p) => p.data.category === categoria.id);
@@ -44,7 +48,7 @@ export const getStaticPaths = (async ({ paginate }) => {
     return paginate(ordenados, {
       params: { categoria: categoria.slug },
       pageSize: PRODUCTOS_POR_PAGINA,
-      props: { categoria, facetas, valores: Object.fromEntries(valores) },
+      props: { categoria, facetas, valores: Object.fromEntries(valores), conteos },
     });
   });
 }) satisfies GetStaticPaths;
@@ -53,10 +57,11 @@ type Props = {
   categoria: CategoriaTienda;
   facetas: FacetasCategoria;
   valores: Record<string, ResultadoValor>;
+  conteos: Record<string, number>;
   page: Page<CollectionEntry<'productos'>>;
 };
 
-const { categoria, facetas, valores, page } = Astro.props;
+const { categoria, facetas, valores, conteos, page } = Astro.props;
 
 const base = urlCategoria(categoria.id);
 const urlPagina = (n: number) => (n === 1 ? base : `${base}/${n}`);
@@ -172,6 +177,7 @@ const ventana = (() => {
                 <a href={urlCategoria(c.id)} class={c.id === categoria.id ? 'activa' : ''}>
                   <i class={c.icono} aria-hidden="true"></i>
                   <span>{c.nombre}</span>
+                  {conteos[c.id] > 0 && <span class="cat-menu-conteo">{conteos[c.id]}</span>}
                 </a>
               ))}
             </nav>
@@ -395,6 +401,24 @@ const ventana = (() => {
   .cat-menu a i {
     width: 18px;
     color: #9ca3af;
+  }
+
+  .cat-menu a span:first-of-type {
+    flex: 1;
+  }
+
+  .cat-menu-conteo {
+    font-size: 0.74rem;
+    font-weight: 600;
+    color: #9ca3af;
+    background: #f3f4f6;
+    border-radius: 999px;
+    padding: 0.1rem 0.5rem;
+  }
+
+  .cat-menu a.activa .cat-menu-conteo {
+    color: white;
+    background: rgba(255, 255, 255, 0.22);
   }
 
   .cat-menu a:hover {

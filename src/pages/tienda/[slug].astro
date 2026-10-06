@@ -68,6 +68,9 @@ const etiquetasStock: Record<string, string> = {
   agotado: 'Agotado',
   'pre-orden': 'Pre-orden',
 };
+const stockBajo = stock === 'disponible' && Boolean(d.stockBajo);
+const estadoStock = stockBajo ? 'pocas' : stock;
+const etiquetaStock = stockBajo ? 'Pocas unidades' : (etiquetasStock[stock] ?? 'Disponible');
 
 const enLiquidacion = Boolean(d.precioAnterior && d.descuentoPct);
 const ahorroCOP = enLiquidacion
@@ -211,7 +214,7 @@ const precioUnitario = etiquetaPrecioPorUnidad(
               fetchpriority="high"
               decoding="async"
             />
-            <span class={`ficha-badge ${stock}`}>{etiquetasStock[stock] ?? 'Disponible'}</span>
+            <span class={`ficha-badge ${estadoStock}`}><i class="fas fa-circle" aria-hidden="true"></i> {etiquetaStock}</span>
             {enLiquidacion && <span class="ficha-badge-descuento">-{d.descuentoPct}%</span>}
             {d.imagenSerieRef && (
               <p class="ficha-serie-ref">Imagen de referencia de la serie {d.imagenSerieRef}</p>
@@ -268,6 +271,12 @@ const precioUnitario = etiquetaPrecioPorUnidad(
                   Ficha técnica (PDF)
                 </a>
               )}
+              {d.certificadoPdf && (
+                <a class="ficha-btn-secundario" href={d.certificadoPdf} target="_blank" rel="noopener noreferrer">
+                  <i class="fas fa-certificate" aria-hidden="true"></i>
+                  Certificado
+                </a>
+              )}
               <div class="quantity-controls" data-product-id={producto.slug}>
                 <button class="qty-btn minus" type="button" aria-label="Disminuir cantidad">-</button>
                 <input type="number" class="qty-input" value="1" min="1" readonly aria-label="Cantidad" />
@@ -292,10 +301,16 @@ const precioUnitario = etiquetaPrecioPorUnidad(
 
             <PagoConfianza />
 
-            <a class="ficha-btn-whatsapp" href={`${CONTACT_WHATSAPP_URL}?text=${mensajeWhatsApp}`} rel="noopener" target="_blank">
-              <i class="fab fa-whatsapp" aria-hidden="true"></i>
-              Consultar por WhatsApp
-            </a>
+            <div class="ficha-acciones-secundarias">
+              <a class="ficha-btn-whatsapp" href={`${CONTACT_WHATSAPP_URL}?text=${mensajeWhatsApp}`} rel="noopener" target="_blank">
+                <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                Consultar por WhatsApp
+              </a>
+              <button type="button" class="ficha-btn-compartir" data-share-title={d.title} aria-label="Compartir este producto">
+                <i class="fas fa-share-nodes" aria-hidden="true"></i>
+                Compartir
+              </button>
+            </div>
 
             <div class="ficha-bloque">
               <h2>Descripción</h2>
@@ -473,6 +488,33 @@ const precioUnitario = etiquetaPrecioPorUnidad(
         if (!(input instanceof HTMLInputElement)) return;
         const actual = parseInt(input.value, 10) || 1;
         input.value = String(btn.classList.contains('plus') ? actual + 1 : Math.max(1, actual - 1));
+      });
+
+      document.addEventListener('click', async (e) => {
+        const btn = e.target instanceof Element ? e.target.closest('.ficha-btn-compartir') : null;
+        if (!(btn instanceof HTMLElement)) return;
+        const title = btn.dataset.shareTitle || document.title;
+        const url = window.location.href;
+        if (navigator.share) {
+          try {
+            await navigator.share({ title, url });
+            return;
+          } catch {
+            return; // el usuario canceló el share nativo
+          }
+        }
+        try {
+          await navigator.clipboard.writeText(url);
+          const textoOriginal = btn.innerHTML;
+          btn.classList.add('copiado');
+          btn.innerHTML = '<i class="fas fa-check" aria-hidden="true"></i> Link copiado';
+          setTimeout(() => {
+            btn.classList.remove('copiado');
+            btn.innerHTML = textoOriginal;
+          }, 2000);
+        } catch {
+          window.prompt('Copia el link de este producto:', url);
+        }
       });
     </script>
   </body>
@@ -722,10 +764,21 @@ const precioUnitario = etiquetaPrecioPorUnidad(
     font-size: 0.8rem;
     font-weight: 600;
     color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+
+  .ficha-badge i.fa-circle {
+    font-size: 0.45rem;
   }
 
   .ficha-badge.disponible {
     background: #10b981;
+  }
+
+  .ficha-badge.pocas {
+    background: #f59e0b;
   }
 
   .ficha-badge.agotado {
@@ -905,11 +958,18 @@ const precioUnitario = etiquetaPrecioPorUnidad(
     background: #f5eef8;
   }
 
+  .ficha-acciones-secundarias {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+    margin-top: 0.9rem;
+  }
+
   .ficha-btn-whatsapp {
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
-    margin-top: 0.9rem;
     color: #128c7e;
     font-weight: 600;
     font-size: 0.92rem;
@@ -918,6 +978,28 @@ const precioUnitario = etiquetaPrecioPorUnidad(
 
   .ficha-btn-whatsapp:hover {
     text-decoration: underline;
+  }
+
+  .ficha-btn-compartir {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #6b21a8;
+    font-weight: 600;
+    font-size: 0.92rem;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: inherit;
+  }
+
+  .ficha-btn-compartir:hover {
+    text-decoration: underline;
+  }
+
+  .ficha-btn-compartir.copiado {
+    color: #10b981;
   }
 
   .ficha-bloque {

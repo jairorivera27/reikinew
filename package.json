@@ -20,7 +20,7 @@
   },
   "description": "Sitio web principal (Astro).",
   "engines": {
-    "node": ">=18.17.0 <21"
+    "node": "24.x"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^0.128.0",

@@ -4,7 +4,11 @@ description: "Inversor Onda Pura Epever IPT2000-41[T], referencia IPT2000-41[T],
 image: "/images/productos-estudio/epever-ipt2000-41-t-prov.webp"
 imageCard: "/images/productos-estudio/epever-ipt2000-41-t-prov-card.webp"
 category: "inversores"
-price: "$1.990.000"
+price: "$980.100"
+precioAnterior: "$1.990.000"
+descuentoPct: 51
+promocion: "Precio especial"
+updatedAt: "2026-10-05"
 specifications:
   - "Potencia: 2000W"
   - "Referencia: IPT2000-41[T]"
