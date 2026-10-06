@@ -34,6 +34,8 @@ for (const f of files) {
   const fm = raw.slice(3, end);
   const stock = getScalar(fm, 'stock').toLowerCase();
   if (stock.includes('oculto') || stock.includes('hidden')) continue;
+  // Los productos ocultos (draft) no tienen página en la tienda: el bot no debe ofrecerlos con un link roto.
+  if (getScalar(fm, 'draft').toLowerCase() === 'true') continue;
   const title = getScalar(fm, 'title');
   if (!title) continue;
   out.push({

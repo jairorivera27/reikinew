@@ -13,6 +13,7 @@ specifications:
 brand: "LONGi"
 model: "LR5-72HBD-545M"
 stock: "disponible"
+draft: true
 order: 5
 seoDifferentiator: "Tecnología bifacial Hi-MO con mejor coeficiente térmico para mantener producción en climas calientes."
 seoKeywords:
