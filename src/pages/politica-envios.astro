@@ -1,0 +1,221 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import WhatsAppFloat from '../components/WhatsAppFloat.astro';
+import SEO from '../components/SEO.astro';
+import FontAwesome from '../components/FontAwesome.astro';
+---
+
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Política de Envíos y Entregas | Reiki Energía Solar</title>
+    <FontAwesome />
+    <SEO
+      title="Política de Envíos y Entregas | Reiki Energía Solar"
+      description="Cobertura, tiempos de entrega estimados, costos de envío y condiciones de entrega de los equipos solares de Reiki Energía Solar."
+      canonical="/politica-envios"
+      schemaType="WebPage"
+    />
+  </head>
+  <body class="legal-page-body">
+    <Header />
+
+    <main class="legal-main">
+      <section class="legal-container" aria-labelledby="legal-title">
+        <h1 id="legal-title">Política de Envíos y Entregas</h1>
+        <div class="legal-content">
+          <p>
+            <strong>Reiki Energía Solar SAS</strong> · NIT 901942389 · info@reikisolar.com.co · WhatsApp +57 300 405 2638
+          </p>
+          <p>Esta política aplica a todos los productos comprados en la tienda online www.reikisolar.com.co.</p>
+
+          <h2>Cobertura</h2>
+          <p>
+            Enviamos a todo Colombia a través de transportadoras y empresas de mensajería con las que tenemos convenio. El pedido
+            se entrega en la dirección que el cliente indique al comprar.
+          </p>
+
+          <h2>Despacho</h2>
+          <p>
+            Los pedidos pagados se alistan y despachan en <strong>1 a 2 días hábiles</strong> después de confirmado el pago.
+            Cuando el pedido sale, enviamos al cliente el número de guía por correo o WhatsApp para que pueda hacer seguimiento.
+          </p>
+
+          <h2>Tiempo de entrega estimado</h2>
+          <p>El tiempo se cuenta desde el despacho del pedido:</p>
+          <div class="legal-table-wrap">
+            <table class="legal-table">
+              <thead>
+                <tr>
+                  <th>Destino</th>
+                  <th>Tiempo estimado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Medellín y Valle de Aburrá</td>
+                  <td>1 a 2 días hábiles</td>
+                </tr>
+                <tr>
+                  <td>Ciudades principales (Bogotá, Cali, Barranquilla, entre otras)</td>
+                  <td>2 a 4 días hábiles</td>
+                </tr>
+                <tr>
+                  <td>Resto del país</td>
+                  <td>3 a 7 días hábiles</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Son tiempos estimados y pueden variar por condiciones de la transportadora, clima, orden público o temporadas de alta
+            demanda.
+          </p>
+
+          <h2>Costo del envío</h2>
+          <ul>
+            <li>El valor del flete depende del peso, el volumen y el destino del pedido.</li>
+            <li>Se calcula y se muestra en el checkout, antes de pagar.</li>
+            <li><strong>El envío es gratis en compras inferiores a $200.000 COP.</strong></li>
+            <li>
+              En compras de mayor valor, el flete se cobra según la tarifa mostrada en el checkout o, según el acuerdo con el
+              cliente y la cobertura de la transportadora, se despacha con flete al cobro (el cliente lo paga a la transportadora
+              al recibir).
+            </li>
+            <li>El costo del envío no está incluido en el precio publicado del producto, salvo cuando se indique lo contrario.</li>
+          </ul>
+
+          <h2>Entrega en bodega</h2>
+          <p>
+            Nuestra bodega es un centro de despacho y no tiene atención al público. Por esta razón
+            <strong>no ofrecemos retiro en tienda</strong>: todos los pedidos se entregan por envío a la dirección del cliente.
+          </p>
+
+          <h2>Equipos de gran tamaño o delicados</h2>
+          <p>
+            Paneles solares, inversores, baterías de litio y estructuras se despachan embalados y asegurados. Al recibir:
+          </p>
+          <ol>
+            <li>Revise el estado de los equipos en presencia del transportador.</li>
+            <li>Verifique que lleguen todas las cajas indicadas en la guía.</li>
+            <li>Registre por escrito en la guía, en ese mismo momento, cualquier golpe, rotura o faltante.</li>
+          </ol>
+          <p>Si la guía se firma sin novedades, se entiende que la mercancía fue recibida en buen estado.</p>
+
+          <h2>Devoluciones, retracto y garantía</h2>
+          <ul>
+            <li>
+              <strong>Derecho de retracto:</strong> 5 días hábiles contados desde la entrega, con el producto nuevo, sin uso y en
+              su empaque original sellado. Los costos de transporte de la devolución los asume el cliente.
+            </li>
+            <li>
+              <strong>Garantía:</strong> los equipos cuentan con la garantía del fabricante; Reiki Energía Solar facilita el
+              trámite por defectos comprobados de fábrica.
+            </li>
+            <li>Condiciones completas en nuestros <a href="/terminos-condiciones">Términos y Condiciones</a>.</li>
+          </ul>
+
+          <h2>Contacto</h2>
+          <p>
+            ¿Dudas sobre tu envío? Escríbenos por WhatsApp al +57 300 405 2638 o a info@reikisolar.com.co.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+    <WhatsAppFloat />
+  </body>
+</html>
+
+<style is:global>
+  .legal-page-body {
+    margin: 0;
+    background: #f8fafc;
+    color: #1f2937;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  }
+
+  .legal-main {
+    min-height: 60vh;
+    padding-top: calc(100px + 1.25rem + env(safe-area-inset-top, 0px));
+    padding-bottom: 4rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  @media (max-width: 768px) {
+    .legal-main {
+      padding-top: calc(39px + 2.5rem + env(safe-area-inset-top, 0px));
+    }
+  }
+
+  .legal-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 16px;
+    box-shadow: 0 8px 26px rgba(15, 23, 42, 0.06);
+    padding: clamp(1.25rem, 2.8vw, 2.25rem);
+  }
+
+  .legal-container h1 {
+    margin: 0 0 1rem;
+    font-size: clamp(1.5rem, 2.5vw, 2rem);
+    color: #6b2181;
+  }
+
+  .legal-content {
+    color: #4b5563;
+    line-height: 1.7;
+    font-size: 1rem;
+  }
+
+  .legal-content h2 {
+    margin: 1.4rem 0 0.6rem;
+    color: #111827;
+    font-size: 1.1rem;
+  }
+
+  .legal-content p {
+    margin: 0 0 0.75rem;
+  }
+
+  .legal-content ul,
+  .legal-content ol {
+    margin: 0 0 0.9rem 1.25rem;
+    padding: 0;
+  }
+
+  .legal-content li {
+    margin-bottom: 0.4rem;
+  }
+
+  .legal-table-wrap {
+    overflow-x: auto;
+    margin: 0 0 0.9rem;
+  }
+
+  .legal-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+
+  .legal-table th,
+  .legal-table td {
+    text-align: left;
+    padding: 0.6rem 0.75rem;
+    border: 1px solid #e5e7eb;
+  }
+
+  .legal-table th {
+    background: #f3f4f6;
+    color: #111827;
+  }
+</style>
