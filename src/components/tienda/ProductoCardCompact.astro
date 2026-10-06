@@ -63,7 +63,7 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
         <div class="producto-badge agotado">Agotado</div>
       )}
       {d.stock === 'pre-orden' && (
-        <div class="producto-badge pre-orden">Pre-orden</div>
+        <div class="producto-badge pre-orden">Agotado · Pre-orden</div>
       )}
       {enLiquidacion && <div class="producto-badge-descuento">-{d.descuentoPct}%</div>}
       {!enLiquidacion && d.promocion && <div class="producto-badge-descuento producto-badge-promo">{d.promocion}</div>}
