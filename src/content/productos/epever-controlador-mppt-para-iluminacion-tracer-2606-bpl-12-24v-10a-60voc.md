@@ -28,6 +28,7 @@ faqs:
     respuesta: "Con 10 A de carga admite aproximadamente 135 W de paneles con batería de 12 V, 270 W a 24 V y 540 W a 48 V. Además hay que respetar el voltaje máximo de entrada del controlador (ver ficha técnica)."
   - pregunta: "¿Sirve para baterías de litio?"
     respuesta: "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
+stockBajo: true
 ---
 
 Proveedor: Ingesolar (CONM25).

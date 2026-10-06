@@ -20,6 +20,7 @@ fichaPdf: "/fichas/proveedores/ingesolar-BATLA02.pdf"
 faqs:
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor (750 V) y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
+stockBajo: true
 ---
 
 Proveedor: Ingesolar (BATLA02).

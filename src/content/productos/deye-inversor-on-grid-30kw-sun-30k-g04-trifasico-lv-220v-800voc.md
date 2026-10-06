@@ -32,6 +32,7 @@ faqs:
     respuesta: "Un sistema con este inversor de 30 kW y unos 33 kWp de paneles genera del orden de 4.455 kWh al mes (4,5 horas de sol pico en promedio), así que cubre consumos de esa magnitud. Te dimensionamos el sistema con tu factura."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+certificadoPdf: "/fichas/proveedores/ingesolar-INVOG06-cert.pdf"
 ---
 
 Proveedor: Ingesolar (INVOG06).

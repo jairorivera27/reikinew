@@ -53,8 +53,11 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
         loading="lazy"
         decoding="async"
       />
-      {d.stock === 'disponible' && (
-        <div class="producto-badge disponible">Disponible</div>
+      {d.stock === 'disponible' && !d.stockBajo && (
+        <div class="producto-badge disponible"><i class="fas fa-circle" aria-hidden="true"></i> Disponible</div>
+      )}
+      {d.stock === 'disponible' && d.stockBajo && (
+        <div class="producto-badge pocas"><i class="fas fa-circle" aria-hidden="true"></i> Pocas unidades</div>
       )}
       {d.stock === 'agotado' && (
         <div class="producto-badge agotado">Agotado</div>
@@ -192,10 +195,22 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
     font-size: 0.72rem;
     font-weight: 600;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+
+  .producto-badge i.fa-circle {
+    font-size: 0.4rem;
   }
 
   .producto-badge.disponible {
     background: #10b981;
+    color: white;
+  }
+
+  .producto-badge.pocas {
+    background: #f59e0b;
     color: white;
   }
 

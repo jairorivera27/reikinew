@@ -20,6 +20,7 @@ fichaPdf: "/fichas/proveedores/ingesolar-CONP03.pdf"
 faqs:
   - pregunta: "¿Sirve para baterías de litio?"
     respuesta: "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
+stockBajo: true
 ---
 
 Proveedor: Ingesolar (CONP03).

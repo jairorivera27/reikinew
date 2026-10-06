@@ -28,6 +28,8 @@ faqs:
     respuesta: "Con 60 A de carga admite aproximadamente 810 W de paneles con batería de 12 V y 1.620 W a 24 V. Además hay que respetar el voltaje máximo de entrada del controlador (ver ficha técnica)."
   - pregunta: "¿Sirve para baterías de litio?"
     respuesta: "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
+stockBajo: true
+certificadoPdf: "/fichas/proveedores/ingesolar-CONP14-cert.pdf"
 ---
 
 Proveedor: Ingesolar (CONP14).

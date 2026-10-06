@@ -21,6 +21,7 @@ fichaPdf: "/fichas/proveedores/ingesolar-CABLE02.pdf"
 faqs:
   - pregunta: "¿Es compatible con mi equipo?"
     respuesta: "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
+certificadoPdf: "/fichas/proveedores/ingesolar-CABLE02-cert.pdf"
 ---
 
 Proveedor: Ingesolar (CABLE02).

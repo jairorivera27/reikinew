@@ -26,6 +26,7 @@ faqs:
     respuesta: "Depende de la capacidad (BTU) y de la eficiencia del equipo. Con el consumo en la ficha técnica te ayudamos a calcular cuántos paneles o qué capacidad de inversor necesitas para operarlo."
   - pregunta: "¿Quién lo instala?"
     respuesta: "La instalación eléctrica y de refrigeración debe hacerla un técnico certificado. Reiki te puede conectar con instaladores de confianza en tu zona."
+stockBajo: true
 ---
 
 Proveedor: Ingesolar (AIRC01).

@@ -28,6 +28,7 @@ faqs:
     respuesta: "Con 30 A de carga admite aproximadamente 405 W de paneles con batería de 12 V y 810 W a 24 V. Además hay que respetar el voltaje máximo de entrada del controlador (ver ficha técnica)."
   - pregunta: "¿Sirve para baterías de litio?"
     respuesta: "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
+certificadoPdf: "/fichas/proveedores/ingesolar-CONP05-cert.pdf"
 ---
 
 Proveedor: Ingesolar (CONP05).

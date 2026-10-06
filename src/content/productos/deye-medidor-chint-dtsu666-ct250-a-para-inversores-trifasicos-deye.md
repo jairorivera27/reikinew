@@ -17,6 +17,7 @@ updatedAt: "2026-10-05"
 draft: true
 imagenPendiente: true
 fichaPdf: "/fichas/proveedores/ingesolar-ACC97.pdf"
+stockBajo: true
 ---
 
 Proveedor: Ingesolar (ACC97).

@@ -22,6 +22,7 @@ faqs:
     respuesta: "Con 100 kWh y descargándola hasta un 90 % (unos 90 kWh útiles), un consumo continuo de 500 W duraría cerca de 180 horas y uno de 1 kW unas 90 horas, sin contar pérdidas del inversor (5–10 %). Nevera, luces, internet y TV suelen sumar 300–600 W."
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
+certificadoPdf: "/fichas/proveedores/ingesolar-BATL52-cert.pdf"
 ---
 
 Proveedor: Ingesolar (BATL52).

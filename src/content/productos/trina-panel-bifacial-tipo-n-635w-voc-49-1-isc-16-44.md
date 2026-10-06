@@ -30,6 +30,8 @@ faqs:
     respuesta: "Capta luz por ambas caras: además del sol directo aprovecha la luz reflejada por el piso o la cubierta. La ganancia adicional depende de la altura y del color de la superficie (mayor en cubiertas claras y estructuras elevadas)."
   - pregunta: "¿Sirve para sistemas conectados a la red y para sistemas aislados?"
     respuesta: "Sí. Con un inversor on-grid entrega energía a la casa y a la red (autogeneración, con trámite ante el operador de red); con un inversor híbrido u off-grid carga baterías. Lo importante es que el voltaje del arreglo sea compatible con el inversor o el controlador."
+stockBajo: true
+certificadoPdf: "/fichas/proveedores/ingesolar-PNLM52-cert.pdf"
 ---
 
 Proveedor: Ingesolar (PNLM52).

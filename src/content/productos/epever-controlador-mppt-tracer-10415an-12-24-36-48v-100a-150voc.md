@@ -28,6 +28,8 @@ faqs:
     respuesta: "Con 100 A de carga admite aproximadamente 1.350 W de paneles con batería de 12 V, 2.700 W a 24 V y 5.400 W a 48 V. Además hay que respetar el voltaje máximo de entrada del controlador (ver ficha técnica)."
   - pregunta: "¿Sirve para baterías de litio?"
     respuesta: "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
+stockBajo: true
+certificadoPdf: "/fichas/proveedores/ingesolar-CONM11-cert.pdf"
 ---
 
 Proveedor: Ingesolar (CONM11).

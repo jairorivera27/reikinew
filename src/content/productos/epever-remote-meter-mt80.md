@@ -20,6 +20,7 @@ fichaPdf: "/fichas/proveedores/ingesolar-ACC30.pdf"
 faqs:
   - pregunta: "¿Para qué sirve con un inversor solar?"
     respuesta: "Permite limitar la inyección a la red (inyección cero), gestionar baterías según el consumo real y ver el balance de energía en la aplicación."
+stockBajo: true
 ---
 
 Proveedor: Ingesolar (ACC30).

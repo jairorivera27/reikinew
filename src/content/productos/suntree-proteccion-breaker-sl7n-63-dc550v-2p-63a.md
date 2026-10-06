@@ -29,6 +29,7 @@ faqs:
     respuesta: "2 polos. En DC se suele usar un polo por conductor (positivo y negativo); en AC depende de si el circuito es monofásico, bifásico o trifásico."
   - pregunta: "¿Cumple RETIE?"
     respuesta: "Las instalaciones solares en Colombia deben cumplir RETIE; usa protecciones certificadas bajo normas IEC y deja la instalación en manos de un técnico. Reiki te asesora en el diseño del tablero."
+stockBajo: true
 ---
 
 Proveedor: Ingesolar (PROTB204).

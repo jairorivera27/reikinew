@@ -20,6 +20,7 @@ order: 8000
 updatedAt: "2026-10-05"
 draft: true
 imagenPendiente: true
+stockBajo: true
 ---
 
 Proveedor: Ingesolar (INVOP25).

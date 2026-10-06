@@ -19,6 +19,8 @@ updatedAt: "2026-10-05"
 draft: true
 imagenPendiente: true
 fichaPdf: "/fichas/proveedores/ingesolar-PROTF11.pdf"
+stockBajo: true
+certificadoPdf: "/fichas/proveedores/ingesolar-PROTF11-cert.pdf"
 ---
 
 Proveedor: Ingesolar (PROTF11).

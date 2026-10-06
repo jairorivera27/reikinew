@@ -18,6 +18,8 @@ updatedAt: "2026-10-05"
 draft: true
 imagenPendiente: true
 fichaPdf: "/fichas/proveedores/ingesolar-ACC50.pdf"
+stockBajo: true
+certificadoPdf: "/fichas/proveedores/ingesolar-ACC50-cert.pdf"
 ---
 
 Proveedor: Ingesolar (ACC50).

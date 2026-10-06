@@ -19,6 +19,8 @@ imagen_provisional: false
 faqs:
   - pregunta: "¿Es compatible con mi equipo?"
     respuesta: "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
+stockBajo: true
+certificadoPdf: "/fichas/proveedores/ingesolar-ACC93-cert.pdf"
 ---
 
 Proveedor: Ingesolar (ACC93).

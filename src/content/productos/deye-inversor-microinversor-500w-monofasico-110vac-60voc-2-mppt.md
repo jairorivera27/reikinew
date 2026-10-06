@@ -28,6 +28,8 @@ faqs:
     respuesta: "Es monofásico. Debe coincidir con la conexión eléctrica de tu predio (lo ves en tu factura o en el tablero)."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+stockBajo: true
+certificadoPdf: "/fichas/proveedores/ingesolar-INVOP08-cert.pdf"
 ---
 
 Proveedor: Ingesolar (INVOP08).

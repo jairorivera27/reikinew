@@ -28,6 +28,8 @@ faqs:
     respuesta: "Con 50 A de carga admite aproximadamente 675 W de paneles con batería de 12 V, 1.350 W a 24 V y 2.700 W a 48 V. Además hay que respetar el voltaje máximo de entrada del controlador (ver ficha técnica)."
   - pregunta: "¿Sirve para baterías de litio?"
     respuesta: "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
+stockBajo: true
+certificadoPdf: "/fichas/proveedores/ingesolar-CONM22-cert.pdf"
 ---
 
 Proveedor: Ingesolar (CONM22).

@@ -24,6 +24,7 @@ fichaPdf: "/fichas/proveedores/ingesolar-INVOP47.pdf"
 faqs:
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+stockBajo: true
 ---
 
 Proveedor: Ingesolar (INVOP47).

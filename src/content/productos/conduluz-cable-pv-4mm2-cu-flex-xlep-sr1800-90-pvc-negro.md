@@ -18,6 +18,7 @@ updatedAt: "2026-10-05"
 draft: true
 imagenPendiente: true
 fichaPdf: "/fichas/proveedores/ingesolar-ACCC25.pdf"
+certificadoPdf: "/fichas/proveedores/ingesolar-ACCC25-cert.pdf"
 ---
 
 Proveedor: Ingesolar (ACCC25).

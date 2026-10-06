@@ -18,6 +18,7 @@ updatedAt: "2026-10-05"
 draft: true
 imagenPendiente: true
 fichaPdf: "/fichas/proveedores/ingesolar-IMPK07-1.pdf"
+stockBajo: true
 ---
 
 Proveedor: Ingesolar (IMPK07-1).

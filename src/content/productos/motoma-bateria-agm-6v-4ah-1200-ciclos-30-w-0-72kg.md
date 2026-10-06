@@ -25,6 +25,7 @@ faqs:
     respuesta: "Con 4 kWh y descargándola hasta un 90 % (unos 3,6 kWh útiles), un consumo continuo de 500 W duraría cerca de 7,2 horas y uno de 1 kW unas 3,6 horas, sin contar pérdidas del inversor (5–10 %). Nevera, luces, internet y TV suelen sumar 300–600 W."
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
+stockBajo: true
 ---
 
 Proveedor: Ingesolar (BATA01).

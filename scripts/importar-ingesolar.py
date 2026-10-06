@@ -170,19 +170,20 @@ def drive_id(url):
     return m.group(1) if m else None
 
 
-def descargar_ficha(url, sku):
+def descargar_ficha(url, sku, sufijo='ficha'):
     fid = drive_id(url or '')
     if not fid:
         return None
-    destino = os.path.join(FICHAS, f'ingesolar-{sku}.pdf')
+    nombre = f'ingesolar-{sku}.pdf' if sufijo == 'ficha' else f'ingesolar-{sku}-{sufijo}.pdf'
+    destino = os.path.join(FICHAS, nombre)
     if os.path.exists(destino):
-        return f'/fichas/proveedores/ingesolar-{sku}.pdf'
+        return f'/fichas/proveedores/{nombre}'
     durl = f'https://drive.google.com/uc?export=download&id={fid}'
     b = subprocess.run(['curl', '-sL', '--max-time', '40', durl], capture_output=True).stdout
     if b[:4] != b'%PDF':
         return None
     open(destino, 'wb').write(b)
-    return f'/fichas/proveedores/ingesolar-{sku}.pdf'
+    return f'/fichas/proveedores/{nombre}'
 
 
 def set_campo(lineas, k, v):
@@ -256,6 +257,16 @@ def main():
             if fpdf:
                 reporte['con_ficha'] += 1
 
+        fcert = None
+        if p.get('certificate') and not DRY:
+            fcert = descargar_ficha(p['certificate'], p['sku'], sufijo='cert')
+
+        stock_bajo = None
+        st = p.get('stock') or {}
+        activos = [v for v in [st.get('medellin'), st.get('bogota'), st.get('villavicencio')] if v and v != 'agotado']
+        if activos and all(v == 'pocas' for v in activos):
+            stock_bajo = True
+
         descripcion = f'{tit}. Equipo con disponibilidad inmediata, envío a toda Colombia.'
 
         lineas = ['---']
@@ -283,6 +294,10 @@ def main():
             set_campo(lineas, 'imagenPendiente', True)
         if fpdf:
             set_campo(lineas, 'fichaPdf', fpdf)
+        if fcert:
+            set_campo(lineas, 'certificadoPdf', fcert)
+        if stock_bajo:
+            set_campo(lineas, 'stockBajo', True)
         lineas += ['---', '', f'Proveedor: Ingesolar ({p["sku"]}).', '']
 
         ruta = os.path.join(PROD, slug + '.md')

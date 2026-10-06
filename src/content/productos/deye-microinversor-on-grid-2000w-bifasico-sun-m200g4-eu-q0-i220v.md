@@ -27,6 +27,7 @@ faqs:
     respuesta: "Es bifásico. Debe coincidir con la conexión eléctrica de tu predio (lo ves en tu factura o en el tablero)."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+certificadoPdf: "/fichas/proveedores/ingesolar-INVOG07-cert.pdf"
 ---
 
 Proveedor: Ingesolar (INVOG07).
