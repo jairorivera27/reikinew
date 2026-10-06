@@ -1771,7 +1771,7 @@ const marcasLoop = [...marcasConSrc, ...marcasConSrc];
   const STOCK_LABELS = {
     disponible: 'Disponible',
     agotado: 'Agotado',
-    'pre-orden': 'Pre-orden'
+    'pre-orden': 'Agotado · Pre-orden'
   };
 
   /** Texto de cuotas + logo de Addi en la ficha del producto. */
@@ -2325,7 +2325,7 @@ const marcasLoop = [...marcasConSrc, ...marcasConSrc];
 
     function tarjeta(p) {
       const stock =
-        p.stock === 'agotado' ? 'Agotado' : p.stock === 'pre-orden' ? 'Pre-orden' : 'Disponible';
+        p.stock === 'agotado' ? 'Agotado' : p.stock === 'pre-orden' ? 'Agotado · Pre-orden' : 'Disponible';
       return `
         <div class="producto-card" data-product-slug="${escapar(p.slug)}">
           <a class="producto-image-link" href="${escapar(p.url)}" aria-label="Ver detalles de ${escapar(p.title)}">

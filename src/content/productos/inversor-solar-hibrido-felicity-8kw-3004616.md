@@ -12,9 +12,9 @@ specifications:
 brand: "Felicity"
 sku: "3004616"
 power: "8kW"
-stock: "disponible"
+stock: "pre-orden"
 order: 6159
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-06"
 seoKeywords:
   - "inversor solar"
   - "inversor solar híbrido"

@@ -252,7 +252,7 @@ function iniciar(): void {
 
   function tarjeta(p: ItemIndice): string {
     const etiquetaStock =
-      p.stock === 'agotado' ? 'Agotado' : p.stock === 'pre-orden' ? 'Pre-orden' : 'Disponible';
+      p.stock === 'agotado' ? 'Agotado' : p.stock === 'pre-orden' ? 'Agotado · Pre-orden' : 'Disponible';
 
     const badgeDescuento = p.descuentoPct
       ? `<div class="producto-badge-descuento">-${p.descuentoPct}%</div>`
