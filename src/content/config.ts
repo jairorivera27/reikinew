@@ -39,6 +39,7 @@ const productosCollection = defineCollection({
       'protecciones',
       'bombeo',
       'accesorios',
+      'aires-acondicionados',
     ]),
     price: z.string(),
     /** Precio antes de la rebaja. Si está presente, la ficha muestra el bloque de liquidación. */

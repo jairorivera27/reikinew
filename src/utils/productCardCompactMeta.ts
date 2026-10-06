@@ -10,6 +10,7 @@ export const CATEGORY_LABEL_ES: Record<string, string> = {
   protecciones: 'Protección eléctrica',
   bombeo: 'Bomba solar',
   accesorios: 'Accesorio',
+  'aires-acondicionados': 'Aire acondicionado',
 };
 
 export type TipoInversor = 'On-Grid' | 'Off-Grid' | 'Híbrido' | 'Microinversor';

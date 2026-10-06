@@ -4,7 +4,11 @@ description: "Datalogger / módulo de monitoreo Deye LS4G-3. Permite ver en el c
 image: "/images/productos-estudio/deye-logger.webp"
 imageCard: "/images/productos-estudio/deye-logger-card.webp"
 category: "accesorios"
-price: "$1.468.162"
+price: "$1.020.700"
+precioAnterior: "$1.468.162"
+descuentoPct: 30
+promocion: "Precio especial"
+updatedAt: "2026-10-05"
 specifications:
   - "Tipo: Datalogger"
   - "Especificación principal: especificación no disponible"
@@ -15,7 +19,6 @@ sku: "LS4G-3"
 power: "N/A"
 stock: "disponible"
 order: 6372
-updatedAt: "2026-09-10"
 seoKeywords:
   - "sistema de monitoreo solar"
   - "sistema de monitoreo solar datalogger"

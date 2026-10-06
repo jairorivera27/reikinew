@@ -82,6 +82,16 @@
       "tipoSingular": "Accesorio",
       "imagenPorDefecto": "/images/placeholders/accesorios.svg",
       "descripcionSeo": "Accesorios solares, monitoreo y medición: dongles, dataloggers, medidores, cables, sensores, optimizadores y piezas de campo compatibles con inversores y sistemas fotovoltaicos."
+    },
+    {
+      "id": "aires-acondicionados",
+      "nombre": "Aires Acondicionados",
+      "slug": "aires-acondicionados",
+      "icono": "fas fa-snowflake",
+      "orden": 9,
+      "tipoSingular": "Aire acondicionado",
+      "imagenPorDefecto": "/images/placeholders/accesorios.svg",
+      "descripcionSeo": "Aires acondicionados compatibles con sistemas solares, para climatizar con menor consumo de red."
     }
   ],
 
