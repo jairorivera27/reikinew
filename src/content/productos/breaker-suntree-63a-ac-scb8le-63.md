@@ -34,7 +34,6 @@ faqs:
     respuesta: "Del lado de paneles, la protección debe soportar al menos 1,25 veces la corriente de cortocircuito (Isc) del string y no superar la corriente máxima que admite el cable. Del lado AC se elige según la corriente de salida del inversor."
   - pregunta: "¿Cumple RETIE?"
     respuesta: "Las instalaciones solares en Colombia deben cumplir RETIE; usa protecciones certificadas bajo normas IEC y deja la instalación en manos de un técnico. Reiki te asesora en el diseño del tablero."
-fichaPdf: "/fichas/reiki/breaker-suntree-63a-ac-scb8le-63.pdf"
 ---
 **Breaker Suntree 63A AC SCB8LE-63** de Suntree · 63A AC.
 

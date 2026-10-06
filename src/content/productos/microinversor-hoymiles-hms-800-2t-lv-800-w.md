@@ -26,7 +26,6 @@ faqs:
     respuesta: "Es monofásico. Debe coincidir con la conexión eléctrica de tu predio (lo ves en tu factura o en el tablero)."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
-fichaPdf: "/fichas/reiki/microinversor-hoymiles-hms-800-2t-lv-800-w.pdf"
 promocion: "Precio especial"
 ---
 

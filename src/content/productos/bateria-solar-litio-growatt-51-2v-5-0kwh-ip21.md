@@ -31,7 +31,6 @@ faqs:
     respuesta: "Con 5 kWh y descargándola hasta un 90 % (unos 4,5 kWh útiles), un consumo continuo de 500 W duraría cerca de 9 horas y uno de 1 kW unas 4,5 horas, sin contar pérdidas del inversor (5–10 %). Nevera, luces, internet y TV suelen sumar 300–600 W."
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
-fichaPdf: "/fichas/reiki/bateria-solar-litio-growatt-51-2v-5-0kwh-ip21.pdf"
 ---
 **Batería Solar Litio Growatt 51,2V 5.0kWh IP21** de Growatt · 51,2V 5.0kWh.
 

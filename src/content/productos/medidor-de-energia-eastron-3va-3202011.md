@@ -29,7 +29,6 @@ imageOriginal: "/images/productos-tienda/monitoreo/eastron-meter.jpg"
 faqs:
   - pregunta: "¿Para qué sirve con un inversor solar?"
     respuesta: "Permite limitar la inyección a la red (inyección cero), gestionar baterías según el consumo real y ver el balance de energía en la aplicación."
-fichaPdf: "/fichas/reiki/medidor-de-energia-eastron-3va-3202011.pdf"
 ---
 **Medidor de Energía Eastron 3VA 3202011** de Eastron · 3VA.
 

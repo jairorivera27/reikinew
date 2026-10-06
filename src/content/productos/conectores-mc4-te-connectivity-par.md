@@ -22,6 +22,5 @@ imagenSerieRef: "TE SOLARLOK PV4"
 faqs:
   - pregunta: "¿Es compatible con mi equipo?"
     respuesta: "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
-fichaPdf: "/fichas/reiki/conectores-mc4-te-connectivity-par.pdf"
 ---
 

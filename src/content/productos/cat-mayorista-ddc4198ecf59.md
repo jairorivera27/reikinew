@@ -23,7 +23,6 @@ faqs:
     respuesta: "Con 5,1 kWh y descargándola hasta un 90 % (unos 4,6 kWh útiles), un consumo continuo de 500 W duraría cerca de 9,2 horas y uno de 1 kW unas 4,6 horas, sin contar pérdidas del inversor (5–10 %). Nevera, luces, internet y TV suelen sumar 300–600 W."
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
-fichaPdf: "/fichas/reiki/cat-mayorista-ddc4198ecf59.pdf"
 ---
 
 **BYD BATTERY BOX PREMIUM LV BMU** · referencia **BYD** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

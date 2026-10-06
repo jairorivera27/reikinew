@@ -25,7 +25,6 @@ faqs:
     respuesta: "Es trifásico. Debe coincidir con la conexión eléctrica de tu predio (lo ves en tu factura o en el tablero)."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
-fichaPdf: "/fichas/reiki/apsystems-qt2.pdf"
 ---
 
 Microinversor trifásico Apsystems QT2-MX, conecta hasta 4 módulos de alta potencia, ideal para aplicaciones comerciales.

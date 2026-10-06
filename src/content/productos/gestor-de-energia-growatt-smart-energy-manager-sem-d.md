@@ -21,6 +21,5 @@ imagenSerieRef: "Growatt SEM"
 faqs:
   - pregunta: "¿Para qué sirve con un inversor solar?"
     respuesta: "Permite limitar la inyección a la red (inyección cero), gestionar baterías según el consumo real y ver el balance de energía en la aplicación."
-fichaPdf: "/fichas/reiki/gestor-de-energia-growatt-smart-energy-manager-sem-d.pdf"
 ---
 

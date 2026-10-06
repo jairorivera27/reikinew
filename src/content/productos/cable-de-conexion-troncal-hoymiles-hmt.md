@@ -20,7 +20,6 @@ imagen_provisional: false
 faqs:
   - pregunta: "¿Es compatible con mi equipo?"
     respuesta: "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
-fichaPdf: "/fichas/reiki/cable-de-conexion-troncal-hoymiles-hmt.pdf"
 promocion: "Precio especial"
 ---
 

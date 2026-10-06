@@ -33,7 +33,6 @@ faqs:
     respuesta: "Con los inversores o equipos de la misma marca y serie indicados en la ficha técnica. Escríbenos con la referencia de tu inversor y te confirmamos."
   - pregunta: "¿Necesita internet?"
     respuesta: "Sí, se conecta por Wi-Fi, red cableada o 4G según el modelo para enviar los datos a la aplicación del fabricante."
-fichaPdf: "/fichas/reiki/dtu-hoymiles-250a-accesorio-monitor.pdf"
 ---
 **DTU Hoymiles 250A Accesorio/Monitor** de Hoymiles · 250A.
 

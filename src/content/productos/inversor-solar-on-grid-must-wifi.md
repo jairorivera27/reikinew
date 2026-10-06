@@ -36,7 +36,6 @@ faqs:
     respuesta: "Sí, en Colombia la autogeneración a pequeña escala (CREG 174 de 2021) permite entregar excedentes con un medidor bidireccional y el trámite ante el operador de red. Reiki te acompaña en la legalización."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
-fichaPdf: "/fichas/reiki/inversor-solar-on-grid-must-wifi.pdf"
 ---
 **Inversor Solar On-Grid Must WIFI** de Must · N/A.
 

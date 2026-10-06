@@ -19,7 +19,6 @@ imageOriginal: "/images/productos-tienda/monitoreo/huawei-smartlogger.jpg"
 faqs:
   - pregunta: "¿Es compatible con mi equipo?"
     respuesta: "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
-fichaPdf: "/fichas/reiki/cat-mayorista-3b3666a2698f.pdf"
 ---
 
 **Huawei Accesorio 02233DXX (SUN2000-2~6KTL-L1)** · pieza de campo compatible con la serie residencial monofásica SUN2000 KTL-L1. Confirmá número de parte y tabla de compatibilidad del fabricante antes de comprar.

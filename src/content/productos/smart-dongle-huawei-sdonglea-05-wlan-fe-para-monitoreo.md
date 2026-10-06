@@ -22,6 +22,5 @@ imagen_provisional: false
 faqs:
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
-fichaPdf: "/fichas/reiki/smart-dongle-huawei-sdonglea-05-wlan-fe-para-monitoreo.pdf"
 ---
 
