@@ -23,7 +23,6 @@ faqs:
     respuesta: "Depende del número de entradas del modelo (revisa la ficha técnica). Cada entrada tiene su propio seguimiento MPPT y admite un panel."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
-fichaPdf: "/fichas/reiki/cat-mayorista-b962f7069ab3.pdf"
 ---
 
 **APS MICROINVERTER DS3-LV 900W 120V + APS Y3 AC BUS CABLE** · referencia **APsystems** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

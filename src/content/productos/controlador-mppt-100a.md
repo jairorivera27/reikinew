@@ -29,7 +29,6 @@ faqs:
     respuesta: "12V/24V/48V auto. El voltaje de circuito abierto del arreglo, en su punto más frío, nunca debe superarlo."
   - pregunta: "¿Sirve para baterías de litio?"
     respuesta: "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-fichaPdf: "/fichas/reiki/controlador-mppt-100a.pdf"
 ---
 
 Controlador MPPT profesional de máxima capacidad para instalaciones comerciales e industriales. Control avanzado y monitoreo completo.

@@ -25,7 +25,6 @@ faqs:
     respuesta: "Con carga completa suele alumbrar toda la noche en modo automático; en días nublados la autonomía disminuye. Consulta la ficha y te recomendamos el modelo según las horas que necesitas."
   - pregunta: "¿Necesita cableado?"
     respuesta: "No. El panel solar carga la batería integrada y el equipo se enciende automáticamente al oscurecer."
-fichaPdf: "/fichas/reiki/reflector-solar-led-200w-blanco.pdf"
 brand: "Master Lights"
 ---
 

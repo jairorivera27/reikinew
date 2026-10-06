@@ -32,7 +32,6 @@ faqs:
     respuesta: "El voltaje del banco debe coincidir con el del inversor (48 V) y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
   - pregunta: "¿Qué ventajas tiene el LiFePO4?"
     respuesta: "Es la química de litio más segura para uso residencial: soporta miles de ciclos, no requiere mantenimiento y entrega casi toda su capacidad, a diferencia de las baterías de plomo."
-fichaPdf: "/fichas/reiki/bateria-litio-20kwh.pdf"
 ---
 
 Batería de litio de gran capacidad para sistemas comerciales e industriales. Máxima autonomía y rendimiento para proyectos grandes.

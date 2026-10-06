@@ -28,7 +28,6 @@ imageOriginal: "/images/productos-tienda/monitoreo/eastron-meter.jpg"
 faqs:
   - pregunta: "¿Para qué sirve con un inversor solar?"
     respuesta: "Permite limitar la inyección a la red (inyección cero), gestionar baterías según el consumo real y ver el balance de energía en la aplicación."
-fichaPdf: "/fichas/reiki/medidor-de-energia-must-9001012.pdf"
 ---
 **Medidor de Energía Must 9001012** de Must · N/A.
 

@@ -22,7 +22,6 @@ faqs:
     respuesta: "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."
   - pregunta: "¿Sirve para baterías de litio?"
     respuesta: "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-fichaPdf: "/fichas/reiki/cat-mayorista-e2fbad5e2d84.pdf"
 ---
 
 **STUDER MPPT SOLAR CHARGE CONTROLLER - VS 120 - 48V** · referencia **Studer** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

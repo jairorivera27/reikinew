@@ -34,6 +34,5 @@ faqs:
     respuesta: "Dimensiones: 1134 x 30 x 2382 mm. Verifica el espacio disponible en tu cubierta antes de comprar."
   - pregunta: "¿Sirve para sistemas conectados a la red y para sistemas aislados?"
     respuesta: "Sí. Con un inversor on-grid entrega energía a la casa y a la red (autogeneración, con trámite ante el operador de red); con un inversor híbrido u off-grid carga baterías. Lo importante es que el voltaje del arreglo sea compatible con el inversor o el controlador."
-fichaPdf: "/fichas/reiki/panel-solar-ja-solar-jam66d45-605-lb-605w-bifacial.pdf"
 ---
 

@@ -19,7 +19,6 @@ imageOriginal: "/images/productos-tienda/monitoreo/huawei-smartlogger.jpg"
 faqs:
   - pregunta: "¿Es compatible con mi equipo?"
     respuesta: "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
-fichaPdf: "/fichas/reiki/cat-mayorista-9f7e0248795f.pdf"
 ---
 
 **Huawei Accesorio 02233SPV (SUN2000-20~50KTL-M3)** · pieza de campo compatible con la serie comercial SUN2000 KTL-M3. Confirmá número de parte y tabla de compatibilidad del fabricante antes de comprar.

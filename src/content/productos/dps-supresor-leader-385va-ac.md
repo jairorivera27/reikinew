@@ -30,7 +30,6 @@ faqs:
     respuesta: "En el tablero de strings (lado DC) cerca del inversor y, del lado AC, en el tablero principal. Necesita una buena puesta a tierra para funcionar."
   - pregunta: "¿Cumple RETIE?"
     respuesta: "Las instalaciones solares en Colombia deben cumplir RETIE; usa protecciones certificadas bajo normas IEC y deja la instalación en manos de un técnico. Reiki te asesora en el diseño del tablero."
-fichaPdf: "/fichas/reiki/dps-supresor-leader-385va-ac.pdf"
 ---
 **DPS Supresor Leader 385VA AC** de Leader · 385VA AC.
 
