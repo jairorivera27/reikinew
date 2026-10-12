@@ -13,9 +13,9 @@ brand: "Felicity"
 model: "IVEM3048-LV"
 sku: "IVEM3048-LV"
 power: "3kW"
-stock: "disponible"
+stock: "pre-orden"
 order: 6157
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-11"
 seoKeywords:
   - "inversor solar"
   - "inversor solar off-grid"

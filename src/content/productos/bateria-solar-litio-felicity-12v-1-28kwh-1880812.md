@@ -22,9 +22,9 @@ specifications:
 brand: "Felicity"
 sku: "1880812"
 power: "12V 1,28kWh"
-stock: "disponible"
+stock: "pre-orden"
 order: 6012
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-11"
 seoKeywords:
   - "batería solar"
   - "batería solar litio"

@@ -13,9 +13,9 @@ brand: "Felicity"
 model: "FLA24171"
 sku: "FLA24171"
 power: "24V 4kWh"
-stock: "disponible"
+stock: "pre-orden"
 order: 6015
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-11"
 seoKeywords:
   - "batería solar"
   - "batería solar litio"

@@ -12,9 +12,9 @@ specifications:
 brand: "Felicity"
 sku: "3004247"
 power: "5kW"
-stock: "disponible"
+stock: "pre-orden"
 order: 6158
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-11"
 seoKeywords:
   - "inversor solar"
   - "inversor solar off-grid"

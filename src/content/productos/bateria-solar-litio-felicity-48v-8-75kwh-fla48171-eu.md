@@ -13,9 +13,9 @@ brand: "Felicity"
 model: "FLA48171-EU"
 sku: "FLA48171-EU"
 power: "48V 8,75kWh"
-stock: "disponible"
+stock: "pre-orden"
 order: 6023
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-11"
 seoKeywords:
   - "batería solar"
   - "batería solar litio"

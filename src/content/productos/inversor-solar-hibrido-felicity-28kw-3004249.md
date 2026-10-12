@@ -12,9 +12,9 @@ specifications:
 brand: "Felicity"
 sku: "3004249"
 power: "28kW"
-stock: "disponible"
+stock: "pre-orden"
 order: 6155
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-11"
 seoKeywords:
   - "inversor solar"
   - "inversor solar híbrido"
