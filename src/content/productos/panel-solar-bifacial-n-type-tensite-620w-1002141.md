@@ -12,9 +12,9 @@ specifications:
 brand: "Tensite"
 sku: "1002141"
 power: "620W"
-stock: "disponible"
+stock: "pre-orden"
 order: 6440
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-11"
 seoKeywords:
   - "panel solar"
   - "panel solar bifacial n-type"

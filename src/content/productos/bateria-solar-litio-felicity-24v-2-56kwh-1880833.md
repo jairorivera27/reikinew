@@ -23,9 +23,9 @@ specifications:
 brand: "Felicity"
 sku: "1880833"
 power: "24V 2,56kWh"
-stock: "disponible"
+stock: "pre-orden"
 order: 6014
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-11"
 seoKeywords:
   - "batería solar"
   - "batería solar litio"

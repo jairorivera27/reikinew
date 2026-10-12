@@ -21,9 +21,9 @@ specifications:
 brand: "Felicity"
 sku: "1880845"
 power: "48V 11,8kWh"
-stock: "disponible"
+stock: "pre-orden"
 order: 6019
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-11"
 seoKeywords:
   - "batería solar"
   - "batería solar litio"

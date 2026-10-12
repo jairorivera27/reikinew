@@ -13,9 +13,9 @@ brand: "Felicity"
 model: "FLA24280-EU"
 sku: "FLA24280-EU"
 power: "24V 7,15kWh"
-stock: "disponible"
+stock: "pre-orden"
 order: 6017
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-11"
 seoKeywords:
   - "batería solar"
   - "batería solar litio"

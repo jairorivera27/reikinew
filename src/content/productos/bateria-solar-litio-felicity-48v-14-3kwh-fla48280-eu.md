@@ -13,9 +13,9 @@ brand: "Felicity"
 model: "FLA48280-EU"
 sku: "FLA48280-EU"
 power: "48V 14,3kWh"
-stock: "disponible"
+stock: "pre-orden"
 order: 6020
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-11"
 seoKeywords:
   - "batería solar"
   - "batería solar litio"
