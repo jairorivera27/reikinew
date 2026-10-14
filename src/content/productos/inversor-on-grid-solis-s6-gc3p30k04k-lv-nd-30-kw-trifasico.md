@@ -12,9 +12,9 @@ brand: "Solis"
 model: "SOLIS S6-GC3P30K04K-LV-ND"
 sku: "AMZ-203-0018"
 power: "30 kW"
-stock: "disponible"
+stock: "agotado"
 order: 7000
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-14"
 promocion: "Precio especial"
 imageThumb: "/images/productos-estudio/inversor-on-grid-solis-s6-gc3p30k04k-lv-nd-30-kw-trifasico-thumb.webp"
 imagen_provisional: true

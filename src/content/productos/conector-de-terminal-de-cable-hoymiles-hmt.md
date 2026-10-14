@@ -12,9 +12,9 @@ specifications:
 brand: "Hoymiles"
 model: "Hoymiles Conector de terminal de cable HMT"
 sku: "AMZ-001-0012"
-stock: "disponible"
+stock: "agotado"
 order: 7000
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-14"
 promocion: "Precio especial"
 imageThumb: "/images/productos-estudio/conector-de-terminal-de-cable-hoymiles-hmt-thumb.webp"
 imagen_provisional: false

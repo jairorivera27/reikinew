@@ -11,9 +11,9 @@ specifications:
 brand: "Growatt"
 model: "Growatt Smart Energy Manager (SEM-D)"
 sku: "AMZ-000-0006"
-stock: "disponible"
+stock: "agotado"
 order: 7000
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-14"
 promocion: "Precio especial"
 imageThumb: "/images/productos-estudio/gestor-de-energia-growatt-smart-energy-manager-sem-d-thumb.webp"
 imagen_provisional: true

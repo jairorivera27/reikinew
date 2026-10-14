@@ -8,7 +8,7 @@ price: "$1.020.700"
 precioAnterior: "$1.468.162"
 descuentoPct: 30
 promocion: "Precio especial"
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-14"
 specifications:
   - "Tipo: Datalogger"
   - "Especificación principal: especificación no disponible"
@@ -17,7 +17,7 @@ brand: "Deye"
 model: "LS4G-3"
 sku: "LS4G-3"
 power: "N/A"
-stock: "disponible"
+stock: "agotado"
 order: 6372
 seoKeywords:
   - "sistema de monitoreo solar"

@@ -11,7 +11,7 @@ specifications:
   - "Aplicación: almacenamiento de energía en sistemas solares y respaldo eléctrico"
 brand: "Pylontech"
 model: "US5000"
-stock: "disponible"
+stock: "agotado"
 order: 7
 precioAnterior: "$12.390.000"
 descuentoPct: 56
@@ -19,7 +19,7 @@ promocion: "Liquidación"
 promoImagen: "/images/placeholders/promo-liquidacion.svg"
 sku: "US5000"
 power: "48V 4,8kWh"
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-14"
 imageThumb: "/images/productos-estudio/pylontech-us-prov.webp"
 imageAlt: "Pylontech US5000 48V 4,8kWh – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/baterias/pylontech-us.png"

@@ -12,9 +12,9 @@ specifications:
 brand: "Solis"
 model: "Solis-EPM3-5G PLUS SPLIT PHASE"
 sku: "AMZ-006-0002"
-stock: "disponible"
+stock: "agotado"
 order: 7000
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-14"
 fichaPdf: "/fichas/fabricantes/amara-006-0002-ficha-tecnica.pdf"
 promocion: "Precio especial"
 imageThumb: "/images/productos-estudio/medidor-solis-epm3-5g-plus-split-phase-control-de-exportacion-thumb.webp"

@@ -13,9 +13,9 @@ specifications:
 brand: "Hoymiles"
 model: "Hoymiles AC Trunk End Cap VERSIÓN ANTIGUA"
 sku: "AMZ-001-0004"
-stock: "disponible"
+stock: "agotado"
 order: 7000
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-14"
 imagen_provisional: true
 fichaPdf: "/fichas/fabricantes/amara-001-0004-ficha-tecnica.pdf"
 faqs:

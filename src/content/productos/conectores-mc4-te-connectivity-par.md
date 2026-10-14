@@ -12,9 +12,9 @@ specifications:
 brand: "TE Connectivity"
 model: "TE Conectores MC4 (Par)"
 sku: "AMZ-003-0001"
-stock: "disponible"
+stock: "agotado"
 order: 7000
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-14"
 promocion: "Precio especial"
 imageThumb: "/images/productos-estudio/conectores-mc4-te-connectivity-par-thumb.webp"
 imagen_provisional: true

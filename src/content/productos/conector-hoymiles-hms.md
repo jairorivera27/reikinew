@@ -11,9 +11,9 @@ specifications:
 brand: "Hoymiles"
 model: "Hoymiles HMS Connector"
 sku: "AMZ-001-0015"
-stock: "disponible"
+stock: "agotado"
 order: 7000
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-14"
 promocion: "Precio especial"
 imageThumb: "/images/productos-estudio/conector-hoymiles-hms-thumb.webp"
 imagen_provisional: false

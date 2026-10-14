@@ -10,7 +10,7 @@ specifications:
   - "Especificación principal: 20kW"
   - "Aplicación: conversión y gestión de energía en instalaciones fotovoltaicas"
 brand: "Huawei"
-stock: "disponible"
+stock: "agotado"
 order: 5045
 precioAnterior: "$12.568.950"
 descuentoPct: 32
@@ -18,7 +18,7 @@ promocion: "Liquidación"
 promoImagen: "/images/placeholders/promo-liquidacion.svg"
 sku: "SUN2000-20KTL-M3"
 power: "20kW"
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-14"
 imageThumb: "/images/productos-estudio/huawei-sun2000-20ktl-m3-thumb.webp"
 imageAlt: "Huawei SUN2000-20KTL-M3 – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/huawei/sun2000-20ktl-m3/01-NFIN0031.png"

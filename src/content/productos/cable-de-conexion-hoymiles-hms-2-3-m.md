@@ -13,9 +13,9 @@ specifications:
 brand: "Hoymiles"
 model: "Hoymiles HMS Connection Cable 2.3m"
 sku: "AMZ-001-0017"
-stock: "disponible"
+stock: "agotado"
 order: 7000
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-14"
 promocion: "Precio especial"
 imageThumb: "/images/productos-estudio/cable-de-conexion-hoymiles-hms-2-3-m-thumb.webp"
 imagen_provisional: true

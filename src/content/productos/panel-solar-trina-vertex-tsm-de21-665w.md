@@ -17,9 +17,9 @@ specifications:
 brand: "Trina Solar"
 model: "Trina TSM-DE21 665"
 sku: "AMZ-102-0003"
-stock: "disponible"
+stock: "agotado"
 order: 7000
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-14"
 imagen_provisional: true
 imagenSerieRef: "Trina Vertex 670W"
 faqs:

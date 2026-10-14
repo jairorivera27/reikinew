@@ -8,7 +8,7 @@ price: "$980.100"
 precioAnterior: "$1.990.000"
 descuentoPct: 51
 promocion: "Precio especial"
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-14"
 specifications:
   - "Potencia: 2000W"
   - "Referencia: IPT2000-41[T]"
@@ -16,7 +16,7 @@ specifications:
   - "Garantía: 2 años"
 brand: "EPever"
 model: "IPT2000-41[T]"
-stock: "disponible"
+stock: "agotado"
 order: 9
 imageThumb: "/images/productos-estudio/epever-ipt2000-41-t-prov.webp"
 imageAlt: "EPever IPT2000-41[T] – Reiki Energía Solar"

@@ -12,9 +12,9 @@ specifications:
 brand: "Growatt"
 model: "Growatt Smart Meter TPM-E 100A"
 sku: "AMZ-000-0003"
-stock: "disponible"
+stock: "agotado"
 order: 7000
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-14"
 promocion: "Precio especial"
 imageThumb: "/images/productos-estudio/medidor-inteligente-growatt-tpm-e-100a-thumb.webp"
 imagen_provisional: true

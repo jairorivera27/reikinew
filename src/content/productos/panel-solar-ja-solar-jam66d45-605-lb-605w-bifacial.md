@@ -16,9 +16,9 @@ specifications:
 brand: "JA Solar"
 model: "JA Solar JAM66D45-605 LB"
 sku: "AMZ-100-0010"
-stock: "disponible"
+stock: "agotado"
 order: 7000
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-14"
 promocion: "Precio especial"
 imageThumb: "/images/productos-estudio/panel-solar-ja-solar-jam66d45-605-lb-605w-bifacial-thumb.webp"
 imagen_provisional: true

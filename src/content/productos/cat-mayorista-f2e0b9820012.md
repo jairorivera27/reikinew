@@ -11,7 +11,7 @@ specifications:
   - "Protecciones y normativa según manual de campo Huawei"
   - "Fuente: [Huawei FusionSolar](https://solar.huawei.com/)"
 brand: "Huawei"
-stock: "disponible"
+stock: "agotado"
 order: 5050
 imageThumb: "/images/productos-estudio/huawei-sun2000-prov.webp"
 imageAlt: "Huawei – Reiki Energía Solar"
@@ -21,7 +21,7 @@ imagenSerieRef: "Huawei SUN2000"
 faqs:
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-14"
 precioAnterior: "$25.290.900"
 descuentoPct: 3
 promocion: "Precio rebajado"

@@ -10,11 +10,11 @@ specifications:
   - "Especificación principal: 50kW"
   - "Aplicación: conversión y gestión de energía en instalaciones fotovoltaicas"
 brand: "Huawei"
-stock: "disponible"
+stock: "agotado"
 order: 5049
 sku: "SUN2000-50KTL-M3"
 power: "50kW"
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-14"
 imageThumb: "/images/productos-estudio/huawei-sun2000-50ktl-m3-thumb.webp"
 imageAlt: "Huawei SUN2000-50KTL-M3 – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/huawei/sun2000-50ktl-m3/01-NFIN0063.png"

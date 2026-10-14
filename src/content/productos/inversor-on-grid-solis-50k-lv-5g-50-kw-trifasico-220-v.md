@@ -14,9 +14,9 @@ brand: "Solis"
 model: "Solis-50K-LV-5G"
 sku: "AMZ-203-0010"
 power: "50 kW"
-stock: "disponible"
+stock: "agotado"
 order: 7000
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-14"
 imagen_provisional: true
 faqs:
   - pregunta: "¿Necesita baterías?"

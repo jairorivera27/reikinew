@@ -13,9 +13,9 @@ specifications:
 brand: "Hoymiles"
 model: "Hoymiles Three-phase electricity meter (100A Current Transformer) DTSU666(CT-3 x 100A)"
 sku: "AMZ-001-0008"
-stock: "disponible"
+stock: "agotado"
 order: 7000
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-14"
 imagen_provisional: true
 faqs:
   - pregunta: "¿Para qué sirve con un inversor solar?"

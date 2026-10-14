@@ -14,9 +14,9 @@ specifications:
 brand: "Hoymiles"
 model: "HOYMILES HMS1000 2T"
 sku: "AMZ-202-0006"
-stock: "disponible"
+stock: "agotado"
 order: 7000
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-14"
 imagen_provisional: false
 faqs:
   - pregunta: "¿Cuántos paneles se conectan a cada microinversor?"

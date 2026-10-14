@@ -10,7 +10,7 @@ specifications:
   - "Especificación principal: 2kW"
   - "Aplicación: conversión de energía a nivel de módulo fotovoltaico"
 brand: "Hoymiles"
-stock: "disponible"
+stock: "agotado"
 order: 5018
 precioAnterior: "$2.004.300"
 descuentoPct: 38
@@ -18,7 +18,7 @@ promocion: "Liquidación"
 promoImagen: "/images/placeholders/promo-liquidacion.svg"
 sku: "2000-4T"
 power: "2kW"
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-14"
 imageThumb: "/images/productos-estudio/hoymiles-hmt-2000-4t-208-thumb.webp"
 imageAlt: "Hoymiles HMT-2000-4T-208 2kW – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/NFMI0004.png"

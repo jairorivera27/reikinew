@@ -13,9 +13,9 @@ specifications:
 brand: "Huawei"
 model: "SDongleA-05"
 sku: "AMZ-300-0002"
-stock: "disponible"
+stock: "agotado"
 order: 7000
-updatedAt: "2026-09-29"
+updatedAt: "2026-10-14"
 promocion: "Precio especial"
 imageThumb: "/images/productos-estudio/smart-dongle-huawei-sdonglea-05-wlan-fe-para-monitoreo-thumb.webp"
 imagen_provisional: false
