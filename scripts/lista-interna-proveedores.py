@@ -22,7 +22,7 @@ Cómo se decide el proveedor de cada producto (en este orden):
      sku AMZ-* -> Amara NZero, sku HARDY-* -> Hardy Solar Energy.
   c) Coincidencia con la Lista Interna por modelo/código, luego por nombre,
      luego por marca + precio de venta, luego por precio único.
-  d) cat-mayorista-* (lista de precios mayorista) -> "Por confirmar (lista mayorista)".
+  d) cat-mayorista-* (lista de precios mayorista) -> Solaire; marca Master Lights -> Hardy Solar Energy.
   e) Si nada coincide: "Por confirmar".
 """
 import collections
@@ -53,7 +53,13 @@ AMARA_PREVIOS = {
 # Productos que ya vendíamos y pasaron a comprarse a Ingesolar (commit a4d500e).
 INGESOLAR_PREVIOS = {'datalogger-deye-ls4g-3', 'epever-ipt2000'}
 
-PROV_MAYORISTA = 'Por confirmar (lista mayorista)'
+# Lista mayorista (data/lista-precios-mayorista.txt): confirmado por el usuario que es Grupo Solaire SAS.
+PROV_MAYORISTA = 'Solaire'
+
+# Marcas cuyo proveedor confirmó el usuario aunque el producto no traiga código.
+PROVEEDOR_POR_MARCA = {
+    'master lights': 'Hardy Solar Energy',  # reflectores y luminarias -> Hardy Solar
+}
 
 CATEGORIA = {
     'paneles': 'Panel Solar', 'inversores': 'Inversor', 'baterias': 'Batería',
@@ -138,9 +144,11 @@ def main():
         pv = precio(p.get('price'))
         prov, fila, origen, codigo, margen = None, None, '', sku or (p.get('model') or ''), None
 
-        if slug in por_id:
+        if slug in por_id and not str(por_id[slug].get('Proveedor') or '').startswith(POR_CONFIRMAR):
             fila = por_id[slug]
             prov, origen = fila.get('Proveedor'), 'Lista Interna (ID tienda)'
+        elif str(p.get('brand') or '').strip().lower() in PROVEEDOR_POR_MARCA:
+            prov, origen = PROVEEDOR_POR_MARCA[str(p.get('brand')).strip().lower()], 'Proveedor confirmado por marca'
         elif sku.startswith('ING-') or 'Proveedor: Ingesolar' in body or slug in INGESOLAR_PREVIOS:
             prov, origen, margen = 'Ingesolar', 'Importación Ingesolar (costo = precio / 1,30)', '30%'
         elif sku.startswith('AMZ-') or slug in AMARA_PREVIOS:
@@ -148,8 +156,7 @@ def main():
         elif sku.upper().startswith('HARDY'):
             prov, origen = 'Hardy Solar Energy', 'Importación Hardy'
         elif slug.startswith('cat-mayorista-'):
-            # data/lista-precios-mayorista.txt: precio tienda = costo x 1,20. El nombre del
-            # mayorista no está registrado; corrígelo en el Excel y se respetará (ID tienda).
+            # data/lista-precios-mayorista.txt (Solaire): precio tienda = costo x 1,20.
             prov, origen, margen = PROV_MAYORISTA, 'Lista de precios mayorista (costo = precio / 1,20)', '20%'
         if prov is None or (fila is None and prov == 'Hardy Solar Energy'):
             cand = None
