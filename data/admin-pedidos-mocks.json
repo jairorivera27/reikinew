@@ -24,7 +24,8 @@
         "sku": "felicity-hybrid-8kw",
         "name": "Inversor Solar Híbrido Felicity 8kW",
         "quantity": 1,
-        "unitPrice": 5194805
+        "unitPrice": 5194805,
+        "proveedor": "Solaire"
       }
     ]
   },
@@ -53,19 +54,22 @@
         "sku": "ja-solar-550",
         "name": "Panel JA Solar 550W Bifacial",
         "quantity": 8,
-        "unitPrice": 520000
+        "unitPrice": 520000,
+        "proveedor": "Autosolar"
       },
       {
         "sku": "victron-mppt-100-50",
         "name": "Controlador Victron SmartSolar MPPT 100/50",
         "quantity": 1,
-        "unitPrice": 1450000
+        "unitPrice": 1450000,
+        "proveedor": "Autosolar"
       },
       {
         "sku": "cable-solar-6mm",
         "name": "Cable solar 6 mm² (rollo 100 m)",
         "quantity": 1,
-        "unitPrice": 890000
+        "unitPrice": 890000,
+        "proveedor": "E&M"
       }
     ]
   },
@@ -94,13 +98,15 @@
         "sku": "growatt-mod-10k",
         "name": "Inversor Growatt MOD 10KTL3-X",
         "quantity": 1,
-        "unitPrice": 6800000
+        "unitPrice": 6800000,
+        "proveedor": "E&M"
       },
       {
         "sku": "trina-575",
         "name": "Panel Trina Vertex S+ 575W",
         "quantity": 12,
-        "unitPrice": 470000
+        "unitPrice": 470000,
+        "proveedor": "E&M"
       }
     ]
   },
@@ -129,7 +135,8 @@
         "sku": "bateria-felicity-5kwh",
         "name": "Batería Litio Felicity 5 kWh",
         "quantity": 1,
-        "unitPrice": 3250000
+        "unitPrice": 3250000,
+        "proveedor": "E&M"
       }
     ]
   },
@@ -158,7 +165,8 @@
         "sku": "luminaria-ares-600",
         "name": "Luminaria solar Ares 600",
         "quantity": 6,
-        "unitPrice": 315000
+        "unitPrice": 315000,
+        "proveedor": "E&M"
       }
     ]
   }

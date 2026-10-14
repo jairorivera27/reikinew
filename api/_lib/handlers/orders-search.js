@@ -4,6 +4,7 @@
  */
 import { adminAuthOk } from '../admin-auth.js';
 import { searchCheckoutOrders, listRecentCheckoutOrders } from '../checkout-order-store.js';
+import { conProveedores } from '../proveedores.js';
 
 function parseQuery(req) {
   try {
@@ -17,7 +18,7 @@ function parseQuery(req) {
 function normalizeOrder(o) {
   if (!o || typeof o !== 'object') return o;
   return {
-    ...o,
+    ...conProveedores(o),
     workflowStatus: String(o.workflowStatus || 'nuevo').toLowerCase(),
   };
 }

@@ -52,3 +52,6 @@ dotted-saga-*.json
 
 # Inventario crudo de fotos de proveedor (no procesar/publicar desde aquí)
 imagenes-proveedores/
+
+# Excel interno con costos de proveedor (NUNCA subir: el repositorio es público)
+data/Catalogo_Reiki_*.xlsx

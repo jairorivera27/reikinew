@@ -25,6 +25,9 @@
       "maxDuration": 60,
       "memory": 1769,
       "includeFiles": "config/empresa.json"
+    },
+    "api/checkout.js": {
+      "includeFiles": "data/proveedores-tienda.json"
     }
   },
   "rewrites": [

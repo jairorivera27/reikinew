@@ -512,6 +512,11 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           return st || '—';
         }
 
+        function isApprovedOrder(o) {
+          var st = String((o && o.status) || '').toLowerCase();
+          return st === 'approved' || st === 'completed';
+        }
+
         function cardHtml(o) {
           o = o || {};
           var phone = (o.client && o.client.phone) || '';
@@ -553,7 +558,13 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             '</p>' +
             '<div class="oc-product">' +
             esc(preview || 'Sin equipos') +
-            '</div></div>' +
+            '</div>' +
+            (isApprovedOrder(o) && items.length
+              ? '<div class="oc-prov"><i class="fas fa-truck" aria-hidden="true"></i> ' +
+                esc(proveedoresDe(items).join(' · ')) +
+                '</div>'
+              : '') +
+            '</div>' +
             '<div class="oc-price">' +
             esc(formatCop(o.totalAmount)) +
             '</div>' +
@@ -737,6 +748,80 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           }
         }
 
+        function proveedorDe(it) {
+          var p = String((it && it.proveedor) || '').trim();
+          return p || 'Por confirmar';
+        }
+
+        function proveedorChip(it) {
+          var p = proveedorDe(it);
+          var pend = p.indexOf('Por confirmar') === 0;
+          var code = String((it && it.codigoProveedor) || '').trim();
+          return (
+            '<span class="prov-chip' +
+            (pend ? ' prov-chip--pend' : '') +
+            '">' +
+            esc(p) +
+            '</span>' +
+            (code && !pend ? '<span class="prov-code">' + esc(code) + '</span>' : '')
+          );
+        }
+
+        function proveedoresDe(items) {
+          var seen = {};
+          var out = [];
+          (items || []).forEach(function (it) {
+            var p = proveedorDe(it);
+            if (!seen[p]) {
+              seen[p] = true;
+              out.push(p);
+            }
+          });
+          return out;
+        }
+
+        /** Agrupa los equipos por proveedor (para armar las órdenes de compra). */
+        function resumenProveedores(items) {
+          if (!items || !items.length) return '';
+          var grupos = {};
+          var orden = [];
+          items.forEach(function (it) {
+            var p = proveedorDe(it);
+            if (!grupos[p]) {
+              grupos[p] = [];
+              orden.push(p);
+            }
+            grupos[p].push(it);
+          });
+          return (
+            '<div class="prov-resumen"><h4>Pedir a cada proveedor</h4>' +
+            orden
+              .map(function (p) {
+                return (
+                  '<div class="prov-grupo"><span class="prov-chip' +
+                  (p.indexOf('Por confirmar') === 0 ? ' prov-chip--pend' : '') +
+                  '">' +
+                  esc(p) +
+                  '</span><ul>' +
+                  grupos[p]
+                    .map(function (it) {
+                      return (
+                        '<li>' +
+                        esc(it.quantity || 1) +
+                        ' × ' +
+                        esc(it.name || it.title || it.sku) +
+                        '</li>'
+                      );
+                    })
+                    .join('') +
+                  '</ul></div>'
+                );
+              })
+              .join('') +
+            '</div>'
+          );
+        }
+
         function findOrder(id) {
           return state.orders.find(function (o) {
             return o.orderId === id;
@@ -763,6 +848,8 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
                     '<tr><td>' +
                     esc(it.name || it.title || it.sku) +
                     '</td><td>' +
+                    proveedorChip(it) +
+                    '</td><td>' +
                     esc(it.quantity || 1) +
                     '</td><td>' +
                     esc(formatCop(it.unitPrice)) +
@@ -772,7 +859,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
                   );
                 })
                 .join('')
-            : '<tr><td colspan="4">Sin detalle de equipos</td></tr>';
+            : '<tr><td colspan="5">Sin detalle de equipos</td></tr>';
 
           el.modalBody.innerHTML =
             '<p class="modal-kicker">' +
@@ -811,9 +898,10 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             '</section>' +
             '<section class="modal-block">' +
             '<h3>Cotización de la compra</h3>' +
-            '<div class="table-wrap"><table><thead><tr><th>Equipo</th><th>Cant.</th><th>Unit.</th><th>Total</th></tr></thead><tbody>' +
+            '<div class="table-wrap"><table><thead><tr><th>Equipo</th><th>Proveedor</th><th>Cant.</th><th>Unit.</th><th>Total</th></tr></thead><tbody>' +
             itemsRows +
             '</tbody></table></div>' +
+            resumenProveedores(items) +
             '<div class="totals">' +
             '<div><span>Subtotal equipos</span><strong>' +
             esc(formatCop(sub)) +
@@ -1425,6 +1513,54 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         font-size: 0.875rem;
         color: #4a1a5c;
         line-height: 1.35;
+      }
+      .oc-prov {
+        margin-top: 6px;
+        font-size: 0.72rem;
+        font-weight: 600;
+        color: #5b3a8c;
+        line-height: 1.35;
+      }
+      .prov-chip {
+        display: inline-block;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: #efe7fb;
+        color: #4b2a7b;
+        font-size: 0.75rem;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .prov-chip--pend {
+        background: #fff3c4;
+        color: #7a5a00;
+      }
+      .prov-code {
+        display: block;
+        margin-top: 2px;
+        font-size: 0.68rem;
+        color: #6b7280;
+      }
+      .prov-resumen {
+        margin-top: 12px;
+        padding: 10px 12px;
+        border: 1px dashed #d8c9f0;
+        border-radius: 10px;
+      }
+      .prov-resumen h4 {
+        margin: 0 0 8px;
+        font-size: 0.8rem;
+        text-transform: uppercase;
+        letter-spacing: 0.04em;
+        color: #4b2a7b;
+      }
+      .prov-grupo {
+        margin-bottom: 8px;
+      }
+      .prov-grupo ul {
+        margin: 4px 0 0 18px;
+        padding: 0;
+        font-size: 0.82rem;
       }
       .oc-price {
         margin-top: 0.15rem;
