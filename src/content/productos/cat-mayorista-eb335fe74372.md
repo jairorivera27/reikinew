@@ -10,7 +10,7 @@ specifications:
   - "Especificación principal: 50kW"
   - "Aplicación: conversión y gestión de energía en instalaciones fotovoltaicas"
 brand: "Huawei"
-stock: "pre-orden"
+stock: "disponible"
 order: 5049
 sku: "SUN2000-50KTL-M3"
 power: "50kW"

@@ -18,7 +18,7 @@ model: "SUN-15K-SG01HP3-US-AM2"
 sku: "ING-INVC20"
 stock: "disponible"
 order: 8000
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-14"
 imagen_provisional: false
 fichaPdf: "/fichas/proveedores/ingesolar-INVC20.pdf"
 faqs:
@@ -33,6 +33,7 @@ faqs:
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 certificadoPdf: "/fichas/proveedores/ingesolar-INVC20-cert.pdf"
+stockBajo: true
 ---
 
 Proveedor: Ingesolar (INVC20).

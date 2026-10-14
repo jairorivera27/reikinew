@@ -13,12 +13,12 @@ specifications:
   - "Referencia: BATL28"
 model: "BATL28"
 sku: "ING-BATL28"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-14"
 draft: true
 imagenPendiente: true
-stockBajo: true
+
 ---
 
 Proveedor: Ingesolar (BATL28).

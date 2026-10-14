@@ -10,7 +10,7 @@ specifications:
   - "Uso con ecosistema Hoymiles / S-Miles Cloud"
   - "Fuente: [Hoymiles](https://www.hoymiles.com/)"
 brand: "Hoymiles"
-stock: "pre-orden"
+stock: "disponible"
 order: 5036
 imageAlt: "Hoymiles – Reiki Energía Solar"
 draft: true

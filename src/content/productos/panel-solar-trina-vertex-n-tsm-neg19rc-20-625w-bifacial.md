@@ -15,7 +15,7 @@ brand: "Trina Solar"
 model: "TRINA TSM-NEG19RC.20 625W"
 sku: "AMZ-102-0020"
 power: "625 W"
-stock: "pre-orden"
+stock: "disponible"
 order: 7000
 updatedAt: "2026-10-14"
 imagen_provisional: true

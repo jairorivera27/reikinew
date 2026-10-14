@@ -13,8 +13,9 @@ specifications:
   - "Grado IP66 en muchos modelos de campo; rango térmico −25 °C a +60 °C típico"
   - "Fuente: [Solis](https://www.solisinverters.com/)"
 brand: "Solis"
-stock: "disponible"
+stock: "pre-orden"
 order: 5076
+updatedAt: "2026-10-14"
 ---
 
 **SOLIS INVERSOR S5-GR1P10K** · referencia **Solis** para sistemas fotovoltaicos. Resumen elaborado a partir de información pública del fabricante; confirme número de parte, revisión de firmware y compatibilidad de campo antes de comprar.

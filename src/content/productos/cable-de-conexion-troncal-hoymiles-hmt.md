@@ -13,7 +13,7 @@ specifications:
 brand: "Hoymiles"
 model: "Hoymiles Cable de conexión HMT"
 sku: "AMZ-001-0009"
-stock: "pre-orden"
+stock: "disponible"
 order: 7000
 updatedAt: "2026-10-14"
 imagen_provisional: false

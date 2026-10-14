@@ -16,7 +16,7 @@ specifications:
   - "Garantía: 2 años"
 brand: "EPever"
 model: "IPT2000-41[T]"
-stock: "pre-orden"
+stock: "disponible"
 order: 9
 imageThumb: "/images/productos-estudio/epever-ipt2000-41-t-prov.webp"
 imageAlt: "EPever IPT2000-41[T] – Reiki Energía Solar"

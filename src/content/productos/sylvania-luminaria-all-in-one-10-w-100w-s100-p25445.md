@@ -12,13 +12,13 @@ specifications:
 brand: "Sylvania"
 model: "S100-10W"
 sku: "ING-ILUL15"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-14"
 draft: true
 imagenPendiente: true
 fichaPdf: "/fichas/proveedores/ingesolar-ILUL15.pdf"
-stockBajo: true
+
 ---
 
 Proveedor: Ingesolar (ILUL15).

@@ -16,15 +16,15 @@ specifications:
 brand: "Epever"
 model: "IP500-21"
 sku: "ING-INVOP62"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-14"
 imagen_provisional: false
 fichaPdf: "/fichas/proveedores/ingesolar-INVOP62.pdf"
 faqs:
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
-stockBajo: true
+
 ---
 
 Proveedor: Ingesolar (INVOP62).

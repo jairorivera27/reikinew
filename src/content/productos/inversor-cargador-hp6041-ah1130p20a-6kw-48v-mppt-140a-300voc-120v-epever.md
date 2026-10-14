@@ -12,12 +12,12 @@ specifications:
   - "Referencia: INVC36"
 model: "INVC36"
 sku: "ING-INVC36"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-14"
 draft: true
 imagenPendiente: true
-stockBajo: true
+
 ---
 
 Proveedor: Ingesolar (INVC36).

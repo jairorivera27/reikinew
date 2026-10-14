@@ -15,9 +15,10 @@ model: "BATL55"
 sku: "ING-BATL55"
 stock: "disponible"
 order: 8000
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-14"
 draft: true
 imagenPendiente: true
+stockBajo: true
 ---
 
 Proveedor: Ingesolar (BATL55).

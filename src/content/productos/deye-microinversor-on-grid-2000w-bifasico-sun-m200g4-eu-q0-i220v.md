@@ -17,7 +17,7 @@ model: "SUN-M200G4-EU-Q0"
 sku: "ING-INVOG07"
 stock: "disponible"
 order: 8000
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-14"
 imagen_provisional: false
 fichaPdf: "/fichas/proveedores/ingesolar-INVOG07.pdf"
 faqs:
@@ -28,6 +28,7 @@ faqs:
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 certificadoPdf: "/fichas/proveedores/ingesolar-INVOG07-cert.pdf"
+stockBajo: true
 ---
 
 Proveedor: Ingesolar (INVOG07).

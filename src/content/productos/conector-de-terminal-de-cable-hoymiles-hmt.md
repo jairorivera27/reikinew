@@ -12,7 +12,7 @@ specifications:
 brand: "Hoymiles"
 model: "Hoymiles Conector de terminal de cable HMT"
 sku: "AMZ-001-0012"
-stock: "pre-orden"
+stock: "disponible"
 order: 7000
 updatedAt: "2026-10-14"
 promocion: "Precio especial"

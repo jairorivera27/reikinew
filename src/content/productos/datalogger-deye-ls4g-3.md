@@ -17,7 +17,7 @@ brand: "Deye"
 model: "LS4G-3"
 sku: "LS4G-3"
 power: "N/A"
-stock: "pre-orden"
+stock: "disponible"
 order: 6372
 seoKeywords:
   - "sistema de monitoreo solar"
@@ -36,6 +36,7 @@ faqs:
   - pregunta: "¿Necesita internet?"
     respuesta: "Sí, se conecta por Wi-Fi, red cableada o 4G según el modelo para enviar los datos a la aplicación del fabricante."
 fichaPdf: "/fichas/fabricantes/deye-stick-logger-datasheet.pdf"
+stockBajo: true
 ---
 **Datalogger Deye LS4G-3** de Deye · N/A.
 
