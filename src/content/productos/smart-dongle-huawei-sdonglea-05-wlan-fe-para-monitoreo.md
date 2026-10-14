@@ -13,7 +13,7 @@ specifications:
 brand: "Huawei"
 model: "SDongleA-05"
 sku: "AMZ-300-0002"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-14"
 promocion: "Precio especial"

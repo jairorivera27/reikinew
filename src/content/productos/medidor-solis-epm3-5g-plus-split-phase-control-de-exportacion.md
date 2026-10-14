@@ -12,7 +12,7 @@ specifications:
 brand: "Solis"
 model: "Solis-EPM3-5G PLUS SPLIT PHASE"
 sku: "AMZ-006-0002"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-14"
 fichaPdf: "/fichas/fabricantes/amara-006-0002-ficha-tecnica.pdf"

@@ -10,7 +10,7 @@ specifications:
   - "Especificación principal: 2kW"
   - "Aplicación: conversión de energía a nivel de módulo fotovoltaico"
 brand: "Hoymiles"
-stock: "agotado"
+stock: "pre-orden"
 order: 5018
 precioAnterior: "$2.004.300"
 descuentoPct: 38

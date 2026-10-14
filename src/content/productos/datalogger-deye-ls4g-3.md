@@ -17,7 +17,7 @@ brand: "Deye"
 model: "LS4G-3"
 sku: "LS4G-3"
 power: "N/A"
-stock: "agotado"
+stock: "pre-orden"
 order: 6372
 seoKeywords:
   - "sistema de monitoreo solar"

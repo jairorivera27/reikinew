@@ -14,7 +14,7 @@ specifications:
 brand: "Hoymiles"
 model: "Hoymiles HMS800 2T LV"
 sku: "AMZ-202-0003"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-14"
 imagen_provisional: true

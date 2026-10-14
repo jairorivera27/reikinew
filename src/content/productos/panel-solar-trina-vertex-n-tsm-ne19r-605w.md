@@ -15,7 +15,7 @@ brand: "Trina Solar"
 model: "Trina- TSM-NE19R-605W"
 sku: "AMZ-102-0008"
 power: "605 W"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-14"
 imagen_provisional: false

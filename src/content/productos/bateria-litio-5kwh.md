@@ -11,7 +11,7 @@ specifications:
   - "Aplicación: almacenamiento de energía en sistemas solares y respaldo eléctrico"
 brand: "Pylontech"
 model: "US5000"
-stock: "agotado"
+stock: "pre-orden"
 order: 7
 precioAnterior: "$12.390.000"
 descuentoPct: 56

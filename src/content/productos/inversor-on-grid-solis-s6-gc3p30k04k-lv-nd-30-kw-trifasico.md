@@ -12,7 +12,7 @@ brand: "Solis"
 model: "SOLIS S6-GC3P30K04K-LV-ND"
 sku: "AMZ-203-0018"
 power: "30 kW"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-14"
 promocion: "Precio especial"

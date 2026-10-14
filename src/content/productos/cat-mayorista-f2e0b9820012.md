@@ -11,7 +11,7 @@ specifications:
   - "Protecciones y normativa según manual de campo Huawei"
   - "Fuente: [Huawei FusionSolar](https://solar.huawei.com/)"
 brand: "Huawei"
-stock: "agotado"
+stock: "pre-orden"
 order: 5050
 imageThumb: "/images/productos-estudio/huawei-sun2000-prov.webp"
 imageAlt: "Huawei – Reiki Energía Solar"

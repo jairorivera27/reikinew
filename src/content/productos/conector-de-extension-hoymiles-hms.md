@@ -11,7 +11,7 @@ specifications:
 brand: "Hoymiles"
 model: "Hoymiles HMS Extension Connector"
 sku: "AMZ-001-0014"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-14"
 promocion: "Precio especial"

@@ -11,7 +11,7 @@ specifications:
 brand: "Hoymiles"
 model: "Hoymiles AC Trunk Port Cap VERSIÓN ANTIGUA"
 sku: "AMZ-001-0003"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-14"
 promocion: "Precio especial"

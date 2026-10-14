@@ -10,7 +10,7 @@ specifications:
   - "Especificación principal: 20kW"
   - "Aplicación: conversión y gestión de energía en instalaciones fotovoltaicas"
 brand: "Huawei"
-stock: "agotado"
+stock: "pre-orden"
 order: 5045
 precioAnterior: "$12.568.950"
 descuentoPct: 32

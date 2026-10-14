@@ -12,7 +12,7 @@ specifications:
 brand: "Procables"
 model: "Procables Cable fotovoltaico 6mm2 CuFlex XLPE CARRETE 500m"
 sku: "AMZ-500-0002"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-14"
 draft: true

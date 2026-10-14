@@ -13,7 +13,7 @@ specifications:
 brand: "Hoymiles"
 model: "Hoymiles AC Trunk Connector Unlock Tool VERSIÓN ANTIGUA"
 sku: "AMZ-001-0006"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-14"
 imagen_provisional: true

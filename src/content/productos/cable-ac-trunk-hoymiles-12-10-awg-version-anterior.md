@@ -12,7 +12,7 @@ specifications:
 brand: "Hoymiles"
 model: "Hoymiles AC Trunk Cable (12/10 AWG) VERSIÓN ANTIGUA"
 sku: "AMZ-001-0001"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-14"
 fichaPdf: "/fichas/fabricantes/amara-001-0001-ficha-tecnica.pdf"

@@ -17,7 +17,7 @@ specifications:
 brand: "Trina Solar"
 model: "Trina TSM-DE21 670"
 sku: "AMZ-102-0013"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-14"
 imagen_provisional: true

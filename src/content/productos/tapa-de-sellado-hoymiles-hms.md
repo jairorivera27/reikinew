@@ -14,7 +14,7 @@ specifications:
 brand: "Hoymiles"
 model: "Hoymiles HMS Sealing Cap"
 sku: "AMZ-001-0016"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-14"
 imagen_provisional: false

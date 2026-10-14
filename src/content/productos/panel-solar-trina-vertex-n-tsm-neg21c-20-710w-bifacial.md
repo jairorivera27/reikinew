@@ -17,7 +17,7 @@ brand: "Trina Solar"
 model: "Trina TSM-NEG21C.20 710W"
 sku: "AMZ-102-0018"
 power: "710 W"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-14"
 imagen_provisional: false

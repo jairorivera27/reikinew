@@ -13,7 +13,7 @@ specifications:
 brand: "Hoymiles"
 model: "Hoymiles Three-phase electricity meter (100A Current Transformer) DTSU666(CT-3 x 100A)"
 sku: "AMZ-001-0008"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-14"
 imagen_provisional: true

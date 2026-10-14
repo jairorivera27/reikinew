@@ -12,7 +12,7 @@ specifications:
   - "Grado IP66 en muchos modelos de campo; rango térmico −25 °C a +60 °C típico"
   - "Fuente: [Solis](https://www.solisinverters.com/)"
 brand: "Solis"
-stock: "agotado"
+stock: "pre-orden"
 order: 5073
 updatedAt: "2026-10-14"
 promocion: "Precio especial"

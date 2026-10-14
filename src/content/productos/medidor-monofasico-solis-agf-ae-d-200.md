@@ -12,7 +12,7 @@ specifications:
 brand: "Solis"
 model: "Solis Meter Monofasico AGF-AE-D/200"
 sku: "AMZ-006-0011"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-14"
 promocion: "Precio especial"

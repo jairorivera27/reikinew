@@ -16,7 +16,7 @@ specifications:
 brand: "Hoymiles"
 model: "Hoymiles Data Transfer Unit DTU-Pro-S Wifi"
 sku: "AMZ-302-0002"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-14"
 imagen_provisional: true

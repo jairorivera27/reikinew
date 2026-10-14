@@ -14,7 +14,7 @@ specifications:
 brand: "Hoymiles"
 model: "HOYMILES HMS1000 2T"
 sku: "AMZ-202-0006"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-14"
 imagen_provisional: false
