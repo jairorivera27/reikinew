@@ -91,13 +91,18 @@ def leer_productos():
 
 
 def leer_lista(wb):
-    ws = wb[HOJA]
-    head = [c.value for c in ws[1]]
+    # Filas de la Lista Interna + filas guardadas en "No están en la tienda" (sirven
+    # para reconocer productos ocultos o que vuelvan a la tienda).
     filas = []
-    for r in ws.iter_rows(min_row=2, values_only=True):
-        if not r or not r[3]:
+    for hoja in (HOJA, HOJA_FUERA):
+        if hoja not in wb.sheetnames:
             continue
-        filas.append(dict(zip(head, r)))
+        ws = wb[hoja]
+        head = [c.value for c in ws[1]]
+        for r in ws.iter_rows(min_row=2, values_only=True):
+            if not r or not r[3]:
+                continue
+            filas.append(dict(zip(head, r)))
     return filas
 
 
@@ -162,7 +167,7 @@ def main():
                 libres = [c for c in cand if id(c) not in usadas] or cand
                 fila = libres[0]
                 prov = prov or fila.get('Proveedor')
-        if fila is not None:
+        if fila is not None and not p.get('draft'):
             usadas.add(id(fila))
         prov = prov or POR_CONFIRMAR
         if prov == POR_CONFIRMAR:
@@ -206,12 +211,9 @@ def main():
     wb.active = idx
 
     if HOJA_FUERA in wb.sheetnames:
-        previas = [dict(zip([c.value for c in wb[HOJA_FUERA][1]], r)) for r in wb[HOJA_FUERA].iter_rows(min_row=2, values_only=True) if r and r[3]]
         del wb[HOJA_FUERA]
-    else:
-        previas = []
     vistos, filas_fuera = set(), []
-    for r in previas + fuera:
+    for r in fuera:
         key = (r.get('Proveedor'), r.get('Nombre'), r.get('Modelo'), r.get('Costo Base Proveedor (COP)'))
         if key in vistos or str(r.get('ID tienda') or '') in mapa:
             continue
