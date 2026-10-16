@@ -352,14 +352,41 @@ export async function notifyOwner(message, cfg = getWhatsAppConfig(), opts = {})
     try {
       const res = await fetch(url, { method: 'GET', headers: { 'User-Agent': 'ReikiWhatsAppBot/1.0' } });
       const text = await res.text();
-      const ok = res.ok || /queued|Message to/i.test(text);
       const paused = /Paused|resume/i.test(text);
-      console.log('[whatsapp] CallMeBot', { status: res.status, ok, paused, detail: text.slice(0, 200) });
+      const quotaGone =
+        /0\s*messages?\s*left/i.test(text) ||
+        /Message not sent/i.test(text) ||
+        /subscribe .* to continue using CallMeBot/i.test(text);
+      // CallMeBot a veces responde 200 con "Message to: …" aunque NO envió (cupo agotado).
+      const ok =
+        !paused &&
+        !quotaGone &&
+        (/queued/i.test(text) || (/Message to/i.test(text) && !/not sent/i.test(text)));
+      console.log('[whatsapp] CallMeBot', {
+        status: res.status,
+        ok,
+        paused,
+        quotaGone,
+        detail: text.replace(/<[^>]+>/g, ' ').slice(0, 220),
+      });
       if (paused) {
         console.error('[whatsapp] CallMeBot PAUSADO — el dueño debe enviar "resume" al bot de CallMeBot');
       }
-      results.push({ ok: ok && !paused, method: 'callmebot', detail: text.slice(0, 200), paused });
-      if (ok && !paused) return { ok: true, method: 'callmebot', results };
+      if (quotaGone) {
+        console.error(
+          '[whatsapp] CallMeBot SIN CUPO — suscribirse en https://callmebot.com/' +
+            to +
+            ' (Message not sent / 0 messages left)'
+        );
+      }
+      results.push({
+        ok,
+        method: 'callmebot',
+        detail: text.replace(/<[^>]+>/g, ' ').slice(0, 220),
+        paused,
+        quotaGone,
+      });
+      if (ok) return { ok: true, method: 'callmebot', results };
     } catch (err) {
       console.error('[whatsapp] CallMeBot error', err);
       results.push({ ok: false, method: 'callmebot', error: String(err?.message || err) });
