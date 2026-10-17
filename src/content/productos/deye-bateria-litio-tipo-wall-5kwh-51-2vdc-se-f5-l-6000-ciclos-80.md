@@ -12,12 +12,11 @@ specifications:
 brand: "Deye"
 model: "SE-F5-L"
 sku: "ING-BATL46"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-05"
 draft: true
 imagenPendiente: true
-stockBajo: true
 ---
 
 Proveedor: Ingesolar (BATL46).

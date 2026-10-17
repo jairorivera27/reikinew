@@ -22,7 +22,7 @@ specifications:
 brand: "Felicity"
 sku: "1880812"
 power: "12V 1,28kWh"
-stock: "pre-orden"
+stock: "disponible"
 order: 6012
 updatedAt: "2026-10-11"
 seoKeywords:

@@ -22,7 +22,7 @@ specifications:
 brand: "Felicity"
 sku: "1880814"
 power: "24V 7.5kWh"
-stock: "pre-orden"
+stock: "disponible"
 order: 6018
 updatedAt: "2026-10-11"
 seoKeywords:

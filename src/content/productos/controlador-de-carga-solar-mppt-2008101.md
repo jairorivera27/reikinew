@@ -12,7 +12,7 @@ specifications:
 brand: "Sin marca"
 sku: "2008101"
 power: "N/A"
-stock: "disponible"
+stock: "pre-orden"
 order: 6070
 imagenPendiente: true
 updatedAt: "2026-09-10"

@@ -12,7 +12,7 @@ specifications:
 brand: "Pylontech"
 sku: "1708249"
 power: "48V 2.4kWh"
-stock: "disponible"
+stock: "pre-orden"
 order: 6039
 updatedAt: "2026-09-10"
 seoKeywords:

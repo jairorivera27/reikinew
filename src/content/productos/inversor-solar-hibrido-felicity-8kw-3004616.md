@@ -12,7 +12,7 @@ specifications:
 brand: "Felicity"
 sku: "3004616"
 power: "8kW"
-stock: "pre-orden"
+stock: "disponible"
 order: 6159
 updatedAt: "2026-10-06"
 seoKeywords:
