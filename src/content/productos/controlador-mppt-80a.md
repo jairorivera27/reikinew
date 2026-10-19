@@ -31,6 +31,7 @@ faqs:
   - pregunta: "¿Sirve para baterías de litio?"
     respuesta: "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
 fichaPdf: "/fichas/fabricantes/epever-tracer-an-50-100a-datasheet.pdf"
+draft: true
 ---
 
 Controlador MPPT de alta capacidad para sistemas solares de gran potencia. Monitoreo y control avanzado desde smartphone.

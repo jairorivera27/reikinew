@@ -370,7 +370,7 @@
   "codigo": "ING-CALEA04"
  },
  "apsystems-qt2": {
-  "proveedor": "Por confirmar",
+  "proveedor": "Solaire",
   "titulo": "Microinversor Trifásico APsystems QT2",
   "codigo": "QT2-MX"
  },
@@ -3141,17 +3141,17 @@
   "codigo": "AMZ-001-0006"
  },
  "huawei-sun2000-10k-lc0": {
-  "proveedor": "Por confirmar",
+  "proveedor": "Solaire",
   "titulo": "Inversor Híbrido Huawei SUN2000-10K-LC0 10 kW",
   "codigo": "SUN2000-10K-LC0"
  },
  "huawei-sun2000-20ktl-m3": {
-  "proveedor": "Por confirmar",
+  "proveedor": "Solaire",
   "titulo": "Huawei SUN2000-20KTL-M3",
   "codigo": "SUN2000-20KTL-M3"
  },
  "huawei-sun2000-8k-lc0": {
-  "proveedor": "Por confirmar",
+  "proveedor": "Solaire",
   "titulo": "Inversor Híbrido Huawei SUN2000-8K-LC0 8 kW",
   "codigo": "SUN2000-8K-LC0"
  },
@@ -3181,12 +3181,12 @@
   "codigo": "SUN-5K-SG01LP1-US"
  },
  "inversor-hybrido-8kw": {
-  "proveedor": "Por confirmar",
+  "proveedor": "Solaire",
   "titulo": "Inversor Híbrido Huawei SUN2000-4KTL-L1 4 kW",
   "codigo": "SUN2000-4KTL-L1"
  },
  "inversor-micro-optimizador": {
-  "proveedor": "Por confirmar",
+  "proveedor": "Solaire",
   "titulo": "Microinversor APsystems DS3D-MX 2000 W",
   "codigo": "DS3D-MX"
  },
@@ -4211,7 +4211,7 @@
   "codigo": "QUA485021100"
  },
  "inversor-string-10kw": {
-  "proveedor": "Por confirmar",
+  "proveedor": "Solaire",
   "titulo": "Inversor On-Grid Huawei SUN2000-36KTL-M3 36 kW Trifásico",
   "codigo": "SUN2000-36KTL-M3"
  },

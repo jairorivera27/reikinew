@@ -33,6 +33,7 @@ faqs:
   - pregunta: "¿Qué ventajas tiene el LiFePO4?"
     respuesta: "Es la química de litio más segura para uso residencial: soporta miles de ciclos, no requiere mantenimiento y entrega casi toda su capacidad, a diferencia de las baterías de plomo."
 fichaPdf: "/fichas/fabricantes/pylontech-us3000c-datasheet-en.pdf"
+draft: true
 ---
 
 Batería de litio compacta y ligera, ideal para sistemas residenciales pequeños. Alta densidad energética y larga vida útil.

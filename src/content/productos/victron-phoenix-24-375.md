@@ -25,6 +25,7 @@ faqs:
     respuesta: "Sí, está pensado para fincas, cabañas y sitios sin red, alimentado por un banco de baterías que se carga con paneles solares."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+draft: true
 ---
 
 Inversor de onda sinusoidal pura Victron Phoenix, alta eficiencia y potencia de arranque para cargas difíciles.

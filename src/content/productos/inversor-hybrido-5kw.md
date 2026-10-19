@@ -29,6 +29,7 @@ faqs:
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 fichaPdf: "/fichas/fabricantes/deye-sun-5-8k-sg01lp1-us-ficha-es.pdf"
+draft: true
 ---
 
 Inversor híbrido Deye de 5kW, permite gestionar paneles, baterías y red eléctrica de forma eficiente e inteligente.

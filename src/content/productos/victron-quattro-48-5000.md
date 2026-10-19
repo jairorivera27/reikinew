@@ -27,6 +27,7 @@ faqs:
     respuesta: "Debe coincidir el voltaje del banco (según ficha) y, para litio, el protocolo de comunicación del BMS. Te confirmamos la compatibilidad antes de la compra."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+draft: true
 ---
 
 El Victron Quattro 48/5000 es un inversor cargador avanzado con dos entradas de CA y dos salidas de CA, ideal para sistemas complejos.
