@@ -83,7 +83,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           <img src="/images/logo.png" alt="Reiki" class="dash-logo" />
           <div>
             <p class="dash-eyebrow">Reiki Energía Solar · interno</p>
-            <h1>Pedidos web</h1>
+            <h1>Compras y proyectos</h1>
           </div>
         </div>
         <div class="dash-top-actions">
@@ -92,6 +92,40 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         </div>
       </header>
 
+      <nav class="cat-tabs" role="tablist" aria-label="Categorías">
+        <button type="button" class="cat-tab is-active" role="tab" data-cat="tienda">
+          <i class="fas fa-store" aria-hidden="true"></i> Compras en tienda <span class="cat-count" data-count="tienda"></span>
+        </button>
+        <button type="button" class="cat-tab" role="tab" data-cat="proyecto">
+          <i class="fas fa-solar-panel" aria-hidden="true"></i> Proyectos <span class="cat-count" data-count="proyecto"></span>
+        </button>
+        <button type="button" class="cat-tab" role="tab" data-cat="web">
+          <i class="fas fa-shopping-cart" aria-hidden="true"></i> Pedidos web (carrito)
+        </button>
+      </nav>
+
+      <div id="pane-seg">
+        <section class="seg-metrics" id="seg-metrics" aria-label="Resumen"></section>
+        <section class="toolbar">
+          <div class="search-wrap">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input type="search" id="seg-q" placeholder="Buscar cliente, cotización, equipo o proveedor…" autocomplete="off" />
+          </div>
+          <div class="toolbar-filters">
+            <select id="seg-f-estado" aria-label="Estado">
+              <option value="activo" selected>En curso</option>
+              <option value="cerrado">Cerrados</option>
+              <option value="cancelado">Cancelados</option>
+              <option value="">Todos</option>
+            </select>
+            <button type="button" id="seg-nuevo" class="btn btn-primary"><i class="fas fa-plus"></i> Nueva venta aprobada</button>
+          </div>
+        </section>
+        <p id="seg-status" class="dash-status" aria-live="polite"></p>
+        <section id="seg-grid" class="seg-grid"></section>
+      </div>
+
+      <div id="pane-web" hidden>
       <section class="metrics" id="metrics" aria-label="Métricas"></section>
 
       <section class="toolbar">
@@ -127,6 +161,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
 
       <section id="board-kanban" class="kanban"></section>
       <section id="board-lista" class="lista" hidden></section>
+      </div>
     </div>
 
     <!-- MODAL DETALLE -->
@@ -137,6 +172,655 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         <div id="modal-body"></div>
       </div>
     </div>
+
+    <!-- MODAL SEGUIMIENTO -->
+    <div id="seg-modal" class="modal" hidden>
+      <div class="modal-backdrop" data-seg-close="1"></div>
+      <div class="modal-card seg-modal-card" role="dialog" aria-modal="true" aria-labelledby="seg-modal-title">
+        <button type="button" class="modal-x" data-seg-close="1" aria-label="Cerrar">&times;</button>
+        <div id="seg-modal-body"></div>
+      </div>
+    </div>
+
+    <script is:inline>
+      (function () {
+        var LS_SECRET = 'reiki_admin_orders_secret';
+        var LS_USER = 'reiki_admin_orders_user';
+        var LS_DEMO = 'reiki_admin_orders_demo';
+        var ESTADOS = [
+          ['pendiente', 'Pendiente'],
+          ['en_curso', 'En curso'],
+          ['hecho', 'Hecho'],
+          ['no_aplica', 'No aplica'],
+        ];
+        var PAGO_TXT = {
+          completo: ['Pagado', 'ok'],
+          parcial: ['Pago parcial', 'amber'],
+          por_verificar: ['Pago por verificar', 'amber'],
+          parcial_por_verificar: ['Parcial · por verificar', 'amber'],
+          sin_pago: ['Sin pago', 'bad'],
+        };
+
+        var st = { cat: 'tienda', items: [], q: '', estado: 'activo', openId: null, loaded: false };
+        var $ = function (id) {
+          return document.getElementById(id);
+        };
+        var el = {
+          paneSeg: $('pane-seg'),
+          paneWeb: $('pane-web'),
+          grid: $('seg-grid'),
+          metrics: $('seg-metrics'),
+          status: $('seg-status'),
+          q: $('seg-q'),
+          fEstado: $('seg-f-estado'),
+          modal: $('seg-modal'),
+          body: $('seg-modal-body'),
+        };
+
+        function ls(k) {
+          try {
+            return sessionStorage.getItem(k) || '';
+          } catch (_e) {
+            return '';
+          }
+        }
+        function isDemo() {
+          return ls(LS_DEMO) === '1';
+        }
+        function headers(json) {
+          var h = { Authorization: 'Bearer ' + ls(LS_SECRET), 'X-Admin-User': ls(LS_USER) || 'admin' };
+          if (json) h['Content-Type'] = 'application/json';
+          return h;
+        }
+        function esc(s) {
+          return String(s == null ? '' : s)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+        }
+        function cop(n) {
+          return '$' + Math.round(Number(n) || 0).toLocaleString('es-CO');
+        }
+        function fecha(iso) {
+          if (!iso) return '';
+          var d = new Date(iso);
+          if (isNaN(d.getTime())) return String(iso);
+          return d.toLocaleDateString('es-CO', { day: 'numeric', month: 'short', timeZone: 'America/Bogota' });
+        }
+
+        async function api(op, body) {
+          var res = await fetch('/api/seguimiento?op=' + op, {
+            method: body ? 'POST' : 'GET',
+            headers: headers(!!body),
+            body: body ? JSON.stringify(body) : undefined,
+          });
+          var j = await res.json().catch(function () {
+            return {};
+          });
+          if (!res.ok || !j.ok) throw new Error(j.error || 'Error ' + res.status);
+          return j;
+        }
+
+        async function load() {
+          if (isDemo()) {
+            st.items = [];
+            el.status.textContent = 'Modo demo: el seguimiento solo funciona con sesión real.';
+            render();
+            return;
+          }
+          el.status.textContent = 'Cargando…';
+          try {
+            var j = await api('list');
+            st.items = j.expedientes || [];
+            st.loaded = true;
+            el.status.textContent = '';
+          } catch (e) {
+            el.status.textContent = 'No se pudo cargar el seguimiento: ' + e.message;
+          }
+          render();
+          if (st.openId) openDetail(st.openId);
+        }
+
+        function upsert(exp) {
+          var i = st.items.findIndex(function (x) {
+            return x.id === exp.id;
+          });
+          if (i >= 0) st.items[i] = exp;
+          else st.items.unshift(exp);
+        }
+
+        function visibles() {
+          var q = st.q.toLowerCase();
+          return st.items.filter(function (e) {
+            if (e.tipo !== st.cat) return false;
+            if (st.estado && e.estado !== st.estado) return false;
+            if (!q) return true;
+            var hay = [
+              e.titulo,
+              e.id,
+              e.cliente && e.cliente.nombre,
+              e.cliente && e.cliente.documento,
+              e.cliente && e.cliente.ciudad,
+              e.cotizacion && e.cotizacion.numero,
+            ]
+              .concat(
+                (e.items || []).map(function (i) {
+                  return i.nombre + ' ' + i.proveedor;
+                })
+              )
+              .join(' ')
+              .toLowerCase();
+            return hay.indexOf(q) >= 0;
+          });
+        }
+
+        function render() {
+          ['tienda', 'proyecto'].forEach(function (t) {
+            var n = st.items.filter(function (e) {
+              return e.tipo === t && e.estado === 'activo';
+            }).length;
+            var c = document.querySelector('[data-count="' + t + '"]');
+            if (c) c.textContent = n ? String(n) : '';
+          });
+          var activos = st.items.filter(function (e) {
+            return e.tipo === st.cat && e.estado === 'activo';
+          });
+          var porVerificar = 0;
+          var saldo = 0;
+          var sinProv = 0;
+          activos.forEach(function (e) {
+            porVerificar += e.resumen.porVerificar || 0;
+            saldo += e.resumen.saldo || 0;
+            (e.items || []).forEach(function (i) {
+              if (!i.proveedor || i.proveedor === 'Por confirmar') sinProv++;
+            });
+          });
+          el.metrics.innerHTML =
+            metric('En curso', activos.length) +
+            metric('Saldo por cobrar', cop(saldo)) +
+            metric('Pagos por verificar', cop(porVerificar)) +
+            metric('Equipos sin proveedor', sinProv);
+
+          var list = visibles();
+          if (!list.length) {
+            el.grid.innerHTML =
+              '<div class="seg-empty"><p>' +
+              (st.cat === 'proyecto' ? 'No hay proyectos en esta vista.' : 'No hay compras en esta vista.') +
+              '</p><p class="seg-hint">Cuando se apruebe una cotización, créala con “Nueva venta aprobada” o pídeselo a Claude. Los pedidos web pagados entran solos.</p></div>';
+            return;
+          }
+          el.grid.innerHTML = list.map(card).join('');
+          el.grid.querySelectorAll('[data-exp]').forEach(function (n) {
+            n.addEventListener('click', function () {
+              openDetail(n.getAttribute('data-exp'));
+            });
+            n.addEventListener('keydown', function (ev) {
+              if (ev.key === 'Enter') openDetail(n.getAttribute('data-exp'));
+            });
+          });
+        }
+
+        function metric(label, v) {
+          return '<div class="seg-metric"><span>' + esc(label) + '</span><strong>' + esc(v) + '</strong></div>';
+        }
+
+        function provChips(e) {
+          return Object.keys(e.resumen.proveedores || {})
+            .map(function (p) {
+              return '<span class="prov-chip' + (p === 'Por confirmar' ? ' prov-chip--pend' : '') + '">' + esc(p) + '</span>';
+            })
+            .join(' ');
+        }
+
+        function card(e) {
+          var r = e.resumen;
+          var pago = PAGO_TXT[r.estadoPago] || ['', ''];
+          return (
+            '<article class="seg-card" tabindex="0" data-exp="' +
+            esc(e.id) +
+            '">' +
+            '<div class="seg-card-head"><span class="oc-badge oc-badge--' +
+            pago[1] +
+            '">' +
+            esc(pago[0]) +
+            '</span><span class="seg-id">' +
+            esc(e.cotizacion && e.cotizacion.numero ? e.cotizacion.numero : e.id) +
+            '</span></div>' +
+            '<h3>' +
+            esc(e.titulo) +
+            '</h3>' +
+            '<p class="seg-sub">' +
+            esc([e.cliente && e.cliente.ciudad, e.origen === 'web' ? 'Pedido web' : ''].filter(Boolean).join(' · ')) +
+            '</p>' +
+            '<div class="seg-bar" aria-label="Avance ' +
+            r.avance +
+            '%"><span style="width:' +
+            r.avance +
+            '%"></span></div>' +
+            '<p class="seg-progress">' +
+            r.hechas +
+            ' de ' +
+            r.totalEtapas +
+            ' etapas · ' +
+            r.avance +
+            '%</p>' +
+            (r.siguiente
+              ? '<p class="seg-next"><i class="fas fa-arrow-right" aria-hidden="true"></i> ' + esc(r.siguiente.label) + '</p>'
+              : '<p class="seg-next seg-next--done"><i class="fas fa-check" aria-hidden="true"></i> Todas las etapas cerradas</p>') +
+            '<div class="seg-card-foot"><div class="seg-provs">' +
+            provChips(e) +
+            '</div><strong>' +
+            cop(r.total) +
+            '</strong></div>' +
+            '</article>'
+          );
+        }
+
+        function field(name, label, value, type) {
+          return (
+            '<label class="seg-field"><span>' +
+            esc(label) +
+            '</span><input name="' +
+            name +
+            '" type="' +
+            (type || 'text') +
+            '" value="' +
+            esc(value || '') +
+            '" /></label>'
+          );
+        }
+
+        function openDetail(id) {
+          var e = st.items.find(function (x) {
+            return x.id === id;
+          });
+          if (!e) return;
+          st.openId = id;
+          var r = e.resumen;
+          var c = e.cliente || {};
+          var pago = PAGO_TXT[r.estadoPago] || ['', ''];
+
+          var etapas = (e.etapas || [])
+            .map(function (et, i) {
+              return (
+                '<li class="seg-step seg-step--' +
+                et.estado +
+                '"><div class="seg-step-n">' +
+                (i + 1) +
+                '</div><div class="seg-step-main"><strong>' +
+                esc(et.label) +
+                '</strong>' +
+                (et.fecha ? '<small>' + esc(fecha(et.fecha)) + '</small>' : '') +
+                '<input class="seg-step-note" data-note="' +
+                esc(et.key) +
+                '" placeholder="Nota (proveedor, guía, fecha…)" value="' +
+                esc(et.nota || '') +
+                '" /></div><select data-etapa="' +
+                esc(et.key) +
+                '" aria-label="Estado de ' +
+                esc(et.label) +
+                '">' +
+                ESTADOS.map(function (o) {
+                  return '<option value="' + o[0] + '"' + (o[0] === et.estado ? ' selected' : '') + '>' + o[1] + '</option>';
+                }).join('') +
+                '</select></li>'
+              );
+            })
+            .join('');
+
+          var pagos = (e.pagos || []).length
+            ? (e.pagos || [])
+                .map(function (p) {
+                  return (
+                    '<tr><td>' +
+                    esc(p.fecha) +
+                    '</td><td>' +
+                    esc(p.medio) +
+                    (p.referencia ? '<br><small>' + esc(p.referencia) + '</small>' : '') +
+                    '</td><td>' +
+                    cop(p.monto) +
+                    '</td><td>' +
+                    (p.estado === 'verificado'
+                      ? '<span class="oc-badge oc-badge--ok">Verificado</span>'
+                      : '<button type="button" class="btn btn-secondary seg-mini" data-verificar="' + esc(p.id) + '">Marcar verificado</button>') +
+                    '</td></tr>'
+                  );
+                })
+                .join('')
+            : '<tr><td colspan="4" class="notes-empty">Sin pagos registrados.</td></tr>';
+
+          var porProv = Object.keys(r.proveedores || {})
+            .map(function (p) {
+              return (
+                '<div class="prov-grupo"><span class="prov-chip' +
+                (p === 'Por confirmar' ? ' prov-chip--pend' : '') +
+                '">' +
+                esc(p) +
+                '</span><ul>' +
+                r.proveedores[p]
+                  .map(function (x) {
+                    return '<li>' + esc(x) + '</li>';
+                  })
+                  .join('') +
+                '</ul></div>'
+              );
+            })
+            .join('');
+
+          var items = (e.items || [])
+            .map(function (it, i) {
+              return (
+                '<tr><td>' +
+                esc(it.cantidad) +
+                '</td><td>' +
+                esc(it.nombre) +
+                '</td><td><input class="seg-prov-input" data-item-prov="' +
+                i +
+                '" value="' +
+                esc(it.proveedor) +
+                '" aria-label="Proveedor" /></td><td>' +
+                cop(it.precioUnit * it.cantidad) +
+                '</td></tr>'
+              );
+            })
+            .join('');
+
+          var hist = (e.historial || [])
+            .slice(0, 12)
+            .map(function (h) {
+              return '<li><time>' + esc(fecha(h.at)) + ' · ' + esc(h.by) + '</time> ' + esc(h.texto) + '</li>';
+            })
+            .join('');
+
+          el.body.innerHTML =
+            '<p class="modal-kicker">' +
+            (e.tipo === 'proyecto' ? 'Proyecto' : 'Compra en tienda') +
+            ' · ' +
+            esc(e.id) +
+            (e.estado !== 'activo' ? ' · ' + esc(e.estado) : '') +
+            '</p>' +
+            '<h2 id="seg-modal-title">' +
+            esc(e.titulo) +
+            '</h2>' +
+            '<p class="modal-when">' +
+            esc(e.cotizacion && e.cotizacion.numero ? e.cotizacion.numero : '') +
+            (e.condicionesPago ? ' · Pagos ' + esc(e.condicionesPago) : '') +
+            '</p>' +
+            (r.siguiente
+              ? '<div class="seg-callout"><strong>Siguiente paso: ' +
+                esc(r.siguiente.label) +
+                '</strong><p>' +
+                esc(r.siguiente.ayuda) +
+                '</p></div>'
+              : '<div class="seg-callout seg-callout--ok"><strong>Todas las etapas están cerradas.</strong></div>') +
+            '<section class="modal-block"><h3>Pagos <span class="oc-badge oc-badge--' +
+            pago[1] +
+            '">' +
+            esc(pago[0]) +
+            '</span></h3>' +
+            '<div class="seg-paybox">' +
+            metric('Total', cop(r.total)) +
+            metric('Verificado', cop(r.pagado)) +
+            metric('Por verificar', cop(r.porVerificar)) +
+            metric('Saldo', cop(r.saldo)) +
+            '</div>' +
+            '<div class="table-wrap"><table><thead><tr><th>Fecha</th><th>Medio</th><th>Monto</th><th></th></tr></thead><tbody>' +
+            pagos +
+            '</tbody></table></div>' +
+            '<form id="seg-pago-form" class="seg-inline-form">' +
+            field('monto', 'Monto', '', 'number') +
+            field('fecha', 'Fecha', new Date().toLocaleDateString('en-CA', { timeZone: 'America/Bogota' }), 'date') +
+            '<label class="seg-field"><span>Medio</span><select name="medio"><option>Transferencia</option><option>Consignación</option><option>Wompi</option><option>Addi</option><option>Efectivo</option></select></label>' +
+            field('referencia', 'Referencia', '') +
+            '<label class="seg-check"><input type="checkbox" name="verificado" /> Ya está en la cuenta</label>' +
+            '<button class="btn btn-primary" type="submit">Registrar pago</button></form></section>' +
+            '<section class="modal-block"><h3>Etapas</h3><ol class="seg-steps">' +
+            etapas +
+            '</ol></section>' +
+            '<section class="modal-block"><h3>Equipos y proveedores</h3>' +
+            (items
+              ? '<div class="table-wrap"><table><thead><tr><th>Cant.</th><th>Equipo</th><th>Proveedor</th><th>Valor</th></tr></thead><tbody>' +
+                items +
+                '</tbody></table></div><div class="prov-resumen"><h4>Pedir a cada proveedor</h4>' +
+                porProv +
+                '</div>'
+              : '<p class="notes-empty">Sin equipos cargados.</p>') +
+            '</section>' +
+            '<form id="seg-datos-form" class="modal-block"><h3>Cliente, envío y factura</h3><div class="seg-form-grid">' +
+            field('c_nombre', 'Nombre / razón social', c.nombre) +
+            field('c_documento', 'Cédula / NIT', c.documento) +
+            field('c_correo', 'Correo de facturación', c.correo, 'email') +
+            field('c_celular', 'Celular', c.celular) +
+            field('c_ciudad', 'Ciudad', c.ciudad) +
+            field('c_direccion', 'Dirección', c.direccion) +
+            field('e_transportadora', 'Transportadora', e.envio && e.envio.transportadora) +
+            field('e_guia', 'Número de guía', e.envio && e.envio.guia) +
+            field('f_numero', 'Número de factura', e.factura && e.factura.numero) +
+            field('total', 'Valor total', r.total, 'number') +
+            '</div><label class="seg-field seg-field--full"><span>Notas</span><textarea name="notas" rows="2">' +
+            esc(e.notas || '') +
+            '</textarea></label><div class="modal-actions"><button class="btn btn-primary" type="submit">Guardar datos</button>' +
+            (e.estado === 'activo'
+              ? '<button type="button" class="btn btn-ghost" data-estado="cerrado">Cerrar expediente</button><button type="button" class="btn btn-ghost" data-estado="cancelado">Cancelar</button>'
+              : '<button type="button" class="btn btn-ghost" data-estado="activo">Reabrir</button>') +
+            '</div></form>' +
+            (hist ? '<section class="modal-block"><h3>Historial</h3><ul class="seg-hist">' + hist + '</ul></section>' : '') +
+            '<p id="seg-modal-msg" class="dash-status" aria-live="polite"></p>';
+
+          el.modal.hidden = false;
+          bindDetail(e);
+        }
+
+        function msg(t) {
+          var m = $('seg-modal-msg');
+          if (m) m.textContent = t || '';
+        }
+
+        async function run(op, body) {
+          msg('Guardando…');
+          try {
+            var j = await api(op, body);
+            upsert(j.expediente);
+            render();
+            openDetail(j.expediente.id);
+          } catch (err) {
+            msg('No se pudo guardar: ' + err.message);
+          }
+        }
+
+        function bindDetail(e) {
+          el.body.querySelectorAll('[data-etapa]').forEach(function (s) {
+            s.addEventListener('change', function () {
+              var key = s.getAttribute('data-etapa');
+              var note = el.body.querySelector('[data-note="' + key + '"]');
+              run('etapa', { id: e.id, key: key, estado: s.value, nota: note ? note.value : undefined });
+            });
+          });
+          el.body.querySelectorAll('[data-note]').forEach(function (inp) {
+            inp.addEventListener('change', function () {
+              run('etapa', { id: e.id, key: inp.getAttribute('data-note'), nota: inp.value });
+            });
+          });
+          el.body.querySelectorAll('[data-verificar]').forEach(function (b) {
+            b.addEventListener('click', function () {
+              var p = (e.pagos || []).find(function (x) {
+                return x.id === b.getAttribute('data-verificar');
+              });
+              if (p) run('pago', { id: e.id, pago: Object.assign({}, p, { estado: 'verificado' }) });
+            });
+          });
+          var pf = $('seg-pago-form');
+          pf.addEventListener('submit', function (ev) {
+            ev.preventDefault();
+            var f = new FormData(pf);
+            run('pago', {
+              id: e.id,
+              pago: {
+                monto: f.get('monto'),
+                fecha: f.get('fecha'),
+                medio: f.get('medio'),
+                referencia: f.get('referencia'),
+                estado: f.get('verificado') ? 'verificado' : 'por_verificar',
+              },
+            });
+          });
+          el.body.querySelectorAll('[data-item-prov]').forEach(function (inp) {
+            inp.addEventListener('change', function () {
+              var items = (e.items || []).map(function (it, i) {
+                var n = el.body.querySelector('[data-item-prov="' + i + '"]');
+                return Object.assign({}, it, { proveedor: n ? n.value : it.proveedor });
+              });
+              run('save', { id: e.id, items: items });
+            });
+          });
+          var df = $('seg-datos-form');
+          df.addEventListener('submit', function (ev) {
+            ev.preventDefault();
+            var f = new FormData(df);
+            run('save', {
+              id: e.id,
+              total: f.get('total'),
+              notas: f.get('notas'),
+              cliente: {
+                nombre: f.get('c_nombre'),
+                documento: f.get('c_documento'),
+                correo: f.get('c_correo'),
+                celular: f.get('c_celular'),
+                ciudad: f.get('c_ciudad'),
+                direccion: f.get('c_direccion'),
+              },
+              envio: { transportadora: f.get('e_transportadora'), guia: f.get('e_guia') },
+              factura: { numero: f.get('f_numero') },
+            });
+          });
+          el.body.querySelectorAll('[data-estado]').forEach(function (b) {
+            b.addEventListener('click', function () {
+              run('save', { id: e.id, estado: b.getAttribute('data-estado') });
+            });
+          });
+        }
+
+        function parseItems(txt) {
+          return String(txt || '')
+            .split('\n')
+            .map(function (line) {
+              var p = line.split('|').map(function (x) {
+                return x.trim();
+              });
+              if (!p[0]) return null;
+              if (p.length === 1) return { cantidad: 1, nombre: p[0] };
+              return {
+                cantidad: Number(p[0]) || 1,
+                nombre: p[1] || '',
+                precioUnit: Number(String(p[2] || '').replace(/[^\d]/g, '')) || 0,
+                proveedor: p[3] || '',
+              };
+            })
+            .filter(Boolean);
+        }
+
+        function openNuevo() {
+          st.openId = null;
+          el.body.innerHTML =
+            '<p class="modal-kicker">Nueva venta aprobada</p><h2 id="seg-modal-title">' +
+            (st.cat === 'proyecto' ? 'Nuevo proyecto' : 'Nueva compra en tienda') +
+            '</h2>' +
+            '<form id="seg-nuevo-form" class="modal-block"><div class="seg-form-grid">' +
+            '<label class="seg-field"><span>Tipo</span><select name="tipo"><option value="tienda"' +
+            (st.cat !== 'proyecto' ? ' selected' : '') +
+            '>Compra en tienda</option><option value="proyecto"' +
+            (st.cat === 'proyecto' ? ' selected' : '') +
+            '>Proyecto (instalación)</option></select></label>' +
+            field('titulo', 'Nombre del expediente', '') +
+            field('cot', 'N.º de cotización', '') +
+            field('total', 'Valor total', '', 'number') +
+            field('condiciones', 'Condiciones de pago (ej. 60/30/10)', '') +
+            field('c_nombre', 'Cliente', '') +
+            field('c_documento', 'Cédula / NIT', '') +
+            field('c_correo', 'Correo', '', 'email') +
+            field('c_celular', 'Celular', '') +
+            field('c_ciudad', 'Ciudad', '') +
+            '</div><label class="seg-field seg-field--full"><span>Equipos — uno por línea: cantidad | equipo | precio unitario | proveedor (opcional)</span><textarea name="items" rows="4" placeholder="2 | Panel JA Solar 625 W | 450355"></textarea></label>' +
+            '<div class="modal-actions"><button class="btn btn-primary" type="submit">Crear expediente</button></div></form><p id="seg-modal-msg" class="dash-status"></p>';
+          el.modal.hidden = false;
+          var nf = $('seg-nuevo-form');
+          nf.addEventListener('submit', async function (ev) {
+            ev.preventDefault();
+            var f = new FormData(nf);
+            msg('Creando…');
+            try {
+              var j = await api('save', {
+                tipo: f.get('tipo'),
+                titulo: f.get('titulo') || f.get('c_nombre'),
+                cotizacion: { numero: f.get('cot') },
+                total: f.get('total'),
+                condicionesPago: f.get('condiciones'),
+                cliente: {
+                  nombre: f.get('c_nombre'),
+                  documento: f.get('c_documento'),
+                  correo: f.get('c_correo'),
+                  celular: f.get('c_celular'),
+                  ciudad: f.get('c_ciudad'),
+                },
+                items: parseItems(f.get('items')),
+              });
+              upsert(j.expediente);
+              setCat(j.expediente.tipo);
+              openDetail(j.expediente.id);
+            } catch (err) {
+              msg('No se pudo crear: ' + err.message);
+            }
+          });
+        }
+
+        function closeModal() {
+          el.modal.hidden = true;
+          st.openId = null;
+        }
+
+        function setCat(cat) {
+          st.cat = cat;
+          document.querySelectorAll('.cat-tab').forEach(function (b) {
+            b.classList.toggle('is-active', b.getAttribute('data-cat') === cat);
+            b.setAttribute('aria-selected', b.getAttribute('data-cat') === cat ? 'true' : 'false');
+          });
+          el.paneWeb.hidden = cat !== 'web';
+          el.paneSeg.hidden = cat === 'web';
+          if (cat !== 'web') render();
+        }
+
+        document.querySelectorAll('.cat-tab').forEach(function (b) {
+          b.addEventListener('click', function () {
+            setCat(b.getAttribute('data-cat'));
+          });
+        });
+        el.q.addEventListener('input', function () {
+          st.q = el.q.value || '';
+          render();
+        });
+        el.fEstado.addEventListener('change', function () {
+          st.estado = el.fEstado.value;
+          render();
+        });
+        $('seg-nuevo').addEventListener('click', openNuevo);
+        el.modal.addEventListener('click', function (ev) {
+          if (ev.target && ev.target.getAttribute('data-seg-close')) closeModal();
+        });
+        document.addEventListener('keydown', function (ev) {
+          if (ev.key === 'Escape' && !el.modal.hidden) closeModal();
+        });
+        var btnRefresh = $('btn-refresh');
+        if (btnRefresh) btnRefresh.addEventListener('click', load);
+
+        window.reikiSeg = {
+          show: function () {
+            setCat(st.cat);
+            load();
+          },
+        };
+      })();
+    </script>
 
     <script is:inline define:vars={{ MOCKS: pedidosMocks }}>
       (function () {
@@ -1127,6 +1811,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         function showDash() {
           setView('dash');
           loadOrders();
+          if (window.reikiSeg) window.reikiSeg.show();
         }
 
         el.loginForm.addEventListener('submit', function (e) {
@@ -1991,6 +2676,294 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       @media (max-width: 900px) {
         .modal-grid {
           grid-template-columns: 1fr;
+        }
+      }
+      /* ===== Seguimiento: Compras en tienda / Proyectos ===== */
+      .cat-tabs {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+        margin: 0 0 1rem;
+      }
+      .cat-tab {
+        font: 700 0.92rem Montserrat, sans-serif;
+        border: 1px solid rgba(255, 255, 255, 0.45);
+        background: rgba(255, 255, 255, 0.14);
+        color: #fff;
+        padding: 0.6rem 1rem;
+        border-radius: 999px;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+      }
+      .cat-tab.is-active {
+        background: #fff;
+        color: var(--brand);
+      }
+      .cat-tab:focus-visible,
+      .seg-card:focus-visible {
+        outline: 3px solid var(--sun);
+        outline-offset: 2px;
+      }
+      .cat-count:not(:empty) {
+        background: var(--accent);
+        color: #fff;
+        border-radius: 999px;
+        font-size: 0.75rem;
+        padding: 0.05rem 0.5rem;
+      }
+      .seg-metrics,
+      .seg-paybox {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.6rem;
+        margin-bottom: 1rem;
+      }
+      @media (min-width: 768px) {
+        .seg-metrics,
+        .seg-paybox {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+      }
+      .seg-metric {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 0.7rem 0.9rem;
+        display: grid;
+        gap: 0.15rem;
+      }
+      .seg-paybox .seg-metric {
+        background: var(--sand);
+      }
+      .seg-metric span {
+        font-size: 0.75rem;
+        color: var(--muted);
+        font-weight: 600;
+      }
+      .seg-metric {
+        min-width: 0;
+      }
+      .seg-metric strong {
+        font-size: clamp(0.95rem, 3.6vw, 1.15rem);
+        overflow-wrap: anywhere;
+        font-variant-numeric: tabular-nums;
+      }
+      .seg-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+        gap: 0.9rem;
+      }
+      .seg-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 16px;
+        padding: 0.95rem 1rem;
+        box-shadow: var(--shadow);
+        cursor: pointer;
+        display: grid;
+        gap: 0.4rem;
+      }
+      .seg-card:hover {
+        border-color: var(--brand-2);
+      }
+      .seg-card h3 {
+        margin: 0;
+        font-size: 1.02rem;
+        font-weight: 800;
+      }
+      .seg-card-head,
+      .seg-card-foot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .seg-id {
+        font-size: 0.75rem;
+        color: var(--muted);
+      }
+      .seg-sub,
+      .seg-progress {
+        margin: 0;
+        font-size: 0.82rem;
+        color: var(--muted);
+      }
+      .seg-bar {
+        height: 8px;
+        border-radius: 99px;
+        background: var(--mint);
+        overflow: hidden;
+      }
+      .seg-bar span {
+        display: block;
+        height: 100%;
+        background: linear-gradient(90deg, var(--brand), var(--accent));
+      }
+      .seg-next {
+        margin: 0;
+        font-weight: 700;
+        font-size: 0.88rem;
+        color: var(--brand-dark);
+      }
+      .seg-next--done {
+        color: var(--ok);
+      }
+      .seg-provs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.25rem;
+      }
+      .seg-empty {
+        background: var(--card);
+        border-radius: 16px;
+        padding: 1.2rem;
+        grid-column: 1 / -1;
+      }
+      .seg-empty p {
+        margin: 0 0 0.3rem;
+        font-weight: 700;
+      }
+      .seg-empty .seg-hint {
+        font-weight: 500;
+        color: var(--muted);
+      }
+      .seg-callout {
+        background: #fff7ed;
+        border-left: 4px solid var(--accent);
+        border-radius: 10px;
+        padding: 0.7rem 0.9rem;
+        margin: 0.6rem 0 1rem;
+      }
+      .seg-callout p {
+        margin: 0.25rem 0 0;
+        font-size: 0.88rem;
+      }
+      .seg-callout--ok {
+        background: #ecfdf3;
+        border-color: var(--ok);
+      }
+      .seg-steps {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 0.45rem;
+      }
+      .seg-step {
+        display: grid;
+        grid-template-columns: 28px 1fr auto;
+        gap: 0.6rem;
+        align-items: start;
+        padding: 0.55rem 0.6rem;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+      }
+      .seg-step-n {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-weight: 800;
+        font-size: 0.8rem;
+        background: var(--mint);
+        color: var(--brand);
+      }
+      .seg-step--hecho .seg-step-n {
+        background: var(--ok);
+        color: #fff;
+      }
+      .seg-step--en_curso {
+        border-color: var(--accent);
+        background: #fffaf3;
+      }
+      .seg-step--en_curso .seg-step-n {
+        background: var(--accent);
+        color: #fff;
+      }
+      .seg-step--no_aplica {
+        opacity: 0.55;
+      }
+      .seg-step-main {
+        display: grid;
+        gap: 0.2rem;
+        min-width: 0;
+      }
+      .seg-step-main small {
+        color: var(--muted);
+        font-size: 0.75rem;
+      }
+      .seg-step-note,
+      .seg-prov-input,
+      .seg-field input,
+      .seg-field select,
+      .seg-field textarea,
+      .seg-step select {
+        font: inherit;
+        font-size: 0.85rem;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 0.35rem 0.5rem;
+        width: 100%;
+        min-width: 0;
+        background: #fff;
+        color: var(--ink);
+      }
+      .seg-step select {
+        width: auto;
+      }
+      .seg-form-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 0.6rem;
+      }
+      .seg-field {
+        display: grid;
+        gap: 0.2rem;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: var(--muted);
+      }
+      .seg-field--full {
+        margin-top: 0.6rem;
+      }
+      .seg-inline-form {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 0.5rem;
+        align-items: end;
+        margin-top: 0.7rem;
+      }
+      .seg-check {
+        font-size: 0.82rem;
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+      }
+      .seg-mini {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.78rem;
+      }
+      .seg-hist {
+        margin: 0;
+        padding-left: 1rem;
+        font-size: 0.82rem;
+        display: grid;
+        gap: 0.25rem;
+      }
+      .seg-hist time {
+        color: var(--muted);
+        font-size: 0.75rem;
+      }
+      @media (max-width: 560px) {
+        .seg-step {
+          grid-template-columns: 28px 1fr;
+        }
+        .seg-step select {
+          grid-column: 2;
+          width: 100%;
         }
       }
     </style>

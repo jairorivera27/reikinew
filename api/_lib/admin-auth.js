@@ -11,11 +11,30 @@ export function getAdminUser() {
   return String(process.env.ADMIN_ORDERS_USER || 'admin').trim() || 'admin';
 }
 
+/** Token propio del asistente Claude (revisión programada y carga de cotizaciones aprobadas). */
+export function getAgentToken() {
+  const t = String(process.env.CLAUDE_AGENT_TOKEN || '').trim();
+  return t.length >= 24 ? t : '';
+}
+
+function bearerOf(req) {
+  const h = String(req.headers.authorization || req.headers.Authorization || '').trim();
+  return h.toLowerCase().startsWith('bearer ') ? h.slice(7).trim() : '';
+}
+
+/** Quién hace el cambio: 'claude' si usa el token del asistente; si no, el usuario del panel. */
+export function adminActor(req) {
+  const agent = getAgentToken();
+  if (agent && bearerOf(req) === agent) return 'claude';
+  return String(req.headers['x-admin-user'] || '').trim() || getAdminUser();
+}
+
 export function adminAuthOk(req) {
+  const agent = getAgentToken();
+  if (agent && bearerOf(req) === agent) return true;
   const secret = getAdminSecret();
   if (!secret) return false;
-  const h = String(req.headers.authorization || req.headers.Authorization || '').trim();
-  if (!h.toLowerCase().startsWith('bearer ') || h.slice(7).trim() !== secret) return false;
+  if (bearerOf(req) !== secret) return false;
   const expectedUser = getAdminUser();
   const userHdr = String(req.headers['x-admin-user'] || req.headers['X-Admin-User'] || '').trim();
   // Si no envían usuario, aceptar (compat). Si envían, validar.

@@ -52,6 +52,10 @@
       "destination": "/api/checkout?accion=order-status"
     },
     {
+      "source": "/api/seguimiento",
+      "destination": "/api/checkout?accion=seguimiento"
+    },
+    {
       "source": "/cotizacion/:id.pdf",
       "destination": "/api/cotizacion-download?id=:id"
     }
