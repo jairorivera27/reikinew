@@ -99,6 +99,7 @@ function normItem(it) {
     sku,
     cantidad: Math.max(1, num(it.cantidad ?? it.quantity ?? 1)),
     precioUnit: num(it.precioUnit ?? it.unitPrice ?? it.precio ?? it.price),
+    costoUnit: num(it.costoUnit ?? it.costo ?? 0),
     proveedor,
     codigoProveedor: str(it.codigoProveedor, 80) || prov.codigoProveedor || '',
     disponibilidad: str(it.disponibilidad, 120),
@@ -141,8 +142,14 @@ export function resumen(exp) {
     (proveedores[p] = proveedores[p] || []).push(`${it.cantidad} × ${it.nombre}`);
   });
 
+  const costoEquipos = (exp.items || []).reduce((a, it) => a + (it.costoUnit || 0) * it.cantidad, 0);
+  const costo = costoEquipos + num(exp.costosAdicionales);
+  const conCosto = (exp.items || []).length > 0 && (exp.items || []).every((it) => it.costoUnit > 0);
   return {
     total,
+    costo,
+    margen: conCosto && total ? total - costo : null,
+    margenPct: conCosto && total ? Math.round(((total - costo) / total) * 1000) / 10 : null,
     pagado,
     porVerificar,
     saldo,
@@ -273,6 +280,7 @@ export async function saveExpediente(input = {}, by = 'panel') {
   if (input.envio) exp.envio = { ...(exp.envio || {}), ...Object.fromEntries(['transportadora', 'guia', 'fechaDespacho', 'destino', 'valorFlete'].filter((f) => input.envio[f] !== undefined).map((f) => [f, str(input.envio[f], 120)])) };
   if (input.factura) exp.factura = { ...(exp.factura || {}), numero: str(input.factura.numero ?? exp.factura?.numero, 60), fecha: str(input.factura.fecha ?? exp.factura?.fecha, 30) };
   if (input.notas !== undefined) exp.notas = str(input.notas, 2000);
+  if (input.costosAdicionales !== undefined) exp.costosAdicionales = num(input.costosAdicionales);
   if (input.estado && ['activo', 'cerrado', 'cancelado'].includes(input.estado)) exp.estado = input.estado;
   if (input.orderId) exp.orderId = str(input.orderId, 80);
   if (!exp.titulo) exp.titulo = exp.cliente?.nombre || exp.cotizacion?.numero || exp.id;

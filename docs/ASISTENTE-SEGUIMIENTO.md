@@ -40,3 +40,13 @@ variables en Vercel: `SMTP_USER` (buzón que envía), `SMTP_PASS`, opcionales `S
 - Etapas con fecha para el cliente (visita técnica, programación de cuadrilla): `POST op=etapa { id, key, fechaCliente: 'YYYY-MM-DD' }`.
 - `correosActivos: false` en el expediente desactiva los avisos de ese cliente.
 - Pedidos web pagados hace más de 48 h no disparan correos al crearse su expediente.
+
+## Desempeño y equipos comprometidos
+
+- `GET op=desempeno`: KPIs (ventas del mes vs. anterior, cobrado, saldo, pagos por verificar, margen), ventas por mes
+  (tienda, proyectos, tienda web y cobrado), ventas por proveedor, etapas donde está detenido el trabajo y la foto de Alegra.
+- `GET op=equipos`: equipos de compras/proyectos activos con su estado de compra (por pedir, pedido, comprado, en camino,
+  en obra) derivado de las etapas, agrupados por proveedor. Reiki trabaja casi todo bajo pedido: no se cuenta stock.
+- `POST op=alegra-snapshot`: Claude lee Alegra con su conector y guarda `{ facturacionMensual, recaudoMensual, cartera, topClientes }`.
+  El sitio no se conecta a Alegra directamente.
+- Margen: costo unitario por equipo (dato interno, solo en Redis; el repo es público) + "otros costos" del expediente.

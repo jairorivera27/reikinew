@@ -7,6 +7,9 @@
  * GET  op=revision[&marcar=1]  → nuevos sin notificar, pendientes y alertas (para la revisión programada)
  * POST op=save    { id?, tipo, titulo, cliente, cotizacion, total, items, pagos, condicionesPago, envio, factura, notas, estado }
  * POST op=etapa   { id, key, estado: pendiente|en_curso|hecho|no_aplica, nota? }
+ * GET  op=desempeno            → KPIs, ventas por mes, proveedores, cuellos de botella y la foto de Alegra
+ * GET  op=equipos              → equipos comprometidos (por pedir / pedidos / en camino) por proveedor
+ * POST op=alegra-snapshot      { facturacionMensual, cartera, recaudoMensual, topClientes } (lo carga Claude)
  * POST op=correo  { id, key } → reintenta el correo al cliente de esa etapa
  * POST op=pago    { id, pago: { id?, fecha, monto, medio, referencia, estado: verificado|por_verificar, nota } }
  */
@@ -24,6 +27,7 @@ import {
   updateEtapa,
 } from '../seguimiento.js';
 import { getRedis } from '../whatsapp-redis.js';
+import { calcularDesempeno, equiposComprometidos, guardarAlegra, leerAlegra } from '../desempeno.js';
 import { correoConfigurado, etapasConCorreo, etapasConFecha } from '../correos.js';
 
 function send(res, code, body) {
@@ -130,7 +134,12 @@ export default async function handler(req, res) {
         const e = await getExpediente(q.id);
         return e ? send(res, 200, { ok: true, expediente: conResumen(e) }) : send(res, 404, { ok: false, error: 'No existe.' });
       }
-      if (op === 'revision') return send(res, 200, { ok: true, ...(await revision(q.marcar === '1')) });
+      if (op === 'revision') {
+        const a = await leerAlegra();
+        return send(res, 200, { ok: true, ...(await revision(q.marcar === '1')), alegraActualizado: a ? a.guardado : null });
+      }
+      if (op === 'desempeno') return send(res, 200, { ok: true, ...(await calcularDesempeno()) });
+      if (op === 'equipos') return send(res, 200, { ok: true, ...(await equiposComprometidos()) });
       return send(res, 400, { ok: false, error: 'op desconocida' });
     }
 
@@ -149,6 +158,10 @@ export default async function handler(req, res) {
     if (op === 'pago') {
       const e = await addPago(body.id, body.pago, by);
       return e ? send(res, 200, { ok: true, expediente: conResumen(e) }) : send(res, 404, { ok: false, error: 'No existe.' });
+    }
+    if (op === 'alegra-snapshot') {
+      const doc = await guardarAlegra(body || {});
+      return send(res, 200, { ok: true, guardado: doc.guardado });
     }
     if (op === 'correo') {
       const e = await reenviarCorreo(body.id, String(body.key || ''), by);

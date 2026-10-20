@@ -99,6 +99,12 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         <button type="button" class="cat-tab" role="tab" data-cat="proyecto">
           <i class="fas fa-solar-panel" aria-hidden="true"></i> Proyectos <span class="cat-count" data-count="proyecto"></span>
         </button>
+        <button type="button" class="cat-tab" role="tab" data-cat="equipos">
+          <i class="fas fa-boxes" aria-hidden="true"></i> Equipos comprometidos <span class="cat-count" data-count="equipos"></span>
+        </button>
+        <button type="button" class="cat-tab" role="tab" data-cat="desempeno">
+          <i class="fas fa-chart-line" aria-hidden="true"></i> Desempeño
+        </button>
         <button type="button" class="cat-tab" role="tab" data-cat="web">
           <i class="fas fa-shopping-cart" aria-hidden="true"></i> Pedidos web (carrito)
         </button>
@@ -123,6 +129,16 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         </section>
         <p id="seg-status" class="dash-status" aria-live="polite"></p>
         <section id="seg-grid" class="seg-grid"></section>
+      </div>
+
+      <div id="pane-equipos" hidden>
+        <p id="eq-status" class="dash-status" aria-live="polite"></p>
+        <div id="eq-body"></div>
+      </div>
+
+      <div id="pane-desempeno" hidden>
+        <p id="de-status" class="dash-status" aria-live="polite"></p>
+        <div id="de-body"></div>
       </div>
 
       <div id="pane-web" hidden>
@@ -538,7 +554,11 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
                 i +
                 '" value="' +
                 esc(it.proveedor) +
-                '" aria-label="Proveedor" /></td><td>' +
+                '" aria-label="Proveedor" /></td><td><input class="seg-prov-input" type="number" min="0" data-item-costo="' +
+                i +
+                '" value="' +
+                esc(it.costoUnit || '') +
+                '" placeholder="Costo unit." aria-label="Costo unitario" /></td><td>' +
                 cop(it.precioUnit * it.cantidad) +
                 '</td></tr>'
               );
@@ -620,9 +640,13 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             '</ol></section>' +
             '<section class="modal-block"><h3>Equipos y proveedores</h3>' +
             (items
-              ? '<div class="table-wrap"><table><thead><tr><th>Cant.</th><th>Equipo</th><th>Proveedor</th><th>Valor</th></tr></thead><tbody>' +
+              ? '<div class="table-wrap"><table><thead><tr><th>Cant.</th><th>Equipo</th><th>Proveedor</th><th>Costo unit. (interno)</th><th>Valor venta</th></tr></thead><tbody>' +
                 items +
-                '</tbody></table></div><div class="prov-resumen"><h4>Pedir a cada proveedor</h4>' +
+                '</tbody></table></div>' +
+                (r.margen != null
+                  ? '<p class="seg-margen">Costo ' + cop(r.costo) + ' · Margen ' + cop(r.margen) + ' (' + r.margenPct + ' %)</p>'
+                  : '<p class="seg-margen seg-margen--pend">Llena el costo de cada equipo para ver el margen.</p>') +
+                '<div class="prov-resumen"><h4>Pedir a cada proveedor</h4>' +
                 porProv +
                 '</div>'
               : '<p class="notes-empty">Sin equipos cargados.</p>') +
@@ -649,6 +673,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             field('e_guia', 'Número de guía', e.envio && e.envio.guia) +
             field('f_numero', 'Número de factura', e.factura && e.factura.numero) +
             field('total', 'Valor total', r.total, 'number') +
+            field('costosAdicionales', 'Otros costos (mano de obra, flete, RETIE)', e.costosAdicionales, 'number') +
             '</div><label class="seg-field seg-field--full"><span>Notas</span><textarea name="notas" rows="2">' +
             esc(e.notas || '') +
             '</textarea></label><div class="modal-actions"><button class="btn btn-primary" type="submit">Guardar datos</button>' +
@@ -731,11 +756,15 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
               },
             });
           });
-          el.body.querySelectorAll('[data-item-prov]').forEach(function (inp) {
+          el.body.querySelectorAll('[data-item-prov],[data-item-costo]').forEach(function (inp) {
             inp.addEventListener('change', function () {
               var items = (e.items || []).map(function (it, i) {
                 var n = el.body.querySelector('[data-item-prov="' + i + '"]');
-                return Object.assign({}, it, { proveedor: n ? n.value : it.proveedor });
+                var c = el.body.querySelector('[data-item-costo="' + i + '"]');
+                return Object.assign({}, it, {
+                  proveedor: n ? n.value : it.proveedor,
+                  costoUnit: c ? Number(c.value) || 0 : it.costoUnit,
+                });
               });
               run('save', { id: e.id, items: items });
             });
@@ -747,6 +776,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             run('save', {
               id: e.id,
               total: f.get('total'),
+              costosAdicionales: f.get('costosAdicionales'),
               notas: f.get('notas'),
               cliente: {
                 nombre: f.get('c_nombre'),
@@ -852,8 +882,12 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             b.setAttribute('aria-selected', b.getAttribute('data-cat') === cat ? 'true' : 'false');
           });
           el.paneWeb.hidden = cat !== 'web';
-          el.paneSeg.hidden = cat === 'web';
-          if (cat !== 'web') render();
+          el.paneSeg.hidden = cat !== 'tienda' && cat !== 'proyecto';
+          $('pane-equipos').hidden = cat !== 'equipos';
+          $('pane-desempeno').hidden = cat !== 'desempeno';
+          if (cat === 'tienda' || cat === 'proyecto') render();
+          if (cat === 'equipos') loadEquipos();
+          if (cat === 'desempeno') loadDesempeno();
         }
 
         document.querySelectorAll('.cat-tab').forEach(function (b) {
@@ -878,6 +912,268 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         });
         var btnRefresh = $('btn-refresh');
         if (btnRefresh) btnRefresh.addEventListener('click', load);
+
+        var EQ_TXT = {};
+        function chip(estado, txt) {
+          var cls = { por_pedir: 'bad', pedido: 'amber', comprado: 'amber', en_camino: 'amber', en_obra: 'ok', entregado: 'ok', instalado: 'ok' }[estado] || '';
+          return '<span class="oc-badge oc-badge--' + cls + '">' + esc(txt || estado) + '</span>';
+        }
+        async function loadEquipos() {
+          var st2 = $('eq-status');
+          var body = $('eq-body');
+          if (isDemo()) {
+            st2.textContent = 'Disponible solo con sesión real.';
+            return;
+          }
+          st2.textContent = 'Cargando…';
+          try {
+            var j = await api('equipos');
+            EQ_TXT = j.estados || {};
+            st2.textContent = '';
+            var pend = j.filas.filter(function (f) {
+              return f.estado !== 'entregado' && f.estado !== 'instalado';
+            });
+            var c = document.querySelector('[data-count="equipos"]');
+            var nPor = j.filas.filter(function (f) {
+              return f.estado === 'por_pedir';
+            }).length;
+            if (c) c.textContent = nPor ? String(nPor) : '';
+            var resumen = j.porProveedor.length
+              ? '<div class="seg-grid">' +
+                j.porProveedor
+                  .map(function (p) {
+                    return (
+                      '<article class="seg-card"><div class="seg-card-head"><span class="prov-chip' +
+                      (p.proveedor === 'Por confirmar' ? ' prov-chip--pend' : '') +
+                      '">' +
+                      esc(p.proveedor) +
+                      '</span></div><p class="seg-next">' +
+                      p.porPedir +
+                      ' unidades por pedir</p><p class="seg-sub">' +
+                      p.enProceso +
+                      ' en proceso · ' +
+                      cop(p.valorPorPedir) +
+                      ' en ventas por pedir</p></article>'
+                    );
+                  })
+                  .join('') +
+                '</div>'
+              : '';
+            var tabla = pend.length
+              ? '<div class="table-wrap eq-table"><table><thead><tr><th>Equipo</th><th>Cant.</th><th>Proveedor</th><th>Venta</th><th>Pago</th><th>Estado</th></tr></thead><tbody>' +
+                pend
+                  .map(function (f) {
+                    return (
+                      '<tr data-open-exp="' +
+                      esc(f.expediente) +
+                      '"><td>' +
+                      esc(f.equipo) +
+                      '</td><td>' +
+                      esc(f.cantidad) +
+                      '</td><td>' +
+                      esc(f.proveedor) +
+                      '</td><td>' +
+                      esc(f.titulo) +
+                      '<br><small>' +
+                      (f.tipo === 'proyecto' ? 'Proyecto' : 'Tienda') +
+                      '</small></td><td>' +
+                      (f.pagoOk ? chip('entregado', 'Pagado') : chip('por_pedir', 'Sin pago completo')) +
+                      '</td><td>' +
+                      chip(f.estado, EQ_TXT[f.estado]) +
+                      '</td></tr>'
+                    );
+                  })
+                  .join('') +
+                '</tbody></table></div>'
+              : '<div class="seg-empty"><p>No hay equipos pendientes.</p><p class="seg-hint">Aquí aparecen los equipos de las compras y proyectos activos hasta que se entregan o se instalan. El estado sale de las etapas de compra, despacho y entrega.</p></div>';
+            body.innerHTML = '<h2 class="de-h">Por proveedor</h2>' + resumen + '<h2 class="de-h">Detalle</h2>' + tabla;
+            body.querySelectorAll('[data-open-exp]').forEach(function (tr) {
+              tr.addEventListener('click', function () {
+                var id = tr.getAttribute('data-open-exp');
+                if (!st.items.length) return;
+                openDetail(id);
+              });
+            });
+          } catch (err) {
+            st2.textContent = 'No se pudo cargar: ' + err.message;
+          }
+        }
+
+        function mesTxt(m) {
+          var p = String(m).split('-');
+          var n = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'][Number(p[1]) - 1] || '';
+          return n + ' ' + String(p[0]).slice(2);
+        }
+        function barras(filas, series) {
+          var max = 1;
+          filas.forEach(function (f) {
+            series.forEach(function (s) {
+              max = Math.max(max, Number(f[s.k]) || 0);
+            });
+          });
+          return (
+            '<div class="de-bars">' +
+            filas
+              .map(function (f) {
+                return (
+                  '<div class="de-row"><span class="de-lbl">' +
+                  esc(f.label) +
+                  '</span><div class="de-tracks">' +
+                  series
+                    .map(function (s) {
+                      var v = Number(f[s.k]) || 0;
+                      return (
+                        '<div class="de-track"><span class="de-fill de-fill--' +
+                        s.c +
+                        '" style="width:' +
+                        Math.max(v ? 2 : 0, Math.round((v / max) * 100)) +
+                        '%"></span><em>' +
+                        cop(v) +
+                        '</em></div>'
+                      );
+                    })
+                    .join('') +
+                  '</div></div>'
+                );
+              })
+              .join('') +
+            '</div><div class="de-legend">' +
+            series
+              .map(function (s) {
+                return '<span><i class="de-dot de-fill--' + s.c + '"></i>' + esc(s.t) + '</span>';
+              })
+              .join('') +
+            '</div>'
+          );
+        }
+        async function loadDesempeno() {
+          var st2 = $('de-status');
+          var body = $('de-body');
+          if (isDemo()) {
+            st2.textContent = 'Disponible solo con sesión real.';
+            return;
+          }
+          st2.textContent = 'Calculando…';
+          try {
+            var j = await api('desempeno');
+            st2.textContent = '';
+            var k = j.kpis;
+            var vari =
+              k.ventasMesAnterior > 0 ? Math.round(((k.ventasMes - k.ventasMesAnterior) / k.ventasMesAnterior) * 100) : null;
+            var a = j.alegra;
+            var html =
+              '<section class="seg-metrics">' +
+              metric('Ventas aprobadas este mes', cop(k.ventasMes)) +
+              metric('vs. mes anterior', vari == null ? '—' : (vari >= 0 ? '+' : '') + vari + ' %') +
+              metric('Cobrado este mes', cop(k.cobradoMes)) +
+              metric('Saldo por cobrar (panel)', cop(k.saldoPorCobrar)) +
+              metric('Pagos por verificar', cop(k.pagosPorVerificar)) +
+              metric('Compras en curso', k.activosTienda) +
+              metric('Proyectos en curso', k.activosProyectos) +
+              metric('Margen promedio', k.margenPct == null ? 'Falta costo' : k.margenPct + ' %') +
+              '</section>';
+            html +=
+              '<section class="de-card"><h2 class="de-h">Ventas por mes (panel y tienda web)</h2>' +
+              barras(
+                j.meses.map(function (m) {
+                  return { label: mesTxt(m.mes), t: m.tienda, p: m.proyecto, w: m.web, c: m.cobrado };
+                }),
+                [
+                  { k: 't', t: 'Compras en tienda', c: 'a' },
+                  { k: 'p', t: 'Proyectos', c: 'b' },
+                  { k: 'w', t: 'Tienda web (Wompi/Addi)', c: 'c' },
+                  { k: 'c', t: 'Cobrado', c: 'd' },
+                ]
+              ) +
+              '</section>';
+            if (a) {
+              var fm = (a.facturacionMensual || []).slice(-6);
+              html +=
+                '<section class="de-card"><h2 class="de-h">Facturación en Alegra</h2><p class="seg-sub">Actualizado ' +
+                esc(fecha(a.guardado)) +
+                ' por Claude</p>' +
+                '<div class="seg-metrics">' +
+                metric('Cartera por cobrar', cop(a.cartera && a.cartera.total)) +
+                metric('Facturas abiertas', (a.cartera && a.cartera.facturas ? a.cartera.facturas.length : 0)) +
+                metric('Facturado último mes', cop(fm.length ? fm[fm.length - 1].total : 0)) +
+                metric('Recaudado último mes', cop((a.recaudoMensual || []).length ? a.recaudoMensual[a.recaudoMensual.length - 1].total : 0)) +
+                '</div>' +
+                (fm.length
+                  ? barras(
+                      fm.map(function (m) {
+                        var rec = (a.recaudoMensual || []).find(function (x) {
+                          return x.mes === m.mes;
+                        });
+                        return { label: mesTxt(m.mes), f: m.total, r: rec ? rec.total : 0 };
+                      }),
+                      [
+                        { k: 'f', t: 'Facturado', c: 'a' },
+                        { k: 'r', t: 'Recaudado', c: 'd' },
+                      ]
+                    )
+                  : '') +
+                (a.cartera && a.cartera.facturas && a.cartera.facturas.length
+                  ? '<h3 class="de-h3">Facturas por cobrar</h3><div class="table-wrap"><table><thead><tr><th>Factura</th><th>Cliente</th><th>Fecha</th><th>Saldo</th><th>Días</th></tr></thead><tbody>' +
+                    a.cartera.facturas
+                      .map(function (f) {
+                        return (
+                          '<tr><td>' +
+                          esc(f.numero) +
+                          '</td><td>' +
+                          esc(f.cliente) +
+                          '</td><td>' +
+                          esc(f.fecha) +
+                          '</td><td>' +
+                          cop(f.saldo) +
+                          '</td><td>' +
+                          esc(f.dias) +
+                          '</td></tr>'
+                        );
+                      })
+                      .join('') +
+                    '</tbody></table></div>'
+                  : '') +
+                (a.topClientes && a.topClientes.length
+                  ? '<h3 class="de-h3">Mejores clientes del año</h3><ol class="de-top">' +
+                    a.topClientes
+                      .slice(0, 5)
+                      .map(function (c) {
+                        return '<li>' + esc(c.cliente) + ' — ' + cop(c.total) + '</li>';
+                      })
+                      .join('') +
+                    '</ol>'
+                  : '') +
+                '</section>';
+            } else {
+              html += '<section class="de-card"><p>Aún no hay datos de Alegra. Claude los carga en la revisión de la mañana.</p></section>';
+            }
+            html +=
+              '<section class="de-card de-split"><div><h2 class="de-h">Ventas por proveedor</h2>' +
+              (j.proveedores.length
+                ? '<ul class="de-list">' +
+                  j.proveedores
+                    .map(function (p) {
+                      return '<li><span>' + esc(p.proveedor) + '</span><strong>' + cop(p.total) + '</strong></li>';
+                    })
+                    .join('') +
+                  '</ul>'
+                : '<p class="notes-empty">Sin datos.</p>') +
+              '</div><div><h2 class="de-h">¿Dónde está detenido el trabajo?</h2>' +
+              (j.cuellos.length
+                ? '<ul class="de-list">' +
+                  j.cuellos
+                    .map(function (c) {
+                      return '<li><span>' + esc(c.etapa) + '</span><strong>' + c.n + '</strong></li>';
+                    })
+                    .join('') +
+                  '</ul>'
+                : '<p class="notes-empty">Nada pendiente.</p>') +
+              '</div></section>';
+            body.innerHTML = html;
+          } catch (err) {
+            st2.textContent = 'No se pudo cargar: ' + err.message;
+          }
+        }
 
         window.reikiSeg = {
           show: function () {
@@ -3058,6 +3354,138 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         padding: 0.5rem 0.7rem;
         border-radius: 8px;
         font-size: 0.85rem;
+      }
+      .de-h {
+        color: #fff;
+        font-size: 1.05rem;
+        font-weight: 800;
+        margin: 1.1rem 0 0.6rem;
+      }
+      .de-card .de-h,
+      .de-card .de-h3 {
+        color: var(--ink);
+        margin-top: 0;
+      }
+      .de-h3 {
+        font-size: 0.92rem;
+        margin: 1rem 0 0.4rem;
+      }
+      .de-card {
+        background: var(--card);
+        border-radius: 16px;
+        padding: 1rem 1.1rem;
+        margin-bottom: 1rem;
+        box-shadow: var(--shadow);
+      }
+      .de-bars {
+        display: grid;
+        gap: 0.7rem;
+        margin-top: 0.5rem;
+      }
+      .de-row {
+        display: grid;
+        grid-template-columns: 56px 1fr;
+        gap: 0.6rem;
+        align-items: center;
+      }
+      .de-lbl {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--muted);
+      }
+      .de-tracks {
+        display: grid;
+        gap: 3px;
+      }
+      .de-track {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+        min-width: 0;
+      }
+      .de-track em {
+        font-style: normal;
+        font-size: 0.72rem;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+      .de-fill {
+        display: block;
+        height: 10px;
+        border-radius: 4px;
+      }
+      .de-fill--a {
+        background: var(--brand);
+      }
+      .de-fill--b {
+        background: var(--accent);
+      }
+      .de-fill--c {
+        background: #0ea5e9;
+      }
+      .de-fill--d {
+        background: var(--ok);
+      }
+      .de-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin-top: 0.7rem;
+        font-size: 0.78rem;
+        color: var(--muted);
+      }
+      .de-dot {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 3px;
+        margin-right: 0.3rem;
+        vertical-align: -1px;
+      }
+      .de-split {
+        display: grid;
+        gap: 1.2rem;
+      }
+      @media (min-width: 768px) {
+        .de-split {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+      .de-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 0.35rem;
+      }
+      .de-list li {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.6rem;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 0.3rem;
+        font-size: 0.88rem;
+      }
+      .de-top {
+        margin: 0;
+        padding-left: 1.2rem;
+        font-size: 0.88rem;
+      }
+      .eq-table {
+        background: var(--card);
+        border-radius: 14px;
+      }
+      .eq-table tr[data-open-exp] {
+        cursor: pointer;
+      }
+      .seg-margen {
+        font-weight: 700;
+        font-size: 0.88rem;
+        margin: 0.5rem 0;
+      }
+      .seg-margen--pend {
+        color: var(--muted);
+        font-weight: 500;
       }
     </style>
   </body>
