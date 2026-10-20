@@ -1011,10 +1011,16 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
               max = Math.max(max, Number(f[s.k]) || 0);
             });
           });
+          if (max === 1 && !filas.some(function (f) { return series.some(function (s) { return Number(f[s.k]) > 0; }); }))
+            return '<p class="notes-empty">Aún no hay movimientos en estos meses. Se irá llenando a medida que se registren ventas aprobadas en el panel y pedidos web pagados.</p>';
           return (
             '<div class="de-bars">' +
             filas
               .map(function (f) {
+                var vacio = !series.some(function (s) {
+                  return Number(f[s.k]) > 0;
+                });
+                if (vacio) return '<div class="de-row"><span class="de-lbl">' + esc(f.label) + '</span><span class="de-zero">Sin movimientos</span></div>';
                 return (
                   '<div class="de-row"><span class="de-lbl">' +
                   esc(f.label) +
@@ -3486,6 +3492,41 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       .seg-margen--pend {
         color: var(--muted);
         font-weight: 500;
+      }
+      .de-zero {
+        font-size: 0.75rem;
+        color: var(--muted);
+      }
+      @media (max-width: 640px) {
+        .cat-tabs {
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          margin-left: -16px;
+          margin-right: -16px;
+          padding: 0 16px 4px;
+          scrollbar-width: none;
+        }
+        .cat-tab {
+          flex: 0 0 auto;
+          font-size: 0.85rem;
+          padding: 0.5rem 0.85rem;
+        }
+      }
+      @media (max-width: 640px) {
+        .dash-top {
+          flex-wrap: wrap;
+          gap: 0.6rem;
+        }
+        .dash-top h1 {
+          font-size: 1.3rem;
+        }
+        .dash-top-actions {
+          width: 100%;
+          justify-content: flex-end;
+        }
+        .dash-wrap {
+          overflow-x: hidden;
+        }
       }
     </style>
   </body>
