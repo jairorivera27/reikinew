@@ -24,7 +24,7 @@ import {
   updateEtapa,
 } from '../seguimiento.js';
 import { getRedis } from '../whatsapp-redis.js';
-import { etapasConCorreo, etapasConFecha } from '../correos.js';
+import { correoConfigurado, etapasConCorreo, etapasConFecha } from '../correos.js';
 
 function send(res, code, body) {
   res.statusCode = code;
@@ -124,7 +124,7 @@ export default async function handler(req, res) {
       if (op === 'list') {
         await sincronizarPedidosWeb();
         const items = (await listExpedientes()).map(conResumen);
-        return send(res, 200, { ok: true, count: items.length, expedientes: items, plantillas: PLANTILLAS, correos: { tienda: etapasConCorreo('tienda'), proyecto: etapasConCorreo('proyecto') }, conFecha: { tienda: etapasConFecha('tienda'), proyecto: etapasConFecha('proyecto') }, correoConfigurado: Boolean(process.env.RESEND_API_KEY) });
+        return send(res, 200, { ok: true, count: items.length, expedientes: items, plantillas: PLANTILLAS, correos: { tienda: etapasConCorreo('tienda'), proyecto: etapasConCorreo('proyecto') }, conFecha: { tienda: etapasConFecha('tienda'), proyecto: etapasConFecha('proyecto') }, correoConfigurado: correoConfigurado() });
       }
       if (op === 'get') {
         const e = await getExpediente(q.id);

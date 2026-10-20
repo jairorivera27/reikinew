@@ -30,9 +30,9 @@ Las etapas y su texto de ayuda están en `api/_lib/seguimiento.js` (`PLANTILLAS`
 ## Correos automáticos al cliente
 
 `api/_lib/correos.js` (`CORREOS`) define qué etapa, al pasar a qué estado, envía un correo al cliente
-(p. ej. tienda `guia:hecho`, proyecto `programacion:hecho`). Se envían con Resend; variables en Vercel:
-`RESEND_API_KEY` (obligatoria), `MAIL_FROM` (por defecto `Reiki Energía Solar <notificaciones@reikisolar.com.co>`),
-`MAIL_REPLY_TO`, `MAIL_BCC` (copia interna opcional).
+(p. ej. tienda `guia:hecho`, proyecto `programacion:hecho`). Se envían por el SMTP del correo de Hostinger;
+variables en Vercel: `SMTP_USER` (buzón que envía), `SMTP_PASS`, opcionales `SMTP_HOST` (smtp.hostinger.com),
+`SMTP_PORT` (465), `MAIL_FROM`, `MAIL_REPLY_TO`, `MAIL_BCC`. Alternativa sin SMTP: `RESEND_API_KEY`.
 
 - Nunca incluyen proveedores, costos ni las notas internas de las etapas.
 - No se reenvía un correo ya enviado; si no se pudo enviar (sin correo del cliente, sin guía, sin fecha, sin clave) queda

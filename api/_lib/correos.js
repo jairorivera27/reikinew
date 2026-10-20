@@ -1,10 +1,16 @@
 /**
  * Correos automáticos al cliente cuando una etapa que lo involucra cambia de estado.
- * Envío con Resend (https://resend.com) vía HTTP, sin dependencias.
+ * Envío por SMTP (correo de Hostinger, preferido) o, si no hay SMTP, por Resend.
  *
- * Env:
- *   RESEND_API_KEY   obligatorio para enviar (sin él, el correo queda "pendiente de configurar" en el historial)
- *   MAIL_FROM        default: "Reiki Energía Solar <notificaciones@reikisolar.com.co>"
+ * Env (SMTP Hostinger):
+ *   SMTP_USER        buzón que envía, p. ej. notificaciones@reikisolar.com.co
+ *   SMTP_PASS        contraseña de ese buzón
+ *   SMTP_HOST        default: smtp.hostinger.com
+ *   SMTP_PORT        default: 465 (SSL)
+ * Env (alternativa):
+ *   RESEND_API_KEY
+ * Comunes:
+ *   MAIL_FROM        default: "Reiki Energía Solar <SMTP_USER>" o notificaciones@reikisolar.com.co
  *   MAIL_REPLY_TO    default: correo de config/empresa.json
  *   MAIL_BCC         opcional: copia interna de cada correo
  *
@@ -12,6 +18,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import nodemailer from 'nodemailer';
 
 let empresaCache = null;
 function empresa() {
@@ -202,9 +209,48 @@ function texto(e, parrafos) {
   return [`Hola${nombre ? ' ' + nombre : ''},`, '', ...parrafos, '', `Referencia: ${ref(e)}`, '', `${em.razon_social} · WhatsApp ${em.telefono} · ${em.web}`].join('\n');
 }
 
+export function correoConfigurado() {
+  return Boolean((process.env.SMTP_USER && process.env.SMTP_PASS) || process.env.RESEND_API_KEY);
+}
+
+let transporter = null;
+async function enviarSmtp({ to, subject, htmlBody, textBody }) {
+  const user = String(process.env.SMTP_USER || '').trim();
+  const em = empresa();
+  if (!transporter) {
+    const port = Number(process.env.SMTP_PORT || 465);
+    transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST || 'smtp.hostinger.com',
+      port,
+      secure: port === 465,
+      auth: { user, pass: process.env.SMTP_PASS },
+    });
+  }
+  try {
+    const info = await transporter.sendMail({
+      from: process.env.MAIL_FROM || `Reiki Energía Solar <${user}>`,
+      to,
+      replyTo: process.env.MAIL_REPLY_TO || em.correo || undefined,
+      bcc: process.env.MAIL_BCC || undefined,
+      subject,
+      html: htmlBody,
+      text: textBody,
+    });
+    return { ok: true, id: info.messageId };
+  } catch (err) {
+    transporter = null;
+    return { ok: false, motivo: `SMTP: ${String(err?.message || err).slice(0, 140)}` };
+  }
+}
+
+async function enviar(msg) {
+  if (process.env.SMTP_USER && process.env.SMTP_PASS) return enviarSmtp(msg);
+  if (process.env.RESEND_API_KEY) return enviarResend(msg);
+  return { ok: false, motivo: 'correo sin configurar (faltan SMTP_USER y SMTP_PASS en Vercel)' };
+}
+
 async function enviarResend({ to, subject, htmlBody, textBody }) {
   const key = String(process.env.RESEND_API_KEY || '').trim();
-  if (!key) return { ok: false, motivo: 'correo sin configurar (falta RESEND_API_KEY)' };
   const em = empresa();
   const body = {
     from: process.env.MAIL_FROM || 'Reiki Energía Solar <notificaciones@reikisolar.com.co>',
@@ -249,7 +295,7 @@ export async function correoPorEtapa(exp, etapa, resumenExp) {
   let res = { ok: false, motivo };
   if (!motivo) {
     const parrafos = regla.cuerpo(exp, resumenExp, etapa);
-    res = await enviarResend({ to: exp.cliente.correo, subject: asunto, htmlBody: html(exp, parrafos), textBody: texto(exp, parrafos) });
+    res = await enviar({ to: exp.cliente.correo, subject: asunto, htmlBody: html(exp, parrafos), textBody: texto(exp, parrafos) });
   }
   exp.correos.unshift({
     clave,
