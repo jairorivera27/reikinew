@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-10-17 10:59",
+ "ultima_revision": "2026-10-19 21:00",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -494,8 +494,8 @@
    "consulta": "ok"
   },
   "bateria-de-litio-51-2v-100ah-dl5-0c-1c-ip20-6000-ciclos-w-50kg-dyness": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "bateria-gel-12v-35ah-1600-ciclos-50-w-12kg-netion": {
@@ -559,7 +559,7 @@
    "consulta": "ok"
   },
   "bateria-solar-litio-felicity-48v-11-8kwh-1880845": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -891,7 +891,7 @@
   "controlador-de-carga-solar-mppt-2008194": {
    "stock": "disponible",
    "stockBajo": false,
-   "consulta": "ok"
+   "consulta": "error"
   },
   "controlador-de-carga-solar-mppt-2008195": {
    "stock": "disponible",
@@ -1044,8 +1044,8 @@
    "consulta": "ok"
   },
   "deye-rack-para-bateria-de-litio-bos-g-rack9-9-pisos-floor": {
-   "stock": "pre-orden",
-   "stockBajo": false,
+   "stock": "disponible",
+   "stockBajo": true,
    "consulta": "ok"
   },
   "deye-router-wifi-para-monitoreo-de-inyeccion-a-red-para-microinversor-500-w": {
@@ -1414,13 +1414,13 @@
    "consulta": "ok"
   },
   "inversor-cargador-hp6041-ah1130p20a-6kw-48v-mppt-140a-300voc-120v-epever": {
-   "stock": "pre-orden",
-   "stockBajo": false,
+   "stock": "disponible",
+   "stockBajo": true,
    "consulta": "ok"
   },
   "inversor-cargador-kas3021-3kw-24v-mppt-100a-500voc-120v-epever": {
-   "stock": "pre-orden",
-   "stockBajo": false,
+   "stock": "disponible",
+   "stockBajo": true,
    "consulta": "ok"
   },
   "inversor-cargador-kas3641-3-6kw-48v-mppt-80a-300voc-120v-epever": {
@@ -2015,7 +2015,7 @@
   },
   "proteccion-descargador-de-sobrepotencial-dps-sup2h1-pv-dc-spd-dc600v-2040ka-suntree": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "protector-de-bateria-victron-12-24v-100a-smart-batteryprotect-12-24v": {
