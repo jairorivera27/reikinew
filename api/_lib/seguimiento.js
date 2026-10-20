@@ -5,6 +5,7 @@
  */
 import { getRedis, waKey } from './whatsapp-redis.js';
 import { proveedorDeItem } from './proveedores.js';
+import { correoPorEtapa } from './correos.js';
 
 const memExp = globalThis.__reikiSegExp || new Map();
 globalThis.__reikiSegExp = memExp;
@@ -276,24 +277,66 @@ export async function saveExpediente(input = {}, by = 'panel') {
   if (input.orderId) exp.orderId = str(input.orderId, 80);
   if (!exp.titulo) exp.titulo = exp.cliente?.nombre || exp.cotizacion?.numero || exp.id;
 
+  if (input.correosActivos !== undefined) exp.correosActivos = Boolean(input.correosActivos);
+
+  const antes = snapshot(exp);
   autoEtapas(exp);
   pushHist(exp, by, prev ? 'Expediente actualizado.' : `Expediente creado (${tipo === 'proyecto' ? 'proyecto' : 'compra en tienda'}).`);
+  if (!input._sinCorreoInicial) await notificarCambios(exp, antes, by);
   return persist(exp);
 }
 
-export async function updateEtapa(id, key, { estado, nota } = {}, by = 'panel') {
+export async function updateEtapa(id, key, { estado, nota, fechaCliente } = {}, by = 'panel') {
   const exp = await getExpediente(id);
   if (!exp) return null;
   const e = (exp.etapas || []).find((x) => x.key === key);
   if (!e) throw new Error('etapa_desconocida');
+  const antes = snapshot(exp);
+  if (fechaCliente !== undefined) e.fechaCliente = str(fechaCliente, 10);
   if (estado) {
     if (!ESTADOS_ETAPA.includes(estado)) throw new Error('estado_invalido');
-    e.estado = estado;
-    e.fecha = nowIso();
+    if (e.estado !== estado) {
+      e.estado = estado;
+      e.fecha = nowIso();
+    }
   }
   if (nota !== undefined) e.nota = str(nota, 600);
   pushHist(exp, by, `Etapa "${e.label}" → ${e.estado}${nota ? `: ${str(nota, 120)}` : ''}`);
+  // Si solo se agregó la fecha a una etapa ya marcada, reintenta su correo
+  if (fechaCliente && !estado) antes[e.key] = '';
+  await notificarCambios(exp, antes, by);
   return persist(exp);
+}
+
+/** Reintenta el correo de una etapa en su estado actual (p. ej. tras completar el correo del cliente). */
+export async function reenviarCorreo(id, key, by = 'panel') {
+  const exp = await getExpediente(id);
+  if (!exp) return null;
+  const e = (exp.etapas || []).find((x) => x.key === key);
+  if (!e) throw new Error('etapa_desconocida');
+  const r = await correoPorEtapa(exp, e, resumen(exp));
+  if (!r) throw new Error('esta etapa no envía correo en su estado actual');
+  pushHist(exp, by, r.enviado ? `Correo enviado al cliente: "${r.asunto}"` : `Correo no enviado (${e.label}): ${r.motivo}`);
+  return persist(exp);
+}
+
+function snapshot(exp) {
+  return Object.fromEntries((exp.etapas || []).map((e) => [e.key, e.estado]));
+}
+
+async function notificarCambios(exp, antes, by) {
+  const r = resumen(exp);
+  for (const e of exp.etapas || []) {
+    if (antes[e.key] === e.estado) continue;
+    try {
+      const out = await correoPorEtapa(exp, e, r);
+      if (out && out.motivo !== 'ya se había enviado') {
+        pushHist(exp, by, out.enviado ? `Correo enviado al cliente: "${out.asunto}"` : `Correo no enviado (${e.label}): ${out.motivo}`);
+      }
+    } catch (err) {
+      console.warn('[seguimiento] correo', err?.message || err);
+    }
+  }
 }
 
 export async function addPago(id, pago, by = 'panel') {
@@ -304,7 +347,9 @@ export async function addPago(id, pago, by = 'panel') {
   const i = (exp.pagos || []).findIndex((x) => x.id === p.id);
   if (i >= 0) exp.pagos[i] = p;
   else exp.pagos = [...(exp.pagos || []), p];
+  const antes = snapshot(exp);
   autoEtapas(exp);
+  await notificarCambios(exp, antes, by);
   pushHist(exp, by, `Pago ${p.estado === 'verificado' ? 'verificado' : 'por verificar'}: $${p.monto.toLocaleString('es-CO')} (${p.medio}).`);
   return persist(exp);
 }
@@ -327,6 +372,8 @@ export async function expedienteDesdePedido(order) {
       tipo: 'tienda',
       origen: 'web',
       orderId: order.orderId,
+      // Pedidos web viejos (más de 48 h): no mandar correos de etapas ya cumplidas al crearlos
+      _sinCorreoInicial: Date.now() - (Date.parse(order.paidAt || order.updatedAt || order.createdAt || '') || 0) > 48 * 3600000,
       titulo: c.fullName || order.orderId,
       cliente: {
         nombre: c.fullName,

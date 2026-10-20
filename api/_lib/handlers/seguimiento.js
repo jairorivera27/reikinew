@@ -7,6 +7,7 @@
  * GET  op=revision[&marcar=1]  → nuevos sin notificar, pendientes y alertas (para la revisión programada)
  * POST op=save    { id?, tipo, titulo, cliente, cotizacion, total, items, pagos, condicionesPago, envio, factura, notas, estado }
  * POST op=etapa   { id, key, estado: pendiente|en_curso|hecho|no_aplica, nota? }
+ * POST op=correo  { id, key } → reintenta el correo al cliente de esa etapa
  * POST op=pago    { id, pago: { id?, fecha, monto, medio, referencia, estado: verificado|por_verificar, nota } }
  */
 import { adminAuthOk, adminActor, readJsonBody } from '../admin-auth.js';
@@ -17,11 +18,13 @@ import {
   expedienteDesdePedido,
   getExpediente,
   listExpedientes,
+  reenviarCorreo,
   resumen,
   saveExpediente,
   updateEtapa,
 } from '../seguimiento.js';
 import { getRedis } from '../whatsapp-redis.js';
+import { etapasConCorreo, etapasConFecha } from '../correos.js';
 
 function send(res, code, body) {
   res.statusCode = code;
@@ -121,7 +124,7 @@ export default async function handler(req, res) {
       if (op === 'list') {
         await sincronizarPedidosWeb();
         const items = (await listExpedientes()).map(conResumen);
-        return send(res, 200, { ok: true, count: items.length, expedientes: items, plantillas: PLANTILLAS });
+        return send(res, 200, { ok: true, count: items.length, expedientes: items, plantillas: PLANTILLAS, correos: { tienda: etapasConCorreo('tienda'), proyecto: etapasConCorreo('proyecto') }, conFecha: { tienda: etapasConFecha('tienda'), proyecto: etapasConFecha('proyecto') }, correoConfigurado: Boolean(process.env.RESEND_API_KEY) });
       }
       if (op === 'get') {
         const e = await getExpediente(q.id);
@@ -140,11 +143,15 @@ export default async function handler(req, res) {
       return send(res, 200, { ok: true, expediente: conResumen(e) });
     }
     if (op === 'etapa') {
-      const e = await updateEtapa(body.id, String(body.key || ''), { estado: body.estado, nota: body.nota }, by);
+      const e = await updateEtapa(body.id, String(body.key || ''), { estado: body.estado, nota: body.nota, fechaCliente: body.fechaCliente }, by);
       return e ? send(res, 200, { ok: true, expediente: conResumen(e) }) : send(res, 404, { ok: false, error: 'No existe.' });
     }
     if (op === 'pago') {
       const e = await addPago(body.id, body.pago, by);
+      return e ? send(res, 200, { ok: true, expediente: conResumen(e) }) : send(res, 404, { ok: false, error: 'No existe.' });
+    }
+    if (op === 'correo') {
+      const e = await reenviarCorreo(body.id, String(body.key || ''), by);
       return e ? send(res, 200, { ok: true, expediente: conResumen(e) }) : send(res, 404, { ok: false, error: 'No existe.' });
     }
     return send(res, 400, { ok: false, error: 'op desconocida' });

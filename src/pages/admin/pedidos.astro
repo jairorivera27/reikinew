@@ -201,7 +201,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           sin_pago: ['Sin pago', 'bad'],
         };
 
-        var st = { cat: 'tienda', items: [], q: '', estado: 'activo', openId: null, loaded: false };
+        var st = { cat: 'tienda', items: [], q: '', estado: 'activo', openId: null, loaded: false, meta: { correos: {}, conFecha: {}, correoConfigurado: true } };
         var $ = function (id) {
           return document.getElementById(id);
         };
@@ -273,6 +273,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           try {
             var j = await api('list');
             st.items = j.expedientes || [];
+            st.meta = { correos: j.correos || {}, conFecha: j.conFecha || {}, correoConfigurado: !!j.correoConfigurado };
             st.loaded = true;
             el.status.textContent = '';
           } catch (e) {
@@ -441,8 +442,24 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           var c = e.cliente || {};
           var pago = PAGO_TXT[r.estadoPago] || ['', ''];
 
+          var conCorreo = st.meta.correos[e.tipo] || [];
+          var conFecha = st.meta.conFecha[e.tipo] || [];
           var etapas = (e.etapas || [])
             .map(function (et, i) {
+              var mails = conCorreo
+                .filter(function (k) {
+                  return k.split(':')[0] === et.key;
+                })
+                .map(function (k) {
+                  return k.split(':')[1] === 'hecho' ? 'Hecho' : 'En curso';
+                });
+              var mailTag = mails.length
+                ? '<span class="seg-mail-tag" title="Al marcarla así se envía un correo al cliente"><i class="fas fa-envelope" aria-hidden="true"></i> Correo al cliente: ' + mails.join(' / ') + '</span>'
+                : '';
+              var fechaInp =
+                conFecha.indexOf(et.key) >= 0
+                  ? '<label class="seg-fecha-cli">Fecha para el cliente <input type="date" data-fecha="' + esc(et.key) + '" value="' + esc(et.fechaCliente || '') + '" /></label>'
+                  : '';
               return (
                 '<li class="seg-step seg-step--' +
                 et.estado +
@@ -452,9 +469,11 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
                 esc(et.label) +
                 '</strong>' +
                 (et.fecha ? '<small>' + esc(fecha(et.fecha)) + '</small>' : '') +
+                mailTag +
+                fechaInp +
                 '<input class="seg-step-note" data-note="' +
                 esc(et.key) +
-                '" placeholder="Nota (proveedor, guía, fecha…)" value="' +
+                '" placeholder="Nota interna (no se envía al cliente)" value="' +
                 esc(et.nota || '') +
                 '" /></div><select data-etapa="' +
                 esc(et.key) +
@@ -526,6 +545,27 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             })
             .join('');
 
+          var correosLog = (e.correos || [])
+            .slice(0, 10)
+            .map(function (c) {
+              return (
+                '<li><time>' +
+                esc(fecha(c.at)) +
+                '</time> ' +
+                (c.estado === 'enviado'
+                  ? '<span class="oc-badge oc-badge--ok">Enviado</span> ' + esc(c.asunto)
+                  : '<span class="oc-badge oc-badge--bad">No enviado</span> ' +
+                    esc(c.etapa) +
+                    ': ' +
+                    esc(c.motivo) +
+                    ' <button type="button" class="btn btn-ghost seg-mini" data-reenviar="' +
+                    esc(c.clave.split(':')[0]) +
+                    '">Reintentar</button>') +
+                '</li>'
+              );
+            })
+            .join('');
+
           var hist = (e.historial || [])
             .slice(0, 12)
             .map(function (h) {
@@ -587,6 +627,17 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
                 '</div>'
               : '<p class="notes-empty">Sin equipos cargados.</p>') +
             '</section>' +
+            '<section class="modal-block"><h3>Correos al cliente</h3>' +
+            (!st.meta.correoConfigurado
+              ? '<p class="seg-warn">El envío de correos aún no está configurado (falta la clave del servicio de correo). Los avisos quedan registrados como no enviados.</p>'
+              : '') +
+            '<label class="seg-check"><input type="checkbox" id="seg-correos-activos"' +
+            (e.correosActivos === false ? '' : ' checked') +
+            ' /> Enviar avisos automáticos a ' +
+            esc(c.correo || '(sin correo registrado)') +
+            '</label>' +
+            (correosLog ? '<ul class="seg-hist">' + correosLog + '</ul>' : '<p class="notes-empty">Aún no se han enviado correos.</p>') +
+            '</section>' +
             '<form id="seg-datos-form" class="modal-block"><h3>Cliente, envío y factura</h3><div class="seg-form-grid">' +
             field('c_nombre', 'Nombre / razón social', c.nombre) +
             field('c_documento', 'Cédula / NIT', c.documento) +
@@ -642,6 +693,21 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
               run('etapa', { id: e.id, key: inp.getAttribute('data-note'), nota: inp.value });
             });
           });
+          el.body.querySelectorAll('[data-fecha]').forEach(function (inp) {
+            inp.addEventListener('change', function () {
+              run('etapa', { id: e.id, key: inp.getAttribute('data-fecha'), fechaCliente: inp.value });
+            });
+          });
+          el.body.querySelectorAll('[data-reenviar]').forEach(function (b) {
+            b.addEventListener('click', function () {
+              run('correo', { id: e.id, key: b.getAttribute('data-reenviar') });
+            });
+          });
+          var ca = $('seg-correos-activos');
+          if (ca)
+            ca.addEventListener('change', function () {
+              run('save', { id: e.id, correosActivos: ca.checked });
+            });
           el.body.querySelectorAll('[data-verificar]').forEach(function (b) {
             b.addEventListener('click', function () {
               var p = (e.pagos || []).find(function (x) {
@@ -2965,6 +3031,33 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           grid-column: 2;
           width: 100%;
         }
+      }
+      .seg-mail-tag {
+        font-size: 0.72rem;
+        font-weight: 700;
+        color: var(--brand);
+      }
+      .seg-fecha-cli {
+        font-size: 0.75rem;
+        font-weight: 600;
+        color: var(--muted);
+        display: flex;
+        gap: 0.4rem;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .seg-fecha-cli input {
+        font: inherit;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 0.2rem 0.4rem;
+      }
+      .seg-warn {
+        background: #fff7ed;
+        border-left: 4px solid var(--accent);
+        padding: 0.5rem 0.7rem;
+        border-radius: 8px;
+        font-size: 0.85rem;
       }
     </style>
   </body>
