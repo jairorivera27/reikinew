@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-10-19 21:00",
+ "ultima_revision": "2026-10-20 21:00",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -569,7 +569,7 @@
    "consulta": "no-encontrado"
   },
   "bateria-solar-litio-felicity-48v-16kwh-1880836": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -754,7 +754,7 @@
    "consulta": "ok"
   },
   "cable-de-conexion-hoymiles-hms-2-3-m": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -834,7 +834,7 @@
    "consulta": "ok"
   },
   "conector-hoymiles-hms": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -891,7 +891,7 @@
   "controlador-de-carga-solar-mppt-2008194": {
    "stock": "disponible",
    "stockBajo": false,
-   "consulta": "error"
+   "consulta": "ok"
   },
   "controlador-de-carga-solar-mppt-2008195": {
    "stock": "disponible",
@@ -1044,8 +1044,8 @@
    "consulta": "ok"
   },
   "deye-rack-para-bateria-de-litio-bos-g-rack9-9-pisos-floor": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "deye-router-wifi-para-monitoreo-de-inyeccion-a-red-para-microinversor-500-w": {
@@ -1895,7 +1895,7 @@
   },
   "netion-bateria-gel-12v-55ah-1600-ciclos-50-w-17-5kg": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "panel-solar-bifacial-n-type-ja-solar-625w-1002139": {
@@ -1954,7 +1954,7 @@
    "consulta": "ok"
   },
   "panel-solar-trina-vertex-n-tsm-neg19rc-20-625w-bifacial": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },

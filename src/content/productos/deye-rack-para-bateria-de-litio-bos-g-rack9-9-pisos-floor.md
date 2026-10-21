@@ -13,14 +13,13 @@ specifications:
 brand: "Deye"
 model: "BOS-GM-9RACK"
 sku: "ING-BATL34"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-14"
 imagen_provisional: false
 faqs:
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
-stockBajo: true
 ---
 
 Proveedor: Ingesolar (BATL34).
