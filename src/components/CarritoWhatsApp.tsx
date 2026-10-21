@@ -57,7 +57,7 @@ export default function CarritoWhatsApp() {
     const mensaje =
       `Hola, quiero hacer este pedido:\n` +
       lineas +
-      `\nTotal: ${formatCOP(total)}\n` +
+      `\nTotal: ${formatCOP(total)} (no incluye envío)\n` +
       `Nombre: ${clienteNombre}\n` +
       `Teléfono: ${clienteTelefono}`;
 
@@ -334,6 +334,9 @@ export default function CarritoWhatsApp() {
                 <span>Total:</span>
                 <span>{formatCOP(total)}</span>
               </div>
+              <p style={{ margin: "0.4rem 0 0.6rem", padding: "0.45rem 0.6rem", borderRadius: 8, background: "#fff3c4", color: "#4a1a5c", fontSize: "0.8rem" }}>
+                El total no incluye envío: el flete se cotiza aparte según la ciudad de destino.
+              </p>
 
               <div className="client-inputs">
                 <input

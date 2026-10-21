@@ -116,7 +116,7 @@ export function renderCotizacionHtml(datos) {
     subtotal: formatCopPdf(calc.subtotal),
     iva: formatCopPdf(calc.iva),
     total: formatCopPdf(calc.total),
-    envio: envio != null ? formatCopPdf(envio) : 'Por cotizar',
+    envio: envio != null ? formatCopPdf(envio) : 'No incluido',
     envio_pend: envio == null,
     mostrarIva: calc.mostrarIva,
   };
@@ -323,7 +323,7 @@ export function renderCotizacionHtml(datos) {
     <div><span>Envío</span><b>${esc(t.envio)}</b></div>
     <div class="total"><span>Total</span><b>${esc(t.total)}</b></div>
   </div>
-  <p class="nota-iva">${IVA_NOTA}${t.envio_pend ? ' El envío nacional se cotiza según el destino.' : ''}</p>
+  <p class="nota-iva">${IVA_NOTA}${t.envio_pend ? ' El total no incluye envío: el flete se cotiza aparte según el destino.' : ''}</p>
 
   <div class="cta">
     <div class="l"><small>¿Listo para continuar?</small><b>Completa tu compra en línea en minutos</b><p class="ctaw">¿Dudas? Atención personalizada por WhatsApp: <a href="${esc(e.atencion.whatsapp_url)}"><b>${esc(e.atencion.telefono)}</b></a></p></div>

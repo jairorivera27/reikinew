@@ -58,7 +58,7 @@ export function formatCheckoutOwnerMessage(order, { unverified = false } = {}) {
     `Correo: ${order.client?.email || '—'}\n` +
     (line ? `Envío: ${line}\n` : '') +
     `Pedido: ${order.orderId || order.reference || '—'}\n` +
-    `Total: ${formatCop(order.totalAmount)}\n` +
+    `Total: ${formatCop(order.totalAmount)} (NO incluye envío: cotizar flete)\n` +
     `Productos:\n${itemsSummary(order.items)}\n` +
     (order.wompiTransactionId ? `Tx Wompi: ${order.wompiTransactionId}\n` : '') +
     (order.addiApplicationId ? `Addi app: ${order.addiApplicationId}\n` : '')

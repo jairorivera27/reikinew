@@ -58,6 +58,7 @@ export const CORREOS = {
       cuerpo: (e, r) => [
         `Confirmamos el pago de tu compra por ${cop(r.pagado)}.`,
         'Ya estamos alistando tus equipos. Te avisaremos cuando estén listos para despacho.',
+        'Recuerda que el valor pagado no incluye el envío: te confirmaremos el costo del flete según tu ciudad antes del despacho.',
       ],
     },
     'confirmacion_envio:en_curso': {

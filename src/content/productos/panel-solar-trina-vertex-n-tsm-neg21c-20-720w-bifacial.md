@@ -26,6 +26,7 @@ stock: "disponible"
 order: 7000
 updatedAt: "2026-10-21"
 imagen_provisional: false
+promocion: "Precio especial · stock inmediato"
 fichaPdf: "/fichas/fabricantes/trina-tsm-neg21c-20-695-720w-ficha-tecnica.pdf"
 faqs:
   - pregunta: "¿Cuánta energía genera al día?"
