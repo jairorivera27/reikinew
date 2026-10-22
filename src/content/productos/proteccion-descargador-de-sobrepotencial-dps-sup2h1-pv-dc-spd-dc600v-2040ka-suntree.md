@@ -9,12 +9,11 @@ specifications:
   - "Referencia: PROTBD01"
 model: "PROTBD01"
 sku: "ING-PROTBD01"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-05"
 draft: true
 imagenPendiente: true
-stockBajo: true
 ---
 
 Proveedor: Ingesolar (PROTBD01).

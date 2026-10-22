@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-10-20 21:00",
+ "ultima_revision": "2026-10-21 21:00",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -569,7 +569,7 @@
    "consulta": "no-encontrado"
   },
   "bateria-solar-litio-felicity-48v-16kwh-1880836": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -625,7 +625,7 @@
   },
   "bomba-sumergible-lapicero-dc-4d-17m3h-3000w-105m-cont-dy-d3600ac-dc-bom-4d3000-sc17-1": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "bomba-sumergible-lapicero-dc-4e-7m3h-800w-72m-cont-dy-1500dc-bomb-4e800-sc7-72d-deye": {
@@ -1369,8 +1369,8 @@
    "consulta": "ok"
   },
   "generico-mc4-juego-de-llaves-para-mc4-sy-t001-002-generico": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "generico-transferencia-manual-para-bomba-e-inversor-generico": {
@@ -1419,8 +1419,8 @@
    "consulta": "ok"
   },
   "inversor-cargador-kas3021-3kw-24v-mppt-100a-500voc-120v-epever": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "inversor-cargador-kas3641-3-6kw-48v-mppt-80a-300voc-120v-epever": {
@@ -1529,7 +1529,7 @@
    "consulta": "ok"
   },
   "inversor-solar-on-grid-3005205": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -2014,8 +2014,8 @@
    "consulta": "ok"
   },
   "proteccion-descargador-de-sobrepotencial-dps-sup2h1-pv-dc-spd-dc600v-2040ka-suntree": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "protector-de-bateria-victron-12-24v-100a-smart-batteryprotect-12-24v": {

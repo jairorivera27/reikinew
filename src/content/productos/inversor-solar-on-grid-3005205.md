@@ -12,7 +12,7 @@ specifications:
 brand: "Sin marca"
 sku: "3005205"
 power: "N/A"
-stock: "disponible"
+stock: "pre-orden"
 order: 6267
 imagenPendiente: true
 updatedAt: "2026-09-10"

@@ -12,7 +12,7 @@ specifications:
 brand: "Genérico"
 model: "SY-T001/002"
 sku: "ING-ACC64"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-05"
 imagen_provisional: true
@@ -20,7 +20,6 @@ fichaPdf: "/fichas/proveedores/ingesolar-ACC64.pdf"
 faqs:
   - pregunta: "¿Es compatible con mi equipo?"
     respuesta: "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
-stockBajo: true
 ---
 
 Proveedor: Ingesolar (ACC64).

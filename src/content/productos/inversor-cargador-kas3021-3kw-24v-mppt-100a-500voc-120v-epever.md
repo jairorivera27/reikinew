@@ -12,12 +12,11 @@ specifications:
   - "Referencia: INVC38"
 model: "INVC38"
 sku: "ING-INVC38"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-14"
 draft: true
 imagenPendiente: true
-stockBajo: true
 ---
 
 Proveedor: Ingesolar (INVC38).
