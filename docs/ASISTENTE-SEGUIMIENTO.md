@@ -50,3 +50,17 @@ variables en Vercel: `SMTP_USER` (buzón que envía), `SMTP_PASS`, opcionales `S
 - `POST op=alegra-snapshot`: Claude lee Alegra con su conector y guarda `{ facturacionMensual, recaudoMensual, cartera, topClientes }`.
   El sitio no se conecta a Alegra directamente.
 - Margen: costo unitario por equipo (dato interno, solo en Redis; el repo es público) + "otros costos" del expediente.
+
+## Inicio y Por comprar
+
+- El panel abre en **Inicio** (`GET op=inicio`): acciones del día (pagos por verificar, ventas pagadas con equipos sin pedir,
+  etapas detenidas, cartera vencida, ventas entregadas sin factura, clientes sin correo, equipos sin proveedor), tabla de
+  ventas y cobros hoy / semana / mes contra el periodo anterior, equipos (por pedir, pedidos, por entregar, vendidos y
+  estado del catálogo) e indicadores con meta.
+- **Por comprar** (`GET op=compras`, `POST op=compra`): cada equipo de cada venta activa con su proveedor, disponibilidad en la
+  tienda y estado de compra (por pedir, pedido, recibido, no se compra) con referencia del pedido. Vista por proveedor con
+  "Copiar pedido" (texto para WhatsApp/correo al proveedor) y marcar en lote. Las ventas sin pago no entran al lote.
+  Al pedir se cierra "Disponibilidad"; al recibir todo se cierra "Compra a proveedores".
+- Indicadores (últimos 90 días): días para entregar (meta ≤ 5), días para poner en marcha un proyecto (≤ 30), días del pago al
+  pedido al proveedor (≤ 1), horas para verificar un pago (≤ 24), margen bruto (≥ 20 %), cartera vencida > 30 días (≤ 20 %),
+  etapas detenidas (0), catálogo disponible (≥ 90 %), ticket promedio y % de ventas por la web.

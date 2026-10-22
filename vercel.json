@@ -27,7 +27,7 @@
       "includeFiles": "config/empresa.json"
     },
     "api/checkout.js": {
-      "includeFiles": "{data/proveedores-tienda.json,config/empresa.json}"
+      "includeFiles": "{data/proveedores-tienda.json,config/empresa.json,data/disponibilidad-proveedores.json}"
     }
   },
   "rewrites": [

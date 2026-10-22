@@ -93,14 +93,17 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       </header>
 
       <nav class="cat-tabs" role="tablist" aria-label="Categorías">
-        <button type="button" class="cat-tab is-active" role="tab" data-cat="tienda">
+        <button type="button" class="cat-tab is-active" role="tab" data-cat="inicio">
+          <i class="fas fa-home" aria-hidden="true"></i> Inicio
+        </button>
+        <button type="button" class="cat-tab" role="tab" data-cat="tienda">
           <i class="fas fa-store" aria-hidden="true"></i> Compras en tienda <span class="cat-count" data-count="tienda"></span>
         </button>
         <button type="button" class="cat-tab" role="tab" data-cat="proyecto">
           <i class="fas fa-solar-panel" aria-hidden="true"></i> Proyectos <span class="cat-count" data-count="proyecto"></span>
         </button>
-        <button type="button" class="cat-tab" role="tab" data-cat="equipos">
-          <i class="fas fa-boxes" aria-hidden="true"></i> Equipos comprometidos <span class="cat-count" data-count="equipos"></span>
+        <button type="button" class="cat-tab" role="tab" data-cat="compras">
+          <i class="fas fa-boxes" aria-hidden="true"></i> Por comprar <span class="cat-count" data-count="compras"></span>
         </button>
         <button type="button" class="cat-tab" role="tab" data-cat="desempeno">
           <i class="fas fa-chart-line" aria-hidden="true"></i> Desempeño
@@ -110,7 +113,12 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         </button>
       </nav>
 
-      <div id="pane-seg">
+      <div id="pane-inicio">
+        <p id="in-status" class="dash-status" aria-live="polite"></p>
+        <div id="in-body"></div>
+      </div>
+
+      <div id="pane-seg" hidden>
         <section class="seg-metrics" id="seg-metrics" aria-label="Resumen"></section>
         <section class="toolbar">
           <div class="search-wrap">
@@ -131,9 +139,13 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         <section id="seg-grid" class="seg-grid"></section>
       </div>
 
-      <div id="pane-equipos" hidden>
-        <p id="eq-status" class="dash-status" aria-live="polite"></p>
-        <div id="eq-body"></div>
+      <div id="pane-compras" hidden>
+        <header class="pc-head">
+          <h2>Equipos por comprar</h2>
+          <p>Lo que hay que pedir a cada proveedor para cada proyecto o pedido. Marca cada equipo como pedido o recibido; el panel actualiza solo las etapas de la venta.</p>
+        </header>
+        <p id="pc-status" class="dash-status" aria-live="polite"></p>
+        <div id="pc-body"></div>
       </div>
 
       <div id="pane-desempeno" hidden>
@@ -217,7 +229,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           sin_pago: ['Sin pago', 'bad'],
         };
 
-        var st = { cat: 'tienda', items: [], q: '', estado: 'activo', openId: null, loaded: false, meta: { correos: {}, conFecha: {}, correoConfigurado: true } };
+        var st = { cat: 'inicio', items: [], q: '', estado: 'activo', openId: null, loaded: false, meta: { correos: {}, conFecha: {}, correoConfigurado: true } };
         var $ = function (id) {
           return document.getElementById(id);
         };
@@ -883,11 +895,17 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           });
           el.paneWeb.hidden = cat !== 'web';
           el.paneSeg.hidden = cat !== 'tienda' && cat !== 'proyecto';
-          $('pane-equipos').hidden = cat !== 'equipos';
+          $('pane-inicio').hidden = cat !== 'inicio';
+          $('pane-compras').hidden = cat !== 'compras';
           $('pane-desempeno').hidden = cat !== 'desempeno';
           if (cat === 'tienda' || cat === 'proyecto') render();
-          if (cat === 'equipos') loadEquipos();
+          if (window.reikiPanes && window.reikiPanes[cat]) window.reikiPanes[cat]();
           if (cat === 'desempeno') loadDesempeno();
+          try {
+            window.scrollTo({ top: 0, behavior: 'instant' });
+          } catch (_e) {
+            /* nada */
+          }
         }
 
         document.querySelectorAll('.cat-tab').forEach(function (b) {
@@ -911,94 +929,18 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           if (ev.key === 'Escape' && !el.modal.hidden) closeModal();
         });
         var btnRefresh = $('btn-refresh');
-        if (btnRefresh) btnRefresh.addEventListener('click', load);
+        if (btnRefresh)
+          btnRefresh.addEventListener('click', function () {
+            load();
+            if (window.reikiPanes && window.reikiPanes[st.cat]) window.reikiPanes[st.cat]();
+            if (st.cat === 'desempeno') loadDesempeno();
+          });
 
         var EQ_TXT = {};
         function chip(estado, txt) {
           var cls = { por_pedir: 'bad', pedido: 'amber', comprado: 'amber', en_camino: 'amber', en_obra: 'ok', entregado: 'ok', instalado: 'ok' }[estado] || '';
           return '<span class="oc-badge oc-badge--' + cls + '">' + esc(txt || estado) + '</span>';
         }
-        async function loadEquipos() {
-          var st2 = $('eq-status');
-          var body = $('eq-body');
-          if (isDemo()) {
-            st2.textContent = 'Disponible solo con sesión real.';
-            return;
-          }
-          st2.textContent = 'Cargando…';
-          try {
-            var j = await api('equipos');
-            EQ_TXT = j.estados || {};
-            st2.textContent = '';
-            var pend = j.filas.filter(function (f) {
-              return f.estado !== 'entregado' && f.estado !== 'instalado';
-            });
-            var c = document.querySelector('[data-count="equipos"]');
-            var nPor = j.filas.filter(function (f) {
-              return f.estado === 'por_pedir';
-            }).length;
-            if (c) c.textContent = nPor ? String(nPor) : '';
-            var resumen = j.porProveedor.length
-              ? '<div class="seg-grid">' +
-                j.porProveedor
-                  .map(function (p) {
-                    return (
-                      '<article class="seg-card"><div class="seg-card-head"><span class="prov-chip' +
-                      (p.proveedor === 'Por confirmar' ? ' prov-chip--pend' : '') +
-                      '">' +
-                      esc(p.proveedor) +
-                      '</span></div><p class="seg-next">' +
-                      p.porPedir +
-                      ' unidades por pedir</p><p class="seg-sub">' +
-                      p.enProceso +
-                      ' en proceso · ' +
-                      cop(p.valorPorPedir) +
-                      ' en ventas por pedir</p></article>'
-                    );
-                  })
-                  .join('') +
-                '</div>'
-              : '';
-            var tabla = pend.length
-              ? '<div class="table-wrap eq-table"><table><thead><tr><th>Equipo</th><th>Cant.</th><th>Proveedor</th><th>Venta</th><th>Pago</th><th>Estado</th></tr></thead><tbody>' +
-                pend
-                  .map(function (f) {
-                    return (
-                      '<tr data-open-exp="' +
-                      esc(f.expediente) +
-                      '"><td>' +
-                      esc(f.equipo) +
-                      '</td><td>' +
-                      esc(f.cantidad) +
-                      '</td><td>' +
-                      esc(f.proveedor) +
-                      '</td><td>' +
-                      esc(f.titulo) +
-                      '<br><small>' +
-                      (f.tipo === 'proyecto' ? 'Proyecto' : 'Tienda') +
-                      '</small></td><td>' +
-                      (f.pagoOk ? chip('entregado', 'Pagado') : chip('por_pedir', 'Sin pago completo')) +
-                      '</td><td>' +
-                      chip(f.estado, EQ_TXT[f.estado]) +
-                      '</td></tr>'
-                    );
-                  })
-                  .join('') +
-                '</tbody></table></div>'
-              : '<div class="seg-empty"><p>No hay equipos pendientes.</p><p class="seg-hint">Aquí aparecen los equipos de las compras y proyectos activos hasta que se entregan o se instalan. El estado sale de las etapas de compra, despacho y entrega.</p></div>';
-            body.innerHTML = '<h2 class="de-h">Por proveedor</h2>' + resumen + '<h2 class="de-h">Detalle</h2>' + tabla;
-            body.querySelectorAll('[data-open-exp]').forEach(function (tr) {
-              tr.addEventListener('click', function () {
-                var id = tr.getAttribute('data-open-exp');
-                if (!st.items.length) return;
-                openDetail(id);
-              });
-            });
-          } catch (err) {
-            st2.textContent = 'No se pudo cargar: ' + err.message;
-          }
-        }
-
         function mesTxt(m) {
           var p = String(m).split('-');
           var n = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'][Number(p[1]) - 1] || '';
@@ -1186,9 +1128,28 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             setCat(st.cat);
             load();
           },
+          api: api,
+          esc: esc,
+          cop: cop,
+          fecha: fecha,
+          isDemo: isDemo,
+          setCat: setCat,
+          upsert: function (e) {
+            upsert(e);
+            render();
+          },
+          abrir: async function (id) {
+            if (!st.items.some(function (x) {
+              return x.id === id;
+            }))
+              await load();
+            openDetail(id);
+          },
         };
       })();
     </script>
+
+    <script is:inline src="/admin/panel-inicio.js?v=20261021c"></script>
 
     <script is:inline define:vars={{ MOCKS: pedidosMocks }}>
       (function () {
@@ -3526,6 +3487,541 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         }
         .dash-wrap {
           overflow-x: hidden;
+        }
+      }
+      /* ===== Inicio ===== */
+      .in-hero {
+        color: #fff;
+        margin: 0.2rem 0 1rem;
+      }
+      .in-hero h2 {
+        margin: 0.1rem 0 0.2rem;
+        font-size: clamp(1.4rem, 3vw, 1.9rem);
+        font-weight: 800;
+      }
+      .in-fecha {
+        margin: 0;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        opacity: 0.85;
+      }
+      .in-sub {
+        margin: 0;
+        font-size: 0.92rem;
+        opacity: 0.9;
+      }
+      .in-sub2 {
+        margin: -0.3rem 0 0.9rem;
+        font-size: 0.85rem;
+        color: var(--muted);
+      }
+      .in-grid {
+        display: grid;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      @media (min-width: 960px) {
+        .in-grid {
+          grid-template-columns: 1.1fr 1fr;
+          align-items: start;
+        }
+      }
+      .in-card {
+        background: var(--card);
+        border-radius: 16px;
+        padding: 1rem 1.1rem 1.1rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 1rem;
+        min-width: 0;
+      }
+      .in-grid .in-card {
+        margin-bottom: 0;
+      }
+      .in-h {
+        margin: 0 0 0.8rem;
+        font-size: 1.05rem;
+        font-weight: 800;
+      }
+      .in-acciones {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 0.55rem;
+      }
+      .in-accion {
+        display: grid;
+        grid-template-columns: 22px 1fr;
+        gap: 0.6rem;
+        padding: 0.6rem 0.7rem;
+        border-radius: 12px;
+        border: 1px solid var(--line);
+        border-left-width: 4px;
+      }
+      .in-accion > i {
+        margin-top: 0.15rem;
+        color: var(--brand);
+      }
+      .in-accion--p1 {
+        border-left-color: #dc2626;
+        background: #fef2f2;
+      }
+      .in-accion--p1 > i {
+        color: #dc2626;
+      }
+      .in-accion--p2 {
+        border-left-color: var(--accent);
+        background: #fff7ed;
+      }
+      .in-accion--p2 > i {
+        color: var(--accent);
+      }
+      .in-accion--p3 {
+        border-left-color: var(--brand-2);
+      }
+      .in-accion-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.6rem;
+        align-items: flex-start;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+      .in-accion details {
+        margin-top: 0.3rem;
+        font-size: 0.82rem;
+      }
+      .in-accion summary {
+        cursor: pointer;
+        color: var(--muted);
+      }
+      .in-det {
+        margin: 0.3rem 0 0;
+        padding-left: 1rem;
+        display: grid;
+        gap: 0.15rem;
+      }
+      .in-link {
+        background: none;
+        border: 0;
+        padding: 0;
+        font: inherit;
+        color: var(--brand);
+        text-decoration: underline;
+        text-underline-offset: 2px;
+        cursor: pointer;
+        text-align: left;
+      }
+      .in-ok {
+        margin: 0;
+        color: var(--ok);
+        font-weight: 700;
+      }
+      .in-tiles {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0.6rem;
+      }
+      .in-tile {
+        background: var(--sand);
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 0.65rem 0.8rem;
+        display: grid;
+        gap: 0.1rem;
+      }
+      .in-tile span {
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--muted);
+      }
+      .in-tile strong {
+        font-size: 1.5rem;
+        font-variant-numeric: tabular-nums;
+      }
+      .in-tile small {
+        font-size: 0.75rem;
+        color: var(--muted);
+      }
+      .in-tile--alerta {
+        border-color: #fca5a5;
+        background: #fef2f2;
+      }
+      .in-tile--alerta small {
+        color: #b91c1c;
+        font-weight: 700;
+      }
+      .in-catalogo {
+        margin: 0.9rem 0;
+      }
+      .in-cat-bar {
+        display: flex;
+        height: 12px;
+        border-radius: 99px;
+        overflow: hidden;
+        background: var(--mint);
+      }
+      .in-cat-bar span {
+        display: block;
+        height: 100%;
+      }
+      .in-cat-ok {
+        background: var(--ok);
+      }
+      .in-cat-low {
+        background: var(--sun);
+      }
+      .in-cat-pre {
+        background: #ef4444;
+      }
+      .in-cat-txt {
+        margin: 0.45rem 0 0;
+        font-size: 0.82rem;
+        line-height: 1.6;
+      }
+      .in-dot {
+        display: inline-block;
+        width: 9px;
+        height: 9px;
+        border-radius: 50%;
+        margin: 0 0.25rem 0 0.15rem;
+      }
+      .in-tabla {
+        overflow-x: auto;
+      }
+      .in-tabla table {
+        width: 100%;
+        min-width: 460px;
+        border-collapse: collapse;
+      }
+      .in-tabla th,
+      .in-tabla td {
+        padding: 0.5rem 0.6rem;
+        border-bottom: 1px solid var(--line);
+        text-align: right;
+        vertical-align: top;
+      }
+      .in-tabla th[scope='row'] {
+        text-align: left;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+      .in-tabla thead th {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+      }
+      .in-tabla td strong {
+        display: block;
+        font-variant-numeric: tabular-nums;
+      }
+      .in-vs {
+        display: block;
+        font-size: 0.7rem;
+        color: var(--muted);
+        white-space: nowrap;
+      }
+      .in-vs--up::before {
+        content: '▲ ';
+        color: var(--ok);
+      }
+      .in-vs--down::before {
+        content: '▼ ';
+        color: #dc2626;
+      }
+      .in-kpis {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+        gap: 0.7rem;
+      }
+      .in-kpi {
+        border: 1px solid var(--line);
+        border-top: 4px solid var(--line);
+        border-radius: 12px;
+        padding: 0.7rem 0.8rem;
+        display: grid;
+        gap: 0.2rem;
+        align-content: start;
+      }
+      .in-kpi--ok {
+        border-top-color: var(--ok);
+      }
+      .in-kpi--alerta {
+        border-top-color: #dc2626;
+      }
+      .in-kpi--info {
+        border-top-color: var(--brand-2);
+      }
+      .in-kpi-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        align-items: flex-start;
+      }
+      .in-kpi h3 {
+        margin: 0;
+        font-size: 0.85rem;
+        font-weight: 700;
+      }
+      .in-kpi-st {
+        font-size: 0.68rem;
+        font-weight: 700;
+        white-space: nowrap;
+        padding: 0.1rem 0.45rem;
+        border-radius: 99px;
+        background: var(--mint);
+        color: var(--muted);
+      }
+      .in-kpi--ok .in-kpi-st {
+        background: #dcfce7;
+        color: #166534;
+      }
+      .in-kpi--alerta .in-kpi-st {
+        background: #fee2e2;
+        color: #991b1b;
+      }
+      .in-kpi-val {
+        margin: 0.15rem 0 0;
+        font-size: 1.35rem;
+        font-weight: 800;
+        font-variant-numeric: tabular-nums;
+      }
+      .in-kpi-meta {
+        margin: 0;
+        font-size: 0.78rem;
+        font-weight: 700;
+        color: var(--brand);
+      }
+      .in-kpi-why {
+        margin: 0.2rem 0 0;
+        font-size: 0.78rem;
+        color: var(--muted);
+        line-height: 1.4;
+      }
+      /* ===== Por comprar ===== */
+      .pc-head {
+        color: #fff;
+        margin-bottom: 0.6rem;
+      }
+      .pc-head h2 {
+        margin: 0;
+        font-size: 1.4rem;
+        font-weight: 800;
+      }
+      .pc-head p {
+        margin: 0.2rem 0 0;
+        font-size: 0.9rem;
+        opacity: 0.92;
+        max-width: 760px;
+      }
+      .pc-toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.6rem;
+        align-items: center;
+        margin-bottom: 0.7rem;
+      }
+      .pc-toolbar select {
+        font: inherit;
+        font-size: 0.88rem;
+        padding: 0.45rem 0.7rem;
+        border-radius: 10px;
+        border: 1px solid var(--line);
+      }
+      .pc-resumen {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-bottom: 0.9rem;
+      }
+      .pc-prov-pill {
+        font: inherit;
+        font-size: 0.8rem;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.92);
+        color: var(--ink);
+        border-radius: 99px;
+        padding: 0.3rem 0.75rem;
+        cursor: pointer;
+      }
+      .pc-prov-pill--pend {
+        background: #fef9c3;
+      }
+      .pc-venta {
+        background: var(--card);
+        border-radius: 16px;
+        padding: 0.9rem 1rem;
+        box-shadow: var(--shadow);
+        margin-bottom: 0.9rem;
+      }
+      .pc-venta-h {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+        margin-bottom: 0.5rem;
+      }
+      .pc-venta-h h3 {
+        margin: 0.1rem 0;
+        font-size: 1.02rem;
+        font-weight: 800;
+      }
+      .pc-venta-st {
+        display: grid;
+        gap: 0.2rem;
+        justify-items: end;
+        align-content: start;
+      }
+      .pc-tabla {
+        width: 100%;
+        min-width: 640px;
+        border-collapse: collapse;
+      }
+      .pc-tabla th,
+      .pc-tabla td {
+        padding: 0.45rem 0.5rem;
+        border-bottom: 1px solid var(--line);
+        text-align: left;
+        vertical-align: top;
+        font-size: 0.86rem;
+      }
+      .pc-tabla th {
+        font-size: 0.72rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: var(--muted);
+      }
+      .pc-tabla small {
+        display: block;
+      }
+      .pc-tabla select {
+        font: inherit;
+        font-size: 0.82rem;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 0.25rem 0.4rem;
+      }
+      .pc-cant {
+        font-weight: 800;
+        font-variant-numeric: tabular-nums;
+        width: 3.5rem;
+      }
+      .pc-row--por_pedir td:first-child {
+        box-shadow: inset 3px 0 0 #dc2626;
+      }
+      .pc-row--pedido td:first-child {
+        box-shadow: inset 3px 0 0 var(--accent);
+      }
+      .pc-row--comprado td:first-child,
+      .pc-row--no_aplica td:first-child {
+        box-shadow: inset 3px 0 0 var(--ok);
+      }
+      .pc-nota {
+        font: inherit;
+        font-size: 0.82rem;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 0.3rem 0.45rem;
+        width: 100%;
+        min-width: 130px;
+      }
+      .pc-acciones {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        align-items: center;
+        margin-top: 0.6rem;
+      }
+      .pc-acciones .pc-nota {
+        width: auto;
+        flex: 1 1 160px;
+      }
+      .pc-muted {
+        color: var(--muted);
+        font-size: 0.8rem;
+      }
+      .pc-alerta {
+        color: #b91c1c;
+        font-weight: 700;
+        font-size: 0.78rem;
+      }
+      .pc-nota-pie {
+        margin: 0.4rem 0 0;
+      }
+      .in-tabla th[scope='row'] {
+        text-transform: none !important;
+        letter-spacing: normal !important;
+        color: var(--ink) !important;
+        font-size: 0.86rem !important;
+      }
+      .pc-tienda {
+        text-decoration: none;
+      }
+      @media (max-width: 640px) {
+        .in-tabla table {
+          min-width: 0;
+        }
+        .in-tabla th,
+        .in-tabla td {
+          padding: 0.45rem 0.3rem;
+          font-size: 0.8rem;
+        }
+        .in-tabla th[scope='row'] {
+          font-size: 0.8rem !important;
+        }
+        .in-vs-l {
+          display: none;
+        }
+        .in-tabla td strong {
+          white-space: nowrap;
+          font-size: 0.78rem;
+        }
+        .pc-venta .table-wrap {
+          overflow: visible;
+        }
+        .pc-tabla {
+          min-width: 0;
+        }
+        .pc-tabla thead {
+          display: none;
+        }
+        .pc-tabla tr {
+          display: grid;
+          grid-template-columns: 2.6rem 1fr;
+          gap: 0.3rem 0.5rem;
+          padding: 0.6rem 0 0.6rem 0.5rem;
+          border-bottom: 1px solid var(--line);
+        }
+        .pc-tabla td {
+          border: 0;
+          padding: 0;
+          grid-column: 2;
+        }
+        .pc-tabla td.pc-cant {
+          grid-column: 1;
+          grid-row: 1 / span 6;
+          font-size: 1.1rem;
+          box-shadow: none !important;
+        }
+        .pc-row--por_pedir {
+          box-shadow: inset 3px 0 0 #dc2626;
+        }
+        .pc-row--pedido {
+          box-shadow: inset 3px 0 0 var(--accent);
+        }
+        .pc-row--comprado,
+        .pc-row--no_aplica {
+          box-shadow: inset 3px 0 0 var(--ok);
+        }
+        .pc-tabla select,
+        .pc-tabla .pc-nota {
+          width: 100%;
+        }
+        .pc-venta-st {
+          justify-items: start;
         }
       }
     </style>

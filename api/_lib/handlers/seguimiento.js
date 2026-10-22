@@ -8,26 +8,30 @@
  * POST op=save    { id?, tipo, titulo, cliente, cotizacion, total, items, pagos, condicionesPago, envio, factura, notas, estado }
  * POST op=etapa   { id, key, estado: pendiente|en_curso|hecho|no_aplica, nota? }
  * GET  op=desempeno            → KPIs, ventas por mes, proveedores, cuellos de botella y la foto de Alegra
+ * GET  op=inicio               → resumen: periodos (hoy/semana/mes), equipos, acciones del día y KPIs
+ * GET  op=compras[&todos=1]    → equipos por comprar por venta y por proveedor (con disponibilidad en tienda)
+ * POST op=compra { cambios:[{ id, idx, estado: por_pedir|pedido|recibido|no_aplica, nota }] }
  * GET  op=equipos              → equipos comprometidos (por pedir / pedidos / en camino) por proveedor
  * POST op=alegra-snapshot      { facturacionMensual, cartera, recaudoMensual, topClientes } (lo carga Claude)
  * POST op=correo  { id, key } → reintenta el correo al cliente de esa etapa
  * POST op=pago    { id, pago: { id?, fecha, monto, medio, referencia, estado: verificado|por_verificar, nota } }
  */
 import { adminAuthOk, adminActor, readJsonBody } from '../admin-auth.js';
-import { listRecentCheckoutOrders } from '../checkout-order-store.js';
 import {
   PLANTILLAS,
   addPago,
   expedienteDesdePedido,
   getExpediente,
   listExpedientes,
+  sincronizarPedidosWeb,
+  actualizarCompras,
   reenviarCorreo,
   resumen,
   saveExpediente,
   updateEtapa,
 } from '../seguimiento.js';
 import { getRedis } from '../whatsapp-redis.js';
-import { calcularDesempeno, equiposComprometidos, guardarAlegra, leerAlegra } from '../desempeno.js';
+import { calcularDesempeno, calcularInicio, comprasPendientes, equiposComprometidos, guardarAlegra, leerAlegra } from '../desempeno.js';
 import { correoConfigurado, etapasConCorreo, etapasConFecha } from '../correos.js';
 
 function send(res, code, body) {
@@ -47,16 +51,6 @@ function conResumen(e) {
   return { ...e, resumen: resumen(e) };
 }
 
-async function sincronizarPedidosWeb() {
-  try {
-    const orders = await listRecentCheckoutOrders(30);
-    for (const o of orders) {
-      if (String(o.status || '').toLowerCase() === 'approved') await expedienteDesdePedido(o);
-    }
-  } catch (err) {
-    console.warn('[seguimiento] sync pedidos web', err?.message || err);
-  }
-}
 
 function diasDesde(iso) {
   const t = Date.parse(iso || '');
@@ -138,6 +132,8 @@ export default async function handler(req, res) {
         const a = await leerAlegra();
         return send(res, 200, { ok: true, ...(await revision(q.marcar === '1')), alegraActualizado: a ? a.guardado : null });
       }
+      if (op === 'inicio') return send(res, 200, { ok: true, ...(await calcularInicio()) });
+      if (op === 'compras') return send(res, 200, { ok: true, ...(await comprasPendientes({ todos: q.todos === '1' })) });
       if (op === 'desempeno') return send(res, 200, { ok: true, ...(await calcularDesempeno()) });
       if (op === 'equipos') return send(res, 200, { ok: true, ...(await equiposComprometidos()) });
       return send(res, 400, { ok: false, error: 'op desconocida' });
@@ -158,6 +154,12 @@ export default async function handler(req, res) {
     if (op === 'pago') {
       const e = await addPago(body.id, body.pago, by);
       return e ? send(res, 200, { ok: true, expediente: conResumen(e) }) : send(res, 404, { ok: false, error: 'No existe.' });
+    }
+    if (op === 'compra') {
+      const cambios = Array.isArray(body.cambios) ? body.cambios.slice(0, 200) : [];
+      if (!cambios.length) return send(res, 400, { ok: false, error: 'Sin cambios.' });
+      const exps = await actualizarCompras(cambios, by);
+      return send(res, 200, { ok: true, actualizados: exps.length, expedientes: exps.map(conResumen) });
     }
     if (op === 'alegra-snapshot') {
       const doc = await guardarAlegra(body || {});

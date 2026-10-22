@@ -6,6 +6,7 @@
 import { getRedis, waKey } from './whatsapp-redis.js';
 import { proveedorDeItem } from './proveedores.js';
 import { correoPorEtapa } from './correos.js';
+import { listRecentCheckoutOrders } from './checkout-order-store.js';
 
 const memExp = globalThis.__reikiSegExp || new Map();
 globalThis.__reikiSegExp = memExp;
@@ -103,18 +104,35 @@ function normItem(it) {
     proveedor,
     codigoProveedor: str(it.codigoProveedor, 80) || prov.codigoProveedor || '',
     disponibilidad: str(it.disponibilidad, 120),
+    compra: normCompra(it.compra),
+  };
+}
+
+export const ESTADOS_COMPRA = ['por_pedir', 'pedido', 'recibido', 'no_aplica'];
+
+/** Estado de compra de un equipo al proveedor (lo marca el equipo en "Por comprar"). */
+function normCompra(c) {
+  if (!c || typeof c !== 'object' || !ESTADOS_COMPRA.includes(c.estado)) return undefined;
+  return {
+    estado: c.estado,
+    nota: str(c.nota, 200),
+    fecha: str(c.fecha, 30) || nowIso(),
+    pedidoAt: str(c.pedidoAt, 30) || (['pedido', 'recibido'].includes(c.estado) ? nowIso() : ''),
+    recibidoAt: str(c.recibidoAt, 30) || (c.estado === 'recibido' ? nowIso() : ''),
   };
 }
 
 function normPago(p) {
   return {
     id: str(p.id, 20) || rid(6),
-    fecha: str(p.fecha, 30) || nowIso().slice(0, 10),
+    fecha: str(p.fecha, 30) || new Date().toLocaleDateString('en-CA', { timeZone: 'America/Bogota' }),
     monto: num(p.monto),
     medio: str(p.medio, 60) || 'transferencia',
     referencia: str(p.referencia, 120),
     estado: p.estado === 'verificado' ? 'verificado' : 'por_verificar',
     nota: str(p.nota, 300),
+    creadoAt: str(p.creadoAt, 30) || nowIso(),
+    verificadoAt: p.estado === 'verificado' ? str(p.verificadoAt, 30) || nowIso() : '',
   };
 }
 
@@ -228,6 +246,25 @@ export async function listExpedientes() {
   }
   if (!ids.length) ids = Array.from(memExp.keys());
   const out = [];
+  if (redis && ids.length) {
+    try {
+      for (let i = 0; i < ids.length; i += 100) {
+        const lote = ids.slice(i, i + 100);
+        const vals = await redis.mget(...lote.map(expKey));
+        vals.forEach((raw, j) => {
+          if (!raw) return;
+          const v = typeof raw === 'string' ? JSON.parse(raw) : raw;
+          memExp.set(lote[j], v);
+          out.push(v);
+        });
+      }
+      out.sort((a, b) => String(b.createdAt).localeCompare(String(a.createdAt)));
+      return out;
+    } catch (err) {
+      console.warn('[seguimiento] mget', err?.message || err);
+      out.length = 0;
+    }
+  }
   for (const id of ids) {
     const e = await getExpediente(id);
     if (e) out.push(e);
@@ -280,6 +317,7 @@ export async function saveExpediente(input = {}, by = 'panel') {
   if (input.envio) exp.envio = { ...(exp.envio || {}), ...Object.fromEntries(['transportadora', 'guia', 'fechaDespacho', 'destino', 'valorFlete'].filter((f) => input.envio[f] !== undefined).map((f) => [f, str(input.envio[f], 120)])) };
   if (input.factura) exp.factura = { ...(exp.factura || {}), numero: str(input.factura.numero ?? exp.factura?.numero, 60), fecha: str(input.factura.fecha ?? exp.factura?.fecha, 30) };
   if (input.notas !== undefined) exp.notas = str(input.notas, 2000);
+  if (input.fechaAprobacion) exp.fechaAprobacion = str(input.fechaAprobacion, 30);
   if (input.costosAdicionales !== undefined) exp.costosAdicionales = num(input.costosAdicionales);
   if (input.estado && ['activo', 'cerrado', 'cancelado'].includes(input.estado)) exp.estado = input.estado;
   if (input.orderId) exp.orderId = str(input.orderId, 80);
@@ -410,4 +448,75 @@ export async function expedienteDesdePedido(order) {
   );
   if (redis) await redis.set(link, exp.id);
   return exp;
+}
+
+
+/** Pedidos web aprobados de los últimos 30 días → expedientes de compra en tienda. */
+export async function sincronizarPedidosWeb() {
+  try {
+    const orders = await listRecentCheckoutOrders(30);
+    for (const o of orders) {
+      if (String(o.status || '').toLowerCase() === 'approved') await expedienteDesdePedido(o);
+    }
+  } catch (err) {
+    console.warn('[seguimiento] sync pedidos web', err?.message || err);
+  }
+}
+
+/** Fecha en que se aprobó la venta (para métricas). */
+export function fechaAprobacion(e) {
+  return e.fechaAprobacion || e.createdAt;
+}
+
+/**
+ * Cambia el estado de compra de varios equipos. cambios: [{ id, idx, estado, nota? }]
+ * y ajusta las etapas "Disponibilidad" y "Compra a proveedores" de cada venta.
+ */
+export async function actualizarCompras(cambios = [], by = 'panel') {
+  const porExp = new Map();
+  for (const c of cambios) {
+    if (!c || !c.id || !ESTADOS_COMPRA.includes(c.estado)) continue;
+    if (!porExp.has(c.id)) porExp.set(c.id, []);
+    porExp.get(c.id).push(c);
+  }
+  const salida = [];
+  for (const [id, lista] of porExp) {
+    const exp = await getExpediente(id);
+    if (!exp) continue;
+    const antes = Object.fromEntries((exp.etapas || []).map((e) => [e.key, e.estado]));
+    const textos = [];
+    for (const c of lista) {
+      const it = (exp.items || [])[Number(c.idx)];
+      if (!it) continue;
+      const prev = it.compra || {};
+      const ahora = nowIso();
+      it.compra = {
+        estado: c.estado,
+        nota: c.nota !== undefined ? str(c.nota, 200) : prev.nota || '',
+        fecha: ahora,
+        pedidoAt: ['pedido', 'recibido'].includes(c.estado) ? prev.pedidoAt || ahora : '',
+        recibidoAt: c.estado === 'recibido' ? prev.recibidoAt || ahora : '',
+      };
+      const txt = { por_pedir: 'por pedir', pedido: 'pedido al proveedor', recibido: 'recibido', no_aplica: 'no se compra' }[c.estado];
+      textos.push(`${it.cantidad} × ${it.nombre}: ${txt}${it.compra.nota ? ` (${it.compra.nota})` : ''}`);
+    }
+    const aComprar = (exp.items || []).filter((it) => it.compra?.estado !== 'no_aplica');
+    const set = (key, estado, nota) => {
+      const e = (exp.etapas || []).find((x) => x.key === key);
+      if (!e || e.estado === 'hecho' || e.estado === 'no_aplica' || e.estado === estado) return;
+      if (estado === 'en_curso' && e.estado !== 'pendiente') return;
+      e.estado = estado;
+      e.fecha = nowIso();
+      if (nota && !e.nota) e.nota = nota;
+    };
+    const algunoPedido = aComprar.some((it) => ['pedido', 'recibido'].includes(it.compra?.estado));
+    if (algunoPedido) set('disponibilidad', 'hecho', 'Confirmada al pedir a los proveedores.');
+    if (aComprar.length && aComprar.every((it) => it.compra?.estado === 'recibido')) set('compra_proveedor', 'hecho', 'Todos los equipos recibidos del proveedor.');
+    else if (!aComprar.length && (exp.items || []).length) set('compra_proveedor', 'no_aplica');
+    else if (algunoPedido) set('compra_proveedor', 'en_curso', 'Equipos pedidos a los proveedores.');
+    pushHist(exp, by, `Compras: ${textos.join('; ')}`.slice(0, 300));
+    await notificarCambios(exp, antes, by);
+    salida.push(await persist(exp));
+  }
+  return salida;
 }
