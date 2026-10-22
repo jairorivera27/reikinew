@@ -60,6 +60,8 @@ const productosCollection = defineCollection({
     stock: z.enum(['disponible', 'agotado', 'pre-orden']).optional(),
     /** Últimas unidades según el proveedor. Solo cambia la etiqueta (ámbar) cuando stock = "disponible". */
     stockBajo: z.boolean().optional(),
+    /** Estado de stock fijado a mano por Reiki: la revisión diaria de proveedores no lo cambia. */
+    stockManual: z.boolean().optional(),
     /** Ruta pública al certificado del fabricante (RETIE, garantía, etc.), aparte de la ficha técnica. */
     certificadoPdf: z.string().optional(),
     /** Fecha estimada de llegada (AAAA-MM-DD). Google Merchant la exige para productos en pre-orden. */
