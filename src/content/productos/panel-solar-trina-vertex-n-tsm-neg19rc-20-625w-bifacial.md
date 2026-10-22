@@ -6,7 +6,7 @@ imageCard: "/images/productos-estudio/panel-solar-trina-vertex-n-tsm-neg19rc-20-
 imageThumb: "/images/productos-estudio/panel-solar-trina-vertex-n-tsm-neg19rc-20-625w-bifacial-thumb.webp"
 imageAlt: "Panel Solar Trina Vertex N TSM-NEG19RC.20 625W Bifacial – Reiki Energía Solar"
 category: "paneles"
-price: "$323.600"
+price: "$375.790"
 specifications:
   - "Tipo: Panel solar"
   - "Garantía: 12 años garantia por manufactura / 30 años garantía contra potencia lineal"
@@ -15,9 +15,9 @@ brand: "Trina Solar"
 model: "TRINA TSM-NEG19RC.20 625W"
 sku: "AMZ-102-0020"
 power: "625 W"
-stock: "pre-orden"
+stock: "disponible"
 order: 7000
-updatedAt: "2026-10-14"
+updatedAt: "2026-10-21"
 imagen_provisional: true
 fichaPdf: "/fichas/fabricantes/amara-102-0020-ficha-tecnica.pdf"
 faqs:
@@ -29,6 +29,7 @@ faqs:
     respuesta: "Capta luz por ambas caras: además del sol directo aprovecha la luz reflejada por el piso o la cubierta. La ganancia adicional depende de la altura y del color de la superficie (mayor en cubiertas claras y estructuras elevadas)."
   - pregunta: "¿Sirve para sistemas conectados a la red y para sistemas aislados?"
     respuesta: "Sí. Con un inversor on-grid entrega energía a la casa y a la red (autogeneración, con trámite ante el operador de red); con un inversor híbrido u off-grid carga baterías. Lo importante es que el voltaje del arreglo sea compatible con el inversor o el controlador."
-promocion: "Precio especial"
+promocion: "Precio especial · stock inmediato"
+stockManual: true
 ---
 

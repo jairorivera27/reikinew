@@ -13,7 +13,8 @@ Reglas (las mismas de la actualización manual del 14/10/2026):
 
 Seguridad: si la consulta de un proveedor falla o es incompleta (muchos errores, o pasaría a
 pre-orden más del 40 % de sus productos de golpe), NO se tocan los productos de ese proveedor y
-se deja anotado en el reporte. Un producto que no se encuentra en el proveedor no se modifica.
+se deja anotado en el reporte. Un producto que no se encuentra en el proveedor no se modifica, ni uno con `stockManual: true`
+(estado fijado a mano por Reiki) o `draft: true` (oculto).
 
 Salidas:
   - src/content/productos/*.md (solo las líneas stock / stockBajo)
@@ -65,6 +66,9 @@ def leer_productos():
             continue
         fm = m.group(1)
         g = lambda k: (re.search(rf'^{k}:\s*"?([^"\n]*)"?\s*$', fm, re.M) or [None, None])[1]
+        # Estado fijado a mano por Reiki (stockManual: true) u oculto (draft): la revisión diaria no lo toca.
+        if g('stockManual') == 'true' or g('draft') == 'true':
+            continue
         out.append({'slug': slug, 'proveedor': p, 'path': path, 'titulo': g('title') or info.get('titulo'),
                     'sku': (g('sku') or '').strip(), 'stock': g('stock'), 'stockBajo': g('stockBajo') == 'true'})
     return out
