@@ -1149,7 +1149,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       })();
     </script>
 
-    <script is:inline src="/admin/panel-inicio.js?v=20261021c"></script>
+    <script is:inline src="/admin/panel-inicio.js?v=20261021d"></script>
 
     <script is:inline define:vars={{ MOCKS: pedidosMocks }}>
       (function () {
@@ -4022,6 +4022,108 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         }
         .pc-venta-st {
           justify-items: start;
+        }
+      }
+      .in-sem {
+        margin: 0 0 0.9rem;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 0.55rem 0.7rem;
+      }
+      .in-sem summary {
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        gap: 0.6rem;
+        font-size: 0.88rem;
+      }
+      .in-sem-res {
+        font-size: 0.82rem;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+      .in-luz {
+        display: inline-block;
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        vertical-align: -1px;
+        margin-left: 0.3rem;
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+      }
+      .in-luz--verde {
+        background: #16a34a;
+      }
+      .in-luz--amarillo {
+        background: #facc15;
+      }
+      .in-luz--rojo {
+        background: #dc2626;
+      }
+      .in-sem-list {
+        list-style: none;
+        margin: 0.6rem 0 0;
+        padding: 0;
+        display: grid;
+        gap: 0.4rem;
+      }
+      .in-sem-row {
+        display: grid;
+        grid-template-columns: 16px minmax(0, 1.3fr) minmax(60px, 1fr) auto;
+        gap: 0.5rem;
+        align-items: center;
+        font-size: 0.84rem;
+      }
+      .in-sem-row .in-luz {
+        margin: 0;
+      }
+      .in-sem-row a {
+        color: var(--ink);
+        text-decoration: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .in-sem-row a:hover {
+        text-decoration: underline;
+      }
+      .in-sem-bar {
+        display: flex;
+        height: 8px;
+        border-radius: 99px;
+        overflow: hidden;
+        background: var(--mint);
+      }
+      .in-sem-bar span {
+        display: block;
+        height: 100%;
+      }
+      .in-sem-num {
+        text-align: right;
+        white-space: nowrap;
+      }
+      .in-sem-num small {
+        color: var(--muted);
+        font-size: 0.72rem;
+      }
+      .in-sem-ley {
+        margin: 0.6rem 0 0;
+        font-size: 0.74rem;
+      }
+      @media (max-width: 640px) {
+        .in-sem-row {
+          grid-template-columns: 16px minmax(0, 1fr) auto;
+        }
+        .in-sem-bar {
+          grid-column: 2 / -1;
+          grid-row: 2;
+        }
+        .in-sem-num {
+          grid-column: 3;
+          grid-row: 1;
+        }
+        .in-sem-num small {
+          display: none;
         }
       }
     </style>

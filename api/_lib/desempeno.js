@@ -118,6 +118,13 @@ export async function catalogo() {
     console.warn('[desempeno] catalogo', err?.message || err);
   }
   const dispo = leerDispoLocal();
+  let slugCat = {};
+  try {
+    const cfg = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'src', 'config', 'categorias-tienda.json'), 'utf8'));
+    for (const c of cfg.categorias || []) slugCat[c.id] = c.slug;
+  } catch {
+    slugCat = {};
+  }
   const bajo = (dispo && dispo.productos) || {};
   const porSlug = new Map();
   const porTitulo = new Map();
@@ -128,7 +135,8 @@ export async function catalogo() {
       stock: it.stock || 'disponible',
       stockBajo: Boolean(bajo[it.slug] && bajo[it.slug].stockBajo),
       precio: it.priceNum || 0,
-      categoria: it.categoryName || it.category || '',
+      categoria: it.categoryName || it.category || 'Otros',
+      categoriaSlug: slugCat[it.category] || it.category || '',
     };
     v.tokens = tokens(it.title);
     porSlug.set(it.slug, v);
@@ -427,8 +435,26 @@ export async function calcularInicio() {
   const publicados = cat.items.length;
   const disp = cat.items.filter((i) => i.stock === 'disponible');
   const pocas = disp.filter((i) => cat.porSlug.get(i.slug)?.stockBajo).length;
+  const porCat = {};
+  for (const v of cat.porSlug.values()) {
+    const c = (porCat[v.categoria] = porCat[v.categoria] || { categoria: v.categoria, slug: v.categoriaSlug, total: 0, disponibles: 0, pocas: 0, preorden: 0 });
+    c.total += 1;
+    if (v.stock === 'disponible') {
+      c.disponibles += 1;
+      if (v.stockBajo) c.pocas += 1;
+    } else c.preorden += 1;
+  }
+  const categorias = Object.values(porCat)
+    .map((c) => {
+      const pctDisp = c.total ? (c.disponibles / c.total) * 100 : 0;
+      const pctPocas = c.disponibles ? (c.pocas / c.disponibles) * 100 : 0;
+      // Semáforo: verde ≥ 90 % disponible y pocas unidades ≤ 1/3; amarillo 75–89 % o muchas con pocas unidades; rojo < 75 %
+      const semaforo = pctDisp < 75 ? 'rojo' : pctDisp < 90 || pctPocas > 33 ? 'amarillo' : 'verde';
+      return { ...c, pctDisp: r1(pctDisp), semaforo };
+    })
+    .sort((a, b) => ({ rojo: 0, amarillo: 1, verde: 2 })[a.semaforo] - ({ rojo: 0, amarillo: 1, verde: 2 })[b.semaforo] || a.pctDisp - b.pctDisp);
   const equipos = {
-    catalogo: { publicados, disponibles: disp.length, pocas, preorden: publicados - disp.length, revision: cat.revision },
+    catalogo: { publicados, disponibles: disp.length, pocas, preorden: publicados - disp.length, revision: cat.revision, categorias },
     vendidosMes: periodos.mes.unidades,
     vendidosSemana: periodos.semana.unidades,
     porPedir,

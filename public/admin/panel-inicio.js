@@ -189,6 +189,7 @@
       ' en pre-orden' +
       (c.revision ? ' <span class="pc-muted">· proveedores revisados ' + esc(c.revision) + '</span>' : '') +
       '</p></div>' +
+      semaforos(c.categorias || []) +
       '<button type="button" class="btn btn-primary in-ir" data-ir="compras"><i class="fas fa-shopping-cart" aria-hidden="true"></i> Ver qué hay que comprar</button>';
 
     var ESTADO = { ok: 'Cumple', alerta: 'Mejorar', sin_datos: 'Sin datos aún', info: 'Referencia' };
@@ -252,6 +253,35 @@
       '<section class="in-card"><h2 class="in-h">Indicadores para mejorar</h2><p class="in-sub2">Qué medimos, la meta y por qué importa. Se calculan con las ventas registradas en el panel; entre más completo esté, más precisos son.</p>' +
       kpis +
       '</section>'
+    );
+  }
+  function semaforos(cats) {
+    if (!cats.length) return '';
+    var esc = S().esc;
+    var TXT = { verde: 'Bien surtida', amarillo: 'Vigilar', rojo: 'Faltan equipos' };
+    var n = { verde: 0, amarillo: 0, rojo: 0 };
+    cats.forEach(function (k) {
+      n[k.semaforo] += 1;
+    });
+    return (
+      '<details class="in-sem"' +
+      (n.rojo ? ' open' : '') +
+      '><summary><b>Disponibilidad por categoría</b> <span class="in-sem-res">' +
+      '<span class="in-luz in-luz--rojo"></span>' + n.rojo +
+      ' <span class="in-luz in-luz--amarillo"></span>' + n.amarillo +
+      ' <span class="in-luz in-luz--verde"></span>' + n.verde +
+      '</span></summary><ul class="in-sem-list">' +
+      cats
+        .map(function (k) {
+          return (
+            '<li class="in-sem-row"><span class="in-luz in-luz--' + k.semaforo + '" title="' + TXT[k.semaforo] + '" aria-label="' + TXT[k.semaforo] + '"></span>' +
+            '<a href="/tienda/categoria/' + esc(k.slug) + '" target="_blank" rel="noopener">' + esc(k.categoria) + '</a>' +
+            '<span class="in-sem-bar" aria-hidden="true"><span class="in-cat-ok" style="width:' + pct(k.disponibles - k.pocas, k.total) + '%"></span><span class="in-cat-low" style="width:' + pct(k.pocas, k.total) + '%"></span><span class="in-cat-pre" style="width:' + pct(k.preorden, k.total) + '%"></span></span>' +
+            '<span class="in-sem-num"><b>' + num(k.pctDisp) + ' %</b> <small>' + k.disponibles + '/' + k.total + (k.preorden ? ' · ' + k.preorden + ' pre-orden' : '') + (k.pocas ? ' · ' + k.pocas + ' pocas' : '') + '</small></span></li>'
+          );
+        })
+        .join('') +
+      '</ul><p class="pc-muted in-sem-ley"><span class="in-luz in-luz--verde"></span> 90 % o más disponible · <span class="in-luz in-luz--amarillo"></span> 75–89 % o muchos con pocas unidades · <span class="in-luz in-luz--rojo"></span> menos de 75 %</p></details>'
     );
   }
   function pct(a, b) {
