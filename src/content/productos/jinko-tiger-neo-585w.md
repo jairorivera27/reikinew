@@ -20,9 +20,6 @@ seoKeywords:
   - "panel solar 585w para granja solar colombia"
   - "modulo jinko 585w garantia 25 anos"
   - "panel jinko 585w envio nacional"
-precioAnterior: "$599.000"
-descuentoPct: 28
-promocion: "Liquidación"
 promoImagen: "/images/placeholders/promo-liquidacion.svg"
 sku: "JKM585N-72HL4-V"
 power: "585W"
