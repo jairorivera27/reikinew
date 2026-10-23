@@ -24,6 +24,7 @@ faqs:
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
 certificadoPdf: "/fichas/proveedores/ingesolar-BATL16-cert.pdf"
+stockBajo: true
 ---
 
 Proveedor: Ingesolar (BATL16).

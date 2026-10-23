@@ -14,7 +14,7 @@ specifications:
 brand: "Suntree"
 model: "DPS-DC-800V"
 sku: "ING-PROTBD05"
-stock: "pre-orden"
+stock: "disponible"
 order: 8000
 updatedAt: "2026-10-14"
 imagen_provisional: true
@@ -25,6 +25,7 @@ faqs:
     respuesta: "En el tablero de strings (lado DC) cerca del inversor y, del lado AC, en el tablero principal. Necesita una buena puesta a tierra para funcionar."
   - pregunta: "¿Cumple RETIE?"
     respuesta: "Las instalaciones solares en Colombia deben cumplir RETIE; usa protecciones certificadas bajo normas IEC y deja la instalación en manos de un técnico. Reiki te asesora en el diseño del tablero."
+stockBajo: true
 ---
 
 Proveedor: Ingesolar (PROTBD05).

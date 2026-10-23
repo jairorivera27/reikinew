@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-10-21 21:00",
+ "ultima_revision": "2026-10-22 20:59",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -118,16 +118,6 @@
    "stockBajo": false,
    "consulta": "error"
   },
-  "aire-acondicionado-hibrido-350voc-220vac-acdc-24kbtu-3-2kw-frio-deye": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "allyce-acesorio-bomba-sensor-de-llenado": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
   "allyce-aire-acondicionado-hibrido-350voc-220vac-acdc-12kbtu-1-27kw": {
    "stock": "disponible",
    "stockBajo": true,
@@ -141,11 +131,6 @@
   "allyce-aire-acondicionado-r410a-dc48vdc-9kbtu-1-2kw": {
    "stock": "disponible",
    "stockBajo": true,
-   "consulta": "ok"
-  },
-  "allyce-anodo-de-magnesio-para-calentador-solar-allyce-sin-garantia": {
-   "stock": "disponible",
-   "stockBajo": false,
    "consulta": "ok"
   },
   "allyce-bombillo-para-nevera-12-24vdc": {
@@ -184,11 +169,6 @@
    "consulta": "ok"
   },
   "allyce-conector-mc4-30a-pin-solido-4mm2": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "allyce-conector-mc4-4-6mmpv-bn101a-1-0kv": {
    "stock": "disponible",
    "stockBajo": true,
    "consulta": "ok"
@@ -283,57 +263,7 @@
    "stockBajo": true,
    "consulta": "ok"
   },
-  "allyce-inversor-variador-bomba-0-75kw-bifasico-4a-220v-400voc": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "allyce-inversor-variador-bomba-2-2kw-bifasico-10a-220v-400voc": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "allyce-linterna-0-3w": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "allyce-linterna-1w": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "allyce-luminaria-clasica-de-42w-a-24vdc-led-osram": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "allyce-luminaria-clasica-de-50w-a-24vdc-led-osram": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "allyce-luminaria-mini-planta-para-3-bombillos-y-cargador-de-celular": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "allyce-luminaria-publica-solar-30w": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "allyce-luminaria-publica-solar-con-control-20w": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "allyce-luminaria-solar-todo-en-uno-10w": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "allyce-luminaria-solar-todo-en-uno-8w": {
    "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
@@ -423,26 +353,6 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "allyce-reflector-con-sensor-de-movimiento-20w": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "allyce-reflector-con-sensor-de-movimiento-50w": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "allyce-reflector-solar-con-control-40w": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "allyce-reflector-solar-con-control-60w": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
   "allyce-reflector-solar-de-pared-3w": {
    "stock": "disponible",
    "stockBajo": false,
@@ -463,11 +373,6 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "allyce-tubo-led-18w-a-12v-24v-tipo-aaa": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "allyce-valvula-mezcladora-de-temperatura-fija": {
    "stock": "disponible",
    "stockBajo": false,
@@ -478,42 +383,7 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "aquapak-bomba-aqua-pak-0-75hp-para-piscina": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
   "balkran-cerca-desviador-de-rayos": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "balkran-kit-plastico-solar-30km-b1000d-balkran-panel": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "bateria-de-litio-51-2v-100ah-dl5-0c-1c-ip20-6000-ciclos-w-50kg-dyness": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "bateria-gel-12v-35ah-1600-ciclos-50-w-12kg-netion": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "bateria-litio-12-8v-200ah-lfp2-56kwh12-8v-p65l1-6-000-ciclos-al-80-dod-w-23kg-metalic": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "bateria-litio-51-2v-100ah-wall-lw51100a-6-000-ciclos-80-dod-w-45kg-epever": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "bateria-litio-kit-de-baterias-para-inversor-trifasico-8kwh-a-200vdc-x2-gb-lm4-0-pro-d": {
    "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
@@ -588,11 +458,6 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "bomba-de-calor-dspd1-acdc-17r2-r32-deye": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
   "bomba-recirculacion-2200w-25m-36mts3-cont-dy-b3000acdc-bom-a2200-sp36-25b-hibrida-aut": {
    "stock": "disponible",
    "stockBajo": false,
@@ -603,22 +468,7 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "bomba-sumergible-lapicero-dc-3d-b-4-0m3h-1500w-195m-3b1500-pc4-0-195g-con-dy-1500dc-d": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "bomba-sumergible-lapicero-dc-3e-4-5m3h-600w-75m-cont-dy-900dc-bomb-3e600-pc4-5-75d-de": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "bomba-sumergible-lapicero-dc-4a-11m3h-2200w-145m-cont-dy-d3600ac-dc-bom-4a2200-sc11-1": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "bomba-sumergible-lapicero-dc-4d-11m3h-1500w-60m-4d1500-sc11-60g-con-controlador-deye": {
    "stock": "disponible",
    "stockBajo": true,
    "consulta": "ok"
@@ -763,42 +613,12 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "cable-fotovoltaico-procables-6-mm2-cuflex-xlpe-por-metro": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "caja-de-distribucion-pmh9pn-9p-ip65-retie-suntree": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "caja-de-distribucionpmh24pn-24p-ip65-retie-suntree": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "caja-string-combiner-box-shlx-2-2-800vdc-ip65-retie-suntree": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
   "cat-mayorista-155584ad7685": {
    "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "no-encontrado"
   },
   "cat-mayorista-5d8e08561d07": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "no-encontrado"
-  },
-  "cat-mayorista-67f802e82020": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "no-encontrado"
-  },
-  "cat-mayorista-b620fe40c0b9": {
    "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "no-encontrado"
@@ -812,11 +632,6 @@
    "stock": "disponible",
    "stockBajo": false,
    "consulta": "no-encontrado"
-  },
-  "conduluz-cable-pv-4mm2-cu-flex-xlep-sr1800-90-pvc-negro": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
   },
   "conector-de-extension-hoymiles-hms": {
    "stock": "pre-orden",
@@ -848,66 +663,6 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "controlador-de-carga-solar-mppt-2008101": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "controlador-de-carga-solar-mppt-2008102": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "controlador-de-carga-solar-mppt-2008104": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "controlador-de-carga-solar-mppt-2008110": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "controlador-de-carga-solar-mppt-2008115": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "controlador-de-carga-solar-mppt-2008190": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "controlador-de-carga-solar-mppt-2008191": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "controlador-de-carga-solar-mppt-2008192": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "controlador-de-carga-solar-mppt-2008194": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "controlador-de-carga-solar-mppt-2008195": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "controlador-de-carga-solar-mppt-2008197": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "controlador-de-carga-solar-mppt-2008198": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "datalogger-deye-ls4g-3": {
    "stock": "disponible",
    "stockBajo": true,
@@ -925,12 +680,7 @@
   },
   "deye-bateria-litio-tipo-rack-5kwh-alto-voltaje-51-2vdc-para-caja-de-control-bos-gm5-1": {
    "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "deye-bateria-litio-tipo-wall-5kwh-51-2vdc-se-f5-l-6000-ciclos-80": {
-   "stock": "pre-orden",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "deye-caja-de-control-de-alto-voltaje-para-baterias-bos-g-pdu-na-hv750v-620vdc": {
@@ -1013,16 +763,6 @@
    "stockBajo": true,
    "consulta": "ok"
   },
-  "deye-limitador-externo-trifasico": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "deye-medidor-chint-dtsu666-ct250-a-para-inversores-trifasicos-deye": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
   "deye-medidor-con-ct-sdm630-mct-indirecta-series-eastron": {
    "stock": "disponible",
    "stockBajo": false,
@@ -1076,11 +816,6 @@
   "eastron-medidor-directa-sdm630-mct-series-eastron-deye": {
    "stock": "disponible",
    "stockBajo": false,
-   "consulta": "ok"
-  },
-  "epever-adaptador-db9-a-rj45-db9-m-rj45-j-ns-acc-v1-1": {
-   "stock": "disponible",
-   "stockBajo": true,
    "consulta": "ok"
   },
   "epever-adaptador-para-paralelo-pal-adp-50n": {
@@ -1323,34 +1058,9 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "fusible-o-portafusible-dc-para-sistema-solar-ref-5504125": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "fusible-portafusible-20a-dc-5504127": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "fusible-portafusible-25a-dc-5504128": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "fusible-portafusible-32a-dc-5504129": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "gcl-panel-bifacial-tipo-n-625w-voc-48-55-isc-16": {
    "stock": "disponible",
    "stockBajo": false,
-   "consulta": "ok"
-  },
-  "gcl-panel-bifacialtipo-n-450w-voc-35-05-isc-15-95": {
-   "stock": "disponible",
-   "stockBajo": true,
    "consulta": "ok"
   },
   "generico-cable-para-puesta-a-tierra-generico": {
@@ -1413,37 +1123,12 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "inversor-cargador-hp6041-ah1130p20a-6kw-48v-mppt-140a-300voc-120v-epever": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "inversor-cargador-kas3021-3kw-24v-mppt-100a-500voc-120v-epever": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-cargador-kas3641-3-6kw-48v-mppt-80a-300voc-120v-epever": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "inversor-on-grid-solis-50k-lv-5g-50-kw-trifasico-220-v": {
    "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
   "inversor-on-grid-solis-s6-gc3p30k04k-lv-nd-30-kw-trifasico": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-onda-pura-ip2000-21-2000w-24vdc-a-110vac-epever": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "inversor-onda-pura-ipt3000-21-ipt-3000w-24vdc-a-110vac-epever": {
    "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
@@ -1479,101 +1164,6 @@
    "consulta": "ok"
   },
   "inversor-solar-off-grid-tensite-6-5kw-3004117": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-10000w-3004619": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-10000w-3004622": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-15000w-3004623": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-2000va-3005219": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-25000w-3004625": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-30000w-3004626": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-3004065": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-3005203": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-3005204": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-3005205": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-3005206": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-3005209": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-3005210": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-3005211": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-3005212": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-50000w-3004627": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-6000w-3004618": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-75000w-3004628": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "inversor-solar-on-grid-8000w-3004621": {
    "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
@@ -1623,29 +1213,9 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "inversor-solar-on-grid-victron-3004060": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "jfy-controlador-mppt-100a-36-48v-150voc": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "jfy-controlador-mppt-40a-36v-48v-150voc": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
   "jfy-inversor-onda-modificada-controlador-40a-750w-12vdc-a110vac": {
    "stock": "disponible",
    "stockBajo": false,
-   "consulta": "ok"
-  },
-  "jfy-inversor-variador-bomba-0-75w-bifasico-7a-220v-400voc": {
-   "stock": "disponible",
-   "stockBajo": true,
    "consulta": "ok"
   },
   "jinko-tiger-neo-585w": {
@@ -1663,11 +1233,6 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "leader-cable-negro-pv-4mm2-cu-flex-1x4-0mm2-retie-ukca": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
   "leader-cable-negro-pv-6mm2-cu-flex-1x6-0mm2-retie": {
    "stock": "disponible",
    "stockBajo": false,
@@ -1683,47 +1248,12 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "leader-cable-rojo-pv-4mm2-cu-flex-1x4-0mm2-retie": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "leader-cable-rojo-pv-6mm2-cu-flex-1x6-0mm2-retie": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "leader-mc4-3-a-1-sy-bb31": {
    "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
   "leader-mc4-sencillo-macho-hembra-tuv-retie-leader": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "medidor-de-energia-100a-3202010": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "medidor-de-energia-100va-3202024": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "medidor-de-energia-100va-3202027": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "medidor-de-energia-250va-3202028": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "medidor-de-energia-500va-3202029": {
    "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
@@ -1763,26 +1293,6 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "microinversor-solar-growatt-1700537": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "modulo-inalambrico-1700507": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "modulo-inalambrico-1700527": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "modulo-inalambrico-1700528": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "monitor-de-baterias-victron-bmv-712-smart-con-bluetooth": {
    "stock": "disponible",
    "stockBajo": false,
@@ -1801,11 +1311,6 @@
   "moreday-proteccion-breaker-dc600v-2p-25a": {
    "stock": "disponible",
    "stockBajo": true,
-   "consulta": "ok"
-  },
-  "motoma-accesorio-modulo-wifi": {
-   "stock": "disponible",
-   "stockBajo": false,
    "consulta": "ok"
   },
   "motoma-bateria-agm-6v-4ah-1200-ciclos-30-w-0-72kg": {
@@ -1834,16 +1339,6 @@
    "consulta": "ok"
   },
   "motoma-bateria-litio-25-6v-54ah-2000ciclos-80-para-iluminacion": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "motoma-cargador-8-bc-l12v40-mam8-12v4a-for-38amp-and-55amp": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "motoma-cargador-bc-l12v15a-mam8-12v15a-sla-charger-for-150amp-and-200amp": {
    "stock": "disponible",
    "stockBajo": true,
    "consulta": "ok"
@@ -1953,11 +1448,6 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "panel-solar-trina-vertex-n-tsm-neg19rc-20-625w-bifacial": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "panel-solar-trina-vertex-n-tsm-neg21c-20-710w-bifacial": {
    "stock": "pre-orden",
    "stockBajo": false,
@@ -1968,54 +1458,9 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "panel-solar-trina-vertex-tsm-de21-665w": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "panel-solar-trina-vertex-tsm-de21-670w": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "pantalla-de-monitoreo-solar-ref-1700531": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "pantalla-victron-1700524": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "pantalla-victron-1700525": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "pantalla-victron-1700526": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "pantalla-victron-1700532": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "procables-cable-pv-6mm2-cu-flex-xlep-sr1800-90-c-pvc-negro": {
    "stock": "disponible",
    "stockBajo": true,
-   "consulta": "ok"
-  },
-  "proteccion-breaker-sl7n-125-dc-600v-2p-80a-suntree": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "proteccion-descargador-de-sobrepotencial-dps-sup2h1-pv-dc-spd-dc600v-2040ka-suntree": {
-   "stock": "pre-orden",
-   "stockBajo": false,
    "consulta": "ok"
   },
   "protector-de-bateria-victron-12-24v-100a-smart-batteryprotect-12-24v": {
@@ -2059,21 +1504,6 @@
    "consulta": "ok"
   },
   "restar-panel-policristalino-30w-voc-22-4-isc-1-73": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "sistema-de-monitoreo-solar-1700510": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "sistema-de-monitoreo-solar-1700518": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "sistema-de-monitoreo-solar-1700530": {
    "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
@@ -2284,18 +1714,13 @@
    "consulta": "ok"
   },
   "suntree-proteccion-descargador-de-sobrepotencial-dps-sup2h-pv-dc-spd-dc800v-2040ka": {
-   "stock": "pre-orden",
-   "stockBajo": false,
+   "stock": "disponible",
+   "stockBajo": true,
    "consulta": "ok"
   },
   "suntree-proteccion-descargador-de-sobrepotencial-dps-sup2h1-pv-3p-dc-spd-dc1000v-2040": {
    "stock": "disponible",
    "stockBajo": false,
-   "consulta": "ok"
-  },
-  "suntree-proteccion-fusible-dc-fuse-nh00pv-80a-with-fuse-and-holder": {
-   "stock": "disponible",
-   "stockBajo": true,
    "consulta": "ok"
   },
   "suntree-proteccion-fusible-srf30-15a-1000vdc": {
@@ -2313,56 +1738,6 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "sylvania-luminaria-all-in-one-10-w-100w-s100-p25445": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "sylvania-luminaria-all-in-one-20-w-200w-s200-p40153": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "sylvania-luminaria-all-in-one-30-w-300w-s300-p40155": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "sylvania-luminaria-all-in-one-alumbrado-publico-30w-s30-p23535": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "sylvania-luminaria-all-in-one-alumbrado-publico-60w-s60-p29831": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "sylvania-luminaria-tipo-poste-all-in-one-jardin-25w-250w-3250lm-p40324": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "sylvania-reflector-all-in-one-30w-300w-4800lm-p29669": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "taifu-bomba-recirculacion-qb60-dc-eco-2m3h-30m-24v-370w": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "taifu-bomba-recirculacion-tsqb-3m3h-47m48v-500w-sin-controlador": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "taifu-bomba-recirculacion-tssp-14m3h-15m-48v-600w-sin-controlador": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
   "taifu-bomba-recirculacion-tssp-18m3h-8m-96v-750w-sin-controlador": {
    "stock": "disponible",
    "stockBajo": true,
@@ -2378,82 +1753,7 @@
    "stockBajo": true,
    "consulta": "ok"
   },
-  "taifu-bomba-sumergible-tipo-lapicero-3tss-0-76m3h-55m-24v-120w-sin-controlador": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "taifu-bomba-sumergible-tipo-lapicero-4tsc-4m3h-96m-110v-1-000w-sin-controlador": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "taifu-bomba-sumergible-tipo-lapicero-5tsc-32m3h-38m-220v-2-200w-sin-controlador": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "taifu-controlador-bomba-1000w-a-110vdc-repuesto-200voc": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "taifu-controlador-bomba-120w-a-24vddc-repuesto-50voc": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "taifu-controlador-bomba-220v-5tsc-32-38-220-2200-350voc": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "taifu-controlador-bomba-48v-tsbq3-47-48-500-100voc": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "taifu-controlador-bomba-500w-a-48vddc-repuesto-100voc": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "taifu-controlador-bomba-96-110v-4tsc-4-0-96-110-1000-200voc": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "taifu-controlador-bomba-96-110v-tssp18-8-96-750-200voc": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "taifu-impulsor-bomba-3tss0-76-55-24-120": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "taifu-impulsor-bomba-4tsc5-2-72-110-1-000": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
   "taifu-impulsor-bomba-4tss2-5-140-1-000w": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "taifu-impulsor-bomba-4tssc5-128-110-1-000-s-s": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "taifu-impulsor-bomba-4tssc7-5-175-220-2-200-s-s": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "taifu-repuesto-tarjeta-board-qb60": {
    "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
@@ -2473,57 +1773,7 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "trina-panel-bifacial-tipo-n-615w-voc-49-3-isc-15-89": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "trina-panel-bifacial-tipo-n-635w-voc-49-1-isc-16-44": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "uni-t-pinza-digital-ac-dc-fotovoltaica-de-alto-voltaje-ut219pv": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "uni-t-pinza-digital-auto-rango-1000v-ac-dc-1000ah-true-rms-ut208b": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "uni-t-pinza-voltiamperimetrica-digital-ut203": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "uni-t-pinza-voltiamperimetrica-digital-ut204-uni-t": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
   "uni-t-tester-solar-mppt-5-800w-0-35ah-display-lcd-ut673pv": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "unidad-exterior-condensadora-hibrida-36kbtu-dw4e1-acdc-36kr2-deye-g-1ano": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "unidad-interior-hibrida-12kbtu-dmga1-acdc-12kr2-para-condesadora-36kbtu-deye-g-1ano": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "unidad-interior-hibrida-18kbtu-dmga1-acdc-18kr2-para-condesadora-36kbtu-deye-g-1ano": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "unidad-interior-hibrida-24-kbtu-dmga1-acdc-24kr2-para-condesadora-36kbtu-deye-g-1ano": {
    "stock": "disponible",
    "stockBajo": true,
    "consulta": "ok"
