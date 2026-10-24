@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-10-22 20:59",
+ "ultima_revision": "2026-10-23 20:59",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -1060,7 +1060,7 @@
   },
   "gcl-panel-bifacial-tipo-n-625w-voc-48-55-isc-16": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "generico-cable-para-puesta-a-tierra-generico": {
@@ -1300,7 +1300,7 @@
   },
   "moreday-conector-mc4-tipo-y-sy-bc21": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "moreday-proteccion-breaker-dc1-000v-4p-25a": {
@@ -1329,8 +1329,8 @@
    "consulta": "ok"
   },
   "motoma-bateria-gel-12v-38ah-1600-ciclos-50-w-12-5kg": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "motoma-bateria-litio-25-2v-42ah-2000ciclos-80-para-iluminacion": {
@@ -1684,8 +1684,8 @@
    "consulta": "ok"
   },
   "suntree-proteccion-breaker-sl7n-63-dc550v-2p-63a": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "suntree-proteccion-breaker-sl7n-63-dc800v-2p-20a": {
@@ -1714,8 +1714,8 @@
    "consulta": "ok"
   },
   "suntree-proteccion-descargador-de-sobrepotencial-dps-sup2h-pv-dc-spd-dc800v-2040ka": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "suntree-proteccion-descargador-de-sobrepotencial-dps-sup2h1-pv-3p-dc-spd-dc1000v-2040": {
