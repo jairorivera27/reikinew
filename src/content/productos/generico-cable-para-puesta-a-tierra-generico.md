@@ -12,7 +12,7 @@ specifications:
 brand: "Genérico"
 model: "CABLE DE PUESTA A TIERRA"
 sku: "ING-ACCC13"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-14"
 imagen_provisional: true
@@ -20,8 +20,6 @@ fichaPdf: "/fichas/proveedores/ingesolar-ACCC13.pdf"
 faqs:
   - pregunta: "¿Es compatible con mi equipo?"
     respuesta: "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
-
-stockBajo: true
 ---
 
 Proveedor: Ingesolar (ACCC13).

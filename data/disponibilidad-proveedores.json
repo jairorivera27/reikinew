@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-10-23 20:59",
+ "ultima_revision": "2026-10-24 20:59",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -1064,8 +1064,8 @@
    "consulta": "ok"
   },
   "generico-cable-para-puesta-a-tierra-generico": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "generico-caja-de-diodos-para-paneles-sy-jb4b": {
