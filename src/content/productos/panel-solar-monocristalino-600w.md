@@ -12,7 +12,7 @@ specifications:
   - "Garantía: 25 años"
 brand: "Trina Solar"
 model: "TSM-650DEG21C.20"
-stock: "disponible"
+stock: "agotado"
 order: 3
 seoDifferentiator: "Arquitectura Vertex bifacial de 650W para mayor producción diaria y mejor retorno del proyecto."
 seoKeywords:

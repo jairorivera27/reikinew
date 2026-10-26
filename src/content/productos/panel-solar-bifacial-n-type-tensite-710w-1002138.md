@@ -21,9 +21,9 @@ specifications:
 brand: "Tensite"
 sku: "1002138"
 power: "710W"
-stock: "pre-orden"
+stock: "agotado"
 order: 6441
-updatedAt: "2026-10-11"
+updatedAt: "2026-10-26"
 seoKeywords:
   - "panel solar"
   - "panel solar bifacial n-type"

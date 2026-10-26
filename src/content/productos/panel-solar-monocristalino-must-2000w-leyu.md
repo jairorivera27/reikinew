@@ -13,9 +13,9 @@ brand: "Must"
 model: "LEYU"
 sku: "LEYU"
 power: "2000W"
-stock: "disponible"
+stock: "agotado"
 order: 6438
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-26"
 seoKeywords:
   - "panel solar"
   - "panel solar monocristalino"

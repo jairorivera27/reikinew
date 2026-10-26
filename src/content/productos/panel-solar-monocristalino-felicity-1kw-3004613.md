@@ -12,9 +12,9 @@ specifications:
 brand: "Felicity"
 sku: "3004613"
 power: "1kW"
-stock: "disponible"
+stock: "agotado"
 order: 6417
-updatedAt: "2026-10-11"
+updatedAt: "2026-10-26"
 seoKeywords:
   - "panel solar"
   - "panel solar monocristalino"

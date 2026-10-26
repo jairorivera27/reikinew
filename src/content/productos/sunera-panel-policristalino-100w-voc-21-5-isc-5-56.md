@@ -16,9 +16,9 @@ specifications:
 brand: "Sunera"
 model: "100WP-POLI"
 sku: "ING-PNLP23"
-stock: "disponible"
+stock: "agotado"
 order: 8000
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-26"
 imagen_provisional: false
 fichaPdf: "/fichas/proveedores/ingesolar-PNLP23.pdf"
 faqs:

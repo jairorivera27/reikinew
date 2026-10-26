@@ -4,7 +4,7 @@ description: "Panel solar JA Solar de 625 W (bifacial, celdas N-Type). Genera en
 image: "/images/productos-estudio/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar.webp"
 imageCard: "/images/productos-estudio/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar-card.webp"
 category: "paneles"
-price: "$450.355"
+price: "$535.688"
 specifications:
   - "Tipo: Bifacial N-Type"
   - "Especificación principal: 625W"
@@ -14,7 +14,7 @@ sku: "1002139"
 power: "625W"
 stock: "disponible"
 order: 6418
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-26"
 seoKeywords:
   - "panel solar"
   - "panel solar bifacial n-type"

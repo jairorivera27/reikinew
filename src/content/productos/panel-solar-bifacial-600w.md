@@ -12,7 +12,7 @@ specifications:
   - "Garantía: 25 años"
 brand: "Trina Solar"
 model: "TSM-700NEG21C.20"
-stock: "disponible"
+stock: "agotado"
 order: 4
 seoDifferentiator: "Panel de 700W con tecnología Vertex N para máxima potencia por módulo en proyectos de alto consumo."
 seoKeywords:

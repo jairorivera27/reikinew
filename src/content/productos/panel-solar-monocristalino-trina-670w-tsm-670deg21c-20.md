@@ -13,9 +13,9 @@ brand: "Trina Solar"
 model: "TSM-670DEG21C.20"
 sku: "TSM-670DEG21C.20"
 power: "670W"
-stock: "disponible"
+stock: "agotado"
 order: 6442
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-26"
 seoKeywords:
   - "panel solar"
   - "panel solar monocristalino"

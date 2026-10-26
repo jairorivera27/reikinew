@@ -16,9 +16,9 @@ specifications:
 brand: "Sunera"
 model: "100WP-MONO-SUNERA"
 sku: "ING-PNLM20"
-stock: "disponible"
+stock: "agotado"
 order: 8000
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-26"
 imagen_provisional: true
 fichaPdf: "/fichas/proveedores/ingesolar-PNLM20.pdf"
 faqs:

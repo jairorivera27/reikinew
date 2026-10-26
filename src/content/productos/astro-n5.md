@@ -12,7 +12,7 @@ specifications:
   - "Garantía: 25 años"
 brand: "Astroenergy"
 model: "Astro N5"
-stock: "disponible"
+stock: "agotado"
 order: 7
 seoDifferentiator: "Serie N-Type TOPCon con rango 580W-620W, ideal para diseños flexibles residenciales y comerciales."
 seoKeywords:

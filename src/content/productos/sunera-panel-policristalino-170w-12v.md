@@ -14,9 +14,9 @@ specifications:
 brand: "Sunera"
 model: "170WP-POLI"
 sku: "ING-PNLP24"
-stock: "disponible"
+stock: "agotado"
 order: 8000
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-26"
 imagen_provisional: false
 fichaPdf: "/fichas/proveedores/ingesolar-PNLP24.pdf"
 faqs:

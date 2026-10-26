@@ -16,9 +16,9 @@ specifications:
 brand: "Gcl"
 model: "PANEL BIFACIAL-N - 625W - GCL"
 sku: "ING-PNLM48"
-stock: "disponible"
+stock: "agotado"
 order: 8000
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-26"
 imagen_provisional: false
 fichaPdf: "/fichas/proveedores/ingesolar-PNLM48.pdf"
 faqs:

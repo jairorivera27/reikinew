@@ -16,9 +16,9 @@ specifications:
 brand: "Restar"
 model: "PANEL POLI - 25W - RESTAR"
 sku: "ING-PNLP01"
-stock: "disponible"
+stock: "agotado"
 order: 8000
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-26"
 imagen_provisional: false
 fichaPdf: "/fichas/proveedores/ingesolar-PNLP01.pdf"
 faqs:

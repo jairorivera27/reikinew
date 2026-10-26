@@ -12,7 +12,7 @@ specifications:
   - "Garantía: 25 años"
 brand: "JA Solar"
 model: "JAM72D40-595/LB"
-stock: "disponible"
+stock: "agotado"
 order: 2
 seoDifferentiator: "Módulo de 595W optimizado para alta densidad de potencia en cubiertas con espacio limitado."
 seoKeywords:

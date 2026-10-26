@@ -4,7 +4,7 @@ description: "Panel solar JA Solar de 720 W (bifacial, celdas N-Type). Genera en
 image: "/images/productos-estudio/panel-solar-bifacial-720w-deep-blue-40-n-type-ja-solar.webp"
 imageCard: "/images/productos-estudio/panel-solar-bifacial-720w-deep-blue-40-n-type-ja-solar-card.webp"
 category: "paneles"
-price: "$527.296"
+price: "$502.185"
 specifications:
   - "Tipo: Bifacial N-Type"
   - "Especificación principal: 720W"
@@ -23,7 +23,7 @@ sku: "1002142"
 power: "720W"
 stock: "disponible"
 order: 6420
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-26"
 seoKeywords:
   - "panel solar"
   - "panel solar bifacial n-type"

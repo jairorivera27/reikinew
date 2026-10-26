@@ -18,9 +18,9 @@ brand: "Trina Solar"
 model: "Trina TSM-NE19R-615W"
 sku: "AMZ-102-0015"
 power: "620 W"
-stock: "pre-orden"
+stock: "agotado"
 order: 7000
-updatedAt: "2026-10-14"
+updatedAt: "2026-10-26"
 imagen_provisional: false
 imagenSerieRef: "Trina Vertex N"
 faqs:

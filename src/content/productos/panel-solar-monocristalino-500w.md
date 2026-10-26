@@ -15,7 +15,7 @@ specifications:
   - "Tolerancia de potencia: 0/+5W"
 brand: "Jinko Solar"
 model: "JKM500M-54HL4-B"
-stock: "disponible"
+stock: "agotado"
 order: 2
 seoDifferentiator: "Eficiencia 21.2% con tolerancia positiva 0/+5W para mayor rendimiento real en campo."
 seoKeywords:

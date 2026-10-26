@@ -11,7 +11,7 @@ specifications:
   - "Aplicación: generación de energía solar fotovoltaica"
 brand: "Jinko Solar"
 model: "JKM585N-72HL4-V"
-stock: "pre-orden"
+stock: "agotado"
 order: 6
 seoDifferentiator: "Tecnología N-Type Tiger Neo con mejor desempeño en baja irradiación y altas temperaturas."
 seoKeywords:
@@ -23,7 +23,7 @@ seoKeywords:
 promoImagen: "/images/placeholders/promo-liquidacion.svg"
 sku: "JKM585N-72HL4-V"
 power: "585W"
-updatedAt: "2026-10-14"
+updatedAt: "2026-10-26"
 imageThumb: "/images/productos-estudio/jinko-solar-jkm585n-72hl4-v-585w-prov.webp"
 imageAlt: "Jinko Solar JKM585N-72HL4-V 585W – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/paneles-solares/jinko-tiger-neo-585w.png"

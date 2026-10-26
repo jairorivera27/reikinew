@@ -22,9 +22,9 @@ brand: "Trina Solar"
 model: "Trina TSM-720NEG21C.20"
 sku: "TSM-720NEG21C.20"
 power: "720 W"
-stock: "disponible"
+stock: "agotado"
 order: 7000
-updatedAt: "2026-10-21"
+updatedAt: "2026-10-26"
 imagen_provisional: false
 promocion: "Precio especial · stock inmediato"
 fichaPdf: "/fichas/fabricantes/trina-tsm-neg21c-20-695-720w-ficha-tecnica.pdf"

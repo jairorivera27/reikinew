@@ -12,9 +12,9 @@ specifications:
 brand: "Tensite"
 sku: "1002223"
 power: "240W"
-stock: "disponible"
+stock: "agotado"
 order: 6439
-updatedAt: "2026-10-11"
+updatedAt: "2026-10-26"
 seoKeywords:
   - "panel solar"
   - "panel solar monocristalino"
