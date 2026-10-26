@@ -1,6 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { getAddiInstallmentHint } from '../../utils/addiHint';
+import { etiquetaStockVisible, fechaIngreso } from '../../utils/preorden';
 import { formatTipoPotenciaLine, marcaVaEnLineaMorada } from '../../utils/productCardCompactMeta';
 import { urlProducto } from '../../config/categorias-tienda';
 import { etiquetaPrecioPorUnidad, type ResultadoValor } from '../../utils/calidadPrecio';
@@ -30,6 +31,8 @@ const modeloDisplay = String(d.model ?? '').trim() || d.title.trim();
 
 const addiHint = getAddiInstallmentHint(d.price);
 const muestraMasIva = productoMuestraMasIva(String(d.category), d.title);
+const llegada = fechaIngreso(d.fechaDisponibilidad);
+const etiquetaPreorden = etiquetaStockVisible(d.stock, llegada);
 
 const enLiquidacion = Boolean(d.precioAnterior && d.descuentoPct);
 const precioUnitario = etiquetaPrecioPorUnidad(valor);
@@ -63,7 +66,7 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
         <div class="producto-badge agotado">Agotado</div>
       )}
       {d.stock === 'pre-orden' && (
-        <div class="producto-badge pre-orden">Agotado · Pre-orden</div>
+        <div class="producto-badge pre-orden"><i class="fas fa-circle" aria-hidden="true"></i> {etiquetaPreorden}</div>
       )}
       {enLiquidacion && <div class="producto-badge-descuento">-{d.descuentoPct}%</div>}
       {!enLiquidacion && d.promocion && <div class="producto-badge-descuento producto-badge-promo">{d.promocion}</div>}
@@ -95,6 +98,8 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
         {enLiquidacion && <span class="producto-price-anterior">{d.precioAnterior}</span>}
       </div>
       <p class="producto-precio-unitario" aria-hidden={precioUnitario ? undefined : "true"}>{precioUnitario || "\u00a0"}</p>
+      {llegada && <p class="producto-aviso-llegada">Ingreso {llegada}</p>}
+      {d.avisoEnvio && <p class="producto-aviso-envio">{d.avisoEnvio}</p>}
       <p class="producto-addi-hint">
         <span>{addiHint}</span>
         <img src="/images/Addi.png" alt="Addi" class="producto-addi-logo" loading="lazy" decoding="async" />
@@ -379,6 +384,19 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
     font-size: 0.74rem;
     font-weight: 500;
     color: #6b7280;
+  }
+
+  .producto-aviso-llegada,
+  .producto-aviso-envio {
+    margin: 0.2rem 0 0;
+    font-size: 0.72rem;
+    font-weight: 700;
+    line-height: 1.3;
+    color: #92400e;
+  }
+
+  .producto-aviso-envio {
+    color: #047857;
   }
 
   .producto-badge-valor {

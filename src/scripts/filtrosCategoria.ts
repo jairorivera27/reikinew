@@ -33,6 +33,8 @@ interface ItemIndice {
   puntaje: number;
   destacado: boolean;
   stock: string;
+  llegada?: string | null;
+  avisoEnvio?: string | null;
   description: string;
   power?: string;
   ordenTipo?: number | null;
@@ -252,7 +254,7 @@ function iniciar(): void {
 
   function tarjeta(p: ItemIndice): string {
     const etiquetaStock =
-      p.stock === 'agotado' ? 'Agotado' : p.stock === 'pre-orden' ? 'Agotado · Pre-orden' : 'Disponible';
+      p.stock === 'agotado' ? 'Agotado' : p.stock === 'pre-orden' ? (p.llegada ? 'Preorden' : 'Agotado · Pre-orden') : 'Disponible';
 
     const badgeDescuento = p.descuentoPct
       ? `<div class="producto-badge-descuento">-${p.descuentoPct}%</div>`
@@ -301,6 +303,8 @@ function iniciar(): void {
                 : ''
             }${precioAnterior}</div>
             ${precioUnitario}
+            ${p.llegada ? `<p class="producto-aviso-llegada">Ingreso ${escapar(p.llegada)}</p>` : ''}
+            ${p.avisoEnvio ? `<p class="producto-aviso-envio">${escapar(p.avisoEnvio)}</p>` : ''}
             <p class="producto-addi-hint">
               <span>${cuotaAddi(p.priceNum)}</span>
               <img src="/images/Addi.png" alt="Addi" class="producto-addi-logo" loading="lazy" decoding="async" />

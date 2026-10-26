@@ -4747,6 +4747,21 @@
   "titulo": "Panel Solar JA Solar JAM66D45-605/LB 605W Bifacial",
   "codigo": "AMZ-100-0010"
  },
+ "panel-solar-ja-solar-jam66d46-730-lb": {
+  "proveedor": "Amara NZero",
+  "titulo": "Panel Solar JA Solar JAM66D46-730/LB 730W Bifacial",
+  "codigo": "JAM66D46-730/LB"
+ },
+ "panel-solar-ja-solar-jam66d46-735-lb": {
+  "proveedor": "Amara NZero",
+  "titulo": "Panel Solar JA Solar JAM66D46-735/LB 735W Bifacial",
+  "codigo": "JAM66D46-735/LB"
+ },
+ "panel-solar-jinko-jkm720n-66hl5-bdv": {
+  "proveedor": "Solaire",
+  "titulo": "Panel Solar Bifacial N-Type Jinko 720W JKM720N-66HL5-BDV",
+  "codigo": "NFPA0043"
+ },
  "panel-solar-monocristalino-100w": {
   "proveedor": "Biosolar",
   "titulo": "Panel Solar Monocristalino 100W",
@@ -4896,6 +4911,21 @@
   "proveedor": "Amara NZero",
   "titulo": "Panel Solar Trina Vertex N TSM-NEG21C.20 715W Bifacial",
   "codigo": "AMZ-102-0019"
+ },
+ "panel-solar-trina-vertex-n-tsm-neg21c-20-725w-bifacial": {
+  "proveedor": "Amara NZero",
+  "titulo": "Panel Solar Trina Vertex N TSM-NEG21C.20 725W Bifacial",
+  "codigo": "TSM-NEG21C.20-725"
+ },
+ "panel-solar-trina-vertex-n-tsm-neg21c-20-730w-bifacial": {
+  "proveedor": "Amara NZero",
+  "titulo": "Panel Solar Trina Vertex N TSM-NEG21C.20 730W Bifacial",
+  "codigo": "TSM-NEG21C.20-730"
+ },
+ "panel-solar-trina-vertex-n-tsm-neg21c-20-735w-bifacial": {
+  "proveedor": "Amara NZero",
+  "titulo": "Panel Solar Trina Vertex N TSM-NEG21C.20 735W Bifacial",
+  "codigo": "TSM-NEG21C.20-735"
  },
  "panel-solar-trina-vertex-tsm-de21-665w": {
   "proveedor": "Amara NZero",

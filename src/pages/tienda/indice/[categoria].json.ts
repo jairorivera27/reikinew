@@ -10,6 +10,8 @@ import {
   bucketVoltajeBateria,
 } from '../../../utils/productCardCompactMeta';
 import { tipoInversorParaFiltro } from '../../../utils/facetasCategoria';
+import { visibleEnListadoTienda } from '../../../utils/catalogoVisible';
+import { fechaIngreso } from '../../../utils/preorden';
 
 /**
  * Índice ligero de cada categoría, para que los filtros del listado trabajen sobre el
@@ -31,7 +33,7 @@ export const GET: APIRoute = async ({ props }) => {
   const { categoriaId } = props as { categoriaId: string };
 
   const productos = (await getCollection('productos', ({ data }) => data.draft !== true)).filter(
-    (p) => p.data.category === categoriaId
+    (p) => p.data.category === categoriaId && visibleEnListadoTienda(p.data)
   );
 
   const valores = calcularValor(
@@ -62,6 +64,8 @@ export const GET: APIRoute = async ({ props }) => {
       puntaje: valor?.puntaje ?? 0,
       destacado: valor?.destacado ?? false,
       stock: p.data.stock ?? 'disponible',
+      llegada: fechaIngreso(p.data.fechaDisponibilidad),
+      avisoEnvio: p.data.avisoEnvio ?? null,
       description: p.data.description,
       // Solo relevantes para inversores; el cliente los usa en el orden por defecto.
       ordenTipo:

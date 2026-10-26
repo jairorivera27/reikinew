@@ -21,9 +21,12 @@ import { SITE, breadcrumbJsonLd, precioNumerico } from '../../../../utils/produc
 import { calcularValor, ordenarPorValor, type ResultadoValor } from '../../../../utils/calidadPrecio';
 import { ordenarInversoresPorTipoYPotencia } from '../../../../utils/productCardCompactMeta';
 import { calcularFacetas, type FacetasCategoria } from '../../../../utils/facetasCategoria';
+import { visibleEnListadoTienda } from '../../../../utils/catalogoVisible';
 
 export const getStaticPaths = (async ({ paginate }) => {
-  const productos = await getCollection('productos', ({ data }) => data.draft !== true);
+  const productos = (await getCollection('productos', ({ data }) => data.draft !== true)).filter((p) =>
+    visibleEnListadoTienda(p.data)
+  );
   const conteos: Record<string, number> = {};
   for (const p of productos) {
     conteos[p.data.category] = (conteos[p.data.category] ?? 0) + 1;

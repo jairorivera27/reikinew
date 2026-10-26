@@ -12,6 +12,8 @@ import PagoConfianza from '../../components/PagoConfianza.astro';
 import { getCategoria, urlCategoria, urlProducto } from '../../config/categorias-tienda';
 import { CONTACT_WHATSAPP_URL } from '../../config/contact';
 import { getAddiInstallmentHint } from '../../utils/addiHint';
+import { visibleEnListadoTienda } from '../../utils/catalogoVisible';
+import { fechaIngreso, etiquetaStockVisible } from '../../utils/preorden';
 import {
   breadcrumbJsonLd,
   metaDescriptionProducto,
@@ -55,7 +57,7 @@ const addiHint = getAddiInstallmentHint(d.price);
 const muestraMasIva = productoMuestraMasIva(String(d.category), d.title);
 
 const relacionados = (await getCollection('productos', ({ data }) => data.draft !== true))
-  .filter((p) => p.data.category === d.category && p.slug !== producto.slug)
+  .filter((p) => p.data.category === d.category && p.slug !== producto.slug && visibleEnListadoTienda(p.data))
   .sort((a, b) => (a.data.order || 0) - (b.data.order || 0))
   .slice(0, 4);
 
@@ -70,7 +72,12 @@ const etiquetasStock: Record<string, string> = {
 };
 const stockBajo = stock === 'disponible' && Boolean(d.stockBajo);
 const estadoStock = stockBajo ? 'pocas' : stock;
-const etiquetaStock = stockBajo ? 'Pocas unidades' : (etiquetasStock[stock] ?? 'Disponible');
+const llegada = fechaIngreso(d.fechaDisponibilidad);
+const etiquetaStock = stockBajo
+  ? 'Pocas unidades'
+  : stock === 'pre-orden'
+    ? etiquetaStockVisible(stock, llegada)
+    : (etiquetasStock[stock] ?? 'Disponible');
 
 const enLiquidacion = Boolean(d.precioAnterior && d.descuentoPct);
 const ahorroCOP = enLiquidacion
@@ -259,10 +266,23 @@ const precioUnitario = etiquetaPrecioPorUnidad(
                 {precioUnitario} · sirve para comparar este equipo con otros de su categoría
               </p>
             )}
-            <p class="ficha-precio-unitario ficha-no-envio">
-              <i class="fas fa-truck" aria-hidden="true"></i>
-              El precio no incluye envío: el flete se cotiza aparte según la ciudad de destino.
-            </p>
+            {d.avisoEnvio ? (
+              <p class="ficha-precio-unitario ficha-envio-incluido">
+                <i class="fas fa-truck" aria-hidden="true"></i>
+                {d.avisoEnvio}
+              </p>
+            ) : (
+              <p class="ficha-precio-unitario ficha-no-envio">
+                <i class="fas fa-truck" aria-hidden="true"></i>
+                El precio no incluye envío: el flete se cotiza aparte según la ciudad de destino.
+              </p>
+            )}
+            {llegada && (
+              <p class="ficha-precio-unitario ficha-preorden">
+                <i class="fas fa-calendar-alt" aria-hidden="true"></i>
+                Preorden. Ingreso estimado: {llegada}.
+              </p>
+            )}
             <p class="ficha-addi">
               <span>{addiHint}</span>
               <img src="/images/Addi.png" alt="Addi" class="ficha-addi-logo" loading="lazy" decoding="async" />
@@ -1029,6 +1049,16 @@ const precioUnitario = etiquetaPrecioPorUnidad(
 
   .ficha-precio-unitario i {
     color: #6b2181;
+  }
+
+  .ficha-envio-incluido {
+    color: #047857 !important;
+    font-weight: 700;
+  }
+
+  .ficha-preorden {
+    color: #92400e !important;
+    font-weight: 700;
   }
 
   .specs-grupo {

@@ -66,6 +66,8 @@ const productosCollection = defineCollection({
     certificadoPdf: z.string().optional(),
     /** Fecha estimada de llegada (AAAA-MM-DD). Google Merchant la exige para productos en pre-orden. */
     fechaDisponibilidad: z.coerce.string().optional(),
+    /** Aviso de flete, por ejemplo envío incluido a ciudades principales. */
+    avisoEnvio: z.string().max(140).optional(),
     order: z.number().optional(),
     /** Oculta el producto de la tienda, los listados y el sitemap. */
     draft: z.boolean().optional(),

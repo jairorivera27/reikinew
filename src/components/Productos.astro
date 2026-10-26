@@ -4,6 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import { urlProducto } from '../config/categorias-tienda';
 import { calcularValor, type ResultadoValor } from '../utils/calidadPrecio';
 import { estaRebajado } from '../utils/descuentos';
+import { visibleEnListadoTienda } from '../utils/catalogoVisible';
 import Icon from './Icon.astro';
 
 const MAX_CAROUSEL = 8;
@@ -14,7 +15,9 @@ const MAX_PROMOS = 4;
  * Accesorios como breakers o fusibles ganan por precio unitario pero no representan la tienda.
  */
 const CATEGORIAS_PRINCIPALES = ['paneles', 'inversores', 'baterias', 'controladores', 'bombeo'];
-const productos = await getCollection('productos', ({ data }) => data.draft !== true);
+const productos = (await getCollection('productos', ({ data }) => data.draft !== true)).filter((p) =>
+  visibleEnListadoTienda(p.data)
+);
 
 /**
  * Puntaje y distintivo de calidad-precio por producto (comparación dentro de cada categoría).
