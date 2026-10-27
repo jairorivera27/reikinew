@@ -13,7 +13,12 @@ import {
   loadEmpresa,
 } from './_lib/cotizacion-store.js';
 import { renderCotizacionPdfBuffer } from './_lib/cotizacion-pdf.js';
-import { getProductById, formatPriceCop, alternativasAgotadas } from './_lib/whatsapp-catalog.js';
+import {
+  getProductById,
+  formatPriceCop,
+  alternativasAgotadas,
+  enrichItemsForCotizacion,
+} from './_lib/whatsapp-catalog.js';
 import { notifyOwner, getWhatsAppConfig } from './_lib/whatsapp.js';
 import { formatPhoneCO as formatPhone } from './_lib/phone.js';
 
@@ -185,22 +190,7 @@ export default async function handler(req, res) {
         return res.end(JSON.stringify({ ok: false, error: 'autorizacion_requerida' }));
       }
 
-      const items = itemsIn.map((it) => {
-        const priceNum =
-          Number(String(it.price || it.precio_unit || '').replace(/[^0-9]/g, '')) ||
-          Number(it.precio_unit || 0);
-        return {
-          id: it.id || it.slug || it.sku,
-          sku: it.sku || '',
-          nombre: it.title || it.nombre || 'Producto',
-          marca: it.brand || it.marca || '',
-          cantidad: Number(it.quantity || it.cantidad || 1) || 1,
-          precio_unit: priceNum,
-          imagen: it.image || it.imagen || '',
-          url: it.url || (it.id ? `${site}/tienda/${it.id}` : ''),
-          specs: it.specs || [],
-        };
-      });
+      const items = enrichItemsForCotizacion(itemsIn, site);
 
       const doc = await createCotizacion({
         origen: 'web',

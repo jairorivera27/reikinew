@@ -128,7 +128,11 @@ export function renderCotizacionHtml(datos) {
     .map(
       (it) => `
       <tr>
-        <td><img class="thumb" src="${esc(it.imagen)}" alt=""></td>
+        <td>${
+          it.imagen
+            ? `<img class="thumb" src="${esc(it.imagen)}" alt="">`
+            : '<span class="thumb thumb--empty"></span>'
+        }</td>
         <td>${esc(it.sku)}</td>
         <td class="desc"><b>${esc(it.nombre)}</b><small>${esc(it.marca || '')}</small>${
           it.precioFinal ? '' : '<span class="tag-iva">+ IVA</span>'
@@ -141,17 +145,25 @@ export function renderCotizacionHtml(datos) {
     .join('');
 
   const prodDetail = items
-    .map(
-      (it) => `
+    .map((it) => {
+      const specsHtml = (it.specs || []).length
+        ? `<ul>${(it.specs || []).map((s) => `<li>${esc(s)}</li>`).join('')}</ul>`
+        : '';
+      const imgHtml = it.imagen
+        ? `<img src="${esc(it.imagen)}" alt="">`
+        : '<div class="prod-ph"></div>';
+      return `
   <div class="prod">
-    <img src="${esc(it.imagen)}" alt="">
+    ${imgHtml}
     <div>
       <h5>${esc(it.cantidad)} ud. · ${esc(it.nombre)}</h5>
-      <ul>${(it.specs || []).map((s) => `<li>${esc(s)}</li>`).join('')}</ul>
-      <div class="links"><a href="${esc(it.url)}">Ver producto en la tienda ›</a> · Código ${esc(it.sku)}</div>
+      ${specsHtml}
+      <div class="links"><a href="${esc(it.url)}">Ver producto en la tienda ›</a>${
+        it.sku ? ` · Código ${esc(it.sku)}` : ''
+      }</div>
     </div>
-  </div>`
-    )
+  </div>`;
+    })
     .join('');
 
   const estBox = est
@@ -215,6 +227,8 @@ export function renderCotizacionHtml(datos) {
   .items td { padding: 1.6mm 2.4mm; border-bottom: .3mm solid var(--linea); vertical-align: middle; }
   .items tr:nth-child(even) td { background: #fbf9fc; }
   .items .thumb { width: 10mm; height: 10mm; object-fit: contain; background: #fff; border: .3mm solid var(--linea); border-radius: 1.2mm; display: block; }
+  .items .thumb--empty { background: var(--lila); }
+  .prod-ph { width: 19mm; height: 19mm; border: .3mm solid var(--linea); border-radius: 2mm; background: var(--lila); }
   .items .desc b { display: block; }
   .items .desc small { color: var(--gris); }
   .totales { display: grid; grid-template-columns: ${t.mostrarIva ? '1fr 1fr 0.9fr 1.15fr' : '1fr 0.9fr 1.15fr'}; margin-top: 4mm; border-radius: 2mm; overflow: hidden; }

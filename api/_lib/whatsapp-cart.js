@@ -3,7 +3,13 @@
  * Precios siempre del catálogo al agregar.
  */
 import { getRedis, waKey } from './whatsapp-redis.js';
-import { getProductById, parsePriceCop, formatPriceCop, alternativasAgotadas } from './whatsapp-catalog.js';
+import {
+  getProductById,
+  parsePriceCop,
+  formatPriceCop,
+  alternativasAgotadas,
+  enrichItemsForCotizacion,
+} from './whatsapp-catalog.js';
 import {
   sendText,
   sendButtons,
@@ -135,26 +141,26 @@ function extractPotenciaW(nombre) {
 }
 
 function cartItemsForQuote(cart) {
-  return (cart?.items || []).map((it) => {
-    const product = getProductById(it.slug || it.sku);
-    const potencia = it.potencia_w || extractPotenciaW(it.nombre) || extractPotenciaW(product?.nombre);
-    let imagen = it.imagen || product?.imagen || '';
-    if (imagen && !/^https?:\/\//i.test(imagen)) {
-      imagen = product?.imagen || imagen;
-    }
-    return {
+  return enrichItemsForCotizacion(
+    (cart?.items || []).map((it) => ({
       id: it.slug,
+      slug: it.slug,
       sku: it.sku,
+      title: it.nombre,
       nombre: it.nombre,
-      marca: it.marca || product?.marca || '',
+      brand: it.marca,
+      marca: it.marca,
+      quantity: it.cantidad,
       cantidad: it.cantidad,
       precio_unit: it.precioNum,
-      imagen,
-      url: it.url || product?.url || '',
-      specs: (product?.specs || it.specs || []).slice(0, 6),
-      potencia_w: potencia,
-    };
-  });
+      price: it.precioNum,
+      imagen: it.imagen,
+      url: it.url,
+      specs: it.specs,
+      potencia_w: it.potencia_w || extractPotenciaW(it.nombre),
+      categoria: it.categoria,
+    }))
+  );
 }
 
 function textoAgotados(bloqueos) {

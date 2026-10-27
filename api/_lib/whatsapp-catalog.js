@@ -170,7 +170,7 @@ export function publicImageUrl(imagePath) {
 
 function mapProduct(p) {
   const site = siteUrl();
-  const specs = Array.isArray(p.specifications) ? p.specifications.slice(0, 4) : [];
+  const specs = Array.isArray(p.specifications) ? p.specifications.slice(0, 8) : [];
   const categoria = p.category || '';
   const precioFinal = isPrecioFinal({ categoria, nombre: p.title });
   return {
@@ -190,6 +190,67 @@ function mapProduct(p) {
     imagen: publicImageUrl(p.image),
     url: `${site}/tienda/${p.slug}`,
   };
+}
+
+function potenciaDesdeTexto(...parts) {
+  for (const part of parts) {
+    const s = String(part || '');
+    const kw = s.match(/([\d.,]+)\s*k\s*w\b/i);
+    if (kw && !/k\s*wh/i.test(s)) {
+      const n = parseFloat(kw[1].replace(',', '.'));
+      if (Number.isFinite(n) && n > 0) return Math.round(n * 1000);
+    }
+    const w = s.match(/(\d{3,4})\s*w\b/i);
+    if (w && !/k\s*w/i.test(s.slice(Math.max(0, w.index - 1), w.index + w[0].length))) {
+      return Number(w[1]);
+    }
+  }
+  return undefined;
+}
+
+/**
+ * Completa foto, specs, sku y URL desde el catálogo para cotizaciones (web o WhatsApp).
+ * El carrito web solo guarda precio e imagen relativa; sin esto el PDF sale sin ficha técnica.
+ */
+export function enrichItemsForCotizacion(items, siteOverride) {
+  const site = String(siteOverride || siteUrl()).replace(/\/$/, '');
+  return (items || []).map((it) => {
+    const key = it.id || it.slug || it.sku || '';
+    const product = getProductById(key) || (it.sku ? getProductById(it.sku) : null);
+    const priceNum =
+      Number(String(it.price || it.precio_unit || '').replace(/[^0-9]/g, '')) ||
+      Number(it.precio_unit || it.precioNum || 0) ||
+      product?.precioNum ||
+      0;
+    let imagen = String(it.image || it.imagen || '').trim();
+    if (product?.imagen) {
+      imagen = product.imagen;
+    } else if (imagen) {
+      imagen = publicImageUrl(imagen);
+    }
+    const specsRaw =
+      (product?.specs && product.specs.length ? product.specs : null) ||
+      (Array.isArray(it.specs) ? it.specs : []) ||
+      [];
+    const slug = product?.slug || it.slug || it.id || '';
+    const nombre = product?.nombre || it.title || it.nombre || 'Producto';
+    return {
+      id: slug || key,
+      sku: product?.sku || it.sku || '',
+      nombre,
+      marca: product?.marca || it.brand || it.marca || '',
+      cantidad: Number(it.quantity || it.cantidad || 1) || 1,
+      precio_unit: priceNum,
+      imagen,
+      url: product?.url || it.url || (slug ? `${site}/tienda/${slug}` : ''),
+      specs: specsRaw.slice(0, 8),
+      potencia_w:
+        it.potencia_w != null
+          ? Number(it.potencia_w)
+          : potenciaDesdeTexto(product?.power, product?.nombre, nombre),
+      categoria: product?.categoria || it.categoria || it.category || '',
+    };
+  });
 }
 
 /** Detecta intención de buscar equipos (sin IA). */
