@@ -361,6 +361,62 @@ export function getProductById(id) {
   return null;
 }
 
+function magnitudEquipo(p) {
+  const info = productPowerInfo(p);
+  if (!info) return null;
+  if (info.unit === 'kwh') return { n: info.value, unit: 'kwh' };
+  if (info.unit === 'kw') return { n: info.value * 1000, unit: 'w' };
+  return { n: info.value, unit: 'w' };
+}
+
+function estaDisponible(p) {
+  return (p.stock || 'disponible') === 'disponible' && p.draft !== true;
+}
+
+function equipoSimilarDisponible(agotado) {
+  const cat = norm(agotado.category);
+  const marca = norm(agotado.brand);
+  const base = magnitudEquipo(agotado);
+  let mejor = null;
+  let mejorPuntaje = Infinity;
+  for (const candidato of loadIndex()) {
+    if (candidato.slug === agotado.slug) continue;
+    if (!estaDisponible(candidato)) continue;
+    if (norm(candidato.category) !== cat) continue;
+    const mag = magnitudEquipo(candidato);
+    let distancia = 8000;
+    if (base && mag && base.unit === mag.unit) distancia = Math.abs(base.n - mag.n);
+    if (marca && norm(candidato.brand) === marca) distancia -= 40;
+    if (distancia < mejorPuntaje) {
+      mejorPuntaje = distancia;
+      mejor = candidato;
+    }
+  }
+  if (!mejor) return null;
+  const pub = mapProduct(mejor);
+  return { nombre: pub.nombre, precio: pub.precio, url: `/tienda/${mejor.slug}`, slug: mejor.slug };
+}
+
+/**
+ * Ítems de una cotización que están agotados, con un equipo similar disponible.
+ * @param {Array<{ id?: string, slug?: string, sku?: string, title?: string, nombre?: string }>} items
+ */
+export function alternativasAgotadas(items) {
+  const index = loadIndex();
+  const bloqueos = [];
+  for (const it of items || []) {
+    const key = norm(it.id || it.slug || it.sku || '');
+    if (!key) continue;
+    const p = index.find((x) => norm(x.slug) === key || norm(x.sku) === key);
+    if (!p || p.stock !== 'agotado') continue;
+    bloqueos.push({
+      nombre: p.title || it.title || it.nombre || 'Este equipo',
+      similar: equipoSimilarDisponible(p),
+    });
+  }
+  return bloqueos;
+}
+
 function trunc(s, n) {
   const t = String(s || '').trim();
   if (t.length <= n) return t;

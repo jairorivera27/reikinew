@@ -13,7 +13,7 @@ import {
   loadEmpresa,
 } from './_lib/cotizacion-store.js';
 import { renderCotizacionPdfBuffer } from './_lib/cotizacion-pdf.js';
-import { getProductById, formatPriceCop } from './_lib/whatsapp-catalog.js';
+import { getProductById, formatPriceCop, alternativasAgotadas } from './_lib/whatsapp-catalog.js';
 import { notifyOwner, getWhatsAppConfig } from './_lib/whatsapp.js';
 import { formatPhoneCO as formatPhone } from './_lib/phone.js';
 
@@ -154,8 +154,20 @@ export default async function handler(req, res) {
         return res.end(JSON.stringify({ ok: true }));
       }
 
-      // Crear cotización web + PDF
       const itemsIn = Array.isArray(body.items) ? body.items : [];
+      if (action === 'revisar' || !action) {
+        const bloqueos = alternativasAgotadas(itemsIn);
+        if (bloqueos.length) {
+          res.statusCode = action === 'revisar' ? 200 : 409;
+          return res.end(JSON.stringify({ ok: false, error: 'agotado', bloqueos }));
+        }
+        if (action === 'revisar') {
+          res.statusCode = 200;
+          return res.end(JSON.stringify({ ok: true }));
+        }
+      }
+
+      // Crear cotización web + PDF
       if (!itemsIn.length) {
         res.statusCode = 400;
         return res.end(JSON.stringify({ ok: false, error: 'items_requeridos' }));

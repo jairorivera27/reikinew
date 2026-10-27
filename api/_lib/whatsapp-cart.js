@@ -3,7 +3,7 @@
  * Precios siempre del catálogo al agregar.
  */
 import { getRedis, waKey } from './whatsapp-redis.js';
-import { getProductById, parsePriceCop, formatPriceCop } from './whatsapp-catalog.js';
+import { getProductById, parsePriceCop, formatPriceCop, alternativasAgotadas } from './whatsapp-catalog.js';
 import {
   sendText,
   sendButtons,
@@ -155,6 +155,17 @@ function cartItemsForQuote(cart) {
       potencia_w: potencia,
     };
   });
+}
+
+function textoAgotados(bloqueos) {
+  return bloqueos
+    .map((b) => {
+      if (b.similar) {
+        return `*${b.nombre}* no está disponible.\nSí está disponible un equipo similar: *${b.similar.nombre}* (${b.similar.precio}).`;
+      }
+      return `*${b.nombre}* no está disponible en este momento.`;
+    })
+    .join('\n\n');
 }
 
 /** Generar PDF real: pide nombre/ciudad/(celular BSUID), habeas si falta, envía documento WA. */
@@ -728,6 +739,11 @@ export async function startPurchaseClose(from, cfg = getWhatsAppConfig()) {
   }
 
   if (!doc && !sum.vacio) {
+    const bloqueos = alternativasAgotadas(cart.items);
+    if (bloqueos.length) {
+      await sendText({ to: from, body: textoAgotados(bloqueos), cfg });
+      return { ok: false, agotado: true };
+    }
     const nombre = String(s.data.nombre || 'Cliente').trim();
     const ciudad = String(s.data.ciudad || '').trim();
     const telefono =

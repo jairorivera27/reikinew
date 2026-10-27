@@ -2346,7 +2346,7 @@ const marcasLoop = [...marcasConSrc, ...marcasConSrc];
             <div class="producto-footer-compact">
               <div class="producto-price">${escapar(p.price)}</div>
               ${p.llegada ? `<p class="producto-aviso-llegada">Ingreso ${escapar(p.llegada)}</p>` : ''}
-              ${p.avisoEnvio ? `<p class="producto-aviso-envio">${escapar(p.avisoEnvio)}</p>` : ''}
+              ${p.avisoEnvio ? `<p class="producto-aviso-envio"><i class="fas fa-truck" aria-hidden="true"></i> <span>${escapar(p.avisoEnvio)}</span></p>` : ''}
               <a class="producto-ver-detalles" href="${escapar(p.url)}">Ver detalles</a>
             </div>
           </div>

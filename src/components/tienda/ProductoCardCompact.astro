@@ -99,7 +99,12 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
       </div>
       <p class="producto-precio-unitario" aria-hidden={precioUnitario ? undefined : "true"}>{precioUnitario || "\u00a0"}</p>
       {llegada && <p class="producto-aviso-llegada">Ingreso {llegada}</p>}
-      {d.avisoEnvio && <p class="producto-aviso-envio">{d.avisoEnvio}</p>}
+      {d.avisoEnvio && (
+        <p class="producto-aviso-envio">
+          <i class="fas fa-truck" aria-hidden="true"></i>
+          <span>{d.avisoEnvio}</span>
+        </p>
+      )}
       <p class="producto-addi-hint">
         <span>{addiHint}</span>
         <img src="/images/Addi.png" alt="Addi" class="producto-addi-logo" loading="lazy" decoding="async" />
@@ -396,7 +401,30 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
   }
 
   .producto-aviso-envio {
-    color: #047857;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    margin: 0.45rem 0 0;
+    padding: 0.45rem 0.55rem;
+    border-radius: 10px;
+    background: #059669;
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 800;
+    line-height: 1.25;
+    text-align: center;
+    white-space: normal;
+    box-shadow: 0 6px 14px rgba(5, 150, 105, 0.28);
+  }
+
+  .producto-aviso-envio span {
+    min-width: 0;
+    flex: 1;
   }
 
   .producto-badge-valor {
@@ -541,9 +569,19 @@ const precioUnitario = etiquetaPrecioPorUnidad(valor);
   }
 
   @media (max-width: 768px) {
-    .producto-card {
-      min-width: 245px;
-      max-width: 245px;
+    .producto-card .qty-btn {
+      width: 44px;
+      height: 44px;
+    }
+
+    .producto-card .qty-input {
+      width: 36px;
+      height: 44px;
+    }
+
+    .producto-card .producto-btn.add-to-cart {
+      min-height: 44px;
+      scroll-margin-top: 5.5rem;
     }
 
     .producto-image-container {

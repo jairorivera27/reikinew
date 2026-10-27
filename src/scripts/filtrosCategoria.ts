@@ -304,7 +304,7 @@ function iniciar(): void {
             }${precioAnterior}</div>
             ${precioUnitario}
             ${p.llegada ? `<p class="producto-aviso-llegada">Ingreso ${escapar(p.llegada)}</p>` : ''}
-            ${p.avisoEnvio ? `<p class="producto-aviso-envio">${escapar(p.avisoEnvio)}</p>` : ''}
+            ${p.avisoEnvio ? `<p class="producto-aviso-envio"><i class="fas fa-truck" aria-hidden="true"></i> <span>${escapar(p.avisoEnvio)}</span></p>` : ''}
             <p class="producto-addi-hint">
               <span>${cuotaAddi(p.priceNum)}</span>
               <img src="/images/Addi.png" alt="Addi" class="producto-addi-logo" loading="lazy" decoding="async" />

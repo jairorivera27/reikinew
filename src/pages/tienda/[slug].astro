@@ -260,18 +260,19 @@ const precioUnitario = etiquetaPrecioPorUnidad(
                 </>
               )}
             </p>
+            {d.avisoEnvio && (
+              <p class="ficha-envio-banner">
+                <i class="fas fa-truck" aria-hidden="true"></i>
+                <span>{d.avisoEnvio}</span>
+              </p>
+            )}
             {precioUnitario && (
               <p class="ficha-precio-unitario">
                 <i class="fas fa-calculator" aria-hidden="true"></i>
                 {precioUnitario} · sirve para comparar este equipo con otros de su categoría
               </p>
             )}
-            {d.avisoEnvio ? (
-              <p class="ficha-precio-unitario ficha-envio-incluido">
-                <i class="fas fa-truck" aria-hidden="true"></i>
-                {d.avisoEnvio}
-              </p>
-            ) : (
+            {d.avisoEnvio ? null : (
               <p class="ficha-precio-unitario ficha-no-envio">
                 <i class="fas fa-truck" aria-hidden="true"></i>
                 El precio no incluye envío: el flete se cotiza aparte según la ciudad de destino.
@@ -1051,9 +1052,25 @@ const precioUnitario = etiquetaPrecioPorUnidad(
     color: #6b2181;
   }
 
-  .ficha-envio-incluido {
-    color: #047857 !important;
-    font-weight: 700;
+  .ficha-envio-banner {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin: 0.9rem 0 0;
+    padding: 0.95rem 1.05rem;
+    border-radius: 14px;
+    background: linear-gradient(135deg, #059669 0%, #047857 100%);
+    color: #fff;
+    font-size: 1.08rem;
+    font-weight: 800;
+    line-height: 1.25;
+    letter-spacing: 0.01em;
+    box-shadow: 0 10px 22px rgba(4, 120, 87, 0.28);
+  }
+
+  .ficha-envio-banner i {
+    font-size: 1.35rem;
+    flex-shrink: 0;
   }
 
   .ficha-preorden {
@@ -1329,18 +1346,136 @@ const precioUnitario = etiquetaPrecioPorUnidad(
       font-size: 1.6rem;
     }
 
+    .ficha-container {
+      padding: 0 0.85rem;
+    }
+
+    .migas {
+      margin-bottom: 0.75rem;
+    }
+
+    .migas span[aria-current='page'] {
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      max-width: 46vw;
+    }
+
     .ficha {
-      grid-template-columns: 1fr;
-      padding: 1.25rem;
-      gap: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      gap: 1rem;
+      border-radius: 16px;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .ficha-media {
+      order: 2;
+      min-height: 0;
+      min-width: 0;
+      padding: 0.75rem;
+    }
+
+    .ficha-info {
+      order: 1;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      max-width: 100%;
+    }
+
+    .ficha-info > * { order: 40; }
+    .ficha-info > .ficha-marca { order: 1; }
+    .ficha-info > .ficha-titulo { order: 2; }
+    .ficha-info > .ficha-precio { order: 3; }
+    .ficha-info > .ficha-envio-banner { order: 4; }
+    .ficha-info > .ficha-no-envio { order: 5; }
+    .ficha-info > .ficha-acciones { order: 6; }
+    .ficha-info > .ficha-identificadores { order: 7; }
+    .ficha-info > .ficha-precio-unitario { order: 8; }
+    .ficha-info > .ficha-preorden { order: 9; }
+    .ficha-info > .ficha-addi { order: 10; }
+    .ficha-info > .ficha-acciones-secundarias { order: 11; }
+    .ficha-info > .pago-confianza,
+    :global(.ficha-info) > :global(.pago-confianza) { order: 20; }
+
+    .ficha-media img,
+    .ficha-media--provisional img {
+      max-width: 100%;
+      max-height: 220px;
     }
 
     .ficha-titulo {
-      font-size: 1.4rem;
+      font-size: 1.2rem;
     }
 
-    .ficha-btn-primario {
+    .ficha-identificadores {
+      margin-bottom: 0.75rem;
+      padding: 0.55rem 0;
+    }
+
+    .ficha-precio {
+      font-size: 1.75rem;
+    }
+
+    .ficha-main {
+      padding-bottom: 6rem;
+    }
+
+    .ficha-envio-banner {
+      font-size: 1.02rem;
+      padding: 0.9rem 0.85rem;
+    }
+
+    .ficha-acciones {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .ficha-btn-primario,
+    .ficha-btn-secundario {
+      width: 100%;
       min-width: 0;
+      min-height: 48px;
+    }
+
+    .quantity-controls {
+      width: 100%;
+      min-height: 48px;
+      justify-content: space-between;
+    }
+
+    .qty-btn {
+      width: 52px;
+      height: 48px;
+    }
+
+    .qty-input {
+      flex: 1;
+      width: auto;
+      height: 48px;
+    }
+
+    .ficha-acciones-secundarias {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.55rem;
+    }
+
+    .ficha-btn-whatsapp,
+    .ficha-btn-compartir {
+      justify-content: center;
+      min-height: 48px;
+      padding: 0.65rem 0.4rem;
+      border-radius: 12px;
+      background: #f4fbf8;
+    }
+
+    .ficha-btn-compartir {
+      background: #f7f2fa;
     }
   }
 </style>
