@@ -189,6 +189,8 @@ function mapProduct(p) {
     specs,
     imagen: publicImageUrl(p.image),
     url: `${site}/tienda/${p.slug}`,
+    avisoEnvio: String(p.avisoEnvio || '').trim(),
+    envioIncluido: Boolean(String(p.avisoEnvio || '').trim()),
   };
 }
 
@@ -249,6 +251,8 @@ export function enrichItemsForCotizacion(items, siteOverride) {
           ? Number(it.potencia_w)
           : potenciaDesdeTexto(product?.power, product?.nombre, nombre),
       categoria: product?.categoria || it.categoria || it.category || '',
+      envioIncluido: Boolean(product?.envioIncluido || it.envioIncluido),
+      avisoEnvio: product?.avisoEnvio || it.avisoEnvio || '',
     };
   });
 }

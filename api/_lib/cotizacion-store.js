@@ -171,10 +171,14 @@ export async function createCotizacion(opts) {
       categoria,
       precioFinal,
       excluidoIva: precioFinal,
+      envioIncluido: Boolean(it.envioIncluido),
     };
   });
 
-  const envio = opts.envio == null ? null : Number(opts.envio) || 0;
+  const todosEnvioIncluido = items.length > 0 && items.every((it) => it.envioIncluido);
+  const envioIncluido = Boolean(opts.envioIncluido) || todosEnvioIncluido;
+  const envio =
+    opts.envio != null ? Number(opts.envio) || 0 : envioIncluido ? 0 : null;
   const calc = calcTotalesIva(
     items.map((it) => ({
       price: it.precio_unit,
@@ -205,6 +209,7 @@ export async function createCotizacion(opts) {
     },
     items,
     envio,
+    envioIncluido,
     subtotal: calc.subtotal,
     subtotal_excluido: calc.subtotalPrecioFinal,
     subtotal_base: calc.subtotalGravado,
@@ -338,6 +343,7 @@ export function toRenderPayload(doc, assetBase) {
     cliente: doc.cliente,
     items: doc.items,
     envio: doc.envio,
+    envioIncluido: Boolean(doc.envioIncluido),
     assetBase: assetBase || 'https://reikisolar.com.co',
   };
 }

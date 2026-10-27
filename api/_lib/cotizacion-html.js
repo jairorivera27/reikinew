@@ -100,7 +100,14 @@ export function renderCotizacionHtml(datos) {
     };
   });
 
-  const envio = datos.envio == null ? null : Number(datos.envio) || 0;
+  const envioIncluido =
+    Boolean(datos.envioIncluido) ||
+    (items.length > 0 && items.every((it) => it.envioIncluido));
+  const envio = envioIncluido
+    ? 0
+    : datos.envio == null
+      ? null
+      : Number(datos.envio) || 0;
   const calc = calcTotalesIva(
     items.map((it) => ({
       price: it.precio_unit,
@@ -116,8 +123,9 @@ export function renderCotizacionHtml(datos) {
     subtotal: formatCopPdf(calc.subtotal),
     iva: formatCopPdf(calc.iva),
     total: formatCopPdf(calc.total),
-    envio: envio != null ? formatCopPdf(envio) : 'No incluido',
-    envio_pend: envio == null,
+    envio: envioIncluido ? 'Envío incluido' : envio != null ? formatCopPdf(envio) : 'No incluido',
+    envio_pend: !envioIncluido && envio == null,
+    envioIncluido,
     mostrarIva: calc.mostrarIva,
   };
 
@@ -337,7 +345,13 @@ export function renderCotizacionHtml(datos) {
     <div><span>Envío</span><b>${esc(t.envio)}</b></div>
     <div class="total"><span>Total</span><b>${esc(t.total)}</b></div>
   </div>
-  <p class="nota-iva">${IVA_NOTA}${t.envio_pend ? ' El total no incluye envío: el flete se cotiza aparte según el destino.' : ''}</p>
+  <p class="nota-iva">${IVA_NOTA}${
+    t.envioIncluido
+      ? ' El envío a ciudades principales está incluido en esta cotización.'
+      : t.envio_pend
+        ? ' El total no incluye envío: el flete se cotiza aparte según el destino.'
+        : ''
+  }</p>
 
   <div class="cta">
     <div class="l"><small>¿Listo para continuar?</small><b>Completa tu compra en línea en minutos</b><p class="ctaw">¿Dudas? Atención personalizada por WhatsApp: <a href="${esc(e.atencion.whatsapp_url)}"><b>${esc(e.atencion.telefono)}</b></a></p></div>
@@ -381,7 +395,11 @@ export function renderCotizacionHtml(datos) {
     <ol>
       <li>Oferta válida por ${esc(c.validez)}. Los precios pueden cambiar por variaciones de la TRM o del proveedor.</li>
       <li>${IVA_NOTA} Productos sujetos a disponibilidad de inventario al momento del pago.</li>
-      <li>El envío nacional no está incluido salvo que aparezca en esta cotización; se cotiza según el destino. También puedes recoger en nuestra sede en Medellín.</li>
+      <li>${
+        t.envioIncluido
+          ? 'El envío a ciudades principales está incluido en esta cotización. También puedes recoger en nuestra sede en Medellín.'
+          : 'El envío nacional no está incluido salvo que aparezca en esta cotización; se cotiza según el destino. También puedes recoger en nuestra sede en Medellín.'
+      }</li>
       <li>Los equipos cuentan con la garantía directa del fabricante; Reiki Energía Solar te acompaña en el trámite ante defectos de fábrica. La garantía no cubre mala manipulación, instalación por personal no certificado ni daños por falta de protecciones DC/AC exigidas por el RETIE.</li>
       <li>Antes de comprar verifica tensión, capacidad y compatibilidad entre equipos; nuestro ingeniero te ayuda sin costo en el WhatsApp ${esc(e.atencion.telefono)}.</li>
       <li>Derecho de retracto: 5 días hábiles desde la entrega (Ley 1480 de 2011), con el producto sin uso y en su empaque original.</li>

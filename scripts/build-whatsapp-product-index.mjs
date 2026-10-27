@@ -50,6 +50,7 @@ for (const f of files) {
     model: getScalar(fm, 'model'),
     specifications: getList(fm, 'specifications'),
     stock: getScalar(fm, 'stock') || 'disponible',
+    avisoEnvio: getScalar(fm, 'avisoEnvio') || '',
   });
 }
 
