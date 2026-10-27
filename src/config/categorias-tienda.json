@@ -92,6 +92,16 @@
       "tipoSingular": "Aire acondicionado",
       "imagenPorDefecto": "/images/placeholders/accesorios.svg",
       "descripcionSeo": "Aires acondicionados compatibles con sistemas solares, para climatizar con menor consumo de red."
+    },
+    {
+      "id": "estructuras",
+      "nombre": "Estructura solar",
+      "slug": "estructura-solar",
+      "icono": "fas fa-border-all",
+      "orden": 10,
+      "tipoSingular": "Estructura solar",
+      "imagenPorDefecto": "/images/placeholders/estructuras.svg",
+      "descripcionSeo": "Rieles, abrazaderas y estructuras de montaje para paneles solares en techos y suelo, con envío a toda Colombia."
     }
   ],
 
@@ -108,7 +118,9 @@
     "Bomba": "bombeo",
     "Accesorio": "accesorios",
     "Luminaria": "reflectores",
-    "Reflector": "reflectores"
+    "Reflector": "reflectores",
+    "Estructura": "estructuras",
+    "Riel": "estructuras"
   },
 
   "_notaImagenes": "El Excel no trae URLs de imagen. El importador usa el logo de la marca cuando existe en logosPorMarca; si no, cae al imagenPorDefecto de la categoría y marca el producto con imagenPendiente: true.",

@@ -14,7 +14,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 export const DEFAULT_IVA_TASA = 0.19;
-export const DEFAULT_PRECIO_FINAL = ['paneles', 'inversores', 'reflectores', 'bombeo'];
+export const DEFAULT_PRECIO_FINAL = ['paneles', 'inversores', 'reflectores', 'bombeo', 'estructuras'];
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -168,4 +168,4 @@ export function formatCopCart(v) {
 }
 
 export const IVA_NOTA =
-  'Paneles, inversores, reflectores y bombeo solar: precio final. Los demás productos: se adiciona IVA del 19 %.';
+  'Paneles, inversores, reflectores, bombeo solar y estructura solar: precio final. Los demás productos: se adiciona IVA del 19 %.';

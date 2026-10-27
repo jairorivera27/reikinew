@@ -1,13 +1,13 @@
 /**
  * IVA compartido (espejo de api/_lib/iva.js).
- * precio_final: paneles, inversores, reflectores, bombeo — sin IVA adicional.
+ * precio_final: paneles, inversores, reflectores, bombeo, estructuras — sin IVA adicional.
  * resto: IVA = redondeo(precio × 0.19) por ítem; total = precio + IVA.
  */
 export const DEFAULT_IVA_TASA = 0.19;
-export const DEFAULT_PRECIO_FINAL = ['paneles', 'inversores', 'reflectores', 'bombeo'];
+export const DEFAULT_PRECIO_FINAL = ['paneles', 'inversores', 'reflectores', 'bombeo', 'estructuras'];
 
 export const IVA_NOTA =
-  'Paneles, inversores, reflectores y bombeo solar: precio final. Los demás productos: se adiciona IVA del 19 %.';
+  'Paneles, inversores, reflectores, bombeo solar y estructura solar: precio final. Los demás productos: se adiciona IVA del 19 %.';
 
 export type LineaIva = {
   price: number;

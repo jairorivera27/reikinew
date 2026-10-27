@@ -86,6 +86,11 @@
       "_nota": "Incluye monitoreo y medición: dongles, dataloggers, medidores, cables, sensores y piezas de campo.",
       "marcasDemandadas": ["Huawei", "Hoymiles", "APsystems", "Growatt", "Victron", "Fronius", "GoodWe"],
       "modelosEstrella": ["dongle", "accesorio", "dtu", "ecu", "optimizer", "optimizador", "trunk", "end cap", "datalogger", "medidor", "shunt"]
+    },
+    "estructuras": {
+      "_nota": "Montaje de paneles: rieles Elite y abrazaderas son el volumen diario de instalación.",
+      "marcasDemandadas": ["PV Ezrack", "Alurack", "Schletter", "K2 Systems"],
+      "modelosEstrella": ["riel", "elite", "er-r-elt", "clamp", "abrazadera", "riel"]
     }
   }
 }

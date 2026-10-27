@@ -18,7 +18,7 @@
     "whatsapp_url": "https://wa.me/573245737413"
   },
   "iva": {
-    "precio_final": ["paneles", "inversores", "reflectores", "bombeo"],
+    "precio_final": ["paneles", "inversores", "reflectores", "bombeo", "estructuras"],
     "tasa": 0.19
   }
 }

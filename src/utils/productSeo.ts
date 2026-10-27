@@ -25,6 +25,7 @@ function categoryLabel(category: string): string {
     protecciones: 'proteccion electrica solar',
     bombeo: 'bomba solar',
     accesorios: 'accesorio solar',
+    estructuras: 'estructura solar',
   };
   return map[category] || 'equipo solar';
 }

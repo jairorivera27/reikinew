@@ -11,6 +11,7 @@ export const CATEGORY_LABEL_ES: Record<string, string> = {
   bombeo: 'Bomba solar',
   accesorios: 'Accesorio',
   'aires-acondicionados': 'Aire acondicionado',
+  estructuras: 'Estructura solar',
 };
 
 export type TipoInversor = 'On-Grid' | 'Off-Grid' | 'Híbrido' | 'Microinversor';

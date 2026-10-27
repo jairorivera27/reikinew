@@ -96,6 +96,18 @@ const DIBUJOS = {
       <path d="M-18 28 L-18 58 L18 58 L18 28" fill="none" stroke="${MORADO}" stroke-width="6" stroke-linejoin="round"/>
       <circle cx="0" cy="58" r="10" fill="${MORADO}"/>
     </g>`,
+  estructuras: `
+    <g transform="translate(200 130)">
+      <rect x="-110" y="-22" width="220" height="44" rx="6" fill="none" stroke="${MORADO}" stroke-width="6"/>
+      <path d="M-90 -6 H90 M-90 6 H90 M-90 16 H60" stroke="${MORADO_CLARO}" stroke-width="4" stroke-linecap="round"/>
+      <path d="M-70 28 L-50 52 M0 28 L0 56 M70 28 L50 52" stroke="${MORADO}" stroke-width="5" stroke-linecap="round"/>
+    </g>`,
+  'aires-acondicionados': `
+    <g transform="translate(200 130)">
+      <rect x="-70" y="-40" width="140" height="80" rx="12" fill="none" stroke="${MORADO}" stroke-width="6"/>
+      <path d="M-40 -10 H40 M-40 10 H40 M-40 30 H20" stroke="${MORADO_CLARO}" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="48" cy="-28" r="10" fill="${MORADO}"/>
+    </g>`,
 };
 
 function svg(cat) {

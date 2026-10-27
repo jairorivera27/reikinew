@@ -420,7 +420,7 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
     }
 
     var IVA_RATE_CHECKOUT = 0.19;
-    var PRECIO_FINAL_CATS = ['paneles', 'inversores', 'reflectores', 'bombeo'];
+    var PRECIO_FINAL_CATS = ['paneles', 'inversores', 'reflectores', 'bombeo', 'estructuras'];
     function normIvaCheckout(s) {
       return String(s || '')
         .normalize('NFD')
@@ -1079,7 +1079,7 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
 
     function updateTotals(cart) {
       var IVA_RATE = 0.19;
-      var PRECIO_FINAL = ['paneles', 'inversores', 'reflectores', 'bombeo'];
+      var PRECIO_FINAL = ['paneles', 'inversores', 'reflectores', 'bombeo', 'estructuras'];
       function normIva(s) {
         return String(s || '')
           .normalize('NFD')

@@ -298,7 +298,7 @@ function iniciar(): void {
           </a>
           <div class="producto-footer-compact">
             <div class="producto-price">${escapar(p.price)}${
-              !['paneles', 'inversores', 'reflectores', 'bombeo'].includes(String(p.category || ''))
+              !['paneles', 'inversores', 'reflectores', 'bombeo', 'estructuras'].includes(String(p.category || ''))
                 ? '<span class="producto-mas-iva"> + IVA</span>'
                 : ''
             }${precioAnterior}</div>
