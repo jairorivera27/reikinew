@@ -4,7 +4,7 @@ description: "Phoenix Victron Energy, 24/375, 120 V CA, inversor puro para siste
 image: "/images/productos-estudio/inversor-solar-on-grid-victron-pin243750500.webp"
 imageCard: "/images/productos-estudio/inversor-solar-on-grid-victron-pin243750500-card.webp"
 category: "inversores"
-price: "$520.931"
+price: "$452.500"
 specifications:
   - "Tipo: Inversor Off-Grid (solo inversor)"
   - "Familia: Phoenix"
@@ -21,7 +21,7 @@ sku: "PIN243750500"
 power: "375W"
 stock: "disponible"
 order: 6309
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

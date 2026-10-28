@@ -4,7 +4,7 @@ title: "Inversor Solar Híbrido 5kW GW5K-ES-LD-G10"
 description: "Inversor Solar Híbrido 5kW GW5K-ES-LD-G10. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Modelo: GW5K-ES-LD-G10; especificación principal: 5kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$6.146.000"
+price: "$5.283.500"
 specifications:
   - "Tipo: Híbrido"
   - "Especificación principal: 5kW"
@@ -16,7 +16,7 @@ power: "5kW"
 stock: "disponible"
 order: 6249
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar híbrido"

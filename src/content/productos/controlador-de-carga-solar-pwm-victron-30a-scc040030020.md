@@ -4,7 +4,7 @@ description: "Controlador de carga solar PWM Victron SCC040030020 de 30 A. Regul
 image: "/images/productos-estudio/victron-bluesolar-pwm-lcdusb-1224v-30a.webp"
 imageCard: "/images/productos-estudio/victron-bluesolar-pwm-lcdusb-1224v-30a-card.webp"
 category: "controladores"
-price: "$285.250"
+price: "$247.800"
 specifications:
   - "Tipo: PWM"
   - "Especificación principal: 30A"
@@ -15,7 +15,7 @@ sku: "SCC040030020"
 power: "30A"
 stock: "disponible"
 order: 6082
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "controlador solar"
   - "controlador solar pwm"

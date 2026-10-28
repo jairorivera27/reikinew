@@ -4,7 +4,7 @@ description: "Datalogger / módulo de monitoreo GoodWe SCU3000A-S. Permite ver e
 image: "/images/productos-estudio/goodwe-ezlogger.webp"
 imageCard: "/images/productos-estudio/goodwe-ezlogger-card.webp"
 category: "accesorios"
-price: "$9.787.750"
+price: "$6.025.300"
 specifications:
   - "Tipo: Unidad de comunicación"
   - "Especificación principal: ≤30W"
@@ -15,7 +15,7 @@ sku: "SCU3000A-S"
 power: "≤30W"
 stock: "disponible"
 order: 6002
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "sistema de monitoreo solar"
   - "sistema de monitoreo solar unidad de comunicación"

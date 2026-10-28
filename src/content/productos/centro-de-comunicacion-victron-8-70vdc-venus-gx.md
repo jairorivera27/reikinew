@@ -4,7 +4,7 @@ description: "Datalogger / módulo de monitoreo Victron Venus GX. Permite ver en
 image: "/images/productos-estudio/victron-cerbo-gx.webp"
 imageCard: "/images/productos-estudio/victron-cerbo-gx-card.webp"
 category: "accesorios"
-price: "$983.981"
+price: "$718.200"
 specifications:
   - "Tipo: Centro de comunicación"
   - "Especificación principal: 8–70VDC"
@@ -15,7 +15,7 @@ sku: "Venus GX"
 power: "8–70VDC"
 stock: "disponible"
 order: 6008
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "sistema de monitoreo solar"
   - "sistema de monitoreo solar centro de comunicación"

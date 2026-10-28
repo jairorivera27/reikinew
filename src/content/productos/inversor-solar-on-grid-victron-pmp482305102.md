@@ -4,7 +4,7 @@ description: "MultiPlus-II Victron Energy, 48/3000, 120 V CA, inversor-cargador 
 image: "/images/productos-estudio/victron-multiplus-ii-48-5000.webp"
 imageCard: "/images/productos-estudio/victron-multiplus-ii-48-5000-card.webp"
 category: "inversores"
-price: "$3.022.250"
+price: "$2.362.900"
 specifications:
   - "Tipo: Inversor-cargador híbrido"
   - "Familia: MultiPlus-II"
@@ -22,7 +22,7 @@ sku: "PMP482305102"
 power: "3kW"
 stock: "disponible"
 order: 6333
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

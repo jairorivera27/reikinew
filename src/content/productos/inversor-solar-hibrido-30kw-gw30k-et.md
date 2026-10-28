@@ -4,7 +4,7 @@ title: "Inversor Solar Híbrido 30kW GW30K-ET"
 description: "Inversor Solar Híbrido 30kW GW30K-ET. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Modelo: GW30K-ET; especificación principal: 30kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$13.013.000"
+price: "$11.521.600"
 specifications:
   - "Tipo: Híbrido"
   - "Especificación principal: 30kW"
@@ -16,7 +16,7 @@ power: "30kW"
 stock: "disponible"
 order: 6232
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar híbrido"

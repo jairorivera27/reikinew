@@ -3,7 +3,7 @@ title: "Inversor Solar On-Grid GoodWe 110kW GW110K-GT"
 description: "Inversor Solar On-Grid GoodWe 110kW GW110K-GT. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW110K-GT; especificación principal: 110kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$17.381.000"
+price: "$15.169.600"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 110kW"
@@ -14,7 +14,7 @@ sku: "GW110K-GT"
 power: "110kW"
 stock: "disponible"
 order: 6202
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

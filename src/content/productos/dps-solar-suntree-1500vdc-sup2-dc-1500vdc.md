@@ -4,7 +4,7 @@ description: "DPS Solar Suntree 1500VDC SUP2-DC-1500VDC. Producto para protecci�
 image: "/images/productos-estudio/suntree-spd-dc.webp"
 imageCard: "/images/productos-estudio/suntree-spd-dc-card.webp"
 category: "protecciones"
-price: "$393.020"
+price: "$273.900"
 specifications:
   - "Tipo: DPS Supresor"
   - "Especificación principal: 1500VDC"
@@ -15,7 +15,7 @@ sku: "SUP2-DC-1500VDC"
 power: "1500VDC"
 stock: "disponible"
 order: 6586
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar dps supresor"

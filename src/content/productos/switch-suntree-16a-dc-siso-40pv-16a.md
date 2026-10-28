@@ -4,7 +4,7 @@ description: "Seccionador Suntree SISO-40PV-16A DC de 16 A. Permite desconectar 
 image: "/images/productos-estudio/suntree-siso-dc.webp"
 imageCard: "/images/productos-estudio/suntree-siso-dc-card.webp"
 category: "protecciones"
-price: "$135.884"
+price: "$115.700"
 specifications:
   - "Tipo: Switch"
   - "Especificación principal: 16A DC"
@@ -15,7 +15,7 @@ sku: "SISO-40PV-16A"
 power: "16A DC"
 stock: "disponible"
 order: 6496
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar switch"

@@ -3,7 +3,7 @@ title: "Inversor Solar On-Grid GoodWe 136kW GW136K-HTH"
 description: "Inversor Solar On-Grid GoodWe 136kW GW136K-HTH. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW136K-HTH; especificación principal: 136kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$25.823.000"
+price: "$22.429.100"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 136kW"
@@ -14,7 +14,7 @@ sku: "GW136K-HTH"
 power: "136kW"
 stock: "disponible"
 order: 6210
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

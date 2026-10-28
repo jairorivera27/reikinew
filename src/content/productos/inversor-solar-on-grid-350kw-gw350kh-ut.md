@@ -4,7 +4,7 @@ title: "Inversor Solar On-Grid 350kW GW350KH-UT"
 description: "Inversor Solar On-Grid 350kW GW350KH-UT. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Modelo: GW350KH-UT; especificación principal: 350kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$42.168.000"
+price: "$35.403.800"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 350kW"
@@ -16,7 +16,7 @@ power: "350kW"
 stock: "disponible"
 order: 6240
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

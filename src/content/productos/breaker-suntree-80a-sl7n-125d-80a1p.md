@@ -4,7 +4,7 @@ description: "Interruptor termomagnético (breaker) Suntree SL7N-125D-80A1P de 8
 image: "/images/productos-estudio/suntree-sl7n-dc.webp"
 imageCard: "/images/productos-estudio/suntree-sl7n-dc-card.webp"
 category: "protecciones"
-price: "$68.254"
+price: "$56.700"
 specifications:
   - "Tipo: Breaker"
   - "Especificación principal: 80A"
@@ -15,7 +15,7 @@ sku: "SL7N-125D-80A1P"
 power: "80A"
 stock: "disponible"
 order: 6581
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar breaker"

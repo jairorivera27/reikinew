@@ -3,7 +3,7 @@ title: "Controlador de Carga Solar PWM Victron 5A SCC010005000"
 description: "Controlador de Carga Solar PWM Victron 5A SCC010005000. Equipo para regulación y gestión de la carga en sistemas fotovoltaicos. Marca: Victron; modelo: SCC010005000; especificación principal: 5A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/controladores.svg"
 category: "controladores"
-price: "$82.688"
+price: "$71.800"
 specifications:
   - "Tipo: PWM"
   - "Especificación principal: 5A"
@@ -14,7 +14,7 @@ sku: "SCC010005000"
 power: "5A"
 stock: "disponible"
 order: 6083
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "controlador solar"
   - "controlador solar pwm"

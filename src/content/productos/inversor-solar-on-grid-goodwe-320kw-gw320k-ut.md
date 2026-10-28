@@ -3,7 +3,7 @@ title: "Inversor Solar On-Grid GoodWe 320kW GW320K-UT"
 description: "Inversor Solar On-Grid GoodWe 320kW GW320K-UT. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW320K-UT; especificación principal: 320kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$42.343.000"
+price: "$35.549.800"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 320kW"
@@ -14,7 +14,7 @@ sku: "GW320K-UT"
 power: "320kW"
 stock: "disponible"
 order: 6236
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

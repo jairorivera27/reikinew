@@ -4,7 +4,7 @@ description: "DPS Solar Suntree 500VDC SUP2-DC-500VDC. Producto para protección
 image: "/images/productos-estudio/suntree-spd-dc.webp"
 imageCard: "/images/productos-estudio/suntree-spd-dc-card.webp"
 category: "protecciones"
-price: "$264.217"
+price: "$182.600"
 specifications:
   - "Tipo: DPS Supresor"
   - "Especificación principal: 500VDC"
@@ -15,7 +15,7 @@ sku: "SUP2-DC-500VDC"
 power: "500VDC"
 stock: "disponible"
 order: 6587
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar dps supresor"

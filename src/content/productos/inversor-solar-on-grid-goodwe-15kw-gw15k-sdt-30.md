@@ -4,7 +4,7 @@ description: "Inversor on-grid (conectado a red) GoodWe GW15K-SDT-30 de 15kW. Co
 image: "/images/productos-estudio/goodwe-sdt-prov.webp"
 imageCard: "/images/productos-estudio/goodwe-sdt-prov-card.webp"
 category: "inversores"
-price: "$4.592.000"
+price: "$3.635.800"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 15kW"
@@ -15,7 +15,7 @@ sku: "GW15K-SDT-30"
 power: "15kW"
 stock: "disponible"
 order: 6213
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

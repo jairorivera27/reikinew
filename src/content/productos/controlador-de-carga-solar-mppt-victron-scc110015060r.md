@@ -4,7 +4,7 @@ description: "Controlador de carga solar MPPT Victron SCC110015060R. Regula la c
 image: "/images/productos-estudio/victron-bluesolar-mppt-10015-retail.webp"
 imageCard: "/images/productos-estudio/victron-bluesolar-mppt-10015-retail-card.webp"
 category: "controladores"
-price: "$363.825"
+price: "$316.000"
 specifications:
   - "Tipo: MPPT"
   - "Especificación principal: especificación no disponible"
@@ -15,7 +15,7 @@ sku: "SCC110015060R"
 power: "N/A"
 stock: "disponible"
 order: 6111
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "controlador solar"
   - "controlador solar mppt"

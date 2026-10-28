@@ -4,7 +4,7 @@ description: "Datalogger / módulo de monitoreo GoodWe EzLogger 3000C SmartL. Pe
 image: "/images/productos-estudio/goodwe-ezlogger.webp"
 imageCard: "/images/productos-estudio/goodwe-ezlogger-card.webp"
 category: "accesorios"
-price: "$1.657.670"
+price: "$1.039.700"
 specifications:
   - "Tipo: Datalogger"
   - "Especificación principal: especificación no disponible"
@@ -15,7 +15,7 @@ sku: "EzLogger 3000C SmartL"
 power: "N/A"
 stock: "disponible"
 order: 6375
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "sistema de monitoreo solar"
   - "sistema de monitoreo solar datalogger"

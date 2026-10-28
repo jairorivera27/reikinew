@@ -4,7 +4,7 @@ description: "Seccionador Suntree SISO-40PV-32A DC de 32 A. Permite desconectar 
 image: "/images/productos-estudio/suntree-siso-dc.webp"
 imageCard: "/images/productos-estudio/suntree-siso-dc-card.webp"
 category: "protecciones"
-price: "$196.276"
+price: "$181.800"
 specifications:
   - "Tipo: Switch"
   - "Especificación principal: 32A DC"
@@ -15,7 +15,7 @@ sku: "SISO-40PV-32A"
 power: "32A DC"
 stock: "disponible"
 order: 6538
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar switch"

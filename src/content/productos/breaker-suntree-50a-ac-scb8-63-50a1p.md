@@ -4,7 +4,7 @@ description: "Interruptor termomagnético (breaker) Suntree SCB8-63-50A1P AC de 
 image: "/images/productos-estudio/suntree-scb8-ac-prov.webp"
 imageCard: "/images/productos-estudio/suntree-scb8-ac-prov-card.webp"
 category: "protecciones"
-price: "$13.640"
+price: "$10.800"
 specifications:
   - "Tipo: Breaker"
   - "Especificación principal: 50A AC"
@@ -15,7 +15,7 @@ sku: "SCB8-63-50A1P"
 power: "50A AC"
 stock: "disponible"
 order: 6563
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar breaker"

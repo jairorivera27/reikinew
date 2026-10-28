@@ -4,7 +4,7 @@ description: "Phoenix Victron Energy, 12/1200, 120 V CA, inversor puro para sist
 image: "/images/productos-estudio/inversor-solar-on-grid-victron-pin122122510.webp"
 imageCard: "/images/productos-estudio/inversor-solar-on-grid-victron-pin122122510-card.webp"
 category: "inversores"
-price: "$1.269.275"
+price: "$1.048.600"
 specifications:
   - "Tipo: Inversor Off-Grid (solo inversor)"
   - "Familia: Phoenix"
@@ -22,7 +22,7 @@ sku: "PIN122122510"
 power: "1.2kW"
 stock: "disponible"
 order: 6299
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

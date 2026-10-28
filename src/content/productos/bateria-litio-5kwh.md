@@ -4,7 +4,7 @@ description: "Batería de litio de 5kWh con tecnología LiFePO4, ideal para sist
 image: "/images/productos-estudio/pylontech-us-prov.webp"
 imageCard: "/images/productos-estudio/pylontech-us-prov-card.webp"
 category: "baterias"
-price: "$5.437.824"
+price: "$3.969.000"
 specifications:
   - "Tipo: Litio"
   - "Especificación principal: 48V 4,8kWh"
@@ -13,13 +13,11 @@ brand: "Pylontech"
 model: "US5000"
 stock: "pre-orden"
 order: 7
-precioAnterior: "$12.390.000"
-descuentoPct: 56
 promocion: "Liquidación"
 promoImagen: "/images/placeholders/promo-liquidacion.svg"
 sku: "US5000"
 power: "48V 4,8kWh"
-updatedAt: "2026-10-14"
+updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/pylontech-us-prov.webp"
 imageAlt: "Pylontech US5000 48V 4,8kWh – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/baterias/pylontech-us.png"

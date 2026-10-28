@@ -4,7 +4,7 @@ title: "Inversor Solar On-Grid 320kW GW320KH-UT"
 description: "Inversor Solar On-Grid 320kW GW320KH-UT. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Modelo: GW320KH-UT; especificación principal: 320kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$40.936.000"
+price: "$34.370.200"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 320kW"
@@ -16,7 +16,7 @@ power: "320kW"
 stock: "disponible"
 order: 6237
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

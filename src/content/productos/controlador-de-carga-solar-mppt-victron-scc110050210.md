@@ -4,7 +4,7 @@ description: "Controlador de carga solar MPPT Victron SCC110050210 (SmartSolar M
 image: "/images/productos-estudio/victron-smartsolar-mppt-100-50.webp"
 imageCard: "/images/productos-estudio/victron-smartsolar-mppt-100-50-card.webp"
 category: "controladores"
-price: "$855.838"
+price: "$743.400"
 specifications:
   - "Tipo: MPPT"
   - "Especificación principal: especificación no disponible"
@@ -15,7 +15,7 @@ sku: "SCC110050210"
 power: "N/A"
 stock: "disponible"
 order: 6115
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "controlador solar"
   - "controlador solar mppt"

@@ -3,7 +3,7 @@ title: "Módulo Inalámbrico Victron BPP900200400"
 description: "Módulo Inalámbrico Victron BPP900200400. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Victron; modelo: BPP900200400; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/accesorios.svg"
 category: "accesorios"
-price: "$733.040"
+price: "$535.000"
 specifications:
   - "Tipo: Módulo Inalámbrico"
   - "Especificación principal: especificación no disponible"
@@ -14,7 +14,7 @@ sku: "BPP900200400"
 power: "N/A"
 stock: "disponible"
 order: 6405
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "sistema de monitoreo solar"
   - "sistema de monitoreo solar módulo inalámbrico"

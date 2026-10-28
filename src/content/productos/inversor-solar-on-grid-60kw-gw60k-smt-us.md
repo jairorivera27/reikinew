@@ -4,7 +4,7 @@ title: "Inversor Solar On-Grid 60kW GW60K-SMT-US"
 description: "Inversor Solar On-Grid 60kW GW60K-SMT-US. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Modelo: GW60K-SMT-US; especificación principal: 60kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$14.917.000"
+price: "$14.494.700"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 60kW"
@@ -16,7 +16,7 @@ power: "60kW"
 stock: "disponible"
 order: 6254
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

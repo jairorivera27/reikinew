@@ -4,7 +4,7 @@ description: "Inversor on-grid (conectado a red) GoodWe GW40K-SDT-C30 de 40kW. C
 image: "/images/productos-estudio/goodwe-sdt-prov.webp"
 imageCard: "/images/productos-estudio/goodwe-sdt-prov-card.webp"
 category: "inversores"
-price: "$6.720.000"
+price: "$5.642.200"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 40kW"
@@ -15,7 +15,7 @@ sku: "GW40K-SDT-C30"
 power: "40kW"
 stock: "disponible"
 order: 6243
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

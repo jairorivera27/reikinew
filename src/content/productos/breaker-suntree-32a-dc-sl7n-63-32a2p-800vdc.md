@@ -4,7 +4,7 @@ description: "Interruptor termomagnético (breaker) Suntree SL7N-63-32A2P-800VDC
 image: "/images/productos-estudio/suntree-sl7n-dc.webp"
 imageCard: "/images/productos-estudio/suntree-sl7n-dc-card.webp"
 category: "protecciones"
-price: "$140.569"
+price: "$72.200"
 specifications:
   - "Tipo: Breaker"
   - "Especificación principal: 32A DC"
@@ -15,7 +15,7 @@ sku: "SL7N-63-32A2P-800VDC"
 power: "32A DC"
 stock: "disponible"
 order: 6542
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar breaker"

@@ -4,7 +4,7 @@ title: "Inversor Solar On-Grid 5kW GW5K-DNS-G40"
 description: "Inversor Solar On-Grid 5kW GW5K-DNS-G40. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Modelo: GW5K-DNS-G40; especificación principal: 5kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$1.862.000"
+price: "$1.769.300"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 5kW"
@@ -16,7 +16,7 @@ power: "5kW"
 stock: "disponible"
 order: 6248
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

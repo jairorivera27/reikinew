@@ -4,7 +4,7 @@ description: "Controlador de carga solar MPPT Inti de 60 A. Regula la carga de l
 image: "/images/productos-estudio/inti-mppt-60a.webp"
 imageCard: "/images/productos-estudio/inti-mppt-60a-card.webp"
 category: "controladores"
-price: "$1.088.062"
+price: "$945.100"
 specifications:
   - "Tipo: MPPT"
   - "Especificación principal: 60A"
@@ -14,7 +14,7 @@ sku: "6048150"
 power: "60A"
 stock: "disponible"
 order: 6056
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "controlador solar"
   - "controlador solar mppt"

@@ -4,7 +4,7 @@ description: "Protector contra sobretensiones (DPS) Suntree SUP2H6-PV-600VDC DC.
 image: "/images/productos-estudio/suntree-spd-dc.webp"
 imageCard: "/images/productos-estudio/suntree-spd-dc-card.webp"
 category: "protecciones"
-price: "$150.252"
+price: "$113.500"
 specifications:
   - "Tipo: DPS Supresor"
   - "Especificación principal: 40kA DC"
@@ -15,7 +15,7 @@ sku: "SUP2H6-PV-600VDC"
 power: "40kA DC"
 stock: "disponible"
 order: 6560
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar dps supresor"

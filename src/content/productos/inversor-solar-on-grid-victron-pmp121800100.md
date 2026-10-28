@@ -4,7 +4,7 @@ description: "MultiPlus Victron Energy, 12/800, 120 V CA, inversor-cargador para
 image: "/images/productos-estudio/inversor-solar-on-grid-victron-pmp121800100.webp"
 imageCard: "/images/productos-estudio/inversor-solar-on-grid-victron-pmp121800100-card.webp"
 category: "inversores"
-price: "$1.579.331"
+price: "$1.235.300"
 specifications:
   - "Tipo: Inversor-cargador híbrido"
   - "Familia: MultiPlus"
@@ -22,7 +22,7 @@ sku: "PMP121800100"
 power: "800W"
 stock: "disponible"
 order: 6314
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

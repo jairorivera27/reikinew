@@ -4,7 +4,7 @@ description: "Batería litio Pylontech UF5000. Guarda la energía de tus paneles
 image: "/images/productos-estudio/pylontech-uf5000-prov.webp"
 imageCard: "/images/productos-estudio/pylontech-uf5000-prov-card.webp"
 category: "baterias"
-price: "$5.182.926"
+price: "$3.783.000"
 specifications:
   - "Tipo: Litio"
   - "Especificación principal: especificación no disponible"
@@ -15,7 +15,7 @@ sku: "UF5000"
 power: "N/A"
 stock: "disponible"
 order: 6040
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "batería solar"
   - "batería solar litio"

@@ -4,7 +4,7 @@ description: "Interruptor termomagnético (breaker) Suntree SCB8-63-16A2P AC de 
 image: "/images/productos-estudio/suntree-scb8-ac-prov.webp"
 imageCard: "/images/productos-estudio/suntree-scb8-ac-prov-card.webp"
 category: "protecciones"
-price: "$27.281"
+price: "$20.600"
 specifications:
   - "Tipo: Breaker"
   - "Especificación principal: 16A AC"
@@ -15,7 +15,7 @@ sku: "SCB8-63-16A2P"
 power: "16A AC"
 stock: "disponible"
 order: 6495
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar breaker"

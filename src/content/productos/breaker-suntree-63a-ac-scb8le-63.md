@@ -4,7 +4,7 @@ description: "Interruptor termomagnético (breaker) Suntree SCB8LE-63 AC de 63 A
 image: "/images/productos-estudio/suntree-scb8-ac-prov.webp"
 imageCard: "/images/productos-estudio/suntree-scb8-ac-prov-card.webp"
 category: "protecciones"
-price: "$136.248"
+price: "$87.700"
 specifications:
   - "Tipo: Breaker"
   - "Especificación principal: 63A AC"
@@ -15,7 +15,7 @@ sku: "SCB8LE-63"
 power: "63A AC"
 stock: "disponible"
 order: 6575
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar breaker"

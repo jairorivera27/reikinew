@@ -3,7 +3,7 @@ title: "Pantalla Victron BPP900455050"
 description: "Pantalla Victron BPP900455050. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Victron; modelo: BPP900455050; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/accesorios.svg"
 category: "accesorios"
-price: "$1.215.242"
+price: "$887.000"
 specifications:
   - "Tipo: Pantalla"
   - "Especificación principal: especificación no disponible"
@@ -14,7 +14,7 @@ sku: "BPP900455050"
 power: "N/A"
 stock: "disponible"
 order: 6408
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "sistema de monitoreo solar"
   - "sistema de monitoreo solar pantalla"

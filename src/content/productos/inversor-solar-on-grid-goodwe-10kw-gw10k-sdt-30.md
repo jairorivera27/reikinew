@@ -4,7 +4,7 @@ description: "Inversor on-grid (conectado a red) GoodWe GW10K-SDT-30 de 10kW. Co
 image: "/images/productos-estudio/goodwe-sdt-prov.webp"
 imageCard: "/images/productos-estudio/goodwe-sdt-prov-card.webp"
 category: "inversores"
-price: "$4.305.000"
+price: "$3.441.300"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 10kW"
@@ -15,7 +15,7 @@ sku: "GW10K-SDT-30"
 power: "10kW"
 stock: "disponible"
 order: 6199
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

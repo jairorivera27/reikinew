@@ -4,7 +4,7 @@ title: "Inversor Solar On-Grid 11,4kW GW11K4-MS-US30"
 description: "Inversor Solar On-Grid 11,4kW GW11K4-MS-US30. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Modelo: GW11K4-MS-US30; especificación principal: 11,4kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$4.613.000"
+price: "$4.006.700"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 11,4kW"
@@ -16,7 +16,7 @@ power: "11,4kW"
 stock: "disponible"
 order: 6201
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

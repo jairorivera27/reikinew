@@ -4,7 +4,7 @@ description: "Quattro Victron Energy, 48/15000, 277 V CA, inversor-cargador para
 image: "/images/productos-estudio/inversor-solar-on-grid-victron-qua483150100.webp"
 imageCard: "/images/productos-estudio/inversor-solar-on-grid-victron-qua483150100-card.webp"
 category: "inversores"
-price: "$13.602.094"
+price: "$11.814.400"
 specifications:
   - "Tipo: Inversor-cargador híbrido"
   - "Familia: Quattro"
@@ -22,7 +22,7 @@ sku: "QUA483150100"
 power: "15kW"
 stock: "disponible"
 order: 6344
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

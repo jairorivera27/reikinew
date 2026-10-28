@@ -4,7 +4,7 @@ title: "Medidor de Energía DDZY422-D2-W"
 description: "Medidor de Energía DDZY422-D2-W. Equipo para medición y supervisión del consumo y la generación eléctrica. Modelo: DDZY422-D2-W; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/monitoreo.svg"
 category: "accesorios"
-price: "$1.101.121"
+price: "$803.700"
 specifications:
   - "Tipo: Medidor"
   - "Especificación principal: especificación no disponible"
@@ -16,7 +16,7 @@ power: "N/A"
 stock: "disponible"
 order: 6358
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "medidor de energía"
   - "multimarca ddzy422-d2-w"

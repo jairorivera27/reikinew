@@ -4,7 +4,7 @@ description: "Victron Cerbo GX MK2 (BPP900451100): centro de monitoreo y control
 image: "/images/productos-estudio/victron-cerbo-gx.webp"
 imageCard: "/images/productos-estudio/victron-cerbo-gx-card.webp"
 category: "accesorios"
-price: "$1.367.734"
+price: "$998.300"
 specifications:
   - "Tipo: Monitoreo"
   - "Especificación principal: especificación no disponible"
@@ -15,7 +15,7 @@ sku: "BPP900451100"
 power: "N/A"
 stock: "disponible"
 order: 6407
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "sistema de monitoreo solar"
   - "sistema de monitoreo solar victron"

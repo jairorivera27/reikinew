@@ -4,7 +4,7 @@ description: "Datalogger / módulo de monitoreo Victron Ekrano GX. Permite ver e
 image: "/images/productos-estudio/victron-ekrano-gx-pantalla-7-pulgadas.webp"
 imageCard: "/images/productos-estudio/victron-ekrano-gx-pantalla-7-pulgadas-card.webp"
 category: "accesorios"
-price: "$3.109.381"
+price: "$2.269.500"
 specifications:
   - "Tipo: Centro de comunicación con pantalla"
   - "Especificación principal: Pantalla 7 pulgadas"
@@ -15,7 +15,7 @@ sku: "Ekrano GX"
 power: "Pantalla 7 pulgadas"
 stock: "disponible"
 order: 6009
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "sistema de monitoreo solar"
   - "sistema de monitoreo solar centro de comunicación con pantalla"

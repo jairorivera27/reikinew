@@ -4,7 +4,7 @@ title: "Inversor Solar On-Grid 50kW GW50K-SMT-US"
 description: "Inversor Solar On-Grid 50kW GW50K-SMT-US. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Modelo: GW50K-SMT-US; especificación principal: 50kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$14.364.000"
+price: "$14.032.600"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 50kW"
@@ -16,7 +16,7 @@ power: "50kW"
 stock: "disponible"
 order: 6247
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

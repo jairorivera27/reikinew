@@ -4,7 +4,7 @@ description: "Datalogger / módulo de monitoreo Victron ASS030520115. Permite ve
 image: "/images/productos-estudio/victron-cerbo-gx.webp"
 imageCard: "/images/productos-estudio/victron-cerbo-gx-card.webp"
 category: "accesorios"
-price: "$777.345"
+price: "$567.400"
 specifications:
   - "Tipo: Monitoreo"
   - "Especificación principal: especificación no disponible"
@@ -15,7 +15,7 @@ sku: "ASS030520115"
 power: "N/A"
 stock: "disponible"
 order: 6404
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "sistema de monitoreo solar"
   - "sistema de monitoreo solar victron"

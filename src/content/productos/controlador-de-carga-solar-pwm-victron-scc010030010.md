@@ -3,7 +3,7 @@ title: "Controlador de Carga Solar PWM Victron SCC010030010"
 description: "Controlador de Carga Solar PWM Victron SCC010030010. Equipo para regulación y gestión de la carga en sistemas fotovoltaicos. Marca: Victron; modelo: SCC010030010; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/controladores.svg"
 category: "controladores"
-price: "$351.400"
+price: "$305.200"
 specifications:
   - "Tipo: PWM"
   - "Especificación principal: especificación no disponible"
@@ -14,7 +14,7 @@ sku: "SCC010030010"
 power: "N/A"
 stock: "disponible"
 order: 6096
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "controlador solar"
   - "controlador solar pwm"

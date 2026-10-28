@@ -4,7 +4,7 @@ title: "Inversor Solar Híbrido 12kW GW12K-ET-LL-G10"
 description: "Inversor Solar Híbrido 12kW GW12K-ET-LL-G10. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Modelo: GW12K-ET-LL-G10; especificación principal: 12kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$11.718.000"
+price: "$8.572.800"
 specifications:
   - "Tipo: Híbrido"
   - "Especificación principal: 12kW"
@@ -16,7 +16,7 @@ power: "12kW"
 stock: "disponible"
 order: 6205
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar híbrido"

@@ -4,7 +4,7 @@ description: "Inversor on-grid (conectado a red) GoodWe GW8000-SDT-30 de 8kW. Co
 image: "/images/productos-estudio/goodwe-sdt-prov.webp"
 imageCard: "/images/productos-estudio/goodwe-sdt-prov-card.webp"
 category: "inversores"
-price: "$4.011.000"
+price: "$3.368.300"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 8kW"
@@ -15,7 +15,7 @@ sku: "GW8000-SDT-30"
 power: "8kW"
 stock: "disponible"
 order: 6169
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

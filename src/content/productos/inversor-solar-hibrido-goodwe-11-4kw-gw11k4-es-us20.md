@@ -40,6 +40,7 @@ faqs:
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 fichaPdf: "/fichas/fabricantes/goodwe-es-us-datasheet-en.pdf"
+draft: true
 ---
 **Inversor Solar Híbrido GoodWe 11,4kW GW11K4-ES-US20** de GoodWe · 11,4kW.
 

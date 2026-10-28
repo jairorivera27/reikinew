@@ -3,7 +3,7 @@ title: "Inversor Solar On-Grid GoodWe 75kW GW75K-SMT"
 description: "Inversor Solar On-Grid GoodWe 75kW GW75K-SMT. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW75K-SMT; especificación principal: 75kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$11.277.000"
+price: "$10.895.400"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 75kW"
@@ -14,7 +14,7 @@ sku: "GW75K-SMT"
 power: "75kW"
 stock: "disponible"
 order: 6260
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

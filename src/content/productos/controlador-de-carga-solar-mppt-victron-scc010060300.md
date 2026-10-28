@@ -4,7 +4,7 @@ description: "Controlador de carga solar MPPT Victron SCC010060300. Regula la ca
 image: "/images/productos-estudio/controlador-de-carga-solar-mppt-victron-scc010060300.webp"
 imageCard: "/images/productos-estudio/controlador-de-carga-solar-mppt-victron-scc010060300-card.webp"
 category: "controladores"
-price: "$1.480.106"
+price: "$1.285.600"
 specifications:
   - "Tipo: MPPT"
   - "Especificación principal: especificación no disponible"
@@ -15,7 +15,7 @@ sku: "SCC010060300"
 power: "N/A"
 stock: "disponible"
 order: 6100
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "controlador solar"
   - "controlador solar mppt"
