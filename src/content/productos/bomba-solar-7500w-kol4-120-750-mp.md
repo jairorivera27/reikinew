@@ -4,7 +4,7 @@ description: "Bomba solar sumergible Kolos KOL4-120-750-MP de 7500 W. Bombea agu
 image: "/images/productos-estudio/kolos4-sumergible-prov.webp"
 imageCard: "/images/productos-estudio/kolos4-sumergible-prov-card.webp"
 category: "bombeo"
-price: "$9.281.851"
+price: "$6.212.500"
 specifications:
   - "Tipo: Bomba"
   - "Especificación principal: 7500W"
@@ -15,7 +15,7 @@ sku: "KOL4-120-750-MP"
 power: "7500W"
 stock: "disponible"
 order: 6050
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "bomba solar"
   - "multimarca kol4-120-750-mp"
@@ -35,6 +35,10 @@ faqs:
   - pregunta: "¿Qué datos necesito para elegir la bomba?"
     respuesta: "Profundidad del nivel del agua, altura hasta el tanque, distancia de la tubería y litros por día que necesitas. Con eso elegimos el modelo y el controlador correctos."
 fichaPdf: "/fichas/fabricantes/connera-kol4-mp-manual.pdf"
+precioAnterior: "$9.281.851"
+descuentoPct: 33
+promocion: "Precio de feria · solo hasta el 31 de octubre"
+promocionHasta: "2026-10-31"
 ---
 **Bomba Solar 7500W KOL4-120-750-MP** de Multimarca · 7500W.
 

@@ -49,6 +49,8 @@ const productosCollection = defineCollection({
     descuentoPct: z.number().int().min(1).max(95).optional(),
     /** Etiqueta de la promoción, ej. "Liquidación". */
     promocion: z.string().optional(),
+    /** Último día de la promoción (AAAA-MM-DD). Al vencer, scripts/vencer-promociones.py devuelve precioAnterior como precio. */
+    promocionHasta: z.string().optional(),
     /** Banner de la promoción. Provisional hasta cargar la pieza definitiva. */
     promoImagen: z.string().optional(),
     specifications: z.array(z.string()),

@@ -4,7 +4,7 @@ description: "Bomba solar de superficie Kolos POOL25-500-48 de 500 W. Bombea agu
 image: "/images/productos-estudio/kolos-pool-prov.webp"
 imageCard: "/images/productos-estudio/kolos-pool-prov-card.webp"
 category: "bombeo"
-price: "$3.177.151"
+price: "$2.012.500"
 specifications:
   - "Tipo: Bomba"
   - "Especificación principal: 500W"
@@ -15,7 +15,7 @@ sku: "POOL25-500-48"
 power: "500W"
 stock: "disponible"
 order: 6048
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "bomba solar"
   - "multimarca pool25-500-48"
@@ -36,6 +36,10 @@ faqs:
   - pregunta: "¿Qué datos necesito para elegir la bomba?"
     respuesta: "Profundidad del nivel del agua, altura hasta el tanque, distancia de la tubería y litros por día que necesitas. Con eso elegimos el modelo y el controlador correctos."
 fichaPdf: "/fichas/fabricantes/connera-kolosal-pool-catalogo-vde.pdf"
+precioAnterior: "$3.177.151"
+descuentoPct: 37
+promocion: "Precio de feria · solo hasta el 31 de octubre"
+promocionHasta: "2026-10-31"
 ---
 **Bomba Solar 500W POOL25-500-48** de Multimarca · 500W.
 
