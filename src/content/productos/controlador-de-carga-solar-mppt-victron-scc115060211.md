@@ -4,7 +4,7 @@ description: "Controlador de carga solar MPPT Victron SCC115060211. Regula la ca
 image: "/images/productos-estudio/victron-bluesolar-mppt-15060-tr.webp"
 imageCard: "/images/productos-estudio/victron-bluesolar-mppt-15060-tr-card.webp"
 category: "controladores"
-price: "$1.624.788"
+price: "$1.411.200"
 specifications:
   - "Tipo: MPPT"
   - "Especificación principal: especificación no disponible"
@@ -15,7 +15,7 @@ sku: "SCC115060211"
 power: "N/A"
 stock: "disponible"
 order: 6119
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "controlador solar"
   - "controlador solar mppt"

@@ -32,6 +32,7 @@ faqs:
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor (380 V) y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
 fichaPdf: "/fichas/fabricantes/growatt-apx-hv-battery-datasheet.pdf"
+draft: true
 ---
 **Batería Solar Litio Growatt 380VDC 5.0kWh IP66** de Growatt · 380VDC 5.0kWh.
 

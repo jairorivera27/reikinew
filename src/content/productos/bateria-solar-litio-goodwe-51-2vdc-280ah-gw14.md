@@ -30,6 +30,7 @@ faqs:
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
 fichaPdf: "/fichas/fabricantes/goodwe-lynx-a-g3-14kwh-datasheet.pdf"
+draft: true
 ---
 **Batería Solar Litio GoodWe 51.2VDC 280Ah GW14** de GoodWe · 51.2VDC 280Ah.
 

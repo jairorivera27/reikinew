@@ -4,7 +4,7 @@ description: "Seccionador Suntree SQ8M-125 AC de 125 A. Permite desconectar con 
 image: "/images/productos-estudio/suntree-sq8-switch-prov.webp"
 imageCard: "/images/productos-estudio/suntree-sq8-switch-prov-card.webp"
 category: "protecciones"
-price: "$845.495"
+price: "$527.200"
 specifications:
   - "Tipo: Switch"
   - "Especificación principal: 125A AC"
@@ -15,7 +15,7 @@ sku: "SQ8M-125"
 power: "125A AC"
 stock: "disponible"
 order: 6492
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar switch"

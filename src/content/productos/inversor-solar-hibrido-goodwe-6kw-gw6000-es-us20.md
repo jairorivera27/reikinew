@@ -4,7 +4,7 @@ description: "Inversor híbrido GoodWe GW6000-ES-US20 de 6kW. Trabaja con panele
 image: "/images/productos-estudio/goodwe-es-prov.webp"
 imageCard: "/images/productos-estudio/goodwe-es-prov-card.webp"
 category: "inversores"
-price: "$6.636.000"
+price: "$5.763.800"
 specifications:
   - "Tipo: Híbrido"
   - "Especificación principal: 6kW"
@@ -15,7 +15,7 @@ sku: "GW6000-ES-US20"
 power: "6kW"
 stock: "disponible"
 order: 6165
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar híbrido"

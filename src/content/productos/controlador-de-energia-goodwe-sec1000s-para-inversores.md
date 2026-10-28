@@ -4,7 +4,7 @@ description: "Accesorio GoodWe SEC1000S. Complemento para instalaciones solares.
 image: "/images/productos-estudio/goodwe-ezlogger.webp"
 imageCard: "/images/productos-estudio/goodwe-ezlogger-card.webp"
 category: "accesorios"
-price: "$3.015.460"
+price: "$2.201.000"
 specifications:
   - "Tipo: Controlador inteligente"
   - "Especificación principal: ≤10W"
@@ -15,7 +15,7 @@ sku: "SEC1000S"
 power: "≤10W"
 stock: "disponible"
 order: 6006
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "controlador de energía"
   - "controlador de energía controlador inteligente"

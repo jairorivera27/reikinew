@@ -4,7 +4,7 @@ title: "Panel Solar Monocristalino 2A SG20s"
 description: "Panel Solar Monocristalino 2A SG20s. Equipo para generación de energía solar fotovoltaica. Modelo: SG20s; especificación principal: 2A. Compara potencia, tecnología y compatibilidad antes de instalar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/paneles.svg"
 category: "paneles"
-price: "$105.000"
+price: "$91.200"
 specifications:
   - "Tipo: Monocristalino"
   - "Especificación principal: 2A"
@@ -16,7 +16,7 @@ power: "2A"
 stock: "disponible"
 order: 6428
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "panel solar"
   - "panel solar monocristalino"

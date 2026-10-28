@@ -4,7 +4,7 @@ title: "Inversor Solar Híbrido 18kW GW18KL-ET"
 description: "Inversor Solar Híbrido 18kW GW18KL-ET. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Modelo: GW18KL-ET; especificación principal: 18kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$13.566.000"
+price: "$11.387.800"
 specifications:
   - "Tipo: Híbrido"
   - "Especificación principal: 18kW"
@@ -16,7 +16,7 @@ power: "18kW"
 stock: "disponible"
 order: 6217
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar híbrido"

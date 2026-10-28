@@ -4,7 +4,7 @@ description: "Datalogger / módulo de monitoreo GoodWe Ezlogger Pro Dispositivo 
 image: "/images/productos-estudio/goodwe-ezlogger.webp"
 imageCard: "/images/productos-estudio/goodwe-ezlogger-card.webp"
 category: "accesorios"
-price: "$932.960"
+price: "$681.000"
 specifications:
   - "Tipo: Datalogger"
   - "Especificación principal: especificación no disponible"
@@ -15,7 +15,7 @@ sku: "Ezlogger Pro Dispositivo de monitoreo remoto Ethernet c"
 power: "N/A"
 stock: "disponible"
 order: 6378
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "sistema de monitoreo solar"
   - "sistema de monitoreo solar datalogger"

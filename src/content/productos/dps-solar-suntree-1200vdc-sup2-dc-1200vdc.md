@@ -4,7 +4,7 @@ description: "DPS Solar Suntree 1200VDC SUP2-DC-1200VDC. Producto para protecci�
 image: "/images/productos-estudio/suntree-spd-dc.webp"
 imageCard: "/images/productos-estudio/suntree-spd-dc-card.webp"
 category: "protecciones"
-price: "$393.020"
+price: "$286.900"
 specifications:
   - "Tipo: DPS Supresor"
   - "Especificación principal: 1200VDC"
@@ -15,7 +15,7 @@ sku: "SUP2-DC-1200VDC"
 power: "1200VDC"
 stock: "disponible"
 order: 6585
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar dps supresor"

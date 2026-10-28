@@ -4,7 +4,7 @@ title: "Batería Solar Litio 12V 100Wh RT12100G31"
 description: "Batería Solar Litio 12V 100Wh RT12100G31. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Modelo: RT12100G31; especificación principal: 12V 100Wh. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/baterias.svg"
 category: "baterias"
-price: "$2.175.119"
+price: "$1.587.600"
 specifications:
   - "Tipo: Litio"
   - "Especificación principal: 12V 100Wh"
@@ -16,7 +16,7 @@ power: "12V 100Wh"
 stock: "disponible"
 order: 6029
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "batería solar"
   - "batería solar litio"

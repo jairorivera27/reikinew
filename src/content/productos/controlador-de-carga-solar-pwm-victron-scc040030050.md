@@ -4,7 +4,7 @@ description: "Controlador de carga solar PWM Victron SCC040030050. Regula la car
 image: "/images/productos-estudio/victron-bluesolar-pwm-lcdusb-1224v-30a.webp"
 imageCard: "/images/productos-estudio/victron-bluesolar-pwm-lcdusb-1224v-30a-card.webp"
 category: "controladores"
-price: "$190.181"
+price: "$165.200"
 specifications:
   - "Tipo: PWM"
   - "Especificación principal: especificación no disponible"
@@ -15,7 +15,7 @@ sku: "SCC040030050"
 power: "N/A"
 stock: "disponible"
 order: 6108
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "controlador solar"
   - "controlador solar pwm"

@@ -3,7 +3,7 @@ title: "Inversor Solar On-Grid GoodWe 80kW GW80K-SMT"
 description: "Inversor Solar On-Grid GoodWe 80kW GW80K-SMT. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW80K-SMT; especificación principal: 80kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$12.859.000"
+price: "$11.235.800"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 80kW"
@@ -14,7 +14,7 @@ sku: "GW80K-SMT"
 power: "80kW"
 stock: "disponible"
 order: 6263
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

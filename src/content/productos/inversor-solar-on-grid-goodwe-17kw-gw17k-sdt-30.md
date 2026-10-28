@@ -4,7 +4,7 @@ description: "Inversor on-grid (conectado a red) GoodWe GW17K-SDT-30 de 17kW. Co
 image: "/images/productos-estudio/goodwe-sdt-prov.webp"
 imageCard: "/images/productos-estudio/goodwe-sdt-prov-card.webp"
 category: "inversores"
-price: "$4.921.000"
+price: "$3.933.800"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 17kW"
@@ -15,7 +15,7 @@ sku: "GW17K-SDT-30"
 power: "17kW"
 stock: "disponible"
 order: 6215
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

@@ -4,7 +4,7 @@ description: "DPS Solar Suntree 800VDC 2P SUP2H8-PV-2P-800VDC. Producto para pro
 image: "/images/productos-estudio/suntree-spd-dc.webp"
 imageCard: "/images/productos-estudio/suntree-spd-dc-card.webp"
 category: "protecciones"
-price: "$135.727"
+price: "$113.500"
 specifications:
   - "Tipo: DPS Supresor"
   - "Especificación principal: 800VDC, 2P"
@@ -15,7 +15,7 @@ sku: "SUP2H8-PV-2P-800VDC"
 power: "800VDC, 2P"
 stock: "disponible"
 order: 6588
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar dps supresor"

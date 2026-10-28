@@ -4,7 +4,7 @@ description: "Interruptor termomagnético (breaker) Suntree SL7N-63-63A4P DC de 
 image: "/images/productos-estudio/suntree-sl7n-dc.webp"
 imageCard: "/images/productos-estudio/suntree-sl7n-dc-card.webp"
 category: "protecciones"
-price: "$186.176"
+price: "$140.800"
 specifications:
   - "Tipo: Breaker"
   - "Especificación principal: 63A DC"
@@ -15,7 +15,7 @@ sku: "SL7N-63-63A4P"
 power: "63A DC"
 stock: "disponible"
 order: 6578
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar breaker"

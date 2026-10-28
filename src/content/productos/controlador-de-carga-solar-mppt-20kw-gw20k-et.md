@@ -4,7 +4,7 @@ title: "Controlador de Carga Solar MPPT 20kW GW20K-ET"
 description: "Controlador de Carga Solar MPPT 20kW GW20K-ET. Equipo para regulación y gestión de la carga en sistemas fotovoltaicos. Modelo: GW20K-ET; especificación principal: 20kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/controladores.svg"
 category: "controladores"
-price: "$9.331.000"
+price: "$8.706.600"
 specifications:
   - "Tipo: MPPT"
   - "Especificación principal: 20kW"
@@ -16,7 +16,7 @@ power: "20kW"
 stock: "disponible"
 order: 6061
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "controlador solar"
   - "controlador solar mppt"

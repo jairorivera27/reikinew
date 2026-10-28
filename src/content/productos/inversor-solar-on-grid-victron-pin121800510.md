@@ -4,7 +4,7 @@ description: "Phoenix Victron Energy, 12/800, 120 V CA, inversor puro para siste
 image: "/images/productos-estudio/victron-phoenix-prov.webp"
 imageCard: "/images/productos-estudio/victron-phoenix-prov-card.webp"
 category: "inversores"
-price: "$1.087.362"
+price: "$897.800"
 specifications:
   - "Tipo: Inversor Off-Grid (solo inversor)"
   - "Familia: Phoenix"
@@ -22,7 +22,7 @@ sku: "PIN121800510"
 power: "800W"
 stock: "disponible"
 order: 6297
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

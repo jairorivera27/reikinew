@@ -4,7 +4,7 @@ title: "Inversor Solar On-Grid 25kW GW25K-MT"
 description: "Inversor Solar On-Grid 25kW GW25K-MT. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Modelo: GW25K-MT; especificación principal: 25kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$4.473.000"
+price: "$3.885.100"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 25kW"
@@ -16,7 +16,7 @@ power: "25kW"
 stock: "disponible"
 order: 6225
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

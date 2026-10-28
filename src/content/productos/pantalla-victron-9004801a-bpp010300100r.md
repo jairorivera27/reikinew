@@ -3,7 +3,7 @@ title: "Pantalla Victron 9004801A BPP010300100R"
 description: "Pantalla Victron 9004801A BPP010300100R. Equipo para monitoreo y comunicación de equipos de energía solar. Marca: Victron; modelo: BPP010300100R; especificación principal: 9004801A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/accesorios.svg"
 category: "accesorios"
-price: "$1.131.578"
+price: "$825.900"
 specifications:
   - "Tipo: Pantalla"
   - "Especificación principal: 9004801A"
@@ -14,7 +14,7 @@ sku: "BPP010300100R"
 power: "9004801A"
 stock: "disponible"
 order: 6399
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "sistema de monitoreo solar"
   - "sistema de monitoreo solar pantalla"

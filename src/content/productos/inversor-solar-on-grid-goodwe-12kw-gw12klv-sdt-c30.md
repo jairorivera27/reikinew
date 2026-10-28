@@ -4,7 +4,7 @@ description: "Inversor on-grid (conectado a red) GoodWe GW12KLV-SDT-C30 de 12kW.
 image: "/images/productos-estudio/goodwe-sdt-prov.webp"
 imageCard: "/images/productos-estudio/goodwe-sdt-prov-card.webp"
 category: "inversores"
-price: "$3.976.000"
+price: "$3.337.900"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 12kW"
@@ -15,7 +15,7 @@ sku: "GW12KLV-SDT-C30"
 power: "12kW"
 stock: "disponible"
 order: 6209
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

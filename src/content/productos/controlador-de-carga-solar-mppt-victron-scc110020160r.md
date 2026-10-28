@@ -4,7 +4,7 @@ description: "Controlador de carga solar MPPT Victron SCC110020160R. Regula la c
 image: "/images/productos-estudio/victron-smartsolar-mppt-10020-retail.webp"
 imageCard: "/images/productos-estudio/victron-smartsolar-mppt-10020-retail-card.webp"
 category: "controladores"
-price: "$413.438"
+price: "$359.100"
 specifications:
   - "Tipo: MPPT"
   - "Especificación principal: especificación no disponible"
@@ -15,7 +15,7 @@ sku: "SCC110020160R"
 power: "N/A"
 stock: "disponible"
 order: 6112
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "controlador solar"
   - "controlador solar mppt"

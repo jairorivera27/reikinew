@@ -4,7 +4,7 @@ description: "Inversor on-grid (conectado a red) GoodWe GW33K-SDT-C30 de 33kW. C
 image: "/images/productos-estudio/goodwe-sdt-prov.webp"
 imageCard: "/images/productos-estudio/goodwe-sdt-prov-card.webp"
 category: "inversores"
-price: "$5.600.000"
+price: "$4.699.800"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 33kW"
@@ -15,7 +15,7 @@ sku: "GW33K-SDT-C30"
 power: "33kW"
 stock: "disponible"
 order: 6238
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

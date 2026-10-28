@@ -39,6 +39,7 @@ faqs:
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 fichaPdf: "/fichas/fabricantes/goodwe-sdt-g3-25-40kw-datasheet.pdf"
+draft: true
 ---
 **Inversor Solar On-Grid GoodWe 36kW GW36K-SDT-C30** de GoodWe · 36kW.
 

@@ -4,7 +4,7 @@ title: "Medidor de Energía GMK330"
 description: "Medidor de Energía GMK330. Equipo para medición y supervisión del consumo y la generación eléctrica. Modelo: GMK330; especificación principal: especificación no disponible. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/monitoreo.svg"
 category: "accesorios"
-price: "$824.670"
+price: "$583.700"
 specifications:
   - "Tipo: Medidor"
   - "Especificación principal: especificación no disponible"
@@ -16,7 +16,7 @@ power: "N/A"
 stock: "disponible"
 order: 6361
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "medidor de energía"
   - "multimarca gmk330"

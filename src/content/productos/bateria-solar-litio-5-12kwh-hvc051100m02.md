@@ -4,7 +4,7 @@ title: "Batería Solar Litio 5,12kWh HVC051100M02"
 description: "Batería Solar Litio 5,12kWh HVC051100M02. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Modelo: HVC051100M02; especificación principal: 5,12kWh. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/baterias.svg"
 category: "baterias"
-price: "$4.256.630"
+price: "$3.106.900"
 specifications:
   - "Tipo: Litio"
   - "Especificación principal: 5,12kWh"
@@ -16,7 +16,7 @@ power: "5,12kWh"
 stock: "disponible"
 order: 6032
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "batería solar"
   - "batería solar litio"

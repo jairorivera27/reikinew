@@ -4,7 +4,7 @@ title: "Inversor Solar Híbrido 10kW GW10K-ES-LD-G10"
 description: "Inversor Solar Híbrido 10kW GW10K-ES-LD-G10. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Modelo: GW10K-ES-LD-G10; especificación principal: 10kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$7.287.000"
+price: "$5.940.200"
 specifications:
   - "Tipo: Híbrido"
   - "Especificación principal: 10kW"
@@ -16,7 +16,7 @@ power: "10kW"
 stock: "disponible"
 order: 6197
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar híbrido"

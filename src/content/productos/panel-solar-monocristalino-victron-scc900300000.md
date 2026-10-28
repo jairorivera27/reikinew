@@ -4,7 +4,7 @@ description: "Panel remoto (display) Victron SCC900300000 para los controladores
 image: "/images/productos-estudio/victron-bluesolar-mono-scc900300000.webp"
 imageCard: "/images/productos-estudio/victron-bluesolar-mono-scc900300000-card.webp"
 category: "accesorios"
-price: "$190.181"
+price: "$165.200"
 specifications:
   - "Tipo: Monocristalino"
   - "Especificación principal: especificación no disponible"
@@ -15,7 +15,7 @@ sku: "SCC900300000"
 power: "N/A"
 stock: "disponible"
 order: 6443
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "panel solar"
   - "panel solar monocristalino"

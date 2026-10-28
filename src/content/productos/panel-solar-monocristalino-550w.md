@@ -33,6 +33,7 @@ faqs:
   - pregunta: "¿Sirve para sistemas conectados a la red y para sistemas aislados?"
     respuesta: "Sí. Con un inversor on-grid entrega energía a la casa y a la red (autogeneración, con trámite ante el operador de red); con un inversor híbrido u off-grid carga baterías. Lo importante es que el voltaje del arreglo sea compatible con el inversor o el controlador."
 fichaPdf: "/fichas/fabricantes/ja-jam72d40-lb-datasheet.pdf"
+draft: true
 ---
 
 Módulo fotovoltaico JA Solar de 595W, ofrece una solución potente y confiable para tus necesidades energéticas.

@@ -4,7 +4,7 @@ description: "Inversor híbrido GoodWe GW5000-ES-20 de 5kW. Trabaja con paneles,
 image: "/images/productos-estudio/goodwe-es-prov.webp"
 imageCard: "/images/productos-estudio/goodwe-es-prov-card.webp"
 category: "inversores"
-price: "$4.781.000"
+price: "$4.353.300"
 specifications:
   - "Tipo: Híbrido"
   - "Especificación principal: 5kW"
@@ -15,7 +15,7 @@ sku: "GW5000-ES-20"
 power: "5kW"
 stock: "disponible"
 order: 6160
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar híbrido"

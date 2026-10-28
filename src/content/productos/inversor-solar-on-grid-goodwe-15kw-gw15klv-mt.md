@@ -3,7 +3,7 @@ title: "Inversor Solar On-Grid GoodWe 15kW GW15KLV-MT"
 description: "Inversor Solar On-Grid GoodWe 15kW GW15KLV-MT. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW15KLV-MT; especificación principal: 15kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$11.366.250"
+price: "$9.872.400"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 15kW"
@@ -14,7 +14,7 @@ sku: "GW15KLV-MT"
 power: "15kW"
 stock: "disponible"
 order: 6214
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

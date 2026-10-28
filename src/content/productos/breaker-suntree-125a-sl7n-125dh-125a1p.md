@@ -4,7 +4,7 @@ description: "Interruptor termomagnético (breaker) Suntree SL7N-125DH-125A1P de
 image: "/images/productos-estudio/suntree-sl7n-dc.webp"
 imageCard: "/images/productos-estudio/suntree-sl7n-dc-card.webp"
 category: "protecciones"
-price: "$81.842"
+price: "$61.900"
 specifications:
   - "Tipo: Breaker"
   - "Especificación principal: 125A"
@@ -15,7 +15,7 @@ sku: "SL7N-125DH-125A1P"
 power: "125A"
 stock: "disponible"
 order: 6490
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar breaker"

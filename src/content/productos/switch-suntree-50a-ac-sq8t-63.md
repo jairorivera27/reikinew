@@ -4,7 +4,7 @@ description: "Seccionador Suntree SQ8T-63 AC de 50 A. Permite desconectar con se
 image: "/images/productos-estudio/suntree-sq8-switch-prov.webp"
 imageCard: "/images/productos-estudio/suntree-sq8-switch-prov-card.webp"
 category: "protecciones"
-price: "$347.256"
+price: "$240.700"
 specifications:
   - "Tipo: Switch"
   - "Especificación principal: 50A AC"
@@ -15,7 +15,7 @@ sku: "SQ8T-63"
 power: "50A AC"
 stock: "disponible"
 order: 6569
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar switch"

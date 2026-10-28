@@ -4,7 +4,7 @@ description: "Inversor on-grid (conectado a red) GoodWe GW23KLV-SDT-BR30 de 23kW
 image: "/images/productos-estudio/goodwe-sdt-prov.webp"
 imageCard: "/images/productos-estudio/goodwe-sdt-prov-card.webp"
 category: "inversores"
-price: "$5.859.000"
+price: "$4.924.800"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 23kW"
@@ -15,7 +15,7 @@ sku: "GW23KLV-SDT-BR30"
 power: "23kW"
 stock: "disponible"
 order: 6222
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

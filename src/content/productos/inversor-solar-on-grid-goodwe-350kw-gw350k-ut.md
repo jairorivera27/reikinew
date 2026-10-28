@@ -3,7 +3,7 @@ title: "Inversor Solar On-Grid GoodWe 350kW GW350K-UT"
 description: "Inversor Solar On-Grid GoodWe 350kW GW350K-UT. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW350K-UT; especificación principal: 350kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$40.607.000"
+price: "$34.096.600"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 350kW"
@@ -14,7 +14,7 @@ sku: "GW350K-UT"
 power: "350kW"
 stock: "disponible"
 order: 6239
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

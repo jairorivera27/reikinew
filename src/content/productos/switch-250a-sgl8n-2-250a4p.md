@@ -5,7 +5,7 @@ description: "Switch 250A SGL8N-2-250A4P. Equipo para protección y seguridad el
 image: "/images/productos-tienda/protecciones/suntree-sq8-switch.jpg"
 imageCard: "/images/productos-tienda/protecciones/suntree-sq8-switch-card.webp"
 category: "protecciones"
-price: "$1.244.971"
+price: "$908.700"
 specifications:
   - "Tipo: Switch"
   - "Especificación principal: 250A"
@@ -16,7 +16,7 @@ sku: "SGL8N-2-250A4P"
 power: "250A"
 stock: "disponible"
 order: 6457
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar switch"

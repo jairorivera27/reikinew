@@ -4,7 +4,7 @@ description: "Controlador de carga solar MPPT Inti de 20 A. Regula la carga de l
 image: "/images/productos-tienda/controladores/inti-mppt.jpg"
 imageCard: "/images/productos-tienda/controladores/inti-mppt-card.webp"
 category: "controladores"
-price: "$297.500"
+price: "$258.400"
 specifications:
   - "Tipo: MPPT"
   - "Especificación principal: 20A"
@@ -14,7 +14,7 @@ sku: "2024"
 power: "20A"
 stock: "disponible"
 order: 6054
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "controlador solar"
   - "controlador solar mppt"

@@ -4,7 +4,7 @@ description: "Datalogger / módulo de monitoreo APsystems ECU-R-MX. Permite ver 
 image: "/images/productos-estudio/apsystems-ecu.webp"
 imageCard: "/images/productos-estudio/apsystems-ecu-card.webp"
 category: "accesorios"
-price: "$1.069.250"
+price: "$928.700"
 specifications:
   - "Tipo: Monitoreo"
   - "Especificación principal: especificación no disponible"
@@ -15,7 +15,7 @@ sku: "ECU-R-MX"
 power: "N/A"
 stock: "disponible"
 order: 6364
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "sistema de monitoreo solar"
   - "sistema de monitoreo solar apsystems"

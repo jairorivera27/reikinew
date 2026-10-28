@@ -3,7 +3,7 @@ title: "Inversor Solar On-Grid GoodWe 90A CT90/45-5"
 description: "Inversor Solar On-Grid GoodWe 90A CT90/45-5. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: CT90/45-5; especificación principal: 90A. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$161.000"
+price: "$139.800"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 90A"
@@ -14,7 +14,7 @@ sku: "CT90/45-5"
 power: "90A"
 stock: "disponible"
 order: 6172
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

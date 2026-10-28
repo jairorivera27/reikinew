@@ -3,7 +3,7 @@ title: "Inversor Solar On-Grid GoodWe 73kW GW73KLV-HT"
 description: "Inversor Solar On-Grid GoodWe 73kW GW73KLV-HT. Equipo para conversión y gestión de energía en instalaciones fotovoltaicas. Marca: GoodWe; modelo: GW73KLV-HT; especificación principal: 73kW. Verifica compatibilidad, tensión y condiciones de instalación antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/inversores.svg"
 category: "inversores"
-price: "$21.088.375"
+price: "$18.316.800"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 73kW"
@@ -14,7 +14,7 @@ sku: "GW73KLV-HT"
 power: "73kW"
 stock: "disponible"
 order: 6257
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

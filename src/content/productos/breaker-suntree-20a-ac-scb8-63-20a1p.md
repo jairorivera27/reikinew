@@ -4,7 +4,7 @@ description: "Interruptor termomagnético (breaker) Suntree SCB8-63-20A1P AC de 
 image: "/images/productos-estudio/suntree-scb8-ac-prov.webp"
 imageCard: "/images/productos-estudio/suntree-scb8-ac-prov-card.webp"
 category: "protecciones"
-price: "$13.640"
+price: "$10.300"
 specifications:
   - "Tipo: Breaker"
   - "Especificación principal: 20A AC"
@@ -15,7 +15,7 @@ sku: "SCB8-63-20A1P"
 power: "20A AC"
 stock: "disponible"
 order: 6503
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "protección eléctrica solar"
   - "protección eléctrica solar breaker"

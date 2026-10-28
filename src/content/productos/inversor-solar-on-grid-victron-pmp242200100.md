@@ -4,7 +4,7 @@ description: "MultiPlus Victron Energy, 24/2000, 120 V CA, inversor-cargador par
 image: "/images/productos-estudio/inversor-solar-on-grid-victron-pmp242200100.webp"
 imageCard: "/images/productos-estudio/inversor-solar-on-grid-victron-pmp242200100-card.webp"
 category: "inversores"
-price: "$3.592.750"
+price: "$2.872.800"
 specifications:
   - "Tipo: Inversor-cargador híbrido"
   - "Familia: MultiPlus"
@@ -22,7 +22,7 @@ sku: "PMP242200100"
 power: "2kW"
 stock: "disponible"
 order: 6323
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

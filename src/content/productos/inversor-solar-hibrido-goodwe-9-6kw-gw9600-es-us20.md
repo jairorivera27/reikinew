@@ -4,7 +4,7 @@ description: "Inversor híbrido GoodWe GW9600-ES-US20 de 9,6kW. Trabaja con pane
 image: "/images/productos-estudio/goodwe-es-prov.webp"
 imageCard: "/images/productos-estudio/goodwe-es-prov-card.webp"
 category: "inversores"
-price: "$7.392.000"
+price: "$6.420.500"
 specifications:
   - "Tipo: Híbrido"
   - "Especificación principal: 9,6kW"
@@ -15,7 +15,7 @@ sku: "GW9600-ES-US20"
 power: "9,6kW"
 stock: "disponible"
 order: 6170
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar híbrido"

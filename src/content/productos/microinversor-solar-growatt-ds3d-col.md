@@ -4,7 +4,7 @@ description: "Microinversor Growatt DS3D-COL. Convierte la energía de cada pane
 image: "/images/productos-estudio/apsystems-ds3-prov.webp"
 imageCard: "/images/productos-estudio/apsystems-ds3-prov-card.webp"
 category: "inversores"
-price: "$1.645.000"
+price: "$1.428.800"
 specifications:
   - "Tipo: Microinversor"
   - "Especificación principal: especificación no disponible"
@@ -15,7 +15,7 @@ sku: "DS3D-COL"
 power: "N/A"
 stock: "disponible"
 order: 6367
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "microinversor solar"
   - "microinversor solar growatt"

@@ -4,7 +4,7 @@ description: "Phoenix Victron Energy, 24/800, 120 V CA, inversor puro para siste
 image: "/images/productos-estudio/inversor-solar-on-grid-victron-pin241800500.webp"
 imageCard: "/images/productos-estudio/inversor-solar-on-grid-victron-pin241800500-card.webp"
 category: "inversores"
-price: "$946.750"
+price: "$822.300"
 specifications:
   - "Tipo: Inversor Off-Grid (solo inversor)"
   - "Familia: Phoenix"
@@ -21,7 +21,7 @@ sku: "PIN241800500"
 power: "800W"
 stock: "disponible"
 order: 6304
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"

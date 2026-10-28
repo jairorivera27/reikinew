@@ -4,7 +4,7 @@ title: "Batería Solar Litio ILFPOSL-6144"
 description: "Batería Solar Litio ILFPOSL-6144. Equipo para almacenamiento de energía en sistemas solares y respaldo eléctrico. Modelo: ILFPOSL-6144; especificación principal: especificación no disponible. Verifica tensión, capacidad y compatibilidad con el inversor antes de comprar. Disponible para proyectos solares en Colombia."
 image: "/images/placeholders/baterias.svg"
 category: "baterias"
-price: "$5.889.518"
+price: "$4.298.700"
 specifications:
   - "Tipo: Litio"
   - "Especificación principal: especificación no disponible"
@@ -16,7 +16,7 @@ power: "N/A"
 stock: "disponible"
 order: 6037
 imagenPendiente: true
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "batería solar"
   - "batería solar litio"
