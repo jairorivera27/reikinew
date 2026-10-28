@@ -1,8 +1,8 @@
 ---
 title: "Victron Phoenix 24/800"
-description: "Phoenix Victron Energy, 24/800, 120 V CA, inversor puro para sistemas aislados, con VE.Direct. La foto es de referencia de la serie Victron Phoenix. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
-image: "/images/productos-estudio/victron-phoenix-prov.webp"
-imageCard: "/images/productos-estudio/victron-phoenix-prov-card.webp"
+description: "Phoenix Victron Energy, 24/800, 120 V CA, inversor puro para sistemas aislados, con VE.Direct. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
+image: "/images/productos-estudio/inversor-solar-on-grid-victron-pin241800500.webp"
+imageCard: "/images/productos-estudio/inversor-solar-on-grid-victron-pin241800500-card.webp"
 category: "inversores"
 price: "$946.750"
 specifications:
@@ -30,11 +30,9 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/victron-phoenix-prov.webp"
+imageThumb: "/images/productos-estudio/inversor-solar-on-grid-victron-pin241800500-thumb.webp"
 imageAlt: "Victron Phoenix 24/800 800W – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/inversores/victron-phoenix.png"
-imagen_provisional: true
-imagenSerieRef: "Victron Phoenix"
+imagen_provisional: false
 fichaPdf: "/fichas/fabricantes/victron-datasheet-inverter-ve.direct-250va-1600va-es.pdf"
 faqs:
   - pregunta: "¿Sirve sin conexión a la red eléctrica?"
