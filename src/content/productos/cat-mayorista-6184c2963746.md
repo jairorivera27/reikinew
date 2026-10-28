@@ -1,8 +1,8 @@
 ---
 title: "Studer MPPT Solar Charge Controller - Vt 80 - 48V"
 description: "Controlador solar MPPT Studer serie VT/VS: máximo aprovechamiento de campo FV hacia banco de baterías de 48 V (según modelo). Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
-image: "/images/productos-estudio/studer-vs-prov.webp"
-imageCard: "/images/productos-estudio/studer-vs-prov-card.webp"
+image: "/images/productos-estudio/cat-mayorista-6184c2963746.webp"
+imageCard: "/images/productos-estudio/cat-mayorista-6184c2963746-card.webp"
 category: "controladores"
 price: "$6.762.600"
 specifications:
@@ -13,10 +13,9 @@ specifications:
 brand: "Studer"
 stock: "disponible"
 order: 5131
-imageThumb: "/images/productos-estudio/studer-vs-prov.webp"
+imageThumb: "/images/productos-estudio/cat-mayorista-6184c2963746-thumb.webp"
 imageAlt: "Studer – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/controladores/studer-vs.jpg"
-imagen_provisional: true
+imagen_provisional: false
 faqs:
   - pregunta: "¿Qué diferencia hay entre MPPT y PWM?"
     respuesta: "El MPPT busca el punto de máxima potencia del panel y convierte el voltaje sobrante en corriente: aprovecha hasta un 30 % más de energía y permite usar paneles de mayor voltaje que la batería. El PWM es más simple y económico, pero exige que el panel tenga un voltaje cercano al de la batería."

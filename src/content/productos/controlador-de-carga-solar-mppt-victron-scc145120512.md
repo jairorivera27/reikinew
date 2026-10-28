@@ -1,8 +1,8 @@
 ---
 title: "Controlador de Carga Solar MPPT Victron SCC145120512"
 description: "Controlador de carga solar MPPT Victron SCC145120512. Regula la carga de las baterías desde los paneles y las protege de sobrecarga y descarga profunda. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
-image: "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
-imageCard: "/images/productos-estudio/victron-smartsolar-mppt-prov-card.webp"
+image: "/images/productos-estudio/controlador-de-carga-solar-mppt-victron-scc145120512.webp"
+imageCard: "/images/productos-estudio/controlador-de-carga-solar-mppt-victron-scc145120512-card.webp"
 category: "controladores"
 price: "$8.983.975"
 specifications:
@@ -24,10 +24,9 @@ seoKeywords:
   - "comprar controlador solar colombia"
   - "precio controlador solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/victron-smartsolar-mppt-prov.webp"
+imageThumb: "/images/productos-estudio/controlador-de-carga-solar-mppt-victron-scc145120512-thumb.webp"
 imageAlt: "Victron SCC145120512 N/A – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/controladores/victron-smartsolar-mppt.jpg"
-imagen_provisional: true
+imagen_provisional: false
 fichaPdf: "/fichas/fabricantes/victron-datasheet-smartsolar-mppt-rs-es.pdf"
 faqs:
   - pregunta: "¿Qué diferencia hay entre MPPT y PWM?"

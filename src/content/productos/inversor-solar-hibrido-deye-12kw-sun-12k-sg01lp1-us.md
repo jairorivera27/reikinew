@@ -1,8 +1,8 @@
 ---
 title: "Inversor Solar Híbrido Deye 12kW SUN-12K-SG01LP1-US"
 description: "Inversor híbrido Deye SUN-12K-SG01LP1-US de 12kW. Trabaja con paneles, baterías y red: aprovecha el sol de día, guarda energía y te respalda cuando hay cortes. La foto es de referencia de la serie Deye Hybrid. Si necesitas la hoja de datos completa, te la enviamos por WhatsApp."
-image: "/images/productos-estudio/deye-hybrid-prov.webp"
-imageCard: "/images/productos-estudio/deye-hybrid-prov-card.webp"
+image: "/images/productos-estudio/inversor-solar-hibrido-deye-12kw-sun-12k-sg01lp1-us.webp"
+imageCard: "/images/productos-estudio/inversor-solar-hibrido-deye-12kw-sun-12k-sg01lp1-us-card.webp"
 category: "inversores"
 price: "$14.000.000"
 specifications:
@@ -25,9 +25,8 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/deye-hybrid-prov.webp"
+imageThumb: "/images/productos-estudio/inversor-solar-hibrido-deye-12kw-sun-12k-sg01lp1-us-thumb.webp"
 imageAlt: "Deye SUN-12K-SG01LP1-US 12kW – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/inversores/deye-hybrid.png"
 imagen_provisional: true
 imagenSerieRef: "Deye Hybrid"
 faqs:

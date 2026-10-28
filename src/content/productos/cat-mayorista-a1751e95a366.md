@@ -1,8 +1,8 @@
 ---
 title: "Studer MPPT Solar Charge Controller - Vt 65 - 48V"
 description: "Controlador solar MPPT Studer serie VT/VS: máximo aprovechamiento de campo FV hacia banco de baterías de 48 V (según modelo). Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
-image: "/images/productos-estudio/studer-vs-prov.webp"
-imageCard: "/images/productos-estudio/studer-vs-prov-card.webp"
+image: "/images/productos-estudio/cat-mayorista-a1751e95a366.webp"
+imageCard: "/images/productos-estudio/cat-mayorista-a1751e95a366-card.webp"
 category: "controladores"
 price: "$6.410.700"
 specifications:
@@ -13,9 +13,8 @@ specifications:
 brand: "Studer"
 stock: "disponible"
 order: 5130
-imageThumb: "/images/productos-estudio/studer-vs-prov.webp"
+imageThumb: "/images/productos-estudio/cat-mayorista-a1751e95a366-thumb.webp"
 imageAlt: "Studer – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/controladores/studer-vs.jpg"
 imagen_provisional: true
 faqs:
   - pregunta: "¿Qué diferencia hay entre MPPT y PWM?"

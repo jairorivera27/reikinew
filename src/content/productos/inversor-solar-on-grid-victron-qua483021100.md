@@ -1,8 +1,8 @@
 ---
 title: "Victron Quattro 48/3000"
 description: "Quattro Victron Energy, 48/3000, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus. La foto es de referencia de la serie Victron Quattro. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
-image: "/images/productos-estudio/victron-quattro-prov.webp"
-imageCard: "/images/productos-estudio/victron-quattro-prov-card.webp"
+image: "/images/productos-estudio/inversor-solar-on-grid-victron-qua483021100.webp"
+imageCard: "/images/productos-estudio/inversor-solar-on-grid-victron-qua483021100-card.webp"
 category: "inversores"
 price: "$5.519.412"
 specifications:
@@ -31,9 +31,8 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/victron-quattro-prov.webp"
+imageThumb: "/images/productos-estudio/inversor-solar-on-grid-victron-qua483021100-thumb.webp"
 imageAlt: "Victron Quattro 48/3000 3kW – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/inversores/victron-quattro.png"
 imagen_provisional: true
 imagenSerieRef: "Victron Quattro"
 faqs:

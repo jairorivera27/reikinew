@@ -1,8 +1,8 @@
 ---
 title: "Victron MultiPlus 24/3000"
 description: "MultiPlus Victron Energy, 24/3000, 120 V CA, inversor-cargador para sistemas híbridos y aislados, con VE.Bus. La foto es de referencia de la serie Victron MultiPlus. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
-image: "/images/productos-estudio/victron-multiplus-prov.webp"
-imageCard: "/images/productos-estudio/victron-multiplus-prov-card.webp"
+image: "/images/productos-estudio/inversor-solar-on-grid-victron-pmp242301102.webp"
+imageCard: "/images/productos-estudio/inversor-solar-on-grid-victron-pmp242301102-card.webp"
 category: "inversores"
 price: "$5.490.450"
 specifications:
@@ -32,9 +32,8 @@ seoKeywords:
   - "comprar inversor solar colombia"
   - "precio inversor solar colombia"
   - "equipos de energía solar colombia"
-imageThumb: "/images/productos-estudio/victron-multiplus-prov.webp"
+imageThumb: "/images/productos-estudio/inversor-solar-on-grid-victron-pmp242301102-thumb.webp"
 imageAlt: "Victron MultiPlus 24/3000 3kW – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/inversores/victron-multiplus.png"
 imagen_provisional: true
 imagenSerieRef: "Victron MultiPlus"
 fichaPdf: "/fichas/fabricantes/victron-datasheet-multiplus-inverter-charger-800va-5kva-es.pdf"

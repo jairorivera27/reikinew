@@ -1,8 +1,8 @@
 ---
 title: "Inversor de Onda Pura EPever IPT2000-41 2000 W"
 description: "Inversor Onda Pura Epever IPT2000-41[T], referencia IPT2000-41[T], potencia de ~2kW. Descarga la ficha técnica del fabricante en esta página para revisar todos los parámetros."
-image: "/images/productos-estudio/epever-ipt2000-41-t-prov.webp"
-imageCard: "/images/productos-estudio/epever-ipt2000-41-t-prov-card.webp"
+image: "/images/productos-estudio/epever-ipt2000.webp"
+imageCard: "/images/productos-estudio/epever-ipt2000-card.webp"
 category: "inversores"
 price: "$980.100"
 precioAnterior: "$1.990.000"
@@ -18,10 +18,9 @@ brand: "EPever"
 model: "IPT2000-41[T]"
 stock: "disponible"
 order: 9
-imageThumb: "/images/productos-estudio/epever-ipt2000-41-t-prov.webp"
+imageThumb: "/images/productos-estudio/epever-ipt2000-thumb.webp"
 imageAlt: "EPever IPT2000-41[T] – Reiki Energía Solar"
-imageOriginal: "/images/productos-tienda/inversores/epever-ipt.png"
-imagen_provisional: true
+imagen_provisional: false
 faqs:
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
