@@ -283,6 +283,45 @@ const emailjsTemplateId =
           return v;
         }
 
+        /**
+         * Reseñas de Clientes en Google: ofrece al comprador la encuesta de Google tras una compra aprobada.
+         * Google la envía por correo después de la fecha estimada de entrega. Solo funciona cuando la cuenta
+         * de Merchant Center está inscrita en el programa; si no, el cuadro simplemente no aparece.
+         */
+        var GOOGLE_MERCHANT_ID = 5850111039;
+        var DIAS_ENTREGA_ESTIMADOS = 10;
+        function ofrecerResenaGoogle(orderId, email) {
+          try {
+            email = normalizeCustomerEmail(email);
+            if (!orderId || email.indexOf('@') === -1 || window.__reikiResenaGoogle) return;
+            window.__reikiResenaGoogle = true;
+            var entrega = new Date(Date.now() + DIAS_ENTREGA_ESTIMADOS * 86400000);
+            var fecha =
+              entrega.getFullYear() +
+              '-' + String(entrega.getMonth() + 1).padStart(2, '0') +
+              '-' + String(entrega.getDate()).padStart(2, '0');
+            window.renderOptIn = function () {
+              window.gapi.load('surveyoptin', function () {
+                window.gapi.surveyoptin.render({
+                  merchant_id: GOOGLE_MERCHANT_ID,
+                  order_id: String(orderId),
+                  email: email,
+                  delivery_country: 'CO',
+                  estimated_delivery_date: fecha,
+                  opt_in_style: 'CENTER_DIALOG',
+                });
+              });
+            };
+            var s = document.createElement('script');
+            s.src = 'https://apis.google.com/js/platform.js?onload=renderOptIn';
+            s.async = true;
+            s.defer = true;
+            document.head.appendChild(s);
+          } catch (_resena) {
+            /* la encuesta es opcional: nunca debe afectar la confirmación del pago */
+          }
+        }
+
         /** Intenta obtener un correo con forma mínima de email (contiene '@'). */
         function pickBuyerEmail(custSnap, wompiTx) {
           var cust =
@@ -734,6 +773,7 @@ const emailjsTemplateId =
                     'pay-action-btn--ghost'
                   )
               );
+              ofrecerResenaGoogle(refAddi, custAddi.email);
               try {
                 localStorage.removeItem(LS_CART_KEY);
                 window.dispatchEvent(new CustomEvent('cartUpdated', { detail: { totalItems: 0 } }));
@@ -821,6 +861,7 @@ const emailjsTemplateId =
                   )
               );
 
+              ofrecerResenaGoogle(reference || wompiTxnId, pickBuyerEmail(custSnap, tx));
               await finalizeApprovedSale(wompiTxnId, custSnap, cartSnap, tx, numeroCorto);
               return;
             }
