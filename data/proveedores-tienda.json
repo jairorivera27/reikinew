@@ -5710,5 +5710,385 @@
   "proveedor": "Ingesolar",
   "titulo": "Voltio Caja De Proteccion Para Tacos *12P",
   "codigo": "ING-PROTC03"
+ },
+ "inversor-hibrido-trifasico-deye-10-kw-sun-10k-sg04lp3-eu-am2-lv": {
+  "proveedor": "Autosolar",
+  "titulo": "Inversor Híbrido Trifásico Deye 10 kW SUN-10K-SG04LP3-EU-AM2-LV",
+  "codigo": "3004121"
+ },
+ "caja-de-proteccion-metalica-ip44-para-exterior-60x40x25-electroindustrial-jm": {
+  "proveedor": "Autosolar",
+  "titulo": "Caja de Protección Metálica IP44 para Exterior 60x40x25 Electroindustrial JM",
+  "codigo": "5304067"
+ },
+ "caja-de-proteccion-metalica-ip44-para-exterior-40x30x20-electroindustrial-jm": {
+  "proveedor": "Autosolar",
+  "titulo": "Caja de Protección Metálica IP44 para Exterior 40x30x20 Electroindustrial JM",
+  "codigo": "5304066"
+ },
+ "monitoreo-wifi-felicity-ioth2403-para-inversores-ivcm-lv": {
+  "proveedor": "Autosolar",
+  "titulo": "Monitoreo WiFi Felicity IOTH2403 para Inversores IVCM-LV",
+  "codigo": "1881068"
+ },
+ "cable-solar-14-mm2-negro-1500vdc-suntree": {
+  "proveedor": "Autosolar",
+  "titulo": "Cable Solar 1×4 mm² Negro 1500VDC Suntree",
+  "codigo": "5202069"
+ },
+ "cable-solar-14-mm2-rojo-1500vdc-suntree": {
+  "proveedor": "Autosolar",
+  "titulo": "Cable Solar 1×4 mm² Rojo 1500VDC Suntree",
+  "codigo": "5202068"
+ },
+ "bateria-de-litio-felicity-5-12-kwh-100-ah-flh48100ug1-alto-voltaje": {
+  "proveedor": "Autosolar",
+  "titulo": "Batería de Litio Felicity 5,12 kWh 100 Ah FLH48100UG1 Alto Voltaje",
+  "codigo": "1880837"
+ },
+ "cable-solar-135-mm2-negro-1500vdc-suntree": {
+  "proveedor": "Autosolar",
+  "titulo": "Cable Solar 1×35 mm² Negro 1500VDC Suntree",
+  "codigo": "5202067"
+ },
+ "cable-solar-135-mm2-rojo-1500vdc-suntree": {
+  "proveedor": "Autosolar",
+  "titulo": "Cable Solar 1×35 mm² Rojo 1500VDC Suntree",
+  "codigo": "5202066"
+ },
+ "caja-de-distribucion-ip65-12p-suntree": {
+  "proveedor": "Autosolar",
+  "titulo": "Caja de Distribución IP65 12P Suntree",
+  "codigo": "5504062"
+ },
+ "caja-de-distribucion-ip65-9p-suntree": {
+  "proveedor": "Autosolar",
+  "titulo": "Caja de Distribución IP65 9P Suntree",
+  "codigo": "5504055"
+ },
+ "caja-de-distribucion-ip65-6p-suntree": {
+  "proveedor": "Autosolar",
+  "titulo": "Caja de Distribución IP65 6P Suntree",
+  "codigo": "5504053"
+ },
+ "breaker-solar-ac-3x50a-400vac-suntree": {
+  "proveedor": "Autosolar",
+  "titulo": "Breaker Solar AC 3X50A 400VAC Suntree",
+  "codigo": "5504197"
+ },
+ "breaker-solar-ac-2x63a-400vac-suntree": {
+  "proveedor": "Autosolar",
+  "titulo": "Breaker Solar AC 2X63A 400VAC Suntree",
+  "codigo": "5504182"
+ },
+ "cargador-de-vehiculo-electrico-de-pared-moreday-7-kw-tipo-2-mdac132en": {
+  "proveedor": "Autosolar",
+  "titulo": "Cargador de Vehículo Eléctrico de Pared Moreday 7 kW Tipo 2 MDAC132EN",
+  "codigo": "3301031"
+ },
+ "cargador-de-vehiculo-electrico-de-pared-moreday-7-kw-tipo-2-mdac332en-k": {
+  "proveedor": "Autosolar",
+  "titulo": "Cargador de Vehículo Eléctrico de Pared Moreday 7 kW Tipo 2 MDAC332EN-K",
+  "codigo": "3301028"
+ },
+ "cargador-portatil-de-vehiculo-electrico-moreday-3-5-kw-tipo-2-mdac116enf": {
+  "proveedor": "Autosolar",
+  "titulo": "Cargador Portátil de Vehículo Eléctrico Moreday 3,5 kW Tipo 2 MDAC116ENF",
+  "codigo": "3301022"
+ },
+ "inversor-cargador-tensite-2000-w-24-v-ivcm2024-lv": {
+  "proveedor": "Autosolar",
+  "titulo": "Inversor Cargador Tensite 2000 W 24 V IVCM2024-LV",
+  "codigo": "3004246"
+ },
+ "gestor-de-energia-growatt-grohome-manager-x": {
+  "proveedor": "Autosolar",
+  "titulo": "Gestor de Energía Growatt GroHome Manager-X",
+  "codigo": "1881064"
+ },
+ "monitoreo-wifi-felicity-ioth2407": {
+  "proveedor": "Autosolar",
+  "titulo": "Monitoreo WiFi Felicity IOTH2407",
+  "codigo": "1881062"
+ },
+ "monitoreo-wifi-para-inversores-phvolt": {
+  "proveedor": "Autosolar",
+  "titulo": "Monitoreo WiFi para Inversores PHVolt",
+  "codigo": "1881060"
+ },
+ "bandeja-tipo-rack-para-gabinete-de-baterias-electroindustrial-jm": {
+  "proveedor": "Autosolar",
+  "titulo": "Bandeja Tipo Rack para Gabinete de Baterías Electroindustrial JM",
+  "codigo": "1881079"
+ },
+ "gabinete-para-baterias-solares-1206060-cm-electroindustrial-jm": {
+  "proveedor": "Autosolar",
+  "titulo": "Gabinete para Baterías Solares 120×60×60 cm Electroindustrial JM",
+  "codigo": "1881076"
+ },
+ "gabinete-para-baterias-solares-806060-cm-electroindustrial-jm": {
+  "proveedor": "Autosolar",
+  "titulo": "Gabinete para Baterías Solares 80×60×60 cm Electroindustrial JM",
+  "codigo": "1881073"
+ },
+ "cable-victron-ve-can-a-can-bus-bms-tipo-a-5-m": {
+  "proveedor": "Autosolar",
+  "titulo": "Cable Victron VE.Can a CAN-bus BMS Tipo A 5 m",
+  "codigo": "1700574"
+ },
+ "medidor-de-energia-victron-et340-trifasico-65-a-por-fase": {
+  "proveedor": "Autosolar",
+  "titulo": "Medidor de Energía Victron ET340 Trifásico 65 A por Fase",
+  "codigo": "1700550"
+ },
+ "inversor-cargador-felicity-5000-w-48-v-ivem5048-lv": {
+  "proveedor": "Autosolar",
+  "titulo": "Inversor Cargador Felicity 5000 W 48 V IVEM5048-LV",
+  "codigo": "3004300"
+ },
+ "caja-de-proteccion-metalica-ip55-para-interior-60x40x20-electroindustrial-jm": {
+  "proveedor": "Autosolar",
+  "titulo": "Caja de Protección Metálica IP55 para Interior 60x40x20 Electroindustrial JM",
+  "codigo": "5505030"
+ },
+ "breaker-solar-dc-2x40a-800v-suntree": {
+  "proveedor": "Autosolar",
+  "titulo": "Breaker Solar DC 2X40A 800V Suntree",
+  "codigo": "5504143"
+ },
+ "inversor-cargador-10000w-48v-bifasico-110-220vac-con-bms-tensite": {
+  "proveedor": "Autosolar",
+  "titulo": "Inversor Cargador 10000W 48V Bifásico 110/220VAC con BMS Tensite",
+  "codigo": "3003053"
+ },
+ "inversor-cargador-10000w-48v-110vac-con-bms-tensite": {
+  "proveedor": "Autosolar",
+  "titulo": "Inversor Cargador 10000W 48V 110VAC con BMS Tensite",
+  "codigo": "3003051"
+ },
+ "inversor-cargador-6400w-48v-110vac-con-bms-tensite": {
+  "proveedor": "Autosolar",
+  "titulo": "Inversor Cargador 6400W 48V 110VAC con BMS Tensite",
+  "codigo": "3003050"
+ },
+ "inversor-cargador-rack-phvolt-3000-w-48-v-eos3000": {
+  "proveedor": "Autosolar",
+  "titulo": "Inversor Cargador Rack PHVolt 3000 W 48 V EOS3000",
+  "codigo": "3004611"
+ },
+ "bateria-de-litio-tensite-4-8-kwh-48-v-ts-l5000-lv": {
+  "proveedor": "Autosolar",
+  "titulo": "Batería de Litio Tensite 4,8 kWh 48 V TS-L5000/LV",
+  "codigo": "1880811"
+ },
+ "inversor-on-grid-solax-mega-35-kw-g2-lv": {
+  "proveedor": "Autosolar",
+  "titulo": "Inversor On-Grid SolaX Mega 35 kW G2-LV",
+  "codigo": "3004281"
+ },
+ "smart-energy-manager-growatt-1m": {
+  "proveedor": "Autosolar",
+  "titulo": "Smart Energy Manager Growatt 1M",
+  "codigo": "3205075"
+ },
+ "interruptor-enchufable-homeline-2x40a-10ka-120-240vac-schneider": {
+  "proveedor": "Autosolar",
+  "titulo": "Interruptor Enchufable Homeline 2x40A 10kA 120/240Vac Schneider",
+  "codigo": "7102523"
+ },
+ "medidor-trifasico-growatt-tpm-ct-e-250-a": {
+  "proveedor": "Autosolar",
+  "titulo": "Medidor Trifásico Growatt TPM-CT-E 250 A",
+  "codigo": "3202012"
+ },
+ "monitoreo-growatt-shine-link-x": {
+  "proveedor": "Autosolar",
+  "titulo": "Monitoreo Growatt Shine Link-X",
+  "codigo": "3202015"
+ },
+ "variador-de-bombeo-solar-gd100-015g-4-pv-30hp-30kw-400v-ip20-invt": {
+  "proveedor": "Autosolar",
+  "titulo": "Variador de Bombeo Solar GD100-015G-4-PV 30HP 30kW 400V IP20 INVT",
+  "codigo": "5001538"
+ },
+ "variador-bombeo-solar-bpd-5hp-4kw-220v-ip65-invt": {
+  "proveedor": "Autosolar",
+  "titulo": "Variador Bombeo Solar BPD 5HP 4kW 220V IP65 INVT",
+  "codigo": "5501503"
+ },
+ "interruptor-enchufable-homeline-2x20a-10ka-120-240vac-schneider": {
+  "proveedor": "Autosolar",
+  "titulo": "Interruptor Enchufable Homeline 2x20A 10kA 120/240Vac Schneider",
+  "codigo": "7102494"
+ },
+ "variador-bombeo-solar-trifasico-gd100-5r5g-2-pv-7hp-5-5kw-220v-ip20-invt": {
+  "proveedor": "Autosolar",
+  "titulo": "Variador Bombeo Solar Trifásico GD100-5R5G-2-PV 7HP 5.5kW 220V IP20 INVT",
+  "codigo": "5001531"
+ },
+ "inversor-de-corriente-onda-pura-belttt-600-w-24-v": {
+  "proveedor": "Autosolar",
+  "titulo": "Inversor de Corriente Onda Pura Belttt 600 W 24 V",
+  "codigo": "3202601"
+ },
+ "cable-de-interfaz-victron-rs485-a-usb-1-8-m": {
+  "proveedor": "Autosolar",
+  "titulo": "Cable de Interfaz Victron RS485 a USB 1,8 m",
+  "codigo": "1700529"
+ },
+ "breaker-de-riel-ac-2x40a-230v-6ka-lumek": {
+  "proveedor": "Autosolar",
+  "titulo": "Breaker de Riel AC 2X40A 230V-6KA Lumek",
+  "codigo": "7102516"
+ },
+ "brackets-para-bateria-pylontech-us2000-2-4-kwh-48-v": {
+  "proveedor": "Autosolar",
+  "titulo": "Brackets para Batería Pylontech US2000 2,4 kWh 48 V",
+  "codigo": "5504070"
+ },
+ "flotador-pearl-mac5-para-control-de-nivel": {
+  "proveedor": "Autosolar",
+  "titulo": "Flotador Pearl MAC5 para Control de Nivel",
+  "codigo": "5552118"
+ },
+ "base-de-instalacion-para-3-inversores-nacional-de-dobleces": {
+  "proveedor": "Autosolar",
+  "titulo": "Base de Instalación para 3 Inversores Nacional de Dobleces",
+  "codigo": "9506080"
+ },
+ "base-de-instalacion-para-2-inversores-nacional-de-dobleces": {
+  "proveedor": "Autosolar",
+  "titulo": "Base de Instalación para 2 Inversores Nacional de Dobleces",
+  "codigo": "9506082"
+ },
+ "breaker-de-riel-ac-3x25a-400v-6ka-lumek": {
+  "proveedor": "Autosolar",
+  "titulo": "Breaker de Riel AC 3X25A 400V-6KA Lumek",
+  "codigo": "5504220"
+ },
+ "breaker-solar-dc-4x25a-1200v-feeo": {
+  "proveedor": "Autosolar",
+  "titulo": "Breaker Solar DC 4X25A 1200V FEEO",
+  "codigo": "7102493"
+ },
+ "controlador-de-carga-pwm-must-10-a-12-24-v-con-lcd": {
+  "proveedor": "Autosolar",
+  "titulo": "Controlador de Carga PWM Must 10 A 12/24 V con LCD",
+  "codigo": "2001507"
+ },
+ "tablero-de-sobreponer-conelec-8-polos": {
+  "proveedor": "Autosolar",
+  "titulo": "Tablero de Sobreponer Conelec 8 Polos",
+  "codigo": "9506010"
+ },
+ "interruptor-enchufable-homeline-2x30a-10ka-120-240vac-schneider": {
+  "proveedor": "Autosolar",
+  "titulo": "Interruptor Enchufable Homeline 2x30A 10kA 120/240Vac Schneider",
+  "codigo": "7102491"
+ },
+ "interruptor-enchufable-homeline-3x30a-10ka-208y-120vac-schneider": {
+  "proveedor": "Autosolar",
+  "titulo": "Interruptor Enchufable Homeline 3X30A 10kA 208Y/120Vac Schneider",
+  "codigo": "7102496"
+ },
+ "monitoreo-growatt-shinewifi-s": {
+  "proveedor": "Autosolar",
+  "titulo": "Monitoreo Growatt ShineWiFi-S",
+  "codigo": "3202016"
+ },
+ "variador-de-bombeo-solar-nastec-vasco-vs212-3-hp-trifasico-230-v": {
+  "proveedor": "Autosolar",
+  "titulo": "Variador de Bombeo Solar Nastec VASCO VS212 3 HP Trifásico 230 V",
+  "codigo": "5501615"
+ },
+ "base-de-instalacion-para-inversor-nacional-de-dobleces": {
+  "proveedor": "Autosolar",
+  "titulo": "Base de Instalación para Inversor Nacional de Dobleces",
+  "codigo": "9506083"
+ },
+ "kit-de-conexion-wifi-para-inversores-must": {
+  "proveedor": "Autosolar",
+  "titulo": "Kit de Conexión WiFi para Inversores Must",
+  "codigo": "3001020"
+ },
+ "conector-mc4-suntree-para-paneles-solares-4-6-mm2-1500-vdc": {
+  "proveedor": "Autosolar",
+  "titulo": "Conector MC4 Suntree para Paneles Solares 4/6 mm² 1500 VDC",
+  "codigo": "5504000"
+ },
+ "kit-de-conexion-en-paralelo-para-inversores-must": {
+  "proveedor": "Autosolar",
+  "titulo": "Kit de Conexión en Paralelo para Inversores Must",
+  "codigo": "3001010"
+ },
+ "conector-mc4-en-y-2-a-1-suntree-4-6-mm2-1500-vdc": {
+  "proveedor": "Autosolar",
+  "titulo": "Conector MC4 en Y 2 a 1 Suntree 4/6 mm² 1500 VDC",
+  "codigo": "5504046"
+ },
+ "monitoreo-growatt-shinewifi-x": {
+  "proveedor": "Autosolar",
+  "titulo": "Monitoreo Growatt ShineWiFi-X",
+  "codigo": "3202018"
+ },
+ "controlador-de-carga-pwm-must-50-a-48-v-con-lcd": {
+  "proveedor": "Autosolar",
+  "titulo": "Controlador de Carga PWM Must 50 A 48 V con LCD",
+  "codigo": "2001514"
+ },
+ "controlador-de-carga-pwm-must-40-a-12-24-v-con-lcd": {
+  "proveedor": "Autosolar",
+  "titulo": "Controlador de Carga PWM Must 40 A 12/24 V con LCD",
+  "codigo": "2001513"
+ },
+ "cable-solar-16-mm2-rojo-1500vdc-suntree": {
+  "proveedor": "Autosolar",
+  "titulo": "Cable Solar 1×6 mm² Rojo 1500VDC Suntree",
+  "codigo": "5201014"
+ },
+ "cable-solar-16-mm2-negro-1500vdc-suntree": {
+  "proveedor": "Autosolar",
+  "titulo": "Cable Solar 1×6 mm² Negro 1500VDC Suntree",
+  "codigo": "5201016"
+ },
+ "cable-solar-110-mm2-rojo-1500vdc-suntree": {
+  "proveedor": "Autosolar",
+  "titulo": "Cable Solar 1×10 mm² Rojo 1500VDC Suntree",
+  "codigo": "5201018"
+ },
+ "cable-solar-110-mm2-negro-1500vdc-suntree": {
+  "proveedor": "Autosolar",
+  "titulo": "Cable Solar 1×10 mm² Negro 1500VDC Suntree",
+  "codigo": "5201020"
+ },
+ "cable-solar-116-mm2-rojo-1500vdc-topsolar": {
+  "proveedor": "Autosolar",
+  "titulo": "Cable Solar 1×16 mm² Rojo 1500VDC Topsolar",
+  "codigo": "5201022"
+ },
+ "cable-solar-116-mm2-negro-1500vdc-topsolar": {
+  "proveedor": "Autosolar",
+  "titulo": "Cable Solar 1×16 mm² Negro 1500VDC Topsolar",
+  "codigo": "5201024"
+ },
+ "fusible-dc-50a-14x51-1000v-yro": {
+  "proveedor": "Autosolar",
+  "titulo": "Fusible DC 50A 14x51 1000V YRO",
+  "codigo": "5504032"
+ },
+ "fusible-dc-63a-14x51-1000v-yro": {
+  "proveedor": "Autosolar",
+  "titulo": "Fusible DC 63A 14x51 1000V YRO",
+  "codigo": "5504033"
+ },
+ "portafusible-dc-14x51-yro": {
+  "proveedor": "Autosolar",
+  "titulo": "Portafusible DC 14x51 YRO",
+  "codigo": "5504123"
+ },
+ "monitoreo-growatt-shinewifi-f": {
+  "proveedor": "Autosolar",
+  "titulo": "Monitoreo Growatt ShineWiFi-F",
+  "codigo": "3202017"
  }
 }
