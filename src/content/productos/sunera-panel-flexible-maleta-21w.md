@@ -14,7 +14,7 @@ specifications:
 brand: "Sunera"
 model: "PNL-21WP-FLEX-MALET"
 sku: "ING-PNLF03"
-stock: "agotado"
+stock: "disponible"
 order: 8000
 updatedAt: "2026-10-26"
 imagen_provisional: true

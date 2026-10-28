@@ -16,7 +16,7 @@ specifications:
 brand: "Restar"
 model: "175WP-MONO"
 sku: "ING-PNLM12"
-stock: "agotado"
+stock: "disponible"
 order: 8000
 updatedAt: "2026-10-26"
 imagen_provisional: false

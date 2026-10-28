@@ -21,7 +21,7 @@ specifications:
 brand: "Tensite"
 sku: "1002138"
 power: "710W"
-stock: "agotado"
+stock: "pre-orden"
 order: 6441
 updatedAt: "2026-10-26"
 seoKeywords:

@@ -16,7 +16,7 @@ specifications:
 brand: "Restar"
 model: "60WP-MONO"
 sku: "ING-PNLM01"
-stock: "agotado"
+stock: "disponible"
 order: 8000
 updatedAt: "2026-10-26"
 imagen_provisional: false

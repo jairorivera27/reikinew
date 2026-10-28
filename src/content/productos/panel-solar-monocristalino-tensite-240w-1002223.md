@@ -12,7 +12,7 @@ specifications:
 brand: "Tensite"
 sku: "1002223"
 power: "240W"
-stock: "agotado"
+stock: "disponible"
 order: 6439
 updatedAt: "2026-10-26"
 seoKeywords:

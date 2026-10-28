@@ -16,7 +16,7 @@ specifications:
 brand: "JA Solar"
 model: "JA Solar JAM66D45-605 LB"
 sku: "AMZ-100-0010"
-stock: "agotado"
+stock: "pre-orden"
 order: 7000
 updatedAt: "2026-10-26"
 imageThumb: "/images/productos-estudio/panel-solar-ja-solar-jam66d45-605-lb-605w-bifacial-thumb.webp"

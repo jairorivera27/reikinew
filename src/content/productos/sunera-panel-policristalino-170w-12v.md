@@ -14,7 +14,7 @@ specifications:
 brand: "Sunera"
 model: "170WP-POLI"
 sku: "ING-PNLP24"
-stock: "agotado"
+stock: "disponible"
 order: 8000
 updatedAt: "2026-10-26"
 imagen_provisional: false

@@ -14,7 +14,7 @@ specifications:
 brand: "Sunera"
 model: "PNL-28WP-FLEX"
 sku: "ING-PNLF02"
-stock: "agotado"
+stock: "disponible"
 order: 8000
 updatedAt: "2026-10-26"
 imagen_provisional: false

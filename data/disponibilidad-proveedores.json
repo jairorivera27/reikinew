@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-10-24 20:59",
+ "ultima_revision": "2026-10-27 21:00",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -439,7 +439,7 @@
    "consulta": "no-encontrado"
   },
   "bateria-solar-litio-felicity-48v-16kwh-1880836": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -1219,7 +1219,7 @@
    "consulta": "ok"
   },
   "jinko-tiger-neo-585w": {
-   "stock": "pre-orden",
+   "stock": "agotado",
    "stockBajo": false,
    "consulta": "no-encontrado"
   },
