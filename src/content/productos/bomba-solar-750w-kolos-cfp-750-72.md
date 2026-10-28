@@ -4,7 +4,7 @@ description: "Bomba solar sumergible Kolos KOLOS-CFP-750-72 de 750 W. Bombea agu
 image: "/images/productos-estudio/kolos-kolos-cfp-750-72-750w-prov.webp"
 imageCard: "/images/productos-estudio/kolos-kolos-cfp-750-72-750w-prov-card.webp"
 category: "bombeo"
-price: "$2.337.606"
+price: "$1.487.500"
 specifications:
   - "Tipo: Bomba"
   - "Especificación principal: 750W"
@@ -15,7 +15,7 @@ sku: "KOLOS-CFP-750-72"
 power: "750W"
 stock: "disponible"
 order: 6051
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "bomba solar"
   - "multimarca kolos-cfp-750-72"
@@ -35,6 +35,10 @@ faqs:
   - pregunta: "¿Qué datos necesito para elegir la bomba?"
     respuesta: "Profundidad del nivel del agua, altura hasta el tanque, distancia de la tubería y litros por día que necesitas. Con eso elegimos el modelo y el controlador correctos."
 fichaPdf: "/fichas/fabricantes/connera-kolosal-catalogo-vde.pdf"
+precioAnterior: "$2.337.606"
+descuentoPct: 36
+promocion: "Precio de feria · solo hasta el 31 de octubre"
+promocionHasta: "2026-10-31"
 ---
 **Bomba Solar 750W KOLOS-CFP-750-72** de Multimarca · 750W.
 

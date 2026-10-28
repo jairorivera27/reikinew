@@ -206,6 +206,11 @@ function toMerchantInput(data, slug, categoryNames) {
       additionalImageLinks,
       price: hasSale ? regularDigits : digits,
       salePrice: hasSale ? digits : undefined,
+      // Promoción con fecha de cierre: Google deja de mostrar el precio de oferta ese día a medianoche (Bogotá).
+      salePriceEffectiveDate:
+        hasSale && /^\d{4}-\d{2}-\d{2}$/.test(String(data.promocionHasta || '').trim())
+          ? { startTime: new Date().toISOString(), endTime: `${String(data.promocionHasta).trim()}T23:59:59-05:00` }
+          : undefined,
       brand: brand || undefined,
       mpn,
       stock: data.stock || 'disponible',

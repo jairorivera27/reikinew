@@ -114,6 +114,12 @@ export function buildMerchantProductResource(input) {
 
   if (input.salePrice != null && String(input.salePrice).trim() !== '') {
     productAttributes.salePrice = toMerchantPrice(input.salePrice, currency);
+    if (input.salePriceEffectiveDate?.endTime) {
+      productAttributes.salePriceEffectiveDate = {
+        startTime: String(input.salePriceEffectiveDate.startTime),
+        endTime: String(input.salePriceEffectiveDate.endTime),
+      };
+    }
   }
   if (availability === 'PREORDER' && input.availabilityDate) {
     productAttributes.availabilityDate = String(input.availabilityDate);
