@@ -11,7 +11,7 @@ specifications:
   - "Aplicación: almacenamiento de energía en sistemas solares y respaldo eléctrico"
 brand: "Felicity"
 model: "FLA24171"
-sku: "FLA24171"
+sku: "1880804"
 power: "24V 4kWh"
 stock: "pre-orden"
 order: 6015

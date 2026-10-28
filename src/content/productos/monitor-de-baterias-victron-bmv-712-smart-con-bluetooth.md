@@ -11,7 +11,7 @@ specifications:
   - "Aplicación: monitoreo y comunicación de equipos de energía solar"
 brand: "Victron"
 model: "BMV-712 Smart"
-sku: "BMV-712 Smart"
+sku: "1700504"
 power: "6.5–70VDC, shunt 500A"
 stock: "disponible"
 order: 6003

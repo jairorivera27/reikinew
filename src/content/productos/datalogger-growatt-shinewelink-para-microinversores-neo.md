@@ -11,7 +11,7 @@ specifications:
   - "Aplicación: monitoreo y comunicación de equipos de energía solar"
 brand: "Growatt"
 model: "ShineWeLink"
-sku: "ShineWeLink"
+sku: "1881065"
 power: "196–250VAC, <5W"
 stock: "disponible"
 order: 6000

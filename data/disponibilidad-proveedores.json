@@ -7,6 +7,7 @@
   "1002141": "https://autosolar.co/paneles-solares/panel-solar-bifacial-620w-n-type-tensite",
   "1002142": "https://autosolar.co/paneles-solares/panel-solar-bifacial-720w-deep-blue-40-n-type-ja-solar",
   "1002223": "https://autosolar.co/paneles-solares/panel-solar-monocristalino-240w-tensite",
+  "1700504": "https://autosolar.co/accesorios-de-baterias/battery-monitor-bmv-712-smart",
   "1700507": "https://autosolar.co/accesorios-controladores-carga/vedirect-bluetooth-smart-dongle",
   "1700510": "https://autosolar.co/cable-de-datos/vedirect-to-usb-interface",
   "1700518": "https://autosolar.co/accesorios-de-inversores/interfaz-de-enlace-victron-mk3-usb",
@@ -19,10 +20,12 @@
   "1700530": "https://autosolar.co/cable-de-datos/rs485-to-usb-interface-5m",
   "1700531": "https://autosolar.co/accesorios-de-inversores/gx-lte-4g-sa",
   "1700532": "https://autosolar.co/accesorios-de-inversores/gx-touch-70",
+  "1700536": "https://autosolar.co/accesorios-de-inversores/smart-batteryprotect-1224v-100a",
   "1700537": "https://autosolar.co/microinversores/microinversor-growatt-neo-2500m-x2",
   "1700550": "https://autosolar.co/accesorios-de-inversores/energy-meter-et340-3-phase-max-65aphase",
+  "1700552": "https://autosolar.co/accesorios-de-inversores/vebus-smart-dongle",
   "1700574": "https://autosolar.co/accesorios-de-inversores/vecan-to-can-bus-bms-type-a-cable-5-m",
-  "1708249": "https://autosolar.co/baterias-gel-12v/bateria-gel-12v-150ah-greenpoint",
+  "1880804": "https://autosolar.co/baterias-de-litio-24v/bateria-litio-felicity-solar-44kwh-24v-171a-fla24171-eu",
   "1880811": "https://autosolar.co/baterias-de-litio-48v/bateria-litio-48kwh-48v-ts-l5000lv-tensite",
   "1880812": "https://autosolar.co/baterias-de-litio-12v/bateria-litio-felicity-solar-128kwh-12v-100a-fla12100",
   "1880813": "https://autosolar.co/baterias-de-litio-12v/bateria-litio-felicity-solar-256kwh-12v-200a-fla12200",
@@ -33,9 +36,14 @@
   "1880837": "https://autosolar.co/baterias-de-litio/bateria-de-litio-felicity-512kwh-100ah-flh48100ug1-alto-voltaje",
   "1880845": "https://autosolar.co/baterias-de-litio/bateria-litio-felicity-solar-118kwh-512v-fla48230-eu",
   "1880846": "https://autosolar.co/baterias-de-litio/bateria-litio-felicity-solar-59kwh-24v-230a-fla-24230-eu",
+  "1880848": "https://autosolar.co/baterias-de-litio-24v/bateria-litio-felicity-solar-715kwh-24v-280a-fla24280-eu",
+  "1880849": "https://autosolar.co/baterias-de-litio-48v/bateria-litio-felicity-solar-875kwh-48v-171a-fla48171-eu",
+  "1880850": "https://autosolar.co/baterias-de-litio-48v/bateria-litio-felicity-solar-143kwh-48v-280a-fla48280-eu",
+  "1880901": "https://autosolar.co/baterias-de-litio-48v/bateria-litio-pylontech-us2000c-48v-24kwh",
   "1881060": "https://autosolar.co/accesorios-de-inversores/monitorizacion-wifi-inversor-ph-volt",
   "1881062": "https://autosolar.co/accesorios-de-inversores/monitorizacion-wifi-ioth2407-felicity-solar",
   "1881064": "https://autosolar.co/accesorios-de-inversores/grohomemanager-x",
+  "1881065": "https://autosolar.co/accesorios-de-inversores/shinewelink",
   "1881068": "https://autosolar.co/accesorios-de-inversores/monitorizacion-wifi-ioth2403-felicity-solar-para-ivcm-lv",
   "1881073": "https://autosolar.co/accesorios-de-baterias/gabinete-806060cm-para-baterias-solares",
   "1881076": "https://autosolar.co/accesorios-de-baterias/gabinete-1206060cm-para-baterias-solares",
@@ -80,6 +88,7 @@
   "3004611": "https://autosolar.co/inversores-cargadores-48v/inversor-cargador-rack-3000w-48v-eos3000-phvolt",
   "3004613": "https://autosolar.co/inversores-solares-12v/inversor-cargador-felicity-solar-1000w-12v-ivcm1012-lv",
   "3004614": "https://autosolar.co/inversores-cargadores-24v/inversor-cargador-felicity-solar-2000w-24v-ivcm2024-lv",
+  "3004615": "https://autosolar.co/inversores-solares-48v/inversor-cargador-3000w-48v-ivem3048-lv-felicitysolar",
   "3004616": "https://autosolar.co/inversores-solares-hibridos/inversor-hibrido-felicity-solar-8000w-48v-ivgm8klp2g1",
   "3004618": "https://autosolar.co/inversores-on-grid-bifasicos/inversor-on-grid-6000w-bifasico-saj-r6-6k-s2-x",
   "3004619": "https://autosolar.co/inversores-on-grid-bifasicos/inversor-on-grid-10000w-bifasico-saj-r6-10k-s2-x",
@@ -1199,6 +1208,11 @@
    "stockBajo": false,
    "consulta": "ok"
   },
+  "inversor-cargador-felicity-1000-w-12-v-ivcm1012-lv": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
   "inversor-on-grid-solis-50k-lv-5g-50-kw-trifasico-220-v": {
    "stock": "pre-orden",
    "stockBajo": false,
@@ -1496,11 +1510,6 @@
   },
   "panel-solar-ja-solar-jam66d45-605-lb-605w-bifacial": {
    "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "panel-solar-monocristalino-felicity-1kw-3004613": {
-   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },

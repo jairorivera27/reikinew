@@ -11,7 +11,7 @@ specifications:
   - "Aplicación: almacenamiento de energía en sistemas solares y respaldo eléctrico"
 brand: "Felicity"
 model: "FLA48280-EU"
-sku: "FLA48280-EU"
+sku: "1880850"
 power: "48V 14,3kWh"
 stock: "pre-orden"
 order: 6020

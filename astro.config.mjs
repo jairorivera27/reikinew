@@ -80,6 +80,7 @@ export default defineConfig({
     '/servicios/limpieza-energetica': '/servicios/energia-solar-movil',
     '/tienda/categoria/monitoreo-medicion': '/tienda/categoria/accesorios',
     '/tienda/categoria/cargadores-para-carro': '/tienda/categoria/accesorios',
+    '/tienda/panel-solar-monocristalino-felicity-1kw-3004613': '/tienda/inversor-cargador-felicity-1000-w-12-v-ivcm1012-lv',
   },
   build: {
     inlineStylesheets: 'auto',

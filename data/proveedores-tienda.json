@@ -7,7 +7,7 @@
  "adaptador-bluetooth-victron-8-70vdc-ve-bus-smart-dongle": {
   "proveedor": "Autosolar",
   "titulo": "Adaptador Bluetooth Victron 8–70VDC VE.Bus Smart Dongle",
-  "codigo": "VE.Bus Smart Dongle"
+  "codigo": "1700552"
  },
  "aire-acondicionado-hibrido-350voc-220vac-acdc-24kbtu-3-2kw-frio-deye": {
   "proveedor": "Ingesolar",
@@ -501,7 +501,7 @@
  "bateria-solar-litio-felicity-24v-4kwh-fla24171": {
   "proveedor": "Autosolar",
   "titulo": "Batería Solar Litio Felicity 24V 4kWh FLA24171",
-  "codigo": "FLA24171"
+  "codigo": "1880804"
  },
  "bateria-solar-litio-felicity-24v-5-9kwh-1880846": {
   "proveedor": "Autosolar",
@@ -511,7 +511,7 @@
  "bateria-solar-litio-felicity-24v-7-15kwh-fla24280-eu": {
   "proveedor": "Autosolar",
   "titulo": "Batería Solar Litio Felicity 24V 7,15kWh FLA24280-EU",
-  "codigo": "FLA24280-EU"
+  "codigo": "1880848"
  },
  "bateria-solar-litio-felicity-24v-7-5kwh-1880814": {
   "proveedor": "Autosolar",
@@ -526,7 +526,7 @@
  "bateria-solar-litio-felicity-48v-14-3kwh-fla48280-eu": {
   "proveedor": "Autosolar",
   "titulo": "Batería Solar Litio Felicity 48V 14,3kWh FLA48280-EU",
-  "codigo": "FLA48280-EU"
+  "codigo": "1880850"
  },
  "bateria-solar-litio-felicity-48v-16kwh-1880836": {
   "proveedor": "Autosolar",
@@ -541,7 +541,7 @@
  "bateria-solar-litio-felicity-48v-8-75kwh-fla48171-eu": {
   "proveedor": "Autosolar",
   "titulo": "Batería Solar Litio Felicity 48V 8,75kWh FLA48171-EU",
-  "codigo": "FLA48171-EU"
+  "codigo": "1880849"
  },
  "bateria-solar-litio-goodwe-51-2vdc-280ah-gw14": {
   "proveedor": "E&M",
@@ -585,8 +585,8 @@
  },
  "bateria-solar-litio-pylontech-48v-2-4kwh-1708249": {
   "proveedor": "Autosolar",
-  "titulo": "Batería Solar Litio Pylontech 48V 2.4kWh 1708249",
-  "codigo": "1708249"
+  "titulo": "Batería Solar Litio Pylontech US2000C 48V 2.4kWh 1880901",
+  "codigo": "1880901"
  },
  "bateria-solar-litio-pylontech-uf5000": {
   "proveedor": "E&M",
@@ -2514,7 +2514,7 @@
  "datalogger-growatt-shinewelink-para-microinversores-neo": {
   "proveedor": "Autosolar",
   "titulo": "Datalogger Growatt ShineWeLink para Microinversores NEO",
-  "codigo": "ShineWeLink"
+  "codigo": "1881065"
  },
  "deye-bateria-litio-51-2v-100ah-6000-ciclos-90-w-45kg-rack-se-g5-1pro-b-deye-60m-garan": {
   "proveedor": "Ingesolar",
@@ -3473,7 +3473,7 @@
  "inversor-solar-off-grid-felicity-3kw-ivem3048-lv": {
   "proveedor": "Autosolar",
   "titulo": "Inversor Solar Off-Grid Felicity 3kW IVEM3048-LV",
-  "codigo": "IVEM3048-LV"
+  "codigo": "3004615"
  },
  "inversor-solar-off-grid-felicity-5kw-3004247": {
   "proveedor": "Autosolar",
@@ -4595,7 +4595,7 @@
  "monitor-de-baterias-victron-bmv-712-smart-con-bluetooth": {
   "proveedor": "Autosolar",
   "titulo": "Monitor de Baterías Victron BMV-712 Smart con Bluetooth",
-  "codigo": "BMV-712 Smart"
+  "codigo": "1700504"
  },
  "moreday-conector-mc4-tipo-y-sy-bc21": {
   "proveedor": "Ingesolar",
@@ -4852,11 +4852,6 @@
   "proveedor": "Biosolar",
   "titulo": "Panel Solar Monocristalino 60W"
  },
- "panel-solar-monocristalino-felicity-1kw-3004613": {
-  "proveedor": "Autosolar",
-  "titulo": "Panel Solar Monocristalino Felicity 1kW 3004613",
-  "codigo": "3004613"
- },
  "panel-solar-monocristalino-must-2000w-leyu": {
   "proveedor": "Biosolar",
   "titulo": "Panel Solar Monocristalino Must 2000W LEYU",
@@ -5080,7 +5075,7 @@
  "protector-de-bateria-victron-12-24v-100a-smart-batteryprotect-12-24v": {
   "proveedor": "Autosolar",
   "titulo": "Protector de batería Victron 12/24V, 100A Smart BatteryProtect 12/24V-100A",
-  "codigo": "Smart BatteryProtect 12/24V-100A"
+  "codigo": "1700536"
  },
  "reflector-solar-led-100w": {
   "proveedor": "Hardy Solar Energy",
@@ -6090,5 +6085,10 @@
   "proveedor": "Autosolar",
   "titulo": "Monitoreo Growatt ShineWiFi-F",
   "codigo": "3202017"
+ },
+ "inversor-cargador-felicity-1000-w-12-v-ivcm1012-lv": {
+  "proveedor": "Autosolar",
+  "titulo": "Inversor Cargador Felicity 1000 W 12 V IVCM1012-LV",
+  "codigo": "3004613"
  }
 }

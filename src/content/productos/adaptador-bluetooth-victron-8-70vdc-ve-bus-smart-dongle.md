@@ -11,7 +11,7 @@ specifications:
   - "Aplicación: monitoreo y comunicación de equipos de energía solar"
 brand: "Victron"
 model: "VE.Bus Smart Dongle"
-sku: "VE.Bus Smart Dongle"
+sku: "1700552"
 power: "8–70VDC"
 stock: "disponible"
 order: 6004

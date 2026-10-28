@@ -102,6 +102,11 @@
       "permanent": true
     },
     {
+      "source": "/tienda/panel-solar-monocristalino-felicity-1kw-3004613",
+      "destination": "/tienda/inversor-cargador-felicity-1000-w-12-v-ivcm1012-lv",
+      "permanent": true
+    },
+    {
       "source": "/tienda/promociones",
       "destination": "/tienda/descuentos",
       "permanent": false

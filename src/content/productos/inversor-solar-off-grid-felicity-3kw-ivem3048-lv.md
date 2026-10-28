@@ -11,7 +11,7 @@ specifications:
   - "Aplicación: conversión y gestión de energía en instalaciones fotovoltaicas"
 brand: "Felicity"
 model: "IVEM3048-LV"
-sku: "IVEM3048-LV"
+sku: "3004615"
 power: "3kW"
 stock: "pre-orden"
 order: 6157

@@ -11,7 +11,7 @@ specifications:
   - "Aplicación: protección y seguridad eléctrica de instalaciones fotovoltaicas"
 brand: "Victron"
 model: "Smart BatteryProtect 12/24V-100A"
-sku: "Smart BatteryProtect 12/24V-100A"
+sku: "1700536"
 power: "12/24V, 100A"
 stock: "disponible"
 order: 6001
