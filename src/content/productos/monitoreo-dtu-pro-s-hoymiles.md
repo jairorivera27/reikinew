@@ -1,7 +1,8 @@
 ---
 title: "Monitoreo DTU PRO S Hoymiles"
 description: "Monitoreo DTU PRO S HOYMILES. Serie S Sistema de Monitorie online wifi W100 + opcion de inyección cero a la red."
-image: "/images/placeholders/accesorios.svg"
+image: "/images/productos-estudio/monitoreo-dtu-pro-s-hoymiles.webp"
+imageCard: "/images/productos-estudio/monitoreo-dtu-pro-s-hoymiles-card.webp"
 imageAlt: "Monitoreo DTU PRO S HOYMILES – Reiki Energía Solar"
 category: "accesorios"
 price: "$1.097.800"
@@ -13,8 +14,8 @@ sku: "IMP-827193"
 stock: "disponible"
 order: 8100
 updatedAt: "2026-10-28"
-draft: true
-imagenPendiente: true
+imageThumb: "/images/productos-estudio/monitoreo-dtu-pro-s-hoymiles-thumb.webp"
+imagen_provisional: false
 ---
 
 Monitoreo DTU PRO S Hoymiles. Serie S Sistema de Monitorie online wifi W100 + opcion de inyección cero a la red.

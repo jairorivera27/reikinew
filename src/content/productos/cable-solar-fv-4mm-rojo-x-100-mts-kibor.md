@@ -1,7 +1,8 @@
 ---
 title: "Cable Solar FV 4mm Rojo x 100 mts. Kibor"
 description: "Cable Solar FV 4mm Rojo x 100 mts. Kibor. 4mm Rojo, PV Cable DC 1500V Halogen Free Low Smoke. TUV CE IEC RETIE. Marca KIBOR."
-image: "/images/placeholders/accesorios.svg"
+image: "/images/productos-estudio/cable-solar-fv-4mm-rojo-x-100-mts-kibor.webp"
+imageCard: "/images/productos-estudio/cable-solar-fv-4mm-rojo-x-100-mts-kibor-card.webp"
 imageAlt: "Cable Solar FV 4mm Rojo x 100 mts. Kibor – Reiki Energía Solar"
 category: "accesorios"
 price: "$477.400"
@@ -16,8 +17,8 @@ sku: "IMP-880210"
 stock: "disponible"
 order: 8100
 updatedAt: "2026-10-28"
-draft: true
-imagenPendiente: true
+imageThumb: "/images/productos-estudio/cable-solar-fv-4mm-rojo-x-100-mts-kibor-thumb.webp"
+imagen_provisional: false
 ---
 
 Cable Solar FV 4mm Rojo x 100 mts. Kibor. 4mm Rojo, PV Cable DC 1500V Halogen Free Low Smoke. TUV CE IEC RETIE. Marca KIBOR.

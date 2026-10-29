@@ -1,7 +1,8 @@
 ---
 title: "Clamper Solar String Box 1E/1S KIT 32A"
 description: "CLAMPER Solar String Box 1E/1S KIT 32A. Nueva Version Tablero de protección, equipado con Dispositivos contra Sobretensiones (DPS) CLAMPER. Dispositivos de seccionamiento del circuito. Adecuado para uso externo. Fusible integrado en cable MC4, DPS Solar, Seccionador integrado, Caja completa certific"
-image: "/images/placeholders/accesorios.svg"
+image: "/images/productos-estudio/clamper-solar-string-box-1e-1s-kit-32a.webp"
+imageCard: "/images/productos-estudio/clamper-solar-string-box-1e-1s-kit-32a-card.webp"
 imageAlt: "CLAMPER Solar String Box 1E/1S KIT 32A – Reiki Energía Solar"
 category: "protecciones"
 price: "$727.900"
@@ -20,8 +21,8 @@ sku: "IMP-829451"
 stock: "disponible"
 order: 8100
 updatedAt: "2026-10-28"
-draft: true
-imagenPendiente: true
+imageThumb: "/images/productos-estudio/clamper-solar-string-box-1e-1s-kit-32a-thumb.webp"
+imagen_provisional: false
 ---
 
 Clamper Solar String Box 1E/1S KIT 32A. Nueva Version Tablero de protección, equipado con Dispositivos contra Sobretensiones (DPS) CLAMPER. Dispositivos de seccionamiento del circuito. Adecuado para uso externo. Fusible integrado en cable MC4, DPS Solar, Seccionador integrado, Caja completa certificada RETIE.
