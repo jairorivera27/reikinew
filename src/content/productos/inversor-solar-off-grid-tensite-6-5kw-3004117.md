@@ -12,7 +12,7 @@ specifications:
 brand: "Tensite"
 sku: "3004117"
 power: "6.5kW"
-stock: "disponible"
+stock: "pre-orden"
 order: 6294
 updatedAt: "2026-10-11"
 seoKeywords:

@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-10-27 21:00",
+ "ultima_revision": "2026-10-28 21:00",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -201,7 +201,7 @@
   "adaptador-bluetooth-victron-8-70vdc-ve-bus-smart-dongle": {
    "stock": "disponible",
    "stockBajo": false,
-   "consulta": "error"
+   "consulta": "ok"
   },
   "allyce-aire-acondicionado-hibrido-350voc-220vac-acdc-12kbtu-1-27kw": {
    "stock": "disponible",
@@ -534,12 +534,12 @@
    "consulta": "ok"
   },
   "bateria-solar-litio-felicity-48v-8-75kwh-fla48171-eu": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
-   "consulta": "no-encontrado"
+   "consulta": "ok"
   },
   "bateria-solar-litio-pylontech-48v-2-4kwh-1708249": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -756,7 +756,7 @@
   "datalogger-growatt-shinewelink-para-microinversores-neo": {
    "stock": "disponible",
    "stockBajo": false,
-   "consulta": "no-encontrado"
+   "consulta": "ok"
   },
   "deye-bateria-litio-51-2v-100ah-6000-ciclos-90-w-45kg-rack-se-g5-1pro-b-deye-60m-garan": {
    "stock": "disponible",
@@ -1208,11 +1208,6 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "inversor-cargador-felicity-1000-w-12-v-ivcm1012-lv": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "inversor-on-grid-solis-50k-lv-5g-50-kw-trifasico-220-v": {
    "stock": "pre-orden",
    "stockBajo": false,
@@ -1239,9 +1234,9 @@
    "consulta": "ok"
   },
   "inversor-solar-off-grid-felicity-3kw-ivem3048-lv": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
-   "consulta": "no-encontrado"
+   "consulta": "ok"
   },
   "inversor-solar-off-grid-felicity-5kw-3004247": {
    "stock": "pre-orden",
@@ -1254,7 +1249,7 @@
    "consulta": "ok"
   },
   "inversor-solar-off-grid-tensite-6-5kw-3004117": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -1386,7 +1381,7 @@
   "monitor-de-baterias-victron-bmv-712-smart-con-bluetooth": {
    "stock": "disponible",
    "stockBajo": false,
-   "consulta": "error"
+   "consulta": "ok"
   },
   "moreday-conector-mc4-tipo-y-sy-bc21": {
    "stock": "disponible",
@@ -1551,7 +1546,7 @@
   "protector-de-bateria-victron-12-24v-100a-smart-batteryprotect-12-24v": {
    "stock": "disponible",
    "stockBajo": false,
-   "consulta": "error"
+   "consulta": "ok"
   },
   "restar-panel-monocristalino-100w-voc-21-4-isc-6-13": {
    "stock": "disponible",
@@ -1866,6 +1861,391 @@
   "voltio-caja-de-proteccion-para-tacos-12p": {
    "stock": "disponible",
    "stockBajo": true,
+   "consulta": "ok"
+  },
+  "inversor-hibrido-trifasico-deye-10-kw-sun-10k-sg04lp3-eu-am2-lv": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "caja-de-proteccion-metalica-ip44-para-exterior-60x40x25-electroindustrial-jm": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "caja-de-proteccion-metalica-ip44-para-exterior-40x30x20-electroindustrial-jm": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "monitoreo-wifi-felicity-ioth2403-para-inversores-ivcm-lv": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-solar-14-mm2-negro-1500vdc-suntree": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-solar-14-mm2-rojo-1500vdc-suntree": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "bateria-de-litio-felicity-5-12-kwh-100-ah-flh48100ug1-alto-voltaje": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-solar-135-mm2-negro-1500vdc-suntree": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-solar-135-mm2-rojo-1500vdc-suntree": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "caja-de-distribucion-ip65-12p-suntree": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "caja-de-distribucion-ip65-9p-suntree": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "caja-de-distribucion-ip65-6p-suntree": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-solar-ac-3x50a-400vac-suntree": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-solar-ac-2x63a-400vac-suntree": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cargador-de-vehiculo-electrico-de-pared-moreday-7-kw-tipo-2-mdac132en": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cargador-de-vehiculo-electrico-de-pared-moreday-7-kw-tipo-2-mdac332en-k": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cargador-portatil-de-vehiculo-electrico-moreday-3-5-kw-tipo-2-mdac116enf": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "inversor-cargador-tensite-2000-w-24-v-ivcm2024-lv": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "gestor-de-energia-growatt-grohome-manager-x": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "monitoreo-wifi-felicity-ioth2407": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "monitoreo-wifi-para-inversores-phvolt": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "bandeja-tipo-rack-para-gabinete-de-baterias-electroindustrial-jm": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "gabinete-para-baterias-solares-1206060-cm-electroindustrial-jm": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "gabinete-para-baterias-solares-806060-cm-electroindustrial-jm": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-victron-ve-can-a-can-bus-bms-tipo-a-5-m": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "medidor-de-energia-victron-et340-trifasico-65-a-por-fase": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "inversor-cargador-felicity-5000-w-48-v-ivem5048-lv": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "caja-de-proteccion-metalica-ip55-para-interior-60x40x20-electroindustrial-jm": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-solar-dc-2x40a-800v-suntree": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "inversor-cargador-10000w-48v-bifasico-110-220vac-con-bms-tensite": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "inversor-cargador-10000w-48v-110vac-con-bms-tensite": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "inversor-cargador-6400w-48v-110vac-con-bms-tensite": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "inversor-cargador-rack-phvolt-3000-w-48-v-eos3000": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "bateria-de-litio-tensite-4-8-kwh-48-v-ts-l5000-lv": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "inversor-on-grid-solax-mega-35-kw-g2-lv": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "smart-energy-manager-growatt-1m": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "interruptor-enchufable-homeline-2x40a-10ka-120-240vac-schneider": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "medidor-trifasico-growatt-tpm-ct-e-250-a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "monitoreo-growatt-shine-link-x": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "variador-de-bombeo-solar-gd100-015g-4-pv-30hp-30kw-400v-ip20-invt": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "variador-bombeo-solar-bpd-5hp-4kw-220v-ip65-invt": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "interruptor-enchufable-homeline-2x20a-10ka-120-240vac-schneider": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "variador-bombeo-solar-trifasico-gd100-5r5g-2-pv-7hp-5-5kw-220v-ip20-invt": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "inversor-de-corriente-onda-pura-belttt-600-w-24-v": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-de-interfaz-victron-rs485-a-usb-1-8-m": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-de-riel-ac-2x40a-230v-6ka-lumek": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "brackets-para-bateria-pylontech-us2000-2-4-kwh-48-v": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "flotador-pearl-mac5-para-control-de-nivel": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "base-de-instalacion-para-3-inversores-nacional-de-dobleces": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "base-de-instalacion-para-2-inversores-nacional-de-dobleces": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-de-riel-ac-3x25a-400v-6ka-lumek": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-solar-dc-4x25a-1200v-feeo": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "controlador-de-carga-pwm-must-10-a-12-24-v-con-lcd": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "tablero-de-sobreponer-conelec-8-polos": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "interruptor-enchufable-homeline-2x30a-10ka-120-240vac-schneider": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "interruptor-enchufable-homeline-3x30a-10ka-208y-120vac-schneider": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "monitoreo-growatt-shinewifi-s": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "variador-de-bombeo-solar-nastec-vasco-vs212-3-hp-trifasico-230-v": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "base-de-instalacion-para-inversor-nacional-de-dobleces": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "kit-de-conexion-wifi-para-inversores-must": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "conector-mc4-suntree-para-paneles-solares-4-6-mm2-1500-vdc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "kit-de-conexion-en-paralelo-para-inversores-must": {
+   "stock": "pre-orden",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "conector-mc4-en-y-2-a-1-suntree-4-6-mm2-1500-vdc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "monitoreo-growatt-shinewifi-x": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "controlador-de-carga-pwm-must-50-a-48-v-con-lcd": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "controlador-de-carga-pwm-must-40-a-12-24-v-con-lcd": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-solar-16-mm2-rojo-1500vdc-suntree": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-solar-16-mm2-negro-1500vdc-suntree": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-solar-110-mm2-rojo-1500vdc-suntree": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-solar-110-mm2-negro-1500vdc-suntree": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-solar-116-mm2-rojo-1500vdc-topsolar": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-solar-116-mm2-negro-1500vdc-topsolar": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-dc-50a-14x51-1000v-yro": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-dc-63a-14x51-1000v-yro": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "portafusible-dc-14x51-yro": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "monitoreo-growatt-shinewifi-f": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "inversor-cargador-felicity-1000-w-12-v-ivcm1012-lv": {
+   "stock": "disponible",
+   "stockBajo": false,
    "consulta": "ok"
   }
  }

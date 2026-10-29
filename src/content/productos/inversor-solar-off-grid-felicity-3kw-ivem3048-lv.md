@@ -13,7 +13,7 @@ brand: "Felicity"
 model: "IVEM3048-LV"
 sku: "3004615"
 power: "3kW"
-stock: "pre-orden"
+stock: "disponible"
 order: 6157
 updatedAt: "2026-10-11"
 seoKeywords:

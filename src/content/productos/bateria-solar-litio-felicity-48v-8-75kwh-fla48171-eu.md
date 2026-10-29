@@ -13,7 +13,7 @@ brand: "Felicity"
 model: "FLA48171-EU"
 sku: "1880849"
 power: "48V 8,75kWh"
-stock: "pre-orden"
+stock: "disponible"
 order: 6023
 updatedAt: "2026-10-11"
 seoKeywords:

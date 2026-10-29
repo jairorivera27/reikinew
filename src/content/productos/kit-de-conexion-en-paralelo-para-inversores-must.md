@@ -11,7 +11,7 @@ specifications:
   - "Aplicación: instalación y monitoreo de sistemas solares"
 brand: "Must"
 sku: "3001010"
-stock: "disponible"
+stock: "pre-orden"
 order: 7100
 updatedAt: "2026-10-28"
 imagen_provisional: false
