@@ -4,7 +4,7 @@ description: "Monitorieo WiFi Serie LHM/VHM old MUST. Sistema de Monitorieo onli
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Monitorieo WiFi Serie LHM/VHM old MUST – Reiki Energía Solar"
 category: "accesorios"
-price: "$581.400"
+price: "$488.500"
 specifications:
   - "Marca: MUST"
   - "Sistema de Monitorieo online WiFi para inversores MUST SOLAR series VHM 2"

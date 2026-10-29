@@ -5,7 +5,7 @@ image: "/images/productos-estudio/sem-e-50k-growatt.webp"
 imageCard: "/images/productos-estudio/sem-e-50k-growatt-card.webp"
 imageAlt: "SEM-E (50K) Growatt – Reiki Energía Solar"
 category: "accesorios"
-price: "$2.617.400"
+price: "$2.199.500"
 specifications:
   - "Marca: Growatt"
   - "Smart Energy Manager"

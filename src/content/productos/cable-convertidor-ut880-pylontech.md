@@ -4,7 +4,7 @@ description: "Cable Convertidor UT880 Pylontech. USB 2.0 a RS232, aplicaciones e
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Cable Convertidor UT880 Pylontech – Reiki Energía Solar"
 category: "baterias"
-price: "$135.200"
+price: "$113.600"
 specifications:
   - "Marca: Pylontech"
   - "USB 2.0 a RS232"

@@ -5,7 +5,7 @@ image: "/images/productos-estudio/cable-solar-fv-10mm-rojo-x-100-mts-kibor.webp"
 imageCard: "/images/productos-estudio/cable-solar-fv-10mm-rojo-x-100-mts-kibor-card.webp"
 imageAlt: "Cable Solar FV 10mm Rojo x 100 mts. Kibor – Reiki Energía Solar"
 category: "accesorios"
-price: "$1.036.200"
+price: "$870.700"
 specifications:
   - "Marca: Kibor"
   - "10mm Rojo"

@@ -4,7 +4,7 @@ description: "Combiner Solar String Box 3E/3S ONESTO. 3 Entrada/ 3 Salida; 1000v
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Combiner Solar String Box 3E/3S ONESTO – Reiki Energía Solar"
 category: "protecciones"
-price: "$1.584.300"
+price: "$1.331.300"
 specifications:
   - "Marca: Onesto"
   - "3 Entrada/ 3 Salida"

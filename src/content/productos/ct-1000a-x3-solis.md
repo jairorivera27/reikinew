@@ -4,7 +4,7 @@ description: "CT 1000A X3 SOLIS. CT para medir corriente hasta 1000A, Paquete de
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "CT 1000A X3 SOLIS – Reiki Energía Solar"
 category: "accesorios"
-price: "$1.058.800"
+price: "$889.700"
 specifications:
   - "Marca: Solis"
   - "CT para medir corriente hasta 1000A"

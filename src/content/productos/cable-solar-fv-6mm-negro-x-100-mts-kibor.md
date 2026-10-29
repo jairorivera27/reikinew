@@ -5,7 +5,7 @@ image: "/images/productos-estudio/cable-solar-fv-6mm-negro-x-100-mts-kibor.webp"
 imageCard: "/images/productos-estudio/cable-solar-fv-6mm-negro-x-100-mts-kibor-card.webp"
 imageAlt: "Cable Solar FV 6mm Negro x 100 mts. Kibor – Reiki Energía Solar"
 category: "accesorios"
-price: "$656.100"
+price: "$551.300"
 specifications:
   - "Marca: Kibor"
   - "6mm Negro"

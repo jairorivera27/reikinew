@@ -4,7 +4,7 @@ description: "Bateria M1C Pylontech. Conexiones en Alto voltaje, 32v 148ah, 4.7k
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Bateria M1C Pylontech – Reiki Energía Solar"
 category: "baterias"
-price: "$4.600.500"
+price: "$3.865.900"
 specifications:
   - "Marca: Pylontech"
   - "Conexiones en Alto voltaje"

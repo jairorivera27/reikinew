@@ -4,7 +4,7 @@ description: "Monitoreo Bluetooth BT-1 Serie Smart Procet Scientific. Sistema Mo
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Monitoreo Bluetooth BT-1 Serie Smart Procet Scientific – Reiki Energía Solar"
 category: "accesorios"
-price: "$89.300"
+price: "$75.000"
 specifications:
   - "Marca: Procet Scientific"
   - "Sistema Monitoreo Bluetooth MPPT para Serie Smart"

@@ -5,7 +5,7 @@ image: "/images/productos-estudio/dps-s800-ethernet-cat5e-clamper.webp"
 imageCard: "/images/productos-estudio/dps-s800-ethernet-cat5e-clamper-card.webp"
 imageAlt: "DPS S800 Ethernet CAT5e Clamper – Reiki Energía Solar"
 category: "protecciones"
-price: "$182.900"
+price: "$153.700"
 specifications:
   - "Marca: Clamper"
   - "Categoría 5e (CAT5e)"

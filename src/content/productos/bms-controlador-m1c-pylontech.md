@@ -4,7 +4,7 @@ description: "BMS Controlador M1C Pylontech. 0-1000V, IP20, 13Kg, +15 años, Fun
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "BMS Controlador M1C Pylontech – Reiki Energía Solar"
 category: "baterias"
-price: "$5.501.100"
+price: "$4.622.800"
 specifications:
   - "Marca: Pylontech"
   - "0-1000V"

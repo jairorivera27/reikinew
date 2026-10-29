@@ -4,7 +4,7 @@ description: "Smart Meter (3-phase) SOFAR. Medidor clase I, CT *3 incluidos. SOF
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Smart Meter (3-phase) SOFAR – Reiki Energía Solar"
 category: "accesorios"
-price: "$1.219.000"
+price: "$1.024.400"
 specifications:
   - "Marca: Sofar"
   - "Medidor clase I"

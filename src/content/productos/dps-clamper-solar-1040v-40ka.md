@@ -5,7 +5,7 @@ image: "/images/productos-estudio/dps-clamper-solar-1040v-40ka.webp"
 imageCard: "/images/productos-estudio/dps-clamper-solar-1040v-40ka-card.webp"
 imageAlt: "DPS Clamper Solar 1040V 40kA – Reiki Energía Solar"
 category: "protecciones"
-price: "$210.100"
+price: "$176.500"
 specifications:
   - "Marca: Clamper"
   - "Supresor de Picos"

@@ -4,7 +4,7 @@ description: "DC Extension Cable YRO. 1 mts Extension."
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "DC Extension Cable YRO – Reiki Energía Solar"
 category: "accesorios"
-price: "$57.100"
+price: "$48.000"
 specifications:
   - "Marca: YRO"
   - "1 mts Extension"

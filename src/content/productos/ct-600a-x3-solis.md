@@ -4,7 +4,7 @@ description: "CT 600A X3 SOLIS. CT para medir corriente hasta 600A, Paquete de 3
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "CT 600A X3 SOLIS – Reiki Energía Solar"
 category: "accesorios"
-price: "$1.021.500"
+price: "$858.400"
 specifications:
   - "Marca: Solis"
   - "CT para medir corriente hasta 600A"

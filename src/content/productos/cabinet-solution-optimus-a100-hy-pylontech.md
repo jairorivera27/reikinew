@@ -4,7 +4,7 @@ description: "Cabinet Solution Optimus A100-HY Pylontech. 104Kw capacity, up 520
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Cabinet Solution Optimus A100-HY Pylontech – Reiki Energía Solar"
 category: "baterias"
-price: "$136.506.400"
+price: "$114.711.200"
 specifications:
   - "Marca: Pylontech"
   - "104Kw capacity"

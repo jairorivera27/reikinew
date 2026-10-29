@@ -4,7 +4,7 @@ description: "ShineMaster Growatt. Servidor web local para una fácil configurac
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "ShineMaster Growatt – Reiki Energía Solar"
 category: "accesorios"
-price: "$1.999.800"
+price: "$1.680.500"
 specifications:
   - "Marca: Growatt"
   - "Servidor web local para una fácil configuración"

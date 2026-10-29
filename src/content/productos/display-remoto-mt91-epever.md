@@ -5,7 +5,7 @@ image: "/images/productos-estudio/display-remoto-mt91-epever.webp"
 imageCard: "/images/productos-estudio/display-remoto-mt91-epever-card.webp"
 imageAlt: "Display Remoto MT91 Epever – Reiki Energía Solar"
 category: "accesorios"
-price: "$122.700"
+price: "$103.100"
 specifications:
   - "Marca: Epever"
   - "Para Configuracion de inversores IPT"

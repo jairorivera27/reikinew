@@ -5,7 +5,7 @@ image: "/images/productos-estudio/display-remoto-mt75-epever.webp"
 imageCard: "/images/productos-estudio/display-remoto-mt75-epever-card.webp"
 imageAlt: "Display Remoto MT75 Epever – Reiki Energía Solar"
 category: "accesorios"
-price: "$254.000"
+price: "$213.500"
 specifications:
   - "Marca: Epever"
   - "Para Controladores e Inversores Epever en simultaneo"

@@ -4,7 +4,7 @@ description: "Conector Solar 6-1 ZON. Ideal para Estaciones de Carga Wolk/ Regen
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Conector Solar 6-1 ZON – Reiki Energía Solar"
 category: "accesorios"
-price: "$62.000"
+price: "$52.100"
 specifications:
   - "Marca: ZON"
   - "Ideal para Estaciones de Carga Wolk/ Regen"

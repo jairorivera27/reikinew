@@ -5,7 +5,7 @@ image: "/images/productos-estudio/bateria-fidus-litio-pylontech.webp"
 imageCard: "/images/productos-estudio/bateria-fidus-litio-pylontech-card.webp"
 imageAlt: "Bateria Fidus Litio Pylontech – Reiki Energía Solar"
 category: "baterias"
-price: "$5.290.600"
+price: "$4.445.900"
 specifications:
   - "Marca: Pylontech"
   - "51,2v 100ah,kwh"

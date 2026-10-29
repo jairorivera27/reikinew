@@ -4,7 +4,7 @@ description: "Estación Portatil de Energía Amber Mini Pylontech. Batería 473w
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Estación Portatil de Energía Amber Mini Pylontech – Reiki Energía Solar"
 category: "baterias"
-price: "$1.721.000"
+price: "$1.446.200"
 specifications:
   - "Marca: Pylontech"
   - "Batería 473wh"

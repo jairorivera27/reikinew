@@ -5,7 +5,7 @@ image: "/images/productos-estudio/rcc-02-control-remoto-studer.webp"
 imageCard: "/images/productos-estudio/rcc-02-control-remoto-studer-card.webp"
 imageAlt: "RCC-02 Control Remoto Studer – Reiki Energía Solar"
 category: "accesorios"
-price: "$1.410.700"
+price: "$1.185.500"
 specifications:
   - "Marca: Studer"
   - "RCC-02 Control Remoto con 2 mts"

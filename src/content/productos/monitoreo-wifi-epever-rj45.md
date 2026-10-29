@@ -5,7 +5,7 @@ image: "/images/productos-estudio/monitoreo-wifi-epever-rj45.webp"
 imageCard: "/images/productos-estudio/monitoreo-wifi-epever-rj45-card.webp"
 imageAlt: "Monitoreo Wifi Epever RJ45 – Reiki Energía Solar"
 category: "accesorios"
-price: "$141.200"
+price: "$118.700"
 specifications:
   - "Marca: Epever"
   - "Terminal Transmision wifi Epever"

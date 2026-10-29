@@ -4,7 +4,7 @@ description: "Combiner Solar String Box 1E/1S ONESTO. 1 Entrada/ 1 Salida; 1000v
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Combiner Solar String Box 1E/1S ONESTO – Reiki Energía Solar"
 category: "protecciones"
-price: "$535.000"
+price: "$449.500"
 specifications:
   - "Marca: Onesto"
   - "1 Entrada/ 1 Salida"

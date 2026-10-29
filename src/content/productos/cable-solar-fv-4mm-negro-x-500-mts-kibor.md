@@ -5,7 +5,7 @@ image: "/images/productos-estudio/cable-solar-fv-4mm-negro-x-500-mts-kibor.webp"
 imageCard: "/images/productos-estudio/cable-solar-fv-4mm-negro-x-500-mts-kibor-card.webp"
 imageAlt: "Cable Solar FV 4mm Negro x 500 mts. Kibor – Reiki Energía Solar"
 category: "accesorios"
-price: "$2.386.900"
+price: "$2.005.800"
 specifications:
   - "Marca: Kibor"
   - "4mm Negro"

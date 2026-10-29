@@ -4,7 +4,7 @@ description: "Conector MC4 YRO. Juego de Conectores Hembra y Macho 1000V. Marca 
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Conector MC4 YRO – Reiki Energía Solar"
 category: "accesorios"
-price: "$5.700"
+price: "$4.800"
 specifications:
   - "Marca: YRO"
   - "Juego de Conectores Hembra y Macho 1000V"

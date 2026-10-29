@@ -4,7 +4,7 @@ description: "Bracket-UP2 Pylontech. Soporte para baterias UP2500, Max. 4 horizo
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Bracket-UP2 Pylontech – Reiki Energía Solar"
 category: "baterias"
-price: "$333.200"
+price: "$280.000"
 specifications:
   - "Marca: Pylontech"
   - "Soporte para baterias UP2500"

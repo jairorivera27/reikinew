@@ -4,7 +4,7 @@ description: "Autotransformador ATR-6K SOLIS. Compatible con serie RHI, EHI, ent
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Autotransformador ATR-6K SOLIS – Reiki Energía Solar"
 category: "accesorios"
-price: "$3.006.700"
+price: "$2.526.700"
 specifications:
   - "Marca: Solis"
   - "Compatible con serie RHI"

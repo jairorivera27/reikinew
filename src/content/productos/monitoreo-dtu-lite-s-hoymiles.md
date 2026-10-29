@@ -5,7 +5,7 @@ image: "/images/productos-estudio/monitoreo-dtu-lite-s-hoymiles.webp"
 imageCard: "/images/productos-estudio/monitoreo-dtu-lite-s-hoymiles-card.webp"
 imageAlt: "Monitoreo DTU LITE S HOYMILES – Reiki Energía Solar"
 category: "accesorios"
-price: "$573.600"
+price: "$482.000"
 specifications:
   - "Marca: Hoymiles"
   - "Sistema de Monitorie online wifi"

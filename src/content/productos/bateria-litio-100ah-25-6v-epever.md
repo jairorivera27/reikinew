@@ -4,7 +4,7 @@ description: "Batería Litio 100AH 25.6V Epever. LFP 2.56KWH 25.6V-P20L1 25.6V 1
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Batería Litio 100AH 25.6V Epever – Reiki Energía Solar"
 category: "baterias"
-price: "$2.406.700"
+price: "$2.022.400"
 specifications:
   - "Marca: Epever"
   - "LFP 2.56KWH 25.6V-P20L1 25.6V 100AH"

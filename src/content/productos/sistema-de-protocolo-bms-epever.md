@@ -4,7 +4,7 @@ description: "Sistema de Protocolo BMS Epever. BMS-LINK Protocol Converter, para
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Sistema de Protocolo BMS Epever – Reiki Energía Solar"
 category: "accesorios"
-price: "$119.600"
+price: "$100.500"
 specifications:
   - "Marca: Epever"
   - "BMS-LINK Protocol Converter"

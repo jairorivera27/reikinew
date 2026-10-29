@@ -4,7 +4,7 @@ description: "Monitoreo Wifi Epever USB3.0. Adapter epever Wifi 2.4G USB 3.0 D p
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Monitoreo Wifi Epever USB3.0 – Reiki Energía Solar"
 category: "accesorios"
-price: "$155.600"
+price: "$130.800"
 specifications:
   - "Marca: Epever"
   - "Adapter epever Wifi 2.4G USB 3.0 D para serie MP"

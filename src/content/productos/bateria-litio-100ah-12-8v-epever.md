@@ -4,7 +4,7 @@ description: "Batería Litio 100AH 12.8V Epever. LFP 1.28KWH 12.8V-P20L1 12.8V 1
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Batería Litio 100AH 12.8V Epever – Reiki Energía Solar"
 category: "baterias"
-price: "$1.384.600"
+price: "$1.163.500"
 specifications:
   - "Marca: Epever"
   - "LFP 1.28KWH 12.8V-P20L1 12.8V 100AH"

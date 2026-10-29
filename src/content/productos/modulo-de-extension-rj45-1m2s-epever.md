@@ -5,7 +5,7 @@ image: "/images/productos-estudio/modulo-de-extension-rj45-1m2s-epever.webp"
 imageCard: "/images/productos-estudio/modulo-de-extension-rj45-1m2s-epever-card.webp"
 imageAlt: "Modulo de Extensión RJ45-1M2S Epever – Reiki Energía Solar"
 category: "accesorios"
-price: "$128.100"
+price: "$107.600"
 specifications:
   - "Marca: Epever"
   - "Modulo extensión para cable RJ45"

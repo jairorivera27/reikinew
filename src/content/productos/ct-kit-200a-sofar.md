@@ -4,7 +4,7 @@ description: "CT Kit 200A SOFAR. Ct kit SOFAR (3 unid)."
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "CT Kit 200A SOFAR – Reiki Energía Solar"
 category: "accesorios"
-price: "$688.300"
+price: "$578.400"
 specifications:
   - "Marca: Sofar"
   - "Ct kit SOFAR (3 unid)"

@@ -5,7 +5,7 @@ image: "/images/productos-estudio/servidor-tcp-306-epever.webp"
 imageCard: "/images/productos-estudio/servidor-tcp-306-epever-card.webp"
 imageAlt: "Servidor TCP 306 Epever – Reiki Energía Solar"
 category: "accesorios"
-price: "$190.100"
+price: "$159.800"
 specifications:
   - "Marca: Epever"
   - "Ideal para Inversores"

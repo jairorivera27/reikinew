@@ -4,7 +4,7 @@ description: "TPM-E Growatt. Meter clase 1 con Cts integrados."
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "TPM-E Growatt – Reiki Energía Solar"
 category: "accesorios"
-price: "$869.300"
+price: "$730.500"
 specifications:
   - "Marca: Growatt"
   - "Meter clase 1 con Cts integrados"

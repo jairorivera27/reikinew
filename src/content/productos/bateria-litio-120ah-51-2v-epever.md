@@ -4,7 +4,7 @@ description: "Batería Litio 120AH 51.2V Epever. LFP 6.14KWH LiM51120 51.2V 120A
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Batería Litio 120AH 51.2V Epever – Reiki Energía Solar"
 category: "baterias"
-price: "$4.916.800"
+price: "$4.131.800"
 specifications:
   - "Marca: Epever"
   - "LFP 6.14KWH LiM51120 51.2V 120AH"

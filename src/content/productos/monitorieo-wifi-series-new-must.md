@@ -4,7 +4,7 @@ description: "Monitorieo WiFi Series new MUST. Sistema de Monitorieo online WiFi
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Monitorieo WiFi Series new MUST – Reiki Energía Solar"
 category: "accesorios"
-price: "$213.600"
+price: "$179.500"
 specifications:
   - "Marca: MUST"
   - "Sistema de Monitorieo online WiFi MUST SOLAR series USB"

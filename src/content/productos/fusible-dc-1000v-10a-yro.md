@@ -4,7 +4,7 @@ description: "Fusible DC 1000V 10A YRO. Fusible DC Riel 10A 250V, 10x38, CE. Mar
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Fusible DC 1000V 10A YRO – Reiki Energía Solar"
 category: "protecciones"
-price: "$8.800"
+price: "$7.400"
 specifications:
   - "Marca: YRO"
   - "Fusible DC Riel 10A 250V"

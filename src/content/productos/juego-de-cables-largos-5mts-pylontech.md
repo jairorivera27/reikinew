@@ -4,7 +4,7 @@ description: "Juego de Cables Largos 5mts Pylontech. Juego Cables Conexioón Bat
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Juego de Cables Largos 5mts Pylontech – Reiki Energía Solar"
 category: "baterias"
-price: "$207.600"
+price: "$174.500"
 specifications:
   - "Marca: Pylontech"
   - "Juego Cables Conexioón Baterías Pylontech x 2 unid"

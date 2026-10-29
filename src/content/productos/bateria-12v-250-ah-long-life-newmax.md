@@ -4,7 +4,7 @@ description: "Bateria 12V 250 Ah Long Life Newmax. 12v 250ah Ciclo Profundo Long
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Bateria 12V 250 Ah Long Life Newmax – Reiki Energía Solar"
 category: "baterias"
-price: "$1.606.900"
+price: "$1.350.300"
 specifications:
   - "Marca: Newmax"
   - "12v 250ah Ciclo Profundo Long Life GEL"

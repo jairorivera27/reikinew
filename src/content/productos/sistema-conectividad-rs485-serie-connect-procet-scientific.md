@@ -4,7 +4,7 @@ description: "Sistema Conectividad RS485 Serie Connect Procet Scientific. Conect
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Sistema Conectividad RS485 Serie Connect Procet Scientific – Reiki Energía Solar"
 category: "accesorios"
-price: "$73.500"
+price: "$61.800"
 specifications:
   - "Marca: Procet Scientific"
   - "Conectividad para Serie Connect y Smart Marca PS"

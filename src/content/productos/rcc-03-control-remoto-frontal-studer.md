@@ -5,7 +5,7 @@ image: "/images/productos-estudio/rcc-03-control-remoto-frontal-studer.webp"
 imageCard: "/images/productos-estudio/rcc-03-control-remoto-frontal-studer-card.webp"
 imageAlt: "RCC-03 Control Remoto Frontal Studer – Reiki Energía Solar"
 category: "accesorios"
-price: "$1.261.600"
+price: "$1.060.200"
 specifications:
   - "Marca: Studer"
   - "RCC-03 Control Remoto Frontal y programación central con 2 mts"

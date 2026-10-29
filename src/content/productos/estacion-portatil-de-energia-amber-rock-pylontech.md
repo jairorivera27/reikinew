@@ -4,7 +4,7 @@ description: "Estación Portatil de Energía Amber Rock Pylontech. Batería 473w
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Estación Portatil de Energía Amber Rock Pylontech – Reiki Energía Solar"
 category: "baterias"
-price: "$3.024.800"
+price: "$2.541.900"
 specifications:
   - "Marca: Pylontech"
   - "Batería 473wh"

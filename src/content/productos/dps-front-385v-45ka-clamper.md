@@ -5,7 +5,7 @@ image: "/images/productos-estudio/dps-front-385v-45ka-clamper.webp"
 imageCard: "/images/productos-estudio/dps-front-385v-45ka-clamper-card.webp"
 imageAlt: "DPS FRONT 385V 45kA Clamper – Reiki Energía Solar"
 category: "protecciones"
-price: "$293.200"
+price: "$246.400"
 specifications:
   - "Marca: Clamper"
   - "Dispositivo de Protección contra Sobretensiones (DPS)"

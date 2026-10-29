@@ -5,7 +5,7 @@ image: "/images/productos-estudio/clamper-solar-string-box-4e-2s-4d.webp"
 imageCard: "/images/productos-estudio/clamper-solar-string-box-4e-2s-4d-card.webp"
 imageAlt: "CLAMPER Solar String Box 4E/2S (4D) – Reiki Energía Solar"
 category: "protecciones"
-price: "$1.762.200"
+price: "$1.480.800"
 specifications:
   - "Marca: Clamper"
   - "Tablero de protección"

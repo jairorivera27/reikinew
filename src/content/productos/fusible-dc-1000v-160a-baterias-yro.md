@@ -4,7 +4,7 @@ description: "Fusible DC 1000V 160A Baterías YRO. Fusible DC 160A 1000V. Ideal 
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Fusible DC 1000V 160A Baterías YRO – Reiki Energía Solar"
 category: "protecciones"
-price: "$59.100"
+price: "$49.700"
 specifications:
   - "Marca: YRO"
   - "Fusible DC 160A 1000V"

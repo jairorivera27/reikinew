@@ -4,7 +4,7 @@ description: "Kit Conexión Paralelo InfiniSolar Procet Scientific. Compatible c
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Kit Conexión Paralelo InfiniSolar Procet Scientific – Reiki Energía Solar"
 category: "accesorios"
-price: "$432.500"
+price: "$363.500"
 specifications:
   - "Marca: Procet Scientific"
   - "Compatible con modelo Infinisolar 3kva y 10Kw"

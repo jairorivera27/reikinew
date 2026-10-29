@@ -4,7 +4,7 @@ description: "Monitoreo Wifi Epever DB9. Terminal Transmision wifi Epever, para 
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Monitoreo Wifi Epever DB9 – Reiki Energía Solar"
 category: "accesorios"
-price: "$168.500"
+price: "$141.600"
 specifications:
   - "Marca: Epever"
   - "Terminal Transmision wifi Epever"

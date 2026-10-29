@@ -4,7 +4,7 @@ description: "Batería Litio 150AH 25.6V Epever. LFP 3.84KWH 25.6V-P65L2TN40 25.
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Batería Litio 150AH 25.6V Epever – Reiki Energía Solar"
 category: "baterias"
-price: "$3.277.900"
+price: "$2.754.600"
 specifications:
   - "Marca: Epever"
   - "LFP 3.84KWH 25.6V-P65L2TN40 25.6V 150AH"

@@ -5,7 +5,7 @@ image: "/images/productos-estudio/dps-clamper-solar-150v-40ka-t2.webp"
 imageCard: "/images/productos-estudio/dps-clamper-solar-150v-40ka-t2-card.webp"
 imageAlt: "DPS Clamper Solar 150V 40kA T2 – Reiki Energía Solar"
 category: "protecciones"
-price: "$116.800"
+price: "$98.200"
 specifications:
   - "Marca: Clamper"
   - "T2 Supresor de Picos"

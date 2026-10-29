@@ -5,7 +5,7 @@ image: "/images/productos-estudio/cable-solar-fv-6mm-rojo-x-250-mts-kibor.webp"
 imageCard: "/images/productos-estudio/cable-solar-fv-6mm-rojo-x-250-mts-kibor-card.webp"
 imageAlt: "Cable Solar FV 6mm Rojo x 250 mts. Kibor – Reiki Energía Solar"
 category: "accesorios"
-price: "$1.640.000"
+price: "$1.378.100"
 specifications:
   - "Marca: Kibor"
   - "6mm Rojo"
