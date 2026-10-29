@@ -15,6 +15,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Batería Litio 100AH 25.6V Epever. LFP 2.56KWH 25.6V-P20L1 25.6V 100AH.

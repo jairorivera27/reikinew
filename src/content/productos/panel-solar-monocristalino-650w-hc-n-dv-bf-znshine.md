@@ -20,6 +20,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Panel Solar Monocristalino 650W Media Celda Tipo N Doble Vidrio Bifacial Znshine. 24v 650W Tipo N TOPCon Doble Vidrio Media Celda Bifacial Grafeno. cable MC4. 2382×1134×30mm. ZXNR-BD132. RETIE. Marca ZNSHINE.

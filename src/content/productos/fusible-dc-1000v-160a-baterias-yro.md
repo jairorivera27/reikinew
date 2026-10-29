@@ -17,6 +17,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Fusible DC 1000V 160A Baterías YRO. Fusible DC 160A 1000V. Ideal para baterías. Marca YRO.

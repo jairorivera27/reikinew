@@ -17,6 +17,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Breaker DC 40A 4P YRO. Mini Breaker en DC Riel 40A 1200V, termomagnetico. Marca YRO.

@@ -19,6 +19,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Panel Solar Monocristalino 700W Media Celda Tipo N Bifacial Risen. 24v 700W Tipo N TOPCon. cable MC4. 2384*1303*33mm, 37,5Kg. RETIE Marca RISEN.

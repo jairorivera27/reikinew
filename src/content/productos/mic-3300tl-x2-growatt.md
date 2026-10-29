@@ -23,6 +23,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/mic-3300tl-x2-growatt-thumb.webp"
 imagen_provisional: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor On-Grid MIC 3300TL-X2 Growatt. 150% Max power DC, Max Pv 550VDC, 1 MPPT 24A, Bifase, IP66, OLED, 10 años Garantía, 6Kg. GROWATT.

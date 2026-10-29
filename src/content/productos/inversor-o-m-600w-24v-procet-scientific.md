@@ -17,6 +17,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor O.M. 600W 24V Procet Scientific. Onda Modificada, 24V-110V. Marca PS.

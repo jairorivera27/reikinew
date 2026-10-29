@@ -23,6 +23,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/bateria-fidus-litio-pylontech-thumb.webp"
 imagen_provisional: false
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Batería Fidus Litio Pylontech. 51,2v 100ah,kwh, vida util +10 años, 6000 ciclos +97% descarga, Diseño de concepto modular, expandible 5 a 583kwh, proteccion IP65, 638*137*370mm, 45Kg. facil conexión. Marca PYLONTECH.

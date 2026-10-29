@@ -22,6 +22,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor On-Grid Sofar 6KTLM-G3. 150% Max power DC, Max Pv 600VDC, 2 MPPT 22.5A, Bifase, IP65, LCD & Bluetooth + App, 5 años Garantía, 10Kg. SOFAR.

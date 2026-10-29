@@ -15,6 +15,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Apaptador PT 50AN Epever. Para controlador conexiones en paralelo 50 a 100A Tracer.

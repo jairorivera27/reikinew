@@ -45,6 +45,7 @@ faqs:
 precioAnterior: "$7.982.000"
 descuentoPct: 24
 promocion: "Precio rebajado"
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 **Inversor Solar On-Grid Growatt 10kW 10KTL3-XL2** de Growatt · 10kW.
 

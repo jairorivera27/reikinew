@@ -15,6 +15,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Batería Litio 205AH 25,6V Epever. LFP 5.12KWH 25,6V-P65L2GF40 25,6V 205AH.

@@ -19,6 +19,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 DPS Clamper Solar 1500V 15kA T2. Supresor de Picos, Dispositivo contra sobretensiones, Clase II (EN 50539-11), con tecnología de varistor de óxido de metal (MOV) para aplicación de sistemas FV. Marca CLAMPER.

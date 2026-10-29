@@ -16,6 +16,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Monitoreo WiFi Box Axpert e Infinisolar Procet Scientific. Compatible con modelos Axpert e infinisolar. Powered by PROCET SCIENTIFIC.

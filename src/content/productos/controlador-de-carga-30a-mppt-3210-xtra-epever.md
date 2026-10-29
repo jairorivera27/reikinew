@@ -20,6 +20,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/controlador-de-carga-30a-mppt-3210-xtra-epever-thumb.webp"
 imagen_provisional: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Controlador de Carga 30A MPPT 3210 XTRA Epever. XTRA 3210N-XDS2. 12/24V auto, 100VDC PV, IP33. Marca EPEVER.

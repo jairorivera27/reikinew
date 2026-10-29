@@ -21,6 +21,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Combiner Solar String Box 3E/3S Onesto. 3 Entrada/ 3 Salida; 1000v incluye: ip65 distribution box WDB39 39 Way 1pc, DPS by7-40/3-1000 40ka/3p/1000v:3pc, Breaker odd32d4 4p/32a/1000v:3pc, Fusible 32a 1000v：6pcs. RETIE, marca ONESTO.

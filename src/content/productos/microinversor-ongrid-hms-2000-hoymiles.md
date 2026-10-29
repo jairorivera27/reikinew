@@ -16,6 +16,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/microinversor-ongrid-hms-2000-hoymiles-thumb.webp"
 imagen_provisional: false
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Microinversor On-Grid HMS 2000 Hoymiles. Microinversor Hoymiles 2000w 110V 220V Bifase.

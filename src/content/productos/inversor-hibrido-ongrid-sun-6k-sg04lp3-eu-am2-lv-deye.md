@@ -23,6 +23,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/inversor-hibrido-ongrid-sun-6k-sg04lp3-eu-am2-lv-deye-thumb.webp"
 imagen_provisional: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor Híbrido On-Grid SUN-6K-SG04LP3-EU-AM2-LV Deye. Three Phase Hybrid Inverter, Max. 10 pcs parallel, AC coupling, 48V battery, Max PV 7800w, range PV 160v (start) - 800v (Max), 2Mppt 19.5A ISC, interface RS485/RS232/CAN, 422×658×254mm, 38Kg, 5 años garantía. Marca DEYE.

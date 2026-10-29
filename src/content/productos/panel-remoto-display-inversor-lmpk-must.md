@@ -18,6 +18,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Panel Remoto Display Inversor LMPK Must. Con cable de 5mts, display remoto para inversores MUST SOLAR serie LMPK PV3000, conexión a través de puerto RS232, monitoreo alambrico.

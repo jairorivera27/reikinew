@@ -20,6 +20,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/dps-front-275v-20ka-clamper-thumb.webp"
 imagen_provisional: false
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 DPS FRONT 275V 20kA Clamper. Dispositivo de Protección contra Sobretensiones (DPS), monopolar, Clase II (IEC 61643-11), del tipo limitador de tensión, compuesto por Varistor de Óxido Metálico (MOV) asociado a un dispositivo de desconexión térmica (sobretemperatura). Marca CLAMPER.

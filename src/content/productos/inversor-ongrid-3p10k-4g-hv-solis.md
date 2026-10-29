@@ -22,6 +22,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor On-Grid 3P10K-4G-HV Solis. SOLIS-3P10K-4G-HV-MEX-M10-1-DC-METER-LN Salida 10KW, Entrada PV 12KW, 2 MPPT 17,2A, Inyección a red, salida 3/PE, 480V, garantìa 5 años, marca SOLIS.

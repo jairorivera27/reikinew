@@ -18,6 +18,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Panel Solar Monocristalino 735W Media Celda Bifacial Doble Vidrio Tongwei. 24v 735W tipo N Media TWMNF-66HD735. cable MC4. Marca TONGWEI. RETIE.

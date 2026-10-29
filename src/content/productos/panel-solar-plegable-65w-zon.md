@@ -22,6 +22,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Panel Solar Plegable 65W ZON. 65W@STC, Voltaje 18V, Corriente 3A, Voltaje VMP:24.12V, Corriente ISC: 3.3A, Celda Solar Mono, Eficiencia de celda: 22.5%, Peso aprox. 3.5Kg, 900mm cable con MC4 conector, Tamaño plegado 450*380*27mm (Estimado), Tamaño Abierto 1230*380*27mm (Estimado), Accesorios cable Y, cable Pulpo, Junction box con 2 USB-A port & 1 USB-C port. Marca ZON.

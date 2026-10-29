@@ -16,6 +16,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 IR Remote Controller RC-11 Accesorio Epever. Compatible con LPLI, y LS LPLI, control remoto para configurar los parametros del controlador de carga para los sistemas de alumbrado publico.

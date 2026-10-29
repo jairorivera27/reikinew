@@ -17,6 +17,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Controlador de Carga 60A Procet Scientific. PWM, 60A 12/24V LCD. Marca PS.

@@ -15,6 +15,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Microinversor On-Grid MI 700 Hoymiles. Microinversor Hoymiles 700w 110V 220V Bifase.

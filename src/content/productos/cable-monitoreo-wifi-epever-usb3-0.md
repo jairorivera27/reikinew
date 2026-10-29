@@ -15,6 +15,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Cable Monitoreo Wifi Epever USB3.0. PC Communication cable CC-RJ45-USB-A 3.0-200-V1.0.

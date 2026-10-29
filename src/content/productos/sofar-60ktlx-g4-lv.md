@@ -23,6 +23,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/sofar-60ktlx-g4-lv-thumb.webp"
 imagen_provisional: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor On-Grid Sofar 60KTLX-G4-LV. 150% Max power DC, Max Pv 900VDC, 8 MPPT 50A (2 por MPPT), Trifase 3/N/PE, 127/220 Vac, IP66, LCD & Bluetooth + App, 5 años Garantía, 75Kg. SOFAR.

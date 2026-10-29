@@ -18,6 +18,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Panel Solar Monocristalino 670W Media Celda 12BB Doble Vidrio Znshine. 24v 670W 12BB HC Tipo N TOP Doble Vidrio. Marca ZNSHINE 132 Cell, 2384*1303*35mm. ZXM8-TPLD132 RETIE.

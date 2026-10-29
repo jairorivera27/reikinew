@@ -19,6 +19,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/dps-connect-275v-20ka-clamper-thumb.webp"
 imagen_provisional: false
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 DPS CONNECT 275V 20kA Clamper. Dispositivo de Protección contra Sobretensiones (DPS), monopolar, del tipo limitador de tensión, compuesto por Varistor de Óxido Metálico (MOV) asociado a un dispositivo de desconexión térmica (sobretemperatura). Marca CLAMPER.

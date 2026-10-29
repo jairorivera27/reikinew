@@ -18,6 +18,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/inversor-hibrido-pv18-3024-lv-must-thumb.webp"
 imagen_provisional: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor Híbrido PV18 3024 LV Must. Salida 120V 60Hz PV18-3024 LV entrada DC 24V, controlador MPPT 80A incluido, Marca MUST SOLAR.

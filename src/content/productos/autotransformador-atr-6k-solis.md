@@ -19,6 +19,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Autotransformador ATR-6K Solis. Compatible con serie RHI, EHI, entrada Monofasica 220v, Bifasica 120v L-N. Marca SOLIS.

@@ -18,6 +18,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor Híbrido Off-Grid HP3521 Epever. AH1230P20A 3500w Onda pura, Salida 120VAC 60Hz entrada DC 24V, 2 MPPT 22A 300vdc paneles Solares. Marca EPEVER.

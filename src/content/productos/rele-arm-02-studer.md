@@ -17,6 +17,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/rele-arm-02-studer-thumb.webp"
 imagen_provisional: false
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Relé ARM 02 Studer. Auxiliary relay module for XTS & VT (2 programmable relays) with 5 m cable. Marca STUDER.

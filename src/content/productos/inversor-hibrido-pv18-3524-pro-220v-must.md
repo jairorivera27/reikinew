@@ -18,6 +18,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/inversor-hibrido-pv18-3524-pro-220v-must-thumb.webp"
 imagen_provisional: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor Híbrido PV18-3524 PRO 220V Must. Salida 220V 60Hz PV18-3524 entrada DC 24V, MPPT 100A 450VDC, Marca MUST SOLAR.

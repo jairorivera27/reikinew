@@ -17,6 +17,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/rcc-03-control-remoto-frontal-studer-thumb.webp"
 imagen_provisional: false
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 RCC-03 Control Remoto Frontal Studer. RCC-03 Control Remoto Frontal y programación central con 2 mts. De cable para Inversor Xtender (+SD Card).

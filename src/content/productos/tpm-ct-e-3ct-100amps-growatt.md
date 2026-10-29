@@ -16,6 +16,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/tpm-ct-e-3ct-100amps-growatt-thumb.webp"
 imagen_provisional: false
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 TPM-CT-E 3CT 100Amps Growatt. Meter clase 1 con Cts incluidos.

@@ -16,6 +16,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/modulo-de-extension-rj45-1m2s-epever-thumb.webp"
 imagen_provisional: false
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Modulo de Extensión RJ45-1M2S Epever. Modulo extensión para cable RJ45.

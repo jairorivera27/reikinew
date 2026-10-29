@@ -19,6 +19,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Controlador de Carga 75A MPPT 7415 ET7415NC Epever. ET 7415AN. 12/24/36/48V auto, 150VDC PV, IP20. Marca EPEVER.

@@ -18,6 +18,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/inversor-350va-12v-ip-epever-thumb.webp"
 imagen_provisional: false
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor 350VA 12V IP Epever. Onda Pura, 12V a 110v, IP350 Marca EPEVER.

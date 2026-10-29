@@ -15,6 +15,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Sistema Conectividad RS485 Serie Connect Procet Scientific. Conectividad para Serie Connect y Smart Marca PS.

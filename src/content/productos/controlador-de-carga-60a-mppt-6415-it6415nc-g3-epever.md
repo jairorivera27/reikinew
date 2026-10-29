@@ -21,6 +21,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Controlador de Carga 60A MPPT 6415 IT6415NC G3 Epever. IT 6415. 12/24/48V auto, 150VDC PV, Uso opcion sin bateria (directo PV - Loads), Max 6 en paralelo, IP32. Marca EPEVER.

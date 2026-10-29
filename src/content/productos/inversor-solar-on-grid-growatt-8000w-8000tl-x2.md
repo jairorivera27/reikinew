@@ -41,6 +41,7 @@ faqs:
 precioAnterior: "$4.970.000"
 descuentoPct: 33
 promocion: "Precio rebajado"
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 **Inversor Solar On-Grid Growatt 8000W 8000TL-X2** de Growatt · 8000W.
 

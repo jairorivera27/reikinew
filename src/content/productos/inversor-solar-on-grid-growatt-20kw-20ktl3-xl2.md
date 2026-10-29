@@ -53,6 +53,7 @@ faqs:
 precioAnterior: "$10.994.000"
 descuentoPct: 24
 promocion: "Precio rebajado"
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 **Inversor Solar On-Grid Growatt 20kW 20KTL3-XL2** de Growatt · 20kW.
 

@@ -19,6 +19,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor Todo en uno Planta Solar HBP18-3048LV Must. Inversor interno 3kw 48v, MPPT 80A, Salida AC 120V/60Hz, Bateria integrada litio 12,8kw 4000 ciclos 80% DOD. Marca MUST.

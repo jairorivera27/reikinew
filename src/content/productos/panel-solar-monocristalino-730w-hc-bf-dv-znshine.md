@@ -19,6 +19,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Panel Solar Monocristalino 730W Media Celda Bifacial Doble Vidrio Znshine. 24v 730W tipo N Media Celda132 cells. cable MC4. Marca ZNSHINE 2384×1303×33mm, 38,5Kg. RETIE.

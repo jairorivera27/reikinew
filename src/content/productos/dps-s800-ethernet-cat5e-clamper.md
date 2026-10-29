@@ -19,6 +19,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/dps-s800-ethernet-cat5e-clamper-thumb.webp"
 imagen_provisional: false
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 DPS S800 Ethernet CAT5e Clamper. Categoría 5e (CAT5e), con conector RJ45 blindado, para la protección de equipos electroelectrónicos conectados a la red Ethernet de hasta 1 Gbps, con o sin la funcionalidad de Power over Ethernet (PoE). Marca CLAMPER.
