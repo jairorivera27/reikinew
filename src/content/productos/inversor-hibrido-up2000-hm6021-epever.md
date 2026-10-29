@@ -19,6 +19,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor Híbrido UP2000 HM6021 Epever. Onda pura, Salida 120V 60Hz entrada DC 24V, controlador MPPT 60A incluido, 250VDC paneles Solares. Marca EPEVER.

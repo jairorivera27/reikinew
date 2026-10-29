@@ -19,6 +19,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/inversor-hibrido-12w-48v-pv39-fase-dividida-tlv-must-thumb.webp"
 imagen_provisional: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor Híbrido 12W 48V PV39 Fase Dividida TLV Must. 12KW/48v salida de 2 lineas P-P 220VAC, L-N 120VAC L1+N+L2. Incluye Controlador MPPT 200A. Marca MUST.

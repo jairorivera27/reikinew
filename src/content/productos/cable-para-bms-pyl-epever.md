@@ -15,6 +15,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Cable para BMS PYL Epever. Cable BMS-Link a sistema de protocolo BMS Epever compatible con Pylontech.

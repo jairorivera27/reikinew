@@ -16,6 +16,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Tarjeta BMS RS485 Litio 10K InfiniSolar Procet Scientific. Accesorio para uso del inversor con comunicación RS485 baterías Litio, Compatible con modelo InfiniSolar Plus 3KW/Super 4KW/Plus 5KW/E 5.5KW/ 3P 10KW/ 3P 15KW (31-011877-01G). Powered by PROCET SCIENTIFIC.

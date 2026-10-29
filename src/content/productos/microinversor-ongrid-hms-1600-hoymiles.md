@@ -16,6 +16,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/microinversor-ongrid-hms-1600-hoymiles-thumb.webp"
 imagen_provisional: false
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Microinversor On-Grid HMS 1600 Hoymiles. Microinversor Hoymiles 1600w 110V 220V Bifase.

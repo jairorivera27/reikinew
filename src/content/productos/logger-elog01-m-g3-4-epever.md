@@ -15,6 +15,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Logger eLOG01-M-G3 4 Epever. Modulo para monitoreo Logger eLOG01-M-G3 4.

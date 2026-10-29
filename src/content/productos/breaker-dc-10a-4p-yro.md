@@ -17,6 +17,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Breaker DC 10A 4P YRO. Mini Breaker en DC Riel 10A 1000-1200V, termomagnetico. Marca YRO.

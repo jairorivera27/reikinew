@@ -28,6 +28,7 @@ stockBajo: true
 precioAnterior: "$1.102.900"
 descuentoPct: 30
 promocion: "Precio rebajado"
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Proveedor: Ingesolar (INVOP06).

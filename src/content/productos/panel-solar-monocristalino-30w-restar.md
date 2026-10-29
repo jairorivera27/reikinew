@@ -16,6 +16,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Panel Solar Monocristalino 30W Restar. 12v 30W cable: 90cm tipo MC4. Marca RESTAR.

@@ -17,6 +17,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 DPS iClamper POCKET 2P. Dispositivo de Protección contra Sobretensiones (DPS), classe III (IEC 61643-11), monopolar, con tecnología de Varistor de Óxido Metálico (MOV) para protección de los equipos electroelectrónicos conectados a la línea de energia.

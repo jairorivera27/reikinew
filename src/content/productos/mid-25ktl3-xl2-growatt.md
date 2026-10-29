@@ -22,6 +22,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor On-Grid MID 25KTL3-XL2 Growatt. 150% Max power DC, Max Pv 800VDC, 4 MPPT 40A (2 por MPPT), Trifase, IP66, OLED+LED/WIFI+APP, 10 años Garantía, 37Kg. GROWATT.

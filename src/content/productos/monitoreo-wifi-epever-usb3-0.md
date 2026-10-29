@@ -15,6 +15,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Monitoreo Wifi Epever USB3.0. Adapter epever Wifi 2.4G USB 3.0 D para serie MP.

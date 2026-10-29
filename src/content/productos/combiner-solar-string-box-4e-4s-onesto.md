@@ -21,6 +21,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Combiner Solar String Box 4E/4S Onesto. 4 Entrada/ 4 Salida; 1000v incluye: ip65 distribution box WDB39 39Way 1pc, DPS by7-40/3-1000 40ka/3p/1000v:4pc, Breaker odd32d4 4p/32a/1000v:4pc, Fusible 32a 1000v：8pcs. RETIE, marca ONESTO.

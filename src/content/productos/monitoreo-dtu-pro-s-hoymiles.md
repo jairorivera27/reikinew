@@ -16,6 +16,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/monitoreo-dtu-pro-s-hoymiles-thumb.webp"
 imagen_provisional: false
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Monitoreo DTU PRO S Hoymiles. Serie S Sistema de Monitorie online wifi W100 + opcion de inyección cero a la red.

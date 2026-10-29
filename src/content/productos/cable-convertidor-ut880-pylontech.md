@@ -17,6 +17,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Cable Convertidor UT880 Pylontech. USB 2.0 a RS232, aplicaciones en baterias Pylontech, inversores Procet serie axpert e infinisolar.

@@ -16,6 +16,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Porta Fusible DC 1000V Baterías YRO. Porta Fusible en DC 160A 1000V, Marca YRO.

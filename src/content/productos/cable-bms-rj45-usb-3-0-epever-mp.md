@@ -15,6 +15,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Cable BMS RJ45 USB 3.0 Epever MP. Cable CC-RJ45-USB(A) 3.0 (M) -200V-1.0 para conexion de baterias Litio BMS serie MP.

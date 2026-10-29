@@ -15,6 +15,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Batería Litio 314AH 51,2V Epever. LFP 16.1KWH 51,2V-P20R1GF30 51,2V 314AH.

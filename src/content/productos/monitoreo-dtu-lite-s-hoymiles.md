@@ -16,6 +16,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/monitoreo-dtu-lite-s-hoymiles-thumb.webp"
 imagen_provisional: false
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Monitoreo DTU LITE S Hoymiles. Sistema de Monitorie online wifi.

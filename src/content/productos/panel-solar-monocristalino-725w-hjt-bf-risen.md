@@ -19,6 +19,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Panel Solar Monocristalino 725W HJT Bifacial Risen. 24v 725W tipo N HJT Media Celda132 cells. cable MC4. Marca RISEN 2384*1303*33mm, 37,5Kg. RETIE.

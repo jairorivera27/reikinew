@@ -18,6 +18,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/inversor-hibrido-pv18-5248-pro-220v-must-thumb.webp"
 imagen_provisional: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor Híbrido PV18-5248 PRO 220V Must. Salida 220V 60Hz PV18-5248 PRO entrada DC 48V, controlador MPPT 80A incluido 450VDC, Marca MUST SOLAR.

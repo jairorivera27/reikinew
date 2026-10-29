@@ -19,6 +19,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/controlador-de-carga-20a-mppt-5206-lpli-tracer-epever-thumb.webp"
 imagen_provisional: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Controlador de Carga 20A MPPT 5206 LPLI TRACER Epever. TRACER 20A 5206LPLI 12/24V, ideales para iluminacion de alumbrado publico, Configurable. Marca EPEVER.

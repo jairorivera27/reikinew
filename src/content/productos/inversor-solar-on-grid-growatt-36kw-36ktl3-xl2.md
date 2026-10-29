@@ -41,6 +41,7 @@ fichaPdf: "/fichas/fabricantes/growatt-mac-30-36ktl3-xl2-hoja-de-datos.pdf"
 precioAnterior: "$12.048.250"
 descuentoPct: 18
 promocion: "Precio rebajado"
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 **Inversor Solar On-Grid Growatt 36kW 36KTL3-XL2** de Growatt · 36kW.
 

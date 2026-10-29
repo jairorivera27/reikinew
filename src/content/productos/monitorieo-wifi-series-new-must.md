@@ -15,6 +15,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Monitoreo WiFi Series new Must. Sistema de Monitorieo online WiFi MUST SOLAR series USB.

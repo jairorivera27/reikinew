@@ -16,6 +16,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Gabinete Para Baterías 5.1Kx4 Epever. Cabinet for 4 units 51.2V 100AH Batteries LC5.12KWH51.2V1P4-P20B25. EPEVER.

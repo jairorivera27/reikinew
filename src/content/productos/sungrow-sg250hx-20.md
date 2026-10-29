@@ -21,6 +21,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor On-Grid Sungrow SG250HX-20. Inverter for on-grid photovoltaic systems "string" Type, for three-phase grid, with rated output power of 250kw aT 40 degrees celsius, with maximum output power of 250kw at 40 Degrees celsius, and rated output voltage of 800vac, Microprocessor control technology, maximum output current 198,5 a - sungrow brand.

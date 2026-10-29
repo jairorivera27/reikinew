@@ -19,6 +19,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/inversor-cargador-xtender-2400-24-studer-thumb.webp"
 imagen_provisional: false
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor Cargador Xtender 2400-24 Studer. XTM 2400-24-01 inverter/charger Xtender 2400VA/2000VA/24V/110V 322x466x133mm, 18kg Marca Studer, 10 años de garantía. Fabricación Suiza.

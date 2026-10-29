@@ -22,6 +22,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor Híbrido On-Grid PH11-6KL2 US Must. 48V batería Gel/ Litio, Max PV 7800w, 600V PV, 2 MPPT 16A, Split phase AC 120/240VAC, 42Kg, 816× 404 × 567 mm, USB/ WiFi/ Enternet(optional), IP66. 6 unidades en paralelo. Garantia 5 años. Marca MUST.

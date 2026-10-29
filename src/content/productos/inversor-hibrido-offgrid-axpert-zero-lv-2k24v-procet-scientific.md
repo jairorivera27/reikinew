@@ -22,6 +22,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor Híbrido Off-Grid Axpert Zero LV 2K24V Procet Scientific. 2000VA/2000W, Pure Sine Wave Solar Inverter, 110/120 VAC, 50 Hz/60 Hz (Auto sensing), Bat. Voltage: 24V; MPPT Range: 30~115V, Max Solar Charge Current: 80A Max PV Array Power: 2000 W. Powered by PROCET SCIENTIFIC.

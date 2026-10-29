@@ -21,6 +21,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Cabinet Solution Optimus A100-HY Pylontech. 104Kw capacity, up 520kWh | 25~500kW | 1C | 400Vac, BESS 104kw, 1.9 Ton, IP55, +7000 ciclos. Marca PYLONTECH.

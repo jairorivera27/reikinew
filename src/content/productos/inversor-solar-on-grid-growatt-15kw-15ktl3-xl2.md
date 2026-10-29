@@ -44,6 +44,7 @@ faqs:
 precioAnterior: "$9.337.375"
 descuentoPct: 17
 promocion: "Precio rebajado"
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 **Inversor Solar On-Grid Growatt 15kW 15KTL3-XL2** de Growatt · 15kW.
 

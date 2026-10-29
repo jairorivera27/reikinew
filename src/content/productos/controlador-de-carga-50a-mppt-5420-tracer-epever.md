@@ -19,6 +19,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Controlador de Carga 50A MPPT 5420 TRACER Epever. TRACER 5420AN. 12/24/36/48V auto, 200VDC PV, IP20. Marca EPEVER.

@@ -18,6 +18,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Panel Solar Monocristalino 580W Media Celda 16BB Tipo N Doble Vidrio Znshine. 24v 580W 16BB HC Tipo N TOPCon Grafeno. MC4. Marca ZNSHINE 144 cell PERC 2279*1134*30mm. ZXMR UHLD132 RETIE.

@@ -17,6 +17,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Kit Conexión Paralelo InfiniSolar Procet Scientific. Compatible con modelo Infinisolar 3kva y 10Kw. Kit paralelo solo soporta el mismo modelo. Powered by PROCET SCIENTIFIC.

@@ -17,6 +17,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/monitoreo-wifi-epever-rj45-thumb.webp"
 imagen_provisional: false
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Monitoreo Wifi Epever RJ45. Terminal Transmision wifi Epever, para Inversores y controladores.

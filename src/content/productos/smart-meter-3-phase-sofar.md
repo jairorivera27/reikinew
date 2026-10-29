@@ -17,6 +17,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Smart Meter (3-phase) Sofar. Medidor clase I, CT *3 incluidos. SOFAR.

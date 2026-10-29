@@ -15,6 +15,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 CT CTSA016-100A 100A/33.33mA Solis. CT (Current transformer) cable clamp for export limitation - 10m.

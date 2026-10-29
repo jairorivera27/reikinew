@@ -17,6 +17,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Fusible DC 1000V 10A YRO. Fusible DC Riel 10A 250V, 10x38, CE. Marca YRO.

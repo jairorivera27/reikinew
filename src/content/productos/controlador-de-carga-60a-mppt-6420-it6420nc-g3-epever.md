@@ -19,6 +19,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Controlador de Carga 60A MPPT 6420 IT6420NC G3 Epever. IT6420NC G3. 12/24/36/48V auto, 200VDC PV, IP43. Marca EPEVER.

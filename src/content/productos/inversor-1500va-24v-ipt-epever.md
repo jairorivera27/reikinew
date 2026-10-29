@@ -15,6 +15,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor 1500VA 24V IPT Epever. Onda Pura 24V a 110v IPT1500 Marca EPEVER.

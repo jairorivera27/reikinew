@@ -22,6 +22,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Batería US3000C Litio Pylontech. 48v 74ah, 3.55kwh, vida util +10 años, 8000 ciclos +95% descarga, comunicación CAN, RS485, peso 35kg, 442x420x132mm, incluye cable de conexión paralelo. Marca PYLONTECH.

@@ -19,6 +19,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Panel Solar Monocristalino 630W Media Celda Tipo N Doble Vidrio Bifacial Znshine. 24v 630W HC Tipo N TOPCon Doble Vidrio Bifacial. MC4. 132 cell 2382×1134×30mm. ZXMR-UPLDD132, RETIE Marca ZNSHINE.

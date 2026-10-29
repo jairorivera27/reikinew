@@ -18,6 +18,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Bracket-UP2 Pylontech. Soporte para baterias UP2500, Max. 4 horizontal y 2 vertical. Marca PYLONTECH.

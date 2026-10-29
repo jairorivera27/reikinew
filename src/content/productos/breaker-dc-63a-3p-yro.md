@@ -17,6 +17,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Breaker DC 63A 3P YRO. Mini Breaker en DC Riel 63A 800V, termomagnetico. Marca YRO.

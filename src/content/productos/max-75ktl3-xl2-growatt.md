@@ -23,6 +23,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/max-75ktl3-xl2-growatt-thumb.webp"
 imagen_provisional: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor On-Grid MAX 75KTL3-XL2 Growatt. 150% Max power DC, Max Pv 800VDC, 8 MPPT 50A (2 por MPPT), Trifase, IP66, OLED+LED/WIFI+APP, 10 años Garantía, 84Kg. GROWATT.

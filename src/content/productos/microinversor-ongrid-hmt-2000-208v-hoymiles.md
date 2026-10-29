@@ -15,6 +15,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Microinversor On-Grid HMT 2000 208V Hoymiles. Microinversor Hoymiles 2000w-4T 208V Trifase.

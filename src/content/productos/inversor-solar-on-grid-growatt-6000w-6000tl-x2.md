@@ -40,6 +40,7 @@ faqs:
 precioAnterior: "$2.820.125"
 descuentoPct: 19
 promocion: "Precio rebajado"
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 **Inversor Solar On-Grid Growatt 6000W 6000TL-X2** de Growatt · 6000W.
 

@@ -20,6 +20,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 BMS Controlador M1C Pylontech. 0-1000V, IP20, 13Kg, +15 años, Funcionamient -20+65 grados T. Marca PYLONTECH.

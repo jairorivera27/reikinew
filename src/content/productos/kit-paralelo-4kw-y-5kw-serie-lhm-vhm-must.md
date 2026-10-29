@@ -17,6 +17,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Kit Paralelo 4Kw y 5Kw Serie LHM/VHM Must. Soporta hasta 3 unidades en paralelo para series VHM (4Kw48V, 5Kw48V), LHM (3Kw48V) marca MUST SOLAR.

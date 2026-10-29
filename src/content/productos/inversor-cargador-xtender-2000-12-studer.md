@@ -19,6 +19,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/inversor-cargador-xtender-2000-12-studer-thumb.webp"
 imagen_provisional: false
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor Cargador Xtender 2000-12 Studer. XTM 2000-12-01 inverter/charger Xtender 2000VA/2000VA/12V/110V 322x466x133mm, 22.45kg Marca Studer, 10 años de garantía. Fabricación Suiza.

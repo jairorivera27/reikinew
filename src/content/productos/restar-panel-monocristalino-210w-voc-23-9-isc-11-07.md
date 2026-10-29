@@ -31,6 +31,7 @@ faqs:
 precioAnterior: "$237.200"
 descuentoPct: 6
 promocion: "Precio rebajado"
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Proveedor: Ingesolar (PNLM16).

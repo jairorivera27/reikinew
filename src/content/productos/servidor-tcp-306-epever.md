@@ -20,6 +20,7 @@ order: 8100
 updatedAt: "2026-10-28"
 imageThumb: "/images/productos-estudio/servidor-tcp-306-epever-thumb.webp"
 imagen_provisional: false
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Servidor TCP 306 Epever. Ideal para Inversores, Controladores e inversores Hibridos, conexión a través de RJ485 o puerto COM, para monitoreo alambrico. Marca EPEVER.

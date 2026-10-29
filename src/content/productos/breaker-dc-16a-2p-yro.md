@@ -17,6 +17,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Breaker DC 16A 2P YRO. Mini Breaker en DC Riel 16A 550V, termomagnetico. Marca YRO.

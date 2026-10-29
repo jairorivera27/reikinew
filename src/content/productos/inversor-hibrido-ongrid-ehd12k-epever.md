@@ -22,6 +22,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 Inversor Híbrido On-Grid EHD12K Epever. Split Phase Hybrid Inverter, Max. 6 pcs parallel, HV 480V battery, Max PV 1800w, range PV 100v (start) - 580v (Max), 4Mppt 24A ISC, interface RS485/CAN, 238×513×737mm, 45Kg, 5 años garantía. Marca EPEVER.

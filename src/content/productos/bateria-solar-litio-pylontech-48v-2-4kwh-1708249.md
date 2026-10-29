@@ -37,6 +37,7 @@ faqs:
 precioAnterior: "$3.766.269"
 descuentoPct: 26
 promocion: "Precio rebajado"
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 **Batería Solar Litio Pylontech US2000C 48V 2.4kWh 1880901** de Pylontech · 48V 2.4kWh.
 

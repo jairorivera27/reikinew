@@ -17,6 +17,7 @@ order: 8100
 updatedAt: "2026-10-28"
 draft: true
 imagenPendiente: true
+avisoEnvio: "Envío incluido a ciudades principales"
 ---
 
 CT 300A X3 Solis. CT para medir corriente hasta 300A, Paquete de 3 CT. SOLIS.
