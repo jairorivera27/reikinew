@@ -1,7 +1,8 @@
 ---
 title: "Inversor 350VA 12V IP Epever"
 description: "Inversor 350VA 12V IP Epever. Onda Pura, 12V a 110v, IP350 Marca EPEVER."
-image: "/images/placeholders/accesorios.svg"
+image: "/images/productos-estudio/inversor-350va-12v-ip-epever.webp"
+imageCard: "/images/productos-estudio/inversor-350va-12v-ip-epever-card.webp"
 imageAlt: "Inversor 350VA 12V IP Epever – Reiki Energía Solar"
 category: "inversores"
 price: "$220.200"
@@ -15,8 +16,8 @@ sku: "IMP-824410"
 stock: "disponible"
 order: 8100
 updatedAt: "2026-10-28"
-draft: true
-imagenPendiente: true
+imageThumb: "/images/productos-estudio/inversor-350va-12v-ip-epever-thumb.webp"
+imagen_provisional: false
 ---
 
 Inversor 350VA 12V IP Epever. Onda Pura, 12V a 110v, IP350 Marca EPEVER.

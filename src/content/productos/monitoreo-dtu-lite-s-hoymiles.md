@@ -1,7 +1,8 @@
 ---
 title: "Monitoreo DTU LITE S Hoymiles"
 description: "Monitoreo DTU LITE S HOYMILES. Sistema de Monitorie online wifi."
-image: "/images/placeholders/accesorios.svg"
+image: "/images/productos-estudio/monitoreo-dtu-lite-s-hoymiles.webp"
+imageCard: "/images/productos-estudio/monitoreo-dtu-lite-s-hoymiles-card.webp"
 imageAlt: "Monitoreo DTU LITE S HOYMILES – Reiki Energía Solar"
 category: "accesorios"
 price: "$573.600"
@@ -13,8 +14,8 @@ sku: "IMP-827191"
 stock: "disponible"
 order: 8100
 updatedAt: "2026-10-28"
-draft: true
-imagenPendiente: true
+imageThumb: "/images/productos-estudio/monitoreo-dtu-lite-s-hoymiles-thumb.webp"
+imagen_provisional: false
 ---
 
 Monitoreo DTU LITE S Hoymiles. Sistema de Monitorie online wifi.

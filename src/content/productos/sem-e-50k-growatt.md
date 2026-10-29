@@ -1,7 +1,8 @@
 ---
 title: "SEM-E (50K) Growatt"
 description: "SEM-E (50K) Growatt. Smart Energy Manager, hasta 10 unid. Ref. 50K, peso 6Kg. GROWATT."
-image: "/images/placeholders/accesorios.svg"
+image: "/images/productos-estudio/sem-e-50k-growatt.webp"
+imageCard: "/images/productos-estudio/sem-e-50k-growatt-card.webp"
 imageAlt: "SEM-E (50K) Growatt – Reiki Energía Solar"
 category: "accesorios"
 price: "$2.617.400"
@@ -18,8 +19,8 @@ sku: "IMP-826580"
 stock: "disponible"
 order: 8100
 updatedAt: "2026-10-28"
-draft: true
-imagenPendiente: true
+imageThumb: "/images/productos-estudio/sem-e-50k-growatt-thumb.webp"
+imagen_provisional: false
 ---
 
 SEM-E (50K) Growatt. Smart Energy Manager, hasta 10 unid. Ref. 50K, peso 6Kg. GROWATT.

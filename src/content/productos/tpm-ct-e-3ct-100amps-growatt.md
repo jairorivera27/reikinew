@@ -1,7 +1,8 @@
 ---
 title: "TPM-CT-E 3CT 100Amps Growatt"
 description: "TPM-CT-E 3CT 100Amps Growatt. Meter clase 1 con Cts incluidos."
-image: "/images/placeholders/accesorios.svg"
+image: "/images/productos-estudio/tpm-ct-e-3ct-100amps-growatt.webp"
+imageCard: "/images/productos-estudio/tpm-ct-e-3ct-100amps-growatt-card.webp"
 imageAlt: "TPM-CT-E 3CT 100Amps Growatt – Reiki Energía Solar"
 category: "accesorios"
 price: "$879.300"
@@ -13,8 +14,8 @@ sku: "IMP-826584"
 stock: "disponible"
 order: 8100
 updatedAt: "2026-10-28"
-draft: true
-imagenPendiente: true
+imageThumb: "/images/productos-estudio/tpm-ct-e-3ct-100amps-growatt-thumb.webp"
+imagen_provisional: false
 ---
 
 TPM-CT-E 3CT 100Amps Growatt. Meter clase 1 con Cts incluidos.

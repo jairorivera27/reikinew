@@ -1,7 +1,8 @@
 ---
 title: "Clamper Solar String Box 4E/2S (4D)"
 description: "CLAMPER Solar String Box 4E/2S (4D). Tablero de protección, equipado con Dispositivos contra Sobretensiones (DPS) CLAMPER. Dispositivos de seccionamiento del circuito. Adecuado para uso externo. Portafusible, Fusible, DPS Solar, Seccionador integrado, Caja completa certificada RETIE."
-image: "/images/placeholders/accesorios.svg"
+image: "/images/productos-estudio/clamper-solar-string-box-4e-2s-4d.webp"
+imageCard: "/images/productos-estudio/clamper-solar-string-box-4e-2s-4d-card.webp"
 imageAlt: "CLAMPER Solar String Box 4E/2S (4D) – Reiki Energía Solar"
 category: "protecciones"
 price: "$1.762.200"
@@ -20,8 +21,8 @@ sku: "IMP-829470"
 stock: "disponible"
 order: 8100
 updatedAt: "2026-10-28"
-draft: true
-imagenPendiente: true
+imageThumb: "/images/productos-estudio/clamper-solar-string-box-4e-2s-4d-thumb.webp"
+imagen_provisional: false
 ---
 
 Clamper Solar String Box 4E/2S (4D). Tablero de protección, equipado con Dispositivos contra Sobretensiones (DPS) CLAMPER. Dispositivos de seccionamiento del circuito. Adecuado para uso externo. Portafusible, Fusible, DPS Solar, Seccionador integrado, Caja completa certificada RETIE.

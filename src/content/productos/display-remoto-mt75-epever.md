@@ -1,7 +1,8 @@
 ---
 title: "Display Remoto MT75 Epever"
 description: "Display Remoto MT75 Epever. Para Controladores e Inversores Epever en simultaneo."
-image: "/images/placeholders/accesorios.svg"
+image: "/images/productos-estudio/display-remoto-mt75-epever.webp"
+imageCard: "/images/productos-estudio/display-remoto-mt75-epever-card.webp"
 imageAlt: "Display Remoto MT75 Epever – Reiki Energía Solar"
 category: "accesorios"
 price: "$254.000"
@@ -13,8 +14,8 @@ sku: "IMP-824463"
 stock: "disponible"
 order: 8100
 updatedAt: "2026-10-28"
-draft: true
-imagenPendiente: true
+imageThumb: "/images/productos-estudio/display-remoto-mt75-epever-thumb.webp"
+imagen_provisional: false
 ---
 
 Display Remoto MT75 Epever. Para Controladores e Inversores Epever en simultaneo.
