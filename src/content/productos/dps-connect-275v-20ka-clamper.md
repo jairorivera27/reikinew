@@ -5,7 +5,7 @@ image: "/images/productos-estudio/dps-connect-275v-20ka-clamper.webp"
 imageCard: "/images/productos-estudio/dps-connect-275v-20ka-clamper-card.webp"
 imageAlt: "DPS CONNECT 275V 20kA Clamper – Reiki Energía Solar"
 category: "protecciones"
-price: "$58.500"
+price: "$49.100"
 specifications:
   - "Marca: Clamper"
   - "Dispositivo de Protección contra Sobretensiones (DPS)"

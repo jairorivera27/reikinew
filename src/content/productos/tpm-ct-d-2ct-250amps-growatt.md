@@ -4,7 +4,7 @@ description: "TPM-CT-D 2CT 250Amps Growatt. Meter clase 1 con Cts incluidos."
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "TPM-CT-D 2CT 250Amps Growatt – Reiki Energía Solar"
 category: "accesorios"
-price: "$1.081.500"
+price: "$908.800"
 specifications:
   - "Marca: Growatt"
   - "Meter clase 1 con Cts incluidos"

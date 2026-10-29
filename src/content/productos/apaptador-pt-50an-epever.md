@@ -4,7 +4,7 @@ description: "Apaptador PT 50AN Epever. Para controlador conexiones en paralelo 
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Apaptador PT 50AN Epever – Reiki Energía Solar"
 category: "accesorios"
-price: "$184.400"
+price: "$155.000"
 specifications:
   - "Marca: Epever"
   - "Para controlador conexiones en paralelo 50 a 100A Tracer"

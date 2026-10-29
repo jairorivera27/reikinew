@@ -4,7 +4,7 @@ description: "DPS Clamper Solar 1500V 15kA T2. Supresor de Picos, Dispositivo co
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "DPS Clamper Solar 1500V 15kA T2 – Reiki Energía Solar"
 category: "protecciones"
-price: "$483.600"
+price: "$406.400"
 specifications:
   - "Marca: Clamper"
   - "Supresor de Picos"

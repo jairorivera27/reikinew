@@ -4,7 +4,7 @@ description: "Breaker DC 10A 4P YRO. Mini Breaker en DC Riel 10A 1000-1200V, ter
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Breaker DC 10A 4P YRO – Reiki Energía Solar"
 category: "protecciones"
-price: "$136.100"
+price: "$114.400"
 specifications:
   - "Marca: YRO"
   - "Mini Breaker en DC Riel 10A 1000-1200V"

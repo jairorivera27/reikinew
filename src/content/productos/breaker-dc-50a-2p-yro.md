@@ -4,7 +4,7 @@ description: "Breaker DC 50A 2P YRO. Mini Breaker en DC Riel 50A 550V, termomagn
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Breaker DC 50A 2P YRO – Reiki Energía Solar"
 category: "protecciones"
-price: "$51.200"
+price: "$43.000"
 specifications:
   - "Marca: YRO"
   - "Mini Breaker en DC Riel 50A 550V"

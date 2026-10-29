@@ -4,7 +4,7 @@ description: "Tarjeta BMS RS485 Litio 10K InfiniSolar Procet Scientific. Accesor
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Tarjeta BMS RS485 Litio 10K InfiniSolar Procet Scientific – Reiki Energía Solar"
 category: "accesorios"
-price: "$792.500"
+price: "$666.000"
 specifications:
   - "Marca: Procet Scientific"
   - "Accesorio para uso del inversor con comunicación RS485 baterías Litio"

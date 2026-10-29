@@ -4,7 +4,7 @@ description: "AC Trunk Cable Hoymiles. 1T 1L 10AWG 2M."
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "AC Trunk Cable Hoymiles – Reiki Energía Solar"
 category: "accesorios"
-price: "$156.700"
+price: "$131.700"
 specifications:
   - "Marca: Hoymiles"
   - "1T 1L 10AWG 2M"

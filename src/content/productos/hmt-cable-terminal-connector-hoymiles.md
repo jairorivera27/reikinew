@@ -4,7 +4,7 @@ description: "HMT Cable Terminal Connector Hoymiles. HMT Cable Terminal Connecto
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "HMT Cable Terminal Connector Hoymiles – Reiki Energía Solar"
 category: "accesorios"
-price: "$40.100"
+price: "$33.700"
 specifications:
   - "Marca: Hoymiles"
   - "HMT Cable Terminal Connector"

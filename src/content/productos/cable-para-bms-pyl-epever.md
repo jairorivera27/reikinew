@@ -4,7 +4,7 @@ description: "Cable para BMS PYL Epever. Cable BMS-Link a sistema de protocolo B
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Cable para BMS PYL Epever – Reiki Energía Solar"
 category: "accesorios"
-price: "$184.100"
+price: "$154.700"
 specifications:
   - "Marca: Epever"
   - "Cable BMS-Link a sistema de protocolo BMS Epever compatible con Pylontech"

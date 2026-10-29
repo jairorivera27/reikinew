@@ -4,7 +4,7 @@ description: "Batería Litio 314AH 51,2V Epever. LFP 16.1KWH 51,2V-P20R1GF30 51,
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Batería Litio 314AH 51,2V Epever – Reiki Energía Solar"
 category: "baterias"
-price: "$9.890.100"
+price: "$8.311.000"
 specifications:
   - "Marca: Epever"
   - "LFP 16.1KWH 51,2V-P20R1GF30 51,2V 314AH"

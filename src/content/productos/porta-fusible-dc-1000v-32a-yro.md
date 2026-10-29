@@ -4,7 +4,7 @@ description: "Porta Fusible DC 1000V 32A YRO. Porta Fusible en DC Riel 32A 1000V
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Porta Fusible DC 1000V 32A YRO – Reiki Energía Solar"
 category: "protecciones"
-price: "$15.200"
+price: "$12.700"
 specifications:
   - "Marca: YRO"
   - "Porta Fusible en DC Riel 32A 1000V"

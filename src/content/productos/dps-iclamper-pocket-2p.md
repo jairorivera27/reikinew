@@ -4,7 +4,7 @@ description: "DPS iClamper POCKET 2P. Dispositivo de Protección contra Sobreten
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "DPS iClamper POCKET 2P – Reiki Energía Solar"
 category: "protecciones"
-price: "$40.400"
+price: "$33.900"
 specifications:
   - "Marca: Clamper"
   - "Dispositivo de Protección contra Sobretensiones (DPS)"

@@ -4,7 +4,7 @@ description: "Bateria 12V 150 Ah Long Life Newmax. 12v 150ah Ciclo Profundo Long
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Bateria 12V 150 Ah Long Life Newmax – Reiki Energía Solar"
 category: "baterias"
-price: "$1.091.600"
+price: "$917.300"
 specifications:
   - "Marca: Newmax"
   - "12v 150ah Ciclo Profundo Long Life GEL"

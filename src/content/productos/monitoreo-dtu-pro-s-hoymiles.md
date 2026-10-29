@@ -5,7 +5,7 @@ image: "/images/productos-estudio/monitoreo-dtu-pro-s-hoymiles.webp"
 imageCard: "/images/productos-estudio/monitoreo-dtu-pro-s-hoymiles-card.webp"
 imageAlt: "Monitoreo DTU PRO S HOYMILES – Reiki Energía Solar"
 category: "accesorios"
-price: "$1.097.800"
+price: "$922.500"
 specifications:
   - "Marca: Hoymiles"
   - "Serie S Sistema de Monitorie online wifi W100 + opcion de inyección cero a la red"

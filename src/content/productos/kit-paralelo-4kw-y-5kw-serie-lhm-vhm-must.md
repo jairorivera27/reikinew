@@ -4,7 +4,7 @@ description: "Kit Paralelo 4Kw y 5Kw Serie LHM/VHM MUST. Soporta hasta 3 unidade
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Kit Paralelo 4Kw y 5Kw Serie LHM/VHM MUST – Reiki Energía Solar"
 category: "accesorios"
-price: "$299.000"
+price: "$251.300"
 specifications:
   - "Marca: MUST"
   - "Soporta hasta 3 unidades en paralelo para series VHM (4Kw48V"

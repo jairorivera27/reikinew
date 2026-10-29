@@ -5,7 +5,7 @@ image: "/images/productos-estudio/procables-cable-pv-6mm2-cu-flex-xlep-sr1800-90
 imageThumb: "/images/productos-estudio/procables-cable-pv-6mm2-cu-flex-xlep-sr1800-90-c-pvc-negro-thumb.webp"
 imageAlt: "Procables Cable Pv 6MM2 Cu (flex) Xlep SR1800 90_C Pvc Negro – Reiki Energía Solar"
 category: "accesorios"
-price: "$9.700"
+price: "$6.800"
 specifications:
   - "Calibre: 6mm²"
   - "Fabricante: Procables"
@@ -15,7 +15,7 @@ model: "PV6MM2-N-SR1800"
 sku: "ING-ACCC06"
 stock: "disponible"
 order: 8000
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-29"
 imagen_provisional: false
 fichaPdf: "/fichas/proveedores/ingesolar-ACCC06.pdf"
 faqs:
@@ -23,6 +23,9 @@ faqs:
     respuesta: "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
 stockBajo: true
 certificadoPdf: "/fichas/proveedores/ingesolar-ACCC06-cert.pdf"
+precioAnterior: "$9.700"
+descuentoPct: 30
+promocion: "Precio rebajado"
 ---
 
 Proveedor: Ingesolar (ACCC06).

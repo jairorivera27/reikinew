@@ -5,7 +5,7 @@ image: "/images/productos-estudio/cable-solar-fv-4mm-rojo-x-250-mts-kibor.webp"
 imageCard: "/images/productos-estudio/cable-solar-fv-4mm-rojo-x-250-mts-kibor-card.webp"
 imageAlt: "Cable Solar FV 4mm Rojo x 250 mts. Kibor – Reiki Energía Solar"
 category: "accesorios"
-price: "$1.193.400"
+price: "$1.002.800"
 specifications:
   - "Marca: Kibor"
   - "4mm Rojo"

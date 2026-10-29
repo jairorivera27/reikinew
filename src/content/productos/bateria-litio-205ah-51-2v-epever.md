@@ -4,7 +4,7 @@ description: "Batería Litio 205AH 51,2V Epever. LFP 10.5KWH 51,2V-P20R1GF30 51,
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Batería Litio 205AH 51,2V Epever – Reiki Energía Solar"
 category: "baterias"
-price: "$7.910.400"
+price: "$6.647.400"
 specifications:
   - "Marca: Epever"
   - "LFP 10.5KWH 51,2V-P20R1GF30 51,2V 205AH"

@@ -4,7 +4,7 @@ description: "Logger eLOG01-M-G3 4 Epever. Modulo para monitoreo Logger eLOG01-M
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Logger eLOG01-M-G3 4 Epever – Reiki Energía Solar"
 category: "accesorios"
-price: "$128.100"
+price: "$107.600"
 specifications:
   - "Marca: Epever"
   - "Modulo para monitoreo Logger eLOG01-M-G3 4"

@@ -4281,14 +4281,14 @@
   "codigo": "ING-ACC48"
  },
  "leader-mc4-3-a-1-sy-bb31": {
-  "proveedor": "Ingesolar",
+  "proveedor": "GEE Renovables",
   "titulo": "Leader MC4 3 A 1 SY-BB31",
-  "codigo": "ING-ACC127"
+  "codigo": "MC4 3-1"
  },
  "leader-mc4-sencillo-macho-hembra-tuv-retie-leader": {
-  "proveedor": "Ingesolar",
+  "proveedor": "GEE Renovables",
   "titulo": "Leader MC4 Sencillo Macho-hembra / TUV RETIE Leader",
-  "codigo": "ING-ACC3"
+  "codigo": "MC4"
  },
  "luminaria-solar-calle-100w-panel-externo": {
   "proveedor": "Hardy Solar Energy",
@@ -5028,9 +5028,9 @@
   "codigo": "BPP900800150"
  },
  "procables-cable-pv-6mm2-cu-flex-xlep-sr1800-90-c-pvc-negro": {
-  "proveedor": "Ingesolar",
+  "proveedor": "GEE Renovables",
   "titulo": "Procables Cable Pv 6MM2 Cu (flex) Xlep SR1800 90_C Pvc Negro",
-  "codigo": "ING-ACCC06"
+  "codigo": "CABLE SOLAR 6mm"
  },
  "proteccion-breaker-100a": {
   "proveedor": "Por confirmar",
@@ -6537,9 +6537,9 @@
   "codigo": "826665"
  },
  "inversor-hibrido-ongrid-sofar-hyd-6k-lsp1": {
-  "proveedor": "Improinde",
+  "proveedor": "GEE Renovables",
   "titulo": "Inversor Hibrido Ongrid SOFAR HYD 6K-LSP1",
-  "codigo": "826666"
+  "codigo": "HYD-6K-LSP1"
  },
  "inversor-hibrido-ongrid-sofar-hyd-10ktl-3ph-trifasico": {
   "proveedor": "Improinde",
@@ -6592,9 +6592,9 @@
   "codigo": "826550"
  },
  "sofar-3ktlm-g3": {
-  "proveedor": "Improinde",
+  "proveedor": "GEE Renovables",
   "titulo": "SOFAR 3KTLM-G3",
-  "codigo": "826603"
+  "codigo": "3KTLM-G3"
  },
  "sofar-5ktlm-g3": {
   "proveedor": "Improinde",
@@ -6602,9 +6602,9 @@
   "codigo": "826604"
  },
  "sofar-6ktlm-g3": {
-  "proveedor": "Improinde",
+  "proveedor": "GEE Renovables",
   "titulo": "SOFAR 6KTLM-G3",
-  "codigo": "826608"
+  "codigo": "6KTLM-G3"
  },
  "sofar-7ktlm-g3": {
   "proveedor": "Improinde",
@@ -6617,19 +6617,19 @@
   "codigo": "826618"
  },
  "sofar-10ktlm-g3": {
-  "proveedor": "Improinde",
+  "proveedor": "GEE Renovables",
   "titulo": "SOFAR 10KTLM-G3",
-  "codigo": "826619"
+  "codigo": "10KTLM-G3"
  },
  "sofar-15ktlx-g3-lv": {
-  "proveedor": "Improinde",
+  "proveedor": "GEE Renovables",
   "titulo": "SOFAR 15KTLX-G3-LV",
-  "codigo": "826620"
+  "codigo": "15KTLX-G3-LV"
  },
  "sofar-20ktlx-g3-lv": {
-  "proveedor": "Improinde",
+  "proveedor": "GEE Renovables",
   "titulo": "SOFAR 20KTLX-G3-LV",
-  "codigo": "826625"
+  "codigo": "20KTLX-G3-LV"
  },
  "sofar-25ktlx-g3-lv": {
   "proveedor": "Improinde",
@@ -6637,14 +6637,14 @@
   "codigo": "826628"
  },
  "sofar-30ktlx-g3-lv": {
-  "proveedor": "Improinde",
+  "proveedor": "GEE Renovables",
   "titulo": "SOFAR 30KTLX-G3-LV",
-  "codigo": "826631"
+  "codigo": "30KTLX-G3-LV"
  },
  "sofar-40ktlx-g4-lv": {
-  "proveedor": "Improinde",
+  "proveedor": "GEE Renovables",
   "titulo": "SOFAR 40KTLX-G4-LV",
-  "codigo": "826632"
+  "codigo": "40KTLX-G4-LV"
  },
  "sofar-50ktlx-g4-lv": {
   "proveedor": "Improinde",
@@ -7410,5 +7410,220 @@
   "proveedor": "Improinde",
   "titulo": "Cable Solar FV 10mm Rojo x 100 mts. Kibor",
   "codigo": "880290"
+ },
+ "inversor-on-grid-sofar-9ktlm-g3-9-kw-220-v": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Inversor On-Grid Sofar 9KTLM-G3 9 kW 220 V",
+  "codigo": "9KTLM-G3"
+ },
+ "inversor-hibrido-sofar-hyd-8k-lsp1-8-kw-fase-dividida-120-240-v": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Inversor Híbrido Sofar HYD-8K-LSP1 8 kW Fase Dividida 120/240 V",
+  "codigo": "HYD-8K-LSP1"
+ },
+ "inversor-hibrido-sofar-hyd-10k-lsp1-10-kw-fase-dividida-120-240-v": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Inversor Híbrido Sofar HYD-10K-LSP1 10 kW Fase Dividida 120/240 V",
+  "codigo": "HYD-10K-LSP1"
+ },
+ "bateria-de-litio-sofar-sf-5kwh-l1-5-12-kwh-51-2-v": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Batería de Litio Sofar SF-5KWH-L1 5,12 kWh 51,2 V",
+  "codigo": "SF-5KWH-L1"
+ },
+ "bateria-de-litio-sofar-sf-16kwh-l1-16-kwh-51-2-v": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Batería de Litio Sofar SF-16KWH-L1 16 kWh 51,2 V",
+  "codigo": "SF-16KWH-L1"
+ },
+ "inversor-on-grid-canadian-solar-csi-50-kw-trifasico-220-v": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Inversor On-Grid Canadian Solar CSI 50 kW Trifásico 220 V",
+  "codigo": "CSI 50K"
+ },
+ "inversor-on-grid-canadian-solar-csi-75-kw-trifasico-220-v": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Inversor On-Grid Canadian Solar CSI 75 kW Trifásico 220 V",
+  "codigo": "CSI 75K"
+ },
+ "inversor-on-grid-canadian-solar-csi-333-kw-trifasico-800-v": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Inversor On-Grid Canadian Solar CSI 333 kW Trifásico 800 V",
+  "codigo": "CSI 333K"
+ },
+ "transformador-de-corriente-canadian-solar-ctsa16-100a-33-33-ma": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Transformador de Corriente Canadian Solar CTSA16-100A 33,33 mA",
+  "codigo": "CT/CTSA16-100A"
+ },
+ "transformador-de-corriente-canadian-solar-ct-60-400-a": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Transformador de Corriente Canadian Solar CT-60 400 A",
+  "codigo": "CT-60 40x40-400A"
+ },
+ "transformador-de-corriente-canadian-solar-ct-80x50-600-a": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Transformador de Corriente Canadian Solar CT-80x50 600 A",
+  "codigo": "CT-80x50-600A"
+ },
+ "transformador-de-corriente-canadian-solar-ct-80x50-1000-a": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Transformador de Corriente Canadian Solar CT-80x50 1000 A",
+  "codigo": "CT-80x50-1000A"
+ },
+ "breaker-dc-feeo-1p-10a": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 1P 10A",
+  "codigo": "1P 10A MCB"
+ },
+ "breaker-dc-feeo-1p-16a": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 1P 16A",
+  "codigo": "1P 16A MCB"
+ },
+ "breaker-dc-feeo-1p-20a": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 1P 20A",
+  "codigo": "1P 20A MCB"
+ },
+ "breaker-dc-feeo-1p-25a": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 1P 25A",
+  "codigo": "1P 25A MCB"
+ },
+ "breaker-dc-feeo-1p-32a": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 1P 32A",
+  "codigo": "1P 32A MCB"
+ },
+ "breaker-dc-feeo-1p-40a": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 1P 40A",
+  "codigo": "1P 40A MCB"
+ },
+ "breaker-dc-feeo-1p-50a": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 1P 50A",
+  "codigo": "1P 50A MCB"
+ },
+ "breaker-dc-feeo-1p-63a": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 1P 63A",
+  "codigo": "1P 63A MCB"
+ },
+ "breaker-dc-feeo-2p-10a-550-vdc": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 2P 10A 550 VDC",
+  "codigo": "2P 10A MCB"
+ },
+ "breaker-dc-feeo-2p-16a-550-vdc": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 2P 16A 550 VDC",
+  "codigo": "2P 16A MCB"
+ },
+ "breaker-dc-feeo-2p-20a-550-vdc": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 2P 20A 550 VDC",
+  "codigo": "2P 20A MCB"
+ },
+ "breaker-dc-feeo-2p-25a-550-vdc": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 2P 25A 550 VDC",
+  "codigo": "2P 25A MCB"
+ },
+ "breaker-dc-feeo-2p-32a-550-vdc": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 2P 32A 550 VDC",
+  "codigo": "2P 32A MCB"
+ },
+ "breaker-dc-feeo-2p-40a-550-vdc": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 2P 40A 550 VDC",
+  "codigo": "2P 40A MCB"
+ },
+ "breaker-dc-feeo-2p-50a-550-vdc": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 2P 50A 550 VDC",
+  "codigo": "2P 50A MCB"
+ },
+ "breaker-dc-feeo-2p-63a-550-vdc": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 2P 63A 550 VDC",
+  "codigo": "2P 63A MCB"
+ },
+ "breaker-dc-feeo-fpv-125-2p-80a-550-vdc": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO FPV-125 2P 80A 550 VDC",
+  "codigo": "FPV-125 2P 80A"
+ },
+ "breaker-dc-feeo-fpv-125-2p-100a-550-vdc": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO FPV-125 2P 100A 550 VDC",
+  "codigo": "FPV-125 2P 100A"
+ },
+ "breaker-dc-feeo-fpv-125-2p-125a-550-vdc": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO FPV-125 2P 125A 550 VDC",
+  "codigo": "FPV-125 2P 125A"
+ },
+ "breaker-dc-feeo-3p-16a": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 3P 16A",
+  "codigo": "3P 16A MCB"
+ },
+ "breaker-dc-feeo-3p-20a": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 3P 20A",
+  "codigo": "3P 20A MCB"
+ },
+ "breaker-dc-feeo-3p-25a": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 3P 25A",
+  "codigo": "3P 25A MCB"
+ },
+ "breaker-dc-feeo-3p-32a": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 3P 32A",
+  "codigo": "3P 32A MCB"
+ },
+ "breaker-dc-feeo-4p-32a-1000-vdc": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Breaker DC FEEO 4P 32A 1000 VDC",
+  "codigo": "4P 32A MCB"
+ },
+ "dps-dc-feeo-fsp-d40-2p-600-vdc-tipo-2-20-40-ka": {
+  "proveedor": "GEE Renovables",
+  "titulo": "DPS DC FEEO FSP-D40 2P 600 VDC Tipo 2 20-40 kA",
+  "codigo": "FSP-D40 T2"
+ },
+ "dps-dc-feeo-fsp-d40-2p-600-vdc-tipo-1-2": {
+  "proveedor": "GEE Renovables",
+  "titulo": "DPS DC FEEO FSP-D40 2P 600 VDC Tipo 1+2",
+  "codigo": "FSP-D40 T1+T2"
+ },
+ "portafusible-dc-feeo-fds-32b-10x38-1000-v": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Portafusible DC FEEO FDS-32B 10x38 1000 V",
+  "codigo": "FDS-32B"
+ },
+ "fusible-dc-feeo-10a-10x38-1000-vdc": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Fusible DC FEEO 10A 10x38 1000 VDC",
+  "codigo": "FDS-32 10A"
+ },
+ "fusible-dc-feeo-15a-10x38-1000-vdc": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Fusible DC FEEO 15A 10x38 1000 VDC",
+  "codigo": "FDS-32 15A"
+ },
+ "fusible-dc-feeo-20a-10x38-1000-vdc": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Fusible DC FEEO 20A 10x38 1000 VDC",
+  "codigo": "FDS-32 20A"
+ },
+ "fusible-dc-feeo-25a-10x38-1000-vdc": {
+  "proveedor": "GEE Renovables",
+  "titulo": "Fusible DC FEEO 25A 10x38 1000 VDC",
+  "codigo": "FDS-32 25A"
  }
 }

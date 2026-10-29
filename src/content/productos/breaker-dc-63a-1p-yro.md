@@ -4,7 +4,7 @@ description: "Breaker DC 63A 1P YRO. Mini Breaker en DC Riel 63A 250V, termomagn
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Breaker DC 63A 1P YRO – Reiki Energía Solar"
 category: "protecciones"
-price: "$24.800"
+price: "$20.800"
 specifications:
   - "Marca: YRO"
   - "Mini Breaker en DC Riel 63A 250V"

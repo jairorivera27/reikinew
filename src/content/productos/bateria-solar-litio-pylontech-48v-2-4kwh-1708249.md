@@ -4,7 +4,7 @@ description: "Batería litio Pylontech de 2.4 kWh a 48 V. Guarda la energía de 
 image: "/images/productos-estudio/pylontech-3kwh-medellin-prov.webp"
 imageCard: "/images/productos-estudio/pylontech-3kwh-medellin-prov-card.webp"
 category: "baterias"
-price: "$2.769.700"
+price: "$2.327.500"
 specifications:
   - "Tipo: Litio"
   - "Especificación principal: 48V 2.4kWh"
@@ -35,7 +35,7 @@ faqs:
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor (48 V) y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
 precioAnterior: "$3.766.269"
-descuentoPct: 26
+descuentoPct: 38
 promocion: "Precio rebajado"
 avisoEnvio: "Envío incluido a ciudades principales"
 ---

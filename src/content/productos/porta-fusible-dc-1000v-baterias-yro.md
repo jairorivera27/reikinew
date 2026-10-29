@@ -4,7 +4,7 @@ description: "Porta Fusible DC 1000V Baterías YRO. Porta Fusible en DC 160A 100
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Porta Fusible DC 1000V Baterías YRO – Reiki Energía Solar"
 category: "protecciones"
-price: "$60.000"
+price: "$50.400"
 specifications:
   - "Marca: YRO"
   - "Porta Fusible en DC 160A 1000V"

@@ -4,7 +4,7 @@ description: "Breaker DC 40A 4P YRO. Mini Breaker en DC Riel 40A 1200V, termomag
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Breaker DC 40A 4P YRO – Reiki Energía Solar"
 category: "protecciones"
-price: "$130.900"
+price: "$110.000"
 specifications:
   - "Marca: YRO"
   - "Mini Breaker en DC Riel 40A 1200V"

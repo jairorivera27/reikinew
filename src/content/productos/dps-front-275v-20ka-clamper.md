@@ -5,7 +5,7 @@ image: "/images/productos-estudio/dps-front-275v-20ka-clamper.webp"
 imageCard: "/images/productos-estudio/dps-front-275v-20ka-clamper-card.webp"
 imageAlt: "DPS FRONT 275V 20kA Clamper – Reiki Energía Solar"
 category: "protecciones"
-price: "$121.100"
+price: "$101.800"
 specifications:
   - "Marca: Clamper"
   - "Dispositivo de Protección contra Sobretensiones (DPS)"

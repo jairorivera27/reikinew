@@ -4,7 +4,7 @@ description: "Batería Litio 100AH 51,2V Epever. LR51100E 51.2V 100AH 100AH."
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Batería Litio 100AH 51,2V Epever – Reiki Energía Solar"
 category: "baterias"
-price: "$3.953.800"
+price: "$3.322.500"
 specifications:
   - "Marca: Epever"
   - "LR51100E 51.2V 100AH 100AH"

@@ -4,7 +4,7 @@ description: "Breaker DC 20A 3P YRO. Mini Breaker en DC Riel 20A 800V, termomagn
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Breaker DC 20A 3P YRO – Reiki Energía Solar"
 category: "protecciones"
-price: "$76.400"
+price: "$64.200"
 specifications:
   - "Marca: YRO"
   - "Mini Breaker en DC Riel 20A 800V"

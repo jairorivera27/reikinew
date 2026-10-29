@@ -5,7 +5,7 @@ image: "/images/productos-estudio/clamper-solar-string-box-1e-1s-kit-32a.webp"
 imageCard: "/images/productos-estudio/clamper-solar-string-box-1e-1s-kit-32a-card.webp"
 imageAlt: "CLAMPER Solar String Box 1E/1S KIT 32A – Reiki Energía Solar"
 category: "protecciones"
-price: "$727.900"
+price: "$611.600"
 specifications:
   - "Marca: Clamper"
   - "Nueva Version Tablero de protección"

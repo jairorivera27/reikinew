@@ -5,7 +5,7 @@ image: "/images/productos-estudio/clamper-solar-string-box-3e-1s.webp"
 imageCard: "/images/productos-estudio/clamper-solar-string-box-3e-1s-card.webp"
 imageAlt: "CLAMPER Solar String Box 3E/1S – Reiki Energía Solar"
 category: "protecciones"
-price: "$937.000"
+price: "$787.400"
 specifications:
   - "Marca: Clamper"
   - "Tablero de protección"

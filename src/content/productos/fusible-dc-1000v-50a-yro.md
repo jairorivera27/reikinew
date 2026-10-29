@@ -4,7 +4,7 @@ description: "Fusible DC 1000V 50A YRO. Fusible DC Riel 50A 1000V, 14x51, CE. Ma
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Fusible DC 1000V 50A YRO – Reiki Energía Solar"
 category: "protecciones"
-price: "$16.700"
+price: "$14.000"
 specifications:
   - "Marca: YRO"
   - "Fusible DC Riel 50A 1000V"

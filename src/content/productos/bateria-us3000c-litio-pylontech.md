@@ -4,7 +4,7 @@ description: "Bateria US3000C Litio Pylontech. 48v 74ah, 3.55kwh, vida util +10 
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Bateria US3000C Litio Pylontech – Reiki Energía Solar"
 category: "baterias"
-price: "$4.486.900"
+price: "$3.770.500"
 specifications:
   - "Marca: Pylontech"
   - "48v 74ah"

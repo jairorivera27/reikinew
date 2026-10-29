@@ -4,7 +4,7 @@ description: "Juego de Cables Cortos Pylontech. Juego Cables Conexioón Batería
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Juego de Cables Cortos Pylontech – Reiki Energía Solar"
 category: "baterias"
-price: "$123.800"
+price: "$104.000"
 specifications:
   - "Marca: Pylontech"
   - "Juego Cables Conexioón Baterías Pylontech x 2 unid"

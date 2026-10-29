@@ -4,7 +4,7 @@ description: "Breaker DC 32A 4P YRO. Mini Breaker en DC Riel 32A 1200V, termomag
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Breaker DC 32A 4P YRO – Reiki Energía Solar"
 category: "protecciones"
-price: "$136.100"
+price: "$114.400"
 specifications:
   - "Marca: YRO"
   - "Mini Breaker en DC Riel 32A 1200V"

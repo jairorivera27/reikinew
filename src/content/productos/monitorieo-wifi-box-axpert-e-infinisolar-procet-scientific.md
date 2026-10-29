@@ -4,7 +4,7 @@ description: "Monitorieo WiFi Box Axpert e Infinisolar Procet Scientific. Compat
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Monitorieo WiFi Box Axpert e Infinisolar Procet Scientific – Reiki Energía Solar"
 category: "accesorios"
-price: "$634.300"
+price: "$533.000"
 specifications:
   - "Marca: Procet Scientific"
   - "Compatible con modelos Axpert e infinisolar"

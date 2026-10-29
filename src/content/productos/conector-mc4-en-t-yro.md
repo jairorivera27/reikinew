@@ -4,7 +4,7 @@ description: "Conector MC4 en T YRO. Juego de Conectores Hembra y Macho en T."
 image: "/images/placeholders/accesorios.svg"
 imageAlt: "Conector MC4 en T YRO – Reiki Energía Solar"
 category: "accesorios"
-price: "$22.900"
+price: "$19.200"
 specifications:
   - "Marca: YRO"
   - "Juego de Conectores Hembra y Macho en T"
