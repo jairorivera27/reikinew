@@ -11,13 +11,13 @@ specifications:
   - "Aplicación: almacenamiento de energía en sistemas solares y respaldo eléctrico"
 brand: "Pylontech"
 model: "US5000"
-stock: "pre-orden"
+stock: "agotado"
 order: 7
 promocion: "Liquidación"
 promoImagen: "/images/placeholders/promo-liquidacion.svg"
 sku: "US5000"
 power: "48V 4,8kWh"
-updatedAt: "2026-10-28"
+updatedAt: "2026-10-29"
 imageThumb: "/images/productos-estudio/pylontech-us-prov.webp"
 imageAlt: "Pylontech US5000 48V 4,8kWh – Reiki Energía Solar"
 imageOriginal: "/images/productos-tienda/baterias/pylontech-us.png"
@@ -28,6 +28,7 @@ faqs:
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor (48 V) y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
 fichaPdf: "/fichas/fabricantes/pylontech-us5000-datasheet-en.pdf"
+stockManual: true
 ---
 
 Batería de litio de alta calidad con tecnología LiFePO4, segura y de larga duración. Ideal para sistemas de respaldo y almacenamiento de energía solar.
