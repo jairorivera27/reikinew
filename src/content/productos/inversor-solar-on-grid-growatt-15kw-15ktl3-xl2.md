@@ -4,7 +4,7 @@ description: "Inversor on-grid (conectado a red) Growatt 15KTL3-XL2 de 15kW, tri
 image: "/images/productos-estudio/growatt-mid-15tl3-xl2.webp"
 imageCard: "/images/productos-estudio/growatt-mid-15tl3-xl2-card.webp"
 category: "inversores"
-price: "$9.337.375"
+price: "$7.708.900"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 15kW"
@@ -15,7 +15,7 @@ sku: "15KTL3-XL2"
 power: "15kW"
 stock: "disponible"
 order: 6177
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"
@@ -41,6 +41,9 @@ faqs:
     respuesta: "Un sistema con este inversor de 15 kW y unos 16,5 kWp de paneles genera del orden de 2.228 kWh al mes (4,5 horas de sol pico en promedio), así que cubre consumos de esa magnitud. Te dimensionamos el sistema con tu factura."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+precioAnterior: "$9.337.375"
+descuentoPct: 17
+promocion: "Precio rebajado"
 ---
 **Inversor Solar On-Grid Growatt 15kW 15KTL3-XL2** de Growatt · 15kW.
 

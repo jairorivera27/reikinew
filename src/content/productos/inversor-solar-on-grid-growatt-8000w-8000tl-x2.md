@@ -4,7 +4,7 @@ description: "Inversor on-grid (conectado a red) Growatt 8000TL-X2 de 8000W. Con
 image: "/images/productos-estudio/growatt-min-6000tl-x2.webp"
 imageCard: "/images/productos-estudio/growatt-min-6000tl-x2-card.webp"
 category: "inversores"
-price: "$4.970.000"
+price: "$3.316.700"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 8000W"
@@ -15,7 +15,7 @@ sku: "8000TL-X2"
 power: "8000W"
 stock: "disponible"
 order: 6190
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"
@@ -38,6 +38,9 @@ faqs:
     respuesta: "Sí, en Colombia la autogeneración a pequeña escala (CREG 174 de 2021) permite entregar excedentes con un medidor bidireccional y el trámite ante el operador de red. Reiki te acompaña en la legalización."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+precioAnterior: "$4.970.000"
+descuentoPct: 33
+promocion: "Precio rebajado"
 ---
 **Inversor Solar On-Grid Growatt 8000W 8000TL-X2** de Growatt · 8000W.
 

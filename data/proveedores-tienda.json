@@ -584,9 +584,9 @@
   "codigo": "HESS"
  },
  "bateria-solar-litio-pylontech-48v-2-4kwh-1708249": {
-  "proveedor": "Autosolar",
+  "proveedor": "Improinde",
   "titulo": "Batería Solar Litio Pylontech US2000C 48V 2.4kWh 1880901",
-  "codigo": "1880901"
+  "codigo": "814060"
  },
  "bateria-solar-litio-pylontech-uf5000": {
   "proveedor": "E&M",
@@ -2945,14 +2945,14 @@
   "codigo": "ING-INVOP46"
  },
  "epever-inversor-onda-pura-ip1000-21-1000w-24vdc-a-110vac": {
-  "proveedor": "Ingesolar",
+  "proveedor": "Improinde",
   "titulo": "Epever Inversor Onda Pura IP1000-21 1000W 24Vdc a 110Vac",
-  "codigo": "ING-INVOP47"
+  "codigo": "824421"
  },
  "epever-inversor-onda-pura-ip1000-21-plus-t-1000w-24vdc-a-110vac": {
-  "proveedor": "Ingesolar",
+  "proveedor": "Improinde",
   "titulo": "Epever Inversor Onda Pura IP1000-21 Plus(t) 1000W 24Vdc a 110Vac",
-  "codigo": "ING-INVOP06"
+  "codigo": "824438"
  },
  "epever-inversor-onda-pura-ip1500-21-plus-t-1500w-24vdc-a-110vac": {
   "proveedor": "Ingesolar",
@@ -2975,9 +2975,9 @@
   "codigo": "ING-INVOP62"
  },
  "epever-inversor-onda-pura-ipt1000-21-ipt-1000w-24vdc-a-110vac": {
-  "proveedor": "Ingesolar",
+  "proveedor": "Improinde",
   "titulo": "Epever Inversor Onda Pura IPT1000-21 (ipt) 1000W 24Vdc a 110Vac",
-  "codigo": "ING-INVOP67"
+  "codigo": "824433"
  },
  "epever-inversor-onda-pura-ipt2000-11-ipt-2000w-12vdc-a-110vac": {
   "proveedor": "Ingesolar",
@@ -3856,14 +3856,14 @@
   "codigo": "3004285"
  },
  "inversor-solar-on-grid-growatt-10kw-10ktl3-xl2": {
-  "proveedor": "Biosolar",
+  "proveedor": "Improinde",
   "titulo": "Inversor Solar On-Grid Growatt 10kW 10KTL3-XL2",
-  "codigo": "10KTL3-XL2"
+  "codigo": "826522"
  },
  "inversor-solar-on-grid-growatt-10kw-min10000tl-x2": {
-  "proveedor": "Biosolar",
+  "proveedor": "Improinde",
   "titulo": "Inversor Solar On-Grid Growatt 10kW MIN10000TL-X2",
-  "codigo": "MIN10000TL-X2"
+  "codigo": "826513"
  },
  "inversor-solar-on-grid-growatt-15000w-3004290": {
   "proveedor": "Autosolar",
@@ -3871,9 +3871,9 @@
   "codigo": "3004290"
  },
  "inversor-solar-on-grid-growatt-15kw-15ktl3-xl2": {
-  "proveedor": "Biosolar",
+  "proveedor": "Improinde",
   "titulo": "Inversor Solar On-Grid Growatt 15kW 15KTL3-XL2",
-  "codigo": "15KTL3-XL2"
+  "codigo": "826524"
  },
  "inversor-solar-on-grid-growatt-20000w-3004291": {
   "proveedor": "Autosolar",
@@ -3881,9 +3881,9 @@
   "codigo": "3004291"
  },
  "inversor-solar-on-grid-growatt-20kw-20ktl3-xl2": {
-  "proveedor": "Biosolar",
+  "proveedor": "Improinde",
   "titulo": "Inversor Solar On-Grid Growatt 20kW 20KTL3-XL2",
-  "codigo": "20KTL3-XL2"
+  "codigo": "826526"
  },
  "inversor-solar-on-grid-growatt-25000w-3004292": {
   "proveedor": "Autosolar",
@@ -3901,9 +3901,9 @@
   "codigo": "3600TL-X2"
  },
  "inversor-solar-on-grid-growatt-36kw-36ktl3-xl2": {
-  "proveedor": "Biosolar",
+  "proveedor": "Improinde",
   "titulo": "Inversor Solar On-Grid Growatt 36kW 36KTL3-XL2",
-  "codigo": "36KTL3-XL2"
+  "codigo": "826534"
  },
  "inversor-solar-on-grid-growatt-4200w-3205063": {
   "proveedor": "Autosolar",
@@ -3916,9 +3916,9 @@
   "codigo": "3004295"
  },
  "inversor-solar-on-grid-growatt-6000w-6000tl-x2": {
-  "proveedor": "Biosolar",
+  "proveedor": "Improinde",
   "titulo": "Inversor Solar On-Grid Growatt 6000W 6000TL-X2",
-  "codigo": "6000TL-X2"
+  "codigo": "826509"
  },
  "inversor-solar-on-grid-growatt-75000w-3004296": {
   "proveedor": "Autosolar",
@@ -3931,9 +3931,9 @@
   "codigo": "3205064"
  },
  "inversor-solar-on-grid-growatt-8000w-8000tl-x2": {
-  "proveedor": "Biosolar",
+  "proveedor": "Improinde",
   "titulo": "Inversor Solar On-Grid Growatt 8000W 8000TL-X2",
-  "codigo": "8000TL-X2"
+  "codigo": "826511"
  },
  "inversor-solar-on-grid-must-wifi": {
   "proveedor": "Biosolar",
@@ -5133,9 +5133,9 @@
   "codigo": "ING-PNLM12"
  },
  "restar-panel-monocristalino-210w-voc-23-9-isc-11-07": {
-  "proveedor": "Ingesolar",
+  "proveedor": "Improinde",
   "titulo": "Restar Panel Monocristalino 210W Voc 23.9 / Isc 11.07",
-  "codigo": "ING-PNLM16"
+  "codigo": "805260"
  },
  "restar-panel-monocristalino-40w-voc-21-6-isc-2-45": {
   "proveedor": "Ingesolar",
@@ -5143,9 +5143,9 @@
   "codigo": "ING-PNLM29"
  },
  "restar-panel-monocristalino-60w-voc-21-6-isc-3-68": {
-  "proveedor": "Ingesolar",
+  "proveedor": "Improinde",
   "titulo": "Restar Panel Monocristalino 60W Voc 21.6 / Isc 3.68",
-  "codigo": "ING-PNLM01"
+  "codigo": "805050"
  },
  "restar-panel-policristalino-25w-voc-21-6-isc-1-23": {
   "proveedor": "Ingesolar",
@@ -6090,5 +6090,1325 @@
   "proveedor": "Autosolar",
   "titulo": "Inversor Cargador Felicity 1000 W 12 V IVCM1012-LV",
   "codigo": "3004613"
+ },
+ "panel-solar-monocristalino-30w-restar": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Solar Monocristalino 30W Restar",
+  "codigo": "805030"
+ },
+ "panel-solar-monocristalino-120w-restar": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Solar Monocristalino 120W Restar",
+  "codigo": "805100"
+ },
+ "panel-solar-monocristalino-380w-restar": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Solar Monocristalino 380W Restar",
+  "codigo": "805270"
+ },
+ "panel-solar-monocristalino-460w-restar": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Solar Monocristalino 460W Restar",
+  "codigo": "805600"
+ },
+ "panel-solar-monocristalino-580w-hc-16bb-n-dv-znshine": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Solar Monocristalino 580W HC 16BB N DV Znshine",
+  "codigo": "805620"
+ },
+ "panel-solar-monocristalino-600w-hc-n-dv-bf-znshine": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Solar Monocristalino 600W HC N DV BF Znshine",
+  "codigo": "805624"
+ },
+ "panel-solar-monocristalino-630w-hc-n-dv-bf-znshine": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Solar Monocristalino 630W HC N DV BF Znshine",
+  "codigo": "805625"
+ },
+ "panel-solar-monocristalino-650w-hc-n-dv-bf-znshine": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Solar Monocristalino 650W HC N DV BF Znshine",
+  "codigo": "805627"
+ },
+ "panel-solar-monocristalino-670w-hc-12bb-dv-znshine": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Solar Monocristalino 670W HC 12BB DV Znshine",
+  "codigo": "805628"
+ },
+ "panel-solar-monocristalino-730w-hc-bf-dv-znshine": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Solar Monocristalino 730W HC BF DV Znshine",
+  "codigo": "805635"
+ },
+ "panel-solar-monocristalino-665w-hc-risen": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Solar Monocristalino 665W HC Risen",
+  "codigo": "805626"
+ },
+ "panel-solar-monocristalino-700w-hc-n-bf-risen": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Solar Monocristalino 700W HC N BF Risen",
+  "codigo": "805630"
+ },
+ "panel-solar-monocristalino-725w-hjt-bf-risen": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Solar Monocristalino 725W HJT BF Risen",
+  "codigo": "805632"
+ },
+ "panel-solar-monocristalino-735w-hc-bf-dv-tongwei": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Solar Monocristalino 735W HC BF DV Tongwei",
+  "codigo": "805638"
+ },
+ "panel-solar-plegable-40w-zon": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Solar Plegable 40W ZON",
+  "codigo": "832280"
+ },
+ "panel-solar-plegable-65w-zon": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Solar Plegable 65W ZON",
+  "codigo": "832600"
+ },
+ "panel-solar-plegable-100w-zon": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Solar Plegable 100W ZON",
+  "codigo": "832800"
+ },
+ "bateria-12v-100-ah-long-life-newmax": {
+  "proveedor": "Improinde",
+  "titulo": "Bateria 12V 100 Ah Long Life Newmax",
+  "codigo": "811000"
+ },
+ "bateria-12v-150-ah-long-life-newmax": {
+  "proveedor": "Improinde",
+  "titulo": "Bateria 12V 150 Ah Long Life Newmax",
+  "codigo": "811500"
+ },
+ "bateria-12v-200-ah-long-life-newmax": {
+  "proveedor": "Improinde",
+  "titulo": "Bateria 12V 200 Ah Long Life Newmax",
+  "codigo": "812000"
+ },
+ "bateria-12v-250-ah-long-life-newmax": {
+  "proveedor": "Improinde",
+  "titulo": "Bateria 12V 250 Ah Long Life Newmax",
+  "codigo": "812500"
+ },
+ "bateria-us3000c-litio-pylontech": {
+  "proveedor": "Improinde",
+  "titulo": "Bateria US3000C Litio Pylontech",
+  "codigo": "814080"
+ },
+ "bateria-fidus-litio-pylontech": {
+  "proveedor": "Improinde",
+  "titulo": "Bateria Fidus Litio Pylontech",
+  "codigo": "814085"
+ },
+ "bateria-fidus-plus-litio-pylontech": {
+  "proveedor": "Improinde",
+  "titulo": "Bateria Fidus PLUS Litio Pylontech",
+  "codigo": "814087"
+ },
+ "bateria-m1c-pylontech": {
+  "proveedor": "Improinde",
+  "titulo": "Bateria M1C Pylontech",
+  "codigo": "814240"
+ },
+ "bms-controlador-m1c-pylontech": {
+  "proveedor": "Improinde",
+  "titulo": "BMS Controlador M1C Pylontech",
+  "codigo": "814250"
+ },
+ "rack-m1c-13-pylontech": {
+  "proveedor": "Improinde",
+  "titulo": "Rack M1C 13 Pylontech",
+  "codigo": "814255"
+ },
+ "cabinet-solution-optimus-a100-hy-pylontech": {
+  "proveedor": "Improinde",
+  "titulo": "Cabinet Solution Optimus A100-HY Pylontech",
+  "codigo": "814605"
+ },
+ "juego-de-cables-cortos-pylontech": {
+  "proveedor": "Improinde",
+  "titulo": "Juego de Cables Cortos Pylontech",
+  "codigo": "814810"
+ },
+ "juego-de-cables-largos-5mts-pylontech": {
+  "proveedor": "Improinde",
+  "titulo": "Juego de Cables Largos 5mts Pylontech",
+  "codigo": "814812"
+ },
+ "bracket-up2-pylontech": {
+  "proveedor": "Improinde",
+  "titulo": "Bracket-UP2 Pylontech",
+  "codigo": "814860"
+ },
+ "cable-convertidor-ut880-pylontech": {
+  "proveedor": "Improinde",
+  "titulo": "Cable Convertidor UT880 Pylontech",
+  "codigo": "814898"
+ },
+ "estacion-portatil-de-energia-amber-rock-pylontech": {
+  "proveedor": "Improinde",
+  "titulo": "Estación Portatil de Energía Amber Rock Pylontech",
+  "codigo": "814910"
+ },
+ "estacion-portatil-de-energia-amber-mini-pylontech": {
+  "proveedor": "Improinde",
+  "titulo": "Estación Portatil de Energía Amber Mini Pylontech",
+  "codigo": "814914"
+ },
+ "bateria-litio-100ah-12-8v-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Batería Litio 100AH 12.8V Epever",
+  "codigo": "824480"
+ },
+ "bateria-litio-100ah-25-6v-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Batería Litio 100AH 25.6V Epever",
+  "codigo": "824482"
+ },
+ "bateria-litio-100ah-51-2v-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Batería Litio 100AH 51,2V Epever",
+  "codigo": "824483"
+ },
+ "bateria-litio-120ah-25-6v-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Batería Litio 120AH 25.6V Epever",
+  "codigo": "824484"
+ },
+ "bateria-litio-120ah-51-2v-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Batería Litio 120AH 51.2V Epever",
+  "codigo": "824485"
+ },
+ "bateria-litio-150ah-25-6v-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Batería Litio 150AH 25.6V Epever",
+  "codigo": "824486"
+ },
+ "bateria-litio-205ah-25-6v-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Batería Litio 205AH 25,6V Epever",
+  "codigo": "824493"
+ },
+ "bateria-litio-205ah-51-2v-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Batería Litio 205AH 51,2V Epever",
+  "codigo": "824495"
+ },
+ "bateria-litio-314ah-51-2v-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Batería Litio 314AH 51,2V Epever",
+  "codigo": "824497"
+ },
+ "gabinete-para-baterias-5-1kx4-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Gabinete Para Baterías 5.1Kx4 Epever",
+  "codigo": "824500"
+ },
+ "inversor-350va-12v-ip-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor 350VA 12V IP Epever",
+  "codigo": "824410"
+ },
+ "inversor-350va-24v-ip-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor 350VA 24V IP Epever",
+  "codigo": "824411"
+ },
+ "inversor-500va-12v-ip-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor 500VA 12V IP Epever",
+  "codigo": "824415"
+ },
+ "inversor-500va-24v-ip-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor 500VA 24V IP Epever",
+  "codigo": "824416"
+ },
+ "inversor-1500va-24v-ipt-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor 1500VA 24V IPT Epever",
+  "codigo": "824434"
+ },
+ "inversor-4000va-48v-ip-plus-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor 4000VA 48V IP PLUS Epever",
+  "codigo": "824443"
+ },
+ "inversor-hibrido-up2000-hm6021-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido UP2000 HM6021 Epever",
+  "codigo": "824444"
+ },
+ "inversor-hibrido-offgrid-hp3521-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido Offgrid HP3521 Epever",
+  "codigo": "824451"
+ },
+ "inversor-hibrido-ongrid-eld10k-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido OnGrid ELD10K Epever",
+  "codigo": "824456"
+ },
+ "inversor-hibrido-ongrid-eld12k-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido OnGrid ELD12K Epever",
+  "codigo": "824457"
+ },
+ "inversor-hibrido-ongrid-ehd12k-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido OnGrid EHD12K Epever",
+  "codigo": "824459"
+ },
+ "inversor-hibrido-4kw-24v-pv3300-fase-dividida-tlv-must": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido 4KW 24V PV3300 Fase Dividida TLV MUST",
+  "codigo": "827553"
+ },
+ "inversor-hibrido-4kw-48v-pv3300-fase-dividida-tlv-must": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido 4KW 48V PV3300 Fase Dividida TLV MUST",
+  "codigo": "827555"
+ },
+ "inversor-hibrido-8kw-48v-pv39-fase-dividida-tlv-must": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido 8KW 48V PV39 Fase Dividida TLV MUST",
+  "codigo": "827565"
+ },
+ "inversor-hibrido-10kw-48v-pv39-fase-dividida-tlv-must": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido 10KW 48V PV39 Fase Dividida TLV MUST",
+  "codigo": "827570"
+ },
+ "inversor-hibrido-12w-48v-pv39-fase-dividida-tlv-must": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido 12W 48V PV39 Fase Dividida TLV MUST",
+  "codigo": "827575"
+ },
+ "inversor-hibrido-ongrid-ph11-6kl2-us-must": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido Ongrid PH11-6KL2 US MUST",
+  "codigo": "827580"
+ },
+ "inversor-hibrido-ongrid-ph11-8kl2-us-must": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido Ongrid PH11-8KL2 US MUST",
+  "codigo": "827585"
+ },
+ "inversor-hibrido-ongrid-ph11-10kl2-us-must": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido Ongrid PH11-10KL2 US MUST",
+  "codigo": "827590"
+ },
+ "inversor-hibrido-6000w-48v-pv29-6048-lhp-120v-must": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido 6000W/48V PV29-6048 LHP 120V MUST",
+  "codigo": "828050"
+ },
+ "inversor-hibrido-pv18-3024-lv-must": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido PV18 3024 LV MUST",
+  "codigo": "828490"
+ },
+ "inversor-hibrido-pv18-3024-pro-220v-must": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido PV18-3024 PRO 220V MUST",
+  "codigo": "828580"
+ },
+ "inversor-hibrido-pv18-3524-pro-220v-must": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido PV18-3524 PRO 220V MUST",
+  "codigo": "828600"
+ },
+ "inversor-hibrido-pv18-5248-pro-220v-must": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido PV18-5248 PRO 220V MUST",
+  "codigo": "828610"
+ },
+ "inversor-todo-en-uno-planta-solar-hbp18-3048lv-must": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Todo en uno Planta Solar HBP18-3048LV MUST",
+  "codigo": "828650"
+ },
+ "kit-paralelo-4kw-y-5kw-serie-lhm-vhm-must": {
+  "proveedor": "Improinde",
+  "titulo": "Kit Paralelo 4Kw y 5Kw Serie LHM/VHM MUST",
+  "codigo": "828800"
+ },
+ "inversor-o-m-600w-24v-procet-scientific": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor O.M. 600W 24V Procet Scientific",
+  "codigo": "823550"
+ },
+ "inversor-o-m-1000w-24v-procet-scientific": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor O.M. 1000W 24V Procet Scientific",
+  "codigo": "823590"
+ },
+ "inversor-500w-24v-procet-scientific": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor 500W 24V Procet Scientific",
+  "codigo": "824070"
+ },
+ "inversor-1000w-24v-procet-scientific": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor 1000W 24V Procet Scientific",
+  "codigo": "824110"
+ },
+ "inversor-hibrido-offgrid-axpert-zero-lv-2k24v-procet-scientific": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido Offgrid Axpert Zero LV 2K24V Procet Scientific",
+  "codigo": "828930"
+ },
+ "inversor-hibrido-offgrid-axpert-zero-lv-3k48v-procet-scientific": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido Offgrid Axpert Zero LV 3K48V Procet Scientific",
+  "codigo": "828935"
+ },
+ "inversor-hibrido-offgrid-axpert-mlv-6kw-48v-by-ps-procet-scientific": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido Offgrid Axpert MLV-6KW-48V by PS Procet Scientific",
+  "codigo": "828960"
+ },
+ "inversor-hibrido-ongrid-infinisolar-wp-lv-12kw-48v-by-ps-procet-scientific": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido Ongrid InfiniSolar WP-LV-12KW-48V by PS Procet Scientific",
+  "codigo": "828995"
+ },
+ "inversor-hibrido-ongrid-infinisolar-3-phase-10kw-48v-by-ps-procet-scientific": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido Ongrid InfiniSolar 3-Phase 10KW-48V by PS Procet Scientific",
+  "codigo": "829050"
+ },
+ "tarjeta-bms-rs485-litio-10k-infinisolar-procet-scientific": {
+  "proveedor": "Improinde",
+  "titulo": "Tarjeta BMS RS485 Litio 10K InfiniSolar Procet Scientific",
+  "codigo": "829110"
+ },
+ "kit-conexion-paralelo-infinisolar-procet-scientific": {
+  "proveedor": "Improinde",
+  "titulo": "Kit Conexión Paralelo InfiniSolar Procet Scientific",
+  "codigo": "829120"
+ },
+ "inversor-hibrido-ongrid-tor-11-4-hb-ul-48v-by-ps-procet-scientific": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido Ongrid TOR 11.4 HB-UL 48V by PS Procet Scientific",
+  "codigo": "829200"
+ },
+ "inversor-hibrido-ongrid-tor-10-hb-ul-48v-by-ps-procet-scientific": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido Ongrid TOR 10 HB-UL 48V by PS Procet Scientific",
+  "codigo": "829201"
+ },
+ "inversor-cargador-xtender-2000-12-studer": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Cargador Xtender 2000-12 Studer",
+  "codigo": "829250"
+ },
+ "inversor-cargador-xtender-2400-24-studer": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Cargador Xtender 2400-24 Studer",
+  "codigo": "829254"
+ },
+ "inversor-hibrido-ongrid-sun-5k-sg02lp2-us-am2-deye": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido Ongrid SUN-5K- SG02LP2-US- AM2 DEYE",
+  "codigo": "829400"
+ },
+ "inversor-hibrido-ongrid-sun-8k-sg02lp2-us-am2-deye": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido Ongrid SUN-8K- SG02LP2-US- AM2 DEYE",
+  "codigo": "829405"
+ },
+ "inversor-hibrido-ongrid-sun-6k-sg04lp3-eu-am2-lv-deye": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido Ongrid SUN-6K-SG04LP3-EU-AM2-LV DEYE",
+  "codigo": "829440"
+ },
+ "inversor-hibrido-ongrid-sofar-hyd-6000-ep": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido Ongrid SOFAR HYD 6000-EP",
+  "codigo": "826665"
+ },
+ "inversor-hibrido-ongrid-sofar-hyd-6k-lsp1": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido Ongrid SOFAR HYD 6K-LSP1",
+  "codigo": "826666"
+ },
+ "inversor-hibrido-ongrid-sofar-hyd-10ktl-3ph-trifasico": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Hibrido Ongrid SOFAR HYD 10KTL-3PH Trifasico",
+  "codigo": "826670"
+ },
+ "mic-3300tl-x2-growatt": {
+  "proveedor": "Improinde",
+  "titulo": "MIC 3300TL-X2 Growatt",
+  "codigo": "826504"
+ },
+ "min-5000tl-x2-growatt": {
+  "proveedor": "Improinde",
+  "titulo": "MIN 5000TL-X2 Growatt",
+  "codigo": "826507"
+ },
+ "mid-25ktl3-xl2-growatt": {
+  "proveedor": "Improinde",
+  "titulo": "MID 25KTL3-XL2 Growatt",
+  "codigo": "826528"
+ },
+ "mac-30ktl3-xl-growatt": {
+  "proveedor": "Improinde",
+  "titulo": "MAC 30KTL3-XL Growatt",
+  "codigo": "826532"
+ },
+ "max-50ktl3-xl2-growatt": {
+  "proveedor": "Improinde",
+  "titulo": "MAX 50KTL3-XL2 Growatt",
+  "codigo": "826536"
+ },
+ "max-60ktl3-xl2-growatt": {
+  "proveedor": "Improinde",
+  "titulo": "MAX 60KTL3-XL2 Growatt",
+  "codigo": "826538"
+ },
+ "max-70ktl3-xl2-growatt": {
+  "proveedor": "Improinde",
+  "titulo": "MAX 70KTL3-XL2 Growatt",
+  "codigo": "826540"
+ },
+ "max-75ktl3-xl2-growatt": {
+  "proveedor": "Improinde",
+  "titulo": "MAX 75KTL3-XL2 Growatt",
+  "codigo": "826542"
+ },
+ "max-125k-tl3-x2-growatt": {
+  "proveedor": "Improinde",
+  "titulo": "MAX 125K TL3-X2 Growatt",
+  "codigo": "826550"
+ },
+ "sofar-3ktlm-g3": {
+  "proveedor": "Improinde",
+  "titulo": "SOFAR 3KTLM-G3",
+  "codigo": "826603"
+ },
+ "sofar-5ktlm-g3": {
+  "proveedor": "Improinde",
+  "titulo": "SOFAR 5KTLM-G3",
+  "codigo": "826604"
+ },
+ "sofar-6ktlm-g3": {
+  "proveedor": "Improinde",
+  "titulo": "SOFAR 6KTLM-G3",
+  "codigo": "826608"
+ },
+ "sofar-7ktlm-g3": {
+  "proveedor": "Improinde",
+  "titulo": "SOFAR 7KTLM-G3",
+  "codigo": "826615"
+ },
+ "sofar-8ktlm-g3": {
+  "proveedor": "Improinde",
+  "titulo": "SOFAR 8KTLM-G3",
+  "codigo": "826618"
+ },
+ "sofar-10ktlm-g3": {
+  "proveedor": "Improinde",
+  "titulo": "SOFAR 10KTLM-G3",
+  "codigo": "826619"
+ },
+ "sofar-15ktlx-g3-lv": {
+  "proveedor": "Improinde",
+  "titulo": "SOFAR 15KTLX-G3-LV",
+  "codigo": "826620"
+ },
+ "sofar-20ktlx-g3-lv": {
+  "proveedor": "Improinde",
+  "titulo": "SOFAR 20KTLX-G3-LV",
+  "codigo": "826625"
+ },
+ "sofar-25ktlx-g3-lv": {
+  "proveedor": "Improinde",
+  "titulo": "SOFAR 25KTLX-G3-LV",
+  "codigo": "826628"
+ },
+ "sofar-30ktlx-g3-lv": {
+  "proveedor": "Improinde",
+  "titulo": "SOFAR 30KTLX-G3-LV",
+  "codigo": "826631"
+ },
+ "sofar-40ktlx-g4-lv": {
+  "proveedor": "Improinde",
+  "titulo": "SOFAR 40KTLX-G4-LV",
+  "codigo": "826632"
+ },
+ "sofar-50ktlx-g4-lv": {
+  "proveedor": "Improinde",
+  "titulo": "SOFAR 50KTLX-G4-LV",
+  "codigo": "826634"
+ },
+ "sofar-60ktlx-g4-lv": {
+  "proveedor": "Improinde",
+  "titulo": "SOFAR 60KTLX-G4-LV",
+  "codigo": "826635"
+ },
+ "sofar-75ktlx-g4-lv": {
+  "proveedor": "Improinde",
+  "titulo": "SOFAR 75KTLX-G4-LV",
+  "codigo": "826636"
+ },
+ "inversor-ongrid-sineng-sn15pt-lv": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Ongrid SINENG SN15PT-LV",
+  "codigo": "826700"
+ },
+ "inversor-ongrid-sineng-sn20pt-lv": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Ongrid SINENG SN20PT-LV",
+  "codigo": "826705"
+ },
+ "inversor-ongrid-sineng-sn75pt-lv": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Ongrid SINENG SN75PT-LV",
+  "codigo": "826710"
+ },
+ "inversor-ongrid-3p10k-4g-hv-solis": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor OnGrid 3P10K-4G-HV SOLIS",
+  "codigo": "826724"
+ },
+ "inversor-ongrid-40k-hv-5g-solis": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor OnGrid 40K-HV-5G SOLIS",
+  "codigo": "826740"
+ },
+ "inversor-ongrid-s5-gc100k-hv-solis": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor OnGrid S5-GC100K-HV SOLIS",
+  "codigo": "826924"
+ },
+ "sungrow-sg250hx-20": {
+  "proveedor": "Improinde",
+  "titulo": "SUNGROW SG250HX-20",
+  "codigo": "826985"
+ },
+ "sungrow-sg333hx-12mppt": {
+  "proveedor": "Improinde",
+  "titulo": "SUNGROW SG333HX-12MPPT",
+  "codigo": "826988"
+ },
+ "microinversor-ongrid-mi-700-hoymiles": {
+  "proveedor": "Improinde",
+  "titulo": "Microinversor OnGrid MI 700 HOYMILES",
+  "codigo": "827070"
+ },
+ "microinversor-ongrid-hms-1600-hoymiles": {
+  "proveedor": "Improinde",
+  "titulo": "Microinversor OnGrid HMS 1600 HOYMILES",
+  "codigo": "827081"
+ },
+ "microinversor-ongrid-hms-2000-hoymiles": {
+  "proveedor": "Improinde",
+  "titulo": "Microinversor OnGrid HMS 2000 HOYMILES",
+  "codigo": "827085"
+ },
+ "microinversor-ongrid-hmt-2000-208v-hoymiles": {
+  "proveedor": "Improinde",
+  "titulo": "Microinversor OnGrid HMT 2000 208V HOYMILES",
+  "codigo": "827089"
+ },
+ "ac-trunk-cable-hoymiles": {
+  "proveedor": "Improinde",
+  "titulo": "AC Trunk Cable Hoymiles",
+  "codigo": "827174"
+ },
+ "hmt-cable-terminal-connector-hoymiles": {
+  "proveedor": "Improinde",
+  "titulo": "HMT Cable Terminal Connector Hoymiles",
+  "codigo": "827189"
+ },
+ "controlador-de-carga-20a-mppt-5206-lpli-tracer-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Controlador de Carga 20A MPPT 5206 LPLI TRACER Epever",
+  "codigo": "824256"
+ },
+ "ir-remote-controller-rc-10-accesorio-epever": {
+  "proveedor": "Improinde",
+  "titulo": "IR Remote Controller RC-10 Accesorio Epever",
+  "codigo": "824257"
+ },
+ "ir-remote-controller-rc-11-accesorio-epever": {
+  "proveedor": "Improinde",
+  "titulo": "IR Remote Controller RC-11 Accesorio Epever",
+  "codigo": "824258"
+ },
+ "controlador-de-carga-20a-mppt-2210-xtra-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Controlador de Carga 20A MPPT 2210 XTRA Epever",
+  "codigo": "824300"
+ },
+ "controlador-de-carga-30a-mppt-3210-xtra-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Controlador de Carga 30A MPPT 3210 XTRA Epever",
+  "codigo": "824310"
+ },
+ "controlador-de-carga-40a-mppt-4210-xtra-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Controlador de Carga 40A MPPT 4210 XTRA Epever",
+  "codigo": "824311"
+ },
+ "controlador-de-carga-40a-mppt-4215-xtra-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Controlador de Carga 40A MPPT 4215 XTRA Epever",
+  "codigo": "824312"
+ },
+ "controlador-de-carga-50a-mppt-5415-tracer-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Controlador de Carga 50A MPPT 5415 TRACER Epever",
+  "codigo": "824314"
+ },
+ "controlador-de-carga-50a-mppt-5420-tracer-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Controlador de Carga 50A MPPT 5420 TRACER Epever",
+  "codigo": "824315"
+ },
+ "controlador-de-carga-50a-mppt-5420-et5420nc-g3-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Controlador de Carga 50A MPPT 5420 ET5420NC G3 Epever",
+  "codigo": "824317"
+ },
+ "controlador-de-carga-75a-mppt-7415-et7415nc-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Controlador de Carga 75A MPPT 7415 ET7415NC Epever",
+  "codigo": "824319"
+ },
+ "controlador-de-carga-80a-mppt-8420-tracer-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Controlador de Carga 80A MPPT 8420 TRACER Epever",
+  "codigo": "824320"
+ },
+ "controlador-de-carga-100a-mppt-10420-tracer-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Controlador de Carga 100A MPPT 10420 TRACER Epever",
+  "codigo": "824326"
+ },
+ "controlador-de-carga-80a-mppt-8415-tep8415-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Controlador de Carga 80A MPPT 8415 TEP8415 Epever",
+  "codigo": "824352"
+ },
+ "controlador-de-carga-60a-mppt-6415-it6415nc-g3-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Controlador de Carga 60A MPPT 6415 IT6415NC G3 Epever",
+  "codigo": "824370"
+ },
+ "controlador-de-carga-60a-mppt-6420-it6420nc-g3-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Controlador de Carga 60A MPPT 6420 IT6420NC G3 Epever",
+  "codigo": "824372"
+ },
+ "controlador-de-carga-75a-mppt-7415-it7415nc-g3-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Controlador de Carga 75A MPPT 7415 IT7415NC G3 Epever",
+  "codigo": "824378"
+ },
+ "controlador-de-carga-60a-procet-scientific": {
+  "proveedor": "Improinde",
+  "titulo": "Controlador de Carga 60A Procet Scientific",
+  "codigo": "820600"
+ },
+ "display-remoto-mt75-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Display Remoto MT75 Epever",
+  "codigo": "824463"
+ },
+ "display-remoto-mt91-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Display Remoto MT91 Epever",
+  "codigo": "824464"
+ },
+ "sensor-remoto-de-temperatura-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Sensor Remoto de Temperatura Epever",
+  "codigo": "824465"
+ },
+ "apaptador-pt-50an-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Apaptador PT 50AN Epever",
+  "codigo": "824466"
+ },
+ "servidor-tcp-306-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Servidor TCP 306 Epever",
+  "codigo": "824467"
+ },
+ "sistema-de-protocolo-bms-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Sistema de Protocolo BMS Epever",
+  "codigo": "824468"
+ },
+ "cable-para-bms-pyl-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Cable para BMS PYL Epever",
+  "codigo": "824469"
+ },
+ "monitoreo-wifi-epever-rj45": {
+  "proveedor": "Improinde",
+  "titulo": "Monitoreo Wifi Epever RJ45",
+  "codigo": "824470"
+ },
+ "monitoreo-wifi-epever-db9": {
+  "proveedor": "Improinde",
+  "titulo": "Monitoreo Wifi Epever DB9",
+  "codigo": "824471"
+ },
+ "monitoreo-wifi-epever-usb3-0": {
+  "proveedor": "Improinde",
+  "titulo": "Monitoreo Wifi Epever USB3.0",
+  "codigo": "824473"
+ },
+ "cable-monitoreo-wifi-epever-usb3-0": {
+  "proveedor": "Improinde",
+  "titulo": "Cable Monitoreo Wifi Epever USB3.0",
+  "codigo": "824474"
+ },
+ "cable-bms-rj45-usb-3-0-epever-mp": {
+  "proveedor": "Improinde",
+  "titulo": "Cable BMS RJ45 USB 3.0 Epever MP",
+  "codigo": "824475"
+ },
+ "modulo-de-extension-rj45-1m2s-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Modulo de Extensión RJ45-1M2S Epever",
+  "codigo": "824476"
+ },
+ "logger-elog01-m-g3-4-epever": {
+  "proveedor": "Improinde",
+  "titulo": "Logger eLOG01-M-G3 4 Epever",
+  "codigo": "824477"
+ },
+ "monitorieo-wifi-serie-lhm-vhm-old-must": {
+  "proveedor": "Improinde",
+  "titulo": "Monitorieo WiFi Serie LHM/VHM old MUST",
+  "codigo": "828820"
+ },
+ "monitorieo-wifi-series-new-must": {
+  "proveedor": "Improinde",
+  "titulo": "Monitorieo WiFi Series new MUST",
+  "codigo": "828822"
+ },
+ "panel-remoto-display-inversor-lmpk-must": {
+  "proveedor": "Improinde",
+  "titulo": "Panel Remoto Display Inversor LMPK MUST",
+  "codigo": "828850"
+ },
+ "monitoreo-bluetooth-bt-1-serie-smart-procet-scientific": {
+  "proveedor": "Improinde",
+  "titulo": "Monitoreo Bluetooth BT-1 Serie Smart Procet Scientific",
+  "codigo": "823000"
+ },
+ "sistema-conectividad-rs485-serie-connect-procet-scientific": {
+  "proveedor": "Improinde",
+  "titulo": "Sistema Conectividad RS485 Serie Connect Procet Scientific",
+  "codigo": "823150"
+ },
+ "monitorieo-wifi-box-axpert-e-infinisolar-procet-scientific": {
+  "proveedor": "Improinde",
+  "titulo": "Monitorieo WiFi Box Axpert e Infinisolar Procet Scientific",
+  "codigo": "829100"
+ },
+ "rcc-02-control-remoto-studer": {
+  "proveedor": "Improinde",
+  "titulo": "RCC-02 Control Remoto Studer",
+  "codigo": "829350"
+ },
+ "rcc-03-control-remoto-frontal-studer": {
+  "proveedor": "Improinde",
+  "titulo": "RCC-03 Control Remoto Frontal Studer",
+  "codigo": "829360"
+ },
+ "rele-arm-02-studer": {
+  "proveedor": "Improinde",
+  "titulo": "Relé ARM 02 Studer",
+  "codigo": "829387"
+ },
+ "sem-e-50k-growatt": {
+  "proveedor": "Improinde",
+  "titulo": "SEM-E (50K) Growatt",
+  "codigo": "826580"
+ },
+ "sem-e-100k-growatt": {
+  "proveedor": "Improinde",
+  "titulo": "SEM-E (100K) Growatt",
+  "codigo": "826582"
+ },
+ "tpm-ct-e-3ct-100amps-growatt": {
+  "proveedor": "Improinde",
+  "titulo": "TPM-CT-E 3CT 100Amps Growatt",
+  "codigo": "826584"
+ },
+ "tpm-e-growatt": {
+  "proveedor": "Improinde",
+  "titulo": "TPM-E Growatt",
+  "codigo": "826586"
+ },
+ "tpm-ct-d-2ct-250amps-growatt": {
+  "proveedor": "Improinde",
+  "titulo": "TPM-CT-D 2CT 250Amps Growatt",
+  "codigo": "826588"
+ },
+ "shinemaster-growatt": {
+  "proveedor": "Improinde",
+  "titulo": "ShineMaster Growatt",
+  "codigo": "826590"
+ },
+ "smart-meter-3-phase-sofar": {
+  "proveedor": "Improinde",
+  "titulo": "Smart Meter (3-phase) SOFAR",
+  "codigo": "826650"
+ },
+ "ct-kit-200a-sofar": {
+  "proveedor": "Improinde",
+  "titulo": "CT Kit 200A SOFAR",
+  "codigo": "826660"
+ },
+ "smart-meter-sineng": {
+  "proveedor": "Improinde",
+  "titulo": "Smart Meter SINENG",
+  "codigo": "826715"
+ },
+ "si-dongle-t-sineng": {
+  "proveedor": "Improinde",
+  "titulo": "Si-Dongle-T Sineng",
+  "codigo": "826718"
+ },
+ "ct-ctsa016-100a-100a-33-33ma-solis": {
+  "proveedor": "Improinde",
+  "titulo": "CT CTSA016-100A 100A/33.33mA SOLIS",
+  "codigo": "826935"
+ },
+ "ct-300a-x3-solis": {
+  "proveedor": "Improinde",
+  "titulo": "CT 300A X3 SOLIS",
+  "codigo": "826936"
+ },
+ "ct-600a-x3-solis": {
+  "proveedor": "Improinde",
+  "titulo": "CT 600A X3 SOLIS",
+  "codigo": "826937"
+ },
+ "ct-1000a-x3-solis": {
+  "proveedor": "Improinde",
+  "titulo": "CT 1000A X3 SOLIS",
+  "codigo": "826938"
+ },
+ "autotransformador-atr-6k-solis": {
+  "proveedor": "Improinde",
+  "titulo": "Autotransformador ATR-6K SOLIS",
+  "codigo": "826970"
+ },
+ "sungrow-com100e": {
+  "proveedor": "Improinde",
+  "titulo": "SUNGROW COM100E",
+  "codigo": "826991"
+ },
+ "monitoreo-dtu-lite-s-hoymiles": {
+  "proveedor": "Improinde",
+  "titulo": "Monitoreo DTU LITE S HOYMILES",
+  "codigo": "827191"
+ },
+ "monitoreo-dtu-pro-s-hoymiles": {
+  "proveedor": "Improinde",
+  "titulo": "Monitoreo DTU PRO S HOYMILES",
+  "codigo": "827193"
+ },
+ "clamper-solar-string-box-1e-1s-kit-32a": {
+  "proveedor": "Improinde",
+  "titulo": "CLAMPER Solar String Box 1E/1S KIT 32A",
+  "codigo": "829451"
+ },
+ "clamper-solar-string-box-2e-2s-kit-32a": {
+  "proveedor": "Improinde",
+  "titulo": "CLAMPER Solar String Box 2E/2S KIT 32A",
+  "codigo": "829457"
+ },
+ "clamper-solar-string-box-3e-1s": {
+  "proveedor": "Improinde",
+  "titulo": "CLAMPER Solar String Box 3E/1S",
+  "codigo": "829460"
+ },
+ "clamper-solar-string-box-4e-2s": {
+  "proveedor": "Improinde",
+  "titulo": "CLAMPER Solar String Box 4E/2S",
+  "codigo": "829465"
+ },
+ "clamper-solar-string-box-4e-2s-4d": {
+  "proveedor": "Improinde",
+  "titulo": "CLAMPER Solar String Box 4E/2S (4D)",
+  "codigo": "829470"
+ },
+ "dps-iclamper-pocket-2p": {
+  "proveedor": "Improinde",
+  "titulo": "DPS iClamper POCKET 2P",
+  "codigo": "829488"
+ },
+ "dps-s800-ethernet-cat5e-clamper": {
+  "proveedor": "Improinde",
+  "titulo": "DPS S800 Ethernet CAT5e Clamper",
+  "codigo": "829493"
+ },
+ "dps-connect-275v-20ka-clamper": {
+  "proveedor": "Improinde",
+  "titulo": "DPS CONNECT 275V 20kA Clamper",
+  "codigo": "829496"
+ },
+ "dps-front-175v-20ka-clamper": {
+  "proveedor": "Improinde",
+  "titulo": "DPS FRONT 175V 20kA Clamper",
+  "codigo": "829498"
+ },
+ "dps-front-275v-20ka-clamper": {
+  "proveedor": "Improinde",
+  "titulo": "DPS FRONT 275V 20kA Clamper",
+  "codigo": "829510"
+ },
+ "dps-front-385v-45ka-clamper": {
+  "proveedor": "Improinde",
+  "titulo": "DPS FRONT 385V 45kA Clamper",
+  "codigo": "829520"
+ },
+ "dps-clamper-solar-150v-40ka-t2": {
+  "proveedor": "Improinde",
+  "titulo": "DPS Clamper Solar 150V 40kA T2",
+  "codigo": "829796"
+ },
+ "dps-clamper-solar-150v-40ka": {
+  "proveedor": "Improinde",
+  "titulo": "DPS Clamper Solar 150V 40kA",
+  "codigo": "829800"
+ },
+ "dps-clamper-solar-300v-40ka": {
+  "proveedor": "Improinde",
+  "titulo": "DPS Clamper Solar 300V 40kA",
+  "codigo": "829850"
+ },
+ "dps-clamper-solar-600v-40ka-t2": {
+  "proveedor": "Improinde",
+  "titulo": "DPS Clamper Solar 600V 40kA T2",
+  "codigo": "829896"
+ },
+ "dps-clamper-solar-600v-40ka": {
+  "proveedor": "Improinde",
+  "titulo": "DPS Clamper Solar 600V 40kA",
+  "codigo": "829900"
+ },
+ "dps-clamper-solar-1040v-40ka": {
+  "proveedor": "Improinde",
+  "titulo": "DPS Clamper Solar 1040V 40kA",
+  "codigo": "829950"
+ },
+ "dps-clamper-solar-1500v-15ka-t2": {
+  "proveedor": "Improinde",
+  "titulo": "DPS Clamper Solar 1500V 15kA T2",
+  "codigo": "829955"
+ },
+ "combiner-solar-string-box-1e-1s-onesto": {
+  "proveedor": "Improinde",
+  "titulo": "Combiner Solar String Box 1E/1S ONESTO",
+  "codigo": "830010"
+ },
+ "combiner-solar-string-box-2e-2s-onesto": {
+  "proveedor": "Improinde",
+  "titulo": "Combiner Solar String Box 2E/2S ONESTO",
+  "codigo": "830012"
+ },
+ "combiner-solar-string-box-3e-3s-onesto": {
+  "proveedor": "Improinde",
+  "titulo": "Combiner Solar String Box 3E/3S ONESTO",
+  "codigo": "830014"
+ },
+ "combiner-solar-string-box-4e-4s-onesto": {
+  "proveedor": "Improinde",
+  "titulo": "Combiner Solar String Box 4E/4S ONESTO",
+  "codigo": "830016"
+ },
+ "combiner-solar-string-box-5e-5s-onesto": {
+  "proveedor": "Improinde",
+  "titulo": "Combiner Solar String Box 5E/5S ONESTO",
+  "codigo": "830018"
+ },
+ "breaker-dc-10a-1p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 10A 1P YRO",
+  "codigo": "830110"
+ },
+ "breaker-dc-16a-1p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 16A 1P YRO",
+  "codigo": "830116"
+ },
+ "breaker-dc-20a-1p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 20A 1P YRO",
+  "codigo": "830120"
+ },
+ "breaker-dc-32a-1p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 32A 1P YRO",
+  "codigo": "830130"
+ },
+ "breaker-dc-40a-1p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 40A 1P YRO",
+  "codigo": "830140"
+ },
+ "breaker-dc-50a-1p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 50A 1P YRO",
+  "codigo": "830150"
+ },
+ "breaker-dc-63a-1p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 63A 1P YRO",
+  "codigo": "830160"
+ },
+ "breaker-dc-16a-2p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 16A 2P YRO",
+  "codigo": "830216"
+ },
+ "breaker-dc-20a-2p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 20A 2P YRO",
+  "codigo": "830220"
+ },
+ "breaker-dc-25a-2p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 25A 2P YRO",
+  "codigo": "830225"
+ },
+ "breaker-dc-32a-2p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 32A 2P YRO",
+  "codigo": "830230"
+ },
+ "breaker-dc-40a-2p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 40A 2P YRO",
+  "codigo": "830240"
+ },
+ "breaker-dc-50a-2p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 50A 2P YRO",
+  "codigo": "830250"
+ },
+ "breaker-dc-63a-2p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 63A 2P YRO",
+  "codigo": "830260"
+ },
+ "breaker-dc-20a-3p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 20A 3P YRO",
+  "codigo": "830320"
+ },
+ "breaker-dc-32a-3p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 32A 3P YRO",
+  "codigo": "830330"
+ },
+ "breaker-dc-40a-3p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 40A 3P YRO",
+  "codigo": "830340"
+ },
+ "breaker-dc-50a-3p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 50A 3P YRO",
+  "codigo": "830350"
+ },
+ "breaker-dc-63a-3p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 63A 3P YRO",
+  "codigo": "830360"
+ },
+ "breaker-dc-10a-4p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 10A 4P YRO",
+  "codigo": "830410"
+ },
+ "breaker-dc-25a-4p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 25A 4P YRO",
+  "codigo": "830420"
+ },
+ "breaker-dc-32a-4p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 32A 4P YRO",
+  "codigo": "830430"
+ },
+ "breaker-dc-40a-4p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 40A 4P YRO",
+  "codigo": "830440"
+ },
+ "breaker-dc-50a-4p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 50A 4P YRO",
+  "codigo": "830450"
+ },
+ "breaker-dc-63a-4p-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Breaker DC 63A 4P YRO",
+  "codigo": "830460"
+ },
+ "porta-fusible-dc-1000v-baterias-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Porta Fusible DC 1000V Baterías YRO",
+  "codigo": "830600"
+ },
+ "porta-fusible-dc-1000v-32a-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Porta Fusible DC 1000V 32A YRO",
+  "codigo": "830602"
+ },
+ "porta-fusible-dc-1000v-63a-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Porta Fusible DC 1000V 63A YRO",
+  "codigo": "830605"
+ },
+ "fusible-dc-1000v-10a-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Fusible DC 1000V 10A YRO",
+  "codigo": "830610"
+ },
+ "fusible-dc-1000v-15a-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Fusible DC 1000V 15A YRO",
+  "codigo": "830616"
+ },
+ "fusible-dc-1000v-20a-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Fusible DC 1000V 20A YRO",
+  "codigo": "830620"
+ },
+ "fusible-dc-1000v-25a-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Fusible DC 1000V 25A YRO",
+  "codigo": "830625"
+ },
+ "fusible-dc-1000v-32a-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Fusible DC 1000V 32A YRO",
+  "codigo": "830630"
+ },
+ "fusible-dc-1000v-40a-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Fusible DC 1000V 40A YRO",
+  "codigo": "830640"
+ },
+ "fusible-dc-1000v-50a-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Fusible DC 1000V 50A YRO",
+  "codigo": "830650"
+ },
+ "fusible-dc-1000v-160a-baterias-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Fusible DC 1000V 160A Baterías YRO",
+  "codigo": "830670"
+ },
+ "conector-solar-6-1-zon": {
+  "proveedor": "Improinde",
+  "titulo": "Conector Solar 6-1 ZON",
+  "codigo": "835180"
+ },
+ "conector-mc4-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Conector MC4 YRO",
+  "codigo": "880100"
+ },
+ "conector-mc4-en-t-yro": {
+  "proveedor": "Improinde",
+  "titulo": "Conector MC4 en T YRO",
+  "codigo": "880110"
+ },
+ "dc-extension-cable-yro": {
+  "proveedor": "Improinde",
+  "titulo": "DC Extension Cable YRO",
+  "codigo": "880150"
+ },
+ "cable-solar-fv-4mm-negro-x-100-mts-kibor": {
+  "proveedor": "Improinde",
+  "titulo": "Cable Solar FV 4mm Negro x 100 mts. Kibor",
+  "codigo": "880200"
+ },
+ "cable-solar-fv-4mm-rojo-x-100-mts-kibor": {
+  "proveedor": "Improinde",
+  "titulo": "Cable Solar FV 4mm Rojo x 100 mts. Kibor",
+  "codigo": "880210"
+ },
+ "cable-solar-fv-4mm-negro-x-250-mts-kibor": {
+  "proveedor": "Improinde",
+  "titulo": "Cable Solar FV 4mm Negro x 250 mts. Kibor",
+  "codigo": "880220"
+ },
+ "cable-solar-fv-4mm-rojo-x-250-mts-kibor": {
+  "proveedor": "Improinde",
+  "titulo": "Cable Solar FV 4mm Rojo x 250 mts. Kibor",
+  "codigo": "880230"
+ },
+ "cable-solar-fv-4mm-negro-x-500-mts-kibor": {
+  "proveedor": "Improinde",
+  "titulo": "Cable Solar FV 4mm Negro x 500 mts. Kibor",
+  "codigo": "880234"
+ },
+ "cable-solar-fv-4mm-rojo-x-500-mts-kibor": {
+  "proveedor": "Improinde",
+  "titulo": "Cable Solar FV 4mm Rojo x 500 mts. Kibor",
+  "codigo": "880237"
+ },
+ "cable-solar-fv-6mm-negro-x-100-mts-kibor": {
+  "proveedor": "Improinde",
+  "titulo": "Cable Solar FV 6mm Negro x 100 mts. Kibor",
+  "codigo": "880240"
+ },
+ "cable-solar-fv-6mm-rojo-x-100-mts-kibor": {
+  "proveedor": "Improinde",
+  "titulo": "Cable Solar FV 6mm Rojo x 100 mts. Kibor",
+  "codigo": "880250"
+ },
+ "cable-solar-fv-6mm-negro-x-250-mts-kibor": {
+  "proveedor": "Improinde",
+  "titulo": "Cable Solar FV 6mm Negro x 250 mts. Kibor",
+  "codigo": "880260"
+ },
+ "cable-solar-fv-6mm-rojo-x-250-mts-kibor": {
+  "proveedor": "Improinde",
+  "titulo": "Cable Solar FV 6mm Rojo x 250 mts. Kibor",
+  "codigo": "880270"
+ },
+ "cable-solar-fv-6mm-negro-x-500-mts-kibor": {
+  "proveedor": "Improinde",
+  "titulo": "Cable Solar FV 6mm Negro x 500 mts. Kibor",
+  "codigo": "880272"
+ },
+ "cable-solar-fv-6mm-rojo-x-500-mts-kibor": {
+  "proveedor": "Improinde",
+  "titulo": "Cable Solar FV 6mm Rojo x 500 mts. Kibor",
+  "codigo": "880274"
+ },
+ "cable-solar-fv-10mm-negro-x-100-mts-kibor": {
+  "proveedor": "Improinde",
+  "titulo": "Cable Solar FV 10mm Negro x 100 mts. Kibor",
+  "codigo": "880280"
+ },
+ "cable-solar-fv-10mm-rojo-x-100-mts-kibor": {
+  "proveedor": "Improinde",
+  "titulo": "Cable Solar FV 10mm Rojo x 100 mts. Kibor",
+  "codigo": "880290"
  }
 }

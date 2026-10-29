@@ -5,7 +5,7 @@ image: "/images/productos-estudio/epever-inversor-onda-pura-ipt1000-21-ipt-1000w
 imageThumb: "/images/productos-estudio/epever-inversor-onda-pura-ipt1000-21-ipt-1000w-24vdc-a-110vac-thumb.webp"
 imageAlt: "Epever Inversor Onda Pura IPT1000-21 (ipt) 1000W 24Vdc a 110Vac – Reiki Energía Solar"
 category: "inversores"
-price: "$871.600"
+price: "$654.600"
 specifications:
   - "Tipo de conexión: Inversor Estándar"
   - "Potencia: 1000W"
@@ -18,13 +18,16 @@ model: "IPT1000-21"
 sku: "ING-INVOP67"
 stock: "disponible"
 order: 8000
-updatedAt: "2026-10-05"
+updatedAt: "2026-10-28"
 imagen_provisional: false
 fichaPdf: "/fichas/proveedores/ingesolar-INVOP67.pdf"
 faqs:
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 stockBajo: true
+precioAnterior: "$871.600"
+descuentoPct: 25
+promocion: "Precio rebajado"
 ---
 
 Proveedor: Ingesolar (INVOP67).

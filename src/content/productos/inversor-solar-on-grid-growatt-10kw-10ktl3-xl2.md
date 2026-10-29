@@ -4,7 +4,7 @@ description: "Inversor on-grid (conectado a red) Growatt 10KTL3-XL2 de 10kW, tri
 image: "/images/productos-estudio/growatt-mid-15tl3-xl2.webp"
 imageCard: "/images/productos-estudio/growatt-mid-15tl3-xl2-card.webp"
 category: "inversores"
-price: "$7.982.000"
+price: "$6.063.200"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 10kW"
@@ -15,7 +15,7 @@ sku: "10KTL3-XL2"
 power: "10kW"
 stock: "disponible"
 order: 6175
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"
@@ -42,6 +42,9 @@ faqs:
     respuesta: "Un sistema con este inversor de 10 kW y unos 11 kWp de paneles genera del orden de 1.485 kWh al mes (4,5 horas de sol pico en promedio), así que cubre consumos de esa magnitud. Te dimensionamos el sistema con tu factura."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+precioAnterior: "$7.982.000"
+descuentoPct: 24
+promocion: "Precio rebajado"
 ---
 **Inversor Solar On-Grid Growatt 10kW 10KTL3-XL2** de Growatt · 10kW.
 

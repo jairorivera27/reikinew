@@ -4,7 +4,7 @@ description: "Inversor on-grid (conectado a red) Growatt 36KTL3-XL2 de 36kW, tri
 image: "/images/productos-tienda/inversores/growatt-mod.jpg"
 imageCard: "/images/productos-tienda/inversores/growatt-mod-card.webp"
 category: "inversores"
-price: "$12.048.250"
+price: "$9.927.200"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 36kW"
@@ -15,7 +15,7 @@ sku: "36KTL3-XL2"
 power: "36kW"
 stock: "disponible"
 order: 6184
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"
@@ -38,6 +38,9 @@ faqs:
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
 fichaPdf: "/fichas/fabricantes/growatt-mac-30-36ktl3-xl2-hoja-de-datos.pdf"
+precioAnterior: "$12.048.250"
+descuentoPct: 18
+promocion: "Precio rebajado"
 ---
 **Inversor Solar On-Grid Growatt 36kW 36KTL3-XL2** de Growatt · 36kW.
 

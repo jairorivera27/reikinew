@@ -4,7 +4,7 @@ description: "Inversor on-grid (conectado a red) Growatt MIN10000TL-X2 de 10kW. 
 image: "/images/productos-estudio/growatt-min-10000tl-x2.webp"
 imageCard: "/images/productos-estudio/growatt-min-10000tl-x2-card.webp"
 category: "inversores"
-price: "$4.573.250"
+price: "$3.681.200"
 specifications:
   - "Tipo: On-Grid"
   - "Especificación principal: 10kW"
@@ -15,7 +15,7 @@ sku: "MIN10000TL-X2"
 power: "10kW"
 stock: "disponible"
 order: 6173
-updatedAt: "2026-09-10"
+updatedAt: "2026-10-28"
 seoKeywords:
   - "inversor solar"
   - "inversor solar on-grid"
@@ -39,6 +39,9 @@ faqs:
     respuesta: "Un sistema con este inversor de 10 kW y unos 11 kWp de paneles genera del orden de 1.485 kWh al mes (4,5 horas de sol pico en promedio), así que cubre consumos de esa magnitud. Te dimensionamos el sistema con tu factura."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
+precioAnterior: "$4.573.250"
+descuentoPct: 20
+promocion: "Precio rebajado"
 ---
 **Inversor Solar On-Grid Growatt 10kW MIN10000TL-X2** de Growatt · 10kW.
 

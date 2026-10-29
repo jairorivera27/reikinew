@@ -4,7 +4,7 @@ description: "Batería litio Pylontech de 2.4 kWh a 48 V. Guarda la energía de 
 image: "/images/productos-estudio/pylontech-3kwh-medellin-prov.webp"
 imageCard: "/images/productos-estudio/pylontech-3kwh-medellin-prov-card.webp"
 category: "baterias"
-price: "$3.766.269"
+price: "$2.769.700"
 specifications:
   - "Tipo: Litio"
   - "Especificación principal: 48V 2.4kWh"
@@ -34,6 +34,9 @@ faqs:
     respuesta: "Con 2,4 kWh y descargándola hasta un 90 % (unos 2,2 kWh útiles), un consumo continuo de 500 W duraría cerca de 4,3 horas y uno de 1 kW unas 2,2 horas, sin contar pérdidas del inversor (5–10 %). Nevera, luces, internet y TV suelen sumar 300–600 W."
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor (48 V) y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
+precioAnterior: "$3.766.269"
+descuentoPct: 26
+promocion: "Precio rebajado"
 ---
 **Batería Solar Litio Pylontech US2000C 48V 2.4kWh 1880901** de Pylontech · 48V 2.4kWh.
 
