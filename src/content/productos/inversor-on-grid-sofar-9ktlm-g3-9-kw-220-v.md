@@ -1,7 +1,8 @@
 ---
 title: "Inversor On-Grid Sofar 9KTLM-G3 9 kW 220 V"
 description: "Inversor solar on-grid Sofar 9 kW monofásico 220 V, dos MPPT, sobrecarga DC del 150 %, eficiencia máxima hasta 98,4 %, refrigeración natural sin ventiladores, limitación de inyección por RS485 y Bluetooth (Wi-Fi/Ethernet opcional)."
-image: "/images/placeholders/accesorios.svg"
+image: "/images/productos-estudio/inversor-on-grid-sofar-9ktlm-g3-9-kw-220-v.webp"
+imageCard: "/images/productos-estudio/inversor-on-grid-sofar-9ktlm-g3-9-kw-220-v-card.webp"
 imageAlt: "Inversor On-Grid Sofar 9KTLM-G3 9 kW 220 V – Reiki Energía Solar"
 category: "inversores"
 price: "$2.311.400"
@@ -18,8 +19,8 @@ sku: "GEE-9KTLM-G3"
 stock: "disponible"
 order: 8200
 updatedAt: "2026-10-29"
-draft: true
-imagenPendiente: true
+imageThumb: "/images/productos-estudio/inversor-on-grid-sofar-9ktlm-g3-9-kw-220-v-thumb.webp"
+imagen_provisional: true
 ---
 
 Inversor solar on-grid Sofar 9 kW monofásico 220 V, dos MPPT, sobrecarga DC del 150 %, eficiencia máxima hasta 98,4 %, refrigeración natural sin ventiladores, limitación de inyección por RS485 y Bluetooth (Wi-Fi/Ethernet opcional).
