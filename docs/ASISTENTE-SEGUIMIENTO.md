@@ -79,3 +79,13 @@ Sección **Cotizaciones** del panel (`api/_lib/cotizaciones.js`, `public/admin/p
 - El número sin la revisión es la llave (`CT-271026-006 R1` → `CT271026006`): una R1 actualiza la misma cotización.
 - PDF en Redis en trozos (`reiki:wa:cotzpdf:*`), máx. 12 MB; las web usan `pdfUrl`. Envío por correo desde info@ con el PDF
   adjunto (`cot-enviar`); seguimiento a los 3 días del envío y 4 días después de cada contacto.
+
+## Factura en Alegra (prefactura en borrador)
+
+- `api/_lib/alegra.js`. Variables en Vercel: `ALEGRA_EMAIL`, `ALEGRA_TOKEN` (Alegra → Configuración → API). Opcionales:
+  `ALEGRA_NUMERACION` (15, RK electrónica), `ALEGRA_BANCO` (3, Banco 1), `ALEGRA_IVA19` (4), `ALEGRA_IVA_EXCLUIDO` (2).
+- `POST op=alegra-borrador { id }`: busca o crea el cliente por cédula/NIT, crea o reutiliza los ítems (por referencia = slug),
+  y crea la factura con `status: draft` (no se emite). IVA por línea con las reglas de Reiki (paneles, inversores,
+  reflectores y bombeo excluidos; el resto y el envío 19 %); si con esas reglas no cuadra el total, prueba con IVA en todo.
+- `POST op=alegra-sync { id }`: si ya se emitió, guarda el número RK (cierra la etapa y envía el correo de factura) y
+  registra el pago en Alegra contra Banco 1 si la venta está pagada.

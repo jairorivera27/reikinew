@@ -7,6 +7,7 @@ import { getRedis, waKey } from './whatsapp-redis.js';
 import { proveedorDeItem } from './proveedores.js';
 import { correoLibre, correoPorEtapa } from './correos.js';
 import { listRecentCheckoutOrders } from './checkout-order-store.js';
+import { crearBorrador, leerFactura, registrarPago, urlFactura } from './alegra.js';
 
 const memExp = globalThis.__reikiSegExp || new Map();
 globalThis.__reikiSegExp = memExp;
@@ -551,4 +552,69 @@ async function reintentarSinCorreo(exp, by) {
       console.warn('[seguimiento] reintento correo', err?.message || err);
     }
   }
+}
+
+/* ---------------- Factura en Alegra ---------------- */
+
+/** Crea (o reutiliza) la prefactura en borrador en Alegra y devuelve el enlace para abrirla. */
+export async function prepararFacturaAlegra(id, by = 'panel') {
+  const exp = await getExpediente(id);
+  if (!exp) return null;
+  const f = exp.factura || {};
+  if (f.alegraId) {
+    try {
+      const actual = await leerFactura(f.alegraId);
+      if (!actual.emitida && actual.estado !== 'void') return { exp, url: urlFactura(f.alegraId), reutilizada: true, factura: actual };
+      if (actual.emitida) return { exp: await sincronizarFacturaAlegra(id, by).then((r) => r.exp), url: urlFactura(f.alegraId), yaEmitida: true, factura: actual };
+    } catch (err) {
+      if (err.status !== 404) throw err;
+    }
+  }
+  const b = await crearBorrador(exp);
+  exp.factura = { ...f, alegraId: b.alegraId, alegraUrl: b.url, alegraEstado: 'draft', alegraTotal: b.total, alegraCreada: nowIso() };
+  pushHist(
+    exp,
+    by,
+    `Prefactura creada en Alegra (borrador, sin emitir) por $${Math.round(b.total).toLocaleString('es-CO')}` +
+      (b.contacto.creado ? `; cliente creado en Alegra` : '') +
+      (Math.abs(b.diferencia) > 2 ? `; OJO: difiere $${Math.round(b.diferencia).toLocaleString('es-CO')} del total de la venta` : '')
+  );
+  const e = (exp.etapas || []).find((x) => x.key === 'factura');
+  if (e && e.estado === 'pendiente') {
+    e.estado = 'en_curso';
+    e.fecha = nowIso();
+    if (!e.nota) e.nota = 'Prefactura en borrador en Alegra: revisar y emitir.';
+  }
+  await persist(exp);
+  return { exp, url: b.url, borrador: b };
+}
+
+/** Lee la factura en Alegra; si ya se emitió guarda el número (cierra la etapa y avisa al cliente) y registra el pago. */
+export async function sincronizarFacturaAlegra(id, by = 'panel') {
+  const exp = await getExpediente(id);
+  if (!exp) return null;
+  const f = exp.factura || {};
+  if (!f.alegraId) throw new Error('Esta venta no tiene prefactura en Alegra.');
+  const a = await leerFactura(f.alegraId);
+  const out = { factura: a, pago: null };
+  if (!a.emitida) {
+    exp.factura = { ...f, alegraEstado: a.estado };
+    await persist(exp);
+    return { exp, ...out };
+  }
+  const r = resumen(exp);
+  let pago = null;
+  if (a.saldo > 0 && !f.alegraPagoId && r.estadoPago === 'completo') {
+    try {
+      pago = await registrarPago(a, exp);
+    } catch (err) {
+      pushHist(exp, by, `No se pudo registrar el pago en Alegra: ${String(err.message).slice(0, 150)}`);
+    }
+  }
+  await persist({ ...exp, factura: { ...f, alegraEstado: a.estado, alegraDian: a.dian, alegraPagoId: pago ? pago.id : f.alegraPagoId || '' } });
+  const guardado = await saveExpediente({ id, factura: { numero: a.numero, fecha: a.fecha } }, by);
+  pushHist(guardado, by, `Factura ${a.numero} emitida en Alegra${pago ? `; pago de $${pago.monto.toLocaleString('es-CO')} registrado en Alegra` : ''}.`);
+  await persist(guardado);
+  out.pago = pago;
+  return { exp: guardado, ...out };
 }

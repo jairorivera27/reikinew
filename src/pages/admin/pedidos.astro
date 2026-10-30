@@ -328,7 +328,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           try {
             var j = await api('list');
             st.items = j.expedientes || [];
-            st.meta = { correos: j.correos || {}, conFecha: j.conFecha || {}, correoConfigurado: !!j.correoConfigurado };
+            st.meta = { correos: j.correos || {}, conFecha: j.conFecha || {}, correoConfigurado: !!j.correoConfigurado, alegraConfigurado: !!j.alegraConfigurado };
             st.loaded = true;
             el.status.textContent = '';
           } catch (e) {
@@ -701,6 +701,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             '</label>' +
             (correosLog ? '<ul class="seg-hist">' + correosLog + '</ul>' : '<p class="notes-empty">Aún no se han enviado correos.</p>') +
             '</section>' +
+            htmlAlegra(e) +
             '<form id="seg-datos-form" class="modal-block"><h3>Cliente, envío y factura</h3><div class="seg-form-grid">' +
             field('c_nombre', 'Nombre / razón social', c.nombre) +
             field('c_documento', 'Cédula / NIT', c.documento) +
@@ -725,6 +726,43 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
 
           el.modal.hidden = false;
           bindDetail(e);
+        }
+
+        function htmlAlegra(e) {
+          var f = e.factura || {};
+          var cuerpo;
+          if (f.numero) {
+            cuerpo =
+              '<p class="al-ok"><i class="fas fa-check-circle" aria-hidden="true"></i> Factura <b>' +
+              esc(f.numero) +
+              '</b> emitida' +
+              (f.alegraPagoId ? ' y pago registrado en Alegra' : '') +
+              '.</p>' +
+              (f.alegraUrl ? '<a class="btn btn-ghost seg-mini" href="' + esc(f.alegraUrl) + '" target="_blank" rel="noopener">Ver en Alegra</a>' : '');
+          } else if (!st.meta.alegraConfigurado) {
+            cuerpo =
+              '<p class="seg-warn">Alegra aún no está conectado al panel. Agrega <b>ALEGRA_EMAIL</b> y <b>ALEGRA_TOKEN</b> en Vercel (Alegra → Configuración → API) y haz Redeploy.</p>';
+          } else if (f.alegraId) {
+            cuerpo =
+              '<p>Prefactura en <b>borrador</b> en Alegra (sin emitir' +
+              (f.alegraTotal ? ', ' + cop(f.alegraTotal) : '') +
+              '). Revísala y dale <b>Emitir</b> en Alegra; luego vuelve aquí.</p><div class="modal-actions">' +
+              '<a class="btn btn-primary seg-mini" href="' +
+              esc(f.alegraUrl) +
+              '" target="_blank" rel="noopener"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Abrir prefactura en Alegra</a>' +
+              '<button type="button" class="btn btn-secondary seg-mini" data-alegra-sync>Ya la emití: actualizar</button></div>';
+          } else {
+            var faltan = [];
+            if (!(e.cliente && e.cliente.documento)) faltan.push('cédula o NIT');
+            if (!(e.items || []).length) faltan.push('ítems');
+            cuerpo =
+              '<p>Crea la factura en Alegra como <b>borrador</b> con el cliente, los ítems, el IVA de cada línea y el total de la venta. No se emite a la DIAN hasta que tú le des Emitir en Alegra.</p>' +
+              (faltan.length ? '<p class="seg-warn">Falta: ' + esc(faltan.join(', ')) + '.</p>' : '') +
+              '<div class="modal-actions"><button type="button" class="btn btn-primary seg-mini" data-alegra-borrador' +
+              (faltan.length ? ' disabled' : '') +
+              '><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i> Preparar factura en Alegra</button></div>';
+          }
+          return '<section class="modal-block al-block"><h3>Factura en Alegra</h3>' + cuerpo + '</section>';
         }
 
         function msg(t) {
@@ -771,6 +809,48 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           if (ca)
             ca.addEventListener('change', function () {
               run('save', { id: e.id, correosActivos: ca.checked });
+            });
+          var ab = el.body.querySelector('[data-alegra-borrador]');
+          if (ab)
+            ab.addEventListener('click', async function () {
+              var w = window.open('', '_blank');
+              msg('Creando la prefactura en Alegra…');
+              ab.disabled = true;
+              try {
+                var j = await api('alegra-borrador', { id: e.id });
+                upsert(j.expediente);
+                render();
+                openDetail(e.id);
+                var b = j.borrador;
+                msg(
+                  'Prefactura creada en borrador' +
+                    (b && Math.abs(b.diferencia) > 2 ? '. OJO: el total en Alegra difiere ' + cop(b.diferencia) + ' del de la venta; revísalo.' : '.')
+                );
+                if (w) w.location.href = j.url;
+                else window.open(j.url, '_blank');
+              } catch (err) {
+                if (w) w.close();
+                ab.disabled = false;
+                msg('No se pudo crear en Alegra: ' + err.message);
+              }
+            });
+          var as = el.body.querySelector('[data-alegra-sync]');
+          if (as)
+            as.addEventListener('click', async function () {
+              msg('Consultando Alegra…');
+              try {
+                var j = await api('alegra-sync', { id: e.id });
+                upsert(j.expediente);
+                render();
+                openDetail(e.id);
+                msg(
+                  j.factura && j.factura.emitida
+                    ? 'Factura ' + j.factura.numero + ' registrada. Se cerró la etapa y se avisó al cliente.' + (j.pago ? ' Pago registrado en Alegra.' : '')
+                    : 'En Alegra la factura sigue en borrador. Emítela allá y vuelve a intentar.'
+                );
+              } catch (err) {
+                msg('No se pudo consultar Alegra: ' + err.message);
+              }
             });
           el.body.querySelectorAll('[data-verificar]').forEach(function (b) {
             b.addEventListener('click', function () {
@@ -4228,6 +4308,14 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       .ct-panel textarea {
         font-family: inherit;
         line-height: 1.45;
+      }
+      .al-block p {
+        margin: 0 0 0.5rem;
+        font-size: 0.9rem;
+      }
+      .al-ok {
+        color: var(--ok);
+        font-weight: 600;
       }
     </style>
   </body>
