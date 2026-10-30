@@ -317,6 +317,57 @@
         firma,
     };
   }
+  /* ---------- mensaje para pedir los datos al aprobar ---------- */
+  function faltantes(c, venta) {
+    var cl = Object.assign({}, c.cliente || {}, (venta && venta.cliente) || {});
+    var empresa = /\b(s\.?a\.?s|ltda|s\.?a\b|e\.?s\.?p|bic|asociaci|comunidad|universidad|fundaci|cooperativa|ut\b)/i.test(cl.nombre || '') || String(cl.tipoDoc || '').toUpperCase() === 'NIT';
+    var f = [];
+    if (!cl.nombre || cl.nombre.split(/\s+/).length < 2) f.push(empresa ? 'Razón social completa' : 'Nombre completo');
+    if (!cl.documento) f.push(empresa ? 'NIT y RUT actualizado (adjunto)' : 'Número de cédula');
+    else if (empresa) f.push('RUT actualizado (adjunto)');
+    if (!cl.correo) f.push('Correo electrónico para recibir la factura electrónica');
+    if (!cl.celular) f.push('Celular de contacto');
+    if (c.tipo === 'proyecto') {
+      if (!cl.direccion) f.push('Dirección exacta del predio donde se hará la instalación (barrio o vereda, municipio)');
+      f.push('Foto de la última factura de energía (para el número de cuenta ante el operador de red)');
+      f.push('Nombre y celular de la persona que nos recibirá en el sitio');
+    } else {
+      if (!cl.direccion) f.push('Dirección completa de entrega (barrio, ciudad y departamento)');
+      f.push('Nombre y celular de quien recibe el pedido');
+    }
+    var r = venta && venta.resumen;
+    var falta = r ? r.saldo > 0 && r.porVerificar <= 0 : true;
+    return { lista: f, pago: falta, saldo: r ? r.saldo : c.total, empresa: empresa };
+  }
+  function textoDatos(c, venta, canal) {
+    var F = faltantes(c, venta);
+    var n = primerNombre(c);
+    var num = c.numero || c.id;
+    var wa = canal === 'whatsapp';
+    var lineas = F.lista.map(function (x, i) {
+      return (i + 1) + '. ' + x;
+    });
+    if (F.pago)
+      lineas.push(
+        (lineas.length + 1) +
+          '. Comprobante de pago' +
+          (c.tipo === 'proyecto' && c.condicionesPago ? ' del anticipo (forma de pago ' + c.condicionesPago + ')' : '') +
+          '. Puede pagar por transferencia a Bancolombia, cuenta de ahorros 366-000084-77 a nombre de Reiki Energía Solar SAS, o con la llave Bre-B 0089262235.'
+      );
+    var intro =
+      (wa ? 'Hola' + (n ? ' ' + n : '') + ', ¡muchas gracias por aprobar la cotización ' + num + '! 🙌' : 'Buen día' + (n ? ', ' + n : '') + ':\n\nMuchas gracias por aprobar la cotización ' + num + '.') +
+      (c.tipo === 'proyecto'
+        ? ' Para registrar su proyecto, programar la visita técnica y emitir la factura electrónica, por favor ' + (wa ? 'compártanos' : 'envíenos') + ':'
+        : ' Para registrar su pedido, despacharlo y emitir la factura electrónica, por favor ' + (wa ? 'compártanos' : 'envíenos') + ':');
+    var cierre = wa
+      ? 'Apenas los tengamos le confirmamos ' + (c.tipo === 'proyecto' ? 'la fecha de la visita técnica' : 'el despacho') + '. ¡Gracias! ☀️\n\nAlexander Rivera – Reiki Energía Solar'
+      : 'Puede responder este correo con la información y los adjuntos. Apenas la recibamos le confirmamos ' +
+        (c.tipo === 'proyecto' ? 'la fecha de la visita técnica' : 'el despacho') +
+        '.\n\nCordialmente,\n\nAlexander Rivera\nAsesor comercial · Reiki Energía Solar S.A.S.\n+57 300 405 2638 · info@reikisolar.com.co\nwww.reikisolar.com.co';
+    if (!lineas.length) return '';
+    return intro + '\n\n' + lineas.join('\n') + '\n\n' + cierre;
+  }
+
   function waLink(c) {
     var cel = String((c.cliente && c.cliente.celular) || '').replace(/\D/g, '');
     if (!cel) return '';
@@ -356,6 +407,7 @@
           '<button type="button" class="btn btn-ghost seg-mini ct-ok" data-ct-panel="aceptar"><i class="fas fa-check" aria-hidden="true"></i> Aceptada</button>' +
           '<button type="button" class="btn btn-ghost seg-mini ct-no" data-ct-panel="rechazar"><i class="fas fa-times" aria-hidden="true"></i> Rechazada</button>'
         : '<button type="button" class="btn btn-ghost seg-mini" data-ct-reabrir><i class="fas fa-undo" aria-hidden="true"></i> Reabrir</button>' +
+          (c.estado === 'aceptada' ? '<button type="button" class="btn btn-secondary seg-mini" data-ct-panel="datos"><i class="fas fa-id-card" aria-hidden="true"></i> Pedir datos al cliente</button>' : '') +
           (c.expedienteId ? '<button type="button" class="btn btn-primary seg-mini" data-ct-venta="' + esc(c.expedienteId) + '"><i class="fas fa-store" aria-hidden="true"></i> Ver la venta</button>' : '')) +
       '</div>';
 
@@ -454,6 +506,21 @@
     m.hidden = false;
     enlazar(c);
   }
+  async function abrirDatos(id) {
+    var c = cot(id);
+    st.venta = null;
+    if (c && c.expedienteId) {
+      try {
+        var j = await S().api('get&id=' + encodeURIComponent(c.expedienteId));
+        st.venta = j.expediente;
+      } catch (_e) {
+        st.venta = null;
+      }
+    }
+    st.panel = 'datos';
+    abrir(id);
+  }
+
   function campo(n, l, v, t) {
     return '<label class="seg-field"><span>' + esc(l) + '</span><input name="' + n + '" type="' + (t || 'text') + '" value="' + esc(v || '') + '" /></label>';
   }
@@ -488,6 +555,23 @@
         '<label class="seg-field"><span>Próximo seguimiento</span><input type="date" name="proximo" value="' +
         sumar(4) +
         '" /></label></div><label class="seg-field seg-field--full"><span>¿Qué dijo el cliente?</span><textarea name="nota" rows="3" placeholder="Ej: lo revisa con el socio, llamar el lunes"></textarea></label><div class="modal-actions"><button class="btn btn-primary" type="submit">Guardar</button><button class="btn btn-ghost" type="button" data-ct-panel="">Cancelar</button></div></form>'
+      );
+    }
+    if (p === 'datos') {
+      var v = st.venta && st.venta.id === c.expedienteId ? st.venta : null;
+      var txtWa = textoDatos(c, v, 'whatsapp');
+      if (!txtWa) return '<div class="modal-block ct-panel"><h3>Datos del cliente</h3><p>Ya están todos los datos necesarios en la venta.</p></div>';
+      var cel = String((c.cliente && c.cliente.celular) || '').replace(/\D/g, '');
+      if (cel.length === 10) cel = '57' + cel;
+      return (
+        '<form id="ct-form-datos" class="modal-block ct-panel"><h3>Pedir los datos al cliente</h3><p class="pc-muted">Solo pide lo que falta en la venta. Ajusta el texto si quieres.</p>' +
+        '<label class="seg-field seg-field--full"><span>Mensaje</span><textarea name="texto" rows="14">' +
+        esc(txtWa) +
+        '</textarea></label><div class="modal-actions">' +
+        (cel ? '<a class="btn btn-wa seg-mini" data-ct-datos-wa href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i> Abrir en WhatsApp</a>' : '') +
+        '<button type="button" class="btn btn-ghost seg-mini" data-ct-datos-copiar><i class="fas fa-copy" aria-hidden="true"></i> Copiar</button>' +
+        (c.cliente && c.cliente.correo ? '<button type="button" class="btn btn-primary seg-mini" data-ct-datos-correo><i class="fas fa-envelope" aria-hidden="true"></i> Enviar por correo</button>' : '') +
+        '<button class="btn btn-ghost seg-mini" type="button" data-ct-panel="">Cerrar</button></div></form>'
       );
     }
     if (p === 'aceptar') {
@@ -536,6 +620,10 @@
     var body = $('ct-modal-body');
     body.querySelectorAll('[data-ct-panel]').forEach(function (b) {
       b.addEventListener('click', function () {
+        if (b.getAttribute('data-ct-panel') === 'datos') {
+          abrirDatos(c.id);
+          return;
+        }
         st.panel = b.getAttribute('data-ct-panel');
         abrir(c.id);
         var p = body.querySelector('.ct-panel');
@@ -613,8 +701,46 @@
     var ac = body.querySelector('[data-ct-aceptar]');
     if (ac)
       ac.addEventListener('click', function () {
-        correr('cot-estado', { id: c.id, estado: 'aceptada' }, 'Aceptada: la venta quedó creada.');
+        correr('cot-estado', { id: c.id, estado: 'aceptada' }, 'Aceptada: la venta quedó creada. Abajo está el mensaje para pedirle los datos al cliente.').then(function () {
+          abrirDatos(c.id);
+        });
       });
+    var fd = $('ct-form-datos');
+    if (fd) {
+      var ta = fd.querySelector('textarea');
+      var bw = fd.querySelector('[data-ct-datos-wa]');
+      if (bw)
+        bw.addEventListener('click', function (ev) {
+          ev.preventDefault();
+          var cel = String((c.cliente && c.cliente.celular) || '').replace(/\D/g, '');
+          if (cel.length === 10) cel = '57' + cel;
+          window.open('https://wa.me/' + cel + '?text=' + encodeURIComponent(ta.value), '_blank', 'noopener');
+          S().api('cot-seguimiento', { id: c.id, canal: 'whatsapp', nota: 'Se le pidieron los datos para registrar la venta y facturar.' }).then(function (j) {
+            if (j.cotizacion) upsert(j.cotizacion);
+          });
+        });
+      var bc = fd.querySelector('[data-ct-datos-copiar]');
+      if (bc)
+        bc.addEventListener('click', function () {
+          ta.select();
+          try {
+            navigator.clipboard.writeText(ta.value);
+          } catch (_e) {
+            document.execCommand('copy');
+          }
+          msg('Mensaje copiado.');
+        });
+      var be = fd.querySelector('[data-ct-datos-correo]');
+      if (be)
+        be.addEventListener('click', function () {
+          var v = st.venta && st.venta.id === c.expedienteId ? st.venta : null;
+          correr(
+            'cot-enviar',
+            { id: c.id, asunto: 'Datos para su pedido – Cotización ' + (c.numero || c.id) + ' | Reiki Energía Solar', cuerpo: textoDatos(c, v, 'correo'), adjuntarPdf: false, tipo: 'seguimiento' },
+            'Correo enviado pidiendo los datos.'
+          );
+        });
+    }
     var re = body.querySelector('[data-ct-reabrir]');
     if (re)
       re.addEventListener('click', function () {
