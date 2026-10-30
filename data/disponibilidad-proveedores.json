@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-10-28 21:00",
+ "ultima_revision": "2026-10-29 20:59",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -538,11 +538,6 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "bateria-solar-litio-pylontech-48v-2-4kwh-1708249": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "bomba-recirculacion-2200w-25m-36mts3-cont-dy-b3000acdc-bom-a2200-sp36-25b-hibrida-aut": {
    "stock": "disponible",
    "stockBajo": false,
@@ -1053,16 +1048,6 @@
    "stockBajo": true,
    "consulta": "ok"
   },
-  "epever-inversor-onda-pura-ip1000-21-1000w-24vdc-a-110vac": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "epever-inversor-onda-pura-ip1000-21-plus-t-1000w-24vdc-a-110vac": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
   "epever-inversor-onda-pura-ip1500-21-plus-t-1500w-24vdc-a-110vac": {
    "stock": "disponible",
    "stockBajo": true,
@@ -1081,11 +1066,6 @@
   "epever-inversor-onda-pura-ip500-21-500w-24vdc-a-110vac": {
    "stock": "pre-orden",
    "stockBajo": false,
-   "consulta": "ok"
-  },
-  "epever-inversor-onda-pura-ipt1000-21-ipt-1000w-24vdc-a-110vac": {
-   "stock": "disponible",
-   "stockBajo": true,
    "consulta": "ok"
   },
   "epever-inversor-onda-pura-ipt2000-11-ipt-2000w-12vdc-a-110vac": {
@@ -1333,16 +1313,6 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "leader-mc4-3-a-1-sy-bb31": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "leader-mc4-sencillo-macho-hembra-tuv-retie-leader": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "medidor-de-energia-eastron-3va-3202011": {
    "stock": "disponible",
    "stockBajo": false,
@@ -1538,11 +1508,6 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "procables-cable-pv-6mm2-cu-flex-xlep-sr1800-90-c-pvc-negro": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
   "protector-de-bateria-victron-12-24v-100a-smart-batteryprotect-12-24v": {
    "stock": "disponible",
    "stockBajo": false,
@@ -1563,17 +1528,7 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "restar-panel-monocristalino-210w-voc-23-9-isc-11-07": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "restar-panel-monocristalino-40w-voc-21-6-isc-2-45": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "restar-panel-monocristalino-60w-voc-21-6-isc-3-68": {
    "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
