@@ -215,7 +215,7 @@ export function correoConfigurado() {
 }
 
 let transporter = null;
-async function enviarSmtp({ to, subject, htmlBody, textBody }) {
+async function enviarSmtp({ to, cc, subject, htmlBody, textBody }) {
   const user = String(process.env.SMTP_USER || '').trim();
   const em = empresa();
   if (!transporter) {
@@ -231,6 +231,7 @@ async function enviarSmtp({ to, subject, htmlBody, textBody }) {
     const info = await transporter.sendMail({
       from: process.env.MAIL_FROM || `Reiki Energía Solar <${user}>`,
       to,
+      cc: cc || undefined,
       replyTo: process.env.MAIL_REPLY_TO || em.correo || undefined,
       bcc: process.env.MAIL_BCC || undefined,
       subject,
@@ -250,7 +251,7 @@ async function enviar(msg) {
   return { ok: false, motivo: 'correo sin configurar (faltan SMTP_USER y SMTP_PASS en Vercel)' };
 }
 
-async function enviarResend({ to, subject, htmlBody, textBody }) {
+async function enviarResend({ to, cc, subject, htmlBody, textBody }) {
   const key = String(process.env.RESEND_API_KEY || '').trim();
   const em = empresa();
   const body = {
@@ -262,6 +263,7 @@ async function enviarResend({ to, subject, htmlBody, textBody }) {
     text: textBody,
   };
   if (process.env.MAIL_BCC) body.bcc = [process.env.MAIL_BCC];
+  if (cc) body.cc = [cc];
   try {
     const r = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -309,4 +311,63 @@ export async function correoPorEtapa(exp, etapa, resumenExp) {
   });
   exp.correos = exp.correos.slice(0, 50);
   return { enviado: !!res.ok, motivo: res.ok ? '' : res.motivo, asunto };
+}
+
+/** Cuerpo libre (texto plano) → HTML con la misma plantilla de Reiki. Respeta párrafos, viñetas y saltos de línea. */
+function htmlLibre(cuerpo) {
+  const em = empresa();
+  const esc = (t) => String(t).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  const bloques = String(cuerpo || '')
+    .replace(/\r/g, '')
+    .split(/\n{2,}/)
+    .map((b) => b.trim())
+    .filter(Boolean)
+    .map((b) => {
+      const lineas = b.split('\n');
+      const vinetas = lineas.filter((l) => /^\s*[•\-–*]\s+/.test(l));
+      if (vinetas.length && vinetas.length >= lineas.length - 1) {
+        const titulo = /^\s*[•\-–*]\s+/.test(lineas[0]) ? '' : `<p style="margin:0 0 6px">${esc(lineas[0])}</p>`;
+        const items = lineas
+          .filter((l) => /^\s*[•\-–*]\s+/.test(l))
+          .map((l) => `<li style="margin:0 0 4px">${esc(l.replace(/^\s*[•\-–*]\s+/, ''))}</li>`)
+          .join('');
+        return `${titulo}<ul style="margin:0 0 12px;padding-left:20px">${items}</ul>`;
+      }
+      return `<p style="margin:0 0 12px">${lineas.map(esc).join('<br>')}</p>`;
+    })
+    .join('');
+  return `<!doctype html><html><body style="margin:0;background:#f5eef8;font-family:Arial,Helvetica,sans-serif;color:#1f1230">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:24px 12px">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:600px;background:#fff;border-radius:14px;overflow:hidden">
+<tr><td style="background:#6b2181;padding:18px 24px"><img src="https://www.reikisolar.com.co/images/logo.png" alt="Reiki Energía Solar" height="40" style="display:block"></td></tr>
+<tr><td style="padding:24px;font-size:15px;line-height:1.55">${bloques}</td></tr>
+<tr><td style="padding:16px 24px;background:#faf7fc;font-size:12px;color:#6b5f75;line-height:1.5">
+${esc(em.razon_social || 'Reiki Energía Solar SAS')} · <a href="https://${esc(em.web || 'reikisolar.com.co')}" style="color:#6b2181">${esc(em.web || 'reikisolar.com.co')}</a>
+</td></tr></table></td></tr></table></body></html>`;
+}
+
+/**
+ * Correo redactado a mano para el cliente del expediente (confirmaciones, avisos especiales).
+ * Muta exp.correos. No incluye nada interno: el texto es exactamente el que se envía.
+ */
+export async function correoLibre(exp, { asunto, cuerpo, cc } = {}) {
+  const subject = String(asunto || '').trim().slice(0, 200);
+  const texto = String(cuerpo || '').trim().slice(0, 12000);
+  exp.correos = exp.correos || [];
+  let motivo = '';
+  if (!subject || !texto) motivo = 'falta asunto o texto';
+  else if (!exp.cliente?.correo || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(exp.cliente.correo)) motivo = 'el cliente no tiene correo';
+  const ccOk = cc && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(cc).trim()) ? String(cc).trim() : '';
+  const res = motivo ? { ok: false, motivo } : await enviar({ to: exp.cliente.correo, cc: ccOk, subject, htmlBody: htmlLibre(texto), textBody: texto });
+  exp.correos.unshift({
+    clave: `libre:${Date.now()}`,
+    etapa: 'Correo redactado',
+    para: exp.cliente?.correo || '',
+    asunto: subject,
+    estado: res.ok ? 'enviado' : 'no_enviado',
+    motivo: res.ok ? '' : res.motivo,
+    at: new Date().toISOString(),
+  });
+  exp.correos = exp.correos.slice(0, 50);
+  return { enviado: !!res.ok, motivo: res.ok ? '' : res.motivo, asunto: subject };
 }

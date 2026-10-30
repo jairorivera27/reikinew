@@ -5,7 +5,7 @@
  */
 import { getRedis, waKey } from './whatsapp-redis.js';
 import { proveedorDeItem } from './proveedores.js';
-import { correoPorEtapa } from './correos.js';
+import { correoLibre, correoPorEtapa } from './correos.js';
 import { listRecentCheckoutOrders } from './checkout-order-store.js';
 
 const memExp = globalThis.__reikiSegExp || new Map();
@@ -519,4 +519,14 @@ export async function actualizarCompras(cambios = [], by = 'panel') {
     salida.push(await persist(exp));
   }
   return salida;
+}
+
+/** Envía un correo redactado al cliente del expediente y lo deja en el historial. */
+export async function enviarCorreoLibre(id, datos, by = 'panel') {
+  const exp = await getExpediente(id);
+  if (!exp) return null;
+  const r = await correoLibre(exp, datos);
+  pushHist(exp, by, r.enviado ? `Correo enviado al cliente: "${r.asunto}"` : `Correo no enviado ("${r.asunto}"): ${r.motivo}`);
+  const out = await persist(exp);
+  return { exp: out, ...r };
 }

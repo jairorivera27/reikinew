@@ -13,6 +13,7 @@
  * POST op=compra { cambios:[{ id, idx, estado: por_pedir|pedido|recibido|no_aplica, nota }] }
  * GET  op=equipos              → equipos comprometidos (por pedir / pedidos / en camino) por proveedor
  * POST op=alegra-snapshot      { facturacionMensual, cartera, recaudoMensual, topClientes } (lo carga Claude)
+ * POST op=correo-libre { id, asunto, cuerpo, cc? } → correo redactado al cliente del expediente (texto plano; • para viñetas)
  * POST op=correo  { id, key } → reintenta el correo al cliente de esa etapa
  * POST op=pago    { id, pago: { id?, fecha, monto, medio, referencia, estado: verificado|por_verificar, nota } }
  */
@@ -26,6 +27,7 @@ import {
   sincronizarPedidosWeb,
   actualizarCompras,
   reenviarCorreo,
+  enviarCorreoLibre,
   resumen,
   saveExpediente,
   updateEtapa,
@@ -164,6 +166,11 @@ export default async function handler(req, res) {
     if (op === 'alegra-snapshot') {
       const doc = await guardarAlegra(body || {});
       return send(res, 200, { ok: true, guardado: doc.guardado });
+    }
+    if (op === 'correo-libre') {
+      const r = await enviarCorreoLibre(body.id, { asunto: body.asunto, cuerpo: body.cuerpo, cc: body.cc }, by);
+      if (!r) return send(res, 404, { ok: false, error: 'No existe.' });
+      return send(res, r.enviado ? 200 : 502, { ok: r.enviado, error: r.enviado ? undefined : r.motivo, expediente: conResumen(r.exp) });
     }
     if (op === 'correo') {
       const e = await reenviarCorreo(body.id, String(body.key || ''), by);
