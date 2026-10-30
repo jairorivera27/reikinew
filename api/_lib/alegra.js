@@ -16,6 +16,7 @@ const cfg = () => ({
   iva19: String(process.env.ALEGRA_IVA19 || '4'),
   excluido: String(process.env.ALEGRA_IVA_EXCLUIDO || '2'),
   app: String(process.env.ALEGRA_APP_URL || 'https://app.alegra.com').replace(/\/$/, ''),
+  plantilla: String(process.env.ALEGRA_PLANTILLA || '8'), // 8 = Clásico FE (factura electrónica)
 });
 
 export function alegraConfigurado() {
@@ -177,6 +178,7 @@ export async function crearBorrador(exp) {
     dueDate: hoy,
     client: { id: Number(contacto.id) },
     numberTemplate: { id: Number(c.numeracion) },
+    printingTemplate: { id: Number(c.plantilla) },
     paymentForm: 'CASH',
     paymentMethod: /consign|dep[oó]sito/.test(medio) ? 'BANK_DEPOSIT' : /efectivo/.test(medio) ? 'CASH' : 'DEBIT_TRANSFER',
     items,
