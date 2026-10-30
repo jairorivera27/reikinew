@@ -185,8 +185,15 @@
       if (a.resumen.abierta && b.resumen.abierta) return String(a.proximoSeguimiento || '9').localeCompare(String(b.proximoSeguimiento || '9'));
       return String(b.updatedAt || b.creada).localeCompare(String(a.updatedAt || a.creada));
     });
+    var grupos = agrupar(lista);
     var cards = lista.length
-      ? '<section class="seg-grid">' + lista.map(card).join('') + '</section>'
+      ? '<section class="seg-grid">' +
+        grupos
+          .map(function (g) {
+            return g.length === 1 ? card(g[0]) : cardCliente(g);
+          })
+          .join('') +
+        '</section>'
       : '<div class="seg-empty"><p>No hay cotizaciones en esta vista.</p><p class="seg-hint">Las cotizaciones que hace Claude en cualquier chat y las que generan los clientes en la página o por WhatsApp aparecen aquí solas.</p></div>';
     cont.innerHTML = metricas + chips + cards;
     cont.querySelectorAll('[data-ct-filtro]').forEach(function (b) {
@@ -212,6 +219,158 @@
   function met(t, v) {
     return '<div class="seg-metric"><span>' + esc(t) + '</span><strong>' + esc(v) + '</strong></div>';
   }
+  /* ---------- agrupar por cliente ---------- */
+  function normTxt(t) {
+    return String(t || '')
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/[^a-z0-9 ]/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+  }
+  function llaves(c) {
+    var cl = c.cliente || {};
+    var k = [];
+    var doc = String(cl.documento || '').split('-')[0].replace(/\D/g, '');
+    if (doc.length >= 6) k.push('d:' + doc);
+    var cel = String(cl.celular || '').replace(/\D/g, '').slice(-10);
+    if (cel.length === 10 && !/(\d)\1{5,}/.test(cel)) k.push('t:' + cel);
+    var mail = String(cl.correo || '').trim().toLowerCase();
+    if (correoReal(mail)) k.push('m:' + mail);
+    var nom = normTxt(cl.nombre);
+    if (nom.split(' ').length >= 2) k.push('n:' + nom);
+    if (!k.length) k.push('id:' + c.id);
+    return k;
+  }
+  /** Descarta correos de relleno que ponen los clientes en la web (00@gmal.com, notengo@…, etc.). */
+  function correoReal(m) {
+    var p = m.split('@');
+    if (p.length !== 2 || !/\./.test(p[1])) return false;
+    if (/^[\d.]+$/.test(p[0]) || p[0].length < 4) return false;
+    if (/^(no|sin|ning|test|prueba|correo|email|xx|aa|abc|na$|n\/a)/.test(p[0]) || /notengo|noaplica|sincorreo|ninguno/.test(p[0])) return false;
+    if (/^(gmal|gmial|gamil|gmai|hotmial|hotmal|yaho)\./.test(p[1])) return false;
+    return true;
+  }
+  /** Une cotizaciones del mismo cliente (cédula/NIT, celular, correo o nombre completo iguales). */
+  function agrupar(lista) {
+    var padre = {};
+    function raiz(x) {
+      while (padre[x] !== x) x = padre[x] = padre[padre[x]];
+      return x;
+    }
+    function unir(a, b) {
+      a = raiz(a);
+      b = raiz(b);
+      if (a !== b) padre[b] = a;
+    }
+    var porLlave = {};
+    lista.forEach(function (c) {
+      padre[c.id] = c.id;
+      llaves(c).forEach(function (k) {
+        if (porLlave[k]) unir(porLlave[k], c.id);
+        else porLlave[k] = c.id;
+      });
+    });
+    // nombre de una sola palabra (p. ej. "EDUARDO" con datos de relleno): unir con el único cliente
+    // de la misma ciudad cuyo primer nombre coincida
+    function ciudad1(c) {
+      return normTxt(c.cliente && c.cliente.ciudad).split(' ')[0] || '';
+    }
+    lista.forEach(function (c) {
+      var nom = normTxt(c.cliente && c.cliente.nombre);
+      if (!nom || nom.indexOf(' ') >= 0) return;
+      var ciu = ciudad1(c);
+      if (!ciu) return;
+      var candidatos = {};
+      lista.forEach(function (o) {
+        if (o === c) return;
+        var on = normTxt(o.cliente && o.cliente.nombre);
+        if (on.split(' ')[0] === nom && on.indexOf(' ') >= 0 && ciudad1(o) === ciu) candidatos[raiz(o.id)] = true;
+      });
+      var ks = Object.keys(candidatos);
+      if (ks.length === 1) unir(ks[0], c.id);
+    });
+    var orden = [];
+    var grupos = {};
+    lista.forEach(function (c) {
+      var r = raiz(c.id);
+      if (!grupos[r]) {
+        grupos[r] = [];
+        orden.push(r);
+      }
+      grupos[r].push(c);
+    });
+    return orden.map(function (r) {
+      return grupos[r];
+    });
+  }
+  function nombreGrupo(g) {
+    var mejor = '';
+    g.forEach(function (c) {
+      var n = (c.cliente && c.cliente.nombre) || '';
+      if (n.length > mejor.length) mejor = n;
+    });
+    return mejor || g[0].titulo;
+  }
+  function cardCliente(g) {
+    var hoyN = g.filter(function (c) {
+      return c.resumen.seguimientoVencido;
+    }).length;
+    var abiertas = g.filter(function (c) {
+      return c.resumen.abierta;
+    });
+    var acept = g.filter(function (c) {
+      return c.estado === 'aceptada';
+    });
+    var ciudad = '';
+    g.forEach(function (c) {
+      var x = (c.cliente && c.cliente.ciudad) || '';
+      if (x.length > ciudad.length) ciudad = x;
+    });
+    var peso = { aceptada: 0, seguimiento: 1, enviada: 2, por_enviar: 3, rechazada: 4 };
+    g = g.slice().sort(function (a, b) {
+      var d = (a.resumen.seguimientoVencido ? -1 : peso[a.estado]) - (b.resumen.seguimientoVencido ? -1 : peso[b.estado]);
+      return d || String(b.creada).localeCompare(String(a.creada));
+    });
+    var filas = g
+      .map(function (c) {
+        return (
+          '<li><button type="button" class="ct-sub" data-cot="' +
+          esc(c.id) +
+          '"><span class="ct-sub-num">' +
+          esc(c.numero || c.id) +
+          (c.resumen.seguimientoVencido ? ' <i class="fas fa-phone ct-hoy" aria-label="seguimiento hoy"></i>' : '') +
+          '</span>' +
+          chip(c.estado) +
+          '<span class="ct-sub-desc">' +
+          esc(c.descripcion && !/generada por el cliente/i.test(c.descripcion) ? c.descripcion : fCorta(c.creada) + ' · ' + (ORIGEN[c.origen] || 'Claude')) +
+          '</span><strong>' +
+          cop(c.total) +
+          '</strong></button></li>'
+        );
+      })
+      .join('');
+    return (
+      '<article class="seg-card ct-card ct-grupo' +
+      (hoyN ? ' ct-card--hoy' : '') +
+      '"><div class="seg-card-head"><span class="oc-badge oc-badge--info">' +
+      g.length +
+      ' cotizaciones</span>' +
+      (acept.length ? '<span class="oc-badge oc-badge--ok">' + acept.length + ' aceptada' + (acept.length > 1 ? 's' : '') + '</span>' : '') +
+      '</div><h3>' +
+      esc(nombreGrupo(g)) +
+      '</h3><p class="seg-sub">' +
+      esc(ciudad) +
+      (abiertas.length ? (ciudad ? ' · ' : '') + abiertas.length + ' abierta(s) por ' + cop(sum(abiertas)) : '') +
+      '</p>' +
+      (hoyN ? '<p class="seg-next ct-hoy"><i class="fas fa-phone" aria-hidden="true"></i> Hacer seguimiento hoy</p>' : '') +
+      '<ul class="ct-subs">' +
+      filas +
+      '</ul></article>'
+    );
+  }
+
   function card(c) {
     var r = c.resumen;
     var linea = '';

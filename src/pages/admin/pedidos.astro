@@ -1270,7 +1270,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
     </script>
 
     <script is:inline src="/admin/panel-inicio.js?v=20261030a"></script>
-    <script is:inline src="/admin/panel-cotizaciones.js?v=20261030b"></script>
+    <script is:inline src="/admin/panel-cotizaciones.js?v=20261030c"></script>
 
     <script is:inline define:vars={{ MOCKS: pedidosMocks }}>
       (function () {
@@ -4328,6 +4328,55 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       .al-ok {
         color: var(--ok);
         font-weight: 600;
+      }
+      .ct-grupo {
+        cursor: default;
+      }
+      .ct-subs {
+        list-style: none;
+        margin: 0.3rem 0 0;
+        padding: 0;
+        display: grid;
+        gap: 0.35rem;
+      }
+      .ct-sub {
+        width: 100%;
+        font: inherit;
+        text-align: left;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 0.15rem 0.5rem;
+        align-items: center;
+        background: var(--sand);
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 0.45rem 0.6rem;
+        cursor: pointer;
+        color: var(--ink);
+      }
+      .ct-sub:hover,
+      .ct-sub:focus-visible {
+        border-color: var(--brand-2);
+        outline: none;
+      }
+      .ct-sub-num {
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+      .ct-sub .oc-badge {
+        justify-self: end;
+      }
+      .ct-sub-desc {
+        font-size: 0.78rem;
+        color: var(--muted);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .ct-sub strong {
+        font-size: 0.85rem;
+        justify-self: end;
+        font-variant-numeric: tabular-nums;
       }
     </style>
   </body>
