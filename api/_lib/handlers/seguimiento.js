@@ -58,6 +58,7 @@ import {
   listCotizaciones,
   registrarSeguimiento,
   tokenCotizaciones,
+  importarDeTienda,
 } from '../cotizaciones.js';
 
 const OPS_CHAT = new Set(['cot-save', 'cot-pdf']);
@@ -224,6 +225,10 @@ export default async function handler(req, res) {
       const r = await guardarPdfParte(id, { nombre: body.nombre, base64: body.base64, parte: body.parte, total: body.total }, by);
       if (!r) return send(res, 404, { ok: false, error: 'Registra primero la cotización (op=cot-save).' });
       return send(res, 200, { ok: true, id, completo: r.completo, recibidas: r.recibidas, total: r.total });
+    }
+    if (op === 'cot-importar-tienda') {
+      const r = await importarDeTienda({ desde: String(body.desde || ''), listarVentas: listExpedientes });
+      return send(res, 200, { ok: true, ...r });
     }
     if (op === 'cot-estado') {
       const c = await cambiarEstado(body.id, { estado: body.estado, motivo: body.motivo, proximo: body.proximo }, by);

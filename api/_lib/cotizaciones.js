@@ -416,6 +416,7 @@ export async function registrarDesdeTienda(doc) {
         items,
         pdfUrl: doc.pdfUrl,
         linkCompra: doc.link_compra,
+        creada: doc.fechaIso,
         descripcion: `Cotización generada por el cliente en ${doc.origen === 'web' ? 'la página web' : 'WhatsApp'}`,
         proximoSeguimiento: hoy(),
       },
@@ -443,4 +444,48 @@ export async function estadoDesdeTienda(doc, estado) {
   } catch (err) {
     console.warn('[cotizaciones] estado tienda', err?.message || err);
   }
+}
+
+/**
+ * Importa al registro las cotizaciones de la página web y WhatsApp guardadas en cotizacion-store
+ * (claves reiki:wa:cot:<id>) desde una fecha. No toca las que ya existen en el registro.
+ * Si hay una venta del panel con ese número de cotización, la enlaza y la marca aceptada.
+ */
+export async function importarDeTienda({ desde = '', listarVentas } = {}) {
+  const redis = getRedis();
+  if (!redis) throw new Error('Redis no disponible');
+  const claves = [];
+  let cursor = 0;
+  do {
+    const r = await redis.scan(cursor, { match: 'reiki:wa:cot:*', count: 500 });
+    cursor = Number(r[0]);
+    for (const k of r[1] || []) if (/^reiki:wa:cot:[^:]+$/.test(k)) claves.push(k);
+  } while (cursor !== 0 && claves.length < 5000);
+  const ventas = listarVentas ? await listarVentas() : [];
+  const res = { revisadas: claves.length, importadas: [], omitidas: 0 };
+  for (let i = 0; i < claves.length; i += 100) {
+    const vals = await redis.mget(...claves.slice(i, i + 100));
+    for (const raw of vals) {
+      const doc = raw && (typeof raw === 'string' ? JSON.parse(raw) : raw);
+      if (!doc || !doc.numero || doc.origen === 'tienda_pedido') continue;
+      const dia = String(doc.fechaIso || '').slice(0, 10);
+      if (desde && dia && dia < desde) continue;
+      const id = idDeNumero(doc.numero);
+      if (await getCotizacion(id)) {
+        res.omitidas += 1;
+        continue;
+      }
+      const c = await registrarDesdeTienda(doc);
+      if (!c) continue;
+      const venta = ventas.find((v) => idDeNumero(v.cotizacion?.numero || '') === id);
+      if (venta) {
+        await guardarCotizacion({ id, expedienteId: venta.id }, 'importación');
+        await cambiarEstado(id, { estado: 'aceptada' }, 'importación');
+      } else if (/pagada/.test(String(doc.estado || ''))) {
+        await cambiarEstado(id, { estado: 'aceptada', crearVenta: false }, 'importación');
+      }
+      res.importadas.push({ numero: doc.numero, cliente: doc.cliente?.nombre || '', total: doc.total, fecha: dia, origen: doc.origen, venta: venta ? venta.id : '' });
+    }
+  }
+  return res;
 }
