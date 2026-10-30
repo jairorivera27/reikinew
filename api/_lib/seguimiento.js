@@ -296,6 +296,7 @@ export async function saveExpediente(input = {}, by = 'panel') {
       };
 
   if (input.titulo !== undefined) exp.titulo = str(input.titulo, 200);
+  const correoAntes = String(exp.cliente?.correo || '');
   if (input.cliente) {
     const c = input.cliente;
     exp.cliente = {
@@ -329,6 +330,7 @@ export async function saveExpediente(input = {}, by = 'panel') {
   autoEtapas(exp);
   pushHist(exp, by, prev ? 'Expediente actualizado.' : `Expediente creado (${tipo === 'proyecto' ? 'proyecto' : 'compra en tienda'}).`);
   if (!input._sinCorreoInicial) await notificarCambios(exp, antes, by);
+  if (prev && !EMAIL_OK.test(correoAntes) && EMAIL_OK.test(String(exp.cliente?.correo || ''))) await reintentarSinCorreo(exp, by);
   return persist(exp);
 }
 
@@ -529,4 +531,24 @@ export async function enviarCorreoLibre(id, datos, by = 'panel') {
   pushHist(exp, by, r.enviado ? `Correo enviado al cliente: "${r.asunto}"` : `Correo no enviado ("${r.asunto}"): ${r.motivo}`);
   const out = await persist(exp);
   return { exp: out, ...r };
+}
+
+const EMAIL_OK = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+
+/** Al agregar el correo del cliente, envía los avisos que quedaron pendientes por falta de correo (solo de etapas que siguen en ese estado). */
+async function reintentarSinCorreo(exp, by) {
+  const r = resumen(exp);
+  const correos = exp.correos || [];
+  for (const e of exp.etapas || []) {
+    const clave = `${e.key}:${e.estado}`;
+    const fallo = correos.some((c) => c.clave === clave && c.estado === 'no_enviado' && /no tiene correo/.test(c.motivo || ''));
+    const yaEnviado = correos.some((c) => c.clave === clave && c.estado === 'enviado');
+    if (!fallo || yaEnviado) continue;
+    try {
+      const out = await correoPorEtapa(exp, e, r);
+      if (out) pushHist(exp, by, out.enviado ? `Correo enviado al cliente al registrar su correo: "${out.asunto}"` : `Correo no enviado (${e.label}): ${out.motivo}`);
+    } catch (err) {
+      console.warn('[seguimiento] reintento correo', err?.message || err);
+    }
+  }
 }
