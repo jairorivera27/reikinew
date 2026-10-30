@@ -15,6 +15,7 @@
  * POST op=alegra-snapshot      { facturacionMensual, cartera, recaudoMensual, topClientes } (lo carga Claude)
  * Cotizaciones:
  * GET  op=cot-list | cot-get&id= | cot-pdf&id= (base64)
+ * GET|POST op=prov-contactos { contactos: { Proveedor: { nombre, celular } } } → WhatsApp de cada proveedor (Redis)
  * POST op=cot-numero → { numero } siguiente número del consecutivo único CT-DDMMAA-### (también con el token limitado)
  * POST op=cot-save { numero, tipo: equipos|proyecto, cliente, total, items, … }   (también con el token limitado de los chats)
  * POST op=cot-pdf  { id|numero, nombre, base64, parte, total }                  (también con el token limitado)
@@ -48,6 +49,7 @@ import { getRedis } from '../whatsapp-redis.js';
 import { calcularDesempeno, calcularInicio, comprasPendientes, equiposComprometidos, guardarAlegra, leerAlegra } from '../desempeno.js';
 import { correoConfigurado, etapasConCorreo, etapasConFecha } from '../correos.js';
 import { alegraConfigurado } from '../alegra.js';
+import { guardarContactos, leerContactos } from '../proveedores-contactos.js';
 import {
   cambiarEstado,
   conResumenCot,
@@ -167,6 +169,7 @@ export default async function handler(req, res) {
         const a = await leerAlegra();
         return send(res, 200, { ok: true, ...(await revision(q.marcar === '1')), alegraActualizado: a ? a.guardado : null });
       }
+      if (op === 'prov-contactos') return send(res, 200, { ok: true, contactos: await leerContactos() });
       if (op === 'cot-list') {
         const items = (await listCotizaciones()).map(conResumenCot);
         return send(res, 200, { ok: true, count: items.length, cotizaciones: items });
@@ -216,6 +219,10 @@ export default async function handler(req, res) {
     if (op === 'alegra-snapshot') {
       const doc = await guardarAlegra(body || {});
       return send(res, 200, { ok: true, guardado: doc.guardado });
+    }
+    if (op === 'prov-contactos') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      return send(res, 200, { ok: true, contactos: await guardarContactos(body.contactos || {}) });
     }
     if (op === 'cot-numero') {
       // Reserva el siguiente número del consecutivo único (CT-DDMMAA-###)

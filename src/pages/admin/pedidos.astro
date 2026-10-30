@@ -1269,7 +1269,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       })();
     </script>
 
-    <script is:inline src="/admin/panel-inicio.js?v=20261030a"></script>
+    <script is:inline src="/admin/panel-inicio.js?v=20261030b"></script>
     <script is:inline src="/admin/panel-cotizaciones.js?v=20261030c"></script>
 
     <script is:inline define:vars={{ MOCKS: pedidosMocks }}>
@@ -4071,6 +4071,54 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       }
       .pc-nota-pie {
         margin: 0.4rem 0 0;
+      }
+      .pc-wa {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-top: 0.3rem;
+        background: #25d366;
+        color: #fff !important;
+        border: 0;
+        text-decoration: none;
+        white-space: nowrap;
+      }
+      .pc-wa:hover {
+        background: #1ebe5b;
+      }
+      .pc-wa--sin {
+        background: #e5e7eb;
+        color: #374151 !important;
+      }
+      .pc-contactos {
+        margin-top: 1rem;
+        border: 1px solid var(--line, #e5e7eb);
+        border-radius: 12px;
+        padding: 0.7rem 0.9rem;
+        background: #fff;
+      }
+      .pc-contactos summary {
+        cursor: pointer;
+        font-weight: 700;
+      }
+      .pc-ct-fila {
+        display: grid;
+        grid-template-columns: minmax(110px, 1fr) 1fr 1fr;
+        gap: 0.5rem;
+        align-items: center;
+        margin-top: 0.5rem;
+      }
+      .pc-ct-fila input {
+        width: 100%;
+        min-width: 0;
+        padding: 0.4rem 0.5rem;
+        border: 1px solid var(--line, #d1d5db);
+        border-radius: 8px;
+      }
+      @media (max-width: 560px) {
+        .pc-ct-fila {
+          grid-template-columns: 1fr;
+        }
       }
       .in-tabla th[scope='row'] {
         text-transform: none !important;

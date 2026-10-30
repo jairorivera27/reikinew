@@ -11,6 +11,7 @@ import path from 'node:path';
 import { getRedis, waKey } from './whatsapp-redis.js';
 import { fechaAprobacion, listExpedientes, resumen, sincronizarPedidosWeb } from './seguimiento.js';
 import { listCotizaciones, resumenCot } from './cotizaciones.js';
+import { leerContactos } from './proveedores-contactos.js';
 
 const ALEGRA_KEY = waKey('metricas', 'alegra');
 let alegraMem = globalThis.__reikiAlegraSnap || null;
@@ -133,6 +134,7 @@ export async function catalogo() {
     const v = {
       slug: it.slug,
       titulo: it.title,
+      modelo: it.model || '',
       stock: it.stock || 'disponible',
       stockBajo: Boolean(bajo[it.slug] && bajo[it.slug].stockBajo),
       precio: it.priceNum || 0,
@@ -237,7 +239,7 @@ export async function comprasPendientes({ todos = false } = {}) {
         codigoProveedor: it.codigoProveedor || '',
         compra: it.compra || null,
         estado,
-        tienda: c ? { stock: c.stock, stockBajo: c.stockBajo, slug: c.slug, titulo: c.titulo } : null,
+        tienda: c ? { stock: c.stock, stockBajo: c.stockBajo, slug: c.slug, titulo: c.titulo, modelo: c.modelo } : null,
         valor: it.precioUnit * it.cantidad,
         costo: (it.costoUnit || 0) * it.cantidad,
       };
@@ -253,7 +255,7 @@ export async function comprasPendientes({ todos = false } = {}) {
       });
       if (i.estado === 'por_pedir') p.porPedir += i.cantidad;
       else p.pedidas += i.cantidad;
-      p.lineas.push({ id: e.id, idx: i.idx, titulo: e.titulo, nombre: i.nombre, codigo: i.codigoProveedor, cantidad: i.cantidad, estado: i.estado, pago, costo: i.costo });
+      p.lineas.push({ id: e.id, idx: i.idx, titulo: e.titulo, nombre: i.nombre, codigo: i.codigoProveedor, modelo: i.tienda ? i.tienda.modelo : '', cantidad: i.cantidad, estado: i.estado, pago, costo: i.costo });
     }
     ventas.push({
       id: e.id,
@@ -277,6 +279,7 @@ export async function comprasPendientes({ todos = false } = {}) {
     ventas,
     porProveedor: Object.values(porProveedor).sort((a, b) => b.porPedir - a.porPedir),
     estados: ESTADOS_EQUIPO,
+    contactos: await leerContactos(),
   };
 }
 

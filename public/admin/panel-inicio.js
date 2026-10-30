@@ -389,8 +389,86 @@
     if (!d.ventas.length)
       contenido =
         '<div class="seg-empty"><p>No hay equipos por comprar.</p><p class="seg-hint">Cuando se apruebe una compra o un proyecto, sus equipos aparecen aquí hasta que lleguen del proveedor.</p></div>';
-    body.innerHTML = toolbar + (d.ventas.length ? resumen : '') + contenido;
+    body.innerHTML = toolbar + (d.ventas.length ? resumen : '') + contenido + htmlContactos();
     enlazarCompras(body);
+  }
+
+  function contactoProv(prov) {
+    var cs = (pc.datos && pc.datos.contactos) || {};
+    if (!prov) return null;
+    if (cs[prov]) return cs[prov];
+    var n = function (x) {
+      return String(x || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+    };
+    var k = Object.keys(cs).find(function (x) {
+      return n(x) === n(prov);
+    });
+    return k ? cs[k] : null;
+  }
+
+  function refDe(it) {
+    return it.codigoProveedor || it.codigo || (it.tienda && it.tienda.modelo) || it.modelo || it.sku || '';
+  }
+
+  function textoDisponibilidad(prov, items) {
+    var c = contactoProv(prov);
+    var nombre = c && c.nombre ? ' ' + c.nombre.split(' ')[0] : '';
+    var lineas = items.map(function (it) {
+      var ref = refDe(it);
+      return '• ' + it.nombre + (ref ? ' — Ref.: ' + ref : '') + ' (' + it.cantidad + ' und.)';
+    });
+    return (
+      'Hola' + nombre + ', ¿cómo estás? ' +
+      (items.length > 1 ? '¿Están disponibles estos productos?' : '¿Está disponible este producto?') +
+      '\n\n' + lineas.join('\n') + '\n\nGracias. Reiki Energía Solar.'
+    );
+  }
+
+  function urlWa(prov, items) {
+    var c = contactoProv(prov);
+    var t = encodeURIComponent(textoDisponibilidad(prov, items));
+    return c && c.celular ? 'https://wa.me/' + c.celular + '?text=' + t : 'https://wa.me/?text=' + t;
+  }
+
+  function botonWa(prov, items, etiqueta) {
+    var esc = S().esc;
+    if (!prov || prov === 'Por confirmar' || !items.length) return '';
+    var c = contactoProv(prov);
+    return (
+      '<a class="btn seg-mini pc-wa' + (c && c.celular ? '' : ' pc-wa--sin') + '" target="_blank" rel="noopener" href="' +
+      esc(urlWa(prov, items)) + '" title="' +
+      esc(c && c.celular ? 'Preguntar a ' + (c.nombre || prov) + ' por WhatsApp' : 'Sin número de ' + prov + ': agrégalo en Contactos de proveedores') +
+      '"><i class="fab fa-whatsapp" aria-hidden="true"></i> ' + esc(etiqueta || '¿Disponible?') + '</a>'
+    );
+  }
+
+  function preguntables(items) {
+    return items.filter(function (it) {
+      return it.estado !== 'no_aplica' && it.estado !== 'comprado' && !(it.compra && (it.compra.estado === 'recibido' || it.compra.estado === 'no_aplica'));
+    });
+  }
+
+  function htmlContactos() {
+    var esc = S().esc;
+    var cs = (pc.datos && pc.datos.contactos) || {};
+    var provs = pc.datos.porProveedor.map(function (p) { return p.proveedor; }).filter(function (p) { return p !== 'Por confirmar'; });
+    Object.keys(cs).forEach(function (k) { if (provs.indexOf(k) < 0 && !contactoProvEn(provs, k)) provs.push(k); });
+    var filas = provs.map(function (p) {
+      var c = contactoProv(p) || {};
+      return '<div class="pc-ct-fila" data-pc-ct="' + esc(p) + '"><b>' + esc(p) + '</b><input data-ct-nombre value="' + esc(c.nombre || '') +
+        '" placeholder="Asesor" aria-label="Asesor de ' + esc(p) + '" /><input data-ct-cel inputmode="tel" value="' + esc(c.celular ? c.celular.replace(/^57/, '') : '') +
+        '" placeholder="WhatsApp (10 dígitos)" aria-label="WhatsApp de ' + esc(p) + '" /></div>';
+    }).join('');
+    var sin = provs.filter(function (p) { var c = contactoProv(p); return !(c && c.celular); }).length;
+    return '<details class="pc-contactos"><summary><i class="fab fa-whatsapp" aria-hidden="true"></i> Contactos de proveedores' +
+      (sin ? ' <small class="pc-alerta">(' + sin + ' sin número)</small>' : '') + '</summary>' + filas +
+      '<div class="pc-ct-fila"><input data-ct-nuevo placeholder="Otro proveedor" aria-label="Proveedor nuevo" /><input data-ct-nuevo-nombre placeholder="Asesor" aria-label="Asesor" /><input data-ct-nuevo-cel inputmode="tel" placeholder="WhatsApp" aria-label="WhatsApp" /></div>' +
+      '<div class="pc-acciones"><button type="button" class="btn btn-primary seg-mini" data-ct-guardar>Guardar contactos</button></div></details>';
+  }
+
+  function contactoProvEn(lista, k) {
+    var n = function (x) { return String(x || '').toLowerCase().replace(/[^a-z0-9]/g, ''); };
+    return lista.some(function (p) { return n(p) === n(k); });
   }
 
   function filaItem(v, it) {
@@ -418,6 +496,7 @@
       (it.codigoProveedor ? '<small class="pc-muted">Cód. proveedor: ' + esc(it.codigoProveedor) + '</small>' : '') +
       '</td><td>' +
       esc(it.proveedor) +
+      (preguntables([it]).length ? '<div>' + botonWa(it.proveedor, [it]) + '</div>' : '') +
       '</td><td>' +
       chipTienda(it.tienda) +
       '</td><td>' +
@@ -471,6 +550,21 @@
             })
             .join('') +
           '</tbody></table></div>' +
+          (function () {
+            var porP = {};
+            preguntables(items).forEach(function (it) {
+              (porP[it.proveedor] = porP[it.proveedor] || []).push(it);
+            });
+            var bs = Object.keys(porP)
+              .filter(function (p) {
+                return porP[p].length > 1;
+              })
+              .map(function (p) {
+                return botonWa(p, porP[p], 'Preguntar a ' + p + ' por los ' + porP[p].length + ' productos');
+              })
+              .filter(Boolean);
+            return bs.length ? '<div class="pc-acciones">' + bs.join('') + '</div>' : '';
+          })() +
           (pend.length > 1
             ? '<div class="pc-acciones"><button type="button" class="btn btn-secondary seg-mini" data-pc-todo="' +
               esc(v.id) +
@@ -551,6 +645,19 @@
               listos.length +
               ' línea(s) como pedidas</button></div>'
             : '') +
+          (function () {
+            var abiertas = p.lineas.filter(function (l) {
+              return l.estado === 'por_pedir' || l.estado === 'pedido';
+            });
+            var g = {};
+            abiertas.forEach(function (l) {
+              var k = l.nombre + '|' + (l.codigo || '');
+              g[k] = g[k] || { nombre: l.nombre, codigo: l.codigo, modelo: l.modelo, cantidad: 0 };
+              g[k].cantidad += l.cantidad;
+            });
+            var arr = Object.keys(g).map(function (k) { return g[k]; });
+            return arr.length ? '<div class="pc-acciones">' + botonWa(p.proveedor, arr, arr.length > 1 ? 'Preguntar disponibilidad de los ' + arr.length + ' productos' : '¿Disponible?') + '</div>' : '';
+          })() +
           (sinPago.length ? '<p class="pc-muted pc-nota-pie">' + sinPago.length + ' línea(s) de ventas sin pago no se incluyen al copiar ni al marcar.</p>' : '') +
           '</article>'
         );
@@ -600,6 +707,26 @@
   }
 
   function enlazarCompras(body) {
+    var bg = body.querySelector('[data-ct-guardar]');
+    if (bg)
+      bg.addEventListener('click', async function () {
+        var cambios = {};
+        body.querySelectorAll('[data-pc-ct]').forEach(function (f) {
+          cambios[f.getAttribute('data-pc-ct')] = { nombre: f.querySelector('[data-ct-nombre]').value, celular: f.querySelector('[data-ct-cel]').value };
+        });
+        var np = body.querySelector('[data-ct-nuevo]').value.trim();
+        if (np) cambios[np] = { nombre: body.querySelector('[data-ct-nuevo-nombre]').value, celular: body.querySelector('[data-ct-nuevo-cel]').value };
+        var stt = $('pc-status');
+        stt.textContent = 'Guardando contactos…';
+        try {
+          var j = await S().api('prov-contactos', { contactos: cambios });
+          pc.datos.contactos = j.contactos || {};
+          pintarCompras();
+          stt.textContent = 'Contactos guardados.';
+        } catch (err) {
+          stt.textContent = 'No se pudieron guardar: ' + err.message;
+        }
+      });
     body.querySelectorAll('[data-pc-vista]').forEach(function (b) {
       b.addEventListener('click', function () {
         pc.vista = b.getAttribute('data-pc-vista');

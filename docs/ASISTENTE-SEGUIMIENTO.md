@@ -61,6 +61,10 @@ variables en Vercel: `SMTP_USER` (buzón que envía), `SMTP_PASS`, opcionales `S
   tienda y estado de compra (por pedir, pedido, recibido, no se compra) con referencia del pedido. Vista por proveedor con
   "Copiar pedido" (texto para WhatsApp/correo al proveedor) y marcar en lote. Las ventas sin pago no entran al lote.
   Al pedir se cierra "Disponibilidad"; al recibir todo se cierra "Compra a proveedores".
+- Botón de WhatsApp "¿Disponible?" en cada equipo y uno consolidado por venta cuando varios equipos van al mismo proveedor
+  (y por proveedor en esa vista): abre el chat del asesor con nombre del producto, referencia exacta (cód. proveedor →
+  modelo → SKU) y cantidad. Los asesores se editan en "Contactos de proveedores" (`GET|POST op=prov-contactos`), guardados en
+  Redis (`reiki:wa:proveedores:contactos`), no en el repo.
 - Indicadores (últimos 90 días): días para entregar (meta ≤ 5), días para poner en marcha un proyecto (≤ 30), días del pago al
   pedido al proveedor (≤ 1), horas para verificar un pago (≤ 24), margen bruto (≥ 20 %), cartera vencida > 30 días (≤ 20 %),
   etapas detenidas (0), catálogo disponible (≥ 90 %), ticket promedio y % de ventas por la web.
