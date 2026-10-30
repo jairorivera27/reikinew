@@ -754,15 +754,21 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           } else {
             var faltan = [];
             if (!(e.cliente && e.cliente.documento)) faltan.push('cédula o NIT');
+            if (!(e.cliente && e.cliente.direccion)) faltan.push('dirección');
+            if (!(e.cliente && /,/.test(e.cliente.ciudad || ''))) faltan.push('ciudad con departamento (ej. "La Macarena, Meta")');
             if (!(e.items || []).length) faltan.push('ítems');
             cuerpo =
               '<p>Crea la factura en Alegra como <b>borrador</b> con el cliente, los ítems, el IVA de cada línea y el total de la venta. No se emite a la DIAN hasta que tú le des Emitir en Alegra.</p>' +
-              (faltan.length ? '<p class="seg-warn">Falta: ' + esc(faltan.join(', ')) + '.</p>' : '') +
+              (faltan.length
+                ? '<p class="seg-warn">Para crear la factura falta: <b>' +
+                  esc(faltan.join(', ')) +
+                  '</b>. Complétalo abajo en "Cliente, envío y factura" y guarda.</p>'
+                : '') +
               '<div class="modal-actions"><button type="button" class="btn btn-primary seg-mini" data-alegra-borrador' +
               (faltan.length ? ' disabled' : '') +
               '><i class="fas fa-file-invoice-dollar" aria-hidden="true"></i> Preparar factura en Alegra</button></div>';
           }
-          return '<section class="modal-block al-block"><h3>Factura en Alegra</h3>' + cuerpo + '</section>';
+          return '<section class="modal-block al-block"><h3>Factura en Alegra</h3>' + cuerpo + '<p class="seg-warn" id="al-err" hidden></p></section>';
         }
 
         function msg(t) {
@@ -831,7 +837,13 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
               } catch (err) {
                 if (w) w.close();
                 ab.disabled = false;
-                msg('No se pudo crear en Alegra: ' + err.message);
+                msg('');
+                var ae = $('al-err');
+                if (ae) {
+                  ae.hidden = false;
+                  ae.textContent = 'No se pudo crear en Alegra: ' + err.message;
+                  ae.scrollIntoView({ block: 'nearest' });
+                }
               }
             });
           var as = el.body.querySelector('[data-alegra-sync]');

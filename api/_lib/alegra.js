@@ -105,6 +105,11 @@ async function contactoDe(exp) {
     lista.sort((x, y) => String(y.created_at || y.id).localeCompare(String(x.created_at || x.id)));
     return { contacto: lista.find((x) => x.email) || lista[0], creado: false };
   }
+  // Alegra exige dirección, ciudad y departamento para crear el cliente
+  const faltan = [];
+  if (!String(cl.direccion || '').trim()) faltan.push('la dirección');
+  if (!partirCiudad(cl.ciudad).department) faltan.push('la ciudad como "Ciudad, Departamento"');
+  if (faltan.length) throw new Error(`Para crear el cliente en Alegra falta ${faltan.join(' y ')} en los datos de la venta.`);
   const esNit = (cl.tipoDoc || '').toUpperCase() === 'NIT' || num.length === 9 || /s\.?a\.?s|ltda|s\.?a\.|e\.?s\.?p|bic|asociaci|comunidad|cooperativa|fundaci|\but\b/i.test(cl.nombre || '');
   const { city, department } = partirCiudad(cl.ciudad);
   const cuerpo = {
