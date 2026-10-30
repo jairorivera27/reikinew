@@ -89,3 +89,12 @@ Sección **Cotizaciones** del panel (`api/_lib/cotizaciones.js`, `public/admin/p
   reflectores y bombeo excluidos; el resto y el envío 19 %); si con esas reglas no cuadra el total, prueba con IVA en todo.
 - `POST op=alegra-sync { id }`: si ya se emitió, guarda el número RK (cierra la etapa y envía el correo de factura) y
   registra el pago en Alegra contra Banco 1 si la venta está pagada.
+
+## Consecutivo único y datos mínimos del cotizador web
+
+- Todas las cotizaciones (página, WhatsApp, chats de Claude) usan **CT-DDMMAA-###** de un solo contador diario en Redis
+  (`cotizacion-store.allocNumero`), que salta números ya registrados en el panel en formato `CT-…` o `Cot -…`.
+  Los chats lo piden con `POST op=cot-numero` (token limitado).
+- El cotizador del carrito exige nombre y apellido, WhatsApp colombiano real, correo real (rechaza `00@gmal.com`,
+  `notengo@…`, etc.) y departamento + municipio de la lista oficial (`public/data/colombia-municipios.json`, 32 dptos.,
+  1.104 municipios). Se valida en el navegador y en `api/cotizacion-web.js` (`api/_lib/validar-cliente.js`).

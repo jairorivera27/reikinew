@@ -15,6 +15,7 @@
  * POST op=alegra-snapshot      { facturacionMensual, cartera, recaudoMensual, topClientes } (lo carga Claude)
  * Cotizaciones:
  * GET  op=cot-list | cot-get&id= | cot-pdf&id= (base64)
+ * POST op=cot-numero → { numero } siguiente número del consecutivo único CT-DDMMAA-### (también con el token limitado)
  * POST op=cot-save { numero, tipo: equipos|proyecto, cliente, total, items, … }   (también con el token limitado de los chats)
  * POST op=cot-pdf  { id|numero, nombre, base64, parte, total }                  (también con el token limitado)
  * POST op=cot-estado { id, estado: por_enviar|enviada|seguimiento|aceptada|rechazada, motivo?, proximo? } — aceptada crea la venta
@@ -61,7 +62,7 @@ import {
   importarDeTienda,
 } from '../cotizaciones.js';
 
-const OPS_CHAT = new Set(['cot-save', 'cot-pdf']);
+const OPS_CHAT = new Set(['cot-save', 'cot-pdf', 'cot-numero']);
 function tokenChatOk(req) {
   const t = tokenCotizaciones();
   const h = String(req.headers.authorization || '').trim();
@@ -215,6 +216,12 @@ export default async function handler(req, res) {
     if (op === 'alegra-snapshot') {
       const doc = await guardarAlegra(body || {});
       return send(res, 200, { ok: true, guardado: doc.guardado });
+    }
+    if (op === 'cot-numero') {
+      // Reserva el siguiente número del consecutivo único (CT-DDMMAA-###)
+      const { allocNumero } = await import('../cotizacion-store.js');
+      const numero = await allocNumero();
+      return send(res, 200, { ok: true, numero });
     }
     if (op === 'cot-save') {
       const c = await guardarCotizacion(body || {}, by);

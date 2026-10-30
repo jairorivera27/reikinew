@@ -322,23 +322,36 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
             <p class="cot-pdf-lead">Te generamos un PDF con los equipos y precios de tu carrito, listo para compartir.</p>
           </div>
         </div>
-        <form id="cotizacion-pdf-form" class="cot-pdf-form">
+        <form id="cotizacion-pdf-form" class="cot-pdf-form" novalidate>
           <div class="checkout-field-grid">
             <label class="checkout-field checkout-field--full">
-              <span class="checkout-label">Nombre completo <abbr title="requerido">*</abbr></span>
-              <input type="text" name="nombre" required maxlength="80" autocomplete="name" placeholder="Nombre y apellidos" class="checkout-input" />
+              <span class="checkout-label">Nombre y apellido <abbr title="requerido">*</abbr></span>
+              <input type="text" name="nombre" required maxlength="80" autocomplete="name" placeholder="Ej. María Gómez" class="checkout-input" />
+              <small class="cot-pdf-err" data-err="nombre" hidden></small>
             </label>
             <label class="checkout-field">
-              <span class="checkout-label">Ciudad <abbr title="requerido">*</abbr></span>
-              <input type="text" name="ciudad" required maxlength="80" autocomplete="address-level2" placeholder="Ej. Medellín" class="checkout-input" />
+              <span class="checkout-label">WhatsApp <abbr title="requerido">*</abbr></span>
+              <input type="tel" name="celular" required inputmode="tel" autocomplete="tel" maxlength="16" placeholder="300 123 4567" class="checkout-input" />
+              <small class="cot-pdf-err" data-err="celular" hidden></small>
             </label>
             <label class="checkout-field">
-              <span class="checkout-label">Celular <abbr title="requerido">*</abbr></span>
-              <input type="tel" name="celular" required inputmode="tel" autocomplete="tel" placeholder="300 123 4567" class="checkout-input" />
+              <span class="checkout-label">Correo <abbr title="requerido">*</abbr></span>
+              <input type="email" name="correo" required autocomplete="email" placeholder="tu@correo.com" class="checkout-input" />
+              <small class="cot-pdf-err" data-err="correo" hidden></small>
             </label>
-            <label class="checkout-field checkout-field--full">
-              <span class="checkout-label">Correo <span class="cot-pdf-opcional">(opcional)</span></span>
-              <input type="email" name="correo" autocomplete="email" placeholder="tu@correo.com" class="checkout-input" />
+            <label class="checkout-field">
+              <span class="checkout-label">Departamento <abbr title="requerido">*</abbr></span>
+              <select name="departamento" required class="checkout-input checkout-select" id="cot-departamento">
+                <option value="">Selecciona…</option>
+              </select>
+              <small class="cot-pdf-err" data-err="departamento" hidden></small>
+            </label>
+            <label class="checkout-field">
+              <span class="checkout-label">Municipio <abbr title="requerido">*</abbr></span>
+              <select name="municipio" required class="checkout-input checkout-select" id="cot-municipio" disabled>
+                <option value="">Primero el departamento</option>
+              </select>
+              <small class="cot-pdf-err" data-err="municipio" hidden></small>
             </label>
           </div>
           <label class="cot-pdf-check">
@@ -350,7 +363,7 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
             <i class="fas fa-download" aria-hidden="true"></i>
             Generar y descargar PDF
           </button>
-          <p class="cot-pdf-nota"><i class="fas fa-lock" aria-hidden="true"></i> Solo usamos tus datos para esta cotización.</p>
+          <p class="cot-pdf-nota"><i class="fas fa-lock" aria-hidden="true"></i> Solo usamos tus datos para esta cotización. Te la enviamos también por correo y WhatsApp.</p>
           <p id="cot-pdf-status" class="cot-pdf-status" aria-live="polite"></p>
         </form>
       </div>
@@ -1273,7 +1286,72 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
       });
     }
 
+    /* ---- validación de datos mínimos (igual que en el servidor) ---- */
+    function cotCorreoReal(m) {
+      var v = String(m || '').trim().toLowerCase();
+      if (!/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/.test(v)) return false;
+      var p = v.split('@');
+      if (/^[\d.]+$/.test(p[0]) || p[0].length < 3) return false;
+      if (/^(no|sin|ning|test|prueba|correo|email|xx+|aa+|abc|asd|qwe|na)$/.test(p[0]) || /notengo|noaplica|sincorreo|ninguno|noresponder/.test(p[0])) return false;
+      if (/^(gmal|gmial|gamil|gmai|gmaill|hotmial|hotmal|hotmai|yaho|outlok|outllok)\./.test(p[1])) return false;
+      if (/^(test|example|ejemplo|correo|email)\./.test(p[1])) return false;
+      return true;
+    }
+    function validarCotCliente(fd) {
+      var e = {};
+      var nombre = String(fd.get('nombre') || '').replace(/\s+/g, ' ').trim();
+      var partes = nombre.split(' ').filter(function (x) {
+        return x.replace(/[^A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/g, '').length >= 2;
+      });
+      if (partes.length < 2 || /\d/.test(nombre)) e.nombre = 'Escribe tu nombre y apellido.';
+      var cel = String(fd.get('celular') || '').replace(/\D/g, '');
+      if (cel.length === 12 && cel.indexOf('57') === 0) cel = cel.slice(2);
+      if (!/^3\d{9}$/.test(cel) || /(\d)\1{5,}/.test(cel)) e.celular = 'Escribe tu número de WhatsApp real (10 dígitos, empieza por 3).';
+      if (!cotCorreoReal(fd.get('correo'))) e.correo = 'Escribe un correo válido: ahí te enviamos la cotización.';
+      if (!fd.get('departamento')) e.departamento = 'Selecciona el departamento.';
+      if (!fd.get('municipio')) e.municipio = 'Selecciona el municipio.';
+      return e;
+    }
+    function mostrarCotErrores(form, errs) {
+      form.querySelectorAll('[data-err]').forEach(function (el) {
+        var k = el.getAttribute('data-err');
+        el.hidden = !errs[k];
+        el.textContent = errs[k] || '';
+        var inp = form.querySelector('[name="' + k + '"]');
+        if (inp) inp.setAttribute('aria-invalid', errs[k] ? 'true' : 'false');
+      });
+    }
+    var cotMunicipios = null;
+    async function cargarCotMunicipios() {
+      var dep = document.getElementById('cot-departamento');
+      var mun = document.getElementById('cot-municipio');
+      if (!dep || !mun || cotMunicipios) return;
+      try {
+        cotMunicipios = await (await fetch('/data/colombia-municipios.json')).json();
+      } catch (_e) {
+        return;
+      }
+      Object.keys(cotMunicipios).forEach(function (d) {
+        var o = document.createElement('option');
+        o.value = d;
+        o.textContent = d;
+        dep.appendChild(o);
+      });
+      dep.addEventListener('change', function () {
+        var lista = cotMunicipios[dep.value] || [];
+        mun.innerHTML = '<option value="">' + (lista.length ? 'Selecciona…' : 'Primero el departamento') + '</option>';
+        lista.forEach(function (m) {
+          var o = document.createElement('option');
+          o.value = m;
+          o.textContent = m;
+          mun.appendChild(o);
+        });
+        mun.disabled = !lista.length;
+      });
+    }
+
     function openCotPdfModal() {
+      cargarCotMunicipios();
       var modal = document.getElementById('cotizacion-pdf-modal');
       if (modal) modal.hidden = false;
     }
@@ -1293,6 +1371,12 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
         return;
       }
       var fd = new FormData(form);
+      var errs = validarCotCliente(fd);
+      mostrarCotErrores(form, errs);
+      if (Object.keys(errs).length) {
+        if (status) status.textContent = 'Revisa los datos marcados.';
+        return;
+      }
       if (!fd.get('autorizacion')) {
         if (status) status.textContent = 'Debes autorizar el tratamiento de datos.';
         return;
@@ -1305,16 +1389,21 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
             nombre: fd.get('nombre'),
-            ciudad: fd.get('ciudad'),
             celular: fd.get('celular'),
             correo: fd.get('correo'),
+            departamento: fd.get('departamento'),
+            municipio: fd.get('municipio'),
+            ciudad: fd.get('municipio') + ', ' + fd.get('departamento'),
             autorizacion: true,
             items: cart,
           }),
         });
         var data = await res.json();
         if (!data.ok) {
-          if (status) status.textContent = 'No se pudo generar. Revisa los datos e intenta de nuevo.';
+          if (data.errores) {
+            mostrarCotErrores(form, data.errores);
+            if (status) status.textContent = 'Revisa los datos marcados.';
+          } else if (status) status.textContent = 'No se pudo generar. Revisa los datos e intenta de nuevo.';
           return;
         }
         sessionStorage.setItem(
@@ -2240,6 +2329,19 @@ const wompiRedirectUrl = `${siteOrigin}/respuesta-pago`;
     pointer-events: auto;
   }
 
+  .cot-pdf-err {
+    color: #b91c1c;
+    font-size: 0.78rem;
+    font-weight: 600;
+    margin-top: 0.2rem;
+    display: block;
+  }
+  .cot-pdf-err[hidden] {
+    display: none;
+  }
+  .cot-pdf-form [aria-invalid='true'] {
+    border-color: #dc2626;
+  }
 </style>
   </body>
 </html>

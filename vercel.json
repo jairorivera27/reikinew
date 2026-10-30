@@ -19,7 +19,7 @@
     "api/cotizacion-web.js": {
       "maxDuration": 60,
       "memory": 1769,
-      "includeFiles": "config/empresa.json"
+      "includeFiles": "{config/empresa.json,public/data/colombia-municipios.json}"
     },
     "api/cotizacion-download.js": {
       "maxDuration": 60,

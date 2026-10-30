@@ -5,6 +5,7 @@
  * POST          → crea cotización origen web + PDF URL + avisa dueño
  * POST ?action=pagada  { id|reference, status } → marca pagada_online
  */
+import { validarCliente } from './_lib/validar-cliente.js';
 import {
   createCotizacion,
   getCotizacionIfToken,
@@ -177,14 +178,21 @@ export default async function handler(req, res) {
         res.statusCode = 400;
         return res.end(JSON.stringify({ ok: false, error: 'items_requeridos' }));
       }
-      const nombre = String(body.nombre || body.cliente?.nombre || '').trim();
-      const ciudad = String(body.ciudad || body.cliente?.ciudad || '').trim();
-      const celular = formatPhone(body.celular || body.cliente?.celular || '');
-      const correo = String(body.correo || body.cliente?.correo || '').trim();
-      if (!nombre || !ciudad || !celular) {
+      const v = validarCliente({
+        nombre: body.nombre || body.cliente?.nombre,
+        celular: body.celular || body.whatsapp || body.cliente?.celular,
+        correo: body.correo || body.cliente?.correo,
+        departamento: body.departamento || body.cliente?.departamento,
+        municipio: body.municipio || body.ciudad || body.cliente?.ciudad,
+      });
+      if (!v.ok) {
         res.statusCode = 400;
-        return res.end(JSON.stringify({ ok: false, error: 'datos_cliente' }));
+        return res.end(JSON.stringify({ ok: false, error: 'datos_cliente', errores: v.errores }));
       }
+      const nombre = v.datos.nombre;
+      const ciudad = v.datos.ciudad;
+      const celular = formatPhone(v.datos.celular);
+      const correo = v.datos.correo;
       if (!body.autorizacion && !body.habeas) {
         res.statusCode = 400;
         return res.end(JSON.stringify({ ok: false, error: 'autorizacion_requerida' }));

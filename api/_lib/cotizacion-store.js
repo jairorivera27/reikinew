@@ -9,7 +9,7 @@ import { getRedis, waKey } from './whatsapp-redis.js';
 import { calcTotalesIva, formatCopPdf, isPrecioFinal } from './iva.js';
 import { formatPhoneCO } from './phone.js';
 import { isFestivoColombia } from './festivos-co.js';
-import { registrarDesdeTienda, estadoDesdeTienda } from './cotizaciones.js';
+import { registrarDesdeTienda, estadoDesdeTienda, getCotizacion as getRegistro } from './cotizaciones.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const QUOTE_TTL_SEC = 45 * 24 * 3600; // ~45 días (cubrir validez + margen)
@@ -121,11 +121,25 @@ async function nextConsecutive(dayKey) {
   return cur;
 }
 
+/**
+ * Consecutivo único de cotizaciones (página, WhatsApp, chats de Claude y panel): CT-DDMMAA-###.
+ * Salta los números que ya existan en el registro del panel, en formato CT-… o "Cot -…".
+ */
 export async function allocNumero() {
   const day = ddmmyyBogota();
-  const n = await nextConsecutive(day);
-  const num = `${PREFIX}-${day}-${String(n).padStart(3, '0')}`;
-  return num;
+  for (let intento = 0; intento < 60; intento += 1) {
+    const n = await nextConsecutive(day);
+    const seq = String(n).padStart(3, '0');
+    const num = `${PREFIX}-${day}-${seq}`;
+    let usado = false;
+    try {
+      usado = Boolean((await getRegistro(`${PREFIX}${day}${seq}`)) || (await getRegistro(`COT${day}${seq}`)));
+    } catch {
+      usado = false;
+    }
+    if (!usado) return num;
+  }
+  throw new Error('No se pudo asignar un número de cotización');
 }
 
 function randomToken() {
