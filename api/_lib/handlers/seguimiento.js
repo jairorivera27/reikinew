@@ -13,6 +13,13 @@
  * POST op=compra { cambios:[{ id, idx, estado: por_pedir|pedido|recibido|no_aplica, nota }] }
  * GET  op=equipos              → equipos comprometidos (por pedir / pedidos / en camino) por proveedor
  * POST op=alegra-snapshot      { facturacionMensual, cartera, recaudoMensual, topClientes } (lo carga Claude)
+ * Cotizaciones:
+ * GET  op=cot-list | cot-get&id= | cot-pdf&id= (base64)
+ * POST op=cot-save { numero, tipo: equipos|proyecto, cliente, total, items, … }   (también con el token limitado de los chats)
+ * POST op=cot-pdf  { id|numero, nombre, base64, parte, total }                  (también con el token limitado)
+ * POST op=cot-estado { id, estado: por_enviar|enviada|seguimiento|aceptada|rechazada, motivo?, proximo? } — aceptada crea la venta
+ * POST op=cot-seguimiento { id, canal, nota, proximo? }
+ * POST op=cot-enviar { id, para?, cc?, asunto, cuerpo, adjuntarPdf?, tipo: envio|seguimiento }
  * POST op=correo-libre { id, asunto, cuerpo, cc? } → correo redactado al cliente del expediente (texto plano; • para viñetas)
  * POST op=correo  { id, key } → reintenta el correo al cliente de esa etapa
  * POST op=pago    { id, pago: { id?, fecha, monto, medio, referencia, estado: verificado|por_verificar, nota } }
@@ -35,6 +42,25 @@ import {
 import { getRedis } from '../whatsapp-redis.js';
 import { calcularDesempeno, calcularInicio, comprasPendientes, equiposComprometidos, guardarAlegra, leerAlegra } from '../desempeno.js';
 import { correoConfigurado, etapasConCorreo, etapasConFecha } from '../correos.js';
+import {
+  cambiarEstado,
+  conResumenCot,
+  enviarCotizacion,
+  getCotizacion,
+  guardarCotizacion,
+  guardarPdfParte,
+  leerPdf,
+  listCotizaciones,
+  registrarSeguimiento,
+  tokenCotizaciones,
+} from '../cotizaciones.js';
+
+const OPS_CHAT = new Set(['cot-save', 'cot-pdf']);
+function tokenChatOk(req) {
+  const t = tokenCotizaciones();
+  const h = String(req.headers.authorization || '').trim();
+  return Boolean(t) && h.toLowerCase().startsWith('bearer ') && h.slice(7).trim() === t;
+}
 
 function send(res, code, body) {
   res.statusCode = code;
@@ -113,11 +139,11 @@ async function revision(marcar) {
 export default async function handler(req, res) {
   res.setHeader('Content-Type', 'application/json; charset=utf-8');
   res.setHeader('Cache-Control', 'no-store');
-  if (!adminAuthOk(req)) return send(res, 401, { ok: false, error: 'No autorizado.' });
-
   const q = query(req);
   const op = String(q.op || 'list');
-  const by = adminActor(req);
+  const chat = !adminAuthOk(req) && OPS_CHAT.has(op) && req.method === 'POST' && tokenChatOk(req);
+  if (!chat && !adminAuthOk(req)) return send(res, 401, { ok: false, error: 'No autorizado.' });
+  const by = chat ? 'Claude (chat)' : adminActor(req);
 
   try {
     if (req.method === 'GET') {
@@ -133,6 +159,23 @@ export default async function handler(req, res) {
       if (op === 'revision') {
         const a = await leerAlegra();
         return send(res, 200, { ok: true, ...(await revision(q.marcar === '1')), alegraActualizado: a ? a.guardado : null });
+      }
+      if (op === 'cot-list') {
+        const items = (await listCotizaciones()).map(conResumenCot);
+        return send(res, 200, { ok: true, count: items.length, cotizaciones: items });
+      }
+      if (op === 'cot-get') {
+        const c = await getCotizacion(q.id);
+        return c ? send(res, 200, { ok: true, cotizacion: conResumenCot(c) }) : send(res, 404, { ok: false, error: 'No existe.' });
+      }
+      if (op === 'cot-pdf') {
+        const p = await leerPdf(q.id);
+        return p ? send(res, 200, { ok: true, ...p }) : send(res, 404, { ok: false, error: 'Sin PDF.' });
+      }
+      if (op === 'cot-token') {
+        // Solo con el token de Claude: entrega el token limitado que usan las habilidades de cotización
+        if (by !== 'claude') return send(res, 403, { ok: false, error: 'Solo para el asistente.' });
+        return send(res, 200, { ok: true, token: tokenCotizaciones() });
       }
       if (op === 'inicio') return send(res, 200, { ok: true, ...(await calcularInicio()) });
       if (op === 'compras') return send(res, 200, { ok: true, ...(await comprasPendientes({ todos: q.todos === '1' })) });
@@ -166,6 +209,31 @@ export default async function handler(req, res) {
     if (op === 'alegra-snapshot') {
       const doc = await guardarAlegra(body || {});
       return send(res, 200, { ok: true, guardado: doc.guardado });
+    }
+    if (op === 'cot-save') {
+      const c = await guardarCotizacion(body || {}, by);
+      return send(res, 200, { ok: true, id: c.id, cotizacion: conResumenCot(c) });
+    }
+    if (op === 'cot-pdf') {
+      const id = String(body.id || '') || (body.numero ? (await import('../cotizaciones.js')).idDeNumero(body.numero) : '');
+      const r = await guardarPdfParte(id, { nombre: body.nombre, base64: body.base64, parte: body.parte, total: body.total }, by);
+      if (!r) return send(res, 404, { ok: false, error: 'Registra primero la cotización (op=cot-save).' });
+      return send(res, 200, { ok: true, id, completo: r.completo, recibidas: r.recibidas, total: r.total });
+    }
+    if (op === 'cot-estado') {
+      const c = await cambiarEstado(body.id, { estado: body.estado, motivo: body.motivo, proximo: body.proximo }, by);
+      if (!c) return send(res, 404, { ok: false, error: 'No existe.' });
+      const exp = c.expedienteId ? await getExpediente(c.expedienteId) : null;
+      return send(res, 200, { ok: true, cotizacion: conResumenCot(c), expediente: exp ? { ...exp, resumen: resumen(exp) } : null });
+    }
+    if (op === 'cot-seguimiento') {
+      const c = await registrarSeguimiento(body.id, { canal: body.canal, nota: body.nota, proximo: body.proximo, resultado: body.resultado }, by);
+      return c ? send(res, 200, { ok: true, cotizacion: conResumenCot(c) }) : send(res, 404, { ok: false, error: 'No existe.' });
+    }
+    if (op === 'cot-enviar') {
+      const r = await enviarCotizacion(body.id, { para: body.para, cc: body.cc, asunto: body.asunto, cuerpo: body.cuerpo, adjuntarPdf: body.adjuntarPdf !== false, tipo: body.tipo === 'seguimiento' ? 'seguimiento' : 'envio' }, by);
+      if (!r) return send(res, 404, { ok: false, error: 'No existe.' });
+      return send(res, r.enviado ? 200 : 502, { ok: r.enviado, error: r.enviado ? undefined : r.motivo, cotizacion: conResumenCot(r.cot) });
     }
     if (op === 'correo-libre') {
       const r = await enviarCorreoLibre(body.id, { asunto: body.asunto, cuerpo: body.cuerpo, cc: body.cc }, by);

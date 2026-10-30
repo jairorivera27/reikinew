@@ -55,6 +55,8 @@
     mail: 'fa-envelope',
     truck: 'fa-truck',
     file: 'fa-file-invoice-dollar',
+    phone: 'fa-phone',
+    send: 'fa-paper-plane',
   };
   var PAGO = {
     completo: ['Pagado', 'ok'],
@@ -108,6 +110,7 @@
           .map(function (a, i) {
             var det = (a.detalle || [])
               .map(function (d) {
+                if (d.cot) return '<li><button type="button" class="in-link" data-abrir-cot="' + esc(d.cot) + '">' + esc(d.txt) + '</button></li>';
                 return d.id
                   ? '<li><button type="button" class="in-link" data-abrir="' + esc(d.id) + '">' + esc(d.txt) + '</button></li>'
                   : '<li>' + esc(d.txt) + '</li>';
@@ -238,6 +241,7 @@
       ' compras y ' +
       j.activos.proyectos +
       ' proyectos en curso' +
+      (j.cotizaciones ? ' · ' + j.cotizaciones.abiertas + ' cotizaciones abiertas por ' + corto(j.cotizaciones.valorAbierto) : '') +
       (a ? ' · cartera en Alegra ' + corto(a.cartera) : '') +
       ' · actualizado ' +
       esc(hora(j.generado)) +
@@ -300,6 +304,11 @@
     box.querySelectorAll('[data-abrir]').forEach(function (b) {
       b.addEventListener('click', function () {
         S().abrir(b.getAttribute('data-abrir'));
+      });
+    });
+    box.querySelectorAll('[data-abrir-cot]').forEach(function (b) {
+      b.addEventListener('click', function () {
+        if (window.reikiCot) window.reikiCot.abrir(b.getAttribute('data-abrir-cot'));
       });
     });
   }
@@ -684,5 +693,7 @@
     });
   }
 
-  window.reikiPanes = { inicio: cargarInicio, compras: cargarCompras };
+  window.reikiPanes = window.reikiPanes || {};
+  window.reikiPanes.inicio = cargarInicio;
+  window.reikiPanes.compras = cargarCompras;
 })();

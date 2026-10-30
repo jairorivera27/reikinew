@@ -10,6 +10,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { getRedis, waKey } from './whatsapp-redis.js';
 import { fechaAprobacion, listExpedientes, resumen, sincronizarPedidosWeb } from './seguimiento.js';
+import { listCotizaciones, resumenCot } from './cotizaciones.js';
 
 const ALEGRA_KEY = waKey('metricas', 'alegra');
 let alegraMem = globalThis.__reikiAlegraSnap || null;
@@ -494,6 +495,15 @@ export async function calcularInicio() {
     return f && f.estado !== 'hecho' && f.estado !== 'no_aplica' && ent && ent.estado === 'hecho';
   });
   if (porFacturar.length) add(2, 'file', `${porFacturar.length} venta(s) entregada(s) sin factura`, { cat: 'tienda' }, porFacturar.map((e) => ({ id: e.id, txt: e.titulo })));
+  /* cotizaciones */
+  const cots = await listCotizaciones();
+  const cotSeg = cots.filter((c) => resumenCot(c).seguimientoVencido);
+  if (cotSeg.length)
+    add(1, 'phone', `${cotSeg.length} cotización(es) para hacer seguimiento hoy ($${cotSeg.reduce((a, c) => a + (c.total || 0), 0).toLocaleString('es-CO')})`, { cat: 'cotizaciones' }, cotSeg.map((c) => ({ cot: c.id, txt: `${c.numero || c.id} · ${c.cliente?.nombre || ''}` })));
+  const cotPorEnviar = cots.filter((c) => c.estado === 'por_enviar' && c.origen !== 'web' && c.origen !== 'whatsapp');
+  if (cotPorEnviar.length) add(2, 'send', `${cotPorEnviar.length} cotización(es) hechas que aún no se le han enviado al cliente`, { cat: 'cotizaciones' }, cotPorEnviar.map((c) => ({ cot: c.id, txt: `${c.numero || c.id} · ${c.cliente?.nombre || ''}` })));
+  const cotWebNuevas = cots.filter((c) => c.estado === 'por_enviar' && (c.origen === 'web' || c.origen === 'whatsapp'));
+  if (cotWebNuevas.length) add(2, 'send', `${cotWebNuevas.length} cotización(es) que los clientes generaron en la página o WhatsApp, sin contactar`, { cat: 'cotizaciones' }, cotWebNuevas.map((c) => ({ cot: c.id, txt: `${c.numero || c.id} · ${c.cliente?.nombre || ''} · ${c.cliente?.celular || ''}` })));
   acciones.sort((a, b) => a.prioridad - b.prioridad);
 
   /* KPIs */
@@ -519,10 +529,16 @@ export async function calcularInicio() {
       ventasConCosto += r.total;
     }
   }
+  const cotCerradas = cots.filter((c) => ['aceptada', 'rechazada'].includes(c.estado) && String(c.cerrada || c.updatedAt) >= hace90);
+  const cotAcept = cotCerradas.filter((c) => c.estado === 'aceptada');
+  const tCierre = cotAcept.map((c) => dias(c.creada, c.cerrada || c.updatedAt)).filter((d) => d >= 0);
+  const cotAbiertas = cots.filter((c) => resumenCot(c).abierta);
   const carteraTotal = alegra?.cartera?.total || 0;
   const carteraVencida = vencida.reduce((a, f) => a + f.saldo, 0);
   const pm = periodos.mes;
   const kpis = [
+    kpi('conversion', 'Cotizaciones aceptadas', cotCerradas.length ? r1((cotAcept.length / cotCerradas.length) * 100) : null, '%', 30, 'mayor', 'De las cotizaciones cerradas (aceptadas o rechazadas), cuántas se vuelven venta. Hacer seguimiento a tiempo es lo que más la sube.', { n: cotCerradas.length }),
+    kpi('cierre', 'Días para cerrar una cotización', r1(prom(tCierre)), 'días', 7, 'menor', 'Desde que se registra la cotización hasta que el cliente la acepta.', { n: tCierre.length }),
     kpi('entrega', 'Días para entregar una compra', r1(prom(tEntrega)), 'días', 5, 'menor', 'Desde que se aprueba la venta hasta que el cliente recibe. Entregar rápido trae recompra y referidos.', { n: tEntrega.length }),
     kpi('proyecto', 'Días para poner en marcha un proyecto', r1(prom(tProyecto)), 'días', 30, 'menor', 'Desde la aprobación hasta que el sistema genera. Cada día de retraso aplaza el pago contra instalación.', { n: tProyecto.length }),
     kpi('pedido', 'Días del pago al pedido al proveedor', r1(prom(tPedido)), 'días', 1, 'menor', 'Pedir el mismo día del pago evita quedarse sin existencias y acorta la entrega.', { n: tPedido.length }),
@@ -542,6 +558,13 @@ export async function calcularInicio() {
     equipos,
     acciones,
     kpis,
+    cotizaciones: {
+      abiertas: cotAbiertas.length,
+      valorAbierto: cotAbiertas.reduce((a, c) => a + (c.total || 0), 0),
+      seguimientoHoy: cotSeg.length,
+      porEnviar: cots.filter((c) => c.estado === 'por_enviar').length,
+      mes: cots.filter((c) => enRango(ymd(c.creada), R.mes)).length,
+    },
     activos: { tienda: activos.filter((e) => e.tipo === 'tienda').length, proyectos: activos.filter((e) => e.tipo === 'proyecto').length },
     alegra: alegra ? { guardado: alegra.guardado, cartera: carteraTotal, vencida: carteraVencida, facturadoAnio: alegra.facturadoAnio || null } : null,
   };

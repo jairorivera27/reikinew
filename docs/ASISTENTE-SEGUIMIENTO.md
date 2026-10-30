@@ -64,3 +64,18 @@ variables en Vercel: `SMTP_USER` (buzón que envía), `SMTP_PASS`, opcionales `S
 - Indicadores (últimos 90 días): días para entregar (meta ≤ 5), días para poner en marcha un proyecto (≤ 30), días del pago al
   pedido al proveedor (≤ 1), horas para verificar un pago (≤ 24), margen bruto (≥ 20 %), cartera vencida > 30 días (≤ 20 %),
   etapas detenidas (0), catálogo disponible (≥ 90 %), ticket promedio y % de ventas por la web.
+
+## Cotizaciones
+
+Sección **Cotizaciones** del panel (`api/_lib/cotizaciones.js`, `public/admin/panel-cotizaciones.js`).
+
+- Entran solas: las que hace Claude en cualquier chat (habilidad `registrar-cotizacion-reiki`, token limitado
+  `cotz_…` derivado de `CLAUDE_AGENT_TOKEN`, solo sirve para `cot-save` y `cot-pdf`), y las que generan los clientes en
+  la página web o el bot de WhatsApp (`cotizacion-store.createCotizacion` → `registrarDesdeTienda`). Los PDF de pedidos
+  pagados (`tienda_pedido`) no se registran.
+- Estados: por_enviar → enviada → seguimiento → aceptada | rechazada (con motivo). Aceptada crea la venta en Compras en
+  tienda o Proyectos (ítems con `comprar:false` quedan "no se compra"). Pagada en línea → aceptada sin crear venta (la crea
+  el pedido web).
+- El número sin la revisión es la llave (`CT-271026-006 R1` → `CT271026006`): una R1 actualiza la misma cotización.
+- PDF en Redis en trozos (`reiki:wa:cotzpdf:*`), máx. 12 MB; las web usan `pdfUrl`. Envío por correo desde info@ con el PDF
+  adjunto (`cot-enviar`); seguimiento a los 3 días del envío y 4 días después de cada contacto.

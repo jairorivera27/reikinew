@@ -96,6 +96,9 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         <button type="button" class="cat-tab is-active" role="tab" data-cat="inicio">
           <i class="fas fa-home" aria-hidden="true"></i> Inicio
         </button>
+        <button type="button" class="cat-tab" role="tab" data-cat="cotizaciones">
+          <i class="fas fa-file-signature" aria-hidden="true"></i> Cotizaciones <span class="cat-count" data-count="cotizaciones"></span>
+        </button>
         <button type="button" class="cat-tab" role="tab" data-cat="tienda">
           <i class="fas fa-store" aria-hidden="true"></i> Compras en tienda <span class="cat-count" data-count="tienda"></span>
         </button>
@@ -116,6 +119,30 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       <div id="pane-inicio">
         <p id="in-status" class="dash-status" aria-live="polite"></p>
         <div id="in-body"></div>
+      </div>
+
+      <div id="pane-cotizaciones" hidden>
+        <header class="pc-head">
+          <h2>Cotizaciones</h2>
+          <p>Todas las cotizaciones: las que hace Claude en cualquier chat y las que generan los clientes en la página o por WhatsApp. Envíalas, haz seguimiento y márcalas como aceptadas (se crea la venta) o rechazadas.</p>
+        </header>
+        <section class="toolbar">
+          <div class="search-wrap">
+            <i class="fas fa-search" aria-hidden="true"></i>
+            <input type="search" id="ct-q" placeholder="Buscar cliente, número, ciudad o equipo…" autocomplete="off" />
+          </div>
+          <div class="toolbar-filters">
+            <select id="ct-origen" aria-label="Origen">
+              <option value="">Todos los orígenes</option>
+              <option value="chat">Hechas por Claude</option>
+              <option value="web">Página web</option>
+              <option value="whatsapp">WhatsApp</option>
+              <option value="panel">Panel</option>
+            </select>
+          </div>
+        </section>
+        <p id="ct-status" class="dash-status" aria-live="polite"></p>
+        <div id="ct-body"></div>
       </div>
 
       <div id="pane-seg" hidden>
@@ -897,6 +924,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           el.paneSeg.hidden = cat !== 'tienda' && cat !== 'proyecto';
           $('pane-inicio').hidden = cat !== 'inicio';
           $('pane-compras').hidden = cat !== 'compras';
+          $('pane-cotizaciones').hidden = cat !== 'cotizaciones';
           $('pane-desempeno').hidden = cat !== 'desempeno';
           if (cat === 'tienda' || cat === 'proyecto') render();
           if (window.reikiPanes && window.reikiPanes[cat]) window.reikiPanes[cat]();
@@ -1149,7 +1177,8 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       })();
     </script>
 
-    <script is:inline src="/admin/panel-inicio.js?v=20261021d"></script>
+    <script is:inline src="/admin/panel-inicio.js?v=20261030a"></script>
+    <script is:inline src="/admin/panel-cotizaciones.js?v=20261030a"></script>
 
     <script is:inline define:vars={{ MOCKS: pedidosMocks }}>
       (function () {
@@ -4125,6 +4154,80 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         .in-sem-num small {
           display: none;
         }
+      }
+      /* ===== Cotizaciones ===== */
+      .oc-badge--info {
+        background: #e0f2fe;
+        color: #075985;
+      }
+      .ct-filtros {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin: 0 0 0.9rem;
+      }
+      .ct-chip {
+        font: inherit;
+        font-size: 0.82rem;
+        font-weight: 600;
+        border: 1px solid rgba(255, 255, 255, 0.5);
+        background: rgba(255, 255, 255, 0.16);
+        color: #fff;
+        border-radius: 99px;
+        padding: 0.35rem 0.8rem;
+        cursor: pointer;
+      }
+      .ct-chip b {
+        margin-left: 0.2rem;
+        opacity: 0.85;
+      }
+      .ct-chip.is-active {
+        background: #fff;
+        color: var(--brand);
+      }
+      .ct-chip--alerta:not(.is-active) {
+        background: #dc2626;
+        border-color: #dc2626;
+      }
+      .ct-card--hoy {
+        border: 2px solid #dc2626;
+      }
+      .ct-hoy {
+        color: #b91c1c !important;
+      }
+      .ct-origen {
+        font-size: 0.75rem;
+        color: var(--muted);
+      }
+      .ct-desc {
+        margin: 0.2rem 0 0.6rem;
+        font-size: 0.9rem;
+        color: var(--muted);
+      }
+      .ct-acciones {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin: 0.4rem 0 0.8rem;
+      }
+      .ct-acciones .btn {
+        text-decoration: none;
+      }
+      .ct-ok {
+        color: var(--ok) !important;
+        border-color: #86efac !important;
+      }
+      .ct-no {
+        color: #b91c1c !important;
+        border-color: #fca5a5 !important;
+      }
+      .ct-panel {
+        border: 2px solid var(--brand-2);
+        border-radius: 14px;
+      }
+      .ct-panel textarea {
+        font-family: inherit;
+        line-height: 1.45;
       }
     </style>
   </body>

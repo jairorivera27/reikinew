@@ -9,6 +9,7 @@ import { getRedis, waKey } from './whatsapp-redis.js';
 import { calcTotalesIva, formatCopPdf, isPrecioFinal } from './iva.js';
 import { formatPhoneCO } from './phone.js';
 import { isFestivoColombia } from './festivos-co.js';
+import { registrarDesdeTienda, estadoDesdeTienda } from './cotizaciones.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const QUOTE_TTL_SEC = 45 * 24 * 3600; // ~45 días (cubrir validez + margen)
@@ -237,6 +238,8 @@ export async function createCotizacion(opts) {
       console.warn('[cotizacion-store] set', err?.message || err);
     }
   }
+  // Registro en la sección Cotizaciones del panel (no bloquea si falla)
+  await registrarDesdeTienda(doc);
   return doc;
 }
 
@@ -276,6 +279,7 @@ export async function updateCotizacionEstado(id, estado, extra = {}) {
   if (!doc) return null;
   doc.estado = estado;
   Object.assign(doc, extra);
+  await estadoDesdeTienda(doc, estado);
   quotesMem.set(id, doc);
   const redis = getRedis();
   if (redis) {

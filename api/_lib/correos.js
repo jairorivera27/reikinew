@@ -215,7 +215,7 @@ export function correoConfigurado() {
 }
 
 let transporter = null;
-async function enviarSmtp({ to, cc, subject, htmlBody, textBody }) {
+async function enviarSmtp({ to, cc, subject, htmlBody, textBody, attachments }) {
   const user = String(process.env.SMTP_USER || '').trim();
   const em = empresa();
   if (!transporter) {
@@ -237,6 +237,7 @@ async function enviarSmtp({ to, cc, subject, htmlBody, textBody }) {
       subject,
       html: htmlBody,
       text: textBody,
+      attachments: attachments && attachments.length ? attachments : undefined,
     });
     return { ok: true, id: info.messageId };
   } catch (err) {
@@ -251,7 +252,7 @@ async function enviar(msg) {
   return { ok: false, motivo: 'correo sin configurar (faltan SMTP_USER y SMTP_PASS en Vercel)' };
 }
 
-async function enviarResend({ to, cc, subject, htmlBody, textBody }) {
+async function enviarResend({ to, cc, subject, htmlBody, textBody, attachments }) {
   const key = String(process.env.RESEND_API_KEY || '').trim();
   const em = empresa();
   const body = {
@@ -264,6 +265,8 @@ async function enviarResend({ to, cc, subject, htmlBody, textBody }) {
   };
   if (process.env.MAIL_BCC) body.bcc = [process.env.MAIL_BCC];
   if (cc) body.cc = [cc];
+  if (attachments && attachments.length)
+    body.attachments = attachments.map((a) => ({ filename: a.filename, content: Buffer.from(a.content).toString('base64') }));
   try {
     const r = await fetch('https://api.resend.com/emails', {
       method: 'POST',
@@ -370,4 +373,10 @@ export async function correoLibre(exp, { asunto, cuerpo, cc } = {}) {
   });
   exp.correos = exp.correos.slice(0, 50);
   return { enviado: !!res.ok, motivo: res.ok ? '' : res.motivo, asunto: subject };
+}
+
+/** Correo libre con adjuntos (cotizaciones). No toca expedientes. */
+export async function enviarConAdjunto({ to, cc, subject, cuerpo, adjuntos = [] } = {}) {
+  if (!String(subject || '').trim() || !String(cuerpo || '').trim()) return { ok: false, motivo: 'falta asunto o texto' };
+  return enviar({ to, cc: cc || '', subject: String(subject).trim(), htmlBody: htmlLibre(cuerpo), textBody: String(cuerpo).trim(), attachments: adjuntos });
 }
