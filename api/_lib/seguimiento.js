@@ -569,7 +569,7 @@ const EMAIL_OK = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 const copTxt = (n) => '$' + Math.round(Number(n) || 0).toLocaleString('es-CO');
 
 function docTxt(doc) {
-  const d = String(doc || '').trim();
+  const d = String(doc || '').trim().replace(/^(nit|c\.?\s?c\.?|cc)\s*[:.]?\s*/i, '');
   if (!d) return '';
   const solo = d.replace(/\D/g, '');
   const esNit = /-/.test(d) || (/^9\d{8}/.test(solo) && solo.length <= 10);
@@ -583,8 +583,9 @@ export function textoCompraConfirmada(exp) {
   const cl = exp.cliente || {};
   const proyecto = exp.tipo === 'proyecto';
   const num = (exp.cotizacion && exp.cotizacion.numero) || exp.id;
-  const primer = String(cl.nombre || '').trim().split(/\s+/)[0] || '';
-  const items = (exp.items || []).map((i) => `• ${i.cantidad} ${i.nombre}`);
+  const empresa = /\b(s\.?\s?a\.?\s?s|ltda|s\.?a\.?|e\.?s\.?p|corporaci[oó]n|fundaci[oó]n|asociaci[oó]n|comunidad|cooperativa|inversiones|empresa)\b/i.test(cl.nombre || '') || /^9\d{8}/.test(String(cl.documento || '').replace(/\D/g, ''));
+  const primer = empresa ? '' : String(cl.nombre || '').trim().split(/\s+/)[0] || '';
+  const items = (exp.items || []).map((i) => `• ${i.cantidad} ${i.nombre}${Number(i.precioUnit) > 0 ? '' : ' (incluido sin costo)'}`);
   const pasos = [];
   if (r.estadoPago === 'completo') {
     // pagado
