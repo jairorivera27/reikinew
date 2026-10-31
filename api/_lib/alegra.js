@@ -16,7 +16,7 @@ const cfg = () => ({
   iva19: String(process.env.ALEGRA_IVA19 || '4'),
   excluido: String(process.env.ALEGRA_IVA_EXCLUIDO || '2'),
   app: String(process.env.ALEGRA_APP_URL || 'https://app.alegra.com').replace(/\/$/, ''),
-  plantilla: String(process.env.ALEGRA_PLANTILLA || '8'), // 8 = Clásico FE (factura electrónica)
+  plantilla: String(process.env.ALEGRA_PLANTILLA || '2'), // 2 = Clásico (Carta electrónica), la de factura electrónica
 });
 
 export function alegraConfigurado() {
