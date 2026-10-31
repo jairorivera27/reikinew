@@ -192,9 +192,14 @@ export async function ajustarPlantillaFactura(alegraId) {
   }
 }
 
+/** Alegra acepta referencias de máximo 50 caracteres (los slugs de la tienda pueden ser más largos). */
+function refAlegra(sku) {
+  return String(sku || '').trim().slice(0, 50).replace(/-+$/, '');
+}
+
 async function itemDe(linea) {
   const c = cfg();
-  const ref = String(linea.sku || '').slice(0, 90);
+  const ref = refAlegra(linea.sku);
   const tax = linea.iva === 0 ? c.excluido : c.iva19;
   if (ref) {
     try {
@@ -234,7 +239,7 @@ export async function crearBorrador(exp) {
       id: Number(id),
       price: l.precioUnit,
       quantity: l.cantidad,
-      reference: l.sku || undefined,
+      reference: refAlegra(l.sku) || undefined,
       description: '',
       tax: [{ id: Number(l.iva === 0 ? c.excluido : c.iva19) }],
     });
