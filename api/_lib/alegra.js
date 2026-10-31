@@ -131,6 +131,35 @@ async function contactoDe(exp) {
 }
 
 /* ---------------- ítems ---------------- */
+/** Unidad de medida DIAN: "service" para envío/instalación/mano de obra, "unit" para equipos. */
+function unidadDe(nombre) {
+  return /env[ií]o|flete|transporte|instalaci|mano de obra|servicio|visita|retie|tr[aá]mite|legalizaci/i.test(String(nombre || '')) ? 'service' : 'unit';
+}
+
+/** Alegra no deja emitir la factura electrónica si un ítem no tiene unidad de medida: se la pone si le falta. */
+async function asegurarUnidad(itemId, nombre) {
+  const it = await alegra('GET', `/items/${encodeURIComponent(itemId)}`);
+  if (it?.inventory?.unit) return { id: String(itemId), ok: true, cambio: false };
+  const unit = unidadDe(nombre || it?.name);
+  try {
+    await alegra('PUT', `/items/${encodeURIComponent(itemId)}`, { inventory: { unit } });
+    return { id: String(itemId), ok: true, cambio: true, unit };
+  } catch (err) {
+    return { id: String(itemId), ok: false, error: err?.message || String(err) };
+  }
+}
+
+/** Revisa los ítems de una factura (borrador) y les pone la unidad de medida que les falte. */
+export async function repararUnidadesFactura(alegraId) {
+  const f = await alegra('GET', `/invoices/${encodeURIComponent(alegraId)}`);
+  const out = [];
+  for (const it of f.items || []) {
+    if (!it.id) continue;
+    out.push(await asegurarUnidad(it.id, it.name));
+  }
+  return out;
+}
+
 async function itemDe(linea) {
   const c = cfg();
   const ref = String(linea.sku || '').slice(0, 90);
@@ -140,7 +169,10 @@ async function itemDe(linea) {
       const r = await alegra('GET', `/items?reference=${encodeURIComponent(ref)}&limit=5`);
       const lista = Array.isArray(r) ? r : r?.data || [];
       const hit = lista.find((x) => String(x.reference || '').trim() === ref && x.status !== 'inactive');
-      if (hit) return hit.id;
+      if (hit) {
+        if (!hit.inventory || !hit.inventory.unit) await asegurarUnidad(hit.id, hit.name);
+        return hit.id;
+      }
     } catch {
       /* se crea */
     }
@@ -151,7 +183,9 @@ async function itemDe(linea) {
     price: linea.precioUnit,
     tax: [{ id: Number(tax) }],
     description: '',
+    inventory: { unit: unidadDe(linea.nombre) },
   });
+  if (!nuevo?.inventory?.unit) await asegurarUnidad(nuevo.id, linea.nombre);
   return nuevo.id;
 }
 
