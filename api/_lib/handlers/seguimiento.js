@@ -25,6 +25,7 @@
  * POST op=cot-enviar { id, para?, cc?, asunto, cuerpo, adjuntarPdf?, tipo: envio|seguimiento }
  * POST op=alegra-borrador { id } → prefactura en borrador en Alegra (sin emitir); devuelve url para abrirla
  * POST op=alegra-sync { id }     → si ya se emitió: guarda el número RK, cierra la etapa, avisa al cliente y registra el pago en Alegra
+ * POST op=alegra-pendientes → revisa todas las prefacturas: guarda el RK si ya se emitieron y registra en Alegra los pagos verificados
  * POST op=correo-libre { id, asunto, cuerpo, cc? } → correo redactado al cliente del expediente (texto plano; • para viñetas)
  * POST op=correo  { id, key } → reintenta el correo al cliente de esa etapa
  * POST op=pago    { id, pago: { id?, fecha, monto, medio, referencia, estado: verificado|por_verificar, nota } }
@@ -32,6 +33,7 @@
 import { adminAuthOk, adminActor, readJsonBody } from '../admin-auth.js';
 import {
   PLANTILLAS,
+  sincronizarPendientesAlegra,
   correoCompraConfirmada,
   addPago,
   expedienteDesdePedido,
@@ -275,6 +277,7 @@ export default async function handler(req, res) {
       if (!r) return send(res, 404, { ok: false, error: 'No existe.' });
       return send(res, 200, { ok: true, url: r.url, reutilizada: Boolean(r.reutilizada), yaEmitida: Boolean(r.yaEmitida), borrador: r.borrador || null, unidades: r.unidades || null, plantilla: r.plantilla || null, expediente: { ...r.exp, resumen: resumen(r.exp) } });
     }
+    if (op === 'alegra-pendientes') return send(res, 200, { ok: true, resultados: await sincronizarPendientesAlegra(by) });
     if (op === 'alegra-sync') {
       const r = await sincronizarFacturaAlegra(body.id, by);
       if (!r) return send(res, 404, { ok: false, error: 'No existe.' });

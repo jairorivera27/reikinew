@@ -96,7 +96,12 @@ Sección **Cotizaciones** del panel (`api/_lib/cotizaciones.js`, `public/admin/p
   y crea la factura con `status: draft` (no se emite). IVA por línea con las reglas de Reiki (paneles, inversores,
   reflectores y bombeo excluidos; el resto y el envío 19 %); si con esas reglas no cuadra el total, prueba con IVA en todo.
 - `POST op=alegra-sync { id }`: si ya se emitió, guarda el número RK (cierra la etapa y envía el correo de factura) y
-  registra el pago en Alegra contra Banco 1 si la venta está pagada.
+  registra en Alegra, contra Banco 1, lo verificado en el panel que falte allá (pago completo, abono o saldo).
+- Al verificar un pago de una venta con factura ya emitida, se registra en Alegra en el momento.
+- `POST op=alegra-pendientes`: lo corre el asistente cada 3 h; revisa todas las prefacturas (emitidas sin "Ya la emití" y
+  pagos verificados sin registrar).
+- Ítems nuevos en Alegra con unidad de medida (Unidad / Servicio), requerida por la DIAN; las prefacturas existentes se
+  corrigen al abrirlas desde el panel.
 
 ## Consecutivo único y datos mínimos del cotizador web
 

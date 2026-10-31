@@ -281,13 +281,16 @@ export async function leerFactura(alegraId) {
     saldo: Number(f.balance) || 0,
     dian: f.stamp?.legalStatus || '',
     clienteId: f.client?.id ? String(f.client.id) : '',
+    pagado: Number(f.totalPaid) || 0,
+    pagoIds: (f.payments || []).map((p) => String(p.id)),
   };
 }
 
 /** Registra en Alegra el pago de la factura (cuando el panel ya lo tiene verificado). */
-export async function registrarPago(factura, exp) {
+export async function registrarPago(factura, exp, monto) {
   const c = cfg();
-  if (!factura.saldo) return null;
+  const valor = Math.min(Number(monto) || factura.saldo, factura.saldo);
+  if (!(valor > 0)) return null;
   const pagos = (exp.pagos || []).filter((p) => p.estado === 'verificado');
   const fecha = pagos.length ? String(pagos[pagos.length - 1].fecha || '').slice(0, 10) : '';
   const medio = pagos.length ? String(pagos[pagos.length - 1].medio || '').toLowerCase() : '';
@@ -297,8 +300,8 @@ export async function registrarPago(factura, exp) {
     paymentMethod: /efectivo/.test(medio) ? 'cash' : /consign|dep[oó]sito/.test(medio) ? 'deposit' : 'transfer',
     type: 'in',
     client: { id: Number(factura.clienteId) },
-    invoices: [{ id: Number(factura.alegraId), amount: factura.saldo }],
+    invoices: [{ id: Number(factura.alegraId), amount: valor }],
     observations: `Pago de la venta ${exp.id}${exp.cotizacion?.numero ? ' · ' + exp.cotizacion.numero : ''}`,
   });
-  return { id: String(p.id), monto: factura.saldo };
+  return { id: String(p.id), monto: valor };
 }

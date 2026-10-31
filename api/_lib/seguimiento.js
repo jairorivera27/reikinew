@@ -400,7 +400,37 @@ export async function addPago(id, pago, by = 'panel') {
   autoEtapas(exp);
   await notificarCambios(exp, antes, by);
   pushHist(exp, by, `Pago ${p.estado === 'verificado' ? 'verificado' : 'por verificar'}: $${p.monto.toLocaleString('es-CO')} (${p.medio}).`);
-  return persist(exp);
+  const out = await persist(exp);
+  // Factura ya emitida en Alegra: el pago verificado se registra allá de una vez.
+  if (p.estado === 'verificado' && out.factura?.alegraId && out.factura?.numero) {
+    try {
+      const s = await sincronizarFacturaAlegra(id, by);
+      if (s?.exp) return s.exp;
+    } catch (err) {
+      console.warn('[seguimiento] pago → Alegra', err?.message || err);
+    }
+  }
+  return out;
+}
+
+/** Revisa en Alegra las prefacturas del panel: si ya se emitieron, guarda el número y registra los pagos verificados. */
+export async function sincronizarPendientesAlegra(by = 'claude') {
+  const todos = await listExpedientes();
+  const res = [];
+  for (const e of todos) {
+    const f = e.factura || {};
+    if (!f.alegraId || e.estado === 'cancelado') continue;
+    const r = resumen(e);
+    const pendiente = !f.numero || (f.alegraEstado !== 'closed' && r.pagado > 0);
+    if (!pendiente) continue;
+    try {
+      const s = await sincronizarFacturaAlegra(e.id, by);
+      res.push({ id: e.id, numero: s?.factura?.numero || '', emitida: Boolean(s?.factura?.emitida), pago: s?.pago || null });
+    } catch (err) {
+      res.push({ id: e.id, error: String(err?.message || err).slice(0, 200) });
+    }
+  }
+  return res;
 }
 
 /** Pedido web aprobado (Wompi/Addi) → expediente de compra en tienda, una sola vez. */
@@ -698,16 +728,21 @@ export async function sincronizarFacturaAlegra(id, by = 'panel') {
   }
   const r = resumen(exp);
   let pago = null;
-  if (a.saldo > 0 && !f.alegraPagoId && r.estadoPago === 'completo') {
+  // Lo verificado en el panel que todavía no está como pago en Alegra (sirve para pagos completos, abonos y saldos).
+  const falta = Math.round(r.pagado - a.pagado);
+  if (a.saldo > 0 && falta > 0) {
     try {
-      pago = await registrarPago(a, exp);
+      pago = await registrarPago(a, exp, falta);
     } catch (err) {
       pushHist(exp, by, `No se pudo registrar el pago en Alegra: ${String(err.message).slice(0, 150)}`);
     }
   }
-  await persist({ ...exp, factura: { ...f, alegraEstado: a.estado, alegraDian: a.dian, alegraPagoId: pago ? pago.id : f.alegraPagoId || '' } });
-  const guardado = await saveExpediente({ id, factura: { numero: a.numero, fecha: a.fecha } }, by);
-  pushHist(guardado, by, `Factura ${a.numero} emitida en Alegra${pago ? `; pago de $${pago.monto.toLocaleString('es-CO')} registrado en Alegra` : ''}.`);
+  const yaNumerada = f.numero === a.numero;
+  const pagoIds = [...new Set([...(String(f.alegraPagoId || '').split(',').filter(Boolean)), ...a.pagoIds, ...(pago ? [pago.id] : [])])];
+  await persist({ ...exp, factura: { ...f, alegraEstado: pago && a.saldo - pago.monto <= 0 ? 'closed' : a.estado, alegraDian: a.dian, alegraPagoId: pagoIds.join(',') } });
+  const guardado = yaNumerada ? await getExpediente(id) : await saveExpediente({ id, factura: { numero: a.numero, fecha: a.fecha } }, by);
+  if (!yaNumerada || pago)
+    pushHist(guardado, by, yaNumerada ? `Pago de $${pago.monto.toLocaleString('es-CO')} registrado en Alegra (factura ${a.numero}).` : `Factura ${a.numero} emitida en Alegra${pago ? `; pago de $${pago.monto.toLocaleString('es-CO')} registrado en Alegra` : ''}.`);
   await persist(guardado);
   out.pago = pago;
   return { exp: guardado, ...out };
