@@ -739,7 +739,15 @@
         (c.tipo === 'proyecto' ? 'Proyectos' : 'Compras en tienda') +
         '</b> con el cliente, los ítems y el total de la cotización, y sus equipos pasan a <b>Por comprar</b>.' +
         (c.cliente && c.cliente.correo ? '' : ' <b>Ojo:</b> el cliente no tiene correo registrado; no recibirá los avisos de la venta hasta que lo agregues.') +
-        '</p><div class="modal-actions"><button class="btn btn-primary" type="button" data-ct-aceptar>Confirmar: aceptada</button><button class="btn btn-ghost" type="button" data-ct-panel="">Cancelar</button></div></div>'
+        '</p>' +
+        (c.cliente && c.cliente.correo
+          ? '<label class="ct-check"><input type="checkbox" data-ct-correo-conf checked /> Enviar al cliente el correo de <b>' +
+            (c.tipo === 'proyecto' ? 'Proyecto confirmado' : 'Compra confirmada') +
+            '</b> (desde info@, firmado por el ' +
+            (c.tipo === 'proyecto' ? 'Equipo de Proyectos' : 'Equipo de Logística') +
+            ')</label>'
+          : '') +
+        '<div class="modal-actions"><button class="btn btn-primary" type="button" data-ct-aceptar>Confirmar: aceptada</button><button class="btn btn-ghost" type="button" data-ct-panel="">Cancelar</button></div></div>'
       );
     }
     if (p === 'rechazar') {
@@ -769,7 +777,8 @@
       st.panel = '';
       pintar();
       abrir(j.cotizacion ? j.cotizacion.id : st.abierta);
-      msg(despues || 'Listo.');
+      msg((typeof despues === 'function' ? despues(j) : despues) || 'Listo.');
+      return j;
     } catch (err) {
       msg('No se pudo: ' + err.message);
     }
@@ -860,8 +869,20 @@
     var ac = body.querySelector('[data-ct-aceptar]');
     if (ac)
       ac.addEventListener('click', function () {
-        correr('cot-estado', { id: c.id, estado: 'aceptada' }, 'Aceptada: la venta quedó creada. Abajo está el mensaje para pedirle los datos al cliente.').then(function () {
-          abrirDatos(c.id);
+        var conCorreo = body.querySelector('[data-ct-correo-conf]');
+        var t = '';
+        correr('cot-estado', { id: c.id, estado: 'aceptada', correo: conCorreo ? conCorreo.checked : false }, function (j) {
+          var co = j && j.correo;
+          t =
+            'Aceptada: la venta quedó creada. ' +
+            (co ? (co.enviado ? 'Se envió el correo "' + co.asunto + '" al cliente. ' : co.yaEnviado ? '' : 'No se envió el correo de confirmación: ' + co.motivo + '. ') : '') +
+            'Abajo está el mensaje para pedirle los datos al cliente.';
+          return t;
+        }).then(function (j) {
+          if (j)
+            Promise.resolve(abrirDatos(c.id)).then(function () {
+              if (t) msg(t);
+            });
         });
       });
     var fd = $('ct-form-datos');

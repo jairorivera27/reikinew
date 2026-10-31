@@ -536,6 +536,94 @@ export async function enviarCorreoLibre(id, datos, by = 'panel') {
 
 const EMAIL_OK = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
 
+const copTxt = (n) => '$' + Math.round(Number(n) || 0).toLocaleString('es-CO');
+
+function docTxt(doc) {
+  const d = String(doc || '').trim();
+  if (!d) return '';
+  const solo = d.replace(/\D/g, '');
+  const esNit = /-/.test(d) || (/^9\d{8}/.test(solo) && solo.length <= 10);
+  if (esNit) return `NIT ${d}`;
+  return `C.C. ${Number(solo).toLocaleString('es-CO')}`;
+}
+
+/** Texto del correo "Compra confirmada" (tienda) o "Proyecto confirmado" (proyecto) al aceptar la cotización. */
+export function textoCompraConfirmada(exp) {
+  const r = resumen(exp);
+  const cl = exp.cliente || {};
+  const proyecto = exp.tipo === 'proyecto';
+  const num = (exp.cotizacion && exp.cotizacion.numero) || exp.id;
+  const primer = String(cl.nombre || '').trim().split(/\s+/)[0] || '';
+  const items = (exp.items || []).map((i) => `• ${i.cantidad} ${i.nombre}`);
+  const pasos = [];
+  if (r.estadoPago === 'completo') {
+    // pagado
+  } else if (r.pagado > 0) {
+    pasos.push(`• Recibimos ${copTxt(r.pagado)}. El saldo pendiente es ${copTxt(r.saldo)}${exp.condicionesPago ? ` (${exp.condicionesPago})` : ''}; cuando lo pague, envíenos el comprobante por este medio o por WhatsApp al +57 300 405 2638.`);
+  } else if (proyecto) {
+    pasos.push(`• Para iniciar, por favor realice el anticipo acordado${exp.condicionesPago ? ` (${exp.condicionesPago})` : ''} y envíenos el comprobante por este medio o por WhatsApp al +57 300 405 2638.`);
+  } else {
+    pasos.push('• Para alistar su pedido, por favor realice el pago y envíenos el comprobante por este medio o por WhatsApp al +57 300 405 2638.');
+  }
+  if (proyecto) {
+    pasos.push('• Le enviaremos el contrato para su firma y programaremos la visita técnica para confirmar las medidas y el punto de conexión.');
+    pasos.push('• Con el anticipo compramos los equipos y le confirmamos la fecha de instalación.');
+  } else {
+    pasos.push('• Alistamos sus equipos y los despachamos desde Bogotá. Cuando salgan le enviaremos el número de guía de la transportadora para que pueda hacer seguimiento.');
+  }
+  if (cl.nombre && cl.documento) pasos.push(`• Su factura electrónica se emitirá a nombre de ${cl.nombre}, ${docTxt(cl.documento)}, y le llegará a este correo.`);
+  else pasos.push('• Para emitir su factura electrónica, por favor envíenos su nombre completo o razón social y su número de cédula o NIT.');
+  if (!proyecto) {
+    if (cl.direccion) pasos.push(`• Por favor confírmenos la dirección de entrega: ${cl.direccion}${cl.ciudad ? `, ${cl.ciudad}` : ''}, y el nombre y teléfono de quien recibe.`);
+    else pasos.push('• Por favor envíenos la dirección completa de entrega (ciudad y departamento) y el nombre y teléfono de quien recibe.');
+  } else if (!cl.direccion) {
+    pasos.push('• Por favor confírmenos la dirección exacta donde se hará la instalación.');
+  }
+  const inicio = proyecto
+    ? `Le confirmamos que su proyecto${exp.titulo ? ` (${exp.titulo})` : ''} quedó aprobado según la cotización ${num}. Muchas gracias por confiar en Reiki Energía Solar.`
+    : r.estadoPago === 'completo'
+      ? `Le confirmamos que recibimos su pago por ${copTxt(r.pagado)} y que su compra quedó confirmada según la cotización ${num}. Muchas gracias por confiar en Reiki Energía Solar.`
+      : `Le confirmamos que su compra quedó confirmada según la cotización ${num}. Muchas gracias por confiar en Reiki Energía Solar.`;
+  const cuerpo = [
+    `Buen día${primer ? `, ${primer}` : ''}:`,
+    '',
+    inicio,
+    '',
+    proyecto ? 'Resumen del proyecto:' : 'Resumen de su pedido:',
+    ...items,
+    '',
+    `${r.estadoPago === 'completo' ? 'Total pagado' : 'Total'}: ${copTxt(r.total)} (IVA incluido)`,
+    '',
+    'Próximos pasos:',
+    ...pasos,
+    '',
+    ...(proyecto ? [] : ['Al recibir el envío, revise la caja frente a la transportadora antes de firmar. Si nota algún daño, déjelo anotado en la guía y escríbanos de inmediato.', '']),
+    'Quedamos atentos a cualquier inquietud.',
+    '',
+    'Atentamente,',
+    '',
+    proyecto ? 'Equipo de Proyectos' : 'Equipo de Logística',
+    'Reiki Energía Solar S.A.S. · NIT 901.942.389-1',
+    '+57 300 405 2638 · info@reikisolar.com.co',
+    'www.reikisolar.com.co',
+  ].join('\n');
+  const asunto = `${proyecto ? 'Proyecto confirmado' : 'Compra confirmada'} – Cotización ${num} | Reiki Energía Solar`;
+  return { asunto, cuerpo };
+}
+
+/** Envía una sola vez el correo de compra/proyecto confirmado del expediente. */
+export async function correoCompraConfirmada(id, by = 'panel') {
+  const exp = await getExpediente(id);
+  if (!exp) return null;
+  if (exp.correosActivos === false) return { enviado: false, motivo: 'avisos desactivados para este cliente' };
+  if ((exp.correos || []).some((c) => c.clave === 'compra_confirmada' && c.estado === 'enviado')) return { enviado: false, motivo: 'ya se había enviado', yaEnviado: true };
+  const { asunto, cuerpo } = textoCompraConfirmada(exp);
+  const r = await correoLibre(exp, { asunto, cuerpo, clave: 'compra_confirmada', etapa: exp.tipo === 'proyecto' ? 'Proyecto confirmado' : 'Compra confirmada' });
+  pushHist(exp, by, r.enviado ? `Correo enviado al cliente: "${r.asunto}"` : `Correo no enviado ("${r.asunto}"): ${r.motivo}`);
+  await persist(exp);
+  return r;
+}
+
 /** Al agregar el correo del cliente, envía los avisos que quedaron pendientes por falta de correo (solo de etapas que siguen en ese estado). */
 async function reintentarSinCorreo(exp, by) {
   const r = resumen(exp);

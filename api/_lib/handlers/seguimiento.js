@@ -19,7 +19,8 @@
  * POST op=cot-numero → { numero } siguiente número del consecutivo único CT-DDMMAA-### (también con el token limitado)
  * POST op=cot-save { numero, tipo: equipos|proyecto, cliente, total, items, … }   (también con el token limitado de los chats)
  * POST op=cot-pdf  { id|numero, nombre, base64, parte, total }                  (también con el token limitado)
- * POST op=cot-estado { id, estado: por_enviar|enviada|seguimiento|aceptada|rechazada, motivo?, proximo? } — aceptada crea la venta
+ * POST op=cot-estado { id, estado: por_enviar|enviada|seguimiento|aceptada|rechazada, motivo?, proximo?, correo? } — aceptada crea la venta
+ *   y envía al cliente "Compra confirmada" / "Proyecto confirmado" (una sola vez; correo:false lo omite)
  * POST op=cot-seguimiento { id, canal, nota, proximo? }
  * POST op=cot-enviar { id, para?, cc?, asunto, cuerpo, adjuntarPdf?, tipo: envio|seguimiento }
  * POST op=alegra-borrador { id } → prefactura en borrador en Alegra (sin emitir); devuelve url para abrirla
@@ -31,6 +32,7 @@
 import { adminAuthOk, adminActor, readJsonBody } from '../admin-auth.js';
 import {
   PLANTILLAS,
+  correoCompraConfirmada,
   addPago,
   expedienteDesdePedido,
   getExpediente,
@@ -245,10 +247,19 @@ export default async function handler(req, res) {
       return send(res, 200, { ok: true, ...r });
     }
     if (op === 'cot-estado') {
+      const estadoAntes = (await getCotizacion(body.id))?.estado || '';
       const c = await cambiarEstado(body.id, { estado: body.estado, motivo: body.motivo, proximo: body.proximo }, by);
       if (!c) return send(res, 404, { ok: false, error: 'No existe.' });
+      let correo = null;
+      if (c.estado === 'aceptada' && estadoAntes && estadoAntes !== 'aceptada' && c.expedienteId && body.correo !== false) {
+        try {
+          correo = await correoCompraConfirmada(c.expedienteId, by);
+        } catch (err) {
+          correo = { enviado: false, motivo: err?.message || 'error al enviar' };
+        }
+      }
       const exp = c.expedienteId ? await getExpediente(c.expedienteId) : null;
-      return send(res, 200, { ok: true, cotizacion: conResumenCot(c), expediente: exp ? { ...exp, resumen: resumen(exp) } : null });
+      return send(res, 200, { ok: true, cotizacion: conResumenCot(c), expediente: exp ? { ...exp, resumen: resumen(exp) } : null, correo });
     }
     if (op === 'cot-seguimiento') {
       const c = await registrarSeguimiento(body.id, { canal: body.canal, nota: body.nota, proximo: body.proximo, resultado: body.resultado }, by);

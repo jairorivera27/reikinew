@@ -1270,7 +1270,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
     </script>
 
     <script is:inline src="/admin/panel-inicio.js?v=20261030b"></script>
-    <script is:inline src="/admin/panel-cotizaciones.js?v=20261030c"></script>
+    <script is:inline src="/admin/panel-cotizaciones.js?v=20261031a"></script>
 
     <script is:inline define:vars={{ MOCKS: pedidosMocks }}>
       (function () {
@@ -4071,6 +4071,16 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       }
       .pc-nota-pie {
         margin: 0.4rem 0 0;
+      }
+      .ct-check {
+        display: flex;
+        gap: 0.5rem;
+        align-items: flex-start;
+        margin: 0.4rem 0 0.2rem;
+        font-size: 0.9rem;
+      }
+      .ct-check input {
+        margin-top: 0.2rem;
       }
       .pc-wa {
         display: inline-flex;

@@ -80,6 +80,10 @@ Sección **Cotizaciones** del panel (`api/_lib/cotizaciones.js`, `public/admin/p
 - Estados: por_enviar → enviada → seguimiento → aceptada | rechazada (con motivo). Aceptada crea la venta en Compras en
   tienda o Proyectos (ítems con `comprar:false` quedan "no se compra"). Pagada en línea → aceptada sin crear venta (la crea
   el pedido web).
+- Al marcarla aceptada desde el panel se envía al cliente, una sola vez, el correo **Compra confirmada** (tienda, firmado
+  por el Equipo de Logística, despacho desde Bogotá) o **Proyecto confirmado** (firmado por el Equipo de Proyectos), con el
+  resumen, el total y los próximos pasos según lo pagado y los datos que falten (`textoCompraConfirmada`). Queda en "Correos al
+  cliente" de la venta con la clave `compra_confirmada`. La casilla del panel (o `correo:false`) lo omite.
 - El número sin la revisión es la llave (`CT-271026-006 R1` → `CT271026006`): una R1 actualiza la misma cotización.
 - PDF en Redis en trozos (`reiki:wa:cotzpdf:*`), máx. 12 MB; las web usan `pdfUrl`. Envío por correo desde info@ con el PDF
   adjunto (`cot-enviar`); seguimiento a los 3 días del envío y 4 días después de cada contacto.
