@@ -687,6 +687,14 @@ export async function prepararFacturaAlegra(id, by = 'panel') {
         const unidades = await repararUnidadesFactura(f.alegraId).catch((err) => [{ ok: false, error: err?.message || String(err) }]);
         const fallo = unidades.find((u) => !u.ok);
         if (fallo) throw new Error(`No se pudo poner la unidad de medida a un ítem en Alegra: ${fallo.error}`);
+        // Si la venta cambió (precios, ítems) desde que se creó el borrador, se reescribe el mismo borrador.
+        if (Math.abs((actual.total || 0) - resumen(exp).total) > 2) {
+          const b = await crearBorrador(exp, f.alegraId);
+          exp.factura = { ...f, alegraTotal: b.total, alegraActualizada: nowIso() };
+          pushHist(exp, by, `Prefactura en Alegra actualizada con los datos de la venta: $${Math.round(b.total).toLocaleString('es-CO')}.`);
+          await persist(exp);
+          return { exp, url: urlFactura(f.alegraId), reutilizada: true, actualizada: true, factura: { ...actual, total: b.total }, unidades };
+        }
         const plantilla = await ajustarPlantillaFactura(f.alegraId).catch((err) => ({ ok: false, error: err?.message || String(err) }));
         return { exp, url: urlFactura(f.alegraId), reutilizada: true, factura: actual, unidades, plantilla };
       }

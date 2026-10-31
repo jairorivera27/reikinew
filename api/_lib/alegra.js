@@ -229,7 +229,8 @@ async function itemDe(linea) {
 }
 
 /* ---------------- prefactura (borrador) ---------------- */
-export async function crearBorrador(exp) {
+/** Crea la prefactura; con alegraId reescribe ese mismo borrador (mismo número) con los datos actuales de la venta. */
+export async function crearBorrador(exp, alegraId) {
   const c = cfg();
   const L = lineasFactura(exp);
   if (!L.lineas.length) throw new Error('La venta no tiene ítems para facturar.');
@@ -250,7 +251,7 @@ export async function crearBorrador(exp) {
   const pagos = (exp.pagos || []).filter((p) => p.estado === 'verificado');
   const medio = pagos.length ? String(pagos[pagos.length - 1].medio || '').toLowerCase() : '';
   const ref = exp.cotizacion?.numero ? `Cotización ${exp.cotizacion.numero}` : '';
-  const inv = await alegra('POST', '/invoices', {
+  const inv = await alegra(alegraId ? 'PUT' : 'POST', alegraId ? `/invoices/${encodeURIComponent(alegraId)}` : '/invoices', {
     status: 'draft',
     date: hoy,
     dueDate: hoy,
