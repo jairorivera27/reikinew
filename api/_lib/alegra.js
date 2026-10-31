@@ -166,7 +166,26 @@ export async function ajustarPlantillaFactura(alegraId) {
   const f = await alegra('GET', `/invoices/${encodeURIComponent(alegraId)}`);
   if (String(f?.printingTemplate?.id || '') === String(c.plantilla)) return { ok: true, cambio: false };
   try {
-    await alegra('PUT', `/invoices/${encodeURIComponent(alegraId)}`, { printingTemplate: { id: Number(c.plantilla) } });
+    await alegra('PUT', `/invoices/${encodeURIComponent(alegraId)}`, {
+      date: f.date,
+      dueDate: f.dueDate,
+      client: { id: Number(f.client?.id) },
+      numberTemplate: f.numberTemplate?.id ? { id: Number(f.numberTemplate.id) } : undefined,
+      paymentForm: f.paymentForm || 'CASH',
+      paymentMethod: f.paymentMethod || undefined,
+      anotation: f.anotation || undefined,
+      status: f.status || 'draft',
+      printingTemplate: { id: Number(c.plantilla) },
+      items: (f.items || []).map((it) => ({
+        id: Number(it.id),
+        price: Number(it.price),
+        quantity: Number(it.quantity),
+        discount: Number(it.discount) || 0,
+        reference: it.reference || undefined,
+        description: it.description || '',
+        tax: (it.tax || []).map((t) => ({ id: Number(t.id) })),
+      })),
+    });
     return { ok: true, cambio: true };
   } catch (err) {
     return { ok: false, error: err?.message || String(err) };
