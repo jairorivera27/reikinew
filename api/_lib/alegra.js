@@ -160,6 +160,19 @@ export async function repararUnidadesFactura(alegraId) {
   return out;
 }
 
+/** Pone en el borrador la plantilla de impresión de factura electrónica (Clásico FE) si tiene otra. */
+export async function ajustarPlantillaFactura(alegraId) {
+  const c = cfg();
+  const f = await alegra('GET', `/invoices/${encodeURIComponent(alegraId)}`);
+  if (String(f?.printingTemplate?.id || '') === String(c.plantilla)) return { ok: true, cambio: false };
+  try {
+    await alegra('PUT', `/invoices/${encodeURIComponent(alegraId)}`, { printingTemplate: { id: Number(c.plantilla) } });
+    return { ok: true, cambio: true };
+  } catch (err) {
+    return { ok: false, error: err?.message || String(err) };
+  }
+}
+
 async function itemDe(linea) {
   const c = cfg();
   const ref = String(linea.sku || '').slice(0, 90);

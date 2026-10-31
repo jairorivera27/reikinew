@@ -273,7 +273,7 @@ export default async function handler(req, res) {
     if (op === 'alegra-borrador') {
       const r = await prepararFacturaAlegra(body.id, by);
       if (!r) return send(res, 404, { ok: false, error: 'No existe.' });
-      return send(res, 200, { ok: true, url: r.url, reutilizada: Boolean(r.reutilizada), yaEmitida: Boolean(r.yaEmitida), borrador: r.borrador || null, expediente: { ...r.exp, resumen: resumen(r.exp) } });
+      return send(res, 200, { ok: true, url: r.url, reutilizada: Boolean(r.reutilizada), yaEmitida: Boolean(r.yaEmitida), borrador: r.borrador || null, unidades: r.unidades || null, plantilla: r.plantilla || null, expediente: { ...r.exp, resumen: resumen(r.exp) } });
     }
     if (op === 'alegra-sync') {
       const r = await sincronizarFacturaAlegra(body.id, by);
