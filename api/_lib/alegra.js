@@ -71,7 +71,9 @@ export function ivaDeItem(it, modo = 'tienda') {
 
 /** Elige el modo de IVA ('tienda' o 'todo') que reproduce el total del expediente. */
 export function lineasFactura(exp) {
-  const items = exp.items || [];
+  // Alegra no acepta líneas en $0 (obsequios / incluidos): se mencionan en la anotación de la factura.
+  const items = (exp.items || []).filter((it) => Number(it.precioUnit) > 0 && Number(it.cantidad) > 0);
+  const sinCosto = (exp.items || []).filter((it) => !(Number(it.precioUnit) > 0) && Number(it.cantidad) > 0).map((it) => `${it.cantidad} ${it.nombre}`);
   const calc = (modo) => {
     const lineas = items.map((it) => {
       const iva = ivaDeItem(it, modo);
@@ -84,7 +86,7 @@ export function lineasFactura(exp) {
   const a = calc('tienda');
   const b = calc('todo');
   const elegido = !objetivo || Math.abs(a.total - objetivo) <= Math.abs(b.total - objetivo) ? a : b;
-  return { ...elegido, objetivo, diferencia: objetivo ? elegido.total - objetivo : 0 };
+  return { ...elegido, objetivo, diferencia: objetivo ? elegido.total - objetivo : 0, sinCosto };
 }
 
 /* ---------------- contacto ---------------- */
@@ -258,7 +260,7 @@ export async function crearBorrador(exp) {
     paymentForm: 'CASH',
     paymentMethod: /consign|dep[oó]sito/.test(medio) ? 'BANK_DEPOSIT' : /efectivo/.test(medio) ? 'CASH' : 'DEBIT_TRANSFER',
     items,
-    anotation: [ref, `Venta ${exp.id}`].filter(Boolean).join(' · ').slice(0, 300),
+    anotation: [ref, `Venta ${exp.id}`, L.sinCosto && L.sinCosto.length ? `Incluye sin costo: ${L.sinCosto.join(', ')}` : ''].filter(Boolean).join(' · ').slice(0, 300),
   });
   return {
     alegraId: String(inv.id),
