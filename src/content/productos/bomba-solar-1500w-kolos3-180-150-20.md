@@ -4,7 +4,7 @@ description: "Bomba solar sumergible Kolos KOLOS3-180-150-20 de 1500 W. Bombea a
 image: "/images/productos-estudio/kolos3-sumergible-prov.webp"
 imageCard: "/images/productos-estudio/kolos3-sumergible-prov-card.webp"
 category: "bombeo"
-price: "$2.135.000"
+price: "$3.222.669"
 specifications:
   - "Tipo: Bomba"
   - "Especificación principal: 1500W"
@@ -35,10 +35,6 @@ faqs:
   - pregunta: "¿Qué datos necesito para elegir la bomba?"
     respuesta: "Profundidad del nivel del agua, altura hasta el tanque, distancia de la tubería y litros por día que necesitas. Con eso elegimos el modelo y el controlador correctos."
 fichaPdf: "/fichas/fabricantes/connera-kolosal-catalogo-vde.pdf"
-precioAnterior: "$3.222.669"
-descuentoPct: 34
-promocion: "Precio de feria · solo hasta el 31 de octubre"
-promocionHasta: "2026-10-31"
 ---
 **Bomba Solar 1500W KOLOS3-180-150-20** de Multimarca · 1500W.
 

@@ -4,7 +4,7 @@ description: "Bomba solar sumergible Kolos KOLOS3-95-75-11 de 750 W. Bombea agua
 image: "/images/productos-estudio/kolos3-sumergible-prov.webp"
 imageCard: "/images/productos-estudio/kolos3-sumergible-prov-card.webp"
 category: "bombeo"
-price: "$1.785.000"
+price: "$2.723.315"
 specifications:
   - "Tipo: Bomba"
   - "Especificación principal: 750W"
@@ -35,10 +35,6 @@ faqs:
   - pregunta: "¿Qué datos necesito para elegir la bomba?"
     respuesta: "Profundidad del nivel del agua, altura hasta el tanque, distancia de la tubería y litros por día que necesitas. Con eso elegimos el modelo y el controlador correctos."
 fichaPdf: "/fichas/fabricantes/connera-kolosal-catalogo-vde.pdf"
-precioAnterior: "$2.723.315"
-descuentoPct: 34
-promocion: "Precio de feria · solo hasta el 31 de octubre"
-promocionHasta: "2026-10-31"
 ---
 **Bomba Solar 750W KOLOS3-95-75-11** de Multimarca · 750W.
 
