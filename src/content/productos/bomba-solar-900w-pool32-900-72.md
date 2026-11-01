@@ -4,7 +4,7 @@ description: "Bomba solar de superficie Kolos POOL32-900-72 de 900 W. Bombea agu
 image: "/images/productos-estudio/kolos-pool-prov.webp"
 imageCard: "/images/productos-estudio/kolos-pool-prov-card.webp"
 category: "bombeo"
-price: "$2.187.500"
+price: "$3.517.640"
 specifications:
   - "Tipo: Bomba"
   - "Especificación principal: 900W"
@@ -36,10 +36,6 @@ faqs:
   - pregunta: "¿Qué datos necesito para elegir la bomba?"
     respuesta: "Profundidad del nivel del agua, altura hasta el tanque, distancia de la tubería y litros por día que necesitas. Con eso elegimos el modelo y el controlador correctos."
 fichaPdf: "/fichas/fabricantes/connera-kolosal-pool-catalogo-vde.pdf"
-precioAnterior: "$3.517.640"
-descuentoPct: 38
-promocion: "Precio de feria · solo hasta el 31 de octubre"
-promocionHasta: "2026-10-31"
 ---
 **Bomba Solar 900W POOL32-900-72** de Multimarca · 900W.
 

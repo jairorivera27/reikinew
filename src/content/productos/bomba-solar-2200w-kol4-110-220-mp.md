@@ -4,7 +4,7 @@ description: "Bomba solar sumergible Kolos KOL4-110-220-MP de 2200 W. Bombea agu
 image: "/images/productos-estudio/kolos4-sumergible-prov.webp"
 imageCard: "/images/productos-estudio/kolos4-sumergible-prov-card.webp"
 category: "bombeo"
-price: "$2.625.000"
+price: "$4.084.972"
 specifications:
   - "Tipo: Bomba"
   - "Especificación principal: 2200W"
@@ -35,10 +35,6 @@ faqs:
   - pregunta: "¿Qué datos necesito para elegir la bomba?"
     respuesta: "Profundidad del nivel del agua, altura hasta el tanque, distancia de la tubería y litros por día que necesitas. Con eso elegimos el modelo y el controlador correctos."
 fichaPdf: "/fichas/fabricantes/connera-kol4-mp-manual.pdf"
-precioAnterior: "$4.084.972"
-descuentoPct: 36
-promocion: "Precio de feria · solo hasta el 31 de octubre"
-promocionHasta: "2026-10-31"
 ---
 **Bomba Solar 2200W KOL4-110-220-MP** de Multimarca · 2200W.
 
