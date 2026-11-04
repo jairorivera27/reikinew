@@ -39,6 +39,16 @@ function empresa() {
 
 const cop = (n) => '$' + Math.round(Number(n) || 0).toLocaleString('es-CO');
 
+/** Dirección + ciudad sin repetir la ciudad si ya viene escrita en la dirección. */
+function dirCompleta(c = {}) {
+  const dir = String(c.direccion || '').trim();
+  const ciudad = String(c.ciudad || '').trim();
+  if (!dir) return ciudad ? `(pendiente), ${ciudad}` : '(pendiente)';
+  const norm = (x) => x.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  const mun = norm(ciudad.split(',')[0] || '');
+  return ciudad && !(mun && norm(dir).includes(mun)) ? `${dir}, ${ciudad}` : dir;
+}
+
 function fechaLarga(ymd) {
   if (!ymd) return '';
   const d = new Date(`${String(ymd).slice(0, 10)}T12:00:00-05:00`);
@@ -65,9 +75,10 @@ export const CORREOS = {
       asunto: (e) => `Vamos a despachar tu pedido — ${ref(e)}`,
       cuerpo: (e) => [
         'Tus equipos están listos para despacho. Por favor confirma respondiendo este correo que los datos de entrega son correctos:',
-        `Dirección: ${e.cliente?.direccion || '(pendiente)'}${e.cliente?.ciudad ? ', ' + e.cliente.ciudad : ''}`,
+        `Dirección: ${dirCompleta(e.cliente)}`,
         `Celular de contacto: ${e.cliente?.celular || '(pendiente)'}`,
-        'Si alguien más recibirá el pedido, indícanos su nombre y celular.',
+        ...(e.cliente?.contacto ? [String(e.cliente.contacto)] : []),
+        e.cliente?.contacto ? 'Si cambió quién recibe, indícanos su nombre y celular.' : 'Si alguien más recibirá el pedido, indícanos su nombre y celular.',
       ],
     },
     'guia:hecho': {
