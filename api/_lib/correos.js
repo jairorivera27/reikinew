@@ -371,7 +371,8 @@ export async function correoLibre(exp, { asunto, cuerpo, cc, clave, etapa, adjun
   let motivo = '';
   if (!subject || !texto) motivo = 'falta asunto o texto';
   else if (!exp.cliente?.correo || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(exp.cliente.correo)) motivo = 'el cliente no tiene correo';
-  const ccOk = cc && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(cc).trim()) ? String(cc).trim() : '';
+  // cc: uno o varios correos separados por coma o punto y coma
+  const ccOk = String(cc || '').split(/[,;]+/).map((x) => x.trim()).filter((x) => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(x)).join(', ');
   const attachments = (adjuntos || []).filter((a) => a && a.content).map((a) => ({ filename: a.filename, content: a.content, contentType: a.contentType || 'application/pdf' }));
   const res = motivo ? { ok: false, motivo } : await enviar({ to: exp.cliente.correo, cc: ccOk, subject, htmlBody: htmlLibre(texto), textBody: texto, attachments });
   exp.correos.unshift({
