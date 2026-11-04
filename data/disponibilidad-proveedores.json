@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-11-02 21:00",
+ "ultima_revision": "2026-11-03 21:00",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -204,8 +204,8 @@
    "consulta": "ok"
   },
   "allyce-aire-acondicionado-hibrido-350voc-220vac-acdc-12kbtu-1-27kw": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "allyce-aire-acondicionado-hibrido-350voc-220vac-acdc-18kbtu-2-1kw": {
@@ -290,7 +290,7 @@
   },
   "allyce-controlador-pwm-con-display-24-12v-10a-50voc-eco-allyce-sin-garantia": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "allyce-controlador-pwm-con-display-24-12v-20a-50voc-allyce-sin-garantia": {
@@ -995,7 +995,7 @@
   },
   "epever-controlador-mppt-xtra-3210n-g3-12-24v-30a-100voc": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-controlador-pwm-vs2024au-12-24v-20a-50voc": {
@@ -1729,8 +1729,8 @@
    "consulta": "ok"
   },
   "suntree-proteccion-breaker-sl7n-63-dc800v-2p-25a": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "suntree-proteccion-descargador-de-sobrepotencial-dps-ac-monofasico-sup1h-40-2p-275vac": {
@@ -1755,7 +1755,7 @@
   },
   "suntree-proteccion-descargador-de-sobrepotencial-dps-sup2h1-pv-3p-dc-spd-dc1000v-2040": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "suntree-proteccion-fusible-srf30-15a-1000vdc": {

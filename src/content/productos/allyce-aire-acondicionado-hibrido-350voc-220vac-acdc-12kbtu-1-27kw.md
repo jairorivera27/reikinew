@@ -14,7 +14,7 @@ specifications:
 brand: "Allyce"
 model: "HIBRIDO-12KBTU-1.27kW"
 sku: "ING-AIRC00"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-05"
 imagen_provisional: false
@@ -26,7 +26,6 @@ faqs:
     respuesta: "Depende de la capacidad (BTU) y de la eficiencia del equipo. Con el consumo en la ficha técnica te ayudamos a calcular cuántos paneles o qué capacidad de inversor necesitas para operarlo."
   - pregunta: "¿Quién lo instala?"
     respuesta: "La instalación eléctrica y de refrigeración debe hacerla un técnico certificado. Reiki te puede conectar con instaladores de confianza en tu zona."
-stockBajo: true
 ---
 
 Proveedor: Ingesolar (AIRC00).
