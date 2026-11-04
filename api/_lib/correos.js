@@ -364,7 +364,7 @@ ${esc(em.razon_social || 'Reiki Energía Solar SAS')} · <a href="https://${esc(
  * Correo redactado a mano para el cliente del expediente (confirmaciones, avisos especiales).
  * Muta exp.correos. No incluye nada interno: el texto es exactamente el que se envía.
  */
-export async function correoLibre(exp, { asunto, cuerpo, cc, clave, etapa } = {}) {
+export async function correoLibre(exp, { asunto, cuerpo, cc, clave, etapa, adjuntos } = {}) {
   const subject = String(asunto || '').trim().slice(0, 200);
   const texto = String(cuerpo || '').trim().slice(0, 12000);
   exp.correos = exp.correos || [];
@@ -372,12 +372,14 @@ export async function correoLibre(exp, { asunto, cuerpo, cc, clave, etapa } = {}
   if (!subject || !texto) motivo = 'falta asunto o texto';
   else if (!exp.cliente?.correo || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(exp.cliente.correo)) motivo = 'el cliente no tiene correo';
   const ccOk = cc && /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(String(cc).trim()) ? String(cc).trim() : '';
-  const res = motivo ? { ok: false, motivo } : await enviar({ to: exp.cliente.correo, cc: ccOk, subject, htmlBody: htmlLibre(texto), textBody: texto });
+  const attachments = (adjuntos || []).filter((a) => a && a.content).map((a) => ({ filename: a.filename, content: a.content, contentType: a.contentType || 'application/pdf' }));
+  const res = motivo ? { ok: false, motivo } : await enviar({ to: exp.cliente.correo, cc: ccOk, subject, htmlBody: htmlLibre(texto), textBody: texto, attachments });
   exp.correos.unshift({
     clave: clave || `libre:${Date.now()}`,
     etapa: etapa || 'Correo redactado',
     para: exp.cliente?.correo || '',
     asunto: subject,
+    adjuntos: attachments.map((a) => a.filename),
     estado: res.ok ? 'enviado' : 'no_enviado',
     motivo: res.ok ? '' : res.motivo,
     at: new Date().toISOString(),

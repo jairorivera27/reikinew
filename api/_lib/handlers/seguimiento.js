@@ -28,7 +28,7 @@
  * POST op=alegra-borrador { id } → prefactura en borrador en Alegra (sin emitir); devuelve url para abrirla
  * POST op=alegra-sync { id }     → si ya se emitió: guarda el número RK, cierra la etapa, avisa al cliente y registra el pago en Alegra
  * POST op=alegra-pendientes → revisa todas las prefacturas: guarda el RK si ya se emitieron y registra en Alegra los pagos verificados
- * POST op=correo-libre { id, asunto, cuerpo, cc? } → correo redactado al cliente del expediente (texto plano; • para viñetas)
+ * POST op=correo-libre { id, asunto, cuerpo, cc?, clave?, etapa?, adjuntos?: [{ nombre, base64, tipo }] } → correo redactado al cliente del expediente (texto plano; • para viñetas)
  * POST op=correo  { id, key } → reintenta el correo al cliente de esa etapa
  * POST op=pago    { id, pago: { id?, fecha, monto, medio, referencia, estado: verificado|por_verificar, nota } }
  */
@@ -292,7 +292,13 @@ export default async function handler(req, res) {
       return send(res, 200, { ok: true, factura: r.factura, pago: r.pago, expediente: { ...r.exp, resumen: resumen(r.exp) } });
     }
     if (op === 'correo-libre') {
-      const r = await enviarCorreoLibre(body.id, { asunto: body.asunto, cuerpo: body.cuerpo, cc: body.cc }, by);
+      const adjuntos = (Array.isArray(body.adjuntos) ? body.adjuntos : []).slice(0, 6).map((x) => ({
+        filename: String(x.nombre || 'adjunto.pdf').replace(/[\\/:*?"<>|]/g, '').slice(0, 120),
+        content: Buffer.from(String(x.base64 || ''), 'base64'),
+        contentType: String(x.tipo || 'application/pdf').slice(0, 80),
+      }));
+      if (adjuntos.reduce((n, x) => n + x.content.length, 0) > 3.5 * 1024 * 1024) return send(res, 413, { ok: false, error: 'Adjuntos de más de 3,5 MB.' });
+      const r = await enviarCorreoLibre(body.id, { asunto: body.asunto, cuerpo: body.cuerpo, cc: body.cc, clave: body.clave ? String(body.clave).slice(0, 60) : undefined, etapa: body.etapa ? String(body.etapa).slice(0, 60) : undefined, adjuntos }, by);
       if (!r) return send(res, 404, { ok: false, error: 'No existe.' });
       return send(res, r.enviado ? 200 : 502, { ok: r.enviado, error: r.enviado ? undefined : r.motivo, expediente: conResumen(r.exp) });
     }
