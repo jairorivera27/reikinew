@@ -111,3 +111,12 @@ Sección **Cotizaciones** del panel (`api/_lib/cotizaciones.js`, `public/admin/p
 - El cotizador del carrito exige nombre y apellido, WhatsApp colombiano real, correo real (rechaza `00@gmal.com`,
   `notengo@…`, etc.) y departamento + municipio de la lista oficial (`public/data/colombia-municipios.json`, 32 dptos.,
   1.104 municipios). Se valida en el navegador y en `api/cotizacion-web.js` (`api/_lib/validar-cliente.js`).
+
+## Metas de cotizaciones y ventas
+
+- Bloque "Metas" arriba en Inicio y en Cotizaciones: número de cotizaciones hechas, valor cotizado y ventas cerradas (venta
+  aprobada en el panel) de hoy, la semana (lunes a domingo) y el mes, contra su meta diaria, semanal y mensual.
+- `GET op=metas` / `POST op=metas { metas: { cotizaciones|cotizado|ventas: { dia, semana, mes } } }` (Redis
+  `reiki:wa:metricas:metas`). Vacío = sin meta.
+- Ritmo: con días hábiles lunes a sábado; "Al día" si lleva al menos lo proporcional a los días hábiles transcurridos,
+  "Atrasada" si no. Las versiones anteriores rechazadas ("versión anterior…") no cuentan como cotizaciones nuevas.

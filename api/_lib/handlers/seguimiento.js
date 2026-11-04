@@ -16,6 +16,8 @@
  * Cotizaciones:
  * GET  op=cot-list | cot-get&id= | cot-pdf&id= (base64)
  * GET|POST op=prov-contactos { contactos: { Proveedor: { nombre, celular } } } → WhatsApp de cada proveedor (Redis)
+ * GET op=metas → avance contra las metas de cotizaciones, valor cotizado y ventas (hoy, semana, mes)
+ * POST op=metas { metas: { cotizaciones|cotizado|ventas: { dia, semana, mes } } }
  * POST op=cot-numero → { numero } siguiente número del consecutivo único CT-DDMMAA-### (también con el token limitado)
  * POST op=cot-save { numero, tipo: equipos|proyecto, cliente, total, items, … }   (también con el token limitado de los chats)
  * POST op=cot-pdf  { id|numero, nombre, base64, parte, total }                  (también con el token limitado)
@@ -50,7 +52,7 @@ import {
   updateEtapa,
 } from '../seguimiento.js';
 import { getRedis } from '../whatsapp-redis.js';
-import { calcularDesempeno, calcularInicio, comprasPendientes, equiposComprometidos, guardarAlegra, leerAlegra } from '../desempeno.js';
+import { calcularDesempeno, calcularInicio, calcularMetas, comprasPendientes, equiposComprometidos, guardarAlegra, guardarMetas, leerAlegra } from '../desempeno.js';
 import { correoConfigurado, etapasConCorreo, etapasConFecha } from '../correos.js';
 import { alegraConfigurado } from '../alegra.js';
 import { guardarContactos, leerContactos } from '../proveedores-contactos.js';
@@ -192,6 +194,7 @@ export default async function handler(req, res) {
         return send(res, 200, { ok: true, token: tokenCotizaciones() });
       }
       if (op === 'inicio') return send(res, 200, { ok: true, ...(await calcularInicio()) });
+      if (op === 'metas') return send(res, 200, { ok: true, ...(await calcularMetas()) });
       if (op === 'compras') return send(res, 200, { ok: true, ...(await comprasPendientes({ todos: q.todos === '1' })) });
       if (op === 'desempeno') return send(res, 200, { ok: true, ...(await calcularDesempeno()) });
       if (op === 'equipos') return send(res, 200, { ok: true, ...(await equiposComprometidos()) });
@@ -223,6 +226,11 @@ export default async function handler(req, res) {
     if (op === 'alegra-snapshot') {
       const doc = await guardarAlegra(body || {});
       return send(res, 200, { ok: true, guardado: doc.guardado });
+    }
+    if (op === 'metas') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      await guardarMetas(body.metas || {}, by);
+      return send(res, 200, { ok: true, ...(await calcularMetas()) });
     }
     if (op === 'prov-contactos') {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });

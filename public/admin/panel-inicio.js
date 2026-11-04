@@ -246,6 +246,7 @@
       ' · actualizado ' +
       esc(hora(j.generado)) +
       '</p></div></header>' +
+      htmlMetas(j.metas, 'inicio') +
       '<div class="in-grid"><section class="in-card"><h2 class="in-h">Para hacer hoy</h2>' +
       acciones +
       '</section><section class="in-card"><h2 class="in-h">Equipos</h2>' +
@@ -294,7 +295,99 @@
   function tile(t, v, sub, cls) {
     return '<div class="in-tile' + (cls ? ' in-tile--' + cls : '') + '"><span>' + S().esc(t) + '</span><strong>' + v + '</strong><small>' + S().esc(sub) + '</small></div>';
   }
+  /* ================= METAS ================= */
+  var IND_META = [
+    ['cotizaciones', 'Cotizaciones hechas', false],
+    ['cotizado', 'Valor cotizado', true],
+    ['ventas', 'Ventas cerradas', true],
+  ];
+  var PER_META = [
+    ['dia', 'Hoy'],
+    ['semana', 'Esta semana'],
+    ['mes', 'Este mes'],
+  ];
+  var EST_META = { cumplida: ['Cumplida', 'ok'], al_dia: ['Al día', 'ok'], atrasada: ['Atrasada', 'alerta'], sin_meta: ['Sin meta', ''] };
+
+  function htmlMetas(m, id) {
+    var esc = S().esc;
+    if (!m || !m.periodos) return '';
+    var hayMetas = IND_META.some(function (i) {
+      return PER_META.some(function (p) {
+        return m.metas && m.metas[i[0]] && m.metas[i[0]][p[0]];
+      });
+    });
+    var cols = PER_META.map(function (pp) {
+      var P = m.periodos[pp[0]];
+      var filas = IND_META.map(function (ii) {
+        var x = P[ii[0]];
+        var fmt = function (v) {
+          return ii[2] ? corto(v) : num(v);
+        };
+        var e = EST_META[x.estado] || EST_META.sin_meta;
+        var barra = x.meta
+          ? '<div class="mt-bar" role="img" aria-label="' + esc(ii[1] + ': ' + x.pct + ' % de la meta') + '"><span class="mt-fill mt-fill--' + x.estado + '" style="width:' + Math.min(100, x.pct) + '%"></span>' +
+            (pp[0] !== 'dia' && x.esperado && x.esperado < x.meta ? '<span class="mt-ritmo" style="left:' + Math.min(100, Math.round((x.esperado / x.meta) * 100)) + '%" title="Lo que debería llevar a hoy: ' + esc(fmt(x.esperado)) + '"></span>' : '') +
+            '</div>'
+          : '';
+        var pie = x.meta
+          ? '<small class="mt-pie"><span class="mt-est mt-est--' + e[1] + '">' + e[0] + '</span> ' + x.pct + ' %' +
+            (x.falta ? ' · faltan ' + fmt(x.falta) : '') +
+            (pp[0] !== 'dia' && x.estado === 'atrasada' ? ' · a hoy debería llevar ' + fmt(x.esperado) : '') +
+            '</small>'
+          : '<small class="mt-pie pc-muted">Sin meta definida</small>';
+        return '<div class="mt-ind"><div class="mt-top"><span>' + esc(ii[1]) + '</span><b>' + fmt(x.valor) + (x.meta ? ' <small>/ ' + fmt(x.meta) + '</small>' : '') + '</b></div>' + barra + pie + '</div>';
+      }).join('');
+      var sub = pp[0] === 'dia' ? '' : 'día hábil ' + P.diasPasados + ' de ' + P.diasHabiles;
+      return '<div class="mt-col"><h3>' + esc(pp[1]) + (sub ? ' <small>' + sub + '</small>' : '') + '</h3>' + filas +
+        '<small class="pc-muted">' + P.nVentas + ' venta(s)' + (P.nWeb ? ' · ' + P.nWeb + ' cotización(es) de la página o WhatsApp' : '') + '</small></div>';
+    }).join('');
+    var form =
+      '<details class="mt-editar"' + (hayMetas ? '' : ' open') + '><summary><i class="fas fa-bullseye" aria-hidden="true"></i> ' + (hayMetas ? 'Editar metas' : 'Definir metas') + '</summary>' +
+      '<form data-mt-form="' + id + '"><div class="table-wrap"><table class="mt-tabla"><thead><tr><th></th>' +
+      PER_META.map(function (p) {
+        return '<th>' + (p[0] === 'dia' ? 'Diaria' : p[0] === 'semana' ? 'Semanal' : 'Mensual') + '</th>';
+      }).join('') +
+      '</tr></thead><tbody>' +
+      IND_META.map(function (i) {
+        return '<tr><th scope="row">' + esc(i[1]) + (i[2] ? ' ($)' : ' (número)') + '</th>' +
+          PER_META.map(function (p) {
+            var v = m.metas && m.metas[i[0]] ? m.metas[i[0]][p[0]] : null;
+            return '<td><input inputmode="numeric" name="' + i[0] + '.' + p[0] + '" value="' + (v ? (i[2] ? num(v) : v) : '') + '" placeholder="—" aria-label="' + esc(i[1] + ' ' + p[1]) + '" /></td>';
+          }).join('') + '</tr>';
+      }).join('') +
+      '</tbody></table></div><div class="pc-acciones"><button type="submit" class="btn btn-primary seg-mini">Guardar metas</button><small class="pc-muted" data-mt-msg></small></div>' +
+      '<p class="pc-muted">Días hábiles: lunes a sábado. La raya en la barra marca lo que deberías llevar a hoy para cumplir la meta de la semana o del mes. Deja vacío lo que no quieras medir.</p></form></details>';
+    return '<section class="in-card mt-card" data-mt-box="' + id + '"><h2 class="in-h">Metas de cotizaciones y ventas</h2><div class="mt-grid">' + cols + '</div>' + form + '</section>';
+  }
+
+  function enlazarMetas(box, alGuardar) {
+    var f = box.querySelector('[data-mt-form]');
+    if (!f) return;
+    f.addEventListener('submit', async function (ev) {
+      ev.preventDefault();
+      var metas = {};
+      f.querySelectorAll('input[name]').forEach(function (inp) {
+        var k = inp.name.split('.');
+        metas[k[0]] = metas[k[0]] || {};
+        metas[k[0]][k[1]] = inp.value.replace(/\D/g, '');
+      });
+      var msg = f.querySelector('[data-mt-msg]');
+      msg.textContent = 'Guardando…';
+      try {
+        var j = await S().api('metas', { metas: metas });
+        msg.textContent = 'Guardado.';
+        if (alGuardar) alGuardar(j);
+      } catch (err) {
+        msg.textContent = 'No se pudo guardar: ' + err.message;
+      }
+    });
+  }
+  window.reikiMetas = { html: htmlMetas, enlazar: enlazarMetas };
+
   function enlazarInicio(box) {
+    enlazarMetas(box, function () {
+      cargarInicio();
+    });
     box.querySelectorAll('[data-ir]').forEach(function (b) {
       b.addEventListener('click', function () {
         var c = b.getAttribute('data-ir');

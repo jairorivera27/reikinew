@@ -1269,8 +1269,8 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       })();
     </script>
 
-    <script is:inline src="/admin/panel-inicio.js?v=20261030b"></script>
-    <script is:inline src="/admin/panel-cotizaciones.js?v=20261031a"></script>
+    <script is:inline src="/admin/panel-inicio.js?v=20261103a"></script>
+    <script is:inline src="/admin/panel-cotizaciones.js?v=20261103a"></script>
 
     <script is:inline define:vars={{ MOCKS: pedidosMocks }}>
       (function () {
@@ -4071,6 +4071,96 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       }
       .pc-nota-pie {
         margin: 0.4rem 0 0;
+      }
+      .mt-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+      }
+      .mt-col h3 {
+        margin: 0 0 0.5rem;
+        font-size: 1rem;
+      }
+      .mt-col h3 small {
+        font-weight: 400;
+        color: var(--muted);
+        font-size: 0.78rem;
+      }
+      .mt-ind {
+        margin-bottom: 0.7rem;
+      }
+      .mt-top {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        font-size: 0.88rem;
+      }
+      .mt-top small {
+        font-weight: 400;
+        color: var(--muted);
+      }
+      .mt-bar {
+        position: relative;
+        height: 9px;
+        border-radius: 99px;
+        background: #ece7f3;
+        margin: 0.3rem 0 0.2rem;
+        overflow: visible;
+      }
+      .mt-fill {
+        display: block;
+        height: 100%;
+        border-radius: 99px;
+        background: #7c3aed;
+      }
+      .mt-fill--cumplida {
+        background: #16a34a;
+      }
+      .mt-fill--atrasada {
+        background: #f59e0b;
+      }
+      .mt-ritmo {
+        position: absolute;
+        top: -3px;
+        width: 2px;
+        height: 15px;
+        background: #1f2937;
+        border-radius: 2px;
+      }
+      .mt-pie {
+        display: block;
+        font-size: 0.76rem;
+        color: var(--muted);
+      }
+      .mt-est {
+        font-weight: 700;
+        color: #15803d;
+      }
+      .mt-est--alerta {
+        color: #b45309;
+      }
+      .mt-editar {
+        margin-top: 0.6rem;
+      }
+      .mt-editar summary {
+        cursor: pointer;
+        font-weight: 700;
+      }
+      .mt-tabla input {
+        width: 100%;
+        min-width: 90px;
+        padding: 0.35rem 0.5rem;
+        border: 1px solid var(--line, #d1d5db);
+        border-radius: 8px;
+      }
+      .mt-tabla th[scope='row'] {
+        text-align: left;
+        font-size: 0.85rem;
+      }
+      @media (max-width: 760px) {
+        .mt-grid {
+          grid-template-columns: 1fr;
+        }
       }
       .ct-check {
         display: flex;

@@ -569,6 +569,125 @@ export async function calcularInicio() {
       mes: cots.filter((c) => enRango(ymd(c.creada), R.mes)).length,
     },
     activos: { tienda: activos.filter((e) => e.tipo === 'tienda').length, proyectos: activos.filter((e) => e.tipo === 'proyecto').length },
+    metas: await calcularMetas({
+      cots,
+      ventasPorPeriodo: { dia: { total: periodos.hoy.ventas, n: periodos.hoy.nVentas }, semana: { total: periodos.semana.ventas, n: periodos.semana.nVentas }, mes: { total: periodos.mes.ventas, n: periodos.mes.nVentas } },
+    }),
     alegra: alegra ? { guardado: alegra.guardado, cartera: carteraTotal, vencida: carteraVencida, facturadoAnio: alegra.facturadoAnio || null } : null,
   };
+}
+
+/* ---------- Metas de cotizaciones y ventas ---------- */
+const METAS_KEY = waKey('metricas', 'metas');
+const PERIODOS_META = ['dia', 'semana', 'mes'];
+const INDICADORES_META = ['cotizaciones', 'cotizado', 'ventas'];
+let metasMem = globalThis.__reikiMetas || null;
+
+export async function leerMetas() {
+  const redis = getRedis();
+  if (redis) {
+    try {
+      const raw = await redis.get(METAS_KEY);
+      if (raw) metasMem = typeof raw === 'string' ? JSON.parse(raw) : raw;
+    } catch (err) {
+      console.warn('[metas] get', err?.message || err);
+    }
+  }
+  return metasMem || {};
+}
+
+/** metas: { cotizaciones: {dia, semana, mes}, cotizado: {...}, ventas: {...} } — número de cotizaciones y valores en pesos. */
+export async function guardarMetas(input = {}, by = 'panel') {
+  const out = {};
+  for (const ind of INDICADORES_META) {
+    out[ind] = {};
+    for (const p of PERIODOS_META) {
+      const v = Math.round(Number(String(input?.[ind]?.[p] ?? '').replace(/\D/g, '')) || 0);
+      out[ind][p] = v > 0 ? v : null;
+    }
+  }
+  out.actualizado = new Date().toISOString();
+  out.por = String(by || '').slice(0, 40);
+  metasMem = out;
+  globalThis.__reikiMetas = out;
+  const redis = getRedis();
+  if (redis) await redis.set(METAS_KEY, out);
+  return out;
+}
+
+/** Días hábiles (lunes a sábado) entre dos fechas, inclusive. */
+function habiles(desde, hasta) {
+  let n = 0;
+  for (let d = desde; d <= hasta; d = sumarDias(d, 1)) if (new Date(`${d}T12:00:00Z`).getUTCDay() !== 0) n += 1;
+  return n;
+}
+function finDeMes(y) {
+  const [a, m] = y.split('-').map(Number);
+  return new Date(Date.UTC(a, m, 0)).toISOString().slice(0, 10);
+}
+
+/** Avance contra la meta de hoy, la semana y el mes, con el ritmo esperado según los días hábiles transcurridos. */
+export async function calcularMetas({ cots, ventasPorPeriodo } = {}) {
+  const metas = await leerMetas();
+  const hoy = hoyYmd();
+  const lunes = lunesDe(hoy);
+  const rangos = {
+    dia: { desde: hoy, hasta: hoy, fin: hoy, label: 'Hoy' },
+    semana: { desde: lunes, hasta: hoy, fin: sumarDias(lunes, 6), label: 'Esta semana' },
+    mes: { desde: `${hoy.slice(0, 7)}-01`, hasta: hoy, fin: finDeMes(hoy), label: 'Este mes' },
+  };
+  const lista = (cots || (await listCotizaciones())).filter((c) => !(c.estado === 'rechazada' && /versi[oó]n anterior/i.test(c.motivoRechazo || '')));
+  let ventas = ventasPorPeriodo;
+  if (!ventas) {
+    const todos = await listExpedientes();
+    ventas = {};
+    for (const p of PERIODOS_META) {
+      const r = rangos[p];
+      ventas[p] = todos
+        .filter((e) => e.estado !== 'cancelado' && ymd(fechaAprobacion(e)) >= r.desde && ymd(fechaAprobacion(e)) <= r.hasta)
+        .reduce((a, e) => ({ total: a.total + resumen(e).total, n: a.n + 1 }), { total: 0, n: 0 });
+    }
+  }
+  const periodos = {};
+  for (const p of PERIODOS_META) {
+    const r = rangos[p];
+    const delPeriodo = lista.filter((c) => {
+      const y = ymd(c.creada);
+      return y >= r.desde && y <= r.hasta;
+    });
+    const web = delPeriodo.filter((c) => ['web', 'whatsapp', 'tienda'].includes(String(c.canal || c.origen || '').toLowerCase()));
+    const totHab = habiles(r.desde, r.fin) || 1;
+    const pasados = habiles(r.desde, r.hasta);
+    const ritmo = p === 'dia' ? 1 : Math.min(1, pasados / totHab);
+    const valores = {
+      cotizaciones: delPeriodo.length,
+      cotizado: delPeriodo.reduce((a, c) => a + (Number(c.total) || 0), 0),
+      ventas: ventas[p].total,
+    };
+    const ind = {};
+    for (const k of INDICADORES_META) {
+      const meta = metas?.[k]?.[p] || null;
+      const valor = valores[k];
+      const esperado = meta ? Math.round(meta * ritmo) : null;
+      ind[k] = {
+        valor,
+        meta,
+        pct: meta ? Math.round((valor / meta) * 100) : null,
+        falta: meta ? Math.max(0, meta - valor) : null,
+        esperado,
+        estado: !meta ? 'sin_meta' : valor >= meta ? 'cumplida' : valor >= esperado ? 'al_dia' : 'atrasada',
+      };
+    }
+    periodos[p] = {
+      label: r.label,
+      desde: r.desde,
+      hasta: r.fin,
+      diasHabiles: totHab,
+      diasPasados: pasados,
+      nWeb: web.length,
+      nVentas: ventas[p].n,
+      ...ind,
+    };
+  }
+  return { metas, periodos };
 }

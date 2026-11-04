@@ -82,6 +82,11 @@
     try {
       var j = await S().api('cot-list');
       st.items = j.cotizaciones || [];
+      try {
+        st.metas = await S().api('metas');
+      } catch (e) {
+        st.metas = null;
+      }
       stt.textContent = '';
       contar();
       pintar();
@@ -195,7 +200,12 @@
           .join('') +
         '</section>'
       : '<div class="seg-empty"><p>No hay cotizaciones en esta vista.</p><p class="seg-hint">Las cotizaciones que hace Claude en cualquier chat y las que generan los clientes en la página o por WhatsApp aparecen aquí solas.</p></div>';
-    cont.innerHTML = metricas + chips + cards;
+    cont.innerHTML = (window.reikiMetas && st.metas ? window.reikiMetas.html(st.metas, 'cot') : '') + metricas + chips + cards;
+    if (window.reikiMetas && st.metas)
+      window.reikiMetas.enlazar(cont, function (j) {
+        st.metas = j;
+        pintar();
+      });
     cont.querySelectorAll('[data-ct-filtro]').forEach(function (b) {
       b.addEventListener('click', function () {
         st.filtro = b.getAttribute('data-ct-filtro');
