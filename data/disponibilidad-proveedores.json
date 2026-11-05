@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-11-03 21:00",
+ "ultima_revision": "2026-11-04 21:00",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -514,7 +514,7 @@
    "consulta": "ok"
   },
   "bateria-solar-litio-felicity-48v-11-8kwh-1880845": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -759,8 +759,8 @@
    "consulta": "ok"
   },
   "deye-bateria-litio-tipo-rack-5kwh-alto-voltaje-51-2vdc-para-caja-de-control-bos-gm5-1": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "deye-caja-de-control-de-alto-voltaje-para-baterias-bos-g-pdu-na-hv750v-620vdc": {
@@ -884,7 +884,7 @@
    "consulta": "ok"
   },
   "dtu-hoymiles-dtu-pro-s-wifi-para-monitoreo-de-microinversores": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -1479,7 +1479,7 @@
    "consulta": "ok"
   },
   "panel-solar-monocristalino-tensite-240w-1002223": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -1530,7 +1530,7 @@
   },
   "restar-panel-monocristalino-40w-voc-21-6-isc-2-45": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "restar-panel-policristalino-25w-voc-21-6-isc-1-23": {
