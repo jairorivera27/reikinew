@@ -71,3 +71,19 @@ export function validarCliente(b = {}) {
     datos: ok ? { nombre, celular: cel, correo, departamento: dep, municipio: mun, ciudad: `${mun}, ${dep}` } : null,
   };
 }
+
+/**
+ * "GIRARDOT, CUNDINAMARCA" → { city: "Girardot", department: "Cundinamarca" } con los nombres oficiales (tildes y mayúsculas),
+ * que es como los exige Alegra para la factura electrónica. Bogotá va como "Bogotá, D.C." en ambos campos.
+ */
+export function ubicacionOficial(ciudad) {
+  const partes = String(ciudad || '').split(',').map((s) => s.trim()).filter(Boolean);
+  const mun = partes[0] || '';
+  const dep = partes.slice(1).join(', ');
+  if (/^bogot/i.test(norm(mun)) || /^bogot/i.test(norm(dep))) return { city: 'Bogotá, D.C.', department: 'Bogotá, D.C.', ok: true };
+  const M = municipios();
+  const depKey = Object.keys(M).find((d) => norm(d) === norm(dep)) || Object.keys(M).find((d) => (M[d] || []).some((m) => norm(m) === norm(mun)));
+  if (!depKey) return { city: mun, department: dep, ok: false };
+  const munOk = (M[depKey] || []).find((m) => norm(m) === norm(mun));
+  return { city: munOk || mun, department: depKey, ok: Boolean(munOk) };
+}

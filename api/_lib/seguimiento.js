@@ -7,7 +7,7 @@ import { getRedis, waKey } from './whatsapp-redis.js';
 import { proveedorDeItem } from './proveedores.js';
 import { correoLibre, correoPorEtapa } from './correos.js';
 import { listRecentCheckoutOrders } from './checkout-order-store.js';
-import { ajustarPlantillaFactura, crearBorrador, leerFactura, registrarPago, repararUnidadesFactura, urlFactura } from './alegra.js';
+import { ajustarPlantillaFactura, asegurarContacto, crearBorrador, leerFactura, registrarPago, repararUnidadesFactura, urlFactura } from './alegra.js';
 
 const memExp = globalThis.__reikiSegExp || new Map();
 globalThis.__reikiSegExp = memExp;
@@ -708,6 +708,7 @@ export async function prepararFacturaAlegra(id, by = 'panel') {
     try {
       const actual = await leerFactura(f.alegraId);
       if (!actual.emitida && actual.estado !== 'void') {
+        await asegurarContacto(exp).catch((err) => console.warn('[alegra] contacto', err?.message || err));
         const unidades = await repararUnidadesFactura(f.alegraId).catch((err) => [{ ok: false, error: err?.message || String(err) }]);
         const fallo = unidades.find((u) => !u.ok);
         if (fallo) throw new Error(`No se pudo poner la unidad de medida a un ítem en Alegra: ${fallo.error}`);

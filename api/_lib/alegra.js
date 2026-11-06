@@ -7,6 +7,7 @@
  * Opcionales: ALEGRA_NUMERACION (15 = RK electrónica), ALEGRA_BANCO (3 = Banco 1),
  *             ALEGRA_IVA19 (4), ALEGRA_IVA_EXCLUIDO (2), ALEGRA_APP_URL.
  */
+import { ubicacionOficial } from './validar-cliente.js';
 const API = 'https://api.alegra.com/api/v1';
 const cfg = () => ({
   email: String(process.env.ALEGRA_EMAIL || '').trim(),
@@ -91,8 +92,13 @@ export function lineasFactura(exp) {
 
 /* ---------------- contacto ---------------- */
 function partirCiudad(c) {
-  const [city, dep] = String(c || '').split(',').map((s) => s.trim());
-  return { city: city || '', department: dep || '' };
+  const u = ubicacionOficial(c);
+  return { city: u.city || '', department: u.department || '', ok: u.ok };
+}
+
+/** Busca/crea el cliente en Alegra y corrige su ciudad y departamento a los nombres oficiales. */
+export async function asegurarContacto(exp) {
+  return contactoDe(exp);
 }
 
 async function contactoDe(exp) {
@@ -105,12 +111,31 @@ async function contactoDe(exp) {
   if (lista.length) {
     // el más reciente con correo
     lista.sort((x, y) => String(y.created_at || y.id).localeCompare(String(x.created_at || x.id)));
-    return { contacto: lista.find((x) => x.email) || lista[0], creado: false };
+    const ct = lista.find((x) => x.email) || lista[0];
+    // Ciudad/departamento escritos distinto a la lista oficial (p. ej. en mayúsculas): la DIAN los rechaza al emitir.
+    const a = ct.address || {};
+    const fuente = a.city && a.department ? `${a.city}, ${a.department}` : cl.ciudad;
+    const of = partirCiudad(fuente);
+    if (of.ok && (of.city !== a.city || of.department !== a.department)) {
+      try {
+        await alegra('PUT', `/contacts/${encodeURIComponent(ct.id)}`, {
+          name: ct.name,
+          identificationObject: ct.identificationObject,
+          kindOfPerson: ct.kindOfPerson,
+          regime: ct.regime,
+          address: { address: a.address || cl.direccion || '', city: of.city, department: of.department, country: 'Colombia' },
+        });
+        ct.address = { ...a, city: of.city, department: of.department };
+      } catch (err) {
+        console.warn('[alegra] corregir ciudad del contacto', err?.message || err);
+      }
+    }
+    return { contacto: ct, creado: false };
   }
   // Alegra exige dirección, ciudad y departamento para crear el cliente
   const faltan = [];
   if (!String(cl.direccion || '').trim()) faltan.push('la dirección');
-  if (!partirCiudad(cl.ciudad).department) faltan.push('la ciudad como "Ciudad, Departamento"');
+  if (!partirCiudad(cl.ciudad).ok) faltan.push('la ciudad como "Municipio, Departamento" (con el nombre oficial del municipio)');
   if (faltan.length) throw new Error(`Para crear el cliente en Alegra falta ${faltan.join(' y ')} en los datos de la venta.`);
   const esNit = (cl.tipoDoc || '').toUpperCase() === 'NIT' || num.length === 9 || /s\.?a\.?s|ltda|s\.?a\.|e\.?s\.?p|bic|asociaci|comunidad|cooperativa|fundaci|\but\b/i.test(cl.nombre || '');
   const { city, department } = partirCiudad(cl.ciudad);
