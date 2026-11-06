@@ -446,6 +446,21 @@ export async function expedienteDesdePedido(order) {
   }
   const c = order.client || {};
   const dir = order.shippingAddress || {};
+  // Pago en línea con el link de una cotización (orderId "COT041126004R3-…"): el pedido no trae ítems; se toman de la cotización.
+  let cot = null;
+  const m = /^(COT|CT)(\d{9})/i.exec(String(order.orderId));
+  if (m) {
+    try {
+      const { getCotizacion } = await import('./cotizaciones.js');
+      cot = (await getCotizacion(m[1].toUpperCase() + m[2])) || null;
+    } catch (err) {
+      console.warn('[seguimiento] cotización del pedido', err?.message || err);
+    }
+  }
+  const itemsPedido = (order.items || []).map((it) => ({ nombre: it.name, sku: it.sku, cantidad: it.quantity, precioUnit: it.unitPrice }));
+  const itemsCot = cot
+    ? (cot.items || []).map((it) => ({ nombre: it.nombre, sku: it.sku || (it.comprar === false && /env[ií]o/i.test(it.nombre) ? 'ENVIO' : ''), cantidad: it.cantidad, precioUnit: it.precioUnit, proveedor: it.proveedor, ...(it.comprar === false ? { compra: { estado: 'no_aplica' } } : {}) }))
+    : [];
   const exp = await saveExpediente(
     {
       tipo: 'tienda',
@@ -463,9 +478,10 @@ export async function expedienteDesdePedido(order) {
         ciudad: [dir.city, dir.department].filter(Boolean).join(', '),
         direccion: dir.lineOne || dir.address || '',
       },
-      cotizacion: { numero: `Pedido web ${order.orderId}`, fecha: String(order.createdAt || '').slice(0, 10) },
+      cotizacion: cot ? { numero: cot.numero, fecha: String(order.createdAt || '').slice(0, 10), url: '' } : { numero: `Pedido web ${order.orderId}`, fecha: String(order.createdAt || '').slice(0, 10) },
       total: order.totalAmount,
-      items: (order.items || []).map((it) => ({ nombre: it.name, sku: it.sku, cantidad: it.quantity, precioUnit: it.unitPrice })),
+      items: itemsPedido.length ? itemsPedido : itemsCot,
+      ...(cot ? { notas: `Pagado en línea con el link de la ${cot.numero} (pedido ${order.orderId}).` } : {}),
       pagos: [
         {
           fecha: String(order.paidAt || order.updatedAt || order.createdAt || '').slice(0, 10),
@@ -480,6 +496,14 @@ export async function expedienteDesdePedido(order) {
     'tienda web'
   );
   if (redis) await redis.set(link, exp.id);
+  if (cot && !cot.expedienteId) {
+    try {
+      const { guardarCotizacion } = await import('./cotizaciones.js');
+      await guardarCotizacion({ id: cot.id, expedienteId: exp.id }, 'tienda web');
+    } catch (err) {
+      console.warn('[seguimiento] enlazar cotización', err?.message || err);
+    }
+  }
   return exp;
 }
 
