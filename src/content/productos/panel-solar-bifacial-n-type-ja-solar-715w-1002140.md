@@ -21,7 +21,7 @@ specifications:
 brand: "JA Solar"
 sku: "1002140"
 power: "715W"
-stock: "disponible"
+stock: "pre-orden"
 order: 6419
 updatedAt: "2026-10-26"
 seoKeywords:

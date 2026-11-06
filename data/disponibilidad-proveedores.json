@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-11-04 21:00",
+ "ultima_revision": "2026-11-05 20:59",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -514,7 +514,7 @@
    "consulta": "ok"
   },
   "bateria-solar-litio-felicity-48v-11-8kwh-1880845": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -1454,7 +1454,7 @@
    "consulta": "ok"
   },
   "panel-solar-bifacial-n-type-ja-solar-715w-1002140": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -1469,7 +1469,7 @@
    "consulta": "ok"
   },
   "panel-solar-bifacial-n-type-tensite-710w-1002138": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -1544,7 +1544,7 @@
    "consulta": "ok"
   },
   "smart-dongle-huawei-sdonglea-05-wlan-fe-para-monitoreo": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
