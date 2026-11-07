@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-11-05 20:59",
+ "ultima_revision": "2026-11-06 21:00",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -559,8 +559,8 @@
    "consulta": "ok"
   },
   "bomba-sumergible-lapicero-dc-4e-7m3h-800w-72m-cont-dy-1500dc-bomb-4e800-sc7-72d-deye": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "breaker-suntree-16a-dc-5504146": {
@@ -845,7 +845,7 @@
   },
   "deye-medidor-con-ct-sdm630-mct-indirecta-series-eastron": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "deye-medidor-smart-meter-microinversor-ddzy422-d2-wifi": {
@@ -854,8 +854,8 @@
    "consulta": "ok"
   },
   "deye-microinversor-on-grid-2000w-bifasico-sun-m200g4-eu-q0-i220v": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "deye-modulo-de-comunicacion-lse-3-ethernet": {
@@ -1129,7 +1129,7 @@
    "consulta": "ok"
   },
   "generico-cable-para-puesta-a-tierra-generico": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -1529,8 +1529,8 @@
    "consulta": "ok"
   },
   "restar-panel-monocristalino-40w-voc-21-6-isc-2-45": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "restar-panel-policristalino-25w-voc-21-6-isc-1-23": {
@@ -1770,7 +1770,7 @@
   },
   "suntree-transferencia-automatica-ac-sq8t-63-4p-trifasica-3a-230vac": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "taifu-bomba-recirculacion-tssp-18m3h-8m-96v-750w-sin-controlador": {

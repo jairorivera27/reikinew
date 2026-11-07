@@ -16,7 +16,7 @@ specifications:
 brand: "Restar"
 model: "40WP-MONO"
 sku: "ING-PNLM29"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-26"
 imagen_provisional: false
@@ -28,7 +28,6 @@ faqs:
     respuesta: "Divide tu consumo mensual (kWh, en la factura) entre 5 kWh que aporta cada panel. Por ejemplo, para 300 kWh/mes necesitarías unos 56 paneles. Te hacemos el dimensionamiento gratis con tu factura."
   - pregunta: "¿Sirve para sistemas conectados a la red y para sistemas aislados?"
     respuesta: "Sí. Con un inversor on-grid entrega energía a la casa y a la red (autogeneración, con trámite ante el operador de red); con un inversor híbrido u off-grid carga baterías. Lo importante es que el voltaje del arreglo sea compatible con el inversor o el controlador."
-stockBajo: true
 ---
 
 Proveedor: Ingesolar (PNLM29).

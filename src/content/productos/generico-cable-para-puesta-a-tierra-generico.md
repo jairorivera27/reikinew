@@ -12,7 +12,7 @@ specifications:
 brand: "Genérico"
 model: "CABLE DE PUESTA A TIERRA"
 sku: "ING-ACCC13"
-stock: "pre-orden"
+stock: "disponible"
 order: 8000
 updatedAt: "2026-10-14"
 imagen_provisional: true
