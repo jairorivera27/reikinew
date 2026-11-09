@@ -9,9 +9,10 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { getRedis, waKey } from './whatsapp-redis.js';
-import { fechaAprobacion, listExpedientes, resumen, sincronizarPedidosWeb } from './seguimiento.js';
+import { bodegaDeItem, fechaAprobacion, listExpedientes, resumen, sincronizarPedidosWeb } from './seguimiento.js';
 import { listCotizaciones, resumenCot } from './cotizaciones.js';
 import { leerContactos } from './proveedores-contactos.js';
+import { leerBodegas } from './envia.js';
 
 const ALEGRA_KEY = waKey('metricas', 'alegra');
 let alegraMem = globalThis.__reikiAlegraSnap || null;
@@ -217,6 +218,7 @@ const valido = (e) => e.estado !== 'cancelado' && !/^PRUEBA/i.test(e.titulo || '
 export async function comprasPendientes({ todos = false } = {}) {
   await sincronizarPedidosWeb();
   const cat = await catalogo();
+  const bodegasDespacho = await leerBodegas();
   const exps = (await listExpedientes()).filter((e) => e.estado === 'activo' && valido(e));
   const ventas = [];
   const porProveedor = {};
@@ -237,6 +239,8 @@ export async function comprasPendientes({ todos = false } = {}) {
         cantidad: it.cantidad,
         proveedor: it.proveedor || 'Por confirmar',
         codigoProveedor: it.codigoProveedor || '',
+        bodega: it.bodega || '',
+        bodegaSugerida: bodegaDeItem(it, bodegasDespacho),
         compra: it.compra || null,
         estado,
         tienda: c ? { stock: c.stock, stockBajo: c.stockBajo, slug: c.slug, titulo: c.titulo, modelo: c.modelo } : null,
@@ -280,6 +284,7 @@ export async function comprasPendientes({ todos = false } = {}) {
     porProveedor: Object.values(porProveedor).sort((a, b) => b.porPedir - a.porPedir),
     estados: ESTADOS_EQUIPO,
     contactos: await leerContactos(),
+    bodegas: bodegasDespacho,
   };
 }
 

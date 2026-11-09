@@ -31,45 +31,66 @@
     return '<tr>' + '<td>' + inp('contenido', 'Contenido') + '</td><td>' + inp('cantidad', 'Cajas', 1) + '</td><td>' + inp('peso', 'Kg c/u', 1) + '</td><td>' + inp('largo', 'Largo cm', 1) + '</td><td>' + inp('ancho', 'Ancho cm', 1) + '</td><td>' + inp('alto', 'Alto cm', 1) + '</td><td><button type="button" class="btn btn-ghost seg-mini" data-quitar-caja="' + i + '" aria-label="Quitar caja">×</button></td></tr>';
   }
 
-  function contenidoDe(e) {
-    var n = (e.items || []).filter(function (i) {
-      return !/env[ií]o/i.test(i.nombre) && i.sku !== 'ENVIO';
+  var norm = function (x) {
+    return String(x || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+  };
+  function bodegaDe(it, bodegas) {
+    if (it.bodega && bodegas[it.bodega]) return it.bodega;
+    var ids = Object.keys(bodegas).filter(function (k) {
+      return norm(bodegas[k].proveedor) && norm(bodegas[k].proveedor) === norm(it.proveedor);
     });
+    return ids.length === 1 ? ids[0] : '';
+  }
+  function esEquipo(it) {
+    return !(it.compra && it.compra.estado === 'no_aplica') && it.sku !== 'ENVIO' && !/env[ií]o/i.test(it.nombre || '');
+  }
+  /** Equipos agrupados por bodega de recogida: [{ key, items:[{it, idx}] }] */
+  function grupos(e, bodegas) {
+    var g = {};
+    (e.items || []).forEach(function (it, idx) {
+      if (!esEquipo(it)) return;
+      var k = bodegaDe(it, bodegas);
+      (g[k] = g[k] || []).push({ it: it, idx: idx });
+    });
+    return Object.keys(g).map(function (k) {
+      return { key: k, items: g[k] };
+    });
+  }
+
+  function contenidoDe(e, lista) {
+    var n = lista || (e.items || []).filter(esEquipo);
     return n.length === 1 ? n[0].nombre.slice(0, 50) : 'Equipos solares (' + n.length + ' ítems)';
   }
 
-  function html(e, cfg) {
+  function htmlDespacho(e, x, bodegas) {
     var esc = S().esc,
       cop = S().cop;
-    var en = e.envio || {};
-    var badge = cfg.entorno === 'produccion' ? '' : ' <span class="oc-badge oc-badge--warn">Modo de prueba: guías sin validez</span>';
-    if (!cfg.configurado)
-      return '<section class="modal-block"><h3>Envío con transportadora</h3><p class="seg-warn">Envia aún no está conectado. Agrega <b>ENVIA_TOKEN</b> en Vercel (Envia → Developers → API Keys) y haz Redeploy. Para pruebas usa el token del sandbox; para guías reales, el de producción y <b>ENVIA_ENTORNO=produccion</b>.</p></section>';
-    if (en.envia && en.guia) {
-      var rec = en.envia.recogida;
-      var bodega = Object.values(cfg.bodegas || {}).find(function (b) {
-        return b.nombre === en.bodega;
-      });
-      return (
-        '<section class="modal-block"><h3>Envío con transportadora' + (en.envia.entorno === 'produccion' ? '' : ' <span class="oc-badge oc-badge--warn">Guía de prueba</span>') + '</h3>' +
-        '<p><b>' + esc(en.transportadora) + '</b> · guía <b>' + esc(en.guia) + '</b>' + (en.costoFlete ? ' · flete ' + cop(en.costoFlete) : '') + (en.bodega ? ' · sale de ' + esc(en.bodega) : '') + '</p>' +
-        (en.estadoEnvio ? '<p>Estado: <b>' + esc(en.estadoEnvio) + '</b></p>' : '') +
-        (rec ? '<p class="pc-muted">' + (rec.error ? 'Recogida no programada: ' + esc(rec.error) : 'Recogida programada' + (rec.confirmacion ? ' n.º ' + esc(rec.confirmacion) : '')) + '</p>' : '') +
-        '<div class="modal-actions">' +
-        (en.rotulo ? '<a class="btn btn-primary seg-mini" href="' + esc(en.rotulo) + '" target="_blank" rel="noopener"><i class="fas fa-print" aria-hidden="true"></i> Rótulo (PDF)</a>' : '') +
-        (en.trackUrl ? '<a class="btn btn-ghost seg-mini" href="' + esc(en.trackUrl) + '" target="_blank" rel="noopener">Rastreo</a>' : '') +
-        (en.rotulo && bodega && bodega.telefono
-          ? '<a class="btn seg-mini pc-wa" target="_blank" rel="noopener" href="https://wa.me/' + esc((bodega.telefono.replace(/\D/g, '').length === 10 ? '57' : '') + bodega.telefono.replace(/\D/g, '')) + '?text=' + encodeURIComponent('Hola, ¿cómo estás? Te comparto el rótulo de ' + en.transportadora + ' (guía ' + en.guia + ') del pedido ' + ((e.cotizacion && e.cotizacion.numero) || e.id) + ' para pegarlo en la caja. La transportadora pasa a recogerlo. ' + en.rotulo) + '"><i class="fab fa-whatsapp" aria-hidden="true"></i> Enviar rótulo a la bodega</a>'
-          : '') +
-        '<button type="button" class="btn btn-secondary seg-mini" data-envia-rastrear>Actualizar estado</button></div>' +
-        '<p class="seg-warn" data-envia-err hidden></p></section>'
-      );
-    }
+    var rec = x.recogida;
+    var bodega = bodegas[x.bodegaId];
+    var tel = bodega && bodega.telefono ? bodega.telefono.replace(/\D/g, '') : '';
+    return (
+      '<div class="envia-grupo envia-grupo--ok"><p><b>' + esc(x.bodega || 'Bodega') + '</b> → ' + esc(x.transportadora) + ' · guía <b>' + esc(x.guia) + '</b>' + (x.costoFlete ? ' · ' + cop(x.costoFlete) : '') + (x.entorno === 'produccion' ? '' : ' <span class="oc-badge oc-badge--warn">prueba</span>') + '</p>' +
+      (x.estado ? '<p>Estado: <b>' + esc(x.estado) + '</b></p>' : '') +
+      (rec ? '<p class="pc-muted">' + (rec.error ? 'Recogida no programada: ' + esc(rec.error) : 'Recogida programada' + (rec.confirmacion ? ' n.º ' + esc(rec.confirmacion) : '')) + '</p>' : '') +
+      '<div class="modal-actions">' +
+      (x.rotulo ? '<a class="btn btn-primary seg-mini" href="' + esc(x.rotulo) + '" target="_blank" rel="noopener"><i class="fas fa-print" aria-hidden="true"></i> Rótulo (PDF)</a>' : '') +
+      (x.trackUrl ? '<a class="btn btn-ghost seg-mini" href="' + esc(x.trackUrl) + '" target="_blank" rel="noopener">Rastreo</a>' : '') +
+      (x.rotulo && tel
+        ? '<a class="btn seg-mini pc-wa" target="_blank" rel="noopener" href="https://wa.me/' + esc((tel.length === 10 ? '57' : '') + tel) + '?text=' + encodeURIComponent('Hola' + (bodega.contacto ? ' ' + bodega.contacto.split(' ')[0] : '') + ', ¿cómo estás? Te comparto el rótulo de ' + x.transportadora + ' (guía ' + x.guia + ') del pedido ' + ((e.cotizacion && e.cotizacion.numero) || e.id) + ' para pegarlo en la caja. La transportadora pasa a recogerlo. ' + x.rotulo) + '"><i class="fab fa-whatsapp" aria-hidden="true"></i> Enviar rótulo a la bodega</a>'
+        : '') +
+      '</div></div>'
+    );
+  }
+
+  function htmlGrupo(e, gr, cfg) {
+    var esc = S().esc,
+      cop = S().cop;
     var bodegas = cfg.bodegas || {};
-    var ids = Object.keys(bodegas);
-    var c = estado.cotiz[e.id] || { cajas: [{ contenido: contenidoDe(e), cantidad: 1 }] };
-    estado.cotiz[e.id] = c;
-    var opts = ids
+    var key = e.id + '|' + gr.key;
+    var c = estado.cotiz[key] || { bodegaId: gr.key, cajas: [{ contenido: contenidoDe(e, gr.items.map(function (x) { return x.it; })), cantidad: 1 }] };
+    estado.cotiz[key] = c;
+    var lista = gr.items.map(function (x) { return x.it.cantidad + ' × ' + x.it.nombre; }).join(' · ');
+    var opts = Object.keys(bodegas)
       .map(function (id) {
         return '<option value="' + esc(id) + '"' + (c.bodegaId === id ? ' selected' : '') + '>' + esc(bodegas[id].nombre + ' · ' + bodegas[id].ciudad) + '</option>';
       })
@@ -79,7 +100,7 @@
         ? '<div class="table-wrap"><table><thead><tr><th></th><th>Transportadora</th><th>Servicio</th><th>Entrega</th><th>Flete</th></tr></thead><tbody>' +
           c.tarifas
             .map(function (t, i) {
-              return '<tr><td><input type="radio" name="envia-tarifa" value="' + i + '"' + (c.elegida === i ? ' checked' : '') + ' aria-label="Escoger ' + esc(t.carrierNombre) + '" /></td><td>' + esc(t.carrierNombre) + '</td><td>' + esc(t.servicio) + (t.recogida ? '' : ' <small>(llevar a oficina)</small>') + '</td><td>' + esc(t.entrega || t.fechaEntrega || '—') + '</td><td><b>' + cop(t.precio) + '</b></td></tr>';
+              return '<tr><td><input type="radio" name="envia-tarifa-' + esc(gr.key || 'x') + '" data-tarifa="' + i + '" value="' + i + '"' + (c.elegida === i ? ' checked' : '') + ' aria-label="Escoger ' + esc(t.carrierNombre) + '" /></td><td>' + esc(t.carrierNombre) + '</td><td>' + esc(t.servicio) + (t.recogida ? '' : ' <small>(llevar a oficina)</small>') + '</td><td>' + esc(t.entrega || t.fechaEntrega || '—') + '</td><td><b>' + cop(t.precio) + '</b></td></tr>';
             })
             .join('') +
           '</tbody></table></div>' +
@@ -92,16 +113,38 @@
         : '<p class="seg-warn">Ninguna transportadora dio tarifa para esta ruta y estas cajas.' + (c.errores && c.errores.length ? ' ' + esc(c.errores.map(function (x) { return x.carrier + ': ' + x.error; }).join(' · ')) : '') + '</p>'
       : '';
     return (
-      '<section class="modal-block"><h3>Envío con transportadora' + badge + '</h3>' +
-      (ids.length
-        ? '<label class="seg-field"><span>Sale de</span><select data-envia-bodega><option value="">Escoge la bodega…</option>' + opts + '</select></label>'
-        : '<p class="seg-warn">Registra primero la bodega de donde salen los equipos (abajo, en "Bodegas de despacho").</p>') +
-      '<p class="pc-muted">Va para: ' + esc((e.cliente && e.cliente.direccion) || '(sin dirección)') + ', ' + esc((e.cliente && e.cliente.ciudad) || '') + '</p>' +
+      '<div class="envia-grupo" data-grupo="' + esc(gr.key) + '">' +
+      '<p><b>' + esc(gr.key && bodegas[gr.key] ? bodegas[gr.key].nombre : 'Sin bodega asignada') + '</b> · ' + esc(lista) + '</p>' +
+      '<label class="seg-field"><span>Sale de</span><select data-envia-bodega><option value="">Escoge la bodega…</option>' + opts + '</select></label>' +
       '<div class="table-wrap"><table class="envia-cajas"><thead><tr><th>Contenido</th><th>Cajas</th><th>Kg c/u</th><th>Largo</th><th>Ancho</th><th>Alto</th><th></th></tr></thead><tbody>' +
       c.cajas.map(filaCaja).join('') +
-      '</tbody></table></div><div class="modal-actions"><button type="button" class="btn btn-ghost seg-mini" data-envia-caja>+ Otra caja</button><button type="button" class="btn btn-secondary seg-mini" data-envia-cotizar' + (ids.length ? '' : ' disabled') + '><i class="fas fa-truck" aria-hidden="true"></i> Cotizar flete</button></div>' +
+      '</tbody></table></div><div class="modal-actions"><button type="button" class="btn btn-ghost seg-mini" data-envia-caja>+ Otra caja</button><button type="button" class="btn btn-secondary seg-mini" data-envia-cotizar><i class="fas fa-truck" aria-hidden="true"></i> Cotizar flete</button></div>' +
       tarifas +
-      '<p class="seg-warn" data-envia-err hidden></p>' +
+      '<p class="seg-warn" data-envia-err hidden></p></div>'
+    );
+  }
+
+  function html(e, cfg) {
+    var esc = S().esc;
+    if (!cfg.configurado)
+      return '<section class="modal-block"><h3>Envío con transportadora</h3><p class="seg-warn">Envia aún no está conectado. Agrega <b>ENVIA_TOKEN</b> en Vercel (Envia → Developers → API Keys) y publica de nuevo.</p></section>';
+    var bodegas = cfg.bodegas || {};
+    var en = e.envio || {};
+    var despachos = (en.despachos || []).slice();
+    if (!despachos.length && en.envia && en.guia) despachos.push({ bodega: en.bodega, transportadora: en.transportadora, guia: en.guia, trackUrl: en.trackUrl, rotulo: en.rotulo, costoFlete: en.costoFlete, recogida: en.envia.recogida, entorno: en.envia.entorno, estado: en.estadoEnvio });
+    var hechas = despachos.map(function (x) { return x.bodegaId; });
+    var pend = grupos(e, bodegas).filter(function (g) { return !g.key || hechas.indexOf(g.key) < 0; });
+    var badge = cfg.entorno === 'produccion' ? '' : ' <span class="oc-badge oc-badge--warn">Modo de prueba: guías sin validez</span>';
+    return (
+      '<section class="modal-block"><h3>Envío con transportadora' + badge + '</h3>' +
+      '<p class="pc-muted">Va para: ' + esc((e.cliente && e.cliente.direccion) || '(sin dirección)') + ', ' + esc((e.cliente && e.cliente.ciudad) || '') + '</p>' +
+      despachos.map(function (x) { return htmlDespacho(e, x, bodegas); }).join('') +
+      (despachos.length ? '<div class="modal-actions"><button type="button" class="btn btn-secondary seg-mini" data-envia-rastrear>Actualizar estado</button></div>' : '') +
+      (!Object.keys(bodegas).length ? '<p class="seg-warn">Registra primero las bodegas de donde salen los equipos (abajo, en "Bodegas de despacho").</p>' : '') +
+      (pend.length > 1 ? '<p class="pc-muted">Los equipos salen de ' + pend.length + ' bodegas: se compra una guía por cada una.</p>' : '') +
+      pend.map(function (g) { return htmlGrupo(e, g, cfg); }).join('') +
+      (!pend.length && !despachos.length ? '<p class="notes-empty">No hay equipos para despachar.</p>' : '') +
+      '<p class="seg-warn" data-envia-err-global hidden></p>' +
       htmlBodegas(cfg) +
       '</section>'
     );
@@ -122,24 +165,22 @@
     );
   }
 
-  function leerCajas(box, e) {
-    var c = estado.cotiz[e.id];
-    box.querySelectorAll('[data-caja]').forEach(function (inp) {
+  function leerGrupo(gbox, key) {
+    var c = estado.cotiz[key];
+    gbox.querySelectorAll('[data-caja]').forEach(function (inp) {
       var i = Number(inp.getAttribute('data-caja'));
       c.cajas[i] = c.cajas[i] || {};
       var k = inp.getAttribute('data-k');
       c.cajas[i][k] = k === 'contenido' ? inp.value : inp.value.replace(',', '.');
     });
-    var sel = box.querySelector('[data-envia-bodega]');
-    if (sel) c.bodegaId = sel.value;
-    var f = box.querySelector('[data-envia-fecha]');
-    if (f) c.fecha = f.value;
-    var d = box.querySelector('[data-envia-desde]');
-    if (d) c.desde = d.value;
-    var h = box.querySelector('[data-envia-hasta]');
-    if (h) c.hasta = h.value;
-    var sr = box.querySelector('[data-envia-sinrecogida]');
-    if (sr) c.sinRecogida = sr.checked;
+    var g = function (s) {
+      return gbox.querySelector(s);
+    };
+    if (g('[data-envia-bodega]')) c.bodegaId = g('[data-envia-bodega]').value;
+    if (g('[data-envia-fecha]')) c.fecha = g('[data-envia-fecha]').value;
+    if (g('[data-envia-desde]')) c.desde = g('[data-envia-desde]').value;
+    if (g('[data-envia-hasta]')) c.hasta = g('[data-envia-hasta]').value;
+    if (g('[data-envia-sinrecogida]')) c.sinRecogida = g('[data-envia-sinrecogida]').checked;
     return c;
   }
 
@@ -150,39 +191,38 @@
       box.innerHTML = html(e, cfg);
       enlazar();
     };
-    var error = function (t) {
-      var p = box.querySelector('[data-envia-err]');
-      if (p) {
-        p.hidden = !t;
-        p.textContent = t || '';
-      }
-    };
     function enlazar() {
-      var q = function (s) {
-        return box.querySelector(s);
-      };
-      box.querySelectorAll('[data-caja], [data-envia-bodega]').forEach(function (inp) {
-        inp.addEventListener('change', function () {
-          leerCajas(box, e);
+      box.querySelectorAll('[data-grupo]').forEach(function (gbox) {
+        var gk = gbox.getAttribute('data-grupo');
+        var key = e.id + '|' + gk;
+        var gr = grupos(e, cfg.bodegas || {}).find(function (x) { return x.key === gk; }) || { items: [] };
+        var q = function (s) {
+          return gbox.querySelector(s);
+        };
+        var error = function (t) {
+          var p = q('[data-envia-err]');
+          p.hidden = !t;
+          p.textContent = t || '';
+        };
+        gbox.querySelectorAll('[data-caja], [data-envia-bodega], [data-envia-fecha], [data-envia-desde], [data-envia-hasta], [data-envia-sinrecogida]').forEach(function (inp) {
+          inp.addEventListener('change', function () {
+            leerGrupo(gbox, key);
+          });
         });
-      });
-      if (q('[data-envia-caja]'))
         q('[data-envia-caja]').addEventListener('click', function () {
-          var c = leerCajas(box, e);
-          c.cajas.push({ contenido: '', cantidad: 1 });
+          leerGrupo(gbox, key).cajas.push({ contenido: '', cantidad: 1 });
           pintar();
         });
-      box.querySelectorAll('[data-quitar-caja]').forEach(function (b) {
-        b.addEventListener('click', function () {
-          var c = leerCajas(box, e);
-          if (c.cajas.length > 1) c.cajas.splice(Number(b.getAttribute('data-quitar-caja')), 1);
-          pintar();
+        gbox.querySelectorAll('[data-quitar-caja]').forEach(function (b) {
+          b.addEventListener('click', function () {
+            var c = leerGrupo(gbox, key);
+            if (c.cajas.length > 1) c.cajas.splice(Number(b.getAttribute('data-quitar-caja')), 1);
+            pintar();
+          });
         });
-      });
-      if (q('[data-envia-cotizar]'))
         q('[data-envia-cotizar]').addEventListener('click', async function (ev) {
-          var c = leerCajas(box, e);
-          if (!c.bodegaId) return error('Escoge la bodega de donde sale el envío.');
+          var c = leerGrupo(gbox, key);
+          if (!c.bodegaId) return error('Escoge la bodega de donde salen estos equipos.');
           ev.target.disabled = true;
           ev.target.textContent = 'Cotizando con las transportadoras…';
           try {
@@ -198,65 +238,75 @@
             error(err.message);
           }
         });
-      box.querySelectorAll('[name="envia-tarifa"]').forEach(function (r) {
-        r.addEventListener('change', function () {
-          var c = leerCajas(box, e);
-          c.elegida = Number(r.value);
-          c.confirmar = false;
-          pintar();
-        });
-      });
-      if (q('[data-envia-cancelar]'))
-        q('[data-envia-cancelar]').addEventListener('click', function () {
-          var c = leerCajas(box, e);
-          c.confirmar = false;
-          pintar();
-        });
-      if (q('[data-envia-comprar]'))
-        q('[data-envia-comprar]').addEventListener('click', async function (ev) {
-          var c = leerCajas(box, e);
-          if (!c.confirmar) {
-            c.confirmar = true;
-            return pintar();
-          }
-          var t = c.tarifas[c.elegida];
-          ev.target.disabled = true;
-          ev.target.textContent = 'Comprando la guía…';
-          try {
-            var j = await S().api('envia-guia', {
-              id: e.id,
-              bodegaId: c.bodegaId,
-              paquetes: c.cajas,
-              carrier: t.carrier,
-              service: t.service,
-              recogida: c.sinRecogida ? null : { fecha: c.fecha || hoyMas(1), desde: Number(c.desde) || 9, hasta: Number(c.hasta) || 16 },
-            });
-            delete estado.cotiz[e.id];
-            S().upsert(j.expediente);
-            S().abrir(e.id);
-          } catch (err) {
-            ev.target.disabled = false;
-            ev.target.textContent = 'Comprar guía';
+        gbox.querySelectorAll('[data-tarifa]').forEach(function (r) {
+          r.addEventListener('change', function () {
+            var c = leerGrupo(gbox, key);
+            c.elegida = Number(r.value);
             c.confirmar = false;
-            error(err.message);
-          }
+            pintar();
+          });
         });
-      if (q('[data-envia-rastrear]'))
-        q('[data-envia-rastrear]').addEventListener('click', async function (ev) {
-          ev.target.disabled = true;
+        if (q('[data-envia-cancelar]'))
+          q('[data-envia-cancelar]').addEventListener('click', function () {
+            leerGrupo(gbox, key).confirmar = false;
+            pintar();
+          });
+        if (q('[data-envia-comprar]'))
+          q('[data-envia-comprar]').addEventListener('click', async function (ev) {
+            var c = leerGrupo(gbox, key);
+            if (!c.confirmar) {
+              c.confirmar = true;
+              return pintar();
+            }
+            var t = c.tarifas[c.elegida];
+            ev.target.disabled = true;
+            ev.target.textContent = 'Comprando la guía…';
+            try {
+              var j = await S().api('envia-guia', {
+                id: e.id,
+                bodegaId: c.bodegaId,
+                items: gr.items.map(function (x) { return x.idx; }),
+                paquetes: c.cajas,
+                carrier: t.carrier,
+                service: t.service,
+                recogida: c.sinRecogida ? null : { fecha: c.fecha || hoyMas(1), desde: Number(c.desde) || 9, hasta: Number(c.hasta) || 16 },
+              });
+              delete estado.cotiz[key];
+              S().upsert(j.expediente);
+              S().abrir(e.id);
+            } catch (err) {
+              ev.target.disabled = false;
+              ev.target.textContent = 'Comprar guía';
+              c.confirmar = false;
+              error(err.message);
+            }
+          });
+      });
+      var errG = function (t) {
+        var p = box.querySelector('[data-envia-err-global]');
+        if (p) {
+          p.hidden = !t;
+          p.textContent = t || '';
+        }
+      };
+      var br = box.querySelector('[data-envia-rastrear]');
+      if (br)
+        br.addEventListener('click', async function () {
+          br.disabled = true;
           try {
             var j = await S().api('envia-rastrear', { id: e.id });
             if (j.expediente) {
               S().upsert(j.expediente);
               S().abrir(e.id);
-            } else error('Envia no devolvió estado para esta guía.');
+            } else errG('Envia no devolvió estado para estas guías.');
           } catch (err) {
-            ev.target.disabled = false;
-            error(err.message);
+            br.disabled = false;
+            errG(err.message);
           }
         });
-      if (q('[data-bodegas-guardar]'))
-        q('[data-bodegas-guardar]').addEventListener('click', async function (ev) {
+      var bg = box.querySelector('[data-bodegas-guardar]');
+      if (bg)
+        bg.addEventListener('click', async function () {
           var out = {};
           box.querySelectorAll('[data-bodega]').forEach(function (f) {
             var x = {};
@@ -270,14 +320,14 @@
             }
             out[id] = x.nombre ? x : null;
           });
-          ev.target.disabled = true;
+          bg.disabled = true;
           try {
             var j = await S().api('bodegas', { bodegas: out });
             cfg.bodegas = j.bodegas || {};
             pintar();
           } catch (err) {
-            ev.target.disabled = false;
-            error(err.message);
+            bg.disabled = false;
+            errG(err.message);
           }
         });
     }

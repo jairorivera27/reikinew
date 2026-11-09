@@ -564,6 +564,22 @@
     return lista.some(function (p) { return n(p) === n(k); });
   }
 
+  function selectBodega(v, it) {
+    var esc = S().esc;
+    var b = (pc.datos && pc.datos.bodegas) || {};
+    var ids = Object.keys(b);
+    if (!ids.length || it.estado === 'no_aplica' || (it.compra && it.compra.estado === 'no_aplica')) return '';
+    var actual = it.bodega || it.bodegaSugerida || '';
+    return (
+      '<label class="pc-bodega"><span>Recoge en</span><select data-item-bodega="' + esc(v.id) + '|' + it.idx + '" aria-label="Bodega de recogida de ' + esc(it.nombre) + '">' +
+      '<option value="">Por definir</option>' +
+      ids.map(function (id) {
+        return '<option value="' + esc(id) + '"' + (id === actual ? ' selected' : '') + '>' + esc(b[id].nombre) + '</option>';
+      }).join('') +
+      '</select>' + (!it.bodega && it.bodegaSugerida ? '<small class="pc-muted">sugerida por el proveedor</small>' : '') + '</label>'
+    );
+  }
+
   function filaItem(v, it) {
     var esc = S().esc;
     var editable = ['por_pedir', 'pedido', 'comprado', 'no_aplica'].indexOf(it.estado) >= 0;
@@ -590,6 +606,7 @@
       '</td><td>' +
       esc(it.proveedor) +
       (preguntables([it]).length ? '<div>' + botonWa(it.proveedor, [it]) + '</div>' : '') +
+      selectBodega(v, it) +
       '</td><td>' +
       chipTienda(it.tienda) +
       '</td><td>' +
@@ -800,6 +817,20 @@
   }
 
   function enlazarCompras(body) {
+    body.querySelectorAll('[data-item-bodega]').forEach(function (sel) {
+      sel.addEventListener('change', async function () {
+        var k = sel.getAttribute('data-item-bodega').split('|');
+        var stt = $('pc-status');
+        stt.textContent = 'Guardando bodega…';
+        try {
+          await S().api('item-bodega', { id: k[0], idx: Number(k[1]), bodegaId: sel.value });
+          stt.textContent = 'Bodega de recogida guardada.';
+          cargarCompras();
+        } catch (err) {
+          stt.textContent = 'No se pudo guardar: ' + err.message;
+        }
+      });
+    });
     var bg = body.querySelector('[data-ct-guardar]');
     if (bg)
       bg.addEventListener('click', async function () {

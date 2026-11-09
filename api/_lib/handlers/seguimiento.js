@@ -19,7 +19,7 @@
  * GET op=metas → avance contra las metas de cotizaciones, valor cotizado y ventas (hoy, semana, mes)
  * POST op=metas { metas: { cotizaciones|cotizado|ventas: { dia, semana, mes } } }
  * GET op=envia-estado · POST op=bodegas { bodegas } · POST op=envia-cotizar { id, bodegaId, paquetes:[{contenido,cantidad,peso,largo,ancho,alto}] }
- * POST op=envia-guia { id, bodegaId, paquetes, carrier, service, recogida?:{fecha,desde,hasta} } · POST op=envia-rastrear { id? }
+ * POST op=item-bodega { id, idx, bodegaId } · POST op=envia-guia { id, bodegaId, items:[idx], paquetes, carrier, service, recogida?:{fecha,desde,hasta} } · POST op=envia-rastrear { id? }
  * POST op=cot-numero → { numero } siguiente número del consecutivo único CT-DDMMAA-### (también con el token limitado)
  * POST op=cot-save { numero, tipo: equipos|proyecto, cliente, total, items, … }   (también con el token limitado de los chats)
  * POST op=cot-pdf  { id|numero, nombre, base64, parte, total }                  (también con el token limitado)
@@ -40,6 +40,7 @@ import {
   cotizarEnvioVenta,
   despacharVentaEnvia,
   rastrearEnviosPendientes,
+  asignarBodegaItem,
   rastrearVentaEnvia,
   sincronizarPendientesAlegra,
   correoCompraConfirmada,
@@ -244,6 +245,12 @@ export default async function handler(req, res) {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
       return send(res, 200, { ok: true, bodegas: await guardarBodegas(body.bodegas || {}) });
     }
+    if (op === 'item-bodega') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const exp = await asignarBodegaItem(body.id, body.idx, body.bodegaId, by);
+      if (!exp) return send(res, 404, { ok: false, error: 'No existe.' });
+      return send(res, 200, { ok: true, expediente: { ...exp, resumen: resumen(exp) } });
+    }
     if (op === 'envia-cotizar') {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
       try {
@@ -256,8 +263,8 @@ export default async function handler(req, res) {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
       if (!body.carrier) return send(res, 400, { ok: false, error: 'Escoge una transportadora.' });
       try {
-        const r = await despacharVentaEnvia(body.id, { bodegaId: body.bodegaId, paquetes: body.paquetes, carrier: body.carrier, service: body.service, recogida: body.recogida }, by);
-        return send(res, 200, { ok: true, guia: r.guia, recogida: r.recogida, expediente: { ...r.exp, resumen: resumen(r.exp) } });
+        const r = await despacharVentaEnvia(body.id, { bodegaId: body.bodegaId, paquetes: body.paquetes, carrier: body.carrier, service: body.service, recogida: body.recogida, items: body.items }, by);
+        return send(res, 200, { ok: true, guia: r.guia, recogida: r.recogida, bodegasPendientes: r.bodegasPendientes, expediente: { ...r.exp, resumen: resumen(r.exp) } });
       } catch (err) {
         return send(res, 400, { ok: false, error: err.message });
       }

@@ -105,6 +105,7 @@ function normItem(it) {
     proveedor,
     codigoProveedor: str(it.codigoProveedor, 80) || prov.codigoProveedor || '',
     disponibilidad: str(it.disponibilidad, 120),
+    bodega: str(it.bodega, 40),
     compra: normCompra(it.compra),
   };
 }
@@ -803,8 +804,36 @@ export async function cotizarEnvioVenta(id, datos) {
   return d.envia.cotizar({ origen: d.origen, destino: d.destino, paquetes: d.paquetes });
 }
 
-/** Compra la guía, pide la recogida (si se indica) y deja la venta con la guía, el rótulo y las etapas de envío. */
-export async function despacharVentaEnvia(id, { bodegaId, paquetes, carrier, service, recogida, cerrarEtapas = true } = {}, by = 'panel') {
+/** Bodega de recogida de un equipo: la asignada en "Por comprar" o, si no, la del mismo proveedor. */
+export function bodegaDeItem(it, bodegas = {}) {
+  if (it.bodega && bodegas[it.bodega]) return it.bodega;
+  const n = (x) => String(x || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+  const prov = n(it.proveedor);
+  if (!prov) return '';
+  const ids = Object.keys(bodegas).filter((k) => n(bodegas[k].proveedor) === prov);
+  return ids.length === 1 ? ids[0] : '';
+}
+
+/** Asigna (o quita) la bodega de recogida de un equipo de la venta. */
+export async function asignarBodegaItem(id, idx, bodegaId, by = 'panel') {
+  const exp = await getExpediente(id);
+  const it = exp && (exp.items || [])[Number(idx)];
+  if (!it) return null;
+  it.bodega = str(bodegaId, 40);
+  const { leerBodegas } = await import('./envia.js');
+  const b = (await leerBodegas())[it.bodega];
+  pushHist(exp, by, `${it.nombre}: recogida en ${b ? b.nombre : 'bodega por definir'}.`);
+  return persist(exp);
+}
+
+function resumenDespachos(exp) {
+  const ds = exp.envio?.despachos || [];
+  const ts = [...new Set(ds.map((x) => x.transportadora))];
+  return { guia: ds.map((x) => x.guia).join(', '), transportadora: ts.join(' / ') };
+}
+
+/** Compra la guía de una bodega, pide la recogida y la agrega a los despachos de la venta (una guía por bodega). */
+export async function despacharVentaEnvia(id, { bodegaId, paquetes, carrier, service, recogida, items, cerrarEtapas = true } = {}, by = 'panel') {
   const d = await datosEnvio(id, { bodegaId, paquetes });
   const ref = (d.exp.cotizacion && d.exp.cotizacion.numero) || d.exp.id;
   const g = await d.envia.generarGuia({ origen: d.origen, destino: d.destino, paquetes: d.paquetes, carrier, service, referencia: ref, comentario: `Venta ${d.exp.id}` });
@@ -819,51 +848,68 @@ export async function despacharVentaEnvia(id, { bodegaId, paquetes, carrier, ser
     }
   }
   const transportadora = NOMBRE_CARRIER[String(g.carrier).toLowerCase()] || g.carrier;
-  let exp = await saveExpediente(
-    {
-      id,
-      envio: {
-        ...(d.exp.envio || {}),
-        transportadora,
-        guia: g.guia,
-        trackUrl: g.trackUrl,
-        rotulo: g.label,
-        bodega: d.bodega.nombre,
-        fechaDespacho: new Date().toISOString().slice(0, 10),
-        costoFlete: g.precio,
-        envia: { entorno: d.envia.enviaEntorno(), carrier: g.carrier, service: g.service, shipmentId: g.shipmentId, recogida: pickup, compradaAt: new Date().toISOString() },
-      },
-    },
-    by
-  );
-  // saveExpediente solo guarda los campos básicos del envío: los de Envia se agregan directo
-  exp.envio = { ...(exp.envio || {}), trackUrl: g.trackUrl, rotulo: g.label, bodega: d.bodega.nombre, costoFlete: g.precio, envia: { entorno: d.envia.enviaEntorno(), carrier: g.carrier, service: g.service, shipmentId: g.shipmentId, recogida: pickup, compradaAt: new Date().toISOString() } };
-  pushHist(exp, by, `Guía ${transportadora} ${g.guia} comprada en Envia (${d.envia.enviaEntorno()}) por $${g.precio.toLocaleString('es-CO')} desde ${d.bodega.nombre}.${pickup ? (pickup.error ? ` Recogida no programada: ${pickup.error}` : ` Recogida ${recogida.fecha} ${recogida.desde || 9}–${recogida.hasta || 17} h${pickup.confirmacion ? ` (n.º ${pickup.confirmacion})` : ''}.`) : ''}`);
+  const entorno = d.envia.enviaEntorno();
+  const exp = await getExpediente(id);
+  const despacho = {
+    bodegaId,
+    bodega: d.bodega.nombre,
+    transportadora,
+    guia: g.guia,
+    trackUrl: g.trackUrl,
+    rotulo: g.label,
+    costoFlete: g.precio,
+    items: (Array.isArray(items) ? items : []).map(Number).filter((x) => Number.isInteger(x)),
+    recogida: pickup,
+    entorno,
+    carrier: g.carrier,
+    service: g.service,
+    shipmentId: g.shipmentId,
+    fecha: new Date().toISOString(),
+  };
+  const despachos = [...(exp.envio?.despachos || []), despacho];
+  exp.envio = { ...(exp.envio || {}), despachos, envia: { entorno }, trackUrl: g.trackUrl, rotulo: g.label, bodega: d.bodega.nombre, fechaDespacho: new Date().toISOString().slice(0, 10), costoFlete: despachos.reduce((a, x) => a + (x.costoFlete || 0), 0) };
+  Object.assign(exp.envio, resumenDespachos(exp));
+  pushHist(exp, by, `Guía ${transportadora} ${g.guia} comprada en Envia (${entorno}) por $${g.precio.toLocaleString('es-CO')} desde ${d.bodega.nombre}.${pickup ? (pickup.error ? ` Recogida no programada: ${pickup.error}` : ` Recogida ${recogida.fecha} ${recogida.desde || 9}–${recogida.hasta || 16} h${pickup.confirmacion ? ` (n.º ${pickup.confirmacion})` : ''}.`) : ''}`);
   await persist(exp);
-  if (cerrarEtapas && d.envia.enviaEntorno() === 'produccion') {
+  // ¿Faltan bodegas por despachar? (equipos con bodega asignada o deducida que aún no tienen guía)
+  const bodegas = await d.envia.leerBodegas();
+  const pendientes = new Set(
+    (exp.items || [])
+      .filter((it) => it.compra?.estado !== 'no_aplica' && !/env[ií]o/i.test(it.nombre) && it.sku !== 'ENVIO')
+      .map((it) => bodegaDeItem(it, bodegas))
+      .filter(Boolean)
+  );
+  despachos.forEach((x) => pendientes.delete(x.bodegaId));
+  let out = exp;
+  if (cerrarEtapas && entorno === 'produccion' && !pendientes.size) {
+    const r = resumenDespachos(exp);
     for (const k of ['disponibilidad', 'compra_proveedor', 'confirmacion_envio', 'coordinacion_envio']) {
-      const et = (exp.etapas || []).find((x) => x.key === k);
-      if (et && et.estado !== 'hecho' && et.estado !== 'no_aplica') exp = await updateEtapa(id, k, { estado: 'hecho', nota: `Despachado con ${transportadora} (guía ${g.guia}).` }, by);
+      const et = (out.etapas || []).find((x) => x.key === k);
+      if (et && et.estado !== 'hecho' && et.estado !== 'no_aplica') out = await updateEtapa(id, k, { estado: 'hecho', nota: `Despachado con ${r.transportadora} (guía ${r.guia}).` }, by);
     }
-    exp = await updateEtapa(id, 'guia', { estado: 'hecho', nota: `${transportadora} · guía ${g.guia}` }, by);
+    out = await updateEtapa(id, 'guia', { estado: 'hecho', nota: `${r.transportadora} · guía ${r.guia}` }, by);
   }
-  return { exp: await getExpediente(id), guia: g, recogida: pickup };
+  return { exp: await getExpediente(id), guia: g, recogida: pickup, bodegasPendientes: [...pendientes] };
 }
 
-/** Consulta el estado de la guía en Envia; si ya se entregó, cierra la etapa de entrega. */
+/** Consulta el estado de las guías en Envia; cuando todas están entregadas, cierra la etapa de entrega. */
 export async function rastrearVentaEnvia(id, by = 'claude') {
   const exp = await getExpediente(id);
-  const g = exp?.envio?.guia;
-  if (!g || !exp.envio.envia) return null;
+  const ds = exp?.envio?.despachos || [];
+  if (!ds.length) return null;
   const envia = await import('./envia.js');
-  const [t] = await envia.rastrear([g]);
-  if (!t) return null;
-  exp.envio = { ...exp.envio, estadoEnvio: t.estado, rastreadoAt: new Date().toISOString(), eventos: t.eventos };
+  const estados = await envia.rastrear(ds.map((x) => x.guia));
+  for (const x of ds) {
+    const t = estados.find((e) => e.guia === x.guia);
+    if (t) Object.assign(x, { estado: t.estado, entregado: t.entregado, eventos: t.eventos });
+  }
+  exp.envio = { ...exp.envio, despachos: ds, estadoEnvio: ds.map((x) => `${x.guia}: ${x.estado || 'sin datos'}`).join(' · '), rastreadoAt: new Date().toISOString() };
   await persist(exp);
   let out = exp;
+  const todos = ds.every((x) => x.entregado);
   const et = (exp.etapas || []).find((x) => x.key === 'entrega');
-  if (t.entregado && et && et.estado !== 'hecho') out = await updateEtapa(id, 'entrega', { estado: 'hecho', nota: `Entregado según ${exp.envio.transportadora} (guía ${g}).` }, by);
-  return { exp: out, rastreo: t };
+  if (todos && et && et.estado !== 'hecho') out = await updateEtapa(id, 'entrega', { estado: 'hecho', nota: `Entregado según la transportadora (guía ${resumenDespachos(exp).guia}).` }, by);
+  return { exp: out, rastreo: { entregado: todos, despachos: ds.map((x) => ({ guia: x.guia, estado: x.estado, entregado: x.entregado })) } };
 }
 
 /** Rastrea todas las ventas activas con guía de Envia sin entregar (para la revisión de cada 3 h). */
@@ -872,10 +918,10 @@ export async function rastrearEnviosPendientes(by = 'claude') {
   const res = [];
   for (const e of todos) {
     const et = (e.etapas || []).find((x) => x.key === 'entrega');
-    if (e.estado !== 'activo' || !e.envio?.envia || !e.envio?.guia || (et && et.estado === 'hecho')) continue;
+    if (e.estado !== 'activo' || !(e.envio?.despachos || []).length || (et && et.estado === 'hecho')) continue;
     try {
       const r = await rastrearVentaEnvia(e.id, by);
-      res.push({ id: e.id, guia: e.envio.guia, estado: r?.rastreo?.estado || '', entregado: Boolean(r?.rastreo?.entregado) });
+      res.push({ id: e.id, guia: e.envio.guia, estado: (r?.rastreo?.despachos || []).map((x) => x.estado).join(' · '), entregado: Boolean(r?.rastreo?.entregado) });
     } catch (err) {
       res.push({ id: e.id, guia: e.envio.guia, error: String(err?.message || err).slice(0, 160) });
     }

@@ -134,3 +134,7 @@ Sección **Cotizaciones** del panel (`api/_lib/cotizaciones.js`, `public/admin/p
 - Ciudades: código DANE con `POST /locate` de Envia a partir de "Municipio, Departamento".
 - `POST op=envia-rastrear { id }` actualiza el estado; sin `id` rastrea todas las guías abiertas y cierra "Entrega" cuando
   la transportadora la marca entregada (lo corre la revisión de cada 3 h).
+- Bodega de recogida por equipo: en "Por comprar" cada equipo tiene "Recoge en" (`POST op=item-bodega { id, idx, bodegaId }`);
+  si no se escoge, se sugiere la bodega del mismo proveedor. En la venta, el envío se arma por bodega: una guía por cada
+  bodega (`envio.despachos[]`); las etapas de envío se cierran cuando todas las bodegas tienen guía, y "Entrega" cuando todas
+  las guías están entregadas.
