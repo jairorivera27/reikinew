@@ -818,7 +818,7 @@ export async function despacharVentaEnvia(id, { bodegaId, paquetes, carrier, ser
       pickup = { error: String(err?.message || err).slice(0, 200) };
     }
   }
-  const transportadora = NOMBRE_CARRIER[g.carrier] || g.carrier;
+  const transportadora = NOMBRE_CARRIER[String(g.carrier).toLowerCase()] || g.carrier;
   let exp = await saveExpediente(
     {
       id,
@@ -836,6 +836,8 @@ export async function despacharVentaEnvia(id, { bodegaId, paquetes, carrier, ser
     },
     by
   );
+  // saveExpediente solo guarda los campos básicos del envío: los de Envia se agregan directo
+  exp.envio = { ...(exp.envio || {}), trackUrl: g.trackUrl, rotulo: g.label, bodega: d.bodega.nombre, costoFlete: g.precio, envia: { entorno: d.envia.enviaEntorno(), carrier: g.carrier, service: g.service, shipmentId: g.shipmentId, recogida: pickup, compradaAt: new Date().toISOString() } };
   pushHist(exp, by, `Guía ${transportadora} ${g.guia} comprada en Envia (${d.envia.enviaEntorno()}) por $${g.precio.toLocaleString('es-CO')} desde ${d.bodega.nombre}.${pickup ? (pickup.error ? ` Recogida no programada: ${pickup.error}` : ` Recogida ${recogida.fecha} ${recogida.desde || 9}–${recogida.hasta || 17} h${pickup.confirmacion ? ` (n.º ${pickup.confirmacion})` : ''}.`) : ''}`);
   await persist(exp);
   if (cerrarEtapas && d.envia.enviaEntorno() === 'produccion') {
