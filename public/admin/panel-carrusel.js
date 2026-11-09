@@ -38,8 +38,66 @@
     }
   }
 
+  async function contactos() {
+    try {
+      var j = await S().api('prov-contactos');
+      return j.contactos || {};
+    } catch (e) {
+      return {};
+    }
+  }
+
+  function refDe(it) {
+    if (it.codigoProveedor) return it.codigoProveedor;
+    var t = String(it.nombre || '').split(/\s+/).filter(function (w) {
+      return w.length >= 5 && /[A-Z]/.test(w) && /\d/.test(w) && !/[a-z]/.test(w);
+    });
+    return t[0] || '';
+  }
+
+  function botonesWa(e, cs) {
+    var esc = S().esc;
+    var norm = function (x) {
+      return String(x || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+    };
+    var porProv = {};
+    (e.items || []).forEach(function (it) {
+      if (!esEquipo(it) || it.bodega) return;
+      var p = it.proveedor || 'Por confirmar';
+      (porProv[p] = porProv[p] || []).push(it);
+    });
+    return Object.keys(porProv)
+      .map(function (p) {
+        var k = Object.keys(cs).find(function (x) {
+          return norm(x) === norm(p);
+        });
+        var c = k ? cs[k] : null;
+        var items = porProv[p];
+        var saludo = 'Hola' + (c && c.nombre ? ' ' + c.nombre.split(' ')[0] : '') + ', ¿cómo estás? ';
+        var txt =
+          saludo +
+          (items.length > 1 ? '¿Tienes disponibles estos productos?' : '¿Tienes disponible este producto?') +
+          '\n\n' +
+          items
+            .map(function (it) {
+              var r = refDe(it);
+              return '• ' + it.nombre + (r ? ' — Ref.: ' + r : '') + ' (' + it.cantidad + ' und.)';
+            })
+            .join('\n') +
+          '\n\nGracias. Reiki Energía Solar.';
+        var url = (c && c.celular ? 'https://wa.me/' + c.celular : 'https://wa.me/') + '?text=' + encodeURIComponent(txt);
+        if (p === 'Por confirmar') return '<p class="pc-muted">' + items.length + ' equipo(s) sin proveedor: asígnalo en "Ver todo el expediente" → Equipos y proveedores.</p>';
+        return (
+          '<a class="btn seg-mini pc-wa' + (c && c.celular ? '' : ' pc-wa--sin') + '" target="_blank" rel="noopener" href="' + esc(url) + '"><i class="fab fa-whatsapp" aria-hidden="true"></i> Preguntar a ' + esc(p) + (c && c.nombre ? ' (' + esc(c.nombre.split(' ')[0]) + ')' : '') + ' · ' + items.length + ' equipo' + (items.length > 1 ? 's' : '') + '</a>' +
+          (c && c.celular ? '' : ' <small class="pc-muted">sin número: agrégalo en Por comprar → Contactos de proveedores</small>')
+        );
+      })
+      .join(' ');
+  }
+
   async function htmlDisponibilidad(e) {
     var esc = S().esc;
+    var cs = await contactos();
     var b = await bodegas();
     var ids = Object.keys(b);
     var norm = function (x) {
@@ -62,10 +120,12 @@
         );
       })
       .join('');
+    var wa = botonesWa(e, cs);
     return (
+      (wa ? '<div class="modal-actions car-wa">' + wa + '</div>' : '') +
       '<div class="table-wrap car-dispo"><table><thead><tr><th>Cant.</th><th>Equipo</th><th>Proveedor</th><th>Disponible en (recoge en)</th></tr></thead><tbody>' +
       filas +
-      '</tbody></table></div><p class="pc-muted">Pregunta la disponibilidad al proveedor (botón de WhatsApp en <b>Por comprar</b>). Cuando confirme, escoge la bodega donde se recoge cada equipo: al tenerlos todos, esta etapa se cierra sola.</p>'
+      '</tbody></table></div><p class="pc-muted">Pregunta la disponibilidad con el botón de WhatsApp (va un mensaje por proveedor con todos sus equipos pendientes). Cuando confirme, escoge la bodega donde se recoge cada equipo: al tenerlos todos, esta etapa se cierra sola.</p>'
     );
   }
 
