@@ -420,6 +420,28 @@ export async function addPago(id, pago, by = 'panel') {
   return out;
 }
 
+/** Elimina un pago mal digitado. Si con eso la venta deja de estar pagada, reabre la verificación de pagos. */
+export async function borrarPago(id, pagoId, by = 'panel') {
+  const exp = await getExpediente(id);
+  if (!exp) return null;
+  const p = (exp.pagos || []).find((x) => x.id === String(pagoId));
+  if (!p) return exp;
+  exp.pagos = exp.pagos.filter((x) => x.id !== p.id);
+  pushHist(exp, by, `Pago eliminado: $${Number(p.monto).toLocaleString('es-CO')} (${p.medio}${p.referencia ? ' · ' + p.referencia : ''}, ${p.fecha}).`);
+  const r = resumen(exp);
+  for (const k of ['verificacion_pago', 'anticipo']) {
+    const et = (exp.etapas || []).find((x) => x.key === k);
+    const sigue = k === 'anticipo' ? r.pagado > 0 : r.estadoPago === 'completo';
+    if (et && et.estado === 'hecho' && !sigue) {
+      et.estado = 'pendiente';
+      et.nota = `Reabierta: se eliminó un pago de $${Number(p.monto).toLocaleString('es-CO')}.`;
+    }
+  }
+  if (exp.factura?.alegraPagoId && p.estado === 'verificado')
+    pushHist(exp, by, 'Ojo: los pagos de esta venta ya estaban registrados en Alegra; revisa allá el recibo de caja.');
+  return persist(exp);
+}
+
 /** Revisa en Alegra las prefacturas del panel: si ya se emitieron, guarda el número y registra los pagos verificados. */
 export async function sincronizarPendientesAlegra(by = 'claude') {
   const todos = await listExpedientes();

@@ -559,11 +559,11 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
                     (p.estado === 'verificado'
                       ? '<span class="oc-badge oc-badge--ok">Verificado</span>'
                       : '<button type="button" class="btn btn-secondary seg-mini" data-verificar="' + esc(p.id) + '">Marcar verificado</button>') +
-                    '</td></tr>'
+                    '</td><td><button type="button" class="seg-pago-x" data-borrar-pago="' + esc(p.id) + '" title="Eliminar este pago (error de digitación)" aria-label="Eliminar pago de ' + esc(cop(p.monto)) + '">×</button></td></tr>'
                   );
                 })
                 .join('')
-            : '<tr><td colspan="4" class="notes-empty">Sin pagos registrados.</td></tr>';
+            : '<tr><td colspan="5" class="notes-empty">Sin pagos registrados.</td></tr>';
 
           var porProv = Object.keys(r.proveedores || {})
             .map(function (p) {
@@ -665,7 +665,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             metric('Por verificar', cop(r.porVerificar)) +
             metric('Saldo', cop(r.saldo)) +
             '</div>' +
-            '<div class="table-wrap"><table><thead><tr><th>Fecha</th><th>Medio</th><th>Monto</th><th></th></tr></thead><tbody>' +
+            '<div class="table-wrap"><table><thead><tr><th>Fecha</th><th>Medio</th><th>Monto</th><th></th><th></th></tr></thead><tbody>' +
             pagos +
             '</tbody></table></div>' +
             '<form id="seg-pago-form" class="seg-inline-form">' +
@@ -870,6 +870,24 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
                 msg('No se pudo consultar Alegra: ' + err.message);
               }
             });
+          el.body.querySelectorAll('[data-borrar-pago]').forEach(function (b) {
+            b.addEventListener('click', function () {
+              // Dos clics: el primero pide confirmación en el mismo botón
+              if (!b.classList.contains('seg-pago-x--confirmar')) {
+                b.classList.add('seg-pago-x--confirmar');
+                b.textContent = '¿Eliminar?';
+                setTimeout(function () {
+                  if (document.body.contains(b)) {
+                    b.classList.remove('seg-pago-x--confirmar');
+                    b.textContent = '×';
+                  }
+                }, 4000);
+                return;
+              }
+              b.disabled = true;
+              run('pago-borrar', { id: e.id, pagoId: b.getAttribute('data-borrar-pago') });
+            });
+          });
           el.body.querySelectorAll('[data-verificar]').forEach(function (b) {
             b.addEventListener('click', function () {
               var p = (e.pagos || []).find(function (x) {
@@ -4189,6 +4207,26 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         .mt-grid {
           grid-template-columns: 1fr;
         }
+      }
+      .seg-pago-x {
+        border: 0;
+        background: transparent;
+        color: #9ca3af;
+        font-size: 1.15rem;
+        line-height: 1;
+        cursor: pointer;
+        padding: 0.2rem 0.45rem;
+        border-radius: 6px;
+      }
+      .seg-pago-x:hover {
+        color: #b91c1c;
+        background: #fee2e2;
+      }
+      .seg-pago-x--confirmar {
+        color: #fff;
+        background: #dc2626;
+        font-size: 0.75rem;
+        font-weight: 700;
       }
       .car-nav {
         display: flex;

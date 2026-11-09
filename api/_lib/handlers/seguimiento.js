@@ -48,6 +48,7 @@ import {
   asignarBodegaItem,
   cotizarFleteLibre,
   cajasDeVenta,
+  borrarPago,
   rastrearVentaEnvia,
   sincronizarPendientesAlegra,
   correoCompraConfirmada,
@@ -233,6 +234,10 @@ export default async function handler(req, res) {
     }
     if (op === 'etapa') {
       const e = await updateEtapa(body.id, String(body.key || ''), { estado: body.estado, nota: body.nota, fechaCliente: body.fechaCliente }, by);
+      return e ? send(res, 200, { ok: true, expediente: conResumen(e) }) : send(res, 404, { ok: false, error: 'No existe.' });
+    }
+    if (op === 'pago-borrar') {
+      const e = await borrarPago(body.id, body.pagoId, by);
       return e ? send(res, 200, { ok: true, expediente: conResumen(e) }) : send(res, 404, { ok: false, error: 'No existe.' });
     }
     if (op === 'pago') {
