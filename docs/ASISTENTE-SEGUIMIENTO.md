@@ -146,3 +146,16 @@ Sección **Cotizaciones** del panel (`api/_lib/cotizaciones.js`, `public/admin/p
   historial de cada expediente y cotización queda firmado con el nombre del usuario (Comercial, Logística…).
   Máximo 10 intentos fallidos por IP cada 15 minutos. Solo el token de Claude crea usuarios (`POST op=usuarios`).
 - La clave de administrador antigua (`ADMIN_ORDERS_SECRET`) sigue funcionando (queda como "admin").
+
+## Etapas en carrusel y cierre automático
+
+- `public/admin/panel-carrusel.js`: el detalle de cada venta muestra una etapa a la vez (chips arriba, Anterior /
+  Siguiente / "Marcar hecha y seguir", "Ver todo el expediente"), con solo las secciones que la etapa usa
+  (`data-pasos` en el HTML del detalle). Cuando la etapa que se está viendo se cierra al guardar, pasa sola a la siguiente.
+- Cierre automático en el servidor (`autoEtapas`): datos del cliente completos (nombre, documento, correo, celular y, en
+  tienda, dirección y "Municipio, Departamento"); pago total verificado; disponibilidad cuando cada equipo tiene bodega de
+  recogida (o ya está pedido); anticipo en proyectos con pago verificado; compra al recibir todo; guía/envío al comprar
+  las guías; entrega por rastreo; factura con número RK.
+- Peso y medidas de las cajas: `api/_lib/empaques.js` (ficha de la tienda en `data/empaques-productos.json` o valores
+  típicos por tipo y potencia). `POST op=envia-cajas`. Se llenan solos en el envío de cada venta y en la calculadora
+  (campo "Agregar equipo").

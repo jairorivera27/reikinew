@@ -22,6 +22,7 @@
  * POST op=envia-tarifa { bodegaId, ciudad: 'Municipio, Departamento', paquetes } → solo cotiza (sin venta, no compra nada; también con el token de chats)
  * POST op=login { usuario, clave } → { token } (sin auth; máx. 10 intentos fallidos por IP cada 15 min)
  * POST op=usuarios { usuarios: { comercial: { nombre, clave } } } (solo token de Claude)
+ * POST op=envia-cajas { id, items:[idx] } | { equipos:[{nombre,sku,cantidad}] } → cajas con peso y medidas estimadas
  * POST op=item-bodega { id, idx, bodegaId } · POST op=envia-guia { id, bodegaId, items:[idx], paquetes, carrier, service, recogida?:{fecha,desde,hasta} } · POST op=envia-rastrear { id? }
  * POST op=cot-numero → { numero } siguiente número del consecutivo único CT-DDMMAA-### (también con el token limitado)
  * POST op=cot-save { numero, tipo: equipos|proyecto, cliente, total, items, … }   (también con el token limitado de los chats)
@@ -46,6 +47,7 @@ import {
   rastrearEnviosPendientes,
   asignarBodegaItem,
   cotizarFleteLibre,
+  cajasDeVenta,
   rastrearVentaEnvia,
   sincronizarPendientesAlegra,
   correoCompraConfirmada,
@@ -83,7 +85,7 @@ import {
   importarDeTienda,
 } from '../cotizaciones.js';
 
-const OPS_CHAT = new Set(['cot-save', 'cot-pdf', 'cot-numero', 'envia-tarifa']);
+const OPS_CHAT = new Set(['cot-save', 'cot-pdf', 'cot-numero', 'envia-tarifa', 'envia-cajas']);
 function tokenChatOk(req) {
   const t = tokenCotizaciones();
   const h = String(req.headers.authorization || '').trim();
@@ -260,6 +262,11 @@ export default async function handler(req, res) {
     if (op === 'bodegas') {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
       return send(res, 200, { ok: true, bodegas: await guardarBodegas(body.bodegas || {}) });
+    }
+    if (op === 'envia-cajas') {
+      if (body.id && !chat) return send(res, 200, { ok: true, cajas: await cajasDeVenta(body.id, body.items) });
+      const { cajasParaItems } = await import('../empaques.js');
+      return send(res, 200, { ok: true, cajas: cajasParaItems(Array.isArray(body.equipos) ? body.equipos.slice(0, 40) : []) });
     }
     if (op === 'envia-tarifa') {
       try {

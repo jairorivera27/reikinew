@@ -654,7 +654,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
                 esc(r.siguiente.ayuda) +
                 '</p></div>'
               : '<div class="seg-callout seg-callout--ok"><strong>Todas las etapas están cerradas.</strong></div>') +
-            '<section class="modal-block"><h3>Pagos <span class="oc-badge oc-badge--' +
+            '<section class="modal-block" data-pasos="verificacion_pago anticipo pago_instalacion pago_final"><h3>Pagos <span class="oc-badge oc-badge--' +
             pago[1] +
             '">' +
             esc(pago[0]) +
@@ -675,10 +675,10 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             field('referencia', 'Referencia', '') +
             '<label class="seg-check"><input type="checkbox" name="verificado" /> Ya está en la cuenta</label>' +
             '<button class="btn btn-primary" type="submit">Registrar pago</button></form></section>' +
-            '<section class="modal-block"><h3>Etapas</h3><ol class="seg-steps">' +
+            '<section class="modal-block" data-pasos-etapas><h3>Etapas</h3><ol class="seg-steps">' +
             etapas +
             '</ol></section>' +
-            '<section class="modal-block"><h3>Equipos y proveedores</h3>' +
+            '<section class="modal-block" data-pasos="compra_proveedor"><h3>Equipos y proveedores</h3>' +
             (items
               ? '<div class="table-wrap"><table><thead><tr><th>Cant.</th><th>Equipo</th><th>Proveedor</th><th>Costo unit. (interno)</th><th>Valor venta</th></tr></thead><tbody>' +
                 items +
@@ -691,7 +691,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
                 '</div>'
               : '<p class="notes-empty">Sin equipos cargados.</p>') +
             '</section>' +
-            '<section class="modal-block"><h3>Correos al cliente</h3>' +
+            '<section class="modal-block" data-pasos="confirmacion_envio guia entrega"><h3>Correos al cliente</h3>' +
             (!st.meta.correoConfigurado
               ? '<p class="seg-warn">El envío de correos aún no está configurado (falta la clave del servicio de correo). Los avisos quedan registrados como no enviados.</p>'
               : '') +
@@ -702,9 +702,11 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             '</label>' +
             (correosLog ? '<ul class="seg-hist">' + correosLog + '</ul>' : '<p class="notes-empty">Aún no se han enviado correos.</p>') +
             '</section>' +
+            '<div data-pasos="factura">' +
             htmlAlegra(e) +
-            '<div data-envia-box></div>' +
-            '<form id="seg-datos-form" class="modal-block"><h3>Cliente, envío y factura</h3><div class="seg-form-grid">' +
+            '</div>' +
+            '<div data-envia-box data-pasos="coordinacion_envio guia entrega logistica"></div>' +
+            '<form id="seg-datos-form" class="modal-block" data-pasos="datos_facturacion confirmacion_envio"><h3>Cliente, envío y factura</h3><div class="seg-form-grid">' +
             field('c_nombre', 'Nombre / razón social', c.nombre) +
             field('c_documento', 'Cédula / NIT', c.documento) +
             field('c_correo', 'Correo de facturación', c.correo, 'email') +
@@ -792,6 +794,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
 
         function bindDetail(e) {
           if (window.reikiEnvios) window.reikiEnvios.montar(el.body.querySelector('[data-envia-box]'), e);
+          if (window.reikiCarrusel) window.reikiCarrusel.montar(el.body, e);
           el.body.querySelectorAll('[data-etapa]').forEach(function (s) {
             s.addEventListener('change', function () {
               var key = s.getAttribute('data-etapa');
@@ -1273,7 +1276,8 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
     </script>
 
     <script is:inline src="/admin/panel-inicio.js?v=20261109a"></script>
-    <script is:inline src="/admin/panel-envios.js?v=20261109d"></script>
+    <script is:inline src="/admin/panel-envios.js?v=20261109e"></script>
+    <script is:inline src="/admin/panel-carrusel.js?v=20261109a"></script>
     <script is:inline src="/admin/panel-cotizaciones.js?v=20261109a"></script>
 
     <script is:inline define:vars={{ MOCKS: pedidosMocks }}>
@@ -4185,6 +4189,78 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         .mt-grid {
           grid-template-columns: 1fr;
         }
+      }
+      .car-nav {
+        display: flex;
+        gap: 0.35rem;
+        overflow-x: auto;
+        padding: 0.3rem 0 0.6rem;
+        scrollbar-width: thin;
+      }
+      .car-chip {
+        flex: 0 0 auto;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        border: 1px solid var(--line, #e5e7eb);
+        background: #fff;
+        border-radius: 999px;
+        padding: 0.3rem 0.65rem;
+        font-size: 0.78rem;
+        cursor: pointer;
+        color: #374151;
+      }
+      .car-chip b {
+        display: inline-grid;
+        place-items: center;
+        width: 1.3rem;
+        height: 1.3rem;
+        border-radius: 50%;
+        background: #ece7f3;
+        font-size: 0.72rem;
+      }
+      .car-chip--hecho b {
+        background: #16a34a;
+        color: #fff;
+      }
+      .car-chip--en_curso b {
+        background: #f59e0b;
+        color: #fff;
+      }
+      .car-chip--no_aplica {
+        opacity: 0.55;
+      }
+      .car-chip--actual {
+        border-color: #6b2181;
+        box-shadow: 0 0 0 2px rgba(107, 33, 129, 0.15);
+        font-weight: 700;
+      }
+      .car-card {
+        border: 1px solid #e9d5ff;
+        background: #faf5ff;
+        border-radius: 14px;
+        padding: 0.8rem 1rem;
+        margin-bottom: 0.8rem;
+      }
+      .car-card h3 {
+        margin: 0 0 0.25rem;
+      }
+      .car-card .car-estado {
+        font-size: 0.8rem;
+        font-weight: 700;
+      }
+      .car-botones {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        justify-content: space-between;
+        margin: 0.6rem 0;
+      }
+      .car-oculto {
+        display: none !important;
+      }
+      .car-dispo td select {
+        max-width: 200px;
       }
       .flete-calc {
         margin: 0 0 1rem;

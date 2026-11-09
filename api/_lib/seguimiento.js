@@ -189,14 +189,20 @@ function autoEtapas(exp) {
   const r = resumen(exp);
   const set = (key, estado, nota) => {
     const e = exp.etapas.find((x) => x.key === key);
-    if (e && e.estado === 'pendiente') {
+    if (e && (e.estado === 'pendiente' || (estado === 'hecho' && e.estado === 'en_curso'))) {
       e.estado = estado;
       e.fecha = nowIso();
       if (nota && !e.nota) e.nota = nota;
     }
   };
   const c = exp.cliente || {};
-  if (c.nombre && c.documento && c.correo) set('datos_facturacion', 'hecho', 'Datos completos registrados.');
+  // Datos del cliente completos → etapa cerrada (en tienda también se necesita la dirección de entrega)
+  const datosOk = c.nombre && c.documento && /@/.test(c.correo || '') && c.celular && (exp.tipo === 'proyecto' || (c.direccion && /,/.test(c.ciudad || '')));
+  if (datosOk) set('datos_facturacion', 'hecho', 'Datos del cliente completos.');
+  // Disponibilidad: todos los equipos con bodega de recogida confirmada (o ya pedidos al proveedor)
+  const equipos = (exp.items || []).filter((it) => it.compra?.estado !== 'no_aplica' && it.sku !== 'ENVIO' && !/env[ií]o/i.test(it.nombre || ''));
+  if (equipos.length && equipos.every((it) => it.bodega || ['pedido', 'recibido'].includes(it.compra?.estado))) set('disponibilidad', 'hecho', 'Disponibilidad confirmada: cada equipo tiene bodega de recogida.');
+  if (exp.tipo === 'proyecto' && r.pagado > 0) set('anticipo', 'hecho', `Anticipo verificado: $${Math.round(r.pagado).toLocaleString('es-CO')}.`);
   if (exp.tipo === 'tienda' && r.estadoPago === 'completo') set('verificacion_pago', 'hecho', 'Pago total verificado.');
   if (exp.envio && exp.envio.guia) set('guia', 'en_curso', `Guía ${exp.envio.guia} registrada; falta avisar al cliente.`);
   if (exp.factura && exp.factura.numero) set('factura', 'hecho', `Factura ${exp.factura.numero}.`);
@@ -823,6 +829,7 @@ export async function asignarBodegaItem(id, idx, bodegaId, by = 'panel') {
   const { leerBodegas } = await import('./envia.js');
   const b = (await leerBodegas())[it.bodega];
   pushHist(exp, by, `${it.nombre}: recogida en ${b ? b.nombre : 'bodega por definir'}.`);
+  autoEtapas(exp);
   return persist(exp);
 }
 
@@ -943,4 +950,15 @@ export async function cotizarFleteLibre({ bodegaId, ciudad, direccion, paquetes 
   const margen = Number(process.env.FLETE_MARGEN || 20) / 100;
   r.tarifas = r.tarifas.map((t) => ({ ...t, precioCliente: Math.ceil((t.precio * (1 + margen)) / 1000) * 1000 }));
   return { ...r, margenPct: Math.round(margen * 100), bodega: bodega.publico || bodega.nombre, destino: `${c.nombre}` };
+}
+
+/** Cajas sugeridas (peso y medidas) para los equipos de la venta indicados por índice. */
+export async function cajasDeVenta(id, idxs) {
+  const exp = await getExpediente(id);
+  if (!exp) return [];
+  const { cajasParaItems } = await import('./empaques.js');
+  const lista = (Array.isArray(idxs) && idxs.length ? idxs.map((i) => exp.items[Number(i)]) : exp.items || []).filter(
+    (it) => it && it.compra?.estado !== 'no_aplica' && it.sku !== 'ENVIO' && !/env[ií]o/i.test(it.nombre || '')
+  );
+  return cajasParaItems(lista);
 }

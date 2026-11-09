@@ -87,7 +87,7 @@
       cop = S().cop;
     var bodegas = cfg.bodegas || {};
     var key = e.id + '|' + gr.key;
-    var c = estado.cotiz[key] || { bodegaId: gr.key, cajas: [{ contenido: contenidoDe(e, gr.items.map(function (x) { return x.it; })), cantidad: 1 }] };
+    var c = estado.cotiz[key] || { bodegaId: gr.key, auto: 'pendiente', cajas: [{ contenido: contenidoDe(e, gr.items.map(function (x) { return x.it; })), cantidad: 1 }] };
     estado.cotiz[key] = c;
     var lista = gr.items.map(function (x) { return x.it.cantidad + ' × ' + x.it.nombre; }).join(' · ');
     var opts = Object.keys(bodegas)
@@ -116,6 +116,7 @@
       '<div class="envia-grupo" data-grupo="' + esc(gr.key) + '">' +
       '<p><b>' + esc(gr.key && bodegas[gr.key] ? bodegas[gr.key].nombre : 'Sin bodega asignada') + '</b> · ' + esc(lista) + '</p>' +
       '<label class="seg-field"><span>Sale de</span><select data-envia-bodega><option value="">Escoge la bodega…</option>' + opts + '</select></label>' +
+      (c.auto === 'ok' ? '<p class="pc-muted">Peso y medidas llenados según cada equipo (ficha técnica o valores típicos de empaque). Corrígelos si tienes la caja real.</p>' : c.auto === 'pendiente' ? '<p class="pc-muted">Calculando peso y medidas de las cajas…</p>' : '') +
       '<div class="table-wrap"><table class="envia-cajas"><thead><tr><th>Contenido</th><th>Cajas</th><th>Kg c/u</th><th>Largo</th><th>Ancho</th><th>Alto</th><th></th></tr></thead><tbody>' +
       c.cajas.map(filaCaja).join('') +
       '</tbody></table></div><div class="modal-actions"><button type="button" class="btn btn-ghost seg-mini" data-envia-caja>+ Otra caja</button><button type="button" class="btn btn-secondary seg-mini" data-envia-cotizar><i class="fas fa-truck" aria-hidden="true"></i> Cotizar flete</button></div>' +
@@ -332,6 +333,23 @@
         });
     }
     pintar();
+    // Peso y medidas automáticos por equipo para cada grupo que aún no los tenga
+    grupos(e, cfg.bodegas || {}).forEach(function (gr) {
+      var key = e.id + '|' + gr.key;
+      var c = estado.cotiz[key];
+      if (!c || c.auto !== 'pendiente') return;
+      c.auto = 'cargando';
+      S()
+        .api('envia-cajas', { id: e.id, items: gr.items.map(function (x) { return x.idx; }) })
+        .then(function (j) {
+          if (j.cajas && j.cajas.length) c.cajas = j.cajas;
+          c.auto = 'ok';
+          if (document.body.contains(box)) pintar();
+        })
+        .catch(function () {
+          c.auto = 'error';
+        });
+    });
   }
 
   /* ---------- Calculadora de fletes (sección Cotizaciones) ---------- */
@@ -352,6 +370,14 @@
       cop = S().cop;
     var cfg = await config(true);
     var M = await municipios();
+    if (!calc.catalogo) {
+      try {
+        var cat = await (await fetch('/tienda/indice/todos.json')).json();
+        calc.catalogo = (Array.isArray(cat) ? cat : cat.items || []).map(function (p) { return { title: p.title, slug: p.slug, category: p.category }; });
+      } catch (e) {
+        calc.catalogo = [];
+      }
+    }
     function pintar(abierto) {
       var bod = cfg.bodegas || {};
       var ids = Object.keys(bod).sort(function (a, b) {
@@ -379,6 +405,10 @@
         '<label class="seg-field"><span>Departamento destino</span><select data-fc-dep><option value="">Escoge…</option>' + deps.map(function (d) { return '<option' + (calc.dep === d ? ' selected' : '') + '>' + esc(d) + '</option>'; }).join('') + '</select></label>' +
         '<label class="seg-field"><span>Municipio destino</span><select data-fc-mun><option value="">Escoge…</option>' + munis.map(function (m) { return '<option' + (calc.mun === m ? ' selected' : '') + '>' + esc(m) + '</option>'; }).join('') + '</select></label>' +
         '</div>' +
+        '<div class="seg-form-grid"><label class="seg-field" style="grid-column:span 2"><span>Agregar equipo (llena peso y medidas)</span><input list="fc-equipos" data-fc-equipo placeholder="Escribe el equipo de la tienda…" /></label>' +
+        '<label class="seg-field"><span>Cantidad</span><input inputmode="numeric" data-fc-cant value="1" /></label></div>' +
+        '<datalist id="fc-equipos">' + (calc.catalogo || []).map(function (p) { return '<option value="' + esc(p.title) + '"></option>'; }).join('') + '</datalist>' +
+        '<div class="modal-actions"><button type="button" class="btn btn-secondary seg-mini" data-fc-agregar>+ Agregar equipo</button></div>' +
         '<div class="table-wrap"><table class="envia-cajas"><thead><tr><th>Contenido</th><th>Cajas</th><th>Kg c/u</th><th>Largo</th><th>Ancho</th><th>Alto</th><th></th></tr></thead><tbody>' + calc.cajas.map(filaCaja).join('') + '</tbody></table></div>' +
         '<div class="modal-actions"><button type="button" class="btn btn-ghost seg-mini" data-envia-caja>+ Otra caja</button><button type="button" class="btn btn-primary seg-mini" data-fc-cotizar>Cotizar flete</button></div>' +
         '<p class="seg-warn" data-fc-err hidden></p>' + res + '</details>';
@@ -395,6 +425,24 @@
         calc.dep = q('[data-fc-dep]').value;
         calc.mun = q('[data-fc-mun]').value;
       };
+      q('[data-fc-agregar]').addEventListener('click', async function (ev) {
+        leer();
+        var nombre = q('[data-fc-equipo]').value.trim();
+        var cant = Number(q('[data-fc-cant]').value) || 1;
+        if (!nombre) return;
+        var p = (calc.catalogo || []).find(function (x) { return x.title === nombre; });
+        ev.target.disabled = true;
+        try {
+          var j = await S().api('envia-cajas', { equipos: [{ nombre: nombre, sku: p ? p.slug : '', categoria: p ? p.category : '', cantidad: cant }] });
+          var vacias = calc.cajas.filter(function (x) { return x.peso; });
+          calc.cajas = vacias.concat(j.cajas || []);
+          if (!calc.cajas.length) calc.cajas = [{ contenido: '', cantidad: 1 }];
+          calc.res = null;
+          pintar(true);
+        } catch (e) {
+          ev.target.disabled = false;
+        }
+      });
       q('[data-fc-dep]').addEventListener('change', function () {
         leer();
         calc.mun = '';
