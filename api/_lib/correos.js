@@ -88,6 +88,8 @@ export const CORREOS = {
         'Tu pedido ya fue despachado.',
         `Transportadora: ${e.envio.transportadora || 'por confirmar'}`,
         `Número de guía: ${e.envio.guia}`,
+        ...(e.envio.trackUrl ? [`Rastrea tu envío aquí: ${e.envio.trackUrl}`] : []),
+        'La transportadora se comunicará contigo cuando el pedido esté en ruta de entrega.',
         'Revisa el estado de los empaques al recibir; si notas algún daño, déjalo anotado en la guía y escríbenos.',
       ],
     },

@@ -702,6 +702,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             (correosLog ? '<ul class="seg-hist">' + correosLog + '</ul>' : '<p class="notes-empty">Aún no se han enviado correos.</p>') +
             '</section>' +
             htmlAlegra(e) +
+            '<div data-envia-box></div>' +
             '<form id="seg-datos-form" class="modal-block"><h3>Cliente, envío y factura</h3><div class="seg-form-grid">' +
             field('c_nombre', 'Nombre / razón social', c.nombre) +
             field('c_documento', 'Cédula / NIT', c.documento) +
@@ -789,6 +790,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         }
 
         function bindDetail(e) {
+          if (window.reikiEnvios) window.reikiEnvios.montar(el.body.querySelector('[data-envia-box]'), e);
           el.body.querySelectorAll('[data-etapa]').forEach(function (s) {
             s.addEventListener('change', function () {
               var key = s.getAttribute('data-etapa');
@@ -1270,6 +1272,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
     </script>
 
     <script is:inline src="/admin/panel-inicio.js?v=20261103a"></script>
+    <script is:inline src="/admin/panel-envios.js?v=20261109a"></script>
     <script is:inline src="/admin/panel-cotizaciones.js?v=20261103a"></script>
 
     <script is:inline define:vars={{ MOCKS: pedidosMocks }}>
@@ -4160,6 +4163,32 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       @media (max-width: 760px) {
         .mt-grid {
           grid-template-columns: 1fr;
+        }
+      }
+      .envia-cajas input {
+        width: 100%;
+        min-width: 60px;
+        padding: 0.3rem 0.4rem;
+        border: 1px solid var(--line, #d1d5db);
+        border-radius: 6px;
+      }
+      .envia-bodega {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 0.4rem;
+        margin-top: 0.5rem;
+        padding-bottom: 0.5rem;
+        border-bottom: 1px dashed var(--line, #e5e7eb);
+      }
+      .envia-bodega input {
+        min-width: 0;
+        padding: 0.35rem 0.5rem;
+        border: 1px solid var(--line, #d1d5db);
+        border-radius: 8px;
+      }
+      @media (max-width: 640px) {
+        .envia-bodega {
+          grid-template-columns: 1fr 1fr;
         }
       }
       .ct-check {

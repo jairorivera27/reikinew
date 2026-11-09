@@ -120,3 +120,17 @@ Sección **Cotizaciones** del panel (`api/_lib/cotizaciones.js`, `public/admin/p
   `reiki:wa:metricas:metas`). Vacío = sin meta.
 - Ritmo: con días hábiles lunes a sábado; "Al día" si lleva al menos lo proporcional a los días hábiles transcurridos,
   "Atrasada" si no. Las versiones anteriores rechazadas ("versión anterior…") no cuentan como cotizaciones nuevas.
+
+## Envíos con transportadora (Envia.com)
+
+- `api/_lib/envia.js`. Variables en Vercel: `ENVIA_TOKEN` (Envia → Developers → API Keys) y `ENVIA_ENTORNO`
+  (`produccion` para guías reales; vacío = sandbox `api-test.envia.com`). Cada token sirve solo en su entorno.
+- En el detalle de cada venta, bloque "Envío con transportadora": se escoge la bodega de despacho (Redis
+  `reiki:wa:despacho:bodegas`, editables ahí mismo), las cajas (peso y medidas), se cotiza con las transportadoras
+  nacionales (`POST op=envia-cotizar`), se escoge una y se compra la guía con recogida (`POST op=envia-guia`, con
+  confirmación en dos pasos). La venta guarda transportadora, guía, rótulo PDF, enlace de rastreo y costo del flete; en
+  producción cierra Disponibilidad, Compra, Confirmación y Coordinación del envío y pone "Guía" en hecho (correo al cliente
+  con el rastreo). Botón para mandar el rótulo por WhatsApp a la bodega.
+- Ciudades: código DANE con `POST /locate` de Envia a partir de "Municipio, Departamento".
+- `POST op=envia-rastrear { id }` actualiza el estado; sin `id` rastrea todas las guías abiertas y cierra "Entrega" cuando
+  la transportadora la marca entregada (lo corre la revisión de cada 3 h).

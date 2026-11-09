@@ -18,6 +18,8 @@
  * GET|POST op=prov-contactos { contactos: { Proveedor: { nombre, celular } } } → WhatsApp de cada proveedor (Redis)
  * GET op=metas → avance contra las metas de cotizaciones, valor cotizado y ventas (hoy, semana, mes)
  * POST op=metas { metas: { cotizaciones|cotizado|ventas: { dia, semana, mes } } }
+ * GET op=envia-estado · POST op=bodegas { bodegas } · POST op=envia-cotizar { id, bodegaId, paquetes:[{contenido,cantidad,peso,largo,ancho,alto}] }
+ * POST op=envia-guia { id, bodegaId, paquetes, carrier, service, recogida?:{fecha,desde,hasta} } · POST op=envia-rastrear { id? }
  * POST op=cot-numero → { numero } siguiente número del consecutivo único CT-DDMMAA-### (también con el token limitado)
  * POST op=cot-save { numero, tipo: equipos|proyecto, cliente, total, items, … }   (también con el token limitado de los chats)
  * POST op=cot-pdf  { id|numero, nombre, base64, parte, total }                  (también con el token limitado)
@@ -35,6 +37,10 @@
 import { adminAuthOk, adminActor, readJsonBody } from '../admin-auth.js';
 import {
   PLANTILLAS,
+  cotizarEnvioVenta,
+  despacharVentaEnvia,
+  rastrearEnviosPendientes,
+  rastrearVentaEnvia,
   sincronizarPendientesAlegra,
   correoCompraConfirmada,
   addPago,
@@ -56,6 +62,7 @@ import { calcularDesempeno, calcularInicio, calcularMetas, comprasPendientes, eq
 import { correoConfigurado, etapasConCorreo, etapasConFecha } from '../correos.js';
 import { alegraConfigurado } from '../alegra.js';
 import { guardarContactos, leerContactos } from '../proveedores-contactos.js';
+import { enviaConfigurado, enviaEntorno, guardarBodegas, leerBodegas } from '../envia.js';
 import {
   cambiarEstado,
   conResumenCot,
@@ -165,7 +172,7 @@ export default async function handler(req, res) {
       if (op === 'list') {
         await sincronizarPedidosWeb();
         const items = (await listExpedientes()).map(conResumen);
-        return send(res, 200, { ok: true, count: items.length, expedientes: items, plantillas: PLANTILLAS, correos: { tienda: etapasConCorreo('tienda'), proyecto: etapasConCorreo('proyecto') }, conFecha: { tienda: etapasConFecha('tienda'), proyecto: etapasConFecha('proyecto') }, correoConfigurado: correoConfigurado(), alegraConfigurado: alegraConfigurado() });
+        return send(res, 200, { ok: true, count: items.length, expedientes: items, plantillas: PLANTILLAS, correos: { tienda: etapasConCorreo('tienda'), proyecto: etapasConCorreo('proyecto') }, conFecha: { tienda: etapasConFecha('tienda'), proyecto: etapasConFecha('proyecto') }, correoConfigurado: correoConfigurado(), alegraConfigurado: alegraConfigurado(), enviaConfigurado: enviaConfigurado(), enviaEntorno: enviaEntorno() });
       }
       if (op === 'get') {
         const e = await getExpediente(q.id);
@@ -176,6 +183,7 @@ export default async function handler(req, res) {
         return send(res, 200, { ok: true, ...(await revision(q.marcar === '1')), alegraActualizado: a ? a.guardado : null });
       }
       if (op === 'prov-contactos') return send(res, 200, { ok: true, contactos: await leerContactos() });
+      if (op === 'envia-estado') return send(res, 200, { ok: true, configurado: enviaConfigurado(), entorno: enviaEntorno(), bodegas: await leerBodegas() });
       if (op === 'cot-list') {
         const items = (await listCotizaciones()).map(conResumenCot);
         return send(res, 200, { ok: true, count: items.length, cotizaciones: items });
@@ -231,6 +239,35 @@ export default async function handler(req, res) {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
       await guardarMetas(body.metas || {}, by);
       return send(res, 200, { ok: true, ...(await calcularMetas()) });
+    }
+    if (op === 'bodegas') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      return send(res, 200, { ok: true, bodegas: await guardarBodegas(body.bodegas || {}) });
+    }
+    if (op === 'envia-cotizar') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      try {
+        return send(res, 200, { ok: true, ...(await cotizarEnvioVenta(body.id, { bodegaId: body.bodegaId, paquetes: body.paquetes })) });
+      } catch (err) {
+        return send(res, 400, { ok: false, error: err.message });
+      }
+    }
+    if (op === 'envia-guia') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      if (!body.carrier) return send(res, 400, { ok: false, error: 'Escoge una transportadora.' });
+      try {
+        const r = await despacharVentaEnvia(body.id, { bodegaId: body.bodegaId, paquetes: body.paquetes, carrier: body.carrier, service: body.service, recogida: body.recogida }, by);
+        return send(res, 200, { ok: true, guia: r.guia, recogida: r.recogida, expediente: { ...r.exp, resumen: resumen(r.exp) } });
+      } catch (err) {
+        return send(res, 400, { ok: false, error: err.message });
+      }
+    }
+    if (op === 'envia-rastrear') {
+      if (body.id) {
+        const r = await rastrearVentaEnvia(body.id, by);
+        return send(res, 200, { ok: true, rastreo: r?.rastreo || null, expediente: r?.exp ? { ...r.exp, resumen: resumen(r.exp) } : null });
+      }
+      return send(res, 200, { ok: true, resultados: await rastrearEnviosPendientes(by) });
     }
     if (op === 'prov-contactos') {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });

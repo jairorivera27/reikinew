@@ -781,3 +781,102 @@ export async function sincronizarFacturaAlegra(id, by = 'panel') {
   out.pago = pago;
   return { exp: guardado, ...out };
 }
+
+/* ---------------- Envíos con Envia.com ---------------- */
+const NOMBRE_CARRIER = { coordinadora: 'Coordinadora', servientrega: 'Servientrega', interrapidisimo: 'Interrapidísimo', tcc: 'TCC', deprisa: 'Deprisa', noventa9minutos: '99 Minutos', mensajerosurbanos: 'Mensajeros Urbanos' };
+
+async function datosEnvio(id, { bodegaId, paquetes }) {
+  const envia = await import('./envia.js');
+  const exp = await getExpediente(id);
+  if (!exp) throw new Error('No existe la venta.');
+  const bodegas = await envia.leerBodegas();
+  const bodega = bodegas[bodegaId];
+  if (!bodega) throw new Error('Escoge una bodega de despacho (o regístrala en "Bodegas de despacho").');
+  const valor = resumen(exp).total;
+  const cajas = (paquetes || []).map((p, i) => ({ ...p, valor: i === 0 ? p.valor || valor : p.valor || 0 }));
+  return { envia, exp, bodega, origen: await envia.origenDe(bodega), destino: await envia.destinoDe(exp), paquetes: envia.paquetesEnvia(cajas) };
+}
+
+/** Cotiza el flete de la venta con las transportadoras de Envia. */
+export async function cotizarEnvioVenta(id, datos) {
+  const d = await datosEnvio(id, datos);
+  return d.envia.cotizar({ origen: d.origen, destino: d.destino, paquetes: d.paquetes });
+}
+
+/** Compra la guía, pide la recogida (si se indica) y deja la venta con la guía, el rótulo y las etapas de envío. */
+export async function despacharVentaEnvia(id, { bodegaId, paquetes, carrier, service, recogida, cerrarEtapas = true } = {}, by = 'panel') {
+  const d = await datosEnvio(id, { bodegaId, paquetes });
+  const ref = (d.exp.cotizacion && d.exp.cotizacion.numero) || d.exp.id;
+  const g = await d.envia.generarGuia({ origen: d.origen, destino: d.destino, paquetes: d.paquetes, carrier, service, referencia: ref, comentario: `Venta ${d.exp.id}` });
+  let pickup = null;
+  if (recogida && recogida.fecha) {
+    try {
+      const peso = d.paquetes.reduce((a, p) => a + p.weight * p.amount, 0);
+      const n = d.paquetes.reduce((a, p) => a + p.amount, 0);
+      pickup = await d.envia.pedirRecogida({ origen: d.origen, carrier: g.carrier, guias: [g.guia], fecha: recogida.fecha, desde: recogida.desde, hasta: recogida.hasta, pesoTotal: peso, paquetes: n, instrucciones: d.bodega.horario });
+    } catch (err) {
+      pickup = { error: String(err?.message || err).slice(0, 200) };
+    }
+  }
+  const transportadora = NOMBRE_CARRIER[g.carrier] || g.carrier;
+  let exp = await saveExpediente(
+    {
+      id,
+      envio: {
+        ...(d.exp.envio || {}),
+        transportadora,
+        guia: g.guia,
+        trackUrl: g.trackUrl,
+        rotulo: g.label,
+        bodega: d.bodega.nombre,
+        fechaDespacho: new Date().toISOString().slice(0, 10),
+        costoFlete: g.precio,
+        envia: { entorno: d.envia.enviaEntorno(), carrier: g.carrier, service: g.service, shipmentId: g.shipmentId, recogida: pickup, compradaAt: new Date().toISOString() },
+      },
+    },
+    by
+  );
+  pushHist(exp, by, `Guía ${transportadora} ${g.guia} comprada en Envia (${d.envia.enviaEntorno()}) por $${g.precio.toLocaleString('es-CO')} desde ${d.bodega.nombre}.${pickup ? (pickup.error ? ` Recogida no programada: ${pickup.error}` : ` Recogida ${recogida.fecha} ${recogida.desde || 9}–${recogida.hasta || 17} h${pickup.confirmacion ? ` (n.º ${pickup.confirmacion})` : ''}.`) : ''}`);
+  await persist(exp);
+  if (cerrarEtapas && d.envia.enviaEntorno() === 'produccion') {
+    for (const k of ['disponibilidad', 'compra_proveedor', 'confirmacion_envio', 'coordinacion_envio']) {
+      const et = (exp.etapas || []).find((x) => x.key === k);
+      if (et && et.estado !== 'hecho' && et.estado !== 'no_aplica') exp = await updateEtapa(id, k, { estado: 'hecho', nota: `Despachado con ${transportadora} (guía ${g.guia}).` }, by);
+    }
+    exp = await updateEtapa(id, 'guia', { estado: 'hecho', nota: `${transportadora} · guía ${g.guia}` }, by);
+  }
+  return { exp: await getExpediente(id), guia: g, recogida: pickup };
+}
+
+/** Consulta el estado de la guía en Envia; si ya se entregó, cierra la etapa de entrega. */
+export async function rastrearVentaEnvia(id, by = 'claude') {
+  const exp = await getExpediente(id);
+  const g = exp?.envio?.guia;
+  if (!g || !exp.envio.envia) return null;
+  const envia = await import('./envia.js');
+  const [t] = await envia.rastrear([g]);
+  if (!t) return null;
+  exp.envio = { ...exp.envio, estadoEnvio: t.estado, rastreadoAt: new Date().toISOString(), eventos: t.eventos };
+  await persist(exp);
+  let out = exp;
+  const et = (exp.etapas || []).find((x) => x.key === 'entrega');
+  if (t.entregado && et && et.estado !== 'hecho') out = await updateEtapa(id, 'entrega', { estado: 'hecho', nota: `Entregado según ${exp.envio.transportadora} (guía ${g}).` }, by);
+  return { exp: out, rastreo: t };
+}
+
+/** Rastrea todas las ventas activas con guía de Envia sin entregar (para la revisión de cada 3 h). */
+export async function rastrearEnviosPendientes(by = 'claude') {
+  const todos = await listExpedientes();
+  const res = [];
+  for (const e of todos) {
+    const et = (e.etapas || []).find((x) => x.key === 'entrega');
+    if (e.estado !== 'activo' || !e.envio?.envia || !e.envio?.guia || (et && et.estado === 'hecho')) continue;
+    try {
+      const r = await rastrearVentaEnvia(e.id, by);
+      res.push({ id: e.id, guia: e.envio.guia, estado: r?.rastreo?.estado || '', entregado: Boolean(r?.rastreo?.entregado) });
+    } catch (err) {
+      res.push({ id: e.id, guia: e.envio.guia, error: String(err?.message || err).slice(0, 160) });
+    }
+  }
+  return res;
+}
