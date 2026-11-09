@@ -138,3 +138,11 @@ Sección **Cotizaciones** del panel (`api/_lib/cotizaciones.js`, `public/admin/p
   si no se escoge, se sugiere la bodega del mismo proveedor. En la venta, el envío se arma por bodega: una guía por cada
   bodega (`envio.despachos[]`); las etapas de envío se cierran cuando todas las bodegas tienen guía, y "Entrega" cuando todas
   las guías están entregadas.
+
+## Usuarios del panel
+
+- `api/_lib/usuarios.js`: usuarios con contraseña (scrypt, en Redis `reiki:wa:panel:usuarios`; nunca en el repo).
+  `POST op=login { usuario, clave }` devuelve un token de sesión firmado (7 días) que el panel usa como Bearer; el
+  historial de cada expediente y cotización queda firmado con el nombre del usuario (Comercial, Logística…).
+  Máximo 10 intentos fallidos por IP cada 15 minutos. Solo el token de Claude crea usuarios (`POST op=usuarios`).
+- La clave de administrador antigua (`ADMIN_ORDERS_SECRET`) sigue funcionando (queda como "admin").

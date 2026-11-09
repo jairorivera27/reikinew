@@ -57,7 +57,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         <form id="login-form" class="login-form">
           <label>
             Usuario
-            <input type="text" id="login-user" name="user" autocomplete="username" value="admin" required />
+            <input type="text" id="login-user" name="user" autocomplete="username" placeholder="comercial o logistica" autocapitalize="none" required />
           </label>
           <label>
             Contraseña
@@ -2278,17 +2278,37 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             submitBtn.disabled = true;
             submitBtn.textContent = 'Entrando…';
           }
-          setSession(user, pass, false);
-          // Probar auth con una búsqueda corta
-          fetch('/api/orders-search?dias=30', {
-            headers: {
-              Authorization: 'Bearer ' + pass,
-              'X-Admin-User': user,
-            },
+          // 1) Usuario del panel (Comercial, Logística…): la API devuelve un token de sesión firmado.
+          // 2) Si no es un usuario, se prueba como la clave de administrador antigua.
+          fetch('/api/seguimiento?op=login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ usuario: user, clave: pass }),
           })
             .then(function (r) {
               return r.json().then(function (j) {
                 return { r: r, j: j };
+              });
+            })
+            .catch(function () {
+              return { r: { status: 0 }, j: {} };
+            })
+            .then(function (lg) {
+              if (lg.r.status === 429) throw new Error(lg.j.error || 'Demasiados intentos.');
+              if (lg.j && lg.j.ok && lg.j.token) {
+                setSession(lg.j.usuario, lg.j.token, false);
+                return { r: { status: 200 }, j: {} };
+              }
+              setSession(user, pass, false);
+              return fetch('/api/orders-search?dias=30', {
+                headers: {
+                  Authorization: 'Bearer ' + pass,
+                  'X-Admin-User': user,
+                },
+              }).then(function (r) {
+                return r.json().then(function (j) {
+                  return { r: r, j: j };
+                });
               });
             })
             .then(function (x) {
@@ -2299,9 +2319,9 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
               }
               showDash();
             })
-            .catch(function () {
+            .catch(function (err) {
               clearSession();
-              showLogin('No se pudo validar el acceso.');
+              showLogin(err && err.message && /intentos/.test(err.message) ? err.message : 'No se pudo validar el acceso.');
             })
             .finally(function () {
               if (submitBtn) {

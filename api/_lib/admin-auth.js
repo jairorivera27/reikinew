@@ -2,7 +2,9 @@
  * Auth simple para endpoints admin de pedidos.
  * Bearer = ADMIN_ORDERS_SECRET
  * Opcional: header X-Admin-User debe coincidir con ADMIN_ORDERS_USER (default admin).
+ * También acepta sesiones de usuarios del panel (Comercial, Logística…: ver usuarios.js).
  */
+import { sesionDe } from './usuarios.js';
 export function getAdminSecret() {
   return String(process.env.ADMIN_ORDERS_SECRET || '').trim();
 }
@@ -26,12 +28,15 @@ function bearerOf(req) {
 export function adminActor(req) {
   const agent = getAgentToken();
   if (agent && bearerOf(req) === agent) return 'claude';
+  const ses = sesionDe(bearerOf(req));
+  if (ses) return ses.n || ses.u;
   return String(req.headers['x-admin-user'] || '').trim() || getAdminUser();
 }
 
 export function adminAuthOk(req) {
   const agent = getAgentToken();
   if (agent && bearerOf(req) === agent) return true;
+  if (sesionDe(bearerOf(req))) return true;
   const secret = getAdminSecret();
   if (!secret) return false;
   if (bearerOf(req) !== secret) return false;

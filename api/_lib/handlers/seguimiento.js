@@ -20,6 +20,8 @@
  * POST op=metas { metas: { cotizaciones|cotizado|ventas: { dia, semana, mes } } }
  * GET op=envia-estado · POST op=bodegas { bodegas } · POST op=envia-cotizar { id, bodegaId, paquetes:[{contenido,cantidad,peso,largo,ancho,alto}] }
  * POST op=envia-tarifa { bodegaId, ciudad: 'Municipio, Departamento', paquetes } → solo cotiza (sin venta, no compra nada; también con el token de chats)
+ * POST op=login { usuario, clave } → { token } (sin auth; máx. 10 intentos fallidos por IP cada 15 min)
+ * POST op=usuarios { usuarios: { comercial: { nombre, clave } } } (solo token de Claude)
  * POST op=item-bodega { id, idx, bodegaId } · POST op=envia-guia { id, bodegaId, items:[idx], paquetes, carrier, service, recogida?:{fecha,desde,hasta} } · POST op=envia-rastrear { id? }
  * POST op=cot-numero → { numero } siguiente número del consecutivo único CT-DDMMAA-### (también con el token limitado)
  * POST op=cot-save { numero, tipo: equipos|proyecto, cliente, total, items, … }   (también con el token limitado de los chats)
@@ -36,6 +38,7 @@
  * POST op=pago    { id, pago: { id?, fecha, monto, medio, referencia, estado: verificado|por_verificar, nota } }
  */
 import { adminAuthOk, adminActor, readJsonBody } from '../admin-auth.js';
+import { guardarUsuarios, iniciarSesion, leerUsuarios } from '../usuarios.js';
 import {
   PLANTILLAS,
   cotizarEnvioVenta,
@@ -166,6 +169,12 @@ export default async function handler(req, res) {
   res.setHeader('Cache-Control', 'no-store');
   const q = query(req);
   const op = String(q.op || 'list');
+  if (op === 'login' && req.method === 'POST') {
+    const b = await readJsonBody(req).catch(() => ({}));
+    const ip = String(req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket?.remoteAddress || '';
+    const r = await iniciarSesion(b.usuario, b.clave, ip);
+    return send(res, r.ok ? 200 : r.status, r.ok ? { ok: true, token: r.token, usuario: r.usuario, nombre: r.nombre } : { ok: false, error: r.error });
+  }
   const chat = !adminAuthOk(req) && OPS_CHAT.has(op) && req.method === 'POST' && tokenChatOk(req);
   if (!chat && !adminAuthOk(req)) return send(res, 401, { ok: false, error: 'No autorizado.' });
   const by = chat ? 'Claude (chat)' : adminActor(req);
@@ -242,6 +251,11 @@ export default async function handler(req, res) {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
       await guardarMetas(body.metas || {}, by);
       return send(res, 200, { ok: true, ...(await calcularMetas()) });
+    }
+    if (op === 'usuarios') {
+      // Solo el asistente (token de Claude) crea usuarios o cambia contraseñas
+      if (by !== 'claude') return send(res, 403, { ok: false, error: 'Solo el asistente puede administrar usuarios.' });
+      return send(res, 200, { ok: true, usuarios: await guardarUsuarios(body.usuarios || {}) });
     }
     if (op === 'bodegas') {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
