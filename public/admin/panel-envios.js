@@ -17,7 +17,8 @@
 
   function hoyMas(dias) {
     var d = new Date(Date.now() + dias * 86400000);
-    while (d.getUTCDay() === 0) d = new Date(d.getTime() + 86400000);
+    // las bodegas reciben recogidas de lunes a viernes
+    while (d.getUTCDay() === 0 || d.getUTCDay() === 6) d = new Date(d.getTime() + 86400000);
     return d.toLocaleDateString('en-CA', { timeZone: 'America/Bogota' });
   }
 
@@ -85,7 +86,7 @@
           (c.errores && c.errores.length ? '<p class="pc-muted">Sin tarifa: ' + esc(c.errores.map(function (x) { return x.carrier; }).join(', ')) + '</p>' : '') +
           '<div class="seg-form-grid"><label class="seg-field"><span>Recogida en la bodega</span><input type="date" data-envia-fecha value="' + esc(c.fecha || hoyMas(1)) + '" /></label>' +
           '<label class="seg-field"><span>Desde (h)</span><input inputmode="numeric" data-envia-desde value="' + esc(c.desde || 9) + '" /></label>' +
-          '<label class="seg-field"><span>Hasta (h)</span><input inputmode="numeric" data-envia-hasta value="' + esc(c.hasta || 17) + '" /></label></div>' +
+          '<label class="seg-field"><span>Hasta (h)</span><input inputmode="numeric" data-envia-hasta value="' + esc(c.hasta || 16) + '" /></label></div>' +
           '<label class="seg-check"><input type="checkbox" data-envia-sinrecogida' + (c.sinRecogida ? ' checked' : '') + ' /> No pedir recogida (se lleva a la oficina de la transportadora)</label>' +
           '<div class="modal-actions"><button type="button" class="btn btn-primary seg-mini" data-envia-comprar' + (c.elegida == null ? ' disabled' : '') + '>' + (c.confirmar ? 'Confirmar: comprar guía por ' + cop(c.tarifas[c.elegida].precio) : 'Comprar guía') + '</button>' + (c.confirmar ? '<button type="button" class="btn btn-ghost seg-mini" data-envia-cancelar>No, volver</button>' : '') + '</div>'
         : '<p class="seg-warn">Ninguna transportadora dio tarifa para esta ruta y estas cajas.' + (c.errores && c.errores.length ? ' ' + esc(c.errores.map(function (x) { return x.carrier + ': ' + x.error; }).join(' · ')) : '') + '</p>'
@@ -228,7 +229,7 @@
               paquetes: c.cajas,
               carrier: t.carrier,
               service: t.service,
-              recogida: c.sinRecogida ? null : { fecha: c.fecha || hoyMas(1), desde: Number(c.desde) || 9, hasta: Number(c.hasta) || 17 },
+              recogida: c.sinRecogida ? null : { fecha: c.fecha || hoyMas(1), desde: Number(c.desde) || 9, hasta: Number(c.hasta) || 16 },
             });
             delete estado.cotiz[e.id];
             S().upsert(j.expediente);
