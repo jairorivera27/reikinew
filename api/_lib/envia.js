@@ -125,6 +125,8 @@ export async function guardarBodegas(input = {}) {
       nit: s(b.nit, 20) || '901942389',
       proveedor: s(b.proveedor, 80),
       horario: s(b.horario, 80),
+      // Nombre que se muestra en la calculadora de fletes (sin nombrar al proveedor)
+      publico: s(b.publico, 60),
     };
   }
   memBodegas = out;

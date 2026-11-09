@@ -334,5 +334,107 @@
     pintar();
   }
 
-  window.reikiEnvios = { montar: montar };
+  /* ---------- Calculadora de fletes (sección Cotizaciones) ---------- */
+  var calc = { cajas: [{ contenido: 'Equipos solares', cantidad: 1 }], muni: null };
+  async function municipios() {
+    if (calc.muni) return calc.muni;
+    try {
+      calc.muni = await (await fetch('/data/colombia-municipios.json')).json();
+    } catch (e) {
+      calc.muni = {};
+    }
+    return calc.muni;
+  }
+
+  async function calculadora(cont) {
+    if (!cont) return;
+    var esc = S().esc,
+      cop = S().cop;
+    var cfg = await config(true);
+    var M = await municipios();
+    function pintar(abierto) {
+      var bod = cfg.bodegas || {};
+      var ids = Object.keys(bod).sort(function (a, b) {
+        return (bod[a].publico || bod[a].nombre).localeCompare(bod[b].publico || bod[b].nombre);
+      });
+      var deps = Object.keys(M).sort();
+      var munis = calc.dep && M[calc.dep] ? M[calc.dep] : [];
+      var res = '';
+      if (calc.res) {
+        res = calc.res.tarifas.length
+          ? '<div class="table-wrap"><table><thead><tr><th>Transportadora</th><th>Servicio</th><th>Entrega</th><th>Costo Envia</th><th>Para cotizar (+' + (calc.res.margenPct || 20) + ' %)</th></tr></thead><tbody>' +
+            calc.res.tarifas
+              .map(function (t, i) {
+                return '<tr' + (i === 0 ? ' class="pc-row--ok"' : '') + '><td>' + esc(t.carrierNombre) + '</td><td>' + esc(t.servicio) + '</td><td>' + esc(t.entrega || '—') + '</td><td>' + cop(t.precio) + '</td><td><b>' + cop(t.precioCliente || t.precio) + '</b></td></tr>';
+              })
+              .join('') +
+            '</tbody></table></div><p class="pc-muted">Tarifas ' + (calc.res.entorno === 'produccion' ? 'reales' : 'de prueba') + ' de Envia, con IVA. En la cotización al cliente pon el valor de la columna "Para cotizar" (flete + margen, redondeado al millar). Solo se cotiza: no se compra ninguna guía.</p>'
+          : '<p class="seg-warn">Ninguna transportadora dio tarifa para esta ruta y estas cajas.</p>';
+      }
+      cont.innerHTML =
+        '<details class="flete-calc"' + (abierto ? ' open' : '') + '><summary><i class="fas fa-truck" aria-hidden="true"></i> Calculadora de fletes</summary>' +
+        (!cfg.configurado ? '<p class="seg-warn">Envia no está conectado.</p>' : '') +
+        '<div class="seg-form-grid">' +
+        '<label class="seg-field"><span>Sale de</span><select data-fc-bodega>' + ids.map(function (id) { return '<option value="' + esc(id) + '"' + (calc.bodega === id ? ' selected' : '') + '>' + esc(bod[id].publico || bod[id].nombre) + '</option>'; }).join('') + '</select></label>' +
+        '<label class="seg-field"><span>Departamento destino</span><select data-fc-dep><option value="">Escoge…</option>' + deps.map(function (d) { return '<option' + (calc.dep === d ? ' selected' : '') + '>' + esc(d) + '</option>'; }).join('') + '</select></label>' +
+        '<label class="seg-field"><span>Municipio destino</span><select data-fc-mun><option value="">Escoge…</option>' + munis.map(function (m) { return '<option' + (calc.mun === m ? ' selected' : '') + '>' + esc(m) + '</option>'; }).join('') + '</select></label>' +
+        '</div>' +
+        '<div class="table-wrap"><table class="envia-cajas"><thead><tr><th>Contenido</th><th>Cajas</th><th>Kg c/u</th><th>Largo</th><th>Ancho</th><th>Alto</th><th></th></tr></thead><tbody>' + calc.cajas.map(filaCaja).join('') + '</tbody></table></div>' +
+        '<div class="modal-actions"><button type="button" class="btn btn-ghost seg-mini" data-envia-caja>+ Otra caja</button><button type="button" class="btn btn-primary seg-mini" data-fc-cotizar>Cotizar flete</button></div>' +
+        '<p class="seg-warn" data-fc-err hidden></p>' + res + '</details>';
+      var q = function (s) {
+        return cont.querySelector(s);
+      };
+      var leer = function () {
+        cont.querySelectorAll('[data-caja]').forEach(function (inp) {
+          var i = Number(inp.getAttribute('data-caja'));
+          var k = inp.getAttribute('data-k');
+          calc.cajas[i][k] = k === 'contenido' ? inp.value : inp.value.replace(',', '.');
+        });
+        calc.bodega = q('[data-fc-bodega]') ? q('[data-fc-bodega]').value : '';
+        calc.dep = q('[data-fc-dep]').value;
+        calc.mun = q('[data-fc-mun]').value;
+      };
+      q('[data-fc-dep]').addEventListener('change', function () {
+        leer();
+        calc.mun = '';
+        pintar(true);
+      });
+      q('[data-envia-caja]').addEventListener('click', function () {
+        leer();
+        calc.cajas.push({ contenido: '', cantidad: 1 });
+        pintar(true);
+      });
+      cont.querySelectorAll('[data-quitar-caja]').forEach(function (b) {
+        b.addEventListener('click', function () {
+          leer();
+          if (calc.cajas.length > 1) calc.cajas.splice(Number(b.getAttribute('data-quitar-caja')), 1);
+          pintar(true);
+        });
+      });
+      q('[data-fc-cotizar]').addEventListener('click', async function (ev) {
+        leer();
+        var err = q('[data-fc-err]');
+        if (!calc.mun) {
+          err.hidden = false;
+          err.textContent = 'Escoge el departamento y el municipio de destino.';
+          return;
+        }
+        ev.target.disabled = true;
+        ev.target.textContent = 'Cotizando…';
+        try {
+          calc.res = await S().api('envia-tarifa', { bodegaId: calc.bodega, ciudad: calc.mun + ', ' + calc.dep, paquetes: calc.cajas });
+          pintar(true);
+        } catch (e) {
+          ev.target.disabled = false;
+          ev.target.textContent = 'Cotizar flete';
+          err.hidden = false;
+          err.textContent = e.message;
+        }
+      });
+    }
+    pintar(Boolean(calc.res));
+  }
+
+  window.reikiEnvios = { montar: montar, calculadora: calculadora };
 })();

@@ -939,5 +939,8 @@ export async function cotizarFleteLibre({ bodegaId, ciudad, direccion, paquetes 
   const c = await envia.ciudadEnvia(ciudad);
   const destino = { name: 'Cliente', phone: '3004052638', phone_code: 'CO', street: String(direccion || 'Centro').slice(0, 120), number: '', district: '', city: c.city, state: c.state, country: 'CO', postalCode: c.postalCode, category: 1 };
   const r = await envia.cotizar({ origen, destino, paquetes: envia.paquetesEnvia(paquetes) });
-  return { ...r, bodega: bodega.nombre, destino: `${c.nombre}` };
+  // Precio para la cotización al cliente: flete + 20 % de margen, redondeado al millar
+  const margen = Number(process.env.FLETE_MARGEN || 20) / 100;
+  r.tarifas = r.tarifas.map((t) => ({ ...t, precioCliente: Math.ceil((t.precio * (1 + margen)) / 1000) * 1000 }));
+  return { ...r, margenPct: Math.round(margen * 100), bodega: bodega.publico || bodega.nombre, destino: `${c.nombre}` };
 }

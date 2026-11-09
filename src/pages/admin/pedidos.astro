@@ -126,6 +126,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
           <h2>Cotizaciones</h2>
           <p>Todas las cotizaciones: las que hace Claude en cualquier chat y las que generan los clientes en la página o por WhatsApp. Envíalas, haz seguimiento y márcalas como aceptadas (se crea la venta) o rechazadas.</p>
         </header>
+        <div id="ct-fletes"></div>
         <section class="toolbar">
           <div class="search-wrap">
             <i class="fas fa-search" aria-hidden="true"></i>
@@ -1272,8 +1273,8 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
     </script>
 
     <script is:inline src="/admin/panel-inicio.js?v=20261109a"></script>
-    <script is:inline src="/admin/panel-envios.js?v=20261109c"></script>
-    <script is:inline src="/admin/panel-cotizaciones.js?v=20261103a"></script>
+    <script is:inline src="/admin/panel-envios.js?v=20261109d"></script>
+    <script is:inline src="/admin/panel-cotizaciones.js?v=20261109a"></script>
 
     <script is:inline define:vars={{ MOCKS: pedidosMocks }}>
       (function () {
@@ -4164,6 +4165,21 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         .mt-grid {
           grid-template-columns: 1fr;
         }
+      }
+      .flete-calc {
+        margin: 0 0 1rem;
+        border: 1px solid var(--line, #e5e7eb);
+        border-radius: 14px;
+        background: #fff;
+        padding: 0.8rem 1rem;
+      }
+      .flete-calc summary {
+        cursor: pointer;
+        font-weight: 700;
+      }
+      .flete-calc select,
+      .flete-calc .seg-field input {
+        width: 100%;
       }
       .envia-grupo {
         border: 1px solid var(--line, #e5e7eb);

@@ -80,6 +80,10 @@
     }
     stt.textContent = 'Cargando cotizaciones…';
     try {
+      if (window.reikiEnvios && !st.fletesListo) {
+        st.fletesListo = true;
+        window.reikiEnvios.calculadora(document.getElementById('ct-fletes'));
+      }
       var j = await S().api('cot-list');
       st.items = j.cotizaciones || [];
       try {
