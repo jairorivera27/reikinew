@@ -317,8 +317,20 @@ export default async function handler(req, res) {
       return send(res, 200, { ok: true, numero });
     }
     if (op === 'cot-save') {
-      const c = await guardarCotizacion(body || {}, by);
-      return send(res, 200, { ok: true, id: c.id, cotizacion: conResumenCot(c) });
+      let c = await guardarCotizacion(body || {}, by);
+      // Marcada aceptada al registrarla (p. ej. desde un chat): crear la venta igual que el botón "Aceptada" del panel
+      let correo = null;
+      if (c.estado === 'aceptada' && !c.expedienteId) {
+        c = await cambiarEstado(c.id, { estado: 'aceptada' }, by);
+        if (c.expedienteId && body.correo !== false) {
+          try {
+            correo = await correoCompraConfirmada(c.expedienteId, by);
+          } catch (err) {
+            correo = { enviado: false, motivo: err?.message || 'error al enviar' };
+          }
+        }
+      }
+      return send(res, 200, { ok: true, id: c.id, cotizacion: conResumenCot(c), expedienteId: c.expedienteId || null, correo });
     }
     if (op === 'cot-pdf') {
       const id = String(body.id || '') || (body.numero ? (await import('../cotizaciones.js')).idDeNumero(body.numero) : '');

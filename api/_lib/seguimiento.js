@@ -464,6 +464,20 @@ export async function expedienteDesdePedido(order) {
       console.warn('[seguimiento] cotización del pedido', err?.message || err);
     }
   }
+  // Pago (total o parcial) de una cotización que ya tiene venta: se agrega como pago a esa venta, sin crear otra
+  if (cot && cot.expedienteId && (await getExpediente(cot.expedienteId))) {
+    const pagoWeb = {
+      fecha: String(order.paidAt || order.updatedAt || order.createdAt || '').slice(0, 10),
+      monto: order.totalAmount,
+      medio: order.gateway === 'addi' ? 'Addi' : 'Wompi',
+      referencia: order.wompiTransactionId || order.addiApplicationId || order.orderId,
+      estado: 'verificado',
+      nota: `Pago en línea (pedido ${order.orderId}). Aprobado por la pasarela.`,
+    };
+    const exp0 = await addPago(cot.expedienteId, pagoWeb, 'tienda web');
+    if (redis) await redis.set(link, cot.expedienteId);
+    return exp0;
+  }
   const itemsPedido = (order.items || []).map((it) => ({ nombre: it.name, sku: it.sku, cantidad: it.quantity, precioUnit: it.unitPrice }));
   const itemsCot = cot
     ? (cot.items || []).map((it) => ({ nombre: it.nombre, sku: it.sku || (it.comprar === false && /env[ií]o/i.test(it.nombre) ? 'ENVIO' : ''), cantidad: it.cantidad, precioUnit: it.precioUnit, proveedor: it.proveedor, ...(it.comprar === false ? { compra: { estado: 'no_aplica' } } : {}) }))
