@@ -19,6 +19,7 @@
  * GET op=metas → avance contra las metas de cotizaciones, valor cotizado y ventas (hoy, semana, mes)
  * POST op=metas { metas: { cotizaciones|cotizado|ventas: { dia, semana, mes } } }
  * GET op=envia-estado · POST op=bodegas { bodegas } · POST op=envia-cotizar { id, bodegaId, paquetes:[{contenido,cantidad,peso,largo,ancho,alto}] }
+ * POST op=envia-tarifa { bodegaId, ciudad: 'Municipio, Departamento', paquetes } → solo cotiza (sin venta, no compra nada; también con el token de chats)
  * POST op=item-bodega { id, idx, bodegaId } · POST op=envia-guia { id, bodegaId, items:[idx], paquetes, carrier, service, recogida?:{fecha,desde,hasta} } · POST op=envia-rastrear { id? }
  * POST op=cot-numero → { numero } siguiente número del consecutivo único CT-DDMMAA-### (también con el token limitado)
  * POST op=cot-save { numero, tipo: equipos|proyecto, cliente, total, items, … }   (también con el token limitado de los chats)
@@ -41,6 +42,7 @@ import {
   despacharVentaEnvia,
   rastrearEnviosPendientes,
   asignarBodegaItem,
+  cotizarFleteLibre,
   rastrearVentaEnvia,
   sincronizarPendientesAlegra,
   correoCompraConfirmada,
@@ -78,7 +80,7 @@ import {
   importarDeTienda,
 } from '../cotizaciones.js';
 
-const OPS_CHAT = new Set(['cot-save', 'cot-pdf', 'cot-numero']);
+const OPS_CHAT = new Set(['cot-save', 'cot-pdf', 'cot-numero', 'envia-tarifa']);
 function tokenChatOk(req) {
   const t = tokenCotizaciones();
   const h = String(req.headers.authorization || '').trim();
@@ -244,6 +246,13 @@ export default async function handler(req, res) {
     if (op === 'bodegas') {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
       return send(res, 200, { ok: true, bodegas: await guardarBodegas(body.bodegas || {}) });
+    }
+    if (op === 'envia-tarifa') {
+      try {
+        return send(res, 200, { ok: true, ...(await cotizarFleteLibre({ bodegaId: body.bodegaId, ciudad: body.ciudad, direccion: body.direccion, paquetes: body.paquetes })) });
+      } catch (err) {
+        return send(res, 400, { ok: false, error: err.message });
+      }
     }
     if (op === 'item-bodega') {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });

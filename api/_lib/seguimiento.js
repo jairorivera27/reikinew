@@ -928,3 +928,16 @@ export async function rastrearEnviosPendientes(by = 'claude') {
   }
   return res;
 }
+
+/** Cotiza un flete sin venta (para negociar): bodega de origen + ciudad de destino + cajas. No compra nada. */
+export async function cotizarFleteLibre({ bodegaId, ciudad, direccion, paquetes }) {
+  const envia = await import('./envia.js');
+  const bodegas = await envia.leerBodegas();
+  const bodega = bodegas[bodegaId] || Object.values(bodegas)[0];
+  if (!bodega) throw new Error('No hay bodegas de despacho registradas.');
+  const origen = await envia.origenDe(bodega);
+  const c = await envia.ciudadEnvia(ciudad);
+  const destino = { name: 'Cliente', phone: '3004052638', phone_code: 'CO', street: String(direccion || 'Centro').slice(0, 120), number: '', district: '', city: c.city, state: c.state, country: 'CO', postalCode: c.postalCode, category: 1 };
+  const r = await envia.cotizar({ origen, destino, paquetes: envia.paquetesEnvia(paquetes) });
+  return { ...r, bodega: bodega.nombre, destino: `${c.nombre}` };
+}
