@@ -228,6 +228,8 @@ export async function cotizar({ origen, destino, paquetes }) {
       return;
     }
     for (const t of r.value?.data || []) {
+      // Servicios que no aplican a Reiki: contra entrega (recaudo) y documentos
+      if (/contrapago|contra entrega|documento/i.test(String(t.serviceDescription || t.service || ''))) continue;
       tarifas.push({
         carrier: t.carrier,
         carrierNombre: t.carrierDescription || t.carrier,
