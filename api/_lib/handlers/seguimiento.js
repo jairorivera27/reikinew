@@ -15,6 +15,8 @@
  * POST op=alegra-snapshot      { facturacionMensual, cartera, recaudoMensual, topClientes } (lo carga Claude)
  * Cotizaciones:
  * GET  op=cot-list | cot-get&id= | cot-pdf&id= (base64)
+ * POST op=prov-catalogo { proveedor, productos:[{nombre,sku,marca,costo,stock,url}], fuente } · GET op=prov-catalogos
+ * POST op=prov-alternativas { nombre, sku, excluir:[proveedores] } → quién más tiene el equipo y a qué precio
  * GET|POST op=prov-contactos { contactos: { Proveedor: { nombre, celular } } } → WhatsApp de cada proveedor (Redis)
  * GET op=metas → avance contra las metas de cotizaciones, valor cotizado y ventas (hoy, semana, mes)
  * POST op=metas { metas: { cotizaciones|cotizado|ventas: { dia, semana, mes } } }
@@ -199,6 +201,10 @@ export default async function handler(req, res) {
         return send(res, 200, { ok: true, ...(await revision(q.marcar === '1')), alegraActualizado: a ? a.guardado : null });
       }
       if (op === 'prov-contactos') return send(res, 200, { ok: true, contactos: await leerContactos() });
+      if (op === 'prov-catalogos') {
+        const { catalogosResumen } = await import('../proveedores-catalogo.js');
+        return send(res, 200, { ok: true, catalogos: await catalogosResumen() });
+      }
       if (op === 'envia-estado') return send(res, 200, { ok: true, configurado: enviaConfigurado(), entorno: enviaEntorno(), bodegas: await leerBodegas() });
       if (op === 'cot-list') {
         const items = (await listCotizaciones()).map(conResumenCot);
@@ -317,6 +323,20 @@ export default async function handler(req, res) {
         return send(res, 200, { ok: true, rastreo: r?.rastreo || null, expediente: r?.exp ? { ...r.exp, resumen: resumen(r.exp) } : null });
       }
       return send(res, 200, { ok: true, resultados: await rastrearEnviosPendientes(by) });
+    }
+    if (op === 'prov-catalogo') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const { guardarCatalogo } = await import('../proveedores-catalogo.js');
+      try {
+        return send(res, 200, { ok: true, catalogos: await guardarCatalogo(body.proveedor, body.productos, body.fuente) });
+      } catch (err) {
+        return send(res, 400, { ok: false, error: err.message });
+      }
+    }
+    if (op === 'prov-alternativas') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const { alternativas } = await import('../proveedores-catalogo.js');
+      return send(res, 200, { ok: true, alternativas: await alternativas({ nombre: body.nombre, sku: body.sku, codigo: body.codigo }, body.excluir || []) });
     }
     if (op === 'prov-contactos') {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });

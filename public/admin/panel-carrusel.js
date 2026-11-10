@@ -95,7 +95,7 @@
       .join(' ');
   }
 
-  var PROVEEDORES_BASE = ['Autosolar', 'Ingesolar', 'E&M', 'Solaire', 'Improinde', 'Biosolar', 'GEE Renovables', 'Amara NZero', 'Hardy Solar Energy'];
+  var PROVEEDORES_BASE = ['Autosolar', 'Ingesolar', 'E&M', 'Solaire', 'Suneo Energy', 'Improinde', 'Biosolar', 'GEE Renovables', 'Amara NZero', 'Hardy Solar Energy'];
 
   function refNombre(it) {
     var t = String(it.nombre || '').split(/\s+/).filter(function (w) {
@@ -105,7 +105,7 @@
   }
 
   /** Fila "Buscar con otro proveedor" de un equipo agotado: WhatsApp a cada proveedor que no lo ha negado y selector para asignarlo. */
-  function htmlOtroProveedor(it, idx, cs, b) {
+  function htmlOtroProveedor(it, idx, cs, b, alts) {
     var esc = S().esc;
     var norm = function (x) {
       return String(x || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
@@ -125,6 +125,23 @@
       return agot.indexOf(norm(p)) < 0;
     });
     var r = refNombre(it);
+    var dinero = function (v) {
+      return v ? '$' + Number(v).toLocaleString('es-CO') : 'sin precio';
+    };
+    var listas = (alts || []).length
+      ? '<ul class="car-alts">' +
+        alts
+          .map(function (a) {
+            return (
+              '<li><b>' + esc(a.proveedor) + '</b>: ' + (a.url ? '<a href="' + esc(a.url) + '" target="_blank" rel="noopener">' + esc(a.nombre) + '</a>' : esc(a.nombre)) +
+              (a.sku ? ' <small>(' + esc(a.sku) + ')</small>' : '') + ' · ' + dinero(a.costo) + ' · ' +
+              (a.stock === true ? '<span class="oc-badge oc-badge--ok">en stock</span>' : a.stock === false ? '<span class="oc-badge">agotado</span>' : 'stock sin dato') +
+              '</li>'
+            );
+          })
+          .join('') +
+        '</ul>'
+      : '<p class="pc-muted">No aparece en las listas de precios guardadas de otros proveedores; pregunta por WhatsApp.</p>';
     var wa = otros
       .map(function (p) {
         var k = Object.keys(cs).find(function (x) {
@@ -146,7 +163,7 @@
       }).join('') +
       '</select>';
     return (
-      '<tr class="car-agotado"><td></td><td colspan="3"><b>Agotado en ' + esc((it.agotadoEn || []).join(', ')) + '.</b> Buscar con otro proveedor: ' +
+      '<tr class="car-agotado"><td></td><td colspan="3"><b>Agotado en ' + esc((it.agotadoEn || []).join(', ')) + '.</b> En las listas de precios de otros proveedores:' + listas + 'Preguntar por WhatsApp: ' +
       (wa || '<span class="pc-muted">sin contactos con WhatsApp</span>') + '<br>' + sel + '</td></tr>'
     );
   }
@@ -159,6 +176,18 @@
     var norm = function (x) {
       return String(x || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
     };
+    var alts = {};
+    await Promise.all(
+      (e.items || []).map(async function (it, idx) {
+        if (!esEquipo(it) || (it.agotadoEn || []).indexOf(it.proveedor || 'Por confirmar') < 0) return;
+        try {
+          var j = await S().api('prov-alternativas', { nombre: it.nombre, sku: it.sku, excluir: it.agotadoEn });
+          alts[idx] = j.alternativas || [];
+        } catch (err) {
+          alts[idx] = [];
+        }
+      })
+    );
     var filas = (e.items || [])
       .map(function (it, idx) {
         if (!esEquipo(it)) return '';
@@ -177,7 +206,7 @@
           (!actual && !agotadoAqui ? ' <button type="button" class="btn btn-ghost seg-mini" data-car-agotado="' + idx + '" title="El proveedor no lo tiene">Agotado</button>' : '') +
           ((it.agotadoEn || []).length && !agotadoAqui && !actual ? '<br><small class="pc-muted">Agotado antes en ' + esc(it.agotadoEn.join(', ')) + '</small>' : '') +
           '</td></tr>' +
-          (agotadoAqui ? htmlOtroProveedor(it, idx, cs, b) : '')
+          (agotadoAqui ? htmlOtroProveedor(it, idx, cs, b, alts[idx]) : '')
         );
       })
       .join('');
