@@ -106,6 +106,7 @@ function normItem(it) {
     codigoProveedor: str(it.codigoProveedor, 80) || prov.codigoProveedor || '',
     disponibilidad: str(it.disponibilidad, 120),
     bodega: str(it.bodega, 40),
+    agotadoEn: Array.isArray(it.agotadoEn) ? [...new Set(it.agotadoEn.map((x) => str(x, 80)).filter(Boolean))].slice(0, 10) : [],
     compra: normCompra(it.compra),
   };
 }
@@ -865,6 +866,33 @@ export async function asignarBodegaItem(id, idx, bodegaId, by = 'panel') {
   const { leerBodegas } = await import('./envia.js');
   const b = (await leerBodegas())[it.bodega];
   pushHist(exp, by, `${it.nombre}: recogida en ${b ? b.nombre : 'bodega por definir'}.`);
+  autoEtapas(exp);
+  return persist(exp);
+}
+
+/**
+ * Equipo agotado con su proveedor y cambio de proveedor.
+ * { agotado:true } anota el proveedor actual como "agotado" (y quita la bodega); { proveedor } lo busca con otro.
+ */
+export async function proveedorItem(id, idx, { agotado, proveedor } = {}, by = 'panel') {
+  const exp = await getExpediente(id);
+  const it = exp && (exp.items || [])[Number(idx)];
+  if (!it) return null;
+  it.agotadoEn = Array.isArray(it.agotadoEn) ? it.agotadoEn : [];
+  if (agotado) {
+    const p = it.proveedor || 'Por confirmar';
+    if (!it.agotadoEn.includes(p)) it.agotadoEn.push(p);
+    it.bodega = '';
+    it.disponibilidad = `Agotado en ${p}`;
+    pushHist(exp, by, `${it.nombre}: agotado en ${p}. Se busca con otro proveedor.`);
+  } else if (str(proveedor, 80)) {
+    const antes = it.proveedor;
+    it.proveedor = str(proveedor, 80);
+    if (it.proveedor !== antes) it.codigoProveedor = '';
+    it.bodega = '';
+    it.disponibilidad = it.agotadoEn.includes(it.proveedor) ? `Agotado en ${it.proveedor}` : '';
+    pushHist(exp, by, `${it.nombre}: proveedor cambiado de ${antes || 'por confirmar'} a ${it.proveedor}.`);
+  } else return exp;
   autoEtapas(exp);
   return persist(exp);
 }

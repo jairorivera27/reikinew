@@ -23,7 +23,7 @@
  * POST op=login { usuario, clave } → { token } (sin auth; máx. 10 intentos fallidos por IP cada 15 min)
  * POST op=usuarios { usuarios: { comercial: { nombre, clave } } } (solo token de Claude)
  * POST op=envia-cajas { id, items:[idx] } | { equipos:[{nombre,sku,cantidad}] } → cajas con peso y medidas estimadas
- * POST op=item-bodega { id, idx, bodegaId } · POST op=envia-guia { id, bodegaId, items:[idx], paquetes, carrier, service, recogida?:{fecha,desde,hasta} } · POST op=envia-rastrear { id? }
+ * POST op=item-bodega { id, idx, bodegaId } · POST op=item-proveedor { id, idx, agotado?:true, proveedor? } · POST op=envia-guia { id, bodegaId, items:[idx], paquetes, carrier, service, recogida?:{fecha,desde,hasta} } · POST op=envia-rastrear { id? }
  * POST op=cot-numero → { numero } siguiente número del consecutivo único CT-DDMMAA-### (también con el token limitado)
  * POST op=cot-save { numero, tipo: equipos|proyecto, cliente, total, items, … }   (también con el token limitado de los chats)
  * POST op=cot-pdf  { id|numero, nombre, base64, parte, total }                  (también con el token limitado)
@@ -46,6 +46,7 @@ import {
   despacharVentaEnvia,
   rastrearEnviosPendientes,
   asignarBodegaItem,
+  proveedorItem,
   cotizarFleteLibre,
   cajasDeVenta,
   borrarPago,
@@ -279,6 +280,12 @@ export default async function handler(req, res) {
       } catch (err) {
         return send(res, 400, { ok: false, error: err.message });
       }
+    }
+    if (op === 'item-proveedor') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const exp = await proveedorItem(body.id, body.idx, { agotado: !!body.agotado, proveedor: body.proveedor }, by);
+      if (!exp) return send(res, 404, { ok: false, error: 'No existe.' });
+      return send(res, 200, { ok: true, expediente: { ...exp, resumen: resumen(exp) } });
     }
     if (op === 'item-bodega') {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });

@@ -62,7 +62,7 @@
     };
     var porProv = {};
     (e.items || []).forEach(function (it) {
-      if (!esEquipo(it) || it.bodega) return;
+      if (!esEquipo(it) || it.bodega || (it.agotadoEn || []).indexOf(it.proveedor || 'Por confirmar') >= 0) return;
       var p = it.proveedor || 'Por confirmar';
       (porProv[p] = porProv[p] || []).push(it);
     });
@@ -95,6 +95,62 @@
       .join(' ');
   }
 
+  var PROVEEDORES_BASE = ['Autosolar', 'Ingesolar', 'E&M', 'Solaire', 'Improinde', 'Biosolar', 'GEE Renovables', 'Amara NZero', 'Hardy Solar Energy'];
+
+  function refNombre(it) {
+    var t = String(it.nombre || '').split(/\s+/).filter(function (w) {
+      return w.length >= 5 && /[A-Z]/.test(w) && /\d/.test(w) && !/[a-z]/.test(w);
+    });
+    return t[0] || '';
+  }
+
+  /** Fila "Buscar con otro proveedor" de un equipo agotado: WhatsApp a cada proveedor que no lo ha negado y selector para asignarlo. */
+  function htmlOtroProveedor(it, idx, cs, b) {
+    var esc = S().esc;
+    var norm = function (x) {
+      return String(x || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+    };
+    var vistos = {};
+    var todos = [];
+    PROVEEDORES_BASE.concat(Object.keys(cs)).concat(Object.keys(b).map(function (k) {
+      return b[k].proveedor;
+    })).forEach(function (p) {
+      if (p && !vistos[norm(p)]) {
+        vistos[norm(p)] = 1;
+        todos.push(p);
+      }
+    });
+    var agot = (it.agotadoEn || []).map(norm);
+    var otros = todos.filter(function (p) {
+      return agot.indexOf(norm(p)) < 0;
+    });
+    var r = refNombre(it);
+    var wa = otros
+      .map(function (p) {
+        var k = Object.keys(cs).find(function (x) {
+          return norm(x) === norm(p);
+        });
+        var c = k ? cs[k] : null;
+        if (!c || !c.celular) return '';
+        var txt =
+          'Hola ' + (c.nombre ? c.nombre.split(' ')[0] : '') + ', ¿cómo estás? ¿Tienes disponible este producto (o uno equivalente)?\n\n• ' +
+          it.nombre + (r ? ' — Ref.: ' + r : '') + ' (' + it.cantidad + ' und.)\n\nGracias. Reiki Energía Solar.';
+        return '<a class="btn seg-mini pc-wa" target="_blank" rel="noopener" href="' + esc('https://wa.me/' + c.celular + '?text=' + encodeURIComponent(txt)) + '"><i class="fab fa-whatsapp" aria-hidden="true"></i> ' + esc(p) + '</a>';
+      })
+      .filter(Boolean)
+      .join(' ');
+    var sel =
+      '<select data-car-prov="' + idx + '" aria-label="Nuevo proveedor de ' + esc(it.nombre) + '"><option value="">Lo tiene… (asignar proveedor)</option>' +
+      otros.map(function (p) {
+        return '<option value="' + esc(p) + '">' + esc(p) + '</option>';
+      }).join('') +
+      '</select>';
+    return (
+      '<tr class="car-agotado"><td></td><td colspan="3"><b>Agotado en ' + esc((it.agotadoEn || []).join(', ')) + '.</b> Buscar con otro proveedor: ' +
+      (wa || '<span class="pc-muted">sin contactos con WhatsApp</span>') + '<br>' + sel + '</td></tr>'
+    );
+  }
+
   async function htmlDisponibilidad(e) {
     var esc = S().esc;
     var cs = await contactos();
@@ -110,13 +166,18 @@
           return norm(b[k].proveedor) && norm(b[k].proveedor) === norm(it.proveedor);
         });
         var actual = it.bodega || '';
+        var agotadoAqui = (it.agotadoEn || []).indexOf(it.proveedor || 'Por confirmar') >= 0;
         return (
           '<tr><td>' + esc(it.cantidad) + '</td><td>' + esc(it.nombre) + '</td><td>' + esc(it.proveedor || 'Por confirmar') + '</td><td>' +
           '<select data-car-bodega="' + idx + '" aria-label="Bodega de recogida de ' + esc(it.nombre) + '"><option value="">' + (actual ? 'Por definir' : 'Escoge cuando confirme…') + '</option>' +
           ids.map(function (k) {
             return '<option value="' + esc(k) + '"' + (k === actual ? ' selected' : '') + '>' + esc(b[k].nombre) + (sug.indexOf(k) >= 0 && !actual ? ' (sugerida)' : '') + '</option>';
           }).join('') +
-          '</select>' + (actual ? ' <span class="oc-badge oc-badge--ok">Disponible</span>' : '') + '</td></tr>'
+          '</select>' + (actual ? ' <span class="oc-badge oc-badge--ok">Disponible</span>' : '') +
+          (!actual && !agotadoAqui ? ' <button type="button" class="btn btn-ghost seg-mini" data-car-agotado="' + idx + '" title="El proveedor no lo tiene">Agotado</button>' : '') +
+          ((it.agotadoEn || []).length && !agotadoAqui && !actual ? '<br><small class="pc-muted">Agotado antes en ' + esc(it.agotadoEn.join(', ')) + '</small>' : '') +
+          '</td></tr>' +
+          (agotadoAqui ? htmlOtroProveedor(it, idx, cs, b) : '')
         );
       })
       .join('');
@@ -125,7 +186,7 @@
       (wa ? '<div class="modal-actions car-wa">' + wa + '</div>' : '') +
       '<div class="table-wrap car-dispo"><table><thead><tr><th>Cant.</th><th>Equipo</th><th>Proveedor</th><th>Disponible en (recoge en)</th></tr></thead><tbody>' +
       filas +
-      '</tbody></table></div><p class="pc-muted">Pregunta la disponibilidad con el botón de WhatsApp (va un mensaje por proveedor con todos sus equipos pendientes). Cuando confirme, escoge la bodega donde se recoge cada equipo: al tenerlos todos, esta etapa se cierra sola.</p>'
+      '</tbody></table></div><p class="pc-muted">Pregunta la disponibilidad con el botón de WhatsApp (va un mensaje por proveedor con todos sus equipos pendientes). Cuando confirme, escoge la bodega donde se recoge cada equipo: al tenerlos todos, esta etapa se cierra sola. Si el proveedor dice que está agotado, toca <b>Agotado</b> para buscarlo con otro proveedor.</p>'
     );
   }
 
@@ -205,6 +266,30 @@
             sel.disabled = false;
             alert(err.message);
           }
+        });
+      });
+    }
+
+    if (et.key === 'disponibilidad') {
+      var accion = async function (el, datos) {
+        el.disabled = true;
+        try {
+          var j = await S().api('item-proveedor', Object.assign({ id: e.id }, datos));
+          S().upsert(j.expediente);
+          S().abrir(e.id);
+        } catch (err) {
+          el.disabled = false;
+          alert(err.message);
+        }
+      };
+      extra.querySelectorAll('[data-car-agotado]').forEach(function (bt) {
+        bt.addEventListener('click', function () {
+          accion(bt, { idx: Number(bt.getAttribute('data-car-agotado')), agotado: true });
+        });
+      });
+      extra.querySelectorAll('[data-car-prov]').forEach(function (sel) {
+        sel.addEventListener('change', function () {
+          if (sel.value) accion(sel, { idx: Number(sel.getAttribute('data-car-prov')), proveedor: sel.value });
         });
       });
     }
