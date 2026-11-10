@@ -1,5 +1,5 @@
 """
-Revisión diaria de disponibilidad en los proveedores Ingesolar, Autosolar y Amara NZero,
+Revisión diaria de disponibilidad en los proveedores Ingesolar, Autosolar, Amara NZero y Suneo Energy,
 y actualización del campo `stock` (y `stockBajo`) de los productos de la tienda.
 
 Reglas (las mismas de la actualización manual del 14/10/2026):
@@ -55,7 +55,7 @@ def leer_productos():
     out = []
     for slug, info in prov.items():
         p = info.get('proveedor')
-        if p not in ('Ingesolar', 'Autosolar', 'Amara NZero'):
+        if p not in ('Ingesolar', 'Autosolar', 'Amara NZero', 'Suneo Energy'):
             continue
         path = os.path.join(PROD, slug + '.md')
         if not os.path.exists(path):
@@ -199,6 +199,45 @@ def revisar_amara(prods):
     return res, None
 
 
+# ---------------------------------------------------------------- Suneo Energy
+def revisar_suneo(prods):
+    """Tienda Jumpseller de Suneo: stock por variante (la ficha de cada producto trae product-json)."""
+    import importlib.util
+    spec = importlib.util.spec_from_file_location('suneo', os.path.join(ROOT, 'scripts', 'descargar-suneo.py'))
+    m = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(m)
+    try:
+        sm = m.get('https://suneoenergy.com.co/sitemap.xml')
+        urls = re.findall(r'<loc>([^<]*)</loc>', sm)
+        if not urls:
+            return None, 'Suneo Energy: no respondió el sitemap'
+        stock, err = {}, 0
+        for u in urls:
+            try:
+                r = m.parse(u)
+            except Exception:
+                err += 1
+                continue
+            for v in (r or {}).get('variantes', []):
+                k = re.sub(r'[^a-z0-9]', '', (v.get('sku') or '').lower())
+                if k:
+                    stock[k] = stock.get(k, False) or bool(v.get('stock'))
+    except Exception as e:
+        return None, f'Suneo Energy: {e}'
+    if not stock:
+        return None, 'Suneo Energy no devolvió productos'
+    res = {}
+    for p in prods:
+        k = re.sub(r'[^a-z0-9]', '', re.sub(r'^SNO-', '', p['sku'], flags=re.I).lower())
+        if k not in stock:
+            res[p['slug']] = {'estado': 'no-encontrado'}
+            continue
+        ok = stock[k]
+        res[p['slug']] = {'estado': 'ok', 'stock': 'disponible' if ok else 'pre-orden', 'stockBajo': False,
+                          'detalle': 'con stock' if ok else 'agotado en la tienda del proveedor'}
+    return res, None
+
+
 # ---------------------------------------------------------------- aplicar
 def set_campo(t, k, v):
     m = re.match(r'---\n(.*?)\n---', t, re.S)
@@ -221,7 +260,8 @@ def main():
 
     for nombre, fn in (('Ingesolar', lambda ps: revisar_ingesolar(ps)),
                        ('Autosolar', None),
-                       ('Amara NZero', lambda ps: revisar_amara(ps))):
+                       ('Amara NZero', lambda ps: revisar_amara(ps)),
+                       ('Suneo Energy', lambda ps: revisar_suneo(ps))):
         ps = por(nombre)
         print(f'== {nombre}: {len(ps)} productos', flush=True)
         if nombre == 'Autosolar':

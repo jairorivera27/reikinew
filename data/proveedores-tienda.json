@@ -7625,5 +7625,1150 @@
   "proveedor": "GEE Renovables",
   "titulo": "Fusible DC FEEO 25A 10x38 1000 VDC",
   "codigo": "FDS-32 25A"
+ },
+ "accesorios-para-interruptores-sentron-3vm-1-polo-siemens": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Accesorios para interruptores SENTRON 3VM 1 POLO SIEMENS",
+  "codigo": "3VM9181-0SH10"
+ },
+ "accesorios-para-interruptores-sentron-3vm-2-polos-siemens": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Accesorios para interruptores SENTRON 3VM 2 POLOS SIEMENS",
+  "codigo": "3VM9182-0SH10"
+ },
+ "terminal-para-coraza-flexible-nylon-negra-libre-de-halogenos-adler-1-2": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Terminal Para Coraza Flexible Nylon Negra Libre De Halógenos Adler 1/2\"",
+  "codigo": "TERMINAL-1/2-IN"
+ },
+ "terminal-para-coraza-flexible-nylon-negra-libre-de-halogenos-adler-3-4": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Terminal Para Coraza Flexible Nylon Negra Libre De Halógenos Adler 3/4\"",
+  "codigo": "TERMINAL-3/4-IN"
+ },
+ "terminal-para-coraza-flexible-nylon-negra-libre-de-halogenos-adler-1": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Terminal Para Coraza Flexible Nylon Negra Libre De Halógenos Adler 1\"",
+  "codigo": "TERMINAL-1-IN"
+ },
+ "terminal-para-coraza-flexible-nylon-negra-libre-de-halogenos-adler-1-1-2": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Terminal Para Coraza Flexible Nylon Negra Libre De Halógenos Adler 1 1/2\"",
+  "codigo": "TERMINAL-1-1/2-IN"
+ },
+ "base-porta-fusible-aite-para-riel-din-10-14x85mm-50a-1500vdc-con-retie": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Base Porta Fusible AITE Para RIEL DIN 10/14x85MM 50A 1500VDC con RETIE",
+  "codigo": "ATPV-63LD"
+ },
+ "base-porta-fusibles-160a-polos-690vac-440vdc-siemens-1p": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Base porta fusibles 160A Polos 690VAC / 440VDC Siemens 1P",
+  "codigo": "3NP1131-1CA10"
+ },
+ "base-portafusible-10x38-mm-1000vdc-aite-retie": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Base portafusible 10x38 mm 1000VDC AITE RETIE",
+  "codigo": "ATPV-30D/LED"
+ },
+ "base-portafusible-22x58-mm-1500vdc-aite-retie-80a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Base portafusible 22x58 mm 1500VDC AITE RETIE 80A",
+  "codigo": "ATPV-80DL"
+ },
+ "base-portafusible-22x58-mm-1000vdc-aite-retie-125a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Base portafusible 22x58 mm 1000VDC AITE RETIE 125A",
+  "codigo": "ATPV-125DL"
+ },
+ "base-portafusible-10x38-mm-690vac-3p-n-eti": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Base portafusible 10x38 mm 690VAC 3P+N ETI",
+  "codigo": "EFD-10-3P+N"
+ },
+ "base-portafusible-10x38-mm-1000vdc-eti": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Base portafusible 10x38 mm 1000VDC ETI",
+  "codigo": "EFH-10-DC"
+ },
+ "base-portafusible-aite-nh00-nh1-500vac-440vdc-160a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Base portafusible AITE NH00/NH1 500VAC/440VDC 160A",
+  "codigo": "SIST101"
+ },
+ "base-portafusible-aite-nh00-nh1-500vac-440vdc-250a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Base portafusible AITE NH00/NH1 500VAC/440VDC 250A",
+  "codigo": "SIST201"
+ },
+ "bateria-51-2-v-100-ah-para-rack-bslbatt-100ah-48vdc": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Batería 51,2 V / 100 Ah para rack BSLBATT 100Ah/48VDC",
+  "codigo": "B-LFP48-100E-3U"
+ },
+ "bloque-de-distribucion-siemens-690vac-dc": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Bloque de distribución SIEMENS 690VAC/DC",
+  "codigo": "5ST2501"
+ },
+ "bloque-de-distribucion-siemens-1000vac-1500vdc-80a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Bloque de distribución SIEMENS 1000VAC/1500VDC 80A",
+  "codigo": "5ST2504"
+ },
+ "bloque-de-distribucion-siemens-1000vac-1500vdc-125a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Bloque de distribución SIEMENS 1000VAC/1500VDC 125A",
+  "codigo": "5ST2505"
+ },
+ "bloque-de-distribucion-siemens-1000vac-1500vdc-160a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Bloque de distribución SIEMENS 1000VAC/1500VDC 160A",
+  "codigo": "5ST2507"
+ },
+ "bloque-de-distribucion-tbloc-sdb-1000v-ac-dc-160a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Bloque de distribución TBLOC SDB 1000V AC/DC 160A",
+  "codigo": "SDB160A"
+ },
+ "bloque-de-terminales-exclusivo-para-tableros-abb-mistral": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Bloque de terminales exclusivo para tableros ABB - MISTRAL",
+  "codigo": "1SPE007715F0731"
+ },
+ "bloque-de-terminales-tierra-abb": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Bloque de terminales Tierra - ABB",
+  "codigo": "1SPE007715F0741"
+ },
+ "borna-de-paso-para-riel-klemsan-304-avk6-630v": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Borna de paso para riel KLEMSAN 304 AVK6 630V",
+  "codigo": "K304-140"
+ },
+ "borna-de-tierra-verde-amarillo-para-riel-din-omega-klemsan-10-awg": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Borna de tierra verde-amarillo para riel DIN (Omega) Klemsan 10 AWG",
+  "codigo": "K334-120"
+ },
+ "borna-de-tierra-verde-amarillo-para-riel-din-omega-klemsan-8-awg": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Borna de tierra verde-amarillo para riel DIN (Omega) Klemsan 8 AWG",
+  "codigo": "K334-140"
+ },
+ "breaker-dc-500vdc-chint-retie-160a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC 500VDC CHINT - RETIE 160A",
+  "codigo": "NM8NDC-250B-160A"
+ },
+ "breaker-4p-dc-feeo-1000vdc-retie-80a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker 4P DC FEEO 1000VDC RETIE 80A",
+  "codigo": "FPV-125-80"
+ },
+ "breaker-4p-dc-feeo-1000vdc-retie-100a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker 4P DC FEEO 1000VDC RETIE 100A",
+  "codigo": "FPV-125-100"
+ },
+ "breaker-4p-dc-feeo-1000vdc-retie-125a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker 4P DC FEEO 1000VDC RETIE 125A",
+  "codigo": "FPV-125-125"
+ },
+ "breaker-ac-siemens-230-400vac-3p-16a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 3P 16A",
+  "codigo": "5SL6316-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-3p-20a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 3P 20A",
+  "codigo": "5SL6320-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-3p-40a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 3P 40A",
+  "codigo": "5SL6340-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-3p-25a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 3P 25A",
+  "codigo": "5SL6325-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-3p-63a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 3P 63A",
+  "codigo": "5SL6363-7MB"
+ },
+ "breaker-ac-siemens-tripolar-415vac-3vj-80a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens Tripolar 415VAC 3VJ 80A",
+  "codigo": "3VJ1008-1DA32-0AA0"
+ },
+ "breaker-ac-siemens-tripolar-415vac-3vj-125a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens Tripolar 415VAC 3VJ 125A",
+  "codigo": "3VJ1012-3DA32-0AA0"
+ },
+ "breaker-ac-siemens-tripolar-415vac-3vj-160a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens Tripolar 415VAC 3VJ 160A",
+  "codigo": "3VJ1216-3DA32-0AA0"
+ },
+ "breaker-ac-siemens-230-400vac-2p-20a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 2P 20A",
+  "codigo": "5SL6220-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-2p-32a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 2P 32A",
+  "codigo": "5SL6232-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-2p-40a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 2P 40A",
+  "codigo": "5SL6240-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-2p-6a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 2P 6A",
+  "codigo": "5SL6206-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-2p-10a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 2P 10A",
+  "codigo": "5SL6210-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-2p-16a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 2P 16A",
+  "codigo": "5SL6216-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-2p-25a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 2P 25A",
+  "codigo": "5SL6225-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-2p-50a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 2P 50A",
+  "codigo": "5SL6250-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-2p-63a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 2P 63A",
+  "codigo": "5SL6263-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-1p-10a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 1P 10A",
+  "codigo": "5SL6110-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-1p-20a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 1P 20A",
+  "codigo": "5SL6120-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-1p-32a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 1P 32A",
+  "codigo": "5SL6132-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-1p-40a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 1P 40A",
+  "codigo": "5SL6140-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-1p-16a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 1P 16A",
+  "codigo": "5SL6116-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-1p-25a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 1P 25A",
+  "codigo": "5SL6125-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-1p-50a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 1P 50A",
+  "codigo": "5SL6150-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-1p-63a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 1P 63A",
+  "codigo": "5SL6163-7MB"
+ },
+ "breaker-ac-siemens-230-400vac-1p-80a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 1P 80A",
+  "codigo": "5SP4180-7"
+ },
+ "breaker-ac-siemens-230-400vac-1p-100a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC Siemens 230/400VAC 1P 100A",
+  "codigo": "5SP4191-7"
+ },
+ "breaker-ac-dc-siemens-125a-1p-415vac-125vdc": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC/DC Siemens 125A 1P 415VAC/125VDC",
+  "codigo": "3VM1112-3ED12-0AA0"
+ },
+ "breaker-ac-dc-chint-230-400vac-110-220vdc-retie-1p-125a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC/DC CHINT 230/400VAC 110/220VDC RETIE 1P 125A",
+  "codigo": "CB-125A-125A-1P"
+ },
+ "breaker-dc-chint-1000vdc-retie-20a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC CHINT 1000VDC RETIE 20A",
+  "codigo": "NB1-63DC-20A-4P"
+ },
+ "breaker-dc-chint-1000vdc-retie-25a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC CHINT 1000VDC RETIE 25A",
+  "codigo": "NB1-63DC-25A-4P"
+ },
+ "breaker-dc-chint-1000vdc-retie-32a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC CHINT 1000VDC RETIE 32A",
+  "codigo": "NB1-63DC-32A-4P"
+ },
+ "breaker-dc-chint-1000vdc-retie-40a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC CHINT 1000VDC RETIE 40A",
+  "codigo": "NB1-63DC-40A-4P"
+ },
+ "breaker-dc-chint-500vdc-retie-16a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC CHINT 500VDC RETIE 16A",
+  "codigo": "NB1-63DC-16A-2P"
+ },
+ "breaker-dc-chint-500vdc-retie-20a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC CHINT 500VDC RETIE 20A",
+  "codigo": "NB1-63DC-20A-2P"
+ },
+ "breaker-dc-chint-500vdc-retie-25a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC CHINT 500VDC RETIE 25A",
+  "codigo": "NB1-63DC-25A-2P"
+ },
+ "breaker-dc-chint-500vdc-retie-32a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC CHINT 500VDC RETIE 32A",
+  "codigo": "NB1-63DC-32A-2P"
+ },
+ "breaker-dc-chint-500vdc-retie-40a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC CHINT 500VDC RETIE 40A",
+  "codigo": "NB1-63DC-40A-2P"
+ },
+ "breaker-dc-chint-500vdc-retie-50a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC CHINT 500VDC RETIE 50A",
+  "codigo": "NB1-63DC-50A-2P"
+ },
+ "breaker-dc-chint-500vdc-retie-63a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC CHINT 500VDC RETIE 63A",
+  "codigo": "NB1-63DC-63A-2P"
+ },
+ "breaker-dc-chint-250vdc-retie-10a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC CHINT 250VDC RETIE 10A",
+  "codigo": "NB1-63DC-10A-1P"
+ },
+ "breaker-dc-chint-250vdc-retie-16a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC CHINT 250VDC RETIE 16A",
+  "codigo": "NB1-63DC-16A-1P"
+ },
+ "breaker-dc-chint-250vdc-retie-20a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC CHINT 250VDC RETIE 20A",
+  "codigo": "NB1-63DC-20A-1P"
+ },
+ "breaker-dc-chint-250vdc-retie-25a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC CHINT 250VDC RETIE 25A",
+  "codigo": "NB1-63DC-25A-1P"
+ },
+ "breaker-dc-chint-250vdc-retie-32a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC CHINT 250VDC RETIE 32A",
+  "codigo": "NB1-63DC-32A-1P"
+ },
+ "breaker-dc-feeo-1500vdc-retie-100a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC FEEO 1500VDC RETIE 100A",
+  "codigo": "FPV-63-100-HV"
+ },
+ "breaker-dc-feeo-1500vdc-retie-125a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC FEEO 1500VDC RETIE 125A",
+  "codigo": "FPV-63-125-HV"
+ },
+ "breaker-dc-siemens-250-vdc-1p-16a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC Siemens, 250 VDC 1P 16A",
+  "codigo": "5SY5116-7"
+ },
+ "breaker-dc-siemens-250-vdc-1p-20a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC Siemens, 250 VDC 1P 20A",
+  "codigo": "5SY5120-7"
+ },
+ "breaker-dc-siemens-250-vdc-1p-32a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC Siemens, 250 VDC 1P 32A",
+  "codigo": "5SY5132-7"
+ },
+ "breaker-dc-siemens-250-vdc-1p-40a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC Siemens, 250 VDC 1P 40A",
+  "codigo": "5SY5140-7"
+ },
+ "breaker-dc-siemens-250-vdc-1p-50a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC Siemens, 250 VDC 1P 50A",
+  "codigo": "5SY5150-7"
+ },
+ "breaker-dc-siemens-250-vdc-1p-63a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC Siemens, 250 VDC 1P 63A",
+  "codigo": "5SY5163-7"
+ },
+ "breaker-ac-dc-siemens-63a-tripolar-500vdc-415vac": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker AC/DC SIEMENS 63A Tripolar 500VDC/415VAC",
+  "codigo": "3VM1163-3EE32-0AA0"
+ },
+ "breaker-dc-suntree-1000v-dc-2p-retie-16a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC SUNTREE 1000V DC 2P RETIE 16A",
+  "codigo": "SL7N-125D-16"
+ },
+ "breaker-dc-suntree-1000v-dc-2p-retie-20a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC SUNTREE 1000V DC 2P RETIE 20A",
+  "codigo": "SL7N-125D-20"
+ },
+ "breaker-dc-suntree-1000v-dc-retie-20a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC SUNTREE 1000V DC RETIE 20A",
+  "codigo": "SL7N63-4P-20"
+ },
+ "breaker-dc-suntree-1000v-dc-retie-25a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC SUNTREE 1000V DC RETIE 25A",
+  "codigo": "SL7N63-4P-25"
+ },
+ "breaker-dc-suntree-1500v-dc-3p-retie-20a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC SUNTREE 1500V DC 3P RETIE 20A",
+  "codigo": "SL7N-125D-20-HB"
+ },
+ "breaker-dc-suntree-1500v-dc-3p-retie-80a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC SUNTREE 1500V DC 3P RETIE 80A",
+  "codigo": "SL7N-125D-80-HB"
+ },
+ "breaker-dc-suntree-1500v-dc-4p-retie-32a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC SUNTREE 1500V DC 4P RETIE 32A",
+  "codigo": "SL7N-125D-32-HV"
+ },
+ "breaker-dc-suntree-250v-dc-retie-100a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC SUNTREE 250V DC RETIE 100A",
+  "codigo": "SL7N-125-1P-100"
+ },
+ "breaker-dc-suntree-250v-dc-retie-125a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC SUNTREE 250V DC RETIE 125A",
+  "codigo": "SL7N-125-1P-125"
+ },
+ "breaker-dc-suntree-600v-dc-retie-80a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC SUNTREE 600V DC RETIE 80A",
+  "codigo": "SL7N-125-2P-80"
+ },
+ "breaker-dc-suntree-600v-dc-retie-100a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC SUNTREE 600V DC RETIE 100A",
+  "codigo": "SL7N-125-2P-100"
+ },
+ "breaker-dc-suntree-250v-dc-retie-32a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC SUNTREE 250V DC RETIE 32A",
+  "codigo": "SL7N-63-1P-32"
+ },
+ "breaker-dc-suntree-600v-dc-retie-16a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC SUNTREE 600V DC RETIE 16A",
+  "codigo": "SL7N-63-16"
+ },
+ "breaker-dc-suntree-800v-dc-retie-20a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC SUNTREE 800V DC RETIE 20A",
+  "codigo": "SL7N-63-20-HV"
+ },
+ "breaker-dc-suntree-800v-dc-retie-25a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC SUNTREE 800V DC RETIE 25A",
+  "codigo": "SL7N-63-25-HV"
+ },
+ "breaker-dc-suntree-800v-dc-retie-16a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC SUNTREE 800V DC RETIE 16A",
+  "codigo": "SL7N-63-16-HV"
+ },
+ "breaker-dc-suntree-800v-dc-retie-32a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC SUNTREE 800V DC RETIE 32A",
+  "codigo": "SL7N-63-32-HV"
+ },
+ "breaker-dc-feeo-1000vdc-retie-63a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC FEEO 1000VDC RETIE 63A",
+  "codigo": "FPV-63-63-4P"
+ },
+ "breaker-dc-feeo-1200vdc-retie-40a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC FEEO 1200VDC RETIE 40A",
+  "codigo": "FPV-63-40-MCB"
+ },
+ "breaker-dc-feeo-1200vdc-retie-63a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC FEEO 1200VDC RETIE 63A",
+  "codigo": "FPV-63-63-MCB"
+ },
+ "breaker-dc-feeo-250vdc-retie-6a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC FEEO 250VDC RETIE 6A",
+  "codigo": "FPV-63-6-1P"
+ },
+ "breaker-dc-feeo-250vdc-retie-10a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC FEEO 250VDC RETIE 10A",
+  "codigo": "FPV-63-10-1P"
+ },
+ "breaker-dc-feeo-250vdc-retie-16a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC FEEO 250VDC RETIE 16A",
+  "codigo": "FPV-63-16-1P"
+ },
+ "breaker-dc-feeo-250vdc-retie-40a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC FEEO 250VDC RETIE 40A",
+  "codigo": "FPV-63-40-1P"
+ },
+ "breaker-dc-feeo-250vdc-retie-50a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC FEEO 250VDC RETIE 50A",
+  "codigo": "FPV-63-50-1P"
+ },
+ "breaker-dc-feeo-250vdc-retie-63a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC FEEO 250VDC RETIE 63A",
+  "codigo": "FPV-63-63-1P"
+ },
+ "breaker-dc-feeo-550vdc-retie-10a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Breaker DC FEEO 550VDC RETIE 10A",
+  "codigo": "FPV-63-10-2P"
+ },
+ "cable-10awg-mtw-flexible-verde-amarillo-tableros-y-cableado-interno-de-baja-tension-c": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Cable 10AWG MTW FLEXIBLE VERDE-AMARILLO tableros y cableado interno de baja tensión Conalcables VERDE RAYA AMARILLA",
+  "codigo": "20606001011"
+ },
+ "rollo-100mts-cable-12awg-vehicular-iluminacion-verde-600v-105c-centelsa": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Rollo 100Mts Cable 12AWG VEHICULAR-ILUMINACIÓN VERDE 600V 105C CENTELSA",
+  "codigo": "201640"
+ },
+ "cable-solar-fotovoltaico-10mm2-conduluz-por-metros-negro": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Cable Solar Fotovoltaico 10mm2 Conduluz Por Metros Negro",
+  "codigo": "3421"
+ },
+ "cable-solar-fotovoltaico-10mm2-conduluz-por-metros-rojo": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Cable Solar Fotovoltaico 10mm2 Conduluz Por Metros Rojo",
+  "codigo": "3621"
+ },
+ "cable-solar-fotovoltaico-4mm2-conduluz-por-metros-rojo": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Cable Solar Fotovoltaico 4mm2 Conduluz Por Metros Rojo",
+  "codigo": "3420"
+ },
+ "cable-solar-fotovoltaico-6mm2-conduluz-por-metros-negro": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Cable Solar Fotovoltaico 6mm2 Conduluz Por Metros Negro",
+  "codigo": "3519"
+ },
+ "cable-solar-fotovoltaico-6mm2-conduluz-por-metros-rojo": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Cable Solar Fotovoltaico 6mm2 Conduluz Por Metros Rojo",
+  "codigo": "3518"
+ },
+ "caja-combinadora-string-box-2-entradas-1-salida-550vdc": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Caja combinadora string box 2 Entradas / 1 Salida 550VDC",
+  "codigo": "caja-combinadora-string-box-2-entradas-1"
+ },
+ "caja-combinadora-string-box-4-entradas-1-salida-550vdc": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Caja combinadora string box 4 Entradas / 1 Salida 550VDC",
+  "codigo": "caja-combinadora-string-box-4-entradas-1"
+ },
+ "caja-de-paso-15x20-ip65-adler-gris": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Caja De Paso 15X20 IP65 Adler Gris",
+  "codigo": "CP-15X20"
+ },
+ "cartucho-dps-ac-275-vac-etitec-c-t2": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Cartucho Dps AC 275 Vac Etitec C T2",
+  "codigo": "002440414"
+ },
+ "controlador-de-carga-mppt-8a-gvb-8-pb-12v-genasun-12vdc": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Controlador de carga MPPT 8A GVB-8-PB-12V GENASUN 12VDC",
+  "codigo": "GVB-8-PB-12V"
+ },
+ "controlador-de-carga-mppt-8a-gvb-8-pb-24v-genasun-24vdc": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Controlador de carga MPPT 8A GVB-8-PB-24V GENASUN 24VDC",
+  "codigo": "GVB-8-PB-24V"
+ },
+ "controlador-de-carga-mppt-8a-gvb-8-pb-48v-genasun-48vdc": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Controlador de carga MPPT 8A GVB-8-PB-48V GENASUN 48VDC",
+  "codigo": "GVB-8-PB-48V"
+ },
+ "controlador-de-carga-mppt-8a-gvb-8-li-28-4v-genasun-28-4vdc": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Controlador de carga MPPT 8A GVB-8-LI-28.4V GENASUN 28.4VDC",
+  "codigo": "GVB-8-LI-28.4V"
+ },
+ "controlador-de-carga-mppt-8a-gvb-8-li-56-8v-genasun-56-8vdc": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Controlador de carga MPPT 8A GVB-8-LI-56.8V GENASUN 56.8VDC",
+  "codigo": "GVB-8-LI-56.8V"
+ },
+ "controlador-regulador-solar-pwm-vs4524au-epever-45a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Controlador / Regulador Solar PWM VS4524AU EPEVER 45A",
+  "codigo": "VS4524AU"
+ },
+ "coraza-flexible-nylon-negra-libre-de-halogenos-adler-1-2": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Coraza Flexible Nylon Negra Libre De Halogenos Adler 1/2\"",
+  "codigo": "ISYNYLON-1/2N"
+ },
+ "coraza-flexible-nylon-negra-libre-de-halogenos-adler-3-4": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Coraza Flexible Nylon Negra Libre De Halogenos Adler 3/4\"",
+  "codigo": "ISYNYLON-3/4N"
+ },
+ "coraza-flexible-nylon-negra-libre-de-halogenos-adler-1": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Coraza Flexible Nylon Negra Libre De Halogenos Adler 1\"",
+  "codigo": "ISYNYLON-1N"
+ },
+ "coraza-flexible-nylon-negra-libre-de-halogenos-adler-1-1-2": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Coraza Flexible Nylon Negra Libre De Halogenos Adler 1 1/2",
+  "codigo": "ISYNYLON-11/2N"
+ },
+ "anclaje-para-coraza-flexible-nylon-negra-libre-de-halogenos-adler-1-2": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Anclaje Para Coraza Flexible Nylon Negra Libre De Halógenos Adler 1/2\"",
+  "codigo": "ANCLAJE-1/2N"
+ },
+ "anclaje-para-coraza-flexible-nylon-negra-libre-de-halogenos-adler-3-4": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Anclaje Para Coraza Flexible Nylon Negra Libre De Halógenos Adler 3/4\"",
+  "codigo": "ANCLAJE-3/4N"
+ },
+ "anclaje-para-coraza-flexible-nylon-negra-libre-de-halogenos-adler-1": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Anclaje Para Coraza Flexible Nylon Negra Libre De Halógenos Adler 1\"",
+  "codigo": "ANCLAJE-1N"
+ },
+ "dispositivo-wifi-para-monitoreo-remoto-growatt-wifi-f": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Dispositivo WIFI para Monitoreo Remoto Growatt WIFI-F",
+  "codigo": "WIFI-F"
+ },
+ "dps-ac-t2-275vac-etitec-c-2p": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Dps AC T2 275VAC Etitec C 2P",
+  "codigo": "002440397"
+ },
+ "dps-ac-t2-275vac-etitec-c-4p": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Dps AC T2 275VAC Etitec C 4P",
+  "codigo": "002440395"
+ },
+ "dps-t1-2-280vac-etitec-v-2p": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Dps T1+2 280VAC Etitec V 2P",
+  "codigo": "2442902"
+ },
+ "dps-t1-2-280vac-etitec-v-4p": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Dps T1+2 280VAC Etitec V 4P",
+  "codigo": "2442907"
+ },
+ "dps-t1-2-3p-275-480vac-prosurge-275vac": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Dps T1+2 3P 275/480VAC - Prosurge 275VAC",
+  "codigo": "BPS12.5V/275-S/3P"
+ },
+ "dps-t1-2-3p-275-480vac-prosurge": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Dps T1+2 3P 275/480VAC - Prosurge",
+  "codigo": "BPS12.5V/480-S/3P"
+ },
+ "dps-t1-2-4p-275vac-prosurge": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Dps T1+2 4P 275VAC - Prosurge",
+  "codigo": "BPS12.5V/275-S/4P"
+ },
+ "dps-t1-2-2p-275vac-prosurge": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Dps T1+2 2P 275VAC - Prosurge",
+  "codigo": "BPS12.5V/275-S/2P"
+ },
+ "dps-t1-2-para-aplicaciones-fotovoltaicas-3p-1000-1500vdc-prosurge-1000-vdc": {
+  "proveedor": "Suneo Energy",
+  "titulo": "DPS T1+2 para aplicaciones fotovoltaicas 3P 1000/1500VDC - PROSURGE 1000 VDC",
+  "codigo": "PV50/1000-V-CD-S"
+ },
+ "dps-t1-2-para-aplicaciones-fotovoltaicas-3p-1000-1500vdc-prosurge": {
+  "proveedor": "Suneo Energy",
+  "titulo": "DPS T1+2 para aplicaciones fotovoltaicas 3P 1000/1500VDC - PROSURGE",
+  "codigo": "PV50/1500-V-CD-S"
+ },
+ "dps-t1-2-para-aplicaciones-fotovoltaicas-2p-600vdc-prosurge": {
+  "proveedor": "Suneo Energy",
+  "titulo": "DPS T1+2 para aplicaciones fotovoltaicas 2P 600VDC - PROSURGE",
+  "codigo": "PV50/600-V-C-S"
+ },
+ "dps-t2-ac-4p-275vac-prosurge": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Dps T2 AC 4P 275VAC Prosurge",
+  "codigo": "SP275/4P-S"
+ },
+ "dps-t2-ac-2p-150-275vac-prosurge-150-vac": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Dps T2 AC 2P 150/275VAC Prosurge 150 Vac",
+  "codigo": "SP150/2P-S"
+ },
+ "dps-t2-ac-2p-150-275vac-prosurge": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Dps T2 AC 2P 150/275VAC Prosurge",
+  "codigo": "SP275/2P-S"
+ },
+ "dps-t2-ac-3p-320vac-prosurge-150-vac": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Dps T2 AC 3P /320VAC Prosurge 150 Vac",
+  "codigo": "SP150/3P-S"
+ },
+ "dps-t2-ac-3p-150-275-320vac-prosurge": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Dps T2 AC 3P 150/275/320VAC Prosurge",
+  "codigo": "SP320/3P-S"
+ },
+ "dps-t2-para-aplicaciones-fotovoltaicas-2-polos-suntree-800vdc-220-vdc": {
+  "proveedor": "Suneo Energy",
+  "titulo": "DPS T2 para aplicaciones fotovoltaicas 2 Polos SUNTREE /800VDC 220 VDC",
+  "codigo": "SUP2H-PV220"
+ },
+ "dps-t2-para-aplicaciones-fotovoltaicas-2-polos-suntree-800vdc-600-vdc": {
+  "proveedor": "Suneo Energy",
+  "titulo": "DPS T2 para aplicaciones fotovoltaicas 2 Polos SUNTREE /800VDC 600 VDC",
+  "codigo": "SUP2H-PV600"
+ },
+ "dps-t2-para-aplicaciones-fotovoltaicas-2-polos-suntree-220-600-800vdc": {
+  "proveedor": "Suneo Energy",
+  "titulo": "DPS T2 para aplicaciones fotovoltaicas 2 Polos SUNTREE 220/600/800VDC",
+  "codigo": "SUP2H-PV800"
+ },
+ "dps-t2-para-aplicaciones-fotovoltaicas-3p-suntree-1000-1500vdc-1000-vdc": {
+  "proveedor": "Suneo Energy",
+  "titulo": "DPS T2 para aplicaciones fotovoltaicas 3P SUNTREE 1000/1500VDC 1000 VDC",
+  "codigo": "SUP2H1-PV1000"
+ },
+ "dps-t2-para-aplicaciones-fotovoltaicas-3p-suntree-1000-1500vdc": {
+  "proveedor": "Suneo Energy",
+  "titulo": "DPS T2 para aplicaciones fotovoltaicas 3P SUNTREE 1000/1500VDC",
+  "codigo": "SUP2-PV1500"
+ },
+ "dps-t2-ac-1p-150-275vac-prosurge-150-vac": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Dps T2 AC 1P 150/275VAC Prosurge 150 Vac",
+  "codigo": "SP150-S"
+ },
+ "fusible-fds-160-nh00-categoria-gpv-1000vdc-feeo-100a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible, FDS-160 NH00, Categoría gPV 1000VDC FEEO 100A",
+  "codigo": "FDS-160-100"
+ },
+ "fusible-fds-160-nh00-categoria-gpv-1000vdc-feeo-125a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible, FDS-160 NH00, Categoría gPV 1000VDC FEEO 125A",
+  "codigo": "FDS-160-125"
+ },
+ "fusible-feeo-para-sistemas-fotovoltaicos-off-grid-categoria-gpv-6a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible FEEO Para Sistemas Fotovoltaicos OFF-GRID Categoría gPV 6A",
+  "codigo": "FDS-32-6"
+ },
+ "fusible-feeo-para-sistemas-fotovoltaicos-off-grid-categoria-gpv-10a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible FEEO Para Sistemas Fotovoltaicos OFF-GRID Categoría gPV 10A",
+  "codigo": "FDS-32-10"
+ },
+ "fusible-feeo-para-sistemas-fotovoltaicos-off-grid-categoria-gpv-12a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible FEEO Para Sistemas Fotovoltaicos OFF-GRID Categoría gPV 12A",
+  "codigo": "FDS-32-12"
+ },
+ "fusible-feeo-para-sistemas-fotovoltaicos-off-grid-categoria-gpv-25a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible FEEO Para Sistemas Fotovoltaicos OFF-GRID Categoría gPV 25A",
+  "codigo": "FDS-32-25"
+ },
+ "fusible-10x85mm-para-sistemas-fotovoltaicos-categoria-gpv-feeo-20a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 10x85MM para sistemas fotovoltaicos categoría gPV FEEO 20A",
+  "codigo": "FHDS-32"
+ },
+ "fusible-10x85mm-para-sistemas-fotovoltaicos-categoria-gpv-feeo-25a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 10x85MM para sistemas fotovoltaicos categoría gPV FEEO 25A",
+  "codigo": "FHDS-32-25"
+ },
+ "fusible-10x85mm-para-sistemas-fotovoltaicos-categoria-gpv-feeo-30a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 10x85MM para sistemas fotovoltaicos categoría gPV FEEO 30A",
+  "codigo": "FHDS-32-30"
+ },
+ "fusible-10x85mm-para-sistemas-fotovoltaicos-categoria-gpv-feeo-35a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 10x85MM para sistemas fotovoltaicos categoría gPV FEEO 35A",
+  "codigo": "FHDS-32-35"
+ },
+ "fusible-10x38mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-10a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 10x38MM 1000VDC AITE RETIE sistemas fotovoltaicos gPV 10A",
+  "codigo": "ATPV-30-10"
+ },
+ "fusible-10x38mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-12a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 10x38MM 1000VDC AITE RETIE sistemas fotovoltaicos gPV 12A",
+  "codigo": "ATPV-30-12"
+ },
+ "fusible-10x38mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-20a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 10x38MM 1000VDC AITE RETIE sistemas fotovoltaicos gPV 20A",
+  "codigo": "ATPV-30-20"
+ },
+ "fusible-10x38mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-25a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 10x38MM 1000VDC AITE RETIE sistemas fotovoltaicos gPV 25A",
+  "codigo": "ATPV-30-25"
+ },
+ "fusible-10x38mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-32a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 10x38MM 1000VDC AITE RETIE sistemas fotovoltaicos gPV 32A",
+  "codigo": "ATPV-30-32"
+ },
+ "fusible-10x85mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-15a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 10x85MM 1500VDC AITE RETIE Sistemas Fotovoltaicos gPV 15A",
+  "codigo": "ATPV-32L-15"
+ },
+ "fusible-10x85mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-20a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 10x85MM 1500VDC AITE RETIE Sistemas Fotovoltaicos gPV 20A",
+  "codigo": "ATPV-32L-20"
+ },
+ "fusible-10x85mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-25a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 10x85MM 1500VDC AITE RETIE Sistemas Fotovoltaicos gPV 25A",
+  "codigo": "ATPV-32L-25"
+ },
+ "fusible-10x85mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-32a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 10x85MM 1500VDC AITE RETIE Sistemas Fotovoltaicos gPV 32A",
+  "codigo": "ATPV-32L-32"
+ },
+ "fusible-22x58mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-63a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 22x58MM 1000VDC AITE RETIE Sistemas Fotovoltaicos gPV 63A",
+  "codigo": "ATPV-125-63"
+ },
+ "fusible-22x58mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-80a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 22x58MM 1000VDC AITE RETIE Sistemas Fotovoltaicos gPV 80A",
+  "codigo": "ATPV-125-80"
+ },
+ "fusible-22x58mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-100a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 22x58MM 1000VDC AITE RETIE Sistemas Fotovoltaicos gPV 100A",
+  "codigo": "ATPV-125-100"
+ },
+ "fusible-22x58mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-125a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 22x58MM 1000VDC AITE RETIE Sistemas Fotovoltaicos gPV 125A",
+  "codigo": "ATPV-125-125"
+ },
+ "fusibles-aite-categoria-gg-690vac-250vdc-proteccion-baterias-125a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusibles AITE Categoría gG, 690VAC/250VDC Protección Baterías 125A",
+  "codigo": "RT16-00-125"
+ },
+ "fusibles-aite-categoria-gg-690vac-250vdc-proteccion-baterias-160a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusibles AITE Categoría gG, 690VAC/250VDC Protección Baterías 160A",
+  "codigo": "RT16-00-160"
+ },
+ "fusibles-aite-categoria-gg-690vac-250vdc-proteccion-baterias-200a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusibles AITE Categoría gG, 690VAC/250VDC Protección Baterías 200A",
+  "codigo": "RT16-1-200"
+ },
+ "fusibles-aite-categoria-gg-690vac-250vdc-proteccion-baterias-250a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusibles AITE Categoría gG, 690VAC/250VDC Protección Baterías 250A",
+  "codigo": "RT16-1-250"
+ },
+ "fusible-14x85mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-35a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 14x85MM 1500VDC AITE RETIE Sistemas Fotovoltaicos gPV 35A",
+  "codigo": "ATPV-63L-35"
+ },
+ "fusible-14x85mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-40a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 14x85MM 1500VDC AITE RETIE Sistemas Fotovoltaicos gPV 40A",
+  "codigo": "ATPV-63L-40"
+ },
+ "fusible-14x85mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-45a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 14x85MM 1500VDC AITE RETIE Sistemas Fotovoltaicos gPV 45A",
+  "codigo": "ATPV-63L-45"
+ },
+ "fusible-14x85mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-50a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 14x85MM 1500VDC AITE RETIE Sistemas Fotovoltaicos gPV 50A",
+  "codigo": "ATPV-63L-50"
+ },
+ "fusible-siemens-categoria-gg-500vac-250vdc-proteccion-baterias-160a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible Siemens, Categoría gG, 500VAC/250VDC Protección Baterías 160A",
+  "codigo": "3NA3836"
+ },
+ "fusible-siemens-categoria-gg-500vac-400vdc-proteccion-baterias-200a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible Siemens, Categoría gG, 500VAC/400VDC Protección Baterías 200A",
+  "codigo": "3NA3140"
+ },
+ "fusible-siemens-categoria-gg-500vac-400vdc-proteccion-baterias-224a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible Siemens, Categoría gG, 500VAC/400VDC Protección Baterías 224A",
+  "codigo": "3NA3142"
+ },
+ "fusible-22x58mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-63a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 22x58MM 1500VDC AITE RETIE Sistemas Fotovoltaicos gPV 63A",
+  "codigo": "ATPV-80-63"
+ },
+ "fusible-22x58mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-80a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Fusible 22x58MM 1500VDC AITE RETIE Sistemas Fotovoltaicos gPV 80A",
+  "codigo": "ATPV-80-80"
+ },
+ "interruptor-diferencial-chint-2p-25a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Interruptor diferencial CHINT 2P 25A",
+  "codigo": "NXBLE-63-2P-25"
+ },
+ "interruptor-diferencial-chint-nl210-tipo-b-40a-30ma-2p": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Interruptor diferencial CHINT NL210 Tipo B 40A 30mA 2P",
+  "codigo": "NL210-2P-40"
+ },
+ "interruptor-diferencial-chint-nl210-tipo-b-40a-30ma-4p": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Interruptor diferencial CHINT NL210 Tipo B 40A 30mA 4P",
+  "codigo": "NL210-4P-40"
+ },
+ "interruptor-diferencial-siemens-2-polos-30ma-25a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Interruptor diferencial Siemens 2 polos, 30ma 25A",
+  "codigo": "5SV5312-0"
+ },
+ "interruptor-diferencial-siemens-2-polos-30ma-40a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Interruptor diferencial Siemens 2 polos, 30ma 40A",
+  "codigo": "5SV5314-0"
+ },
+ "interruptor-diferencial-siemens-2-polos-30ma-63a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Interruptor diferencial Siemens 2 polos, 30ma 63A",
+  "codigo": "5SV5316-0"
+ },
+ "interruptor-diferencial-siemens-4-polos-30ma-25a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Interruptor diferencial Siemens 4 polos 30ma 25A",
+  "codigo": "5SV5342-0"
+ },
+ "interruptor-diferencial-siemens-4-polos-30ma-63a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Interruptor diferencial Siemens 4 polos 30ma 63A",
+  "codigo": "5SV5346-0"
+ },
+ "interruptor-seccionador-siemens-3kd-80a-4-polos": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Interruptor seccionador SIEMENS 3KD 80A 4 polos",
+  "codigo": "3KD2840-2ME20-0"
+ },
+ "seccionador-siemens-3kd-2-polos-160a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Seccionador SIEMENS 3KD 2 polos 160A",
+  "codigo": "3KD3520-2NE20-0-KIT"
+ },
+ "seccionador-siemens-3kd-2-polos-200a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Seccionador SIEMENS 3KD 2 polos 200A",
+  "codigo": "3KD3720-0PE20-0-KIT"
+ },
+ "inversor-growatt-mic-1500-2500tl-x-mppt-1500w": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Inversor Growatt MIC 1500/2500TL-X MPPT 1500W",
+  "codigo": "MIC1500TL-X"
+ },
+ "kit-de-adhesivos-para-senalizacion-y-marcado-de-sistemas-fotovoltaicos-de-inyeccion-a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Kit de adhesivos para señalización y marcado de sistemas fotovoltaicos de inyección a red",
+  "codigo": "kit-de-adhesivos-para-senalizacion-y-mar"
+ },
+ "llave-para-conector-mc4-leader": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Llave para conector MC4 LEADER",
+  "codigo": "THB510"
+ },
+ "medidor-bidireccional-110vac-1f-hxe110-hexing-2f4h": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Medidor bidireccional 110VAC 1F HXE110 Hexing 2F4H",
+  "codigo": "HXE110-1F3H"
+ },
+ "medidor-bidireccional-hxe310-hexing-3f4h": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Medidor bidireccional HXE310 Hexing 3F4H",
+  "codigo": "HXE310-3F4H"
+ },
+ "medidor-bidireccional-sdm-modbus-eastron-trifasico": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Medidor bidireccional SDM-Modbus Eastron Trifásico",
+  "codigo": "SDM630-MODBUS-V3"
+ },
+ "medidor-bidireccional-80a-lhe34d-litiot": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Medidor bidireccional 80A - LHE34D LITIOT",
+  "codigo": "LH34DR"
+ },
+ "microinversor-on-grid-wvc-300-kaideng-300w": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Microinversor ON-GRID WVC-300 KAIDENG 300W",
+  "codigo": "WVC-300"
+ },
+ "microinversor-on-grid-wvc-700-kaideng-700w": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Microinversor ON-GRID WVC-700 KAIDENG 700W",
+  "codigo": "WVC-700"
+ },
+ "pantalla-de-visualizacion-remota-epever-mt75": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Pantalla de visualización remota EPEVER MT75",
+  "codigo": "MT75"
+ },
+ "porta-fusible-10x85-mm-para-sistemas-fotovoltaicos-feeo": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Porta Fusible 10x85 MM Para Sistemas Fotovoltaicos. Feeo",
+  "codigo": "FHDS-35B"
+ },
+ "retenedor-final-de-termoplastico-10-mm-klemsan": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Retenedor final de termoplástico 10 mm Klemsan",
+  "codigo": "K495-049"
+ },
+ "seccionador-dc-1000vdc-suntree-retie-32a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Seccionador DC 1000VDC SUNTREE - RETIE 32A",
+  "codigo": "SISO-40MD-32"
+ },
+ "seccionador-dc-1500vdc-suntree-250a": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Seccionador DC 1500VDC SUNTREE 250A",
+  "codigo": "SGL8N-2-2P-250A"
+ },
+ "soporte-de-bloque-de-terminales-n-y-pe-abb-8m": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Soporte de bloque de terminales N y PE ABB 8M",
+  "codigo": "1SPE007715F0751"
+ },
+ "soporte-de-bloque-de-terminales-n-y-pe-abb-12m": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Soporte de bloque de terminales N y PE ABB 12M",
+  "codigo": "1SPE007715F0752"
+ },
+ "soporte-de-bloque-de-terminales-n-y-pe-abb-18m": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Soporte de bloque de terminales N y PE ABB 18M",
+  "codigo": "1SPE007715F0753"
+ },
+ "tablero-de-sobreponer-abb-12-modulos-ip65-retie": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Tablero de sobreponer ABB 12 MODULOS IP65 - RETIE",
+  "codigo": "1SL1202A00"
+ },
+ "tablero-de-sobreponer-abb-18-modulos-ip65-retie": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Tablero de sobreponer ABB 18 MODULOS IP65 - RETIE",
+  "codigo": "1SL1203A00"
+ },
+ "tablero-de-sobreponer-abb-24-modulos-ip65-retie": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Tablero de sobreponer ABB 24 MODULOS IP65 - RETIE",
+  "codigo": "1SL1204A00"
+ },
+ "tablero-de-sobreponer-abb-4-modulos-ip65-retie": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Tablero de sobreponer ABB 4 MODULOS IP65 - RETIE",
+  "codigo": "1SL1200A00"
+ },
+ "transformador-de-corriente-1600-5a-blox-tipo-ventana-interior": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Transformador De Corriente 1600/5A Blox Tipo Ventana Interior",
+  "codigo": "HS-600-CT"
+ },
+ "ups-interactiva-powerback-con-regulador-de-voltaje-newline-600va": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Ups Interactiva Powerback Con Regulador De Voltaje Newline 600VA",
+  "codigo": "10MF0600"
+ },
+ "variador-sinamics-v20-siemens-2hp": {
+  "proveedor": "Suneo Energy",
+  "titulo": "Variador SINAMICS V20 SIEMENS 2HP",
+  "codigo": "6SL3210-5BB21-5UV1"
  }
 }

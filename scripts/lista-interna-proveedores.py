@@ -19,7 +19,7 @@ Cómo se decide el proveedor de cada producto (en este orden):
   a) Si la hoja Lista Interna ya tiene la fila con ese "ID tienda", se respeta
      (así una corrección hecha a mano en el Excel no se pierde).
   b) Marcas de importación: sku ING-* / "Proveedor: Ingesolar" -> Ingesolar,
-     sku AMZ-* -> Amara NZero, sku HARDY-* -> Hardy Solar Energy.
+     sku AMZ-* -> Amara NZero, sku HARDY-* -> Hardy Solar Energy, sku SNO-* -> Suneo Energy.
   c) Coincidencia con la Lista Interna por modelo/código, luego por nombre,
      luego por marca + precio de venta, luego por precio único.
   d) cat-mayorista-* (lista de precios mayorista) -> Solaire; marca Master Lights -> Hardy Solar Energy.
@@ -153,6 +153,8 @@ def main():
             prov, origen, margen = 'Ingesolar', 'Importación Ingesolar (costo = precio / 1,30)', '30%'
         elif sku.startswith('AMZ-') or slug in AMARA_PREVIOS:
             prov, origen, margen = 'Amara NZero', 'Importación Amara (costo = precio / 1,30)', '30%'
+        elif sku.startswith('SNO-') or 'Proveedor: Suneo Energy' in body:
+            prov, origen, margen = 'Suneo Energy', 'Importación Suneo (costo = precio / 1,30)', '30%'
         elif sku.upper().startswith('HARDY'):
             prov, origen = 'Hardy Solar Energy', 'Importación Hardy'
         elif slug.startswith('cat-mayorista-'):
