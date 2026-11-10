@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-11-08 20:59",
+ "ultima_revision": "2026-11-09 20:59",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -315,7 +315,7 @@
   },
   "allyce-inversor-cargador-ups-1kva-24v-1000w-salida-a-110v": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "allyce-inversor-on-grid-5-000w-trifasico-a-480voc-y-salida-220-208vac": {
@@ -524,7 +524,7 @@
    "consulta": "no-encontrado"
   },
   "bateria-solar-litio-felicity-48v-16kwh-1880836": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -1203,11 +1203,6 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "inversor-solar-hibrido-felicity-8kw-3004616": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "inversor-solar-off-grid-felicity-2kw-3004614": {
    "stock": "disponible",
    "stockBajo": false,
@@ -1379,8 +1374,8 @@
    "consulta": "ok"
   },
   "motoma-bateria-gel-12v-150ah-1600-ciclos-50-w-42-5kg": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "motoma-bateria-gel-12v-38ah-1600-ciclos-50-w-12-5kg": {
