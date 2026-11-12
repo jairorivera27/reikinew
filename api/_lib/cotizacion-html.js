@@ -397,8 +397,8 @@ export function renderCotizacionHtml(datos) {
       <li>${IVA_NOTA} Productos sujetos a disponibilidad de inventario al momento del pago.</li>
       <li>${
         t.envioIncluido
-          ? 'El envío a ciudades principales está incluido en esta cotización. También puedes recoger en nuestra sede en Medellín.'
-          : 'El envío nacional no está incluido salvo que aparezca en esta cotización; se cotiza según el destino. También puedes recoger en nuestra sede en Medellín.'
+          ? 'El envío a ciudades principales está incluido en esta cotización. También puedes recoger en nuestra sede en Guarne (Antioquia).'
+          : 'El envío nacional no está incluido salvo que aparezca en esta cotización; se cotiza según el destino. También puedes recoger en nuestra sede en Guarne (Antioquia).'
       }</li>
       <li>Los equipos cuentan con la garantía directa del fabricante; Reiki Energía Solar te acompaña en el trámite ante defectos de fábrica. La garantía no cubre mala manipulación, instalación por personal no certificado ni daños por falta de protecciones DC/AC exigidas por el RETIE.</li>
       <li>Antes de comprar verifica tensión, capacidad y compatibilidad entre equipos; nuestro ingeniero te ayuda sin costo en el WhatsApp ${esc(e.atencion.telefono)}.</li>

@@ -10,7 +10,7 @@ const checks = [
   ['descuentos', /Ver descuentos/],
   ['reviews honest', /Opiniones de clientes en Antioquia/],
   ['og image', /og-default\.png/],
-  ['schema address', /Carrera 80 #39-167 Local 105/],
+  ['schema address', /Parque Comercial Tierra Santa/],
   ['h1 visible', /<h1 class="hero-title">/],
 ];
 for (const [name, re] of checks) {

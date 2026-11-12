@@ -5,7 +5,7 @@
 - Razón social: Reiki Energía Solar SAS
 - NIT: 901942389
 - Marca: Reiki Energía Solar / Reiki Solar
-- Sede: Carrera 80 #39-167 Local 105, Medellín, Antioquia, Colombia
+- Sede: Parque Comercial Tierra Santa, Local #4, Vereda Bellavista, Guarne, Antioquia, Colombia
 - Web: https://reikisolar.com.co
 - Correo: info@reikisolar.com.co
 - WhatsApp bot / tienda: +57 300 405 2638 (https://wa.me/573004052638)
@@ -15,7 +15,7 @@
 ## Qué hacemos
 - Proyectos solares llave en mano: diseño, suministro e instalación (hogar, empresa, bombeo, energía móvil).
 - Tienda online de equipos con precio publicado: paneles, inversores, baterías, controladores, protecciones, bombeo, accesorios.
-- Cobertura: opera desde Medellín; proyectos y envíos a nivel nacional en Colombia.
+- Cobertura: opera desde Guarne (Antioquia), cerca de Medellín; proyectos y envíos a nivel nacional en Colombia.
 - Normativa de referencia en proyectos: Ley 1715 de 2014 y CREG 174 de 2021.
 
 ## Dos caminos para el cliente
@@ -31,7 +31,7 @@
 
 ## Envíos y recogida
 - Envío nacional: se cotiza según destino y peso/volumen. [VERIFICAR] tiempos exactos por transportadora.
-- Recogida en sede Medellín (Carrera 80 #39-167 Local 105) según disponibilidad.
+- Recogida en sede Guarne (Parque Comercial Tierra Santa, Local #4, Vereda Bellavista) según disponibilidad.
 - No inventes plazos de entrega concretos si no están en el catálogo o en esta base.
 
 ## Garantías (equipos de tienda)

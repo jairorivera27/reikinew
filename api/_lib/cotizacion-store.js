@@ -40,8 +40,8 @@ export function loadEmpresa() {
   empresaCache = {
     razon_social: 'Reiki Energía Solar SAS',
     nit: '901942389',
-    direccion: 'Carrera 80 #39-167 Local 105',
-    ciudad: 'Medellín, Antioquia',
+    direccion: 'Parque Comercial Tierra Santa, Local #4, Vereda Bellavista',
+    ciudad: 'Guarne, Antioquia',
     telefono: '+57 300 405 2638',
     whatsapp_url: 'https://wa.me/573004052638',
     correo: 'info@reikisolar.com.co',
