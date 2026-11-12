@@ -87,7 +87,11 @@ export const CORREOS = {
         'Tu pedido ya fue despachado.',
         `Transportadora: ${e.envio.transportadora || 'por confirmar'}`,
         `Número de guía: ${e.envio.guia}`,
-        ...(e.envio.trackUrl ? [`Rastrea tu envío aquí: ${e.envio.trackUrl}`] : []),
+        ...((e.envio.despachos || []).length > 1
+          ? e.envio.despachos.map((d) => `Rastrea la guía ${d.guia} aquí: ${d.trackUrl || `https://envia.com/rastreo?label=${d.guia}&cntry_code=co`}`)
+          : e.envio.trackUrl
+            ? [`Rastrea tu envío aquí: ${e.envio.trackUrl}`]
+            : []),
         'La transportadora se comunicará contigo cuando el pedido esté en ruta de entrega.',
         'Revisa el estado de los empaques al recibir; si notas algún daño, déjalo anotado en la guía y escríbenos.',
         'Adjuntamos la guía de la transportadora y nuestra guía de despacho.',
@@ -198,9 +202,14 @@ export function etapasConCorreo(tipo) {
   return Object.keys(CORREOS[tipo] || {});
 }
 
+/** Empresa (S.A.S, Ltda, NIT 9…): se saluda sin nombre, no "Hola INNOVACIONES". */
+function esEmpresa(cl = {}) {
+  return /\b(s\.?\s?a\.?\s?s|ltda|s\.?a\.?|e\.?s\.?p|corporaci[oó]n|fundaci[oó]n|asociaci[oó]n|comunidad|cooperativa|inversiones|empresa)\b/i.test(cl.nombre || '') || /^9\d{8}/.test(String(cl.documento || '').replace(/\D/g, ''));
+}
+
 function html(e, parrafos) {
   const em = empresa();
-  const nombre = String(e.cliente?.nombre || '').split(' ')[0] || '';
+  const nombre = esEmpresa(e.cliente) ? '' : String(e.cliente?.nombre || '').split(' ')[0] || '';
   const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
   return `<!doctype html><html><body style="margin:0;background:#f5eef8;font-family:Arial,Helvetica,sans-serif;color:#1f1230">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:24px 12px">
@@ -220,7 +229,7 @@ Puedes responder este correo para hablar con nosotros.
 
 function texto(e, parrafos) {
   const em = empresa();
-  const nombre = String(e.cliente?.nombre || '').split(' ')[0] || '';
+  const nombre = esEmpresa(e.cliente) ? '' : String(e.cliente?.nombre || '').split(' ')[0] || '';
   return [`Hola${nombre ? ' ' + nombre : ''},`, '', ...parrafos, '', `Referencia: ${ref(e)}`, '', `${em.razon_social} · WhatsApp ${em.telefono} · ${em.web}`].join('\n');
 }
 
