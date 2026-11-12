@@ -90,7 +90,9 @@ export const CORREOS = {
         ...(e.envio.trackUrl ? [`Rastrea tu envío aquí: ${e.envio.trackUrl}`] : []),
         'La transportadora se comunicará contigo cuando el pedido esté en ruta de entrega.',
         'Revisa el estado de los empaques al recibir; si notas algún daño, déjalo anotado en la guía y escríbenos.',
+        'Adjuntamos la guía de la transportadora y nuestra guía de despacho.',
       ],
+      adjuntos: (e) => adjuntosDespacho(e),
     },
     'entrega:hecho': {
       asunto: (e) => `Pedido entregado — ${ref(e)}`,
@@ -294,6 +296,40 @@ async function enviarResend({ to, cc, subject, htmlBody, textBody, attachments }
 }
 
 /**
+ * Adjuntos del correo de despacho: el rótulo de cada guía de la transportadora (PDF de Envia) y la
+ * "Guía de despacho" de Reiki (una por despacho). Si algo falla, se envía el correo sin ese adjunto.
+ */
+export async function adjuntosDespacho(exp) {
+  const env = exp.envio || {};
+  const ds = env.despachos && env.despachos.length ? env.despachos : env.guia ? [{ guia: env.guia, transportadora: env.transportadora, rotulo: env.rotulo, fecha: env.fechaDespacho }] : [];
+  if (!ds.length) return [];
+  const out = [];
+  let bodegas = {};
+  try {
+    bodegas = await (await import('./envia.js')).leerBodegas();
+  } catch {}
+  const { pdfGuiaReiki, numeroGuiaReiki } = await import('./guia-reiki.js');
+  for (const [i, d] of ds.entries()) {
+    if (d.rotulo && /^https:\/\//.test(d.rotulo)) {
+      try {
+        const r = await fetch(d.rotulo);
+        if (r.ok) out.push({ filename: `Guia ${d.transportadora || 'transportadora'} ${d.guia}.pdf`, content: Buffer.from(await r.arrayBuffer()), contentType: 'application/pdf' });
+      } catch (err) {
+        console.warn('[correos] rótulo', err?.message || err);
+      }
+    }
+    const b = bodegas[d.bodegaId] || {};
+    try {
+      const pdf = await pdfGuiaReiki(exp, { ...d, bodegaPublica: b.publico || '', ciudadOrigen: String(b.ciudad || '').split(',')[0] }, ds.length > 1 ? i : 0);
+      out.push({ filename: `Guia de despacho ${numeroGuiaReiki(exp, ds.length > 1 ? i : 0)}.pdf`, content: pdf, contentType: 'application/pdf' });
+    } catch (err) {
+      console.warn('[correos] guía Reiki', err?.message || err);
+    }
+  }
+  return out;
+}
+
+/**
  * Envía el correo de la etapa si corresponde. Muta exp.correos (registro) y devuelve
  * { enviado, motivo } o null si la etapa no tiene correo. No reenvía lo ya enviado.
  */
@@ -313,7 +349,15 @@ export async function correoPorEtapa(exp, etapa, resumenExp) {
   let res = { ok: false, motivo };
   if (!motivo) {
     const parrafos = regla.cuerpo(exp, resumenExp, etapa);
-    res = await enviar({ to: exp.cliente.correo, subject: asunto, htmlBody: html(exp, parrafos), textBody: texto(exp, parrafos) });
+    let attachments = [];
+    if (regla.adjuntos) {
+      try {
+        attachments = (await regla.adjuntos(exp)) || [];
+      } catch (err) {
+        console.warn('[correos] adjuntos', err?.message || err);
+      }
+    }
+    res = await enviar({ to: exp.cliente.correo, subject: asunto, htmlBody: html(exp, parrafos), textBody: texto(exp, parrafos), attachments });
   }
   exp.correos.unshift({
     clave,

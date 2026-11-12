@@ -931,6 +931,7 @@ export async function despacharVentaEnvia(id, { bodegaId, paquetes, carrier, ser
     trackUrl: g.trackUrl,
     rotulo: g.label,
     costoFlete: g.precio,
+    peso: Math.round(d.paquetes.reduce((a, p) => a + (Number(p.weight) || 0) * (Number(p.amount) || 1), 0) * 10) / 10,
     items: (Array.isArray(items) ? items : []).map(Number).filter((x) => Number.isInteger(x)),
     recogida: pickup,
     entorno,
