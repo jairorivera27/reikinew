@@ -906,7 +906,9 @@ function resumenDespachos(exp) {
 /** Compra la guía de una bodega, pide la recogida y la agrega a los despachos de la venta (una guía por bodega). */
 export async function despacharVentaEnvia(id, { bodegaId, paquetes, carrier, service, recogida, items, cerrarEtapas = true } = {}, by = 'panel') {
   const d = await datosEnvio(id, { bodegaId, paquetes });
-  const ref = (d.exp.cotizacion && d.exp.cotizacion.numero) || d.exp.id;
+  // Referencia corta (máx. 20 caracteres): el número de cotización sin espacios o, si es más largo, el id de la venta
+  const cot = String((d.exp.cotizacion && d.exp.cotizacion.numero) || '').replace(/\s+/g, '');
+  const ref = cot && cot.length <= 20 ? cot : d.exp.id;
   const g = await d.envia.generarGuia({ origen: d.origen, destino: d.destino, paquetes: d.paquetes, carrier, service, referencia: ref, comentario: `Venta ${d.exp.id}` });
   let pickup = null;
   if (recogida && recogida.fecha) {

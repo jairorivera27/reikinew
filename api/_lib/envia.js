@@ -152,15 +152,15 @@ async function direccion({ nombre, empresa, telefono, correo, calle, ciudad, doc
     state: c.state,
     country: 'CO',
     postalCode: c.postalCode,
-    reference: s(referencia, 120) || undefined,
-    identificationNumber: String(documento || '').replace(/[^\d-]/g, '') || undefined,
+    reference: s(referencia, 20) || undefined,
+    identificationNumber: String(documento || '').replace(/[^\d-]/g, '').slice(0, 20) || undefined,
     category: 1,
   };
 }
 
 export async function origenDe(bodega) {
   if (!bodega) throw new Error('Escoge la bodega de donde sale el envío.');
-  return direccion({ nombre: bodega.contacto || bodega.nombre, empresa: bodega.empresa, telefono: bodega.telefono, correo: bodega.correo, calle: bodega.direccion, ciudad: bodega.ciudad, documento: bodega.nit, referencia: bodega.nombre });
+  return direccion({ nombre: bodega.contacto || bodega.nombre, empresa: bodega.empresa, telefono: bodega.telefono, correo: bodega.correo, calle: bodega.direccion, ciudad: bodega.ciudad, documento: bodega.nit, referencia: bodega.publico || '' });
 }
 
 export async function destinoDe(exp) {
@@ -256,7 +256,8 @@ export async function generarGuia({ origen, destino, paquetes, carrier, service,
     destination: destino,
     packages: paquetes,
     settings: { currency: 'COP', printFormat: 'PDF', printSize: 'PAPER_4X6', comments: s(comentario, 120) || undefined },
-    shipment: { type: 1, carrier, service, orderReference: s(referencia, 40) || undefined },
+    // Algunas transportadoras (p. ej. Interrapidísimo) aceptan máximo 20 caracteres en la referencia
+    shipment: { type: 1, carrier, service, orderReference: s(referencia, 20) || undefined },
   });
   const d = (j?.data || [])[0];
   if (!d || !d.trackingNumber) throw new Error('Envia no devolvió número de guía.');
