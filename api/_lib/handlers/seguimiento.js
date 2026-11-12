@@ -379,6 +379,11 @@ export default async function handler(req, res) {
       const c = await cambiarEstado(body.id, { estado: body.estado, motivo: body.motivo, proximo: body.proximo }, by);
       if (!c) return send(res, 404, { ok: false, error: 'No existe.' });
       let correo = null;
+      if (c.estado === 'aceptada' && estadoAntes && estadoAntes !== 'aceptada' && c.expedienteId && body.correo === false) {
+        // Desmarcado a propósito en el panel: no volver a intentarlo al registrar el correo
+        const e0 = await getExpediente(c.expedienteId);
+        if (e0 && e0.cliente?.correo) await saveExpediente({ id: e0.id, compraConfirmadaOmitida: true }, by);
+      }
       if (c.estado === 'aceptada' && estadoAntes && estadoAntes !== 'aceptada' && c.expedienteId && body.correo !== false) {
         try {
           correo = await correoCompraConfirmada(c.expedienteId, by);

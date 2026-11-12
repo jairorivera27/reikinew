@@ -885,7 +885,7 @@
       ac.addEventListener('click', function () {
         var conCorreo = body.querySelector('[data-ct-correo-conf]');
         var t = '';
-        correr('cot-estado', { id: c.id, estado: 'aceptada', correo: conCorreo ? conCorreo.checked : false }, function (j) {
+        correr('cot-estado', { id: c.id, estado: 'aceptada', correo: conCorreo ? conCorreo.checked : true }, function (j) {
           var co = j && j.correo;
           t =
             'Aceptada: la venta quedó creada. ' +

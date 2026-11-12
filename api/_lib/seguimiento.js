@@ -334,6 +334,7 @@ export async function saveExpediente(input = {}, by = 'panel') {
   if (!exp.titulo) exp.titulo = exp.cliente?.nombre || exp.cotizacion?.numero || exp.id;
 
   if (input.correosActivos !== undefined) exp.correosActivos = Boolean(input.correosActivos);
+  if (input.compraConfirmadaOmitida !== undefined) exp.compraConfirmadaOmitida = Boolean(input.compraConfirmadaOmitida);
 
   const antes = snapshot(exp);
   autoEtapas(exp);
@@ -548,6 +549,15 @@ export async function expedienteDesdePedido(order) {
       console.warn('[seguimiento] enlazar cotización', err?.message || err);
     }
   }
+  // Compra confirmada también para pedidos de la tienda en línea (no para pedidos viejos que se importan tarde)
+  if (!(Date.now() - (Date.parse(order.paidAt || order.updatedAt || order.createdAt || '') || 0) > 48 * 3600000)) {
+    try {
+      await correoCompraConfirmada(exp.id, 'tienda web');
+    } catch (err) {
+      console.warn('[seguimiento] compra confirmada web', err?.message || err);
+    }
+    return (await getExpediente(exp.id)) || exp;
+  }
   return exp;
 }
 
@@ -651,6 +661,7 @@ export function textoCompraConfirmada(exp) {
   const cl = exp.cliente || {};
   const proyecto = exp.tipo === 'proyecto';
   const num = (exp.cotizacion && exp.cotizacion.numero) || exp.id;
+  const segun = /^Pedido web/i.test(num) ? 'su pedido en nuestra tienda en línea' : `la cotización ${num}`;
   const empresa = /\b(s\.?\s?a\.?\s?s|ltda|s\.?a\.?|e\.?s\.?p|corporaci[oó]n|fundaci[oó]n|asociaci[oó]n|comunidad|cooperativa|inversiones|empresa)\b/i.test(cl.nombre || '') || /^9\d{8}/.test(String(cl.documento || '').replace(/\D/g, ''));
   const primer = empresa ? '' : String(cl.nombre || '').trim().split(/\s+/)[0] || '';
   const items = (exp.items || []).map((i) => `• ${i.cantidad} ${i.nombre}${Number(i.precioUnit) > 0 ? '' : ' (incluido sin costo)'}`);
@@ -679,10 +690,10 @@ export function textoCompraConfirmada(exp) {
     pasos.push('• Por favor confírmenos la dirección exacta donde se hará la instalación.');
   }
   const inicio = proyecto
-    ? `Le confirmamos que su proyecto${exp.titulo ? ` (${exp.titulo})` : ''} quedó aprobado según la cotización ${num}. Muchas gracias por confiar en Reiki Energía Solar.`
+    ? `Le confirmamos que su proyecto${exp.titulo ? ` (${exp.titulo})` : ''} quedó aprobado según ${segun}. Muchas gracias por confiar en Reiki Energía Solar.`
     : r.estadoPago === 'completo'
-      ? `Le confirmamos que recibimos su pago por ${copTxt(r.pagado)} y que su compra quedó confirmada según la cotización ${num}. Muchas gracias por confiar en Reiki Energía Solar.`
-      : `Le confirmamos que su compra quedó confirmada según la cotización ${num}. Muchas gracias por confiar en Reiki Energía Solar.`;
+      ? `Le confirmamos que recibimos su pago por ${copTxt(r.pagado)} y que su compra quedó confirmada según ${segun}. Muchas gracias por confiar en Reiki Energía Solar.`
+      : `Le confirmamos que su compra quedó confirmada según ${segun}. Muchas gracias por confiar en Reiki Energía Solar.`;
   const cuerpo = [
     `Buen día${primer ? `, ${primer}` : ''}:`,
     '',
@@ -727,6 +738,16 @@ export async function correoCompraConfirmada(id, by = 'panel') {
 async function reintentarSinCorreo(exp, by) {
   const r = resumen(exp);
   const correos = exp.correos || [];
+  // Compra/proyecto confirmado que no salió porque al aceptar la cotización el cliente no tenía correo
+  if ((exp.origen === 'cotizacion' || exp.origen === 'web') && !exp.compraConfirmadaOmitida && exp.correosActivos !== false && !correos.some((c) => c.clave === 'compra_confirmada' && c.estado === 'enviado')) {
+    try {
+      const { asunto, cuerpo } = textoCompraConfirmada(exp);
+      const out = await correoLibre(exp, { asunto, cuerpo, clave: 'compra_confirmada', etapa: exp.tipo === 'proyecto' ? 'Proyecto confirmado' : 'Compra confirmada' });
+      pushHist(exp, by, out.enviado ? `Correo enviado al cliente al registrar su correo: "${out.asunto}"` : `Correo no enviado ("${out.asunto}"): ${out.motivo}`);
+    } catch (err) {
+      console.warn('[seguimiento] compra confirmada al registrar correo', err?.message || err);
+    }
+  }
   for (const e of exp.etapas || []) {
     const clave = `${e.key}:${e.estado}`;
     const fallo = correos.some((c) => c.clave === clave && c.estado === 'no_enviado' && /no tiene correo/.test(c.motivo || ''));
