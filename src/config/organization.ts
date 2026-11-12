@@ -10,16 +10,16 @@ export const ORG = {
   legalName: 'Reiki Energía Solar SAS',
   alternateName: ['Reiki Solar', 'Reiki Energía Solar Medellín'],
   description:
-    'Empresa colombiana de energía solar fotovoltaica con sede en Medellín: diseño, suministro e instalación de sistemas solares llave en mano, y tienda de paneles, inversores, baterías y protecciones con precio publicado para Colombia.',
+    'Empresa colombiana de energía solar fotovoltaica con sede en Guarne (Antioquia), en el Oriente cercano a Medellín: diseño, suministro e instalación de sistemas solares llave en mano, y tienda de paneles, inversores, baterías y protecciones con precio publicado para Colombia.',
   telephone: CONTACT_PHONE_SCHEMA,
   email: CONTACT_EMAIL,
-  streetAddress: 'Carrera 80 #39-167 Local 105',
-  addressLocality: 'Medellín',
+  streetAddress: 'Parque Comercial Tierra Santa, Local #4, Vereda Bellavista',
+  addressLocality: 'Guarne',
   addressRegion: 'Antioquia',
-  postalCode: '050001',
+  postalCode: '054050',
   addressCountry: 'CO',
-  latitude: 6.2476,
-  longitude: -75.5658,
+  latitude: 6.2422,
+  longitude: -75.4165,
   foundingDate: '2020',
   priceRange: '$$',
   openingHours: {
@@ -59,7 +59,7 @@ export const HOME_FAQS: { question: string; answer: string }[] = [
   {
     question: '¿Quién instala paneles solares en Medellín?',
     answer:
-      'Reiki Energía Solar es una empresa con sede en Medellín (Carrera 80 #39-167 Local 105) que diseña, suministra e instala sistemas solares fotovoltaicos para hogares, empresas y bombeo en Antioquia y con cobertura nacional en Colombia.',
+      'Reiki Energía Solar es una empresa con sede principal en Guarne, Antioquia (Parque Comercial Tierra Santa, Local #4, Vereda Bellavista), a pocos minutos de Medellín, que diseña, suministra e instala sistemas solares fotovoltaicos para hogares, empresas y bombeo en Antioquia y con cobertura nacional en Colombia.',
   },
   {
     question: '¿Qué hace Reiki Energía Solar en Colombia?',
@@ -69,12 +69,12 @@ export const HOME_FAQS: { question: string; answer: string }[] = [
   {
     question: '¿Dónde comprar paneles solares e inversores en Medellín?',
     answer:
-      'En la tienda online de Reiki Energía Solar (reikisolar.com.co/tienda) puedes comprar equipos solares con precio visible y asesoría comercial desde Medellín para envío o retiro según disponibilidad.',
+      'En la tienda online de Reiki Energía Solar (reikisolar.com.co/tienda) puedes comprar equipos solares con precio visible y asesoría comercial desde Antioquia para envío o retiro según disponibilidad.',
   },
   {
     question: '¿Reiki Solar hace proyectos en otras ciudades de Colombia?',
     answer:
-      'Sí. Opera desde Medellín y realiza proyectos y suministro de equipos en Antioquia, Bogotá, Cali, Barranquilla y otras regiones de Colombia, con sistemas on-grid y off-grid según el consumo y el sitio.',
+      'Sí. Opera desde su sede en Guarne (Antioquia) y realiza proyectos y suministro de equipos en Antioquia, Bogotá, Cali, Barranquilla y otras regiones de Colombia, con sistemas on-grid y off-grid según el consumo y el sitio.',
   },
   {
     question: '¿Cómo cotizar un sistema de energía solar con Reiki?',

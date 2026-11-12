@@ -249,7 +249,7 @@ pages.append(f'''
       <div class="qr"><img src="{A("qr-tienda.png")}"><b>Compra en línea</b><span>reikisolar.com.co/tienda</span></div>
       <div class="datos">
         <p><b>Reiki Energía Solar SAS</b></p>
-        <p>Carrera 80 #39-167 Local 105<br>Medellín, Antioquia</p>
+        <p>Parque Comercial Tierra Santa, Local #4, Vereda Bellavista<br>Guarne, Antioquia</p>
         <p>info@reikisolar.com.co<br>Lun – Sáb 8:00 – 18:00</p>
         <p>Instagram @reikiener</p>
       </div>

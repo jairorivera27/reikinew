@@ -1,7 +1,7 @@
 # Bot de WhatsApp Reiki: Claude, ventas de tienda y cotizaciones PDF (versión final)
 
 ## Contexto del proyecto
-- Sitio reikisolar.com.co de **Reiki Energía Solar SAS** (NIT 901942389, Carrera 80 #39-167 Local 105,
+- Sitio reikisolar.com.co de **Reiki Energía Solar SAS** (NIT 901942389, Parque Comercial Tierra Santa, Local #4, Vereda Bellavista, Guarne,
   Medellín). Proyecto Astro desplegado en Vercel (hay `prisma/`, `api/`, `src/pages/api/`).
 - Bot de WhatsApp (Cloud API de Meta) en el número de la tienda **+57 300 405 2638**; webhook
   `/api/whatsapp-webhook`. Hoy usa OpenAI (gpt-4o-mini) con las tools `buscar_producto_tienda`,
