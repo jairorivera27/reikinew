@@ -330,6 +330,31 @@ export async function adjuntosDespacho(exp) {
 }
 
 /**
+ * Correo de despacho con documentos (rótulo de la transportadora + Guía de despacho de Reiki), a pedido
+ * desde el panel: sirve para reenviarlo o para proyectos. enviar=false solo devuelve la vista previa.
+ */
+export async function correoDespacho(exp, { enviar: mandar = true } = {}) {
+  const regla = CORREOS.tienda['guia:hecho'];
+  const env = exp.envio || {};
+  const ds = env.despachos || [];
+  const e2 = { ...exp, envio: { ...env, guia: env.guia || ds.map((d) => d.guia).join(', '), transportadora: env.transportadora || [...new Set(ds.map((d) => d.transportadora))].join(' / ') } };
+  const falta = regla.requiere(e2);
+  if (falta) return { enviado: false, motivo: falta };
+  const asunto = regla.asunto(e2);
+  const parrafos = regla.cuerpo(e2);
+  const attachments = await adjuntosDespacho(e2);
+  if (!mandar) return { enviado: false, vista: true, para: exp.cliente?.correo || '', asunto, cuerpo: texto(e2, parrafos), adjuntos: attachments.map((a) => a.filename) };
+  let motivo = '';
+  if (exp.correosActivos === false) motivo = 'correos desactivados para este cliente';
+  else if (!exp.cliente?.correo || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(exp.cliente.correo)) motivo = 'el cliente no tiene correo';
+  const res = motivo ? { ok: false, motivo } : await enviar({ to: exp.cliente.correo, subject: asunto, htmlBody: html(e2, parrafos), textBody: texto(e2, parrafos), attachments });
+  exp.correos = exp.correos || [];
+  exp.correos.unshift({ clave: 'despacho:documentos', etapa: 'Despacho con documentos', para: exp.cliente?.correo || '', asunto, adjuntos: attachments.map((a) => a.filename), estado: res.ok ? 'enviado' : 'no_enviado', motivo: res.ok ? '' : res.motivo, at: new Date().toISOString() });
+  exp.correos = exp.correos.slice(0, 50);
+  return { enviado: !!res.ok, motivo: res.ok ? '' : res.motivo, asunto, adjuntos: attachments.map((a) => a.filename) };
+}
+
+/**
  * Envía el correo de la etapa si corresponde. Muta exp.correos (registro) y devuelve
  * { enviado, motivo } o null si la etapa no tiene correo. No reenvía lo ya enviado.
  */

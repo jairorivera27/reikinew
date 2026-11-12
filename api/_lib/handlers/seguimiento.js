@@ -374,6 +374,12 @@ export default async function handler(req, res) {
       const r = await importarDeTienda({ desde: String(body.desde || ''), listarVentas: listExpedientes });
       return send(res, 200, { ok: true, ...r });
     }
+    if (op === 'correo-despacho') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const { enviarCorreoDespacho } = await import('../seguimiento.js');
+      const r = await enviarCorreoDespacho(body.id, body.enviar !== false, by);
+      return r ? send(res, 200, { ok: true, correo: r }) : send(res, 404, { ok: false, error: 'No existe.' });
+    }
     if (op === 'compra-confirmada') {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
       const r = await correoCompraConfirmada(body.id, by);

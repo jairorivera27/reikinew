@@ -734,6 +734,19 @@ export async function correoCompraConfirmada(id, by = 'panel') {
   return r;
 }
 
+/** Correo de despacho con el rótulo de la transportadora y la Guía de despacho de Reiki (vista previa si enviar=false). */
+export async function enviarCorreoDespacho(id, enviar = true, by = 'panel') {
+  const exp = await getExpediente(id);
+  if (!exp) return null;
+  const { correoDespacho } = await import('./correos.js');
+  const r = await correoDespacho(exp, { enviar });
+  if (enviar) {
+    pushHist(exp, by, r.enviado ? `Correo de despacho con documentos enviado: "${r.asunto}" (${(r.adjuntos || []).join(', ')})` : `Correo de despacho no enviado: ${r.motivo}`);
+    await persist(exp);
+  }
+  return r;
+}
+
 /** Al agregar el correo del cliente, envía los avisos que quedaron pendientes por falta de correo (solo de etapas que siguen en ese estado). */
 async function reintentarSinCorreo(exp, by) {
   const r = resumen(exp);
