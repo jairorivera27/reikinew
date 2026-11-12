@@ -311,10 +311,36 @@ export default async function handler(req, res) {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
       if (!body.carrier) return send(res, 400, { ok: false, error: 'Escoge una transportadora.' });
       try {
-        const r = await despacharVentaEnvia(body.id, { bodegaId: body.bodegaId, paquetes: body.paquetes, carrier: body.carrier, service: body.service, recogida: body.recogida, items: body.items }, by);
+        const r = await despacharVentaEnvia(body.id, { bodegaId: body.bodegaId, paquetes: body.paquetes, carrier: body.carrier, service: body.service, recogida: body.recogida, items: body.items, forzar: !!body.forzar }, by);
         return send(res, 200, { ok: true, guia: r.guia, recogida: r.recogida, bodegasPendientes: r.bodegasPendientes, expediente: { ...r.exp, resumen: resumen(r.exp) } });
       } catch (err) {
         return send(res, 400, { ok: false, error: err.message });
+      }
+    }
+    if (op === 'envia-guias') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const { guiasDelMes } = await import('../envia.js');
+      const ahora = new Date();
+      try {
+        const lista = await guiasDelMes(body.mes || ahora.getMonth() + 1, body.anio || ahora.getFullYear());
+        return send(res, 200, { ok: true, guias: lista });
+      } catch (err) {
+        return send(res, 400, { ok: false, error: String(err?.message || err) });
+      }
+    }
+    if (op === 'envia-anular') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const { anularGuiaVenta } = await import('../seguimiento.js');
+      try {
+        if (body.id) {
+          const r = await anularGuiaVenta(body.id, body.guia, { cancelarEnEnvia: body.cancelar !== false }, by);
+          if (!r) return send(res, 404, { ok: false, error: 'No existe.' });
+          return send(res, 200, { ok: true, cancel: r.cancel, expediente: { ...r.exp, resumen: resumen(r.exp) } });
+        }
+        const { cancelarGuia } = await import('../envia.js');
+        return send(res, 200, { ok: true, cancel: await cancelarGuia(body.carrier, body.guia) });
+      } catch (err) {
+        return send(res, 400, { ok: false, error: String(err?.message || err) });
       }
     }
     if (op === 'envia-rastrear') {

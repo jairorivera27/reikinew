@@ -931,6 +931,35 @@ export async function proveedorItem(id, idx, { agotado, proveedor } = {}, by = '
   return persist(exp);
 }
 
+/** Anula una guía: la cancela en Envia (si se puede) y la quita de los despachos de la venta. */
+export async function anularGuiaVenta(id, guia, { cancelarEnEnvia = true } = {}, by = 'panel') {
+  const exp = await getExpediente(id);
+  if (!exp) return null;
+  const ds = exp.envio?.despachos || [];
+  const d = ds.find((x) => String(x.guia) === String(guia));
+  if (!d) throw new Error(`La guía ${guia} no está en esta venta.`);
+  let cancel = null;
+  if (cancelarEnEnvia) {
+    const envia = await import('./envia.js');
+    try {
+      cancel = await envia.cancelarGuia(d.carrier || String(d.transportadora || '').toLowerCase(), d.guia);
+    } catch (err) {
+      cancel = { error: String(err?.message || err).slice(0, 300) };
+    }
+  }
+  exp.envio.despachos = ds.filter((x) => x !== d);
+  const r = resumenDespachos(exp);
+  exp.envio.guia = r.guia;
+  exp.envio.transportadora = r.transportadora;
+  if (!exp.envio.despachos.length) {
+    exp.envio.rotulo = '';
+    exp.envio.trackUrl = '';
+  }
+  pushHist(exp, by, `Guía ${d.transportadora} ${d.guia} anulada (duplicada).${cancelarEnEnvia ? (cancel && !cancel.error ? ` Cancelada en Envia${cancel.balanceReturned ? ' y saldo devuelto' : ''}.` : ` No se pudo cancelar en Envia: ${cancel?.error || 'sin respuesta'}.`) : ''}`);
+  await persist(exp);
+  return { exp, cancel };
+}
+
 function resumenDespachos(exp) {
   const ds = exp.envio?.despachos || [];
   const ts = [...new Set(ds.map((x) => x.transportadora))];
@@ -938,7 +967,14 @@ function resumenDespachos(exp) {
 }
 
 /** Compra la guía de una bodega, pide la recogida y la agrega a los despachos de la venta (una guía por bodega). */
-export async function despacharVentaEnvia(id, { bodegaId, paquetes, carrier, service, recogida, items, cerrarEtapas = true } = {}, by = 'panel') {
+export async function despacharVentaEnvia(id, { bodegaId, paquetes, carrier, service, recogida, items, cerrarEtapas = true, forzar = false } = {}, by = 'panel') {
+  // Evitar guías duplicadas: si estos equipos ya tienen guía (doble clic, reintento tras un corte), no se compra otra
+  const previo = await getExpediente(id);
+  const pedidos = Array.isArray(items) ? items.map(Number) : [];
+  const ya = (previo?.envio?.despachos || []).find((x) => (x.entorno || 'produccion') === 'produccion' && (pedidos.length ? (x.items || []).some((i) => pedidos.includes(Number(i))) : x.bodegaId === bodegaId));
+  if (ya && !forzar) {
+    throw new Error(`Estos equipos ya tienen la guía ${ya.transportadora} ${ya.guia} (${String(ya.fecha || '').slice(0, 10)}). Si de verdad necesitas otra, anula primero la anterior.`);
+  }
   const d = await datosEnvio(id, { bodegaId, paquetes });
   // Referencia corta (máx. 20 caracteres): el número de cotización sin espacios o, si es más largo, el id de la venta
   const cot = String((d.exp.cotizacion && d.exp.cotizacion.numero) || '').replace(/\s+/g, '');

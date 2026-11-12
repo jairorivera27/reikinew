@@ -310,3 +310,17 @@ export async function rastrear(guias = []) {
     eventos: (t.eventHistory || t.events || []).slice(-6).map((e) => ({ fecha: e.date || e.datetime || '', texto: e.description || e.event || '', lugar: e.location || '' })),
   }));
 }
+
+/** Guías generadas en la cuenta de Envia en un mes (para cruzar con el panel y encontrar duplicadas). */
+export async function guiasDelMes(mes, anio) {
+  const mm = String(mes).padStart(2, '0');
+  const r = await queries('GET', `/guide/${mm}/${anio}`);
+  const lista = Array.isArray(r?.data) ? r.data : Array.isArray(r) ? r : [];
+  return lista;
+}
+
+/** Cancela una guía en Envia (si la transportadora aún no la recogió) y pide la devolución del saldo. */
+export async function cancelarGuia(carrier, trackingNumber) {
+  const r = await api('POST', '/ship/cancel/', { carrier, trackingNumber });
+  return r?.data || r;
+}
