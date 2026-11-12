@@ -306,11 +306,27 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         }
 
         async function api(op, body) {
-          var res = await fetch('/api/seguimiento?op=' + op, {
-            method: body ? 'POST' : 'GET',
-            headers: headers(!!body),
-            body: body ? JSON.stringify(body) : undefined,
-          });
+          var pedir = function () {
+            return fetch('/api/seguimiento?op=' + op, {
+              method: body ? 'POST' : 'GET',
+              headers: headers(!!body),
+              body: body ? JSON.stringify(body) : undefined,
+            });
+          };
+          var res;
+          try {
+            res = await pedir();
+          } catch (e1) {
+            // Corte de red o del navegador: un reintento antes de mostrar el error
+            await new Promise(function (r) {
+              setTimeout(r, 1500);
+            });
+            try {
+              res = await pedir();
+            } catch (e2) {
+              throw new Error('No hubo conexión con el servidor (' + (e2.message || 'red') + '). Revisa tu internet y vuelve a intentar; si sigue, recarga la página con Ctrl+F5 o desactiva el bloqueador de anuncios para reikisolar.com.co.');
+            }
+          }
           var j = await res.json().catch(function () {
             return {};
           });
