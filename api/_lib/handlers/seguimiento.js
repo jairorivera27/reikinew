@@ -374,6 +374,12 @@ export default async function handler(req, res) {
       const r = await importarDeTienda({ desde: String(body.desde || ''), listarVentas: listExpedientes });
       return send(res, 200, { ok: true, ...r });
     }
+    if (op === 'compra-confirmada') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const r = await correoCompraConfirmada(body.id, by);
+      if (!r) return send(res, 404, { ok: false, error: 'No existe.' });
+      return send(res, 200, { ok: !!r.enviado, correo: r });
+    }
     if (op === 'cot-estado') {
       const estadoAntes = (await getCotizacion(body.id))?.estado || '';
       const c = await cambiarEstado(body.id, { estado: body.estado, motivo: body.motivo, proximo: body.proximo }, by);
