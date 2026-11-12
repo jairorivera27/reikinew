@@ -14,7 +14,7 @@ brand: "Tensite"
 model: "IVCM2024-LV"
 sku: "3004246"
 power: "2000W 24V"
-stock: "disponible"
+stock: "pre-orden"
 order: 7100
 updatedAt: "2026-10-28"
 imagen_provisional: false

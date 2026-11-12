@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-11-09 20:59",
+ "ultima_revision": "2026-11-11 21:00",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -839,8 +839,8 @@
    "consulta": "ok"
   },
   "deye-inversor-on-off-grid-60kw-trifasico-sun-60k-sg01hp3-us-bm4-277v-480vac-800vdc-hv": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "deye-medidor-con-ct-sdm630-mct-indirecta-series-eastron": {
@@ -1899,7 +1899,7 @@
    "consulta": "ok"
   },
   "inversor-cargador-tensite-2000-w-24-v-ivcm2024-lv": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
