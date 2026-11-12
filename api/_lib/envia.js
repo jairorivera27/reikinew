@@ -259,13 +259,17 @@ export async function generarGuia({ origen, destino, paquetes, carrier, service,
     // Algunas transportadoras (p. ej. Interrapidísimo) aceptan máximo 20 caracteres en la referencia
     shipment: { type: 1, carrier, service, orderReference: s(referencia, 20) || undefined },
   });
-  const d = (j?.data || [])[0];
-  if (!d || !d.trackingNumber) throw new Error('Envia no devolvió número de guía.');
+  const todas = (j?.data || []).filter((x) => x && x.trackingNumber);
+  const d = todas[0];
+  if (!d) throw new Error('Envia no devolvió número de guía.');
+  // Con varias cajas, transportadoras como Servientrega crean UNA GUÍA POR CAJA (cada una con su rótulo y su cobro)
   return {
     guia: String(d.trackingNumber),
+    guias: todas.map((x) => String(x.trackingNumber)),
+    rotulos: todas.map((x) => x.label).filter(Boolean),
     trackUrl: d.trackUrl || '',
     label: d.label || '',
-    precio: Math.round(Number(d.totalPrice) || 0),
+    precio: Math.round(todas.reduce((a, x) => a + (Number(x.totalPrice) || 0), 0)),
     saldo: d.currentBalance != null ? Number(d.currentBalance) : null,
     shipmentId: d.shipmentId || null,
     carrier: d.carrier || carrier,

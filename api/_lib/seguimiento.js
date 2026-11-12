@@ -735,11 +735,11 @@ export async function correoCompraConfirmada(id, by = 'panel') {
 }
 
 /** Correo de despacho con el rótulo de la transportadora y la Guía de despacho de Reiki (vista previa si enviar=false). */
-export async function enviarCorreoDespacho(id, enviar = true, by = 'panel') {
+export async function enviarCorreoDespacho(id, enviar = true, by = 'panel', { soloGuia } = {}) {
   const exp = await getExpediente(id);
   if (!exp) return null;
   const { correoDespacho } = await import('./correos.js');
-  const r = await correoDespacho(exp, { enviar });
+  const r = await correoDespacho(exp, { enviar, soloGuia });
   if (enviar) {
     pushHist(exp, by, r.enviado ? `Correo de despacho con documentos enviado: "${r.asunto}" (${(r.adjuntos || []).join(', ')})` : `Correo de despacho no enviado: ${r.motivo}`);
     await persist(exp);
@@ -931,6 +931,71 @@ export async function proveedorItem(id, idx, { agotado, proveedor } = {}, by = '
   return persist(exp);
 }
 
+/**
+ * Completa los despachos con las guías "de caja" que Envia creó aparte (una por caja) y que antes no se guardaban:
+ * misma transportadora y destinatario, creadas segundos después de la guía principal.
+ */
+export async function completarGuiasCajas(listaEnvia = [], by = 'claude') {
+  const cambios = [];
+  const todos = await listExpedientes();
+  const vistas = new Set();
+  for (const e0 of todos) {
+    const ds = e0.envio?.despachos || [];
+    if (!ds.length) continue;
+    let tocado = false;
+    for (const d of ds) {
+      const base = listaEnvia.find((g) => String(g.tracking_number) === String(d.guia));
+      if (!base) continue;
+      const t0 = Date.parse(String(base.created_at).replace(' ', 'T'));
+      const hermanas = listaEnvia
+        .filter((g) => g.name === base.name && g.consignee_name === base.consignee_name && g.sender_name === base.sender_name && String(g.status) !== 'Canceled')
+        .filter((g) => Math.abs(Date.parse(String(g.created_at).replace(' ', 'T')) - t0) <= 20000)
+        .sort((a, b) => String(a.tracking_number).localeCompare(String(b.tracking_number)));
+      if (hermanas.length <= 1) continue;
+      d.guiasCajas = hermanas.map((g) => String(g.tracking_number));
+      d.rotulos = hermanas.map((g) => g.label_file).filter(Boolean);
+      d.costoFlete = Math.round(hermanas.reduce((a, g) => a + (Number(g.grand_total) || 0), 0));
+      hermanas.forEach((g) => vistas.add(String(g.tracking_number)));
+      tocado = true;
+      cambios.push({ id: e0.id, guia: d.guia, cajas: d.guiasCajas, costo: d.costoFlete });
+    }
+    if (tocado) {
+      const exp = await getExpediente(e0.id);
+      exp.envio.despachos = ds;
+      exp.envio.costoFlete = ds.reduce((a, x) => a + (x.costoFlete || 0), 0);
+      pushHist(exp, by, `Guías por caja registradas: ${cambios.filter((c) => c.id === e0.id).map((c) => `${c.guia} → ${c.cajas.join(', ')}`).join(' · ')}.`);
+      await persist(exp);
+    }
+  }
+  // Guías de la cuenta que no están en ninguna venta (posibles duplicadas)
+  const registradas = new Set(todos.flatMap((e) => (e.envio?.despachos || []).flatMap((d) => [String(d.guia), ...(d.guiasCajas || [])])));
+  const sueltas = listaEnvia.filter((g) => !registradas.has(String(g.tracking_number)) && !vistas.has(String(g.tracking_number)) && String(g.status) !== 'Canceled');
+  return { cambios, sueltas: sueltas.map((g) => ({ guia: g.tracking_number, carrier: g.name, creada: g.created_at, destinatario: g.consignee_name, origen: g.sender_name, total: g.grand_total })) };
+}
+
+/** Programa (o reprograma) la recogida de una guía ya comprada. */
+export async function recogidaGuiaVenta(id, guia, { fecha, desde = 9, hasta = 16 } = {}, by = 'panel') {
+  const exp = await getExpediente(id);
+  const d = (exp?.envio?.despachos || []).find((x) => String(x.guia) === String(guia));
+  if (!d) throw new Error('La guía no está en esta venta.');
+  const envia = await import('./envia.js');
+  const bodegas = await envia.leerBodegas();
+  const bodega = bodegas[d.bodegaId];
+  if (!bodega) throw new Error('La bodega de esta guía ya no existe.');
+  const origen = await envia.origenDe(bodega);
+  let r;
+  try {
+    r = await envia.pedirRecogida({ origen, carrier: d.carrier, guias: d.guiasCajas || [d.guia], fecha, desde, hasta, pesoTotal: d.peso || 1, paquetes: (d.guiasCajas || [d.guia]).length, instrucciones: bodega.horario });
+  } catch (err) {
+    const m = String(err?.message || err);
+    r = /already scheduled/i.test(m) ? { confirmacion: '', compartida: true, nota: 'Ya hay una recogida programada ese día en esta bodega; recoge todos los paquetes.' } : { error: m.slice(0, 200) };
+  }
+  d.recogida = r;
+  pushHist(exp, by, r.error ? `Recogida de la guía ${guia} no programada: ${r.error}` : r.compartida ? `Guía ${guia}: ${r.nota}` : `Recogida de la guía ${guia} programada para ${fecha} ${desde}–${hasta} h${r.confirmacion ? ` (n.º ${r.confirmacion})` : ''}.`);
+  await persist(exp);
+  return r;
+}
+
 /** Anula una guía: la cancela en Envia (si se puede) y la quita de los despachos de la venta. */
 export async function anularGuiaVenta(id, guia, { cancelarEnEnvia = true } = {}, by = 'panel') {
   const exp = await getExpediente(id);
@@ -985,9 +1050,11 @@ export async function despacharVentaEnvia(id, { bodegaId, paquetes, carrier, ser
     try {
       const peso = d.paquetes.reduce((a, p) => a + p.weight * p.amount, 0);
       const n = d.paquetes.reduce((a, p) => a + p.amount, 0);
-      pickup = await d.envia.pedirRecogida({ origen: d.origen, carrier: g.carrier, guias: [g.guia], fecha: recogida.fecha, desde: recogida.desde, hasta: recogida.hasta, pesoTotal: peso, paquetes: n, instrucciones: d.bodega.horario });
+      pickup = await d.envia.pedirRecogida({ origen: d.origen, carrier: g.carrier, guias: g.guias || [g.guia], fecha: recogida.fecha, desde: recogida.desde, hasta: recogida.hasta, pesoTotal: peso, paquetes: n, instrucciones: d.bodega.horario });
     } catch (err) {
-      pickup = { error: String(err?.message || err).slice(0, 200) };
+      const m = String(err?.message || err);
+      // "Pickup already scheduled today": ya hay una recogida ese día en esa bodega y recoge todos los paquetes
+      pickup = /already scheduled/i.test(m) ? { confirmacion: '', compartida: true, nota: 'Ya hay una recogida programada ese día en esta bodega; la transportadora recoge todos los paquetes en esa visita.' } : { error: m.slice(0, 200) };
     }
   }
   const transportadora = NOMBRE_CARRIER[String(g.carrier).toLowerCase()] || g.carrier;
@@ -998,6 +1065,8 @@ export async function despacharVentaEnvia(id, { bodegaId, paquetes, carrier, ser
     bodega: d.bodega.nombre,
     transportadora,
     guia: g.guia,
+    guiasCajas: g.guias && g.guias.length > 1 ? g.guias : undefined,
+    rotulos: g.rotulos && g.rotulos.length > 1 ? g.rotulos : undefined,
     trackUrl: g.trackUrl,
     rotulo: g.label,
     costoFlete: g.precio,
@@ -1013,7 +1082,8 @@ export async function despacharVentaEnvia(id, { bodegaId, paquetes, carrier, ser
   const despachos = [...(exp.envio?.despachos || []), despacho];
   exp.envio = { ...(exp.envio || {}), despachos, envia: { entorno }, trackUrl: g.trackUrl, rotulo: g.label, bodega: d.bodega.nombre, fechaDespacho: new Date().toISOString().slice(0, 10), costoFlete: despachos.reduce((a, x) => a + (x.costoFlete || 0), 0) };
   Object.assign(exp.envio, resumenDespachos(exp));
-  pushHist(exp, by, `Guía ${transportadora} ${g.guia} comprada en Envia (${entorno}) por $${g.precio.toLocaleString('es-CO')} desde ${d.bodega.nombre}.${pickup ? (pickup.error ? ` Recogida no programada: ${pickup.error}` : ` Recogida ${recogida.fecha} ${recogida.desde || 9}–${recogida.hasta || 16} h${pickup.confirmacion ? ` (n.º ${pickup.confirmacion})` : ''}.`) : ''}`);
+  pushHist(exp, by, `Guía ${transportadora} ${g.guia}${g.guias && g.guias.length > 1 ? ` (+${g.guias.length - 1} guías de cajas: ${g.guias.slice(1).join(', ')})` : ''} comprada en Envia (${entorno}) por $${g.precio.toLocaleString('es-CO')} desde ${d.bodega.nombre}.${pickup ? (pickup.error ? ` Recogida no programada: ${pickup.error}` : pickup.compartida ? ` ${pickup.nota}` : ` Recogida ${recogida.fecha} ${recogida.desde || 9}–${recogida.hasta || 16} h${pickup.confirmacion ? ` (n.º ${pickup.confirmacion})` : ''}.`) : ''}`);
+  const guiaYaHecha = (exp.etapas || []).some((x) => x.key === 'guia' && x.estado === 'hecho') || exp.tipo === 'proyecto';
   await persist(exp);
   // ¿Faltan bodegas por despachar? (equipos con bodega asignada o deducida que aún no tienen guía)
   const bodegas = await d.envia.leerBodegas();
@@ -1032,6 +1102,15 @@ export async function despacharVentaEnvia(id, { bodegaId, paquetes, carrier, ser
       if (et && et.estado !== 'hecho' && et.estado !== 'no_aplica') out = await updateEtapa(id, k, { estado: 'hecho', nota: `Despachado con ${r.transportadora} (guía ${r.guia}).` }, by);
     }
     out = await updateEtapa(id, 'guia', { estado: 'hecho', nota: `${r.transportadora} · guía ${r.guia}` }, by);
+  }
+  // Si la etapa de guía ya estaba cerrada (despacho adicional) o es un proyecto, el correo de la etapa no sale:
+  // se envía el correo de despacho solo con esta guía y sus documentos.
+  if (entorno === 'produccion' && guiaYaHecha) {
+    try {
+      await enviarCorreoDespacho(id, true, by, { soloGuia: g.guia });
+    } catch (err) {
+      console.warn('[seguimiento] correo despacho adicional', err?.message || err);
+    }
   }
   return { exp: await getExpediente(id), guia: g, recogida: pickup, bodegasPendientes: [...pendientes] };
 }

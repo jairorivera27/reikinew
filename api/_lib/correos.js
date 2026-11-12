@@ -87,6 +87,7 @@ export const CORREOS = {
         'Tu pedido ya fue despachado.',
         `Transportadora: ${e.envio.transportadora || 'por confirmar'}`,
         `Número de guía: ${e.envio.guia}`,
+        ...(e.envio.despachos || []).filter((d) => d.guiasCajas && d.guiasCajas.length > 1).map((d) => `La guía ${d.guia} va en ${d.guiasCajas.length} cajas, cada una con su propia guía: ${d.guiasCajas.join(', ')}.`),
         ...((e.envio.despachos || []).length > 1
           ? e.envio.despachos.map((d) => `Rastrea la guía ${d.guia} aquí: ${d.trackUrl || `https://envia.com/rastreo?label=${d.guia}&cntry_code=co`}`)
           : e.envio.trackUrl
@@ -319,10 +320,13 @@ export async function adjuntosDespacho(exp) {
   } catch {}
   const { pdfGuiaReiki, numeroGuiaReiki } = await import('./guia-reiki.js');
   for (const [i, d] of ds.entries()) {
-    if (d.rotulo && /^https:\/\//.test(d.rotulo)) {
+    const rotulos = d.rotulos && d.rotulos.length ? d.rotulos : d.rotulo ? [d.rotulo] : [];
+    const nums = d.guiasCajas && d.guiasCajas.length ? d.guiasCajas : [d.guia];
+    for (const [k, url] of rotulos.entries()) {
+      if (!/^https:\/\//.test(url)) continue;
       try {
-        const r = await fetch(d.rotulo);
-        if (r.ok) out.push({ filename: `Guia ${d.transportadora || 'transportadora'} ${d.guia}.pdf`, content: Buffer.from(await r.arrayBuffer()), contentType: 'application/pdf' });
+        const r = await fetch(url);
+        if (r.ok) out.push({ filename: `Guia ${d.transportadora || 'transportadora'} ${nums[k] || d.guia}${rotulos.length > 1 ? ` (caja ${k + 1} de ${rotulos.length})` : ''}.pdf`, content: Buffer.from(await r.arrayBuffer()), contentType: 'application/pdf' });
       } catch (err) {
         console.warn('[correos] rótulo', err?.message || err);
       }
@@ -342,11 +346,13 @@ export async function adjuntosDespacho(exp) {
  * Correo de despacho con documentos (rótulo de la transportadora + Guía de despacho de Reiki), a pedido
  * desde el panel: sirve para reenviarlo o para proyectos. enviar=false solo devuelve la vista previa.
  */
-export async function correoDespacho(exp, { enviar: mandar = true } = {}) {
+export async function correoDespacho(exp, { enviar: mandar = true, soloGuia } = {}) {
   const regla = CORREOS.tienda['guia:hecho'];
   const env = exp.envio || {};
-  const ds = env.despachos || [];
-  const e2 = { ...exp, envio: { ...env, guia: env.guia || ds.map((d) => d.guia).join(', '), transportadora: env.transportadora || [...new Set(ds.map((d) => d.transportadora))].join(' / ') } };
+  const ds = (env.despachos || []).filter((d) => !soloGuia || String(d.guia) === String(soloGuia));
+  const e2 = soloGuia
+    ? { ...exp, envio: { ...env, despachos: ds, guia: ds.map((d) => d.guia).join(', '), transportadora: [...new Set(ds.map((d) => d.transportadora))].join(' / '), trackUrl: ds[0]?.trackUrl || env.trackUrl } }
+    : { ...exp, envio: { ...env, guia: env.guia || ds.map((d) => d.guia).join(', '), transportadora: env.transportadora || [...new Set(ds.map((d) => d.transportadora))].join(' / ') } };
   const falta = regla.requiere(e2);
   if (falta) return { enviado: false, motivo: falta };
   const asunto = regla.asunto(e2);

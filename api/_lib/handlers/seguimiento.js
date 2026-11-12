@@ -328,6 +328,23 @@ export default async function handler(req, res) {
         return send(res, 400, { ok: false, error: String(err?.message || err) });
       }
     }
+    if (op === 'envia-completar') {
+      if (by !== 'claude') return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const { guiasDelMes } = await import('../envia.js');
+      const { completarGuiasCajas } = await import('../seguimiento.js');
+      const ahora = new Date();
+      const lista = await guiasDelMes(body.mes || ahora.getMonth() + 1, body.anio || ahora.getFullYear());
+      return send(res, 200, { ok: true, ...(await completarGuiasCajas(lista, by)) });
+    }
+    if (op === 'envia-recogida') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const { recogidaGuiaVenta } = await import('../seguimiento.js');
+      try {
+        return send(res, 200, { ok: true, recogida: await recogidaGuiaVenta(body.id, body.guia, { fecha: body.fecha, desde: body.desde, hasta: body.hasta }, by) });
+      } catch (err) {
+        return send(res, 400, { ok: false, error: String(err?.message || err) });
+      }
+    }
     if (op === 'envia-anular') {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
       const { anularGuiaVenta } = await import('../seguimiento.js');
