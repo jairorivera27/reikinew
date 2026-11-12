@@ -507,7 +507,7 @@ export async function expedienteDesdePedido(order) {
     : [];
   const exp = await saveExpediente(
     {
-      tipo: 'tienda',
+      tipo: cot && cot.tipo === 'proyecto' ? 'proyecto' : 'tienda',
       origen: 'web',
       orderId: order.orderId,
       // Pedidos web viejos (más de 48 h): no mandar correos de etapas ya cumplidas al crearlos
