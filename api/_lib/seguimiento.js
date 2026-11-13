@@ -983,9 +983,16 @@ export async function recogidaGuiaVenta(id, guia, { fecha, desde = 9, hasta = 16
   const bodega = bodegas[d.bodegaId];
   if (!bodega) throw new Error('La bodega de esta guía ya no existe.');
   const origen = await envia.origenDe(bodega);
+  // Una sola recogida por bodega y día: incluir todas las guías pendientes de esa bodega (de todas las ventas)
+  const pendientes = (await listExpedientes())
+    .flatMap((e) => (e.envio?.despachos || []).map((x) => ({ ...x })))
+    .filter((x) => x.bodegaId === d.bodegaId && x.carrier === d.carrier && (x.entorno || 'produccion') === 'produccion' && !x.entregado && !/transit|tr[aá]nsito|deliver|entreg/i.test(x.estado || ''));
+  const guias = [...new Set([...(d.guiasCajas || [d.guia]), ...pendientes.flatMap((x) => x.guiasCajas || [x.guia])])];
+  const peso = Math.max(d.peso || 1, pendientes.reduce((a, x) => a + (Number(x.peso) || 0), 0));
   let r;
   try {
-    r = await envia.pedirRecogida({ origen, carrier: d.carrier, guias: d.guiasCajas || [d.guia], fecha, desde, hasta, pesoTotal: d.peso || 1, paquetes: (d.guiasCajas || [d.guia]).length, instrucciones: bodega.horario });
+    r = await envia.pedirRecogida({ origen, carrier: d.carrier, guias, fecha, desde, hasta, pesoTotal: peso, paquetes: guias.length, instrucciones: bodega.horario });
+    r.guias = guias;
   } catch (err) {
     const m = String(err?.message || err);
     r = /already scheduled/i.test(m) ? { confirmacion: '', compartida: true, nota: 'Ya hay una recogida programada ese día en esta bodega; recoge todos los paquetes.' } : { error: m.slice(0, 200) };
