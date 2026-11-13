@@ -14,6 +14,7 @@ brand: "Suntree"
 model: "SGL8N-2-2P-250A"
 sku: "SNO-SGL8N-2-2P-250A"
 stock: "disponible"
+stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: true

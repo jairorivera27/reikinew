@@ -14,6 +14,7 @@ brand: "Bslbatt"
 model: "B-LFP48-100E-3U"
 sku: "SNO-B-LFP48-100E-3U"
 stock: "disponible"
+stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: true

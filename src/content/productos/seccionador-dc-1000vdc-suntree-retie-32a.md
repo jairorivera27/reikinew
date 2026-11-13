@@ -15,6 +15,7 @@ brand: "Suntree"
 model: "SISO-40MD-32"
 sku: "SNO-SISO-40MD-32"
 stock: "disponible"
+stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: true

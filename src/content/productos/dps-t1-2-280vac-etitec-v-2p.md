@@ -14,6 +14,7 @@ brand: "Eti"
 model: "2442902"
 sku: "SNO-2442902"
 stock: "disponible"
+stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: false

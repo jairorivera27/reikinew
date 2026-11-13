@@ -14,6 +14,7 @@ brand: "Growatt"
 model: "MIC1500TL-X"
 sku: "SNO-MIC1500TL-X"
 stock: "disponible"
+stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: false

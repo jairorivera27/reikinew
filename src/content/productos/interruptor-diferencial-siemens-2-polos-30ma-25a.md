@@ -14,6 +14,7 @@ brand: "Siemens"
 model: "5SV5312-0"
 sku: "SNO-5SV5312-0"
 stock: "disponible"
+stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: false

@@ -14,6 +14,7 @@ brand: "Chint"
 model: "NXBLE-63-2P-25"
 sku: "SNO-NXBLE-63-2P-25"
 stock: "disponible"
+stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: true

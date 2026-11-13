@@ -14,6 +14,7 @@ brand: "Siemens"
 model: "3KD3520-2NE20-0-KIT"
 sku: "SNO-3KD3520-2NE20-0-KIT"
 stock: "disponible"
+stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: true

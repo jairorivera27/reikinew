@@ -14,6 +14,7 @@ brand: "Suntree"
 model: "SL7N63-4P-25"
 sku: "SNO-SL7N63-4P-25"
 stock: "disponible"
+stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: true
