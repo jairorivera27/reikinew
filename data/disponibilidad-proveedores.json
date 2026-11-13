@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-11-11 21:00",
+ "ultima_revision": "2026-11-12 20:59",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -1160,7 +1160,7 @@
   },
   "generico-varilla-enchaquetada-con-borne-generico": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "gestor-de-energia-growatt-smart-energy-manager-sem-d": {
@@ -1705,7 +1705,7 @@
   },
   "suntree-proteccion-breaker-sl7n-63-dc550v-2p-25a": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "suntree-proteccion-breaker-sl7n-63-dc550v-2p-40a": {
@@ -1749,8 +1749,8 @@
    "consulta": "ok"
   },
   "suntree-proteccion-descargador-de-sobrepotencial-dps-sup2h1-pv-3p-dc-spd-dc1000v-2040": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "suntree-proteccion-fusible-srf30-15a-1000vdc": {
@@ -1774,8 +1774,8 @@
    "consulta": "ok"
   },
   "taifu-bomba-sumergible-tipo-lapicero-3c36-dc-eco-3-2m3h-25m-300w-36v": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "taifu-bomba-sumergible-tipo-lapicero-3s36-dc-eco-0-9m3h-80m-300w-36v": {
@@ -2194,6 +2194,1151 @@
    "consulta": "ok"
   },
   "inversor-cargador-felicity-1000-w-12-v-ivcm1012-lv": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "accesorios-para-interruptores-sentron-3vm-1-polo-siemens": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "accesorios-para-interruptores-sentron-3vm-2-polos-siemens": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "terminal-para-coraza-flexible-nylon-negra-libre-de-halogenos-adler-1-2": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "terminal-para-coraza-flexible-nylon-negra-libre-de-halogenos-adler-3-4": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "terminal-para-coraza-flexible-nylon-negra-libre-de-halogenos-adler-1": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "terminal-para-coraza-flexible-nylon-negra-libre-de-halogenos-adler-1-1-2": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "base-porta-fusible-aite-para-riel-din-10-14x85mm-50a-1500vdc-con-retie": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "base-porta-fusibles-160a-polos-690vac-440vdc-siemens-1p": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "base-portafusible-10x38-mm-1000vdc-aite-retie": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "base-portafusible-22x58-mm-1500vdc-aite-retie-80a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "base-portafusible-22x58-mm-1000vdc-aite-retie-125a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "base-portafusible-10x38-mm-690vac-3p-n-eti": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "base-portafusible-10x38-mm-1000vdc-eti": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "base-portafusible-aite-nh00-nh1-500vac-440vdc-160a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "base-portafusible-aite-nh00-nh1-500vac-440vdc-250a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "bateria-51-2-v-100-ah-para-rack-bslbatt-100ah-48vdc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "bloque-de-distribucion-siemens-690vac-dc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "bloque-de-distribucion-siemens-1000vac-1500vdc-80a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "bloque-de-distribucion-siemens-1000vac-1500vdc-125a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "bloque-de-distribucion-siemens-1000vac-1500vdc-160a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "bloque-de-distribucion-tbloc-sdb-1000v-ac-dc-160a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "bloque-de-terminales-exclusivo-para-tableros-abb-mistral": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "bloque-de-terminales-tierra-abb": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "borna-de-paso-para-riel-klemsan-304-avk6-630v": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "borna-de-tierra-verde-amarillo-para-riel-din-omega-klemsan-10-awg": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "borna-de-tierra-verde-amarillo-para-riel-din-omega-klemsan-8-awg": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-500vdc-chint-retie-160a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-4p-dc-feeo-1000vdc-retie-80a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-4p-dc-feeo-1000vdc-retie-100a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-4p-dc-feeo-1000vdc-retie-125a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-3p-16a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-3p-20a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-3p-40a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-3p-25a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-3p-63a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-tripolar-415vac-3vj-80a": {
+   "stock": "pre-orden",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-tripolar-415vac-3vj-125a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-tripolar-415vac-3vj-160a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-2p-20a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-2p-32a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-2p-40a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-2p-6a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-2p-10a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-2p-16a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-2p-25a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-2p-50a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-2p-63a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-1p-10a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-1p-20a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-1p-32a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-1p-40a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-1p-16a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-1p-25a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-1p-50a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-1p-63a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-1p-80a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-siemens-230-400vac-1p-100a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-dc-siemens-125a-1p-415vac-125vdc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-dc-chint-230-400vac-110-220vdc-retie-1p-125a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-chint-1000vdc-retie-20a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-chint-1000vdc-retie-25a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-chint-1000vdc-retie-32a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-chint-1000vdc-retie-40a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-chint-500vdc-retie-16a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-chint-500vdc-retie-20a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-chint-500vdc-retie-25a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-chint-500vdc-retie-32a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-chint-500vdc-retie-40a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-chint-500vdc-retie-50a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-chint-500vdc-retie-63a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-chint-250vdc-retie-10a": {
+   "stock": "pre-orden",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-chint-250vdc-retie-16a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-chint-250vdc-retie-20a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-chint-250vdc-retie-25a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-chint-250vdc-retie-32a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-feeo-1500vdc-retie-100a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-feeo-1500vdc-retie-125a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-siemens-250-vdc-1p-16a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-siemens-250-vdc-1p-20a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-siemens-250-vdc-1p-32a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-siemens-250-vdc-1p-40a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-siemens-250-vdc-1p-50a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-siemens-250-vdc-1p-63a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-ac-dc-siemens-63a-tripolar-500vdc-415vac": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-suntree-1000v-dc-2p-retie-16a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-suntree-1000v-dc-2p-retie-20a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-suntree-1000v-dc-retie-20a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-suntree-1000v-dc-retie-25a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-suntree-1500v-dc-3p-retie-20a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-suntree-1500v-dc-3p-retie-80a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-suntree-1500v-dc-4p-retie-32a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-suntree-250v-dc-retie-100a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-suntree-250v-dc-retie-125a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-suntree-600v-dc-retie-80a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-suntree-600v-dc-retie-100a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-suntree-250v-dc-retie-32a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-suntree-600v-dc-retie-16a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-suntree-800v-dc-retie-20a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-suntree-800v-dc-retie-25a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-suntree-800v-dc-retie-16a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-suntree-800v-dc-retie-32a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-feeo-1000vdc-retie-63a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-feeo-1200vdc-retie-40a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-feeo-1200vdc-retie-63a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-feeo-250vdc-retie-6a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-feeo-250vdc-retie-10a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-feeo-250vdc-retie-16a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-feeo-250vdc-retie-40a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-feeo-250vdc-retie-50a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-feeo-250vdc-retie-63a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "breaker-dc-feeo-550vdc-retie-10a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-10awg-mtw-flexible-verde-amarillo-tableros-y-cableado-interno-de-baja-tension-c": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "rollo-100mts-cable-12awg-vehicular-iluminacion-verde-600v-105c-centelsa": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-solar-fotovoltaico-10mm2-conduluz-por-metros-negro": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-solar-fotovoltaico-10mm2-conduluz-por-metros-rojo": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-solar-fotovoltaico-4mm2-conduluz-por-metros-rojo": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-solar-fotovoltaico-6mm2-conduluz-por-metros-negro": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cable-solar-fotovoltaico-6mm2-conduluz-por-metros-rojo": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "caja-combinadora-string-box-2-entradas-1-salida-550vdc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "no-encontrado"
+  },
+  "caja-combinadora-string-box-4-entradas-1-salida-550vdc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "no-encontrado"
+  },
+  "caja-de-paso-15x20-ip65-adler-gris": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "cartucho-dps-ac-275-vac-etitec-c-t2": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "controlador-de-carga-mppt-8a-gvb-8-pb-12v-genasun-12vdc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "controlador-de-carga-mppt-8a-gvb-8-pb-24v-genasun-24vdc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "controlador-de-carga-mppt-8a-gvb-8-pb-48v-genasun-48vdc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "controlador-de-carga-mppt-8a-gvb-8-li-28-4v-genasun-28-4vdc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "controlador-de-carga-mppt-8a-gvb-8-li-56-8v-genasun-56-8vdc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "controlador-regulador-solar-pwm-vs4524au-epever-45a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "coraza-flexible-nylon-negra-libre-de-halogenos-adler-1-2": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "coraza-flexible-nylon-negra-libre-de-halogenos-adler-3-4": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "coraza-flexible-nylon-negra-libre-de-halogenos-adler-1": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "coraza-flexible-nylon-negra-libre-de-halogenos-adler-1-1-2": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "anclaje-para-coraza-flexible-nylon-negra-libre-de-halogenos-adler-1-2": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "anclaje-para-coraza-flexible-nylon-negra-libre-de-halogenos-adler-3-4": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "anclaje-para-coraza-flexible-nylon-negra-libre-de-halogenos-adler-1": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dispositivo-wifi-para-monitoreo-remoto-growatt-wifi-f": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-ac-t2-275vac-etitec-c-2p": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-ac-t2-275vac-etitec-c-4p": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t1-2-280vac-etitec-v-2p": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t1-2-280vac-etitec-v-4p": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t1-2-3p-275-480vac-prosurge-275vac": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t1-2-3p-275-480vac-prosurge": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t1-2-4p-275vac-prosurge": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t1-2-2p-275vac-prosurge": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t1-2-para-aplicaciones-fotovoltaicas-3p-1000-1500vdc-prosurge-1000-vdc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t1-2-para-aplicaciones-fotovoltaicas-3p-1000-1500vdc-prosurge": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t1-2-para-aplicaciones-fotovoltaicas-2p-600vdc-prosurge": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t2-ac-4p-275vac-prosurge": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t2-ac-2p-150-275vac-prosurge-150-vac": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t2-ac-2p-150-275vac-prosurge": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t2-ac-3p-320vac-prosurge-150-vac": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t2-ac-3p-150-275-320vac-prosurge": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t2-para-aplicaciones-fotovoltaicas-2-polos-suntree-800vdc-220-vdc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t2-para-aplicaciones-fotovoltaicas-2-polos-suntree-800vdc-600-vdc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t2-para-aplicaciones-fotovoltaicas-2-polos-suntree-220-600-800vdc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t2-para-aplicaciones-fotovoltaicas-3p-suntree-1000-1500vdc-1000-vdc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t2-para-aplicaciones-fotovoltaicas-3p-suntree-1000-1500vdc": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "dps-t2-ac-1p-150-275vac-prosurge-150-vac": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-fds-160-nh00-categoria-gpv-1000vdc-feeo-100a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-fds-160-nh00-categoria-gpv-1000vdc-feeo-125a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-feeo-para-sistemas-fotovoltaicos-off-grid-categoria-gpv-6a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-feeo-para-sistemas-fotovoltaicos-off-grid-categoria-gpv-10a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-feeo-para-sistemas-fotovoltaicos-off-grid-categoria-gpv-12a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-feeo-para-sistemas-fotovoltaicos-off-grid-categoria-gpv-25a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-10x85mm-para-sistemas-fotovoltaicos-categoria-gpv-feeo-20a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-10x85mm-para-sistemas-fotovoltaicos-categoria-gpv-feeo-25a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-10x85mm-para-sistemas-fotovoltaicos-categoria-gpv-feeo-30a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-10x85mm-para-sistemas-fotovoltaicos-categoria-gpv-feeo-35a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-10x38mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-10a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-10x38mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-12a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-10x38mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-20a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-10x38mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-25a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-10x38mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-32a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-10x85mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-15a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-10x85mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-20a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-10x85mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-25a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-10x85mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-32a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-22x58mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-63a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-22x58mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-80a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-22x58mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-100a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-22x58mm-1000vdc-aite-retie-sistemas-fotovoltaicos-gpv-125a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusibles-aite-categoria-gg-690vac-250vdc-proteccion-baterias-125a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusibles-aite-categoria-gg-690vac-250vdc-proteccion-baterias-160a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusibles-aite-categoria-gg-690vac-250vdc-proteccion-baterias-200a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusibles-aite-categoria-gg-690vac-250vdc-proteccion-baterias-250a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-14x85mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-35a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-14x85mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-40a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-14x85mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-45a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-14x85mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-50a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-siemens-categoria-gg-500vac-250vdc-proteccion-baterias-160a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-siemens-categoria-gg-500vac-400vdc-proteccion-baterias-200a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-siemens-categoria-gg-500vac-400vdc-proteccion-baterias-224a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-22x58mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-63a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "fusible-22x58mm-1500vdc-aite-retie-sistemas-fotovoltaicos-gpv-80a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "interruptor-diferencial-chint-2p-25a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "interruptor-diferencial-chint-nl210-tipo-b-40a-30ma-2p": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "interruptor-diferencial-chint-nl210-tipo-b-40a-30ma-4p": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "interruptor-diferencial-siemens-2-polos-30ma-25a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "interruptor-diferencial-siemens-2-polos-30ma-40a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "interruptor-diferencial-siemens-2-polos-30ma-63a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "interruptor-diferencial-siemens-4-polos-30ma-25a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "interruptor-diferencial-siemens-4-polos-30ma-63a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "interruptor-seccionador-siemens-3kd-80a-4-polos": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "seccionador-siemens-3kd-2-polos-160a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "seccionador-siemens-3kd-2-polos-200a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "inversor-growatt-mic-1500-2500tl-x-mppt-1500w": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "kit-de-adhesivos-para-senalizacion-y-marcado-de-sistemas-fotovoltaicos-de-inyeccion-a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "no-encontrado"
+  },
+  "llave-para-conector-mc4-leader": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "medidor-bidireccional-110vac-1f-hxe110-hexing-2f4h": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "medidor-bidireccional-hxe310-hexing-3f4h": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "medidor-bidireccional-sdm-modbus-eastron-trifasico": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "medidor-bidireccional-80a-lhe34d-litiot": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "microinversor-on-grid-wvc-300-kaideng-300w": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "microinversor-on-grid-wvc-700-kaideng-700w": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "pantalla-de-visualizacion-remota-epever-mt75": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "porta-fusible-10x85-mm-para-sistemas-fotovoltaicos-feeo": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "retenedor-final-de-termoplastico-10-mm-klemsan": {
+   "stock": "pre-orden",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "seccionador-dc-1000vdc-suntree-retie-32a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "seccionador-dc-1500vdc-suntree-250a": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "soporte-de-bloque-de-terminales-n-y-pe-abb-8m": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "soporte-de-bloque-de-terminales-n-y-pe-abb-12m": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "soporte-de-bloque-de-terminales-n-y-pe-abb-18m": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "tablero-de-sobreponer-abb-12-modulos-ip65-retie": {
+   "stock": "pre-orden",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "tablero-de-sobreponer-abb-18-modulos-ip65-retie": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "tablero-de-sobreponer-abb-24-modulos-ip65-retie": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "tablero-de-sobreponer-abb-4-modulos-ip65-retie": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "transformador-de-corriente-1600-5a-blox-tipo-ventana-interior": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "ups-interactiva-powerback-con-regulador-de-voltaje-newline-600va": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
+  "variador-sinamics-v20-siemens-2hp": {
    "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"

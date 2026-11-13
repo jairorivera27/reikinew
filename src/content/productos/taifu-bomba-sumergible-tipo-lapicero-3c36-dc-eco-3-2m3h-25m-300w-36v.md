@@ -15,7 +15,7 @@ specifications:
 brand: "Taifu"
 model: "3C36-DC-300W"
 sku: "ING-BMBE02"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-05"
 imagen_provisional: false
@@ -26,7 +26,6 @@ faqs:
     respuesta: "Se instala una potencia de paneles mayor que la de la bomba para arrancar temprano y mantener el caudal en días nublados. La cantidad exacta depende de la profundidad del pozo, la altura del tanque y el caudal diario; lo calculamos contigo."
   - pregunta: "¿Qué datos necesito para elegir la bomba?"
     respuesta: "Profundidad del nivel del agua, altura hasta el tanque, distancia de la tubería y litros por día que necesitas. Con eso elegimos el modelo y el controlador correctos."
-stockBajo: true
 ---
 
 Proveedor: Ingesolar (BMBE02).

@@ -14,7 +14,6 @@ brand: "Feeo"
 model: "FHDS-32-35"
 sku: "SNO-FHDS-32-35"
 stock: "disponible"
-stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: false

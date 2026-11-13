@@ -14,7 +14,6 @@ brand: "Feeo"
 model: "FDS-32-10"
 sku: "SNO-FDS-32-10"
 stock: "disponible"
-stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: true
