@@ -14,7 +14,6 @@ brand: "Genasun"
 model: "GVB-8-PB-24V"
 sku: "SNO-GVB-8-PB-24V"
 stock: "disponible"
-stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: true

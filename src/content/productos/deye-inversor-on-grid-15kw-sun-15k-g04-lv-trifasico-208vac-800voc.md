@@ -16,7 +16,7 @@ specifications:
 brand: "Deye"
 model: "SUN-15K-G05-208V"
 sku: "ING-INVOG09"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-05"
 imagen_provisional: false
@@ -32,7 +32,6 @@ faqs:
     respuesta: "Un sistema con este inversor de 15 kW y unos 16,5 kWp de paneles genera del orden de 2.228 kWh al mes (4,5 horas de sol pico en promedio), así que cubre consumos de esa magnitud. Te dimensionamos el sistema con tu factura."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
-stockBajo: true
 ---
 
 Proveedor: Ingesolar (INVOG09).

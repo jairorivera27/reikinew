@@ -13,7 +13,6 @@ brand: "Siemens"
 model: "5ST2501"
 sku: "SNO-5ST2501"
 stock: "disponible"
-stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: true

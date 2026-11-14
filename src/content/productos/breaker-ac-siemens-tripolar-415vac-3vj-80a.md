@@ -13,8 +13,7 @@ specifications:
 brand: "Siemens"
 model: "3VJ1008-1DA32-0AA0"
 sku: "SNO-3VJ1008-1DA32-0AA0"
-stock: "disponible"
-stockBajo: true
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: true

@@ -14,7 +14,6 @@ brand: "Aite"
 model: "ATPV-63L-35"
 sku: "SNO-ATPV-63L-35"
 stock: "disponible"
-stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: true

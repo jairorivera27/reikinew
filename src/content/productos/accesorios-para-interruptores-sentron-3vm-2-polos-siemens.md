@@ -13,7 +13,6 @@ brand: "Siemens"
 model: "3VM9182-0SH10"
 sku: "SNO-3VM9182-0SH10"
 stock: "disponible"
-stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: false

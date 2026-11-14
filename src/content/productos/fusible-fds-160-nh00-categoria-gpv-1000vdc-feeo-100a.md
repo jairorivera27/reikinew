@@ -12,7 +12,6 @@ specifications:
 model: "FDS-160-100"
 sku: "SNO-FDS-160-100"
 stock: "disponible"
-stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: false

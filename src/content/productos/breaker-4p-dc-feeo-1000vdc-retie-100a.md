@@ -14,7 +14,6 @@ brand: "Feeo"
 model: "FPV-125-100"
 sku: "SNO-FPV-125-100"
 stock: "disponible"
-stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: false

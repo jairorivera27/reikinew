@@ -16,7 +16,7 @@ specifications:
 brand: "Epever"
 model: "TRACER-3906BPL"
 sku: "ING-CONM13"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-05"
 imagen_provisional: false
@@ -28,7 +28,6 @@ faqs:
     respuesta: "Con 15 A de carga admite aproximadamente 202 W de paneles con batería de 12 V, 405 W a 24 V y 810 W a 48 V. Además hay que respetar el voltaje máximo de entrada del controlador (ver ficha técnica)."
   - pregunta: "¿Sirve para baterías de litio?"
     respuesta: "Sí, si el controlador permite configurar el perfil de carga de litio (la mayoría de modelos actuales lo hace). Te ayudamos a ajustar los parámetros según tu batería."
-stockBajo: true
 ---
 
 Proveedor: Ingesolar (CONM13).

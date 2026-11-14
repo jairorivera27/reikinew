@@ -13,7 +13,7 @@ specifications:
 brand: "Chint"
 model: "NB1-63DC-10A-1P"
 sku: "SNO-NB1-63DC-10A-1P"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: true

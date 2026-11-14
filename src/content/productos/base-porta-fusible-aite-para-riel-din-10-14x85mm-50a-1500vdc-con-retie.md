@@ -12,7 +12,7 @@ specifications:
 brand: "Aite"
 model: "ATPV-63LD"
 sku: "SNO-ATPV-63LD"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: true

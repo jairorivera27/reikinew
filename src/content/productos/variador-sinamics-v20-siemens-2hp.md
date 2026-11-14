@@ -14,7 +14,6 @@ brand: "Siemens"
 model: "6SL3210-5BB21-5UV1"
 sku: "SNO-6SL3210-5BB21-5UV1"
 stock: "disponible"
-stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: false

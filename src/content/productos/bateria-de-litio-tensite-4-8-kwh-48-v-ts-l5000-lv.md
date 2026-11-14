@@ -14,7 +14,7 @@ brand: "Tensite"
 model: "TS-L5000/LV"
 sku: "1880811"
 power: "4.8kWh 48V"
-stock: "disponible"
+stock: "pre-orden"
 order: 7100
 updatedAt: "2026-10-28"
 imagen_provisional: false
