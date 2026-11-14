@@ -13,7 +13,7 @@ specifications:
 brand: "Conalcables"
 model: "20606001011"
 sku: "SNO-20606001011"
-stock: "pre-orden"
+stock: "disponible"
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: false

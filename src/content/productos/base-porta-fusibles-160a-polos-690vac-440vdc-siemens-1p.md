@@ -14,6 +14,7 @@ brand: "Siemens"
 model: "3NP1131-1CA10"
 sku: "SNO-3NP1131-1CA10"
 stock: "disponible"
+stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: true

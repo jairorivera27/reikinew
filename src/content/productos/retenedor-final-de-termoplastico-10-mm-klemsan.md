@@ -14,7 +14,7 @@ specifications:
 brand: "Klemsan"
 model: "K495-049"
 sku: "SNO-K495-049"
-stock: "pre-orden"
+stock: "disponible"
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: false

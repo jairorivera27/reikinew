@@ -14,6 +14,7 @@ brand: "Siemens"
 model: "5SP4191-7"
 sku: "SNO-5SP4191-7"
 stock: "disponible"
+stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: false

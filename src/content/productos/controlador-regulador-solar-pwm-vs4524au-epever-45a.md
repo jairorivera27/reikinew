@@ -14,6 +14,7 @@ brand: "Epever"
 model: "VS4524AU"
 sku: "SNO-VS4524AU"
 stock: "disponible"
+stockBajo: true
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: false
