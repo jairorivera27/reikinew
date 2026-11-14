@@ -211,7 +211,7 @@ def revisar_suneo(prods):
         urls = re.findall(r'<loc>([^<]*)</loc>', sm)
         if not urls:
             return None, 'Suneo Energy: no respondió el sitemap'
-        stock, err = {}, 0
+        stock, unidades, err = {}, {}, 0
         for u in urls:
             try:
                 r = m.parse(u)
@@ -222,6 +222,8 @@ def revisar_suneo(prods):
                 k = re.sub(r'[^a-z0-9]', '', (v.get('sku') or '').lower())
                 if k:
                     stock[k] = stock.get(k, False) or bool(v.get('stock'))
+                    if v.get('unidades') is not None:
+                        unidades[k] = max(unidades.get(k, 0), int(v['unidades']))
     except Exception as e:
         return None, f'Suneo Energy: {e}'
     if not stock:
@@ -233,8 +235,10 @@ def revisar_suneo(prods):
             res[p['slug']] = {'estado': 'no-encontrado'}
             continue
         ok = stock[k]
-        res[p['slug']] = {'estado': 'ok', 'stock': 'disponible' if ok else 'pre-orden', 'stockBajo': False,
-                          'detalle': 'con stock' if ok else 'agotado en la tienda del proveedor'}
+        # "Pocas unidades" según las existencias que publica Suneo (3 o menos); sin dato, se conserva la marca actual
+        bajo = (unidades[k] <= 3) if k in unidades else p['stockBajo']
+        res[p['slug']] = {'estado': 'ok', 'stock': 'disponible' if ok else 'pre-orden', 'stockBajo': bajo,
+                          'detalle': ('con stock' + (f' ({unidades[k]} und.)' if k in unidades else '')) if ok else 'agotado en la tienda del proveedor'}
     return res, None
 
 
