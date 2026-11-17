@@ -345,6 +345,18 @@ export default async function handler(req, res) {
         return send(res, 400, { ok: false, error: String(err?.message || err) });
       }
     }
+    if (op === 'envia-tickets') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const envia = await import('../envia.js');
+      try {
+        if (body.accion === 'tipos') return send(res, 200, { ok: true, tipos: await envia.tiposTicket() });
+        if (body.accion === 'crear') return send(res, 200, { ok: true, ticket: await envia.crearTicket(body) });
+        if (body.accion === 'comentar') return send(res, 200, { ok: true, r: await envia.comentarTicket(body.ticketId, body.comentario) });
+        return send(res, 200, { ok: true, tickets: await envia.ticketsCuenta() });
+      } catch (err) {
+        return send(res, 400, { ok: false, error: String(err?.message || err) });
+      }
+    }
     if (op === 'envia-anular') {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
       const { anularGuiaVenta } = await import('../seguimiento.js');

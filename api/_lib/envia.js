@@ -328,3 +328,27 @@ export async function cancelarGuia(carrier, trackingNumber) {
   const r = await api('POST', '/ship/cancel/', { carrier, trackingNumber });
   return r?.data || r;
 }
+
+/* ---------------- reclamos (tickets de soporte de Envia) ---------------- */
+/** Catálogo de tipos de ticket (ids, nombre, descripción). */
+export async function tiposTicket() {
+  const r = await queries('GET', '/tickets/types');
+  return Array.isArray(r?.data) ? r.data : Array.isArray(r) ? r : [];
+}
+
+/** Tickets abiertos de la cuenta (para no duplicar reclamos). */
+export async function ticketsCuenta() {
+  const r = await queries('GET', '/company/tickets?limit=100');
+  return Array.isArray(r?.data) ? r.data : Array.isArray(r) ? r : [];
+}
+
+/** Abre un reclamo en Envia. Si ya hay uno abierto del mismo tipo para la guía, Envia responde 409 (se informa). */
+export async function crearTicket({ tipo, shipmentId, comentario, guia }) {
+  const body = { type_id: Number(tipo), shipment_id: Number(shipmentId) || undefined, comments: String(comentario || '').slice(0, 1500), data: JSON.stringify({ tracking_number: String(guia || '') }) };
+  return queries('POST', '/company/tickets', body);
+}
+
+/** Comentario adicional en un reclamo abierto (insistir / escalar). */
+export async function comentarTicket(ticketId, comentario) {
+  return queries('POST', `/company/tickets/${Number(ticketId)}/comments`, { comment: String(comentario || '').slice(0, 1500) });
+}
