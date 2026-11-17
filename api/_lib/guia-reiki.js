@@ -100,16 +100,16 @@ export function pdfGuiaReiki(exp, despacho = {}, idx = 0) {
     campo(xa, y, c1, 'FECHA DE DESPACHO', fechaCorta(despacho.fecha));
     campo(xb, y, c2 / 2 - 4, 'CIUDAD ORIGEN', despacho.ciudadOrigen || '');
     campo(xb + c2 / 2 + 4, y, c2 / 2 - 4, 'CIUDAD DESTINO', String(cl.ciudad || '').split(',')[0]);
-    // sello DESPACHADO
+    // sello: el pedido queda listo y con guía; "despachado" sería falso hasta que la transportadora lo recoja
     doc.roundedRect(xc, y, c3, 34, 6).fillAndStroke('#e8f6ec', '#2e9e57');
-    doc.font('Helvetica-Bold').fontSize(14).fillColor('#2e7d46').text('DESPACHADO', xc, y + 11, { width: c3, align: 'center' });
+    doc.font('Helvetica-Bold').fontSize(14).fillColor('#2e7d46').text('LISTO PARA ENVÍO', xc, y + 11, { width: c3, align: 'center' });
     y += 42;
     campo(xb, y, c2 + 8 + c3, 'DICE CONTENER', contenido, 48);
     campo(xa, y, c1 / 2 - 4, 'UNIDADES', unidades || '—', 48);
     campo(xa + c1 / 2 + 4, y, c1 / 2 - 4, 'KG / PESO', despacho.peso ? `${despacho.peso} kg` : '—', 48);
     y += 60;
 
-    doc.font('Helvetica-Bold').fontSize(9).fillColor('#222').text(`OBSERVACIONES: Pedido despachado${origen ? ' desde ' + origen : ''} hacia ${String(cl.ciudad || '').split(',')[0] || 'el destino'}.`, x0, y, { width: W });
+    doc.font('Helvetica-Bold').fontSize(9).fillColor('#222').text(`OBSERVACIONES: Pedido empacado y con guía${origen ? ', sale desde ' + origen : ''} hacia ${String(cl.ciudad || '').split(',')[0] || 'el destino'}.`, x0, y, { width: W });
     y += 16;
     doc.font('Helvetica').fontSize(9).fillColor('#333').text('La transportadora se comunicará con usted cuando el pedido esté enrutado para entregárselo.', x0, y, { width: W });
     y += 34;

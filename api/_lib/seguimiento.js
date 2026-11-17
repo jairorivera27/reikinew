@@ -1269,7 +1269,7 @@ export async function revisarGuias(by = 'claude', { avisarClientes = true } = {}
         if (!d.avisoDemora || ahora - (Date.parse(d.avisoDemora) || 0) > 48 * H) {
           avisos.push(
             tipo === 12
-              ? `Tu pedido (guía ${d.guia}, ${d.transportadora}) está listo y empacado, pero la transportadora aún no lo ha recogido. Ya abrimos un reclamo formal y estamos insistiendo para que lo recojan lo antes posible. Te avisaremos apenas salga.`
+              ? `Tu pedido (guía ${d.guia}, ${d.transportadora}) presenta un retraso por parte de la transportadora: todavía no registra movimiento en el rastreo. Ya abrimos un reclamo formal y estamos encima para que salga lo antes posible. Te avisaremos apenas registre movimiento.`
               : `Tu envío (guía ${d.guia}, ${d.transportadora}) está tardando más de lo previsto en llegar. Abrimos un reclamo con la transportadora para acelerar la entrega y te mantendremos al tanto.`,
           );
           d.avisoDemora = new Date().toISOString();

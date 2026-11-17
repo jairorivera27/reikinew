@@ -82,9 +82,10 @@ export const CORREOS = {
     },
     'guia:hecho': {
       requiere: (e) => (e.envio?.guia ? '' : 'falta el número de guía'),
-      asunto: (e) => `Tu pedido va en camino — guía ${e.envio.guia}`,
+      // Al generar la guía el pedido aún NO ha salido: la transportadora debe recogerlo. No decir "despachado" ni "en camino".
+      asunto: (e) => `Tu pedido ya tiene guía de envío — ${e.envio.guia}`,
       cuerpo: (e) => [
-        'Tu pedido ya fue despachado.',
+        'Tu pedido está empacado y ya tiene guía de envío. La transportadora lo recogerá en nuestra bodega; cuando lo recoja, el rastreo empezará a mostrar el movimiento y te avisaremos por este medio.',
         `Transportadora: ${e.envio.transportadora || 'por confirmar'}`,
         `Número de guía: ${e.envio.guia}`,
         ...(e.envio.despachos || []).filter((d) => d.guiasCajas && d.guiasCajas.length > 1).map((d) => `La guía ${d.guia} va en ${d.guiasCajas.length} cajas, cada una con su propia guía: ${d.guiasCajas.join(', ')}.`),
@@ -93,6 +94,7 @@ export const CORREOS = {
           : e.envio.trackUrl
             ? [`Rastrea tu envío aquí: ${e.envio.trackUrl}`]
             : []),
+        'Mientras la transportadora no lo recoja, el rastreo puede aparecer como "en alistamiento"; es normal en las primeras horas.',
         'La transportadora se comunicará contigo cuando el pedido esté en ruta de entrega.',
         'Revisa el estado de los empaques al recibir; si notas algún daño, déjalo anotado en la guía y escríbenos.',
         'Adjuntamos la guía de la transportadora y nuestra guía de despacho.',
