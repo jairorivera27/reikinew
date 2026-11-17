@@ -1131,7 +1131,10 @@ export async function rastrearVentaEnvia(id, by = 'claude') {
   const estados = await envia.rastrear(ds.map((x) => x.guia));
   for (const x of ds) {
     const t = estados.find((e) => e.guia === x.guia);
-    if (t) Object.assign(x, { estado: t.estado, entregado: t.entregado, eventos: t.eventos });
+    if (t) {
+      if (t.estado !== x.estado) x.estadoDesde = new Date().toISOString();
+      Object.assign(x, { estado: t.estado, entregado: t.entregado, eventos: t.eventos });
+    }
   }
   exp.envio = { ...exp.envio, despachos: ds, estadoEnvio: ds.map((x) => `${x.guia}: ${x.estado || 'sin datos'}`).join(' · '), rastreadoAt: new Date().toISOString() };
   await persist(exp);
@@ -1212,11 +1215,13 @@ export async function revisarGuias(by = 'claude', { avisarClientes = true } = {}
       if ((d.entorno || 'produccion') !== 'produccion' || d.entregado) continue;
       const t = estados.find((x) => x.guia === String(d.guia));
       if (!t) continue;
-      const antes = etiqueta(d.estado);
+      // Se compara con el último estado que se le comunicó al cliente (la revisión de cada 3 h también actualiza "estado")
+      const antes = etiqueta(d.estadoAvisado || 'Created');
       const ahoraEt = etiqueta(t.estado);
-      if (t.estado !== d.estado || !d.estadoDesde) d.estadoDesde = new Date().toISOString();
+      if (t.estado !== d.estado || !d.estadoDesde) d.estadoDesde = t.estado !== d.estado ? new Date().toISOString() : d.estadoDesde || d.fecha || new Date().toISOString();
       Object.assign(d, { estado: t.estado, entregado: t.entregado, eventos: t.eventos, revisadoAt: new Date().toISOString() });
       const r = { id: exp.id, cliente: exp.cliente?.nombre, guia: d.guia, estado: t.estado, accion: '' };
+      if (avisarClientes) d.estadoAvisado = t.estado;
       // Cambio de estado → avisar al cliente
       if (ahoraEt !== antes && (ahoraEt === 'en_camino' || ahoraEt === 'entregado')) {
         avisos.push(ahoraEt === 'en_camino' ? `La guía ${d.guia} (${d.transportadora}) ya fue recogida por la transportadora y va en camino. Puedes rastrearla aquí: ${d.trackUrl || `https://envia.com/rastreo?label=${d.guia}&cntry_code=co`}` : `La guía ${d.guia} figura como entregada por la transportadora.`);
