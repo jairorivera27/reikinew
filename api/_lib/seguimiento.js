@@ -1112,6 +1112,17 @@ export async function despacharVentaEnvia(id, { bodegaId, paquetes, carrier, ser
   }
   // Si la etapa de guía ya estaba cerrada (despacho adicional) o es un proyecto, el correo de la etapa no sale:
   // se envía el correo de despacho solo con esta guía y sus documentos.
+  if (entorno === 'produccion' && exp.cliente?.celular && exp.correosActivos !== false) {
+    try {
+      const { avisoEnvioWhatsApp } = await import('./whatsapp.js');
+      const out = await avisoEnvioWhatsApp({ celular: exp.cliente.celular, nombre: String(exp.cliente.nombre || '').split(' ')[0], pedido: exp.cotizacion?.numero || exp.id, novedad: `tu pedido está empacado y ya tiene guía de ${transportadora}. Te avisaremos por aquí cuando la transportadora lo recoja y en cada movimiento.`, guia: g.guia });
+      const e3 = await getExpediente(id);
+      pushHist(e3, by, out.ok ? `WhatsApp al cliente (${out.metodo}): guía ${g.guia} generada.` : `WhatsApp al cliente no enviado (guía ${g.guia}): ${out.motivo}`);
+      await persist(e3);
+    } catch (err) {
+      console.warn('[seguimiento] whatsapp guía', err?.message || err);
+    }
+  }
   if (entorno === 'produccion' && guiaYaHecha) {
     try {
       await enviarCorreoDespacho(id, true, by, { soloGuia: g.guia });
@@ -1192,7 +1203,9 @@ export async function revisarGuias(by = 'claude', { avisarClientes = true } = {}
   const ticketDe = (g, tipo) => abiertos.find((t) => String(t.tracking_number) === String(g) && Number(t.ticket_type_id) === Number(tipo));
   const etiqueta = (st) => {
     const t = String(st || '').toLowerCase();
-    if (/deliver|entreg/.test(t)) return 'entregado';
+    if (/deliver|entreg/.test(t) && !/out for|reparto/.test(t)) return 'entregado';
+    if (/out for delivery|reparto|en distribuci|on route/.test(t)) return 'en_reparto';
+    if (/exception|novedad|incident|return|devoluci|failed/.test(t)) return 'novedad';
     if (/created|creada|pending|alistamiento/.test(t)) return 'sin_recoger';
     if (/shipped|transit|picked|recolect|camino|route|out for/.test(t)) return 'en_camino';
     if (/cancel/.test(t)) return 'cancelado';
@@ -1211,6 +1224,7 @@ export async function revisarGuias(by = 'claude', { avisarClientes = true } = {}
       continue;
     }
     const avisos = [];
+    const wa = [];
     for (const d of ds) {
       if ((d.entorno || 'produccion') !== 'produccion' || d.entregado) continue;
       const t = estados.find((x) => x.guia === String(d.guia));
@@ -1223,8 +1237,15 @@ export async function revisarGuias(by = 'claude', { avisarClientes = true } = {}
       const r = { id: exp.id, cliente: exp.cliente?.nombre, guia: d.guia, estado: t.estado, accion: '' };
       if (avisarClientes) d.estadoAvisado = t.estado;
       // Cambio de estado → avisar al cliente
-      if (ahoraEt !== antes && (ahoraEt === 'en_camino' || ahoraEt === 'entregado')) {
-        avisos.push(ahoraEt === 'en_camino' ? `La guía ${d.guia} (${d.transportadora}) ya fue recogida por la transportadora y va en camino. Puedes rastrearla aquí: ${d.trackUrl || `https://envia.com/rastreo?label=${d.guia}&cntry_code=co`}` : `La guía ${d.guia} figura como entregada por la transportadora.`);
+      const TXT = {
+        en_camino: `La transportadora (${d.transportadora}) ya recogió tu pedido y va en camino.`,
+        en_reparto: 'Tu pedido ya está en la ciudad de destino y salió a reparto: la transportadora te contactará para entregarlo.',
+        entregado: 'La transportadora reporta tu pedido como entregado. ¡Gracias por tu compra!',
+        novedad: `La transportadora reportó una novedad con tu envío (${t.estado}). Ya la estamos revisando y te contactaremos.`,
+      };
+      if (ahoraEt !== antes && TXT[ahoraEt]) {
+        avisos.push(`${TXT[ahoraEt]} Guía ${d.guia}: ${d.trackUrl || `https://envia.com/rastreo?label=${d.guia}&cntry_code=co`}`);
+        wa.push({ novedad: TXT[ahoraEt], guia: d.guia });
         r.accion = 'cliente avisado del cambio de estado';
       }
       // Sin movimiento en el tiempo prometido → reclamo
@@ -1273,6 +1294,7 @@ export async function revisarGuias(by = 'claude', { avisarClientes = true } = {}
               : `Tu envío (guía ${d.guia}, ${d.transportadora}) está tardando más de lo previsto en llegar. Abrimos un reclamo con la transportadora para acelerar la entrega y te mantendremos al tanto.`,
           );
           d.avisoDemora = new Date().toISOString();
+          wa.push({ novedad: tipo === 12 ? 'presenta un retraso por parte de la transportadora y aún no registra movimiento. Ya abrimos un reclamo formal y estamos encima para que salga lo antes posible.' : 'está tardando más de lo previsto en llegar. Abrimos un reclamo con la transportadora para acelerar la entrega.', guia: d.guia });
         }
       }
       lista.push(r);
@@ -1289,6 +1311,17 @@ export async function revisarGuias(by = 'claude', { avisarClientes = true } = {}
         pushHist(exp, by, out.enviado ? `Correo de estado del envío al cliente: ${avisos.length} novedad(es).` : `Correo de estado del envío no enviado: ${out.motivo}`);
       } catch (err) {
         console.warn('[seguimiento] aviso estado envío', err?.message || err);
+      }
+    }
+    if (wa.length && avisarClientes && exp.cliente?.celular && exp.correosActivos !== false) {
+      for (const w of wa) {
+        try {
+          const { avisoEnvioWhatsApp } = await import('./whatsapp.js');
+          const out = await avisoEnvioWhatsApp({ celular: exp.cliente.celular, nombre: String(exp.cliente.nombre || '').split(' ')[0], pedido: exp.cotizacion?.numero || exp.id, novedad: w.novedad, guia: w.guia });
+          pushHist(exp, by, out.ok ? `WhatsApp al cliente (${out.metodo}) · guía ${w.guia}: ${w.novedad}` : `WhatsApp al cliente no enviado (guía ${w.guia}): ${out.motivo}`);
+        } catch (err) {
+          console.warn('[seguimiento] whatsapp envío', err?.message || err);
+        }
       }
     }
     await persist(exp);

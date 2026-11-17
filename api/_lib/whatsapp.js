@@ -424,3 +424,46 @@ export async function postLeadWebhook(payload) {
     return { ok: false, error: String(err?.message || err) };
   }
 }
+
+/**
+ * Plantilla aprobada por Meta (necesaria para escribirle al cliente fuera de la ventana de 24 h).
+ * params: textos del cuerpo en orden ({{1}}, {{2}}, …).
+ */
+export async function sendTemplate({ to, name, lang = 'es', params = [], cfg = getWhatsAppConfig() }) {
+  return graphPost(cfg.phoneNumberId, cfg.token, {
+    messaging_product: 'whatsapp',
+    ...recipientFields(to),
+    type: 'template',
+    template: {
+      name,
+      language: { code: lang },
+      components: [{ type: 'body', parameters: params.map((t) => ({ type: 'text', text: String(t || '—').replace(/[\n\t]+/g, ' ').replace(/ {4,}/g, '   ').slice(0, 900) })) }],
+    },
+  });
+}
+
+/**
+ * Aviso de envío al cliente por WhatsApp: primero con la plantilla de estado de envío (WHATSAPP_TPL_ENVIO,
+ * por defecto "estado_envio": {{1}} nombre, {{2}} pedido, {{3}} novedad, {{4}} guía); si la plantilla no existe
+ * o falla, intenta un texto normal (solo llega si el cliente escribió en las últimas 24 h).
+ */
+export async function avisoEnvioWhatsApp({ celular, nombre, pedido, novedad, guia, cfg = getWhatsAppConfig() }) {
+  if (!isWhatsAppConfigured(cfg)) return { ok: false, motivo: 'WhatsApp no configurado' };
+  let to = String(celular || '').replace(/\D/g, '');
+  if (to.length === 10 && to.startsWith('3')) to = '57' + to;
+  if (!/^573\d{9}$/.test(to)) return { ok: false, motivo: 'celular inválido' };
+  const tpl = String(process.env.WHATSAPP_TPL_ENVIO || 'estado_envio').trim();
+  const lang = String(process.env.WHATSAPP_TPL_ENVIO_LANG || 'es').trim();
+  try {
+    await sendTemplate({ to, name: tpl, lang, params: [nombre, pedido, novedad, guia], cfg });
+    return { ok: true, metodo: 'plantilla' };
+  } catch (err) {
+    const e1 = String(err?.message || err);
+    try {
+      await sendText({ to, body: `Hola ${nombre}, te escribimos de Reiki Energía Solar con novedades de tu pedido ${pedido}: ${novedad} Guía ${guia}. Rastrea aquí: https://envia.com/rastreo?label=${String(guia).split(',')[0].trim()}&cntry_code=co`, cfg });
+      return { ok: true, metodo: 'texto', nota: e1.slice(0, 120) };
+    } catch (err2) {
+      return { ok: false, motivo: `plantilla: ${e1.slice(0, 120)} · texto: ${String(err2?.message || err2).slice(0, 120)}` };
+    }
+  }
+}
