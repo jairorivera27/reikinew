@@ -1182,6 +1182,11 @@ export async function revisarGuias(by = 'claude', { avisarClientes = true } = {}
     }
   } catch {}
   const shipmentId = (g) => (cuenta.find((x) => String(x.tracking_number) === String(g)) || {}).id;
+  let abiertos = [];
+  try {
+    abiertos = (await envia.ticketsCuenta()).filter((t) => ![2, 3, 7, 8].includes(Number(t.ticket_status_id)) && !/accept|declin|resolv|closed/i.test(String(t.ticket_status_name || '')));
+  } catch {}
+  const ticketDe = (g, tipo) => abiertos.find((t) => String(t.tracking_number) === String(g) && Number(t.ticket_type_id) === Number(tipo));
   const etiqueta = (st) => {
     const t = String(st || '').toLowerCase();
     if (/deliver|entreg/.test(t)) return 'entregado';
@@ -1231,6 +1236,11 @@ export async function revisarGuias(by = 'claude', { avisarClientes = true } = {}
       }
       if (tipo) {
         const firma = ' Reiki Energía Solar SAS, NIT 901942389, tel. 300 405 2638.';
+        const existente = ticketDe(d.guia, tipo);
+        if ((!d.reclamo || d.reclamo.tipo !== tipo || !d.reclamo.id) && existente) {
+          d.reclamo = { tipo, id: existente.id, abierto: existente.created_at, ultimo: existente.updated_at || existente.created_at, estado: existente.ticket_status_name };
+        }
+        if (d.reclamo) d.reclamo.estado = (ticketDe(d.guia, tipo) || {}).ticket_status_name || d.reclamo.estado;
         if (!d.reclamo || d.reclamo.tipo !== tipo) {
           try {
             const tk = await envia.crearTicket({ tipo, shipmentId: shipmentId(d.guia), guia: d.guia, comentario: motivo + firma });
