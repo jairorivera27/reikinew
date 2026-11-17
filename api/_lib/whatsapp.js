@@ -482,6 +482,30 @@ export async function cuentasWhatsApp(cfg = getWhatsAppConfig()) {
   const d = await graphGet(`debug_token?input_token=${encodeURIComponent(cfg.token)}`, cfg.token);
   const ids = new Set();
   for (const s of d?.data?.granular_scopes || []) if (/whatsapp_business/.test(s.scope)) (s.target_ids || []).forEach((x) => ids.add(x));
+  if (!ids.size) {
+    // Token de usuario del sistema: buscar por las empresas del token
+    try {
+      const me = await graphGet('me?fields=id,name,businesses{id,name}', cfg.token);
+      const bizs = me?.businesses?.data || [];
+      if (!bizs.length && me?.id) {
+        try {
+          const b = await graphGet(`${me.id}/assigned_business_asset_groups`, cfg.token);
+          void b;
+        } catch {}
+      }
+      for (const b of bizs) {
+        for (const ed of ['owned_whatsapp_business_accounts', 'client_whatsapp_business_accounts']) {
+          try {
+            const r = await graphGet(`${b.id}/${ed}?fields=id,name`, cfg.token);
+            (r.data || []).forEach((w) => ids.add(w.id));
+          } catch {}
+        }
+      }
+      if (!ids.size) return { cuentas: [], scopes: d?.data?.scopes || [], me };
+    } catch (err) {
+      return { cuentas: [], scopes: d?.data?.scopes || [], error: String(err?.message || err), tipo: d?.data?.type };
+    }
+  }
   const out = [];
   for (const id of ids) {
     try {
