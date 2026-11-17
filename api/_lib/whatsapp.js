@@ -468,3 +468,58 @@ export async function avisoEnvioWhatsApp({ celular, nombre, pedido, novedad, gui
     }
   }
 }
+
+/* ---------- Plantillas (crear desde la API, sin entrar a WhatsApp Manager) ---------- */
+async function graphGet(path, token) {
+  const res = await fetch(`${GRAPH}/${path}${path.includes('?') ? '&' : '?'}access_token=${encodeURIComponent(token)}`);
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data?.error?.message || `Graph ${res.status}`);
+  return data;
+}
+
+/** Cuentas de WhatsApp Business (WABA) a las que tiene acceso el token del bot. */
+export async function cuentasWhatsApp(cfg = getWhatsAppConfig()) {
+  const d = await graphGet(`debug_token?input_token=${encodeURIComponent(cfg.token)}`, cfg.token);
+  const ids = new Set();
+  for (const s of d?.data?.granular_scopes || []) if (/whatsapp_business/.test(s.scope)) (s.target_ids || []).forEach((x) => ids.add(x));
+  const out = [];
+  for (const id of ids) {
+    try {
+      const w = await graphGet(`${id}?fields=id,name`, cfg.token);
+      const nums = await graphGet(`${id}/phone_numbers?fields=id,display_phone_number,verified_name`, cfg.token);
+      out.push({ id: w.id, nombre: w.name, numeros: nums.data || [] });
+    } catch (err) {
+      out.push({ id, error: String(err?.message || err) });
+    }
+  }
+  return { cuentas: out, scopes: (d?.data?.scopes || []) };
+}
+
+/** Plantillas de una WABA. */
+export async function plantillas(wabaId, cfg = getWhatsAppConfig()) {
+  const d = await graphGet(`${wabaId}/message_templates?fields=name,status,language,category,rejected_reason&limit=100`, cfg.token);
+  return d.data || [];
+}
+
+/** Crea la plantilla de notificaciones de envío (estado_envio). */
+export async function crearPlantillaEnvio(wabaId, { nombre = 'estado_envio', idioma = 'es' } = {}, cfg = getWhatsAppConfig()) {
+  const res = await fetch(`${GRAPH}/${wabaId}/message_templates`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${cfg.token}`, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      name: nombre,
+      language: idioma,
+      category: 'UTILITY',
+      components: [
+        {
+          type: 'BODY',
+          text: '🤖 Esto es un robot de notificaciones, por favor no responder este mensaje.\n\nHola {{1}}, te escribimos de Reiki Energía Solar con novedades de tu pedido {{2}}: {{3}}\n\nGuía: {{4}}\nPuedes rastrear tu envío en envia.com/rastreo',
+          example: { body_text: [['Néstor', 'Cot -091126004 R5', 'la transportadora ya recogió tu pedido y va en camino.', '2301381941']] },
+        },
+      ],
+    }),
+  });
+  const data = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(data?.error?.error_user_msg || data?.error?.message || `Graph ${res.status}`);
+  return data;
+}

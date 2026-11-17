@@ -350,6 +350,17 @@ export default async function handler(req, res) {
       const { revisarGuias } = await import('../seguimiento.js');
       return send(res, 200, { ok: true, resultados: await revisarGuias(by, { avisarClientes: body.avisarClientes !== false }) });
     }
+    if (op === 'wa-plantilla') {
+      if (by !== 'claude') return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const wa = await import('../whatsapp.js');
+      try {
+        if (body.accion === 'crear') return send(res, 200, { ok: true, r: await wa.crearPlantillaEnvio(body.waba, { idioma: body.idioma || 'es' }) });
+        if (body.accion === 'listar') return send(res, 200, { ok: true, plantillas: await wa.plantillas(body.waba) });
+        return send(res, 200, { ok: true, ...(await wa.cuentasWhatsApp()) });
+      } catch (err) {
+        return send(res, 400, { ok: false, error: String(err?.message || err) });
+      }
+    }
     if (op === 'envia-tickets') {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
       const envia = await import('../envia.js');
