@@ -89,7 +89,7 @@ import {
   importarDeTienda,
 } from '../cotizaciones.js';
 
-const OPS_CHAT = new Set(['cot-save', 'cot-pdf', 'cot-numero', 'envia-tarifa', 'envia-cajas']);
+const OPS_CHAT = new Set(['cot-save', 'cot-pdf', 'cot-numero', 'envia-tarifa', 'envia-cajas', 'logistica']);
 function tokenChatOk(req) {
   const t = tokenCotizaciones();
   const h = String(req.headers.authorization || '').trim();
@@ -341,6 +341,50 @@ export default async function handler(req, res) {
       const { recogidaGuiaVenta } = await import('../seguimiento.js');
       try {
         return send(res, 200, { ok: true, recogida: await recogidaGuiaVenta(body.id, body.guia, { fecha: body.fecha, desde: body.desde, hasta: body.hasta }, by) });
+      } catch (err) {
+        return send(res, 400, { ok: false, error: String(err?.message || err) });
+      }
+    }
+    if (op === 'logistica') {
+      // Chat de logística: estado de envíos, revisión/reclamos y recogidas (también con el token del chat)
+      const accion = String(body.accion || 'estado');
+      try {
+        if (accion === 'revisar') {
+          const { revisarGuias } = await import('../seguimiento.js');
+          return send(res, 200, { ok: true, resultados: await revisarGuias(chat ? 'chat logística' : by) });
+        }
+        if (accion === 'recogida') {
+          const { recogidaGuiaVenta } = await import('../seguimiento.js');
+          return send(res, 200, { ok: true, recogida: await recogidaGuiaVenta(body.id, body.guia, { fecha: body.fecha, desde: body.desde, hasta: body.hasta }, chat ? 'chat logística' : by) });
+        }
+        if (accion === 'reclamos') {
+          const envia = await import('../envia.js');
+          if (body.ticketId && body.comentario) return send(res, 200, { ok: true, r: await envia.comentarTicket(body.ticketId, body.comentario) });
+          const ts = await envia.ticketsCuenta();
+          return send(res, 200, { ok: true, reclamos: ts.map((t) => ({ id: t.id, guia: t.tracking_number, tipo: t.ticket_type_name || t.ticket_type_id, estado: t.ticket_status_name, creado: t.created_at, comentarios: (t.comments || []).slice(-3) })) });
+        }
+        // estado: resumen logístico de las ventas y proyectos activos (filtro opcional q = cliente, guía, cotización o id)
+        const q = String(body.q || '').toLowerCase().trim();
+        const out = [];
+        for (const e of await listExpedientes()) {
+          if (e.estado !== 'activo' && !q) continue;
+          const ds = e.envio?.despachos || [];
+          const txt = [e.id, e.cliente?.nombre, e.cotizacion?.numero, ...ds.flatMap((d) => [d.guia, ...(d.guiasCajas || [])])].join(' ').toLowerCase();
+          if (q && !txt.includes(q)) continue;
+          const pendiente = (e.etapas || []).find((x) => x.estado !== 'hecho' && x.estado !== 'no_aplica');
+          out.push({
+            id: e.id,
+            tipo: e.tipo,
+            cliente: e.cliente?.nombre,
+            ciudad: e.cliente?.ciudad,
+            celular: e.cliente?.celular,
+            cotizacion: e.cotizacion?.numero,
+            siguienteEtapa: pendiente ? pendiente.label : 'completa',
+            equipos: (e.items || []).filter((it) => (it.compra || {}).estado !== 'no_aplica').map((it) => ({ nombre: it.nombre, cantidad: it.cantidad, proveedor: it.proveedor, bodega: it.bodega, compra: (it.compra || {}).estado, agotadoEn: it.agotadoEn })),
+            guias: ds.map((d) => ({ guia: d.guia, cajas: d.guiasCajas, transportadora: d.transportadora, estado: d.estado || 'sin rastrear', desde: d.estadoDesde, creada: d.fecha, bodega: d.bodegaId, entregado: !!d.entregado, recogida: d.recogida, reclamo: d.reclamo, rastreo: d.trackUrl })),
+          });
+        }
+        return send(res, 200, { ok: true, ventas: out });
       } catch (err) {
         return send(res, 400, { ok: false, error: String(err?.message || err) });
       }
