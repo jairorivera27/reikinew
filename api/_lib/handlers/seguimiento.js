@@ -356,6 +356,7 @@ export default async function handler(req, res) {
       try {
         if (body.accion === 'crear') return send(res, 200, { ok: true, r: await wa.crearPlantillaEnvio(body.waba, { idioma: body.idioma || 'es' }) });
         if (body.accion === 'listar') return send(res, 200, { ok: true, plantillas: await wa.plantillas(body.waba) });
+        if (body.accion === 'get') return send(res, 200, { ok: true, r: await wa.graphDiagnostico(String(body.path || '')) });
         return send(res, 200, { ok: true, ...(await wa.cuentasWhatsApp()) });
       } catch (err) {
         return send(res, 400, { ok: false, error: String(err?.message || err) });

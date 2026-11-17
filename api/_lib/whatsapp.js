@@ -547,3 +547,9 @@ export async function crearPlantillaEnvio(wabaId, { nombre = 'estado_envio', idi
   if (!res.ok) throw new Error(data?.error?.error_user_msg || data?.error?.message || `Graph ${res.status}`);
   return data;
 }
+
+/** Consulta GET de solo lectura al Graph con el token del bot (diagnóstico desde el panel; solo Claude). */
+export async function graphDiagnostico(path, cfg = getWhatsAppConfig()) {
+  if (!/^[A-Za-z0-9_\/?=&,{}.\-]+$/.test(path)) throw new Error('ruta inválida');
+  return graphGet(path.replace('{PHONE_ID}', cfg.phoneNumberId), cfg.token);
+}
