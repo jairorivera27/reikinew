@@ -162,6 +162,15 @@ export default async function handler(req, res) {
     }
 
     const diag = summarizeWebhook(body);
+    // Guardar el id de la cuenta de WhatsApp Business (WABA): llega como entry.id y se usa para las plantillas
+    try {
+      const waba = (body?.entry || []).map((e) => e && e.id).find(Boolean);
+      if (waba && isRedisConfigured()) {
+        const { getRedis, waKey } = await import('./_lib/whatsapp-redis.js');
+        const r = getRedis();
+        if (r) await r.set(waKey('meta', 'waba'), String(waba));
+      }
+    } catch {}
     const messages = extractInboundMessages(body);
 
     console.log(

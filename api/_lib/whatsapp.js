@@ -482,6 +482,13 @@ export async function cuentasWhatsApp(cfg = getWhatsAppConfig()) {
   const d = await graphGet(`debug_token?input_token=${encodeURIComponent(cfg.token)}`, cfg.token);
   const ids = new Set();
   for (const s of d?.data?.granular_scopes || []) if (/whatsapp_business/.test(s.scope)) (s.target_ids || []).forEach((x) => ids.add(x));
+  try {
+    const { getRedis, waKey } = await import('./whatsapp-redis.js');
+    const r = getRedis();
+    const w = r ? await r.get(waKey('meta', 'waba')) : null;
+    if (w) ids.add(String(w));
+  } catch {}
+  if (process.env.WHATSAPP_WABA_ID) ids.add(String(process.env.WHATSAPP_WABA_ID).trim());
   if (!ids.size) {
     // Token de usuario del sistema: buscar por las empresas del token
     try {
