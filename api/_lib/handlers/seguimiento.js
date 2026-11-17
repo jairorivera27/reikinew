@@ -356,6 +356,7 @@ export default async function handler(req, res) {
       try {
         if (body.accion === 'crear') return send(res, 200, { ok: true, r: await wa.crearPlantillaEnvio(body.waba, { idioma: body.idioma || 'es' }) });
         if (body.accion === 'listar') return send(res, 200, { ok: true, plantillas: await wa.plantillas(body.waba) });
+        if (body.accion === 'probar') return send(res, 200, { ok: true, r: await wa.avisoEnvioWhatsApp({ celular: body.celular, nombre: body.nombre || 'Alexander', pedido: body.pedido || 'PRUEBA', novedad: body.novedad || 'este es un mensaje de prueba del robot de notificaciones de envío.', guia: body.guia || '0000000000' }) });
         if (body.accion === 'get') return send(res, 200, { ok: true, r: await wa.graphDiagnostico(String(body.path || '')) });
         return send(res, 200, { ok: true, ...(await wa.cuentasWhatsApp()) });
       } catch (err) {
