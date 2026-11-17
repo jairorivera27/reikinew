@@ -1159,6 +1159,130 @@ export async function rastrearEnviosPendientes(by = 'claude') {
   return res;
 }
 
+/**
+ * Revisión de guías (cada 12 h): rastrea cada guía abierta, anota cuándo cambió de estado, avisa al cliente de los
+ * cambios y, si la guía no se mueve en el tiempo prometido, abre (o insiste en) un reclamo en Envia.
+ * - "Created" (sin recoger) más de 36 h después de creada → reclamo tipo 12 (guía creada sin movimiento) y aviso al cliente.
+ * - En tránsito más de 5 días sin entregar → reclamo tipo 8 (paquete demorado) y aviso al cliente.
+ * - Si ya hay reclamo abierto y pasaron más de 24 h, se agrega un comentario pidiendo respuesta.
+ * Al cliente se le escribe solo cuando cambia el estado o al abrir un reclamo (máximo un aviso de demora cada 48 h).
+ */
+export async function revisarGuias(by = 'claude', { avisarClientes = true } = {}) {
+  const envia = await import('./envia.js');
+  const ahora = Date.now();
+  const H = 3600000;
+  const lista = [];
+  let cuenta = [];
+  try {
+    const d = new Date();
+    cuenta = await envia.guiasDelMes(d.getMonth() + 1, d.getFullYear());
+    if (d.getDate() <= 10) {
+      const p = new Date(d.getFullYear(), d.getMonth() - 1, 1);
+      cuenta = cuenta.concat(await envia.guiasDelMes(p.getMonth() + 1, p.getFullYear()));
+    }
+  } catch {}
+  const shipmentId = (g) => (cuenta.find((x) => String(x.tracking_number) === String(g)) || {}).id;
+  const etiqueta = (st) => {
+    const t = String(st || '').toLowerCase();
+    if (/deliver|entreg/.test(t)) return 'entregado';
+    if (/created|creada|pending|alistamiento/.test(t)) return 'sin_recoger';
+    if (/shipped|transit|picked|recolect|camino|route|out for/.test(t)) return 'en_camino';
+    if (/cancel/.test(t)) return 'cancelado';
+    return 'otro';
+  };
+  for (const e0 of await listExpedientes()) {
+    const ds0 = (e0.envio?.despachos || []).filter((x) => (x.entorno || 'produccion') === 'produccion');
+    if (e0.estado !== 'activo' || !ds0.length) continue;
+    const exp = await getExpediente(e0.id);
+    const ds = exp.envio.despachos;
+    let estados = [];
+    try {
+      estados = await envia.rastrear(ds.map((x) => x.guia));
+    } catch (err) {
+      lista.push({ id: exp.id, error: String(err?.message || err).slice(0, 160) });
+      continue;
+    }
+    const avisos = [];
+    for (const d of ds) {
+      if ((d.entorno || 'produccion') !== 'produccion' || d.entregado) continue;
+      const t = estados.find((x) => x.guia === String(d.guia));
+      if (!t) continue;
+      const antes = etiqueta(d.estado);
+      const ahoraEt = etiqueta(t.estado);
+      if (t.estado !== d.estado || !d.estadoDesde) d.estadoDesde = new Date().toISOString();
+      Object.assign(d, { estado: t.estado, entregado: t.entregado, eventos: t.eventos, revisadoAt: new Date().toISOString() });
+      const r = { id: exp.id, cliente: exp.cliente?.nombre, guia: d.guia, estado: t.estado, accion: '' };
+      // Cambio de estado → avisar al cliente
+      if (ahoraEt !== antes && (ahoraEt === 'en_camino' || ahoraEt === 'entregado')) {
+        avisos.push(ahoraEt === 'en_camino' ? `La guía ${d.guia} (${d.transportadora}) ya fue recogida por la transportadora y va en camino. Puedes rastrearla aquí: ${d.trackUrl || `https://envia.com/rastreo?label=${d.guia}&cntry_code=co`}` : `La guía ${d.guia} figura como entregada por la transportadora.`);
+        r.accion = 'cliente avisado del cambio de estado';
+      }
+      // Sin movimiento en el tiempo prometido → reclamo
+      const creada = Date.parse(d.fecha || '') || ahora;
+      const desde = Date.parse(d.estadoDesde) || ahora;
+      let tipo = 0;
+      let motivo = '';
+      if (ahoraEt === 'sin_recoger' && ahora - creada > 36 * H) {
+        tipo = 12;
+        motivo = `La guía ${d.guia} fue creada el ${new Date(creada).toLocaleDateString('es-CO', { timeZone: 'America/Bogota' })} y la transportadora no ha pasado a recogerla (sigue en "alistamiento del cliente"). Los paquetes están listos y rotulados en la bodega de origen. Solicitamos la recogida inmediata y confirmación de fecha y hora.`;
+      } else if (ahoraEt === 'en_camino' && ahora - desde > 5 * 24 * H) {
+        tipo = 8;
+        motivo = `La guía ${d.guia} está en tránsito desde hace más de 5 días sin entregarse. Solicitamos fecha de entrega y la causa de la demora.`;
+      }
+      if (tipo) {
+        const firma = ' Reiki Energía Solar SAS, NIT 901942389, tel. 300 405 2638.';
+        if (!d.reclamo || d.reclamo.tipo !== tipo) {
+          try {
+            const tk = await envia.crearTicket({ tipo, shipmentId: shipmentId(d.guia), guia: d.guia, comentario: motivo + firma });
+            d.reclamo = { tipo, id: tk?.id || null, abierto: new Date().toISOString(), ultimo: new Date().toISOString() };
+            r.accion = `reclamo abierto en Envia (n.º ${tk?.id || '—'})`;
+          } catch (err) {
+            const m = String(err?.message || err);
+            d.reclamo = { tipo, id: null, abierto: new Date().toISOString(), ultimo: new Date().toISOString(), nota: m.slice(0, 160) };
+            r.accion = /409|already|exist/i.test(m) ? 'ya había un reclamo abierto en Envia' : `no se pudo abrir el reclamo: ${m.slice(0, 120)}`;
+          }
+        } else if (d.reclamo.id && ahora - (Date.parse(d.reclamo.ultimo) || 0) > 24 * H) {
+          try {
+            await envia.comentarTicket(d.reclamo.id, `Seguimos sin respuesta ni movimiento de la guía ${d.guia}. Por favor escalar con la transportadora.${firma}`);
+            d.reclamo.ultimo = new Date().toISOString();
+            r.accion = `se insistió en el reclamo n.º ${d.reclamo.id}`;
+          } catch (err) {
+            r.accion = `no se pudo comentar el reclamo: ${String(err?.message || err).slice(0, 120)}`;
+          }
+        } else r.accion = r.accion || `reclamo n.º ${d.reclamo.id || '—'} abierto, esperando respuesta`;
+        // Aviso de demora al cliente (máximo cada 48 h)
+        if (!d.avisoDemora || ahora - (Date.parse(d.avisoDemora) || 0) > 48 * H) {
+          avisos.push(
+            tipo === 12
+              ? `Tu pedido (guía ${d.guia}, ${d.transportadora}) está listo y empacado, pero la transportadora aún no lo ha recogido. Ya abrimos un reclamo formal y estamos insistiendo para que lo recojan lo antes posible. Te avisaremos apenas salga.`
+              : `Tu envío (guía ${d.guia}, ${d.transportadora}) está tardando más de lo previsto en llegar. Abrimos un reclamo con la transportadora para acelerar la entrega y te mantendremos al tanto.`,
+          );
+          d.avisoDemora = new Date().toISOString();
+        }
+      }
+      lista.push(r);
+    }
+    exp.envio = { ...exp.envio, despachos: ds, rastreadoAt: new Date().toISOString(), estadoEnvio: ds.map((x) => `${x.guia}: ${x.estado || 'sin datos'}`).join(' · ') };
+    if (avisos.length && avisarClientes && exp.cliente?.correo && exp.correosActivos !== false) {
+      try {
+        const out = await correoLibre(exp, {
+          asunto: `Estado de tu envío — ${exp.cotizacion?.numero || exp.id}`,
+          cuerpo: ['Te compartimos el estado de tu pedido:', '', ...avisos, '', 'Cualquier inquietud, escríbenos al WhatsApp 324 573 7413.'].join('\n'),
+          clave: `envio:estado:${new Date().toISOString().slice(0, 13)}`,
+          etapa: 'Estado del envío',
+        });
+        pushHist(exp, by, out.enviado ? `Correo de estado del envío al cliente: ${avisos.length} novedad(es).` : `Correo de estado del envío no enviado: ${out.motivo}`);
+      } catch (err) {
+        console.warn('[seguimiento] aviso estado envío', err?.message || err);
+      }
+    }
+    await persist(exp);
+    const et = (exp.etapas || []).find((x) => x.key === 'entrega');
+    if (ds.every((x) => x.entregado) && et && et.estado !== 'hecho') await updateEtapa(exp.id, 'entrega', { estado: 'hecho', nota: 'Entregado según la transportadora.' }, by);
+  }
+  return lista;
+}
+
 /** Cotiza un flete sin venta (para negociar): bodega de origen + ciudad de destino + cajas. No compra nada. */
 export async function cotizarFleteLibre({ bodegaId, ciudad, direccion, paquetes }) {
   const envia = await import('./envia.js');

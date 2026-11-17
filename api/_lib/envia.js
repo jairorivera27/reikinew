@@ -165,11 +165,14 @@ export async function origenDe(bodega) {
 
 export async function destinoDe(exp) {
   const cl = exp.cliente || {};
-  const recibe = String(cl.contacto || '').replace(/^Recibe:\s*/i, '');
+  // Solo se toma como destinatario lo que viene después de "Recibe:" (el campo contacto también guarda otras notas)
+  const m = String(cl.contacto || '').match(/Recibe:\s*([^.\n]*)/i);
+  const recibe = m ? m[1].trim() : '';
   const telRecibe = (recibe.match(/(\+?57)?\s*3\d{2}\s*\d{3}\s*\d{4}/) || [])[0];
+  const nombreRecibe = recibe.replace(/(\+?57)?\s*3\d{2}\s*\d{3}\s*\d{4}.*$/, '').split(/[,·]/)[0].trim();
   if (!cl.direccion) throw new Error('La venta no tiene dirección de entrega.');
   return direccion({
-    nombre: recibe ? recibe.split(/[,·]/)[0] : cl.nombre,
+    nombre: nombreRecibe || cl.nombre,
     empresa: cl.nombre,
     telefono: telRecibe || cl.celular,
     correo: cl.correo,

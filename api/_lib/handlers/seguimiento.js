@@ -345,6 +345,11 @@ export default async function handler(req, res) {
         return send(res, 400, { ok: false, error: String(err?.message || err) });
       }
     }
+    if (op === 'envia-revision') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const { revisarGuias } = await import('../seguimiento.js');
+      return send(res, 200, { ok: true, resultados: await revisarGuias(by, { avisarClientes: body.avisarClientes !== false }) });
+    }
     if (op === 'envia-tickets') {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
       const envia = await import('../envia.js');
