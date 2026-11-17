@@ -443,6 +443,7 @@ export async function sendTemplate({ to, name, lang = 'es', params = [], cfg = g
 }
 
 /**
+ * Bot de notificaciones de envío (solo informa; el mensaje pide no responder).
  * Aviso de envío al cliente por WhatsApp: primero con la plantilla de estado de envío (WHATSAPP_TPL_ENVIO,
  * por defecto "estado_envio": {{1}} nombre, {{2}} pedido, {{3}} novedad, {{4}} guía); si la plantilla no existe
  * o falla, intenta un texto normal (solo llega si el cliente escribió en las últimas 24 h).
@@ -460,7 +461,7 @@ export async function avisoEnvioWhatsApp({ celular, nombre, pedido, novedad, gui
   } catch (err) {
     const e1 = String(err?.message || err);
     try {
-      await sendText({ to, body: `Hola ${nombre}, te escribimos de Reiki Energía Solar con novedades de tu pedido ${pedido}: ${novedad} Guía ${guia}. Rastrea aquí: https://envia.com/rastreo?label=${String(guia).split(',')[0].trim()}&cntry_code=co`, cfg });
+      await sendText({ to, body: `🤖 *Esto es un robot de notificaciones, por favor no responder este mensaje.*\n\nHola ${nombre}, te escribimos de Reiki Energía Solar con novedades de tu pedido ${pedido}: ${novedad}\n\nGuía: ${guia}\nRastrea aquí: https://envia.com/rastreo?label=${String(guia).split(',')[0].trim()}&cntry_code=co`, cfg });
       return { ok: true, metodo: 'texto', nota: e1.slice(0, 120) };
     } catch (err2) {
       return { ok: false, motivo: `plantilla: ${e1.slice(0, 120)} · texto: ${String(err2?.message || err2).slice(0, 120)}` };
