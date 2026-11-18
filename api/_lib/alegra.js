@@ -49,7 +49,9 @@ async function alegra(method, path, body) {
     j = { message: txt.slice(0, 200) };
   }
   if (!r.ok) {
-    const msg = (j && (j.message || j.error || (j.errors && JSON.stringify(j.errors)))) || `HTTP ${r.status}`;
+    const m0 = j && (j.message || j.error || j.errors);
+    const msg = (m0 && (typeof m0 === 'string' ? m0 : m0.message || JSON.stringify(m0))) || `HTTP ${r.status}`;
+    console.error('[alegra]', method, path, r.status, txt.slice(0, 800));
     const e = new Error(`Alegra ${r.status}: ${String(msg).slice(0, 300)}`);
     e.status = r.status;
     throw e;
