@@ -47,7 +47,10 @@ async function llamar(base, method, ruta, body, auth = true) {
   const err = j && (j.meta === 'error' || j.error) ? j.error || j : null;
   if (!res.ok || err) {
     const m = (err && (err.message || err.description)) || (j && j.message) || txt || `HTTP ${res.status}`;
-    throw new Error(`Envia ${res.status}: ${String(typeof m === 'string' ? m : JSON.stringify(m)).slice(0, 300)}`);
+    // Detalle del campo que Envia rechaza (viene en description/data/errors), para poder corregirlo
+    const det = err && typeof err === 'object' ? [err.description !== m ? err.description : '', err.data, err.errors, err.details].filter((x) => x && (typeof x !== 'object' || Object.keys(x).length)).map((x) => (typeof x === 'string' ? x : JSON.stringify(x))).join(' · ') : '';
+    console.error('[envia]', method, ruta, res.status, txt.slice(0, 1500));
+    throw new Error(`Envia ${res.status}: ${String(typeof m === 'string' ? m : JSON.stringify(m)).slice(0, 300)}${det ? ' — ' + det.slice(0, 400) : ''}`);
   }
   return j;
 }
