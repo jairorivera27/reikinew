@@ -300,6 +300,14 @@ export async function crearBorrador(exp, alegraId) {
   };
 }
 
+/** Emite (timbra) a la DIAN una factura en borrador. Devuelve la respuesta de Alegra; quien llama confirma con leerFactura. */
+export async function emitirFactura(alegraId) {
+  const j = await alegra('POST', '/invoices/stamp', { ids: [String(alegraId)] });
+  const lista = Array.isArray(j) ? j : j?.data || j?.invoices || [j];
+  const err = lista.map((x) => x && (x.error || x.errors || x.message)).filter(Boolean);
+  return { raw: j, detalle: err.length ? (typeof err[0] === 'string' ? err[0] : JSON.stringify(err[0])) : '' };
+}
+
 /** Lee la factura en Alegra: ¿sigue en borrador o ya se emitió? */
 export async function leerFactura(alegraId) {
   const f = await alegra('GET', `/invoices/${encodeURIComponent(alegraId)}`);

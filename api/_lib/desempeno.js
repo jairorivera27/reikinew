@@ -149,6 +149,15 @@ export async function catalogo() {
   catCache = { at: Date.now(), items, porSlug, porTitulo, revision: dispo ? dispo.ultima_revision : null };
   return catCache;
 }
+/** Lo que dice la revisión diaria de la tienda de cada equipo (stock / stock bajo), por índice de ítem. */
+export async function stockDeItems(items = []) {
+  const cat = await catalogo();
+  return items.map((it) => {
+    const c = buscarEnCatalogo(cat, it);
+    return c ? { stock: c.stock, stockBajo: c.stockBajo, titulo: c.titulo, slug: c.slug } : null;
+  });
+}
+
 function buscarEnCatalogo(cat, it) {
   const exacto = (it.sku && cat.porSlug.get(it.sku)) || cat.porTitulo.get(norm(it.nombre));
   if (exacto) return exacto;
@@ -611,6 +620,16 @@ export async function guardarMetas(input = {}, by = 'panel') {
       out[ind][p] = v > 0 ? v : null;
     }
   }
+  const actual = await leerMetas();
+  const pl = input.plan !== undefined ? input.plan : actual.plan;
+  if (pl && typeof pl === 'object' && Number(pl.utilidad) > 0) {
+    out.plan = {
+      utilidad: Math.round(Number(String(pl.utilidad).replace(/\D/g, '')) || 0),
+      margen: Math.min(90, Math.max(1, Number(pl.margen) || 20)),
+      crecimiento: Math.min(50, Math.max(0, Number(pl.crecimiento) || 0)),
+      inicio: /^\d{4}-\d{2}$/.test(String(pl.inicio || '')) ? pl.inicio : hoyYmd().slice(0, 7),
+    };
+  }
   out.actualizado = new Date().toISOString();
   out.por = String(by || '').slice(0, 40);
   metasMem = out;
@@ -618,6 +637,54 @@ export async function guardarMetas(input = {}, by = 'panel') {
   const redis = getRedis();
   if (redis) await redis.set(METAS_KEY, out);
   return out;
+}
+
+/** Meses entre 'YYYY-MM' a y b (b - a). */
+function mesesEntre(a, b) {
+  const [ya, ma] = a.split('-').map(Number);
+  const [yb, mb] = b.split('-').map(Number);
+  return (yb - ya) * 12 + (mb - ma);
+}
+function sumarMes(ym, n) {
+  const [y, m] = ym.split('-').map(Number);
+  const d = new Date(Date.UTC(y, m - 1 + n, 1));
+  return d.toISOString().slice(0, 7);
+}
+const redondear = (v, a = 100000) => Math.round(v / a) * a;
+
+/**
+ * Metas desde el plan financiero: ventas del mes = utilidad necesaria / margen, creciendo X % cada mes desde el inicio.
+ * Cotizado y número de cotizaciones salen de la conversión real de los últimos 90 días (cotizado → vendido y valor promedio).
+ */
+function metasDesdePlan(plan, { cots, todos, hoy }) {
+  const desde = sumarDias(hoy, -90);
+  const cot90 = cots.filter((c) => ymd(c.creada) >= desde && ymd(c.creada) <= hoy);
+  const cotizado90 = cot90.reduce((a, c) => a + (Number(c.total) || 0), 0);
+  const vendido90 = todos.filter((e) => e.estado !== 'cancelado' && ymd(fechaAprobacion(e)) >= desde && ymd(fechaAprobacion(e)) <= hoy).reduce((a, e) => a + resumen(e).total, 0);
+  const conversion = cotizado90 > 0 ? Math.min(0.4, Math.max(0.1, vendido90 / cotizado90)) : 0.175;
+  const ticket = cot90.length ? cotizado90 / cot90.length : 13000000;
+  const base = plan.utilidad / (plan.margen / 100);
+  const mesActual = hoy.slice(0, 7);
+  const proyeccion = [];
+  for (let i = 0; i < 12; i += 1) {
+    const ym = sumarMes(mesActual, i);
+    const k = Math.max(0, mesesEntre(plan.inicio, ym));
+    const ventas = redondear(base * Math.pow(1 + plan.crecimiento / 100, k));
+    const cotizado = redondear(ventas / conversion, 1000000);
+    proyeccion.push({ mes: ym, ventas, utilidad: redondear(ventas * (plan.margen / 100)), cotizado, cotizaciones: Math.ceil(cotizado / ticket) });
+  }
+  const m = proyeccion[0];
+  const habMes = habiles(`${mesActual}-01`, finDeMes(hoy)) || 25;
+  const porDia = (v, a) => redondear(v / habMes, a);
+  return {
+    metas: {
+      ventas: { mes: m.ventas, semana: porDia(m.ventas * 6, 100000), dia: porDia(m.ventas, 10000) },
+      cotizado: { mes: m.cotizado, semana: porDia(m.cotizado * 6, 100000), dia: porDia(m.cotizado, 10000) },
+      cotizaciones: { mes: m.cotizaciones, semana: Math.ceil((m.cotizaciones * 6) / habMes), dia: Math.max(1, Math.round(m.cotizaciones / habMes)) },
+    },
+    supuestos: { conversion: Math.round(conversion * 1000) / 10, ticket: Math.round(ticket), cotizado90, vendido90, base: Math.round(base) },
+    proyeccion,
+  };
 }
 
 /** Días hábiles (lunes a sábado) entre dos fechas, inclusive. */
@@ -633,8 +700,15 @@ function finDeMes(y) {
 
 /** Avance contra la meta de hoy, la semana y el mes, con el ritmo esperado según los días hábiles transcurridos. */
 export async function calcularMetas({ cots, ventasPorPeriodo } = {}) {
-  const metas = await leerMetas();
+  let metas = await leerMetas();
   const hoy = hoyYmd();
+  let plan = null;
+  if (metas.plan) {
+    const todosExp = await listExpedientes();
+    const listaCots = (cots || (await listCotizaciones())).filter((c) => !(c.estado === 'rechazada' && /versi[oó]n anterior/i.test(c.motivoRechazo || '')));
+    plan = { ...metas.plan, ...metasDesdePlan(metas.plan, { cots: listaCots, todos: todosExp, hoy }) };
+    metas = { ...metas, ...plan.metas };
+  }
   const lunes = lunesDe(hoy);
   const rangos = {
     dia: { desde: hoy, hasta: hoy, fin: hoy, label: 'Hoy' },
@@ -694,5 +768,5 @@ export async function calcularMetas({ cots, ventasPorPeriodo } = {}) {
       ...ind,
     };
   }
-  return { metas, periodos };
+  return { metas, periodos, plan };
 }

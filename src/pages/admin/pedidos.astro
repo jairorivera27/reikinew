@@ -764,13 +764,14 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
               '<p class="seg-warn">Alegra aún no está conectado al panel. Agrega <b>ALEGRA_EMAIL</b> y <b>ALEGRA_TOKEN</b> en Vercel (Alegra → Configuración → API) y haz Redeploy.</p>';
           } else if (f.alegraId) {
             cuerpo =
-              '<p>Prefactura en <b>borrador</b> en Alegra (sin emitir' +
-              (f.alegraTotal ? ', ' + cop(f.alegraTotal) : '') +
-              '). Revísala y dale <b>Emitir</b> en Alegra; luego vuelve aquí.</p><div class="modal-actions">' +
-              '<a class="btn btn-primary seg-mini" href="' +
+              '<p>Prefactura lista en <b>borrador</b> en Alegra' +
+              (f.alegraTotal ? ' por <b>' + cop(f.alegraTotal) + '</b>' : '') +
+              '. Revisa cliente, ítems y total; si todo está bien, emítela a la DIAN desde aquí (sale con fecha de hoy y se envía sola al correo del cliente).</p><div class="modal-actions">' +
+              '<button type="button" class="btn btn-primary seg-mini" data-alegra-emitir><i class="fas fa-paper-plane" aria-hidden="true"></i> Emitir factura electrónica</button>' +
+              '<a class="btn btn-ghost seg-mini" href="' +
               esc(f.alegraUrl) +
-              '" target="_blank" rel="noopener"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Abrir prefactura en Alegra</a>' +
-              '<button type="button" class="btn btn-secondary seg-mini" data-alegra-sync>Ya la emití: actualizar</button></div>';
+              '" target="_blank" rel="noopener"><i class="fas fa-external-link-alt" aria-hidden="true"></i> Revisar en Alegra</a>' +
+              '<button type="button" class="btn btn-ghost seg-mini" data-alegra-sync>Ya la emití en Alegra: actualizar</button></div>';
           } else {
             var faltan = [];
             if (!(e.cliente && e.cliente.documento)) faltan.push('cédula o NIT');
@@ -778,6 +779,7 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
             if (!(e.cliente && /,/.test(e.cliente.ciudad || ''))) faltan.push('ciudad con departamento (ej. "La Macarena, Meta")');
             if (!(e.items || []).length) faltan.push('ítems');
             cuerpo =
+              (f.errorAuto ? '<p class="seg-warn">La prefactura automática falló: ' + esc(f.errorAuto) + '</p>' : '') +
               '<p>Crea la factura en Alegra como <b>borrador</b> con el cliente, los ítems, el IVA de cada línea y el total de la venta. No se emite a la DIAN hasta que tú le des Emitir en Alegra.</p>' +
               (faltan.length
                 ? '<p class="seg-warn">Para crear la factura falta: <b>' +
@@ -864,6 +866,40 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
                 if (ae) {
                   ae.hidden = false;
                   ae.textContent = 'No se pudo crear en Alegra: ' + err.message;
+                  ae.scrollIntoView({ block: 'nearest' });
+                }
+              }
+            });
+          var ae2 = el.body.querySelector('[data-alegra-emitir]');
+          if (ae2)
+            ae2.addEventListener('click', async function () {
+              // Dos clics: emitir a la DIAN no se puede deshacer (solo con nota crédito)
+              if (!ae2.classList.contains('seg-confirmar')) {
+                ae2.classList.add('seg-confirmar');
+                ae2.innerHTML = '¿Emitir a la DIAN? Toca otra vez para confirmar';
+                setTimeout(function () {
+                  if (document.body.contains(ae2) && !ae2.disabled) {
+                    ae2.classList.remove('seg-confirmar');
+                    ae2.innerHTML = '<i class="fas fa-paper-plane" aria-hidden="true"></i> Emitir factura electrónica';
+                  }
+                }, 6000);
+                return;
+              }
+              ae2.disabled = true;
+              msg('Emitiendo la factura en Alegra…');
+              try {
+                var j = await api('alegra-emitir', { id: e.id });
+                upsert(j.expediente);
+                render();
+                openDetail(e.id);
+                msg('Factura ' + j.factura.numero + ' emitida. Se cerró la etapa y se envió al cliente.' + (j.pago ? ' Pago registrado en Alegra.' : ''));
+              } catch (err) {
+                ae2.disabled = false;
+                msg('');
+                var ae = $('al-err');
+                if (ae) {
+                  ae.hidden = false;
+                  ae.textContent = 'No se pudo emitir: ' + err.message;
                   ae.scrollIntoView({ block: 'nearest' });
                 }
               }
@@ -1309,9 +1345,9 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
       })();
     </script>
 
-    <script is:inline src="/admin/panel-inicio.js?v=20261109a"></script>
+    <script is:inline src="/admin/panel-inicio.js?v=20261118a"></script>
     <script is:inline src="/admin/panel-envios.js?v=20261109e"></script>
-    <script is:inline src="/admin/panel-carrusel.js?v=20261110b"></script>
+    <script is:inline src="/admin/panel-carrusel.js?v=20261118a"></script>
     <script is:inline src="/admin/panel-cotizaciones.js?v=20261109a"></script>
 
     <script is:inline define:vars={{ MOCKS: pedidosMocks }}>
@@ -4320,6 +4356,27 @@ import pedidosMocks from '../../../data/admin-pedidos-mocks.json';
         background: #fff7ed;
         font-size: 0.85rem;
       }
+      .mt-plan { margin: 0 0 .9rem; }
+      .mt-plan p { margin: 0 0 .5rem; }
+      .mt-proy, .mt-plan .mt-editar { margin: .35rem 0; }
+      .mt-plan-form { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: .6rem; align-items: end; margin-top: .5rem; }
+      .mt-plan-form label { display: grid; gap: .2rem; font-size: .82rem; }
+      .mt-plan-form .pc-acciones { grid-column: 1 / -1; }
+      .disp-prov { border: 1px solid rgba(127,127,127,.25); border-radius: 10px; padding: .6rem .75rem; margin: 0 0 .75rem; }
+      .disp-prov header { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; margin-bottom: .4rem; }
+      .disp-acciones { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; margin-bottom: .4rem; }
+      .disp-estado { font-size: .78rem; padding: .1rem .5rem; border-radius: 999px; background: rgba(127,127,127,.15); }
+      .disp-estado--ok { background: rgba(34,160,90,.15); color: #1d8a4f; }
+      .disp-estado--nuevo { background: rgba(120,90,220,.15); color: #6a4fd0; }
+      .disp-estado--tarde { background: rgba(230,140,20,.18); color: #b5680a; }
+      .disp-tag { font-size: .72rem; opacity: .85; }
+      .disp-tag--ok { color: #1d8a4f; }
+      .disp-tag--ojo { color: #b5680a; }
+      .disp-tag--mal { color: #c0392b; font-weight: 600; }
+      .disp-acc { white-space: nowrap; text-align: right; }
+      .disp-sel { max-width: 15rem; }
+      @media (max-width: 640px) { .disp-acc { white-space: normal; text-align: left; } }
+      .seg-confirmar { background: #c0392b !important; border-color: #c0392b !important; color: #fff !important; }
       .car-alts {
         margin: 0.3rem 0 0.5rem;
         padding-left: 1.1rem;

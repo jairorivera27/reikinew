@@ -21,13 +21,13 @@ export const PLANTILLAS = {
   tienda: [
     { key: 'datos_facturacion', label: 'Datos del cliente para facturar', ayuda: 'Nombre o razón social, cédula/NIT, RUT si es empresa, correo para la factura electrónica, celular y dirección de entrega.' },
     { key: 'verificacion_pago', label: 'Verificación de pagos', ayuda: 'Confirmar que el dinero llegó a la cuenta (Wompi/Addi se confirman solos; transferencias y consignaciones se revisan en el banco).' },
+    { key: 'factura', label: 'Facturación electrónica', ayuda: 'Con los datos completos y el pago verificado, la prefactura se crea sola en Alegra; revísala y emítela a la DIAN con el botón del panel. Se envía sola al correo del cliente.' },
     { key: 'disponibilidad', label: 'Disponibilidad de los equipos', ayuda: 'Confirmar existencias con el proveedor de cada equipo antes de comprar.' },
     { key: 'compra_proveedor', label: 'Compra a proveedores', ayuda: 'Pedir y pagar los equipos a cada proveedor; guardar su factura o remisión.' },
     { key: 'confirmacion_envio', label: 'Confirmación del envío con el cliente', ayuda: 'Confirmar dirección, ciudad, quién recibe, horario y valor del flete.' },
     { key: 'coordinacion_envio', label: 'Coordinación del envío', ayuda: 'Acordar con el proveedor o la transportadora el despacho (directo del proveedor o desde bodega).' },
     { key: 'guia', label: 'Envío del número de guía', ayuda: 'Enviar al cliente la transportadora y el número de guía.' },
     { key: 'entrega', label: 'Entrega', ayuda: 'Confirmar con el cliente que recibió completo y en buen estado.' },
-    { key: 'factura', label: 'Generación de la factura', ayuda: 'Emitir la factura electrónica con los datos del cliente y enviarla al correo.' },
   ],
   proyecto: [
     { key: 'contrato', label: 'Aprobación y firma del contrato', ayuda: 'Cotización aprobada, contrato de suministro e instalación firmado por ambas partes.' },
@@ -106,6 +106,7 @@ function normItem(it) {
     codigoProveedor: str(it.codigoProveedor, 80) || prov.codigoProveedor || '',
     disponibilidad: str(it.disponibilidad, 120),
     bodega: str(it.bodega, 40),
+    consultadoAt: str(it.consultadoAt, 30),
     agotadoEn: Array.isArray(it.agotadoEn) ? [...new Set(it.agotadoEn.map((x) => str(x, 80)).filter(Boolean))].slice(0, 10) : [],
     compra: normCompra(it.compra),
   };
@@ -185,8 +186,18 @@ export function resumen(exp) {
   };
 }
 
+function ordenarEtapas(exp) {
+  const orden = (PLANTILLAS[exp.tipo] || []).map((p) => p.key);
+  if (!orden.length || !Array.isArray(exp.etapas)) return;
+  const pos = (k) => (orden.indexOf(k) < 0 ? 999 : orden.indexOf(k));
+  exp.etapas = exp.etapas.map((e, i) => [e, i]).sort((a, b) => pos(a[0].key) - pos(b[0].key) || a[1] - b[1]).map((x) => x[0]);
+  const plant = Object.fromEntries((PLANTILLAS[exp.tipo] || []).map((p) => [p.key, p.label]));
+  exp.etapas.forEach((e) => { if (plant[e.key]) e.label = plant[e.key]; });
+}
+
 /** Marca automáticamente lo que se puede deducir sin pisar lo que el equipo cambió a mano. */
 function autoEtapas(exp) {
+  ordenarEtapas(exp);
   const r = resumen(exp);
   const set = (key, estado, nota) => {
     const e = exp.etapas.find((x) => x.key === key);
@@ -341,7 +352,8 @@ export async function saveExpediente(input = {}, by = 'panel') {
   pushHist(exp, by, prev ? 'Expediente actualizado.' : `Expediente creado (${tipo === 'proyecto' ? 'proyecto' : 'compra en tienda'}).`);
   if (!input._sinCorreoInicial) await notificarCambios(exp, antes, by);
   if (prev && !EMAIL_OK.test(correoAntes) && EMAIL_OK.test(String(exp.cliente?.correo || ''))) await reintentarSinCorreo(exp, by);
-  return persist(exp);
+  const guardado = await persist(exp);
+  return (await facturaAuto(guardado, by)) || guardado;
 }
 
 export async function updateEtapa(id, key, { estado, nota, fechaCliente } = {}, by = 'panel') {
@@ -409,7 +421,8 @@ export async function addPago(id, pago, by = 'panel') {
   autoEtapas(exp);
   await notificarCambios(exp, antes, by);
   pushHist(exp, by, `Pago ${p.estado === 'verificado' ? 'verificado' : 'por verificar'}: $${p.monto.toLocaleString('es-CO')} (${p.medio}).`);
-  const out = await persist(exp);
+  let out = await persist(exp);
+  out = (await facturaAuto(out, by)) || out;
   // Factura ya emitida en Alegra: el pago verificado se registra allá de una vez.
   if (p.estado === 'verificado' && out.factura?.alegraId && out.factura?.numero) {
     try {
@@ -825,6 +838,73 @@ export async function prepararFacturaAlegra(id, by = 'panel') {
   return { exp, url: b.url, borrador: b };
 }
 
+/** ¿La venta ya puede facturarse? Datos completos + pago total verificado (tienda) y sin prefactura todavía. */
+export function listaParaFacturar(exp) {
+  if (!exp || exp.tipo !== 'tienda' || exp.estado !== 'activo') return false;
+  const f = exp.factura || {};
+  if (f.alegraId || f.numero) return false;
+  const et = (k) => (exp.etapas || []).find((x) => x.key === k)?.estado;
+  return et('datos_facturacion') === 'hecho' && resumen(exp).estadoPago === 'completo' && et('factura') !== 'no_aplica' && et('factura') !== 'hecho';
+}
+
+/** Crea sola la prefactura (borrador) en Alegra apenas la venta está lista para facturar. No emite a la DIAN. */
+export async function facturaAuto(exp, by = 'panel') {
+  try {
+    if (!listaParaFacturar(exp)) return null;
+    const { alegraConfigurado } = await import('./alegra.js');
+    if (!alegraConfigurado()) return null;
+    const r = await prepararFacturaAlegra(exp.id, by);
+    return r?.exp || null;
+  } catch (err) {
+    const e2 = await getExpediente(exp.id);
+    if (e2) {
+      pushHist(e2, by, `No se pudo crear sola la prefactura en Alegra: ${String(err?.message || err).slice(0, 180)}`);
+      e2.factura = { ...(e2.factura || {}), errorAuto: String(err?.message || err).slice(0, 200), errorAutoAt: nowIso() };
+      await persist(e2);
+      return e2;
+    }
+    return null;
+  }
+}
+
+/** Prefacturas automáticas para todas las ventas listas (y reordena las etapas de las ventas activas). */
+export async function facturasPendientesAuto(by = 'claude') {
+  const res = [];
+  for (const e of await listExpedientes()) {
+    if (e.estado !== 'activo') continue;
+    const antes = (e.etapas || []).map((x) => x.key + x.label).join();
+    ordenarEtapas(e);
+    if ((e.etapas || []).map((x) => x.key + x.label).join() !== antes) await persist(e);
+    if (!listaParaFacturar(e)) continue;
+    const r = await facturaAuto(e, by);
+    const f = (r || e).factura || {};
+    res.push({ id: e.id, cliente: e.cliente?.nombre, alegraId: f.alegraId || '', error: f.alegraId ? '' : f.errorAuto || '' });
+  }
+  return res;
+}
+
+/** Emite a la DIAN la prefactura de la venta (con fecha de hoy y los datos actuales) y la sincroniza. */
+export async function emitirFacturaAlegra(id, by = 'panel') {
+  const exp = await getExpediente(id);
+  if (!exp) return null;
+  if (exp.factura?.numero) throw new Error(`Esta venta ya tiene la factura ${exp.factura.numero}.`);
+  let f = exp.factura || {};
+  if (!f.alegraId) {
+    const r = await prepararFacturaAlegra(id, by);
+    f = r?.exp?.factura || {};
+    if (!f.alegraId) throw new Error('No se pudo crear la prefactura en Alegra.');
+  }
+  const { emitirFactura } = await import('./alegra.js');
+  const fresco = await getExpediente(id);
+  await crearBorrador(fresco, f.alegraId); // fecha de hoy, contacto y valores actuales
+  const r = await emitirFactura(f.alegraId);
+  pushHist(fresco, by, 'Factura enviada a la DIAN desde el panel.');
+  await persist(fresco);
+  const s = await sincronizarFacturaAlegra(id, by);
+  if (!s?.factura?.emitida) throw new Error(`Alegra no confirmó la emisión: ${String(r?.detalle || 'revisa la prefactura en Alegra').slice(0, 250)}`);
+  return s;
+}
+
 /** Lee la factura en Alegra; si ya se emitió guarda el número (cierra la etapa y avisa al cliente) y registra el pago. */
 export async function sincronizarFacturaAlegra(id, by = 'panel') {
   const exp = await getExpediente(id);
@@ -900,6 +980,52 @@ export async function asignarBodegaItem(id, idx, bodegaId, by = 'panel') {
   const { leerBodegas } = await import('./envia.js');
   const b = (await leerBodegas())[it.bodega];
   pushHist(exp, by, `${it.nombre}: recogida en ${b ? b.nombre : 'bodega por definir'}.`);
+  autoEtapas(exp);
+  return persist(exp);
+}
+
+/** Equipos pendientes de confirmar disponibilidad de un proveedor (sin bodega, no agotados allí, por comprar). */
+function pendientesDe(exp, proveedor) {
+  const n = (x) => String(x || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/[^a-z0-9]/g, '');
+  return (exp.items || [])
+    .map((it, idx) => ({ it, idx }))
+    .filter(({ it }) => it.compra?.estado !== 'no_aplica' && it.sku !== 'ENVIO' && !/env[ií]o/i.test(it.nombre || '') && !it.bodega && !['pedido', 'recibido'].includes(it.compra?.estado))
+    .filter(({ it }) => n(it.proveedor || 'Por confirmar') === n(proveedor) && !(it.agotadoEn || []).includes(it.proveedor));
+}
+
+/** Se le preguntó al proveedor por WhatsApp: guarda la hora para ver cuánto lleva sin responder. */
+export async function marcarConsultaProveedor(id, proveedor, by = 'panel') {
+  const exp = await getExpediente(id);
+  if (!exp) return null;
+  const ps = pendientesDe(exp, proveedor);
+  if (!ps.length) return exp;
+  const t = nowIso();
+  ps.forEach(({ it }) => (it.consultadoAt = t));
+  const e = (exp.etapas || []).find((x) => x.key === 'disponibilidad');
+  if (e && e.estado === 'pendiente') {
+    e.estado = 'en_curso';
+    e.fecha = t;
+  }
+  pushHist(exp, by, `Disponibilidad consultada a ${proveedor} (${ps.length} equipo${ps.length > 1 ? 's' : ''}).`);
+  return persist(exp);
+}
+
+/** El proveedor confirmó que tiene todo: cada equipo pendiente queda con la bodega de ese proveedor. */
+export async function confirmarProveedorTodo(id, proveedor, bodegaId, by = 'panel') {
+  const exp = await getExpediente(id);
+  if (!exp) return null;
+  const { leerBodegas } = await import('./envia.js');
+  const bodegas = await leerBodegas();
+  const ps = pendientesDe(exp, proveedor);
+  if (!ps.length) return exp;
+  const sinBodega = [];
+  for (const { it } of ps) {
+    const b = (bodegaId && bodegas[bodegaId] ? bodegaId : '') || bodegaDeItem(it, bodegas);
+    if (b) it.bodega = b;
+    else sinBodega.push(it.nombre);
+  }
+  if (sinBodega.length === ps.length) throw new Error(`${proveedor} no tiene una bodega registrada: escógela en cada equipo o regístrala en "Bodegas de despacho".`);
+  pushHist(exp, by, `${proveedor} confirmó disponibilidad de ${ps.length - sinBodega.length} equipo(s).`);
   autoEtapas(exp);
   return persist(exp);
 }

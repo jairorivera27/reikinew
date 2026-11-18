@@ -293,6 +293,24 @@ export default async function handler(req, res) {
       if (!exp) return send(res, 404, { ok: false, error: 'No existe.' });
       return send(res, 200, { ok: true, expediente: { ...exp, resumen: resumen(exp) } });
     }
+    if (op === 'disp-info') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const exp = await getExpediente(body.id);
+      if (!exp) return send(res, 404, { ok: false, error: 'No existe.' });
+      const { stockDeItems } = await import('../desempeno.js');
+      return send(res, 200, { ok: true, stock: await stockDeItems(exp.items || []).catch(() => []) });
+    }
+    if (op === 'prov-consultado' || op === 'prov-confirmar') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      try {
+        const m = await import('../seguimiento.js');
+        const exp = op === 'prov-consultado' ? await m.marcarConsultaProveedor(body.id, body.proveedor, by) : await m.confirmarProveedorTodo(body.id, body.proveedor, body.bodegaId, by);
+        if (!exp) return send(res, 404, { ok: false, error: 'No existe.' });
+        return send(res, 200, { ok: true, expediente: { ...exp, resumen: resumen(exp) } });
+      } catch (err) {
+        return send(res, 400, { ok: false, error: String(err?.message || err) });
+      }
+    }
     if (op === 'item-bodega') {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
       const exp = await asignarBodegaItem(body.id, body.idx, body.bodegaId, by);
@@ -539,6 +557,22 @@ export default async function handler(req, res) {
       const r = await prepararFacturaAlegra(body.id, by);
       if (!r) return send(res, 404, { ok: false, error: 'No existe.' });
       return send(res, 200, { ok: true, url: r.url, reutilizada: Boolean(r.reutilizada), yaEmitida: Boolean(r.yaEmitida), borrador: r.borrador || null, unidades: r.unidades || null, plantilla: r.plantilla || null, expediente: { ...r.exp, resumen: resumen(r.exp) } });
+    }
+    if (op === 'alegra-emitir') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      try {
+        const { emitirFacturaAlegra } = await import('../seguimiento.js');
+        const r = await emitirFacturaAlegra(body.id, by);
+        if (!r) return send(res, 404, { ok: false, error: 'No existe.' });
+        return send(res, 200, { ok: true, factura: r.factura, pago: r.pago, expediente: { ...r.exp, resumen: resumen(r.exp) } });
+      } catch (err) {
+        return send(res, 400, { ok: false, error: String(err?.message || err) });
+      }
+    }
+    if (op === 'factura-auto') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const { facturasPendientesAuto } = await import('../seguimiento.js');
+      return send(res, 200, { ok: true, resultados: await facturasPendientesAuto(by) });
     }
     if (op === 'alegra-pendientes') return send(res, 200, { ok: true, resultados: await sincronizarPendientesAlegra(by) });
     if (op === 'alegra-sync') {

@@ -168,10 +168,21 @@
     );
   }
 
+  function hace(iso) {
+    var h = (Date.now() - Date.parse(iso)) / 3600000;
+    if (!(h >= 0)) return '';
+    if (h < 1) return 'hace ' + Math.max(1, Math.round(h * 60)) + ' min';
+    if (h < 48) return 'hace ' + Math.round(h) + ' h';
+    return 'hace ' + Math.round(h / 24) + ' días';
+  }
+
+  /** Disponibilidad agrupada por proveedor: un bloque por proveedor con su WhatsApp, "Tiene todo" y cada equipo con "Lo tiene" / "Agotado". */
   async function htmlDisponibilidad(e) {
     var esc = S().esc;
-    var cs = await contactos();
-    var b = await bodegas();
+    var res = await Promise.all([contactos(), bodegas(), S().api('disp-info', { id: e.id }).catch(function () { return { stock: [] }; })]);
+    var cs = res[0];
+    var b = res[1];
+    var stock = res[2].stock || [];
     var ids = Object.keys(b);
     var norm = function (x) {
       return String(x || '').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]/g, '');
@@ -188,34 +199,99 @@
         }
       })
     );
-    var filas = (e.items || [])
-      .map(function (it, idx) {
-        if (!esEquipo(it)) return '';
-        var sug = ids.filter(function (k) {
-          return norm(b[k].proveedor) && norm(b[k].proveedor) === norm(it.proveedor);
-        });
-        var actual = it.bodega || '';
-        var agotadoAqui = (it.agotadoEn || []).indexOf(it.proveedor || 'Por confirmar') >= 0;
+    var grupos = {};
+    var orden = [];
+    (e.items || []).forEach(function (it, idx) {
+      if (!esEquipo(it)) return;
+      var p = it.proveedor || 'Por confirmar';
+      if (!grupos[p]) {
+        grupos[p] = [];
+        orden.push(p);
+      }
+      grupos[p].push({ it: it, idx: idx });
+    });
+    var badgeStock = function (st) {
+      if (!st) return '<span class="disp-tag">sin dato en la revisión diaria</span>';
+      if (st.stock === false) return '<span class="disp-tag disp-tag--mal">agotado en la revisión diaria</span>';
+      if (st.stockBajo) return '<span class="disp-tag disp-tag--ojo">stock bajo (≤3)</span>';
+      return '<span class="disp-tag disp-tag--ok">en stock en la revisión diaria</span>';
+    };
+    var bloques = orden.map(function (p) {
+      var filas = grupos[p];
+      var k = Object.keys(cs).find(function (x) {
+        return norm(x) === norm(p);
+      });
+      var c = k ? cs[k] : null;
+      var sug = ids.filter(function (x) {
+        return norm(b[x].proveedor) && norm(b[x].proveedor) === norm(p);
+      });
+      var pend = filas.filter(function (f) {
+        return !f.it.bodega && !(f.it.compra && /pedido|recibido/.test(f.it.compra.estado)) && (f.it.agotadoEn || []).indexOf(p) < 0;
+      });
+      var consult = pend.map(function (f) { return f.it.consultadoAt; }).filter(Boolean).sort()[0];
+      var estado = !pend.length
+        ? '<span class="disp-estado disp-estado--ok">✓ Confirmado</span>'
+        : consult
+          ? '<span class="disp-estado' + ((Date.now() - Date.parse(consult)) / 3600000 > 4 ? ' disp-estado--tarde' : '') + '">Preguntado ' + esc(hace(consult)) + ', esperando respuesta</span>'
+          : '<span class="disp-estado disp-estado--nuevo">Sin preguntar</span>';
+      var acciones = '';
+      if (pend.length && p !== 'Por confirmar') {
+        var txt =
+          'Hola' + (c && c.nombre ? ' ' + c.nombre.split(' ')[0] : '') + ', ¿cómo estás? ' +
+          (pend.length > 1 ? '¿Tienes disponibles estos productos?' : '¿Tienes disponible este producto?') + '\n\n' +
+          pend.map(function (f) {
+            var r = refDe(f.it);
+            return '• ' + f.it.nombre + (r ? ' — Ref.: ' + r : '') + ' (' + f.it.cantidad + ' und.)';
+          }).join('\n') + '\n\nGracias. Reiki Energía Solar.';
+        acciones =
+          (c && c.celular
+            ? '<a class="btn seg-mini pc-wa" data-disp-wa="' + esc(p) + '" target="_blank" rel="noopener" href="' + esc('https://wa.me/' + c.celular + '?text=' + encodeURIComponent(txt)) + '"><i class="fab fa-whatsapp" aria-hidden="true"></i> ' + (consult ? 'Volver a preguntar' : 'Preguntar') + (c.nombre ? ' a ' + esc(c.nombre.split(' ')[0]) : '') + '</a>'
+            : '<small class="pc-muted">Sin WhatsApp de ' + esc(p) + ': agrégalo en Por comprar → Contactos de proveedores.</small>') +
+          ' <button type="button" class="btn btn-primary seg-mini" data-disp-todo="' + esc(p) + '"' + (sug.length ? '' : ' disabled title="Este proveedor no tiene bodega registrada"') + '>✓ Tiene todo</button>';
+      }
+      if (p === 'Por confirmar') acciones = '<small class="pc-muted">Asigna el proveedor en "Ver todo el expediente" → Equipos y proveedores.</small>';
+      var lineas = filas.map(function (f) {
+        var it = f.it;
+        var idx = f.idx;
+        var agotadoAqui = (it.agotadoEn || []).indexOf(p) >= 0;
+        var pedido = it.compra && /pedido|recibido/.test(it.compra.estado);
+        var der;
+        if (it.bodega) {
+          der =
+            '<span class="oc-badge oc-badge--ok">✓ Lo tiene</span> <small>recoge en</small> <select class="disp-sel" data-car-bodega="' + idx + '" aria-label="Bodega de ' + esc(it.nombre) + '"><option value="">Quitar (no confirmado)</option>' +
+            ids.map(function (x) {
+              return '<option value="' + esc(x) + '"' + (x === it.bodega ? ' selected' : '') + '>' + esc(b[x].nombre) + '</option>';
+            }).join('') + '</select>';
+        } else if (pedido) {
+          der = '<span class="oc-badge oc-badge--ok">Ya pedido al proveedor</span>';
+        } else if (agotadoAqui) {
+          der = '<span class="oc-badge">Agotado aquí</span>';
+        } else {
+          der =
+            (sug.length === 1
+              ? '<button type="button" class="btn btn-secondary seg-mini" data-disp-si="' + idx + '" data-bodega="' + esc(sug[0]) + '">✓ Lo tiene</button>'
+              : '<select class="disp-sel" data-car-bodega="' + idx + '" aria-label="Bodega de ' + esc(it.nombre) + '"><option value="">✓ Lo tiene en…</option>' +
+                ids.map(function (x) {
+                  return '<option value="' + esc(x) + '">' + esc(b[x].nombre) + (sug.indexOf(x) >= 0 ? ' (sugerida)' : '') + '</option>';
+                }).join('') + '</select>') +
+            ' <button type="button" class="btn btn-ghost seg-mini" data-car-agotado="' + idx + '">Agotado</button>';
+        }
         return (
-          '<tr><td>' + esc(it.cantidad) + '</td><td>' + esc(it.nombre) + '</td><td>' + esc(it.proveedor || 'Por confirmar') + '</td><td>' +
-          '<select data-car-bodega="' + idx + '" aria-label="Bodega de recogida de ' + esc(it.nombre) + '"><option value="">' + (actual ? 'Por definir' : 'Escoge cuando confirme…') + '</option>' +
-          ids.map(function (k) {
-            return '<option value="' + esc(k) + '"' + (k === actual ? ' selected' : '') + '>' + esc(b[k].nombre) + (sug.indexOf(k) >= 0 && !actual ? ' (sugerida)' : '') + '</option>';
-          }).join('') +
-          '</select>' + (actual ? ' <span class="oc-badge oc-badge--ok">Disponible</span>' : '') +
-          (!actual && !agotadoAqui ? ' <button type="button" class="btn btn-ghost seg-mini" data-car-agotado="' + idx + '" title="El proveedor no lo tiene">Agotado</button>' : '') +
-          ((it.agotadoEn || []).length && !agotadoAqui && !actual ? '<br><small class="pc-muted">Agotado antes en ' + esc(it.agotadoEn.join(', ')) + '</small>' : '') +
-          '</td></tr>' +
+          '<tr><td>' + esc(it.cantidad) + '</td><td>' + esc(it.nombre) + '<br>' + badgeStock(stock[idx]) +
+          ((it.agotadoEn || []).length && !agotadoAqui ? ' <small class="pc-muted">agotado antes en ' + esc(it.agotadoEn.join(', ')) + '</small>' : '') +
+          '</td><td class="disp-acc">' + der + '</td></tr>' +
           (agotadoAqui ? htmlOtroProveedor(it, idx, cs, b, alts[idx]) : '')
         );
-      })
-      .join('');
-    var wa = botonesWa(e, cs);
+      }).join('');
+      return (
+        '<section class="disp-prov"><header><b>' + esc(p) + '</b>' + (c && c.nombre ? ' <small>' + esc(c.nombre) + '</small>' : '') + ' ' + estado + '</header>' +
+        (acciones ? '<div class="disp-acciones">' + acciones + '</div>' : '') +
+        '<div class="table-wrap car-dispo"><table><tbody>' + lineas + '</tbody></table></div></section>'
+      );
+    });
     return (
-      (wa ? '<div class="modal-actions car-wa">' + wa + '</div>' : '') +
-      '<div class="table-wrap car-dispo"><table><thead><tr><th>Cant.</th><th>Equipo</th><th>Proveedor</th><th>Disponible en (recoge en)</th></tr></thead><tbody>' +
-      filas +
-      '</tbody></table></div><p class="pc-muted">Pregunta la disponibilidad con el botón de WhatsApp (va un mensaje por proveedor con todos sus equipos pendientes). Cuando confirme, escoge la bodega donde se recoge cada equipo: al tenerlos todos, esta etapa se cierra sola. Si el proveedor dice que está agotado, toca <b>Agotado</b> para buscarlo con otro proveedor.</p>'
+      bloques.join('') +
+      '<p class="pc-muted">1) <b>Preguntar</b> abre WhatsApp con todos los equipos pendientes de ese proveedor y deja anotada la hora. 2) Cuando responda: <b>Tiene todo</b> o, equipo por equipo, <b>Lo tiene</b> / <b>Agotado</b> (agotado muestra otros proveedores que lo tienen). Al confirmar todos, la etapa se cierra sola.</p>'
     );
   }
 
@@ -311,6 +387,43 @@
           alert(err.message);
         }
       };
+      var refrescar = function (j) {
+        S().upsert(j.expediente);
+        S().abrir(e.id);
+      };
+      extra.querySelectorAll('[data-disp-si]').forEach(function (bt) {
+        bt.addEventListener('click', async function () {
+          bt.disabled = true;
+          try {
+            refrescar(await S().api('item-bodega', { id: e.id, idx: Number(bt.getAttribute('data-disp-si')), bodegaId: bt.getAttribute('data-bodega') }));
+          } catch (err) {
+            bt.disabled = false;
+            alert(err.message);
+          }
+        });
+      });
+      extra.querySelectorAll('[data-disp-todo]').forEach(function (bt) {
+        bt.addEventListener('click', async function () {
+          bt.disabled = true;
+          try {
+            refrescar(await S().api('prov-confirmar', { id: e.id, proveedor: bt.getAttribute('data-disp-todo') }));
+          } catch (err) {
+            bt.disabled = false;
+            alert(err.message);
+          }
+        });
+      });
+      extra.querySelectorAll('[data-disp-wa]').forEach(function (a) {
+        a.addEventListener('click', function () {
+          // Abre WhatsApp y anota la hora de la consulta (sin bloquear el enlace)
+          S().api('prov-consultado', { id: e.id, proveedor: a.getAttribute('data-disp-wa') })
+            .then(function (j) {
+              S().upsert(j.expediente);
+              setTimeout(function () { S().abrir(e.id); }, 400);
+            })
+            .catch(function () {});
+        });
+      });
       extra.querySelectorAll('[data-car-agotado]').forEach(function (bt) {
         bt.addEventListener('click', function () {
           accion(bt, { idx: Number(bt.getAttribute('data-car-agotado')), agotado: true });

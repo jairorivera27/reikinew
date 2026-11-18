@@ -357,10 +357,52 @@
       }).join('') +
       '</tbody></table></div><div class="pc-acciones"><button type="submit" class="btn btn-primary seg-mini">Guardar metas</button><small class="pc-muted" data-mt-msg></small></div>' +
       '<p class="pc-muted">Días hábiles: lunes a sábado. La raya en la barra marca lo que deberías llevar a hoy para cumplir la meta de la semana o del mes. Deja vacío lo que no quieras medir.</p></form></details>';
-    return '<section class="in-card mt-card" data-mt-box="' + id + '"><h2 class="in-h">Metas de cotizaciones y ventas</h2><div class="mt-grid">' + cols + '</div>' + form + '</section>';
+    var pl = m.plan;
+    var planHtml = '';
+    if (pl && pl.proyeccion) {
+      var NOMBRE_MES = ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'];
+      var mesTxt = function (ym) {
+        var a = ym.split('-');
+        return NOMBRE_MES[Number(a[1]) - 1] + ' ' + a[0].slice(2);
+      };
+      var sp = pl.supuestos || {};
+      planHtml =
+        '<div class="mt-plan"><p><b>Plan:</b> para cubrir ' + corto(pl.utilidad) + ' al mes con el ' + pl.margen + ' % de margen, las ventas deben ser <b>' + corto(pl.proyeccion[0].ventas) + '</b> este mes y crecer ' + pl.crecimiento + ' % cada mes. ' +
+        'Con la conversión real de los últimos 90 días (' + sp.conversion + ' % de lo cotizado se vende) y una cotización promedio de ' + corto(sp.ticket) + ', eso pide cotizar <b>' + corto(pl.proyeccion[0].cotizado) + '</b> (' + pl.proyeccion[0].cotizaciones + ' cotizaciones) este mes.</p>' +
+        '<details class="mt-proy"><summary>Proyección de los próximos 12 meses</summary><div class="table-wrap"><table class="mt-tabla"><thead><tr><th>Mes</th><th>Ventas</th><th>Utilidad (' + pl.margen + ' %)</th><th>Cotizar ($)</th><th>Cotizaciones</th></tr></thead><tbody>' +
+        pl.proyeccion.map(function (r) {
+          return '<tr><th scope="row">' + mesTxt(r.mes) + '</th><td>' + corto(r.ventas) + '</td><td>' + corto(r.utilidad) + '</td><td>' + corto(r.cotizado) + '</td><td>' + num(r.cotizaciones) + '</td></tr>';
+        }).join('') +
+        '</tbody></table></div></details>' +
+        '<details class="mt-editar"><summary><i class="fas fa-sliders-h" aria-hidden="true"></i> Ajustar el plan</summary><form data-mt-plan="' + id + '" class="mt-plan-form">' +
+        '<label>Utilidad necesaria al mes ($)<input inputmode="numeric" name="utilidad" value="' + num(pl.utilidad) + '" /></label>' +
+        '<label>Margen sobre ventas (%)<input inputmode="decimal" name="margen" value="' + pl.margen + '" /></label>' +
+        '<label>Crecimiento mensual (%)<input inputmode="decimal" name="crecimiento" value="' + pl.crecimiento + '" /></label>' +
+        '<label>Mes de inicio<input type="month" name="inicio" value="' + esc(pl.inicio) + '" /></label>' +
+        '<div class="pc-acciones"><button type="submit" class="btn btn-primary seg-mini">Guardar plan</button><small class="pc-muted" data-mt-msg></small></div></form></details></div>';
+      form = '';
+    }
+    return '<section class="in-card mt-card" data-mt-box="' + id + '"><h2 class="in-h">Metas de cotizaciones y ventas</h2>' + planHtml + '<div class="mt-grid">' + cols + '</div>' + form + '</section>';
   }
 
   function enlazarMetas(box, alGuardar) {
+    var fp = box.querySelector('[data-mt-plan]');
+    if (fp)
+      fp.addEventListener('submit', async function (ev) {
+        ev.preventDefault();
+        var v = function (n) {
+          return fp.querySelector('[name="' + n + '"]').value;
+        };
+        var msg = fp.querySelector('[data-mt-msg]');
+        msg.textContent = 'Guardando…';
+        try {
+          var j = await S().api('metas', { metas: { plan: { utilidad: v('utilidad').replace(/\D/g, ''), margen: Number(v('margen').replace(',', '.')), crecimiento: Number(v('crecimiento').replace(',', '.')), inicio: v('inicio') } } });
+          msg.textContent = 'Guardado.';
+          if (alGuardar) alGuardar(j);
+        } catch (err) {
+          msg.textContent = 'No se pudo guardar: ' + err.message;
+        }
+      });
     var f = box.querySelector('[data-mt-form]');
     if (!f) return;
     f.addEventListener('submit', async function (ev) {
