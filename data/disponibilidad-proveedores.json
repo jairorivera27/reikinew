@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-11-16 20:59",
+ "ultima_revision": "2026-11-17 21:00",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -309,8 +309,8 @@
    "consulta": "ok"
   },
   "allyce-inversor-cargador-1-2-kw-monofasico-110v-mppt-60ah-24v-100voc": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "allyce-inversor-cargador-ups-1kva-24v-1000w-salida-a-110v": {
@@ -764,8 +764,8 @@
    "consulta": "ok"
   },
   "deye-caja-de-control-de-alto-voltaje-para-baterias-bos-g-pdu-na-hv750v-620vdc": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "deye-caja-de-control-de-alto-voltaje-para-baterias-gb-lm-pro-620v-dc": {
@@ -1349,8 +1349,8 @@
    "consulta": "ok"
   },
   "moreday-conector-mc4-tipo-y-sy-bc21": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "moreday-proteccion-breaker-dc1-000v-4p-25a": {
@@ -1539,7 +1539,7 @@
    "consulta": "ok"
   },
   "smart-dongle-huawei-sdonglea-05-wlan-fe-para-monitoreo": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -3299,8 +3299,8 @@
    "consulta": "ok"
   },
   "soporte-de-bloque-de-terminales-n-y-pe-abb-12m": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "soporte-de-bloque-de-terminales-n-y-pe-abb-18m": {
@@ -3319,12 +3319,12 @@
    "consulta": "ok"
   },
   "tablero-de-sobreponer-abb-24-modulos-ip65-retie": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "tablero-de-sobreponer-abb-4-modulos-ip65-retie": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },

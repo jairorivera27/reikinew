@@ -12,7 +12,7 @@ specifications:
 brand: "Deye"
 model: "BOS-GM-HVB750V"
 sku: "ING-BATLA02"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-05"
 imagen_provisional: false
@@ -20,7 +20,6 @@ fichaPdf: "/fichas/proveedores/ingesolar-BATLA02.pdf"
 faqs:
   - pregunta: "¿Es compatible con mi inversor?"
     respuesta: "El voltaje del banco debe coincidir con el del inversor (750 V) y, en baterías de litio, el inversor debe admitir su protocolo de comunicación (CAN o RS485). Te confirmamos la compatibilidad sin costo."
-stockBajo: true
 ---
 
 Proveedor: Ingesolar (BATLA02).

@@ -16,7 +16,7 @@ specifications:
 brand: "Allyce"
 model: "VS1224"
 sku: "ING-INVC06"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-05"
 imagen_provisional: false
@@ -28,7 +28,6 @@ faqs:
     respuesta: "Es monofásico. Debe coincidir con la conexión eléctrica de tu predio (lo ves en tu factura o en el tablero)."
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
-stockBajo: true
 ---
 
 Proveedor: Ingesolar (INVC06).

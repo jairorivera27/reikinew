@@ -13,11 +13,10 @@ specifications:
 brand: "Abb"
 model: "1SPE007715F0752"
 sku: "SNO-1SPE007715F0752"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: false
-stockBajo: true
 ---
 
 Proveedor: Suneo Energy (1SPE007715F0752).
