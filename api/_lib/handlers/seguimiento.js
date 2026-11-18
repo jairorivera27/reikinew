@@ -571,6 +571,21 @@ export default async function handler(req, res) {
         return send(res, 400, { ok: false, error: String(err?.message || err) });
       }
     }
+    if (op === 'alegra-borradores') {
+      // Solo Claude: listar o borrar borradores duplicados en Alegra (nunca facturas emitidas)
+      if (chat || by !== 'claude') return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const a = await import('../alegra.js');
+      try {
+        if (Array.isArray(body.borrar)) {
+          const out = [];
+          for (const id of body.borrar.slice(0, 20)) out.push(await a.borrarBorrador(id).catch((err) => ({ id, error: String(err.message) })));
+          return send(res, 200, { ok: true, resultados: out });
+        }
+        return send(res, 200, { ok: true, borradores: await a.borradoresRecientes() });
+      } catch (err) {
+        return send(res, 400, { ok: false, error: String(err?.message || err) });
+      }
+    }
     if (op === 'factura-auto') {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
       const { facturasPendientesAuto } = await import('../seguimiento.js');

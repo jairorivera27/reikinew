@@ -820,7 +820,8 @@ export async function prepararFacturaAlegra(id, by = 'panel') {
     }
   }
   const b = await crearBorrador(exp);
-  exp.factura = { ...f, alegraId: b.alegraId, alegraUrl: b.url, alegraEstado: 'draft', alegraTotal: b.total, alegraCreada: nowIso() };
+  exp.factura = { ...f, alegraId: b.alegraId, alegraUrl: b.url, alegraEstado: 'draft', alegraTotal: b.total, alegraCreada: nowIso(), avisoAlegra: b.aviso || '', errorAuto: '' };
+  if (b.aviso) pushHist(exp, by, `Alegra: ${b.aviso.slice(0, 200)}`);
   pushHist(
     exp,
     by,

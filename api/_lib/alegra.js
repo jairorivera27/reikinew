@@ -278,7 +278,9 @@ export async function crearBorrador(exp, alegraId) {
   const pagos = (exp.pagos || []).filter((p) => p.estado === 'verificado');
   const medio = pagos.length ? String(pagos[pagos.length - 1].medio || '').toLowerCase() : '';
   const ref = exp.cotizacion?.numero ? `Cotización ${exp.cotizacion.numero}` : '';
-  const inv = await alegra(alegraId ? 'PUT' : 'POST', alegraId ? `/invoices/${encodeURIComponent(alegraId)}` : '/invoices', {
+  // Si ya hay un borrador de esta venta en Alegra (p. ej. de un intento que Alegra rechazó pero guardó), se reutiliza
+  if (!alegraId) alegraId = await borradorDeVenta(exp.id).catch(() => '');
+  const cuerpo = {
     status: 'draft',
     date: hoy,
     dueDate: hoy,
@@ -289,9 +291,20 @@ export async function crearBorrador(exp, alegraId) {
     paymentMethod: /consign|dep[oó]sito/.test(medio) ? 'BANK_DEPOSIT' : /efectivo/.test(medio) ? 'CASH' : 'DEBIT_TRANSFER',
     items,
     anotation: [ref, `Venta ${exp.id}`, L.sinCosto && L.sinCosto.length ? `Incluye sin costo: ${L.sinCosto.join(', ')}` : ''].filter(Boolean).join(' · ').slice(0, 300),
-  });
+  };
+  let inv;
+  try {
+    inv = await alegra(alegraId ? 'PUT' : 'POST', alegraId ? `/invoices/${encodeURIComponent(alegraId)}` : '/invoices', cuerpo);
+  } catch (err) {
+    // "La factura quedó en borrador…" (límite del plan): Alegra sí guardó el borrador; se recupera para no duplicarlo
+    const id = /borrador/i.test(String(err.message)) ? alegraId || (await borradorDeVenta(exp.id).catch(() => '')) : '';
+    if (!id) throw err;
+    inv = await alegra('GET', `/invoices/${encodeURIComponent(id)}`);
+    inv.avisoAlegra = String(err.message).replace(/^Alegra \d+:\s*/, '');
+  }
   return {
     alegraId: String(inv.id),
+    aviso: inv.avisoAlegra || '',
     url: urlFactura(inv.id),
     total: Number(inv.total) || L.total,
     totalPanel: L.objetivo,
@@ -300,6 +313,27 @@ export async function crearBorrador(exp, alegraId) {
     contacto: { id: String(contacto.id), nombre: contacto.name, creado },
     lineas: L.lineas.map((l) => ({ nombre: l.nombre, cantidad: l.cantidad, base: l.base, iva: l.iva })),
   };
+}
+
+/** Borrador en Alegra de una venta del panel (se reconoce por "Venta <id>" en las observaciones). Devuelve el más reciente. */
+export async function borradorDeVenta(expId) {
+  const lista = await alegra('GET', '/invoices?status=draft&limit=30&order_field=id&order_direction=DESC');
+  const hit = (Array.isArray(lista) ? lista : []).find((f) => new RegExp(`Venta ${String(expId).replace(/[-]/g, '\\-')}(\\b|$)`).test(String(f.anotation || '')));
+  return hit ? String(hit.id) : '';
+}
+
+/** Borra un borrador (nunca una factura emitida). */
+export async function borrarBorrador(alegraId) {
+  const f = await alegra('GET', `/invoices/${encodeURIComponent(alegraId)}`);
+  if (f.status !== 'draft') throw new Error(`La factura ${alegraId} no es un borrador (${f.status}); no se borra.`);
+  await alegra('DELETE', `/invoices/${encodeURIComponent(alegraId)}`);
+  return { borrado: String(alegraId), anotation: f.anotation || '' };
+}
+
+/** Borradores recientes con su venta (para limpiar duplicados). */
+export async function borradoresRecientes() {
+  const lista = await alegra('GET', '/invoices?status=draft&limit=30&order_field=id&order_direction=DESC');
+  return (Array.isArray(lista) ? lista : []).map((f) => ({ id: String(f.id), cliente: f.client?.name, total: Number(f.total) || 0, anotation: f.anotation || '', fecha: f.datetime || f.date }));
 }
 
 /** Emite (timbra) a la DIAN una factura en borrador. Devuelve la respuesta de Alegra; quien llama confirma con leerFactura. */
