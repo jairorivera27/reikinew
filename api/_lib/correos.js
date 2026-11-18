@@ -102,6 +102,13 @@ export const CORREOS = {
       adjuntos: (e) => adjuntosDespacho(e),
     },
     'entrega:hecho': {
+      // Solo se envía cuando la transportadora reporta la entrega de TODAS las guías (rastreo de Envia).
+      // Marcar la etapa a mano en el panel ya no le dice al cliente que su pedido llegó.
+      requiere: (e) => {
+        const ds = e.envio?.despachos || [];
+        if (!ds.length) return 'sin guía de transportadora: el correo de entrega solo sale cuando la transportadora reporta la entrega';
+        return ds.every((d) => d.entregado) ? '' : 'la transportadora aún no reporta la entrega de todas las guías';
+      },
       asunto: (e) => `Pedido entregado — ${ref(e)}`,
       cuerpo: () => [
         'Confirmamos la entrega de tu pedido. ¡Gracias por confiar en Reiki Energía Solar!',
