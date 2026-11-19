@@ -16,7 +16,7 @@ specifications:
 brand: "Allyce"
 model: "VS1224"
 sku: "ING-INVC06"
-stock: "pre-orden"
+stock: "disponible"
 order: 8000
 updatedAt: "2026-10-05"
 imagen_provisional: false

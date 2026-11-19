@@ -17,6 +17,7 @@ stock: "disponible"
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: true
+stockBajo: true
 ---
 
 Proveedor: Suneo Energy (SL7N-125-2P-100).

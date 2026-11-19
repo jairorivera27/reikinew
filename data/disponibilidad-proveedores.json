@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-11-17 21:00",
+ "ultima_revision": "2026-11-18 20:59",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -30,11 +30,11 @@
   "1880812": "https://autosolar.co/baterias-de-litio-12v/bateria-litio-felicity-solar-128kwh-12v-100a-fla12100",
   "1880813": "https://autosolar.co/baterias-de-litio-12v/bateria-litio-felicity-solar-256kwh-12v-200a-fla12200",
   "1880814": "https://autosolar.co/baterias-de-litio-24v/bateria-litio-felicity-solar-75kwh-24v-300a-fla-24300",
-  "1880816": "https://autosolar.co/baterias-de-litio/bateria-litio-tensite-512kwh-512v-100a-fla48100-eu",
+  "1880816": "https://autosolar.co/baterias-de-litio/bateria-litio-felicity-solar-512kwh-512v-100a-fla48100-eu",
   "1880833": "https://autosolar.co/baterias-de-litio-24v/bateria-litio-felicity-solar-256kwh-24v-100a-fla24100",
-  "1880836": "https://autosolar.co/baterias-de-litio/bateria-litio-tensite-16kwh-512v-314a-fla48314-eu",
+  "1880836": "https://autosolar.co/baterias-de-litio/bateria-litio-felicity-solar-16kwh-512v-314a-fla48314-eu",
   "1880837": "https://autosolar.co/baterias-de-litio/bateria-de-litio-felicity-512kwh-100ah-flh48100ug1-alto-voltaje",
-  "1880845": "https://autosolar.co/baterias-de-litio/bateria-litio-tensite-118kwh-512v-fla48230-eu",
+  "1880845": "https://autosolar.co/baterias-de-litio/bateria-litio-felicity-solar-118kwh-512v-fla48230-eu",
   "1880846": "https://autosolar.co/baterias-de-litio/bateria-litio-felicity-solar-59kwh-24v-230a-fla-24230-eu",
   "1880848": "https://autosolar.co/baterias-de-litio-24v/bateria-litio-felicity-solar-715kwh-24v-280a-fla24280-eu",
   "1880849": "https://autosolar.co/baterias-de-litio-48v/bateria-litio-felicity-solar-875kwh-48v-171a-fla48171-eu",
@@ -210,12 +210,12 @@
   },
   "allyce-aire-acondicionado-hibrido-350voc-220vac-acdc-18kbtu-2-1kw": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "allyce-aire-acondicionado-r410a-dc48vdc-9kbtu-1-2kw": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "allyce-bombillo-para-nevera-12-24vdc": {
@@ -235,7 +235,7 @@
   },
   "allyce-bombillo-tipo-pinpon-9w-a-12v-24v-tipo-aaa": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "allyce-cerca-tester-analogo": {
@@ -250,7 +250,7 @@
   },
   "allyce-conector-en-y-3-1-100cm-estandar-americano": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "allyce-conector-mc4-30a-pin-solido-4mm2": {
@@ -305,27 +305,27 @@
   },
   "allyce-controlador-pwm-con-display-24-12v-60a-50voc-allyce-sin-garantia": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "allyce-inversor-cargador-1-2-kw-monofasico-110v-mppt-60ah-24v-100voc": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
   "allyce-inversor-cargador-ups-1kva-24v-1000w-salida-a-110v": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "allyce-inversor-on-grid-5-000w-trifasico-a-480voc-y-salida-220-208vac": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "allyce-inversor-onda-modificada-1000w-12vdc-a-110vac": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "allyce-inversor-onda-modificada-2000w-12vdc-a-110vac": {
@@ -340,12 +340,12 @@
   },
   "allyce-inversor-onda-pura-2000w-12v-a-220vac": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "allyce-inversor-onda-pura-3000w-24v-a-110vac": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "allyce-luminaria-solar-todo-en-uno-10w": {
@@ -415,7 +415,7 @@
   },
   "allyce-proteccion-mc4-con-fusible-de-15-a": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "allyce-proteccion-mc4-con-fusible-de-30-a": {
@@ -450,7 +450,7 @@
   },
   "allyce-resistencia-de-1500w-110-vdc-para-calentador-15-amp-allyce-sin-garantia": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "allyce-solar-hongo-decorativo-piscina": {
@@ -524,7 +524,7 @@
    "consulta": "no-encontrado"
   },
   "bateria-solar-litio-felicity-48v-16kwh-1880836": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -555,7 +555,7 @@
   },
   "bomba-sumergible-lapicero-dc-4d-17m3h-3000w-105m-cont-dy-d3600ac-dc-bom-4d3000-sc17-1": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "bomba-sumergible-lapicero-dc-4e-7m3h-800w-72m-cont-dy-1500dc-bomb-4e800-sc7-72d-deye": {
@@ -755,7 +755,7 @@
   },
   "deye-bateria-litio-51-2v-100ah-6000-ciclos-90-w-45kg-rack-se-g5-1pro-b-deye-60m-garan": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "deye-bateria-litio-tipo-rack-5kwh-alto-voltaje-51-2vdc-para-caja-de-control-bos-gm5-1": {
@@ -790,12 +790,12 @@
   },
   "deye-inversor-on-grid-136kweuam8-trifasico-220-380v-1100voc-con-modulo-de-comunicacio": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "deye-inversor-on-grid-15k-g02-lv-trifasico-220v-800voc-con-modulo-de-comunicacion": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "deye-inversor-on-grid-15kw-sun-15k-g04-lv-trifasico-208vac-800voc": {
@@ -815,7 +815,7 @@
   },
   "deye-inversor-on-grid-6kw-sun-6k-g06p3-eu-bm2-lv-p1-trifasico-lv-220v-800voc": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "deye-inversor-on-grid-75kw-eu-am8-lv-trifasico-220v-800voc-con-modulo-de-comunicacion": {
@@ -825,17 +825,17 @@
   },
   "deye-inversor-on-grid-8kw-sun-8k-g06p3-eu-bm2-lv-p1-trifasico-lv-220v-800voc": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "deye-inversor-on-off-grid-15kw-sg01hp3-us-am2-trifasico-160-500v-550voc-con-modulo-de": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "deye-inversor-on-off-grid-30kw-trifasico-sun-30k-sg01hp3-us-bm4-208vac-500vdc-hv-500v": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "deye-inversor-on-off-grid-60kw-trifasico-sun-60k-sg01hp3-us-bm4-277v-480vac-800vdc-hv": {
@@ -845,7 +845,7 @@
   },
   "deye-medidor-con-ct-sdm630-mct-indirecta-series-eastron": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "deye-medidor-smart-meter-microinversor-ddzy422-d2-wifi": {
@@ -870,7 +870,7 @@
   },
   "deye-router-wifi-para-monitoreo-de-inyeccion-a-red-para-microinversor-500-w": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "dps-supresor-suntree-40ka-dc-5504116": {
@@ -935,7 +935,7 @@
   },
   "epever-controlador-mppt-dr2106n-12v-20a-60voc": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-controlador-mppt-et7420nc-g3-12-24v-48v-75a-200voc": {
@@ -945,7 +945,7 @@
   },
   "epever-controlador-mppt-it6415nd-12-24-36-48v-60a-150voc": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-controlador-mppt-msc-3210n-12-24v-30a-100voc": {
@@ -955,12 +955,12 @@
   },
   "epever-controlador-mppt-msc-4210n-12-24v-40a-100voc": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-controlador-mppt-para-iluminacion-tracer-2606-bpl-12-24v-10a-60voc": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-controlador-mppt-para-iluminacion-tracer-3906-bpl-12-24v-15a-60voc": {
@@ -970,22 +970,22 @@
   },
   "epever-controlador-mppt-para-iluminacion-tracer-5206-bpl-12-24v-20a-60voc": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-controlador-mppt-serie-tep-6415-12v-24v-48v-60a-150voc": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-controlador-mppt-tracer-10415an-12-24-36-48v-100a-150voc": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-controlador-mppt-tracer-5415an-12-24v-48v-50a-150voc": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-controlador-mppt-triron-4215n-12-24v-40a-150voc": {
@@ -1010,7 +1010,7 @@
   },
   "epever-controlador-pwm-vs4548bn-12-24-36-48v-45a-100voc": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-controlador-pwm-vs6048bn-12-24-36-48v-60a-100voc": {
@@ -1020,42 +1020,42 @@
   },
   "epever-ebox-wifi-2-4g-rj45-d": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-inversor-cargador-hp2021-ah0725p20a-2kva-24v-mppt-70a-250voc-120v": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-inversor-cargador-up3000-hm5042-3kva-48v-mppt-50a-450voc-220v": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-inversor-cargador-up3000-m6142-3kva-48v-mppt-60a-150voc-220v": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-inversor-cargador-up5000-hm8042-5kva-48v-mppt-80a-450voc-220v": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-inversor-onda-pura-ip1000-11-1000w-12vdc-a-110vac": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-inversor-onda-pura-ip1500-21-plus-t-1500w-24vdc-a-110vac": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-inversor-onda-pura-ip3000-11-plus-3000w-24vdc-a-110vac": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-inversor-onda-pura-ip350-21-350w-24vdc-a-110vac": {
@@ -1070,17 +1070,17 @@
   },
   "epever-inversor-onda-pura-ipt2000-11-ipt-2000w-12vdc-a-110vac": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-inversor-onda-pura-ipt3000-41-ipt-3000w-48vdc-a-110vac": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-inversor-onda-pura-ipt4000-41-ipt-4000w-48vdc-a-110vac": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-ipt2000": {
@@ -1100,7 +1100,7 @@
   },
   "epever-remote-meter-mt-75": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-remote-meter-mt50": {
@@ -1110,7 +1110,7 @@
   },
   "epever-remote-meter-mt80": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "epever-remote-meter-mt91": {
@@ -1125,7 +1125,7 @@
   },
   "gcl-panel-bifacial-tipo-n-625w-voc-48-55-isc-16": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "generico-cable-para-puesta-a-tierra-generico": {
@@ -1135,7 +1135,7 @@
   },
   "generico-caja-de-diodos-para-paneles-sy-jb4b": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "generico-interruptor-de-sobreponer-generico": {
@@ -1360,12 +1360,12 @@
   },
   "moreday-proteccion-breaker-dc600v-2p-25a": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "motoma-bateria-agm-6v-4ah-1200-ciclos-30-w-0-72kg": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "motoma-bateria-agm-6v-7ah-1200-ciclos-30-w-1-2kg": {
@@ -1390,7 +1390,7 @@
   },
   "motoma-bateria-litio-25-6v-54ah-2000ciclos-80-para-iluminacion": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "motoma-estructura-soporte-anclaje-a-pared-para-bateria-litio-rack": {
@@ -1410,12 +1410,12 @@
   },
   "motoma-inversor-cargador-2-000-w-monofasico-110v-mppt-90ah-24v-400voc": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "motoma-inversor-on-off-grid-12kw-bifasico-120-240vac-2mppt-200a-48v-600voc-infinisola": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "motoma-inversor-on-off-grid-6kw-bifasico-120-240vac-2mppt-120a-48v-600voc-infinisolar": {
@@ -1435,12 +1435,12 @@
   },
   "must-inversor-cargador-4kw-monofasico-110v-mppt-80a-48v-145voc": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "netion-bateria-gel-12v-55ah-1600-ciclos-50-w-17-5kg": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "panel-solar-bifacial-n-type-ja-solar-625w-1002139": {
@@ -1539,7 +1539,7 @@
    "consulta": "ok"
   },
   "smart-dongle-huawei-sdonglea-05-wlan-fe-para-monitoreo": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -1555,17 +1555,17 @@
   },
   "sunera-panel-monocristalino-100w-voc-22-6-isc-5-65": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "sunera-panel-policristalino-100w-voc-21-5-isc-5-56": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "sunera-panel-policristalino-170w-12v": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "suntree-cable-negro-pv-4mm2-1x4mm2-retie": {
@@ -1595,7 +1595,7 @@
   },
   "suntree-caja-string-combiner-box-shlx-3-3-800vdc-ip65-retie": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "suntree-conector-mc4-4-6m-pm40a-1-5kv-retie": {
@@ -1749,13 +1749,13 @@
    "consulta": "ok"
   },
   "suntree-proteccion-descargador-de-sobrepotencial-dps-sup2h1-pv-3p-dc-spd-dc1000v-2040": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "suntree-proteccion-fusible-srf30-15a-1000vdc": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "suntree-proteccion-portafusible-porta-fusible-srd30-1100vdc": {
@@ -1765,12 +1765,12 @@
   },
   "suntree-transferencia-automatica-ac-sq8t-63-4p-trifasica-3a-230vac": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "taifu-bomba-recirculacion-tssp-18m3h-8m-96v-750w-sin-controlador": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "taifu-bomba-sumergible-tipo-lapicero-3c36-dc-eco-3-2m3h-25m-300w-36v": {
@@ -1780,7 +1780,7 @@
   },
   "taifu-bomba-sumergible-tipo-lapicero-3s36-dc-eco-0-9m3h-80m-300w-36v": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "taifu-impulsor-bomba-4tss2-5-140-1-000w": {
@@ -1805,12 +1805,12 @@
   },
   "uni-t-tester-solar-mppt-5-800w-0-35ah-display-lcd-ut673pv": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "voltio-caja-de-proteccion-para-tacos-12p": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "inversor-hibrido-trifasico-deye-10-kw-sun-10k-sg04lp3-eu-am2-lv": {
@@ -2330,7 +2330,7 @@
   },
   "breaker-dc-500vdc-chint-retie-160a": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "breaker-4p-dc-feeo-1000vdc-retie-80a": {
@@ -2399,7 +2399,7 @@
    "consulta": "ok"
   },
   "breaker-ac-siemens-230-400vac-2p-40a": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -2670,7 +2670,7 @@
   },
   "breaker-dc-suntree-600v-dc-retie-100a": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "breaker-dc-suntree-250v-dc-retie-32a": {

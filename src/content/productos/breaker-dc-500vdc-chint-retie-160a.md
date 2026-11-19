@@ -17,6 +17,7 @@ stock: "disponible"
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: true
+stockBajo: true
 ---
 
 Proveedor: Suneo Energy (NM8NDC-250B-160A).

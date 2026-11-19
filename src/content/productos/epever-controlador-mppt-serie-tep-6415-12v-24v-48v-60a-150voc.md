@@ -21,7 +21,6 @@ imagen_provisional: false
 faqs:
   - pregunta: "¿Quién lo instala?"
     respuesta: "Debe instalarlo un técnico electricista con cumplimiento RETIE. Reiki ofrece instalación llave en mano o acompañamiento técnico si ya tienes instalador."
-stockBajo: true
 certificadoPdf: "/fichas/proveedores/ingesolar-CONM26-cert.pdf"
 ---
 
