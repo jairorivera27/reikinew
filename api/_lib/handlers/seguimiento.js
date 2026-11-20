@@ -457,9 +457,11 @@ export default async function handler(req, res) {
         const r = await rastrearVentaEnvia(body.id, by);
         return send(res, 200, { ok: true, rastreo: r?.rastreo || null, expediente: r?.exp ? { ...r.exp, resumen: resumen(r.exp) } : null });
       }
-      // Revisión completa (cada 3 h desde la tarea programada): estados, avisos al cliente por correo y WhatsApp, reclamos
+      // Revisión completa (cada 3 h desde la tarea programada): estados y reclamos.
+      // Sin avisos automáticos de "Estado de tu envío" al cliente (Alexander los detuvo el 20/11/2026);
+      // el correo de entrega sigue saliendo cuando la transportadora reporta la entrega.
       const { revisarGuias, facturasPendientesAuto } = await import('../seguimiento.js');
-      const rs = await revisarGuias(by);
+      const rs = await revisarGuias(by, { avisarClientes: body.avisarClientes === true });
       // De paso: prefacturas en Alegra de las ventas que ya tienen datos y pago (reintenta las que fallaron)
       const facturas = await facturasPendientesAuto(by).catch((err) => [{ error: String(err?.message || err) }]);
       return send(res, 200, { ok: true, facturas, resultados: rs.map((r) => ({ ...r, entregado: /deliver|entreg/i.test(r.estado || '') && !/out for/i.test(r.estado || '') })) });
