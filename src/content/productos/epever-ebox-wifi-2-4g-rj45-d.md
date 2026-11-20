@@ -13,7 +13,7 @@ specifications:
 brand: "Epever"
 model: "EBOX WIFI 2.4G RJ45 D"
 sku: "ING-ACC06"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-14"
 imagen_provisional: false

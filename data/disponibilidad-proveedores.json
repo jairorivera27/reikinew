@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-11-18 20:59",
+ "ultima_revision": "2026-11-19 20:59",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -1019,7 +1019,7 @@
    "consulta": "ok"
   },
   "epever-ebox-wifi-2-4g-rj45-d": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -1454,7 +1454,7 @@
    "consulta": "ok"
   },
   "panel-solar-bifacial-n-type-ja-solar-720w-1002142": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -2440,7 +2440,7 @@
   },
   "breaker-ac-siemens-230-400vac-1p-20a": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "breaker-ac-siemens-230-400vac-1p-32a": {
@@ -3184,8 +3184,8 @@
    "consulta": "ok"
   },
   "interruptor-diferencial-siemens-2-polos-30ma-25a": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "interruptor-diferencial-siemens-2-polos-30ma-40a": {
@@ -3299,17 +3299,17 @@
    "consulta": "ok"
   },
   "soporte-de-bloque-de-terminales-n-y-pe-abb-12m": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "soporte-de-bloque-de-terminales-n-y-pe-abb-18m": {
    "stock": "disponible",
    "stockBajo": true,
    "consulta": "ok"
   },
+  "soporte-de-bloque-de-terminales-n-y-pe-abb-18m": {
+   "stock": "disponible",
+   "stockBajo": false,
+   "consulta": "ok"
+  },
   "tablero-de-sobreponer-abb-12-modulos-ip65-retie": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -3319,7 +3319,7 @@
    "consulta": "ok"
   },
   "tablero-de-sobreponer-abb-24-modulos-ip65-retie": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },

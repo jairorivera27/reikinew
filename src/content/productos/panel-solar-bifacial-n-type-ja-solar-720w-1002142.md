@@ -21,7 +21,7 @@ specifications:
 brand: "JA Solar"
 sku: "1002142"
 power: "720W"
-stock: "disponible"
+stock: "pre-orden"
 order: 6420
 updatedAt: "2026-10-26"
 seoKeywords:
