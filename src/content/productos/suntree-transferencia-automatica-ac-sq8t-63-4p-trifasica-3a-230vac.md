@@ -15,7 +15,7 @@ specifications:
 brand: "Suntree"
 model: "ATS-4P-63A"
 sku: "ING-TRASNF02"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-05"
 imagen_provisional: false

@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-11-19 20:59",
+ "ultima_revision": "2026-11-20 20:59",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -127,7 +127,7 @@
   "3301028": "https://autosolar.co/cargador-carro-electrico/cargador-ev-de-pared-7kw-bifasico-tipo-2-moreday-mdac332en-k",
   "3301031": "https://autosolar.co/cargador-carro-electrico/cargador-ev-de-pared-7kw-bifasico-tipo-2-moreday-mdac132en",
   "5001531": "https://autosolar.co/variador-de-frecuencia/variador-bombeo-solar-trifasico-gd100-5r5g-2-pv-7hp-55kw-220v-ip20-invt",
-  "5001538": "https://autosolar.co/variador-de-frecuencia/variador-de-bombeo-solar-gd100-015g-4-pv-30hp-30kw-400v-ip20-invt",
+  "5001538": "https://autosolar.co/variador-de-frecuencia/variador-de-bombeo-solar-gd100-015g-4-pv-40hp-30kw-800v-ip20-invt",
   "5201014": "https://autosolar.co/cable-fotovoltaico-dc/cable-solar-16mm2-rojo-1500vdc",
   "5201016": "https://autosolar.co/cable-fotovoltaico-dc/cable-solar-16mm2-negro-1500vdc",
   "5201018": "https://autosolar.co/cable-fotovoltaico-dc/cable-solar-110mm2-rojo-1500vdc",
@@ -514,7 +514,7 @@
    "consulta": "ok"
   },
   "bateria-solar-litio-felicity-48v-11-8kwh-1880845": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -799,7 +799,7 @@
    "consulta": "ok"
   },
   "deye-inversor-on-grid-15kw-sun-15k-g04-lv-trifasico-208vac-800voc": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -1125,7 +1125,7 @@
   },
   "gcl-panel-bifacial-tipo-n-625w-voc-48-55-isc-16": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "generico-cable-para-puesta-a-tierra-generico": {
@@ -1720,7 +1720,7 @@
   },
   "suntree-proteccion-breaker-sl7n-63-dc800v-2p-20a": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "suntree-proteccion-breaker-sl7n-63-dc800v-2p-25a": {
@@ -1764,7 +1764,7 @@
    "consulta": "ok"
   },
   "suntree-transferencia-automatica-ac-sq8t-63-4p-trifasica-3a-230vac": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -2229,7 +2229,7 @@
    "consulta": "ok"
   },
   "base-porta-fusible-aite-para-riel-din-10-14x85mm-50a-1500vdc-con-retie": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
