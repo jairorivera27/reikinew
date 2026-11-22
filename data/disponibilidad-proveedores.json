@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-11-20 20:59",
+ "ultima_revision": "2026-11-21 20:59",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -1125,7 +1125,7 @@
   },
   "gcl-panel-bifacial-tipo-n-625w-voc-48-55-isc-16": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "generico-cable-para-puesta-a-tierra-generico": {
