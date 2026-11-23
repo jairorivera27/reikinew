@@ -4,7 +4,7 @@ description: "Microinversor trifásico Hoymiles serie HMT para conexión a red t
 image: "/images/productos-estudio/hoymiles-hmt-2000-4t-208.webp"
 imageCard: "/images/productos-estudio/hoymiles-hmt-2000-4t-208-card.webp"
 category: "inversores"
-price: "$1.233.750"
+price: "$1.357.500"
 specifications:
   - "Tipo: Microinversor"
   - "Especificación principal: 2kW"
@@ -12,13 +12,9 @@ specifications:
 brand: "Hoymiles"
 stock: "pre-orden"
 order: 5018
-precioAnterior: "$2.004.300"
-descuentoPct: 38
-promocion: "Liquidación"
-promoImagen: "/images/placeholders/promo-liquidacion.svg"
 sku: "2000-4T"
 power: "2kW"
-updatedAt: "2026-10-14"
+updatedAt: "2026-11-23"
 imageThumb: "/images/productos-estudio/hoymiles-hmt-2000-4t-208-thumb.webp"
 imageAlt: "Hoymiles HMT-2000-4T-208 2kW – Reiki Energía Solar"
 imageOriginal: "proveedores/solaire/NFMI0004.png"

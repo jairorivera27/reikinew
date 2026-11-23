@@ -4,7 +4,7 @@ description: "Microinversor monofásico Hoymiles HMS-2000-4T: cuatro MPPT indepe
 image: "/images/productos-estudio/hoymiles-hms-2000-4t.webp"
 imageCard: "/images/productos-estudio/hoymiles-hms-2000-4t-card.webp"
 category: "inversores"
-price: "$1.690.650"
+price: "$1.404.000"
 specifications:
   - "Salida nominal típica: 2000 VA (microinversor cuatro entradas / 4 MPPT)"
   - "Rango MPPT CC típico: 16–60 V; tensión máx. entrada CC ~65 V (según datasheet regional)"

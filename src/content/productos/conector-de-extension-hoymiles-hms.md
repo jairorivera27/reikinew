@@ -5,16 +5,15 @@ image: "/images/productos-estudio/conector-de-extension-hoymiles-hms.webp"
 imageCard: "/images/productos-estudio/conector-de-extension-hoymiles-hms-card.webp"
 imageAlt: "Conector de Extensión Hoymiles HMS – Reiki Energía Solar"
 category: "accesorios"
-price: "$41.800"
+price: "$28.000"
 specifications:
   - "Tipo: Conector / accesorio de instalación"
 brand: "Hoymiles"
 model: "Hoymiles HMS Extension Connector"
 sku: "AMZ-001-0014"
-stock: "pre-orden"
+stock: "disponible"
 order: 7000
-updatedAt: "2026-10-14"
-promocion: "Precio especial"
+updatedAt: "2026-11-23"
 imageThumb: "/images/productos-estudio/conector-de-extension-hoymiles-hms-thumb.webp"
 imagen_provisional: false
 faqs:

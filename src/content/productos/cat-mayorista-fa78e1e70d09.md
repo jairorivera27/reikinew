@@ -4,7 +4,7 @@ description: "Medidor de energía Hoymiles para monitorización de inyección/co
 image: "/images/productos-estudio/generic-mccb.webp"
 imageCard: "/images/productos-estudio/generic-mccb-card.webp"
 category: "protecciones"
-price: "$836.910"
+price: "$781.200"
 specifications:
   - "Clase de medida y rangos de corriente según modelo (100 A, 250 A, etc.)"
   - "Conexión vía VIA/CT según referencia; revisar esquema de TC incluidos"
