@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-11-21 20:59",
+ "ultima_revision": "2026-11-23 21:00",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -713,11 +713,6 @@
    "stockBajo": false,
    "consulta": "no-encontrado"
   },
-  "conector-de-extension-hoymiles-hms": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "conector-de-extension-hoymiles-hmt": {
    "stock": "disponible",
    "stockBajo": false,
@@ -754,7 +749,7 @@
    "consulta": "ok"
   },
   "deye-bateria-litio-51-2v-100ah-6000-ciclos-90-w-45kg-rack-se-g5-1pro-b-deye-60m-garan": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -799,7 +794,7 @@
    "consulta": "ok"
   },
   "deye-inversor-on-grid-15kw-sun-15k-g04-lv-trifasico-208vac-800voc": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -834,7 +829,7 @@
    "consulta": "ok"
   },
   "deye-inversor-on-off-grid-30kw-trifasico-sun-30k-sg01hp3-us-bm4-208vac-500vdc-hv-500v": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -2430,7 +2425,7 @@
   },
   "breaker-ac-siemens-230-400vac-2p-63a": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "breaker-ac-siemens-230-400vac-1p-10a": {
@@ -3284,8 +3279,8 @@
    "consulta": "ok"
   },
   "seccionador-dc-1000vdc-suntree-retie-32a": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "seccionador-dc-1500vdc-suntree-250a": {
@@ -3314,8 +3309,8 @@
    "consulta": "ok"
   },
   "tablero-de-sobreponer-abb-18-modulos-ip65-retie": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "tablero-de-sobreponer-abb-24-modulos-ip65-retie": {

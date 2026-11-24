@@ -16,7 +16,7 @@ specifications:
 brand: "Deye"
 model: "SUN-15K-G05-208V"
 sku: "ING-INVOG09"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-05"
 imagen_provisional: false

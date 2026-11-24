@@ -12,8 +12,7 @@ specifications:
 brand: "Abb"
 model: "1SL1203A00"
 sku: "SNO-1SL1203A00"
-stock: "disponible"
-stockBajo: true
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: false

@@ -16,7 +16,7 @@ specifications:
 brand: "Deye"
 model: "SE-G5.1PRO-B"
 sku: "ING-BATL08"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-05"
 imagen_provisional: false

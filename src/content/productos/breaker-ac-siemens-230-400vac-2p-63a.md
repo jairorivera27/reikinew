@@ -17,6 +17,7 @@ stock: "disponible"
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: false
+stockBajo: true
 ---
 
 Proveedor: Suneo Energy (5SL6263-7MB).
