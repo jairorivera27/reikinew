@@ -3260,11 +3260,6 @@
   "titulo": "Inversor Solar Híbrido 6000W",
   "codigo": "6000W"
  },
- "inversor-solar-hibrido-deye-12kw-sun-12k-sg01lp1-us": {
-  "proveedor": "Solaire",
-  "titulo": "Inversor Solar Híbrido Deye 12kW SUN-12K-SG01LP1-US",
-  "codigo": "SUN-12K-SG01LP1-US"
- },
  "inversor-solar-hibrido-deye-8kw-sun-8k-sg01lp1-us": {
   "proveedor": "Solaire",
   "titulo": "Inversor Solar Híbrido Deye 8kW SUN-8K-SG01LP1-US",
@@ -8770,5 +8765,10 @@
   "proveedor": "Suneo Energy",
   "titulo": "Variador SINAMICS V20 SIEMENS 2HP",
   "codigo": "6SL3210-5BB21-5UV1"
+ },
+ "inversor-hibrido-trifasico-deye-12kw-sun-12k-sg01hp3-us-am2": {
+  "proveedor": "Improinde",
+  "titulo": "Inversor Híbrido Trifásico Deye 12kW SUN-12K-SG01HP3-US-AM2",
+  "codigo": "SUN-12K-SG01HP3-US-AM2"
  }
 }

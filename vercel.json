@@ -62,6 +62,11 @@
   ],
   "redirects": [
     {
+      "source": "/tienda/inversor-solar-hibrido-deye-12kw-sun-12k-sg01lp1-us",
+      "destination": "/tienda/inversor-hibrido-trifasico-deye-12kw-sun-12k-sg01hp3-us-am2",
+      "permanent": true
+    },
+    {
       "source": "/servicios/energia-solar",
       "destination": "/servicios/energia-solar-residencial",
       "permanent": true
