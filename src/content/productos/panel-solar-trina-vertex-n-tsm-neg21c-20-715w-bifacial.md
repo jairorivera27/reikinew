@@ -15,9 +15,10 @@ brand: "Trina Solar"
 model: "TSM-NEG21C.20 715W"
 sku: "AMZ-102-0019"
 power: "715 W"
-stock: "pre-orden"
+stock: "agotado"
+stockManual: true
 order: 7000
-updatedAt: "2026-10-26"
+updatedAt: "2026-11-25"
 imagen_provisional: true
 fichaPdf: "/fichas/fabricantes/amara-102-0019-ficha-tecnica.pdf"
 faqs:

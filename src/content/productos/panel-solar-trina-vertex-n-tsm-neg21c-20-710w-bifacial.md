@@ -17,9 +17,10 @@ brand: "Trina Solar"
 model: "Trina TSM-NEG21C.20 710W"
 sku: "AMZ-102-0018"
 power: "710 W"
-stock: "pre-orden"
+stock: "agotado"
+stockManual: true
 order: 7000
-updatedAt: "2026-10-26"
+updatedAt: "2026-11-25"
 imagen_provisional: false
 faqs:
   - pregunta: "¿Cuánta energía genera al día?"
