@@ -16,9 +16,10 @@ specifications:
 brand: "JA Solar"
 model: "JA Solar JAM66D45-605 LB"
 sku: "AMZ-100-0010"
-stock: "pre-orden"
+stock: "agotado"
+stockManual: true
 order: 7000
-updatedAt: "2026-10-26"
+updatedAt: "2026-11-25"
 imageThumb: "/images/productos-estudio/panel-solar-ja-solar-jam66d45-605-lb-605w-bifacial-thumb.webp"
 imagen_provisional: true
 imagenSerieRef: "JA Solar JAM66D45 (DeepBlue 4.0 Pro)"

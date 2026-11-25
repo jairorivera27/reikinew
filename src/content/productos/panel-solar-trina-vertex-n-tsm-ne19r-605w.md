@@ -15,9 +15,10 @@ brand: "Trina Solar"
 model: "Trina- TSM-NE19R-605W"
 sku: "AMZ-102-0008"
 power: "605 W"
-stock: "pre-orden"
+stock: "agotado"
+stockManual: true
 order: 7000
-updatedAt: "2026-10-26"
+updatedAt: "2026-11-25"
 imagen_provisional: false
 imagenSerieRef: "Trina Vertex N"
 faqs:
