@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-11-23 21:00",
+ "ultima_revision": "2026-11-24 21:00",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -550,7 +550,7 @@
   },
   "bomba-sumergible-lapicero-dc-4a-11m3h-2200w-145m-cont-dy-d3600ac-dc-bom-4a2200-sc11-1": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "bomba-sumergible-lapicero-dc-4d-17m3h-3000w-105m-cont-dy-d3600ac-dc-bom-4d3000-sc17-1": {
@@ -829,7 +829,7 @@
    "consulta": "ok"
   },
   "deye-inversor-on-off-grid-30kw-trifasico-sun-30k-sg01hp3-us-bm4-208vac-500vdc-hv-500v": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -1125,7 +1125,7 @@
   },
   "generico-cable-para-puesta-a-tierra-generico": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "generico-caja-de-diodos-para-paneles-sy-jb4b": {
@@ -1415,7 +1415,7 @@
   },
   "motoma-inversor-on-off-grid-6kw-bifasico-120-240vac-2mppt-120a-48v-600voc-infinisolar": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "motoma-puente-conector-corto-paralelo-20cm-para-bateria-de-litio-rack": {
@@ -1435,7 +1435,7 @@
   },
   "netion-bateria-gel-12v-55ah-1600-ciclos-50-w-17-5kg": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "panel-solar-bifacial-n-type-ja-solar-625w-1002139": {
@@ -1714,8 +1714,8 @@
    "consulta": "ok"
   },
   "suntree-proteccion-breaker-sl7n-63-dc800v-2p-20a": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "suntree-proteccion-breaker-sl7n-63-dc800v-2p-25a": {
@@ -1769,7 +1769,7 @@
    "consulta": "ok"
   },
   "taifu-bomba-sumergible-tipo-lapicero-3c36-dc-eco-3-2m3h-25m-300w-36v": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -2394,7 +2394,7 @@
    "consulta": "ok"
   },
   "breaker-ac-siemens-230-400vac-2p-40a": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },

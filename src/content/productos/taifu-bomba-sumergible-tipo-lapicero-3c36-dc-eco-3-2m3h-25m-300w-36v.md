@@ -15,7 +15,7 @@ specifications:
 brand: "Taifu"
 model: "3C36-DC-300W"
 sku: "ING-BMBE02"
-stock: "pre-orden"
+stock: "disponible"
 order: 8000
 updatedAt: "2026-10-05"
 imagen_provisional: false

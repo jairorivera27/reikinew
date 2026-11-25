@@ -17,7 +17,7 @@ specifications:
 brand: "Deye"
 model: "SUN-30K-SG01HP3-US-BM4"
 sku: "ING-INVC30"
-stock: "pre-orden"
+stock: "disponible"
 order: 8000
 updatedAt: "2026-10-05"
 imagen_provisional: false
