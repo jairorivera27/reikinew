@@ -570,6 +570,7 @@
     var acciones =
       '<div class="ct-acciones">' +
       (r.tienePdf ? '<button type="button" class="btn btn-ghost seg-mini" data-ct-pdf><i class="fas fa-file-pdf" aria-hidden="true"></i> Ver PDF</button>' : '') +
+      (c.pdf && c.pdf.partes ? '<button type="button" class="btn btn-ghost seg-mini" data-ct-pdf-borrar title="Quita el archivo guardado; la cotización se conserva"><i class="fas fa-trash" aria-hidden="true"></i> Borrar PDF</button>' : '') +
       (abierta
         ? '<button type="button" class="btn btn-primary seg-mini" data-ct-panel="envio"><i class="fas fa-paper-plane" aria-hidden="true"></i> ' +
           (c.estado === 'por_enviar' ? 'Enviar al cliente' : 'Reenviar') +
@@ -845,6 +846,12 @@
           if (w) w.close();
           msg('No se pudo abrir el PDF: ' + err.message);
         }
+      });
+    var pdfDel = body.querySelector('[data-ct-pdf-borrar]');
+    if (pdfDel)
+      pdfDel.addEventListener('click', function () {
+        if (!window.confirm('¿Borrar el PDF guardado de ' + (c.numero || c.id) + '? La cotización se conserva; el PDF se puede volver a subir.')) return;
+        correr('cot-pdf-borrar', { id: c.id }, 'PDF borrado.');
       });
     var fe = $('ct-form-envio');
     if (fe)

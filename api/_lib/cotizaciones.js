@@ -3,12 +3,14 @@
  * seguimiento y paso a venta (expediente) cuando se acepta.
  *
  * Estados: por_enviar → enviada → seguimiento → aceptada | rechazada
- * Persistencia: Upstash Redis. El PDF se guarda en trozos (Redis limita el tamaño por valor).
+ * Persistencia: Upstash Redis (metadatos). El PDF vive en Vercel Blob (privado);
+ * los PDF antiguos en trozos de Redis se migran con migrarPdfsABlob().
  */
 import crypto from 'node:crypto';
 import { getRedis, waKey } from './whatsapp-redis.js';
 import { saveExpediente, getExpediente, actualizarCompras } from './seguimiento.js';
 import { enviarConAdjunto } from './correos.js';
+import { blobConfigurado, subirBlob, leerBlob, borrarBlob, rutaPdf, rutaParte } from './pdf-blob.js';
 
 export const ESTADOS_COT = ['por_enviar', 'enviada', 'seguimiento', 'aceptada', 'rechazada'];
 const IDX = waKey('cotzidx', 'all');
@@ -222,8 +224,9 @@ export async function guardarPdfParte(id, { nombre, base64, parte = 1, total = 1
   if (!datos) throw new Error('pdf vacío');
   const p = Math.max(1, num(parte));
   const t = Math.max(1, num(total));
+  if (blobConfigurado()) return guardarPdfParteBlob(c, { nombre, datos, p, t }, by);
   const redis = getRedis();
-  // cada parte recibida se divide en trozos de Redis: cotpdf:<id>:<parte>.<n>
+  // sin Vercel Blob (desarrollo local): trozos en Redis/memoria como antes
   const trozos = Math.ceil(datos.length / TROZO);
   for (let i = 0; i < trozos; i += 1) {
     const val = datos.slice(i * TROZO, (i + 1) * TROZO);
@@ -233,10 +236,8 @@ export async function guardarPdfParte(id, { nombre, base64, parte = 1, total = 1
   c.pdfCarga = { ...(c.pdfCarga || {}), [p]: trozos, total: t, nombre: str(nombre, 160) || (c.pdfCarga && c.pdfCarga.nombre) || '' };
   const recibidas = Object.keys(c.pdfCarga).filter((k) => /^\d+$/.test(k)).length;
   if (recibidas >= t) {
-    // consolidar: lista ordenada de claves de trozos
     const claves = [];
     for (let i = 1; i <= t; i += 1) for (let j = 0; j < (c.pdfCarga[i] || 0); j += 1) claves.push(`nuevo.${i}.${j}`);
-    // copiar a claves definitivas y borrar las del PDF anterior
     const anteriores = (c.pdf && c.pdf.claves) || [];
     const definitivas = [];
     let largo = 0;
@@ -267,10 +268,161 @@ export async function guardarPdfParte(id, { nombre, base64, parte = 1, total = 1
   return { cot: c, completo: recibidas >= t, recibidas, total: t };
 }
 
+/** Borra los trozos de Redis de un PDF antiguo (y los de una carga a medias). */
+async function borrarTrozosRedis(c) {
+  const redis = getRedis();
+  const claves = [...((c.pdf && c.pdf.claves) || [])];
+  if (c.pdfCarga) {
+    for (const [p, n] of Object.entries(c.pdfCarga)) {
+      if (!/^\d+$/.test(p)) continue;
+      for (let j = 0; j < Number(n || 0); j += 1) claves.push(`nuevo.${p}.${j}`);
+    }
+  }
+  if (!claves.length) return 0;
+  if (redis) {
+    for (let i = 0; i < claves.length; i += 50) await redis.del(...claves.slice(i, i + 50).map((k) => pdfKey(c.id, k)));
+  } else claves.forEach((k) => pdfMem.delete(`${c.id}:${k}`));
+  return claves.length;
+}
+
+/** Borra el archivo actual del PDF (Blob o trozos de Redis), sin tocar la cotización. */
+async function borrarArchivoPdf(c) {
+  if (c.pdf && c.pdf.blob) await borrarBlob(c.pdf.blob.url || c.pdf.blob.pathname);
+  await borrarTrozosRedis({ id: c.id, pdf: c.pdf });
+}
+
+async function guardarPdfParteBlob(c, { nombre, datos, p, t }, by) {
+  const id = c.id;
+  // cada parte (texto base64) queda temporalmente en Blob; Redis solo lleva la cuenta
+  const carga = c.pdfCarga && c.pdfCarga.blob ? c.pdfCarga : { blob: true, partes: {} };
+  if (c.pdfCarga && !c.pdfCarga.blob) await borrarTrozosRedis({ id, pdfCarga: c.pdfCarga });
+  const sub = await subirBlob(rutaParte(id, p), datos, 'text/plain', { fijo: true });
+  carga.partes = { ...(carga.partes || {}), [p]: sub.url };
+  carga.total = t;
+  carga.nombre = str(nombre, 160) || carga.nombre || '';
+  c.pdfCarga = carga;
+  const recibidas = Object.keys(carga.partes).length;
+  if (recibidas < t) {
+    await persist(c);
+    return { cot: c, completo: false, recibidas, total: t };
+  }
+  let b64 = '';
+  for (let i = 1; i <= t; i += 1) {
+    const buf = carga.partes[i] ? await leerBlob(carga.partes[i]) : null;
+    if (!buf) throw new Error(`Falta la parte ${i} de ${t}; vuelve a subirla.`);
+    b64 += buf.toString('utf8');
+  }
+  const pdf = Buffer.from(b64, 'base64');
+  if (pdf.length > MAX_PDF) throw new Error('PDF demasiado grande (máx. 12 MB)');
+  const nom = carga.nombre || `${c.numero || id}.pdf`;
+  const final = await subirBlob(rutaPdf(id, nom), pdf, 'application/pdf');
+  await borrarBlob(Object.values(carga.partes));
+  await borrarArchivoPdf(c);
+  c.pdf = { nombre: nom, bytes: pdf.length, blob: { pathname: final.pathname, url: final.url }, partes: 1, subido: nowIso(), version: c.numero || id };
+  delete c.pdfCarga;
+  pushHist(c, by, `PDF cargado (${Math.round(pdf.length / 1024)} KB).`);
+  await persist(c);
+  return { cot: c, completo: true, recibidas, total: t };
+}
+
+/** Quita el PDF guardado de una cotización (la cotización se conserva). */
+export async function borrarPdf(id, by = 'panel') {
+  const c = await getCotizacion(id);
+  if (!c) return null;
+  const tenia = Boolean(c.pdf || c.pdfCarga);
+  await borrarArchivoPdf(c);
+  if (c.pdfCarga) {
+    if (c.pdfCarga.blob) await borrarBlob(Object.values(c.pdfCarga.partes || {}));
+    else await borrarTrozosRedis({ id: c.id, pdfCarga: c.pdfCarga });
+  }
+  delete c.pdf;
+  delete c.pdfCarga;
+  if (tenia) pushHist(c, by, 'PDF eliminado.');
+  await persist(c);
+  return { cot: c, borrado: tenia };
+}
+
+/**
+ * Pasa a Vercel Blob los PDF que siguen en trozos de Redis y borra los trozos
+ * (también los de cargas a medias en Redis). Procesa hasta `limite` por llamada.
+ */
+export async function migrarPdfsABlob({ limite = 10, by = 'claude' } = {}) {
+  if (!blobConfigurado()) throw new Error('Vercel Blob no está conectado (falta BLOB_READ_WRITE_TOKEN).');
+  const redis = getRedis();
+  const todas = await listCotizaciones();
+  const pendientes = todas.filter((c) => (c.pdf && c.pdf.claves && !c.pdf.blob) || (c.pdfCarga && !c.pdfCarga.blob));
+  const resultados = [];
+  for (const c of pendientes.slice(0, Math.max(1, limite))) {
+    try {
+      const r = { id: c.id, numero: c.numero };
+      if (c.pdf && c.pdf.claves && !c.pdf.blob) {
+        const vals = redis ? await redis.mget(...c.pdf.claves.map((k) => pdfKey(c.id, k))) : c.pdf.claves.map((k) => pdfMem.get(`${c.id}:${k}`));
+        const b64 = vals.map((v) => String(v || '')).join('');
+        const faltan = vals.filter((v) => !v).length;
+        if (b64 && !faltan) {
+          const buf = Buffer.from(b64, 'base64');
+          const sub = await subirBlob(rutaPdf(c.id, c.pdf.nombre), buf, 'application/pdf');
+          r.trozos = await borrarTrozosRedis({ id: c.id, pdf: c.pdf });
+          c.pdf = { ...c.pdf, bytes: buf.length, blob: { pathname: sub.pathname, url: sub.url }, partes: 1, migrado: nowIso() };
+          delete c.pdf.claves;
+          r.bytes = buf.length;
+          r.estado = 'migrado';
+        } else {
+          r.trozos = await borrarTrozosRedis({ id: c.id, pdf: c.pdf });
+          delete c.pdf;
+          r.estado = 'incompleto: PDF descartado, hay que volver a subirlo';
+        }
+      }
+      if (c.pdfCarga && !c.pdfCarga.blob) {
+        r.cargaAMedias = await borrarTrozosRedis({ id: c.id, pdfCarga: c.pdfCarga });
+        delete c.pdfCarga;
+        r.estado = r.estado || 'carga a medias borrada';
+      }
+      pushHist(c, by, `PDF: ${r.estado} (almacenamiento movido a Vercel Blob).`);
+      await persist(c);
+      resultados.push(r);
+    } catch (err) {
+      resultados.push({ id: c.id, numero: c.numero, error: err?.message || String(err) });
+    }
+  }
+  return { procesadas: resultados.length, quedan: Math.max(0, pendientes.length - resultados.length), resultados };
+}
+
+/** Borra claves cotzpdf:* que ninguna cotización usa (restos de cargas fallidas). */
+export async function limpiarTrozosHuerfanos({ borrar = false } = {}) {
+  const redis = getRedis();
+  if (!redis) return { huerfanas: 0, borradas: 0 };
+  const todas = await listCotizaciones();
+  const usadas = new Set();
+  for (const c of todas) {
+    for (const k of (c.pdf && c.pdf.claves) || []) usadas.add(pdfKey(c.id, k));
+    if (c.pdfCarga && !c.pdfCarga.blob) {
+      for (const [p, n] of Object.entries(c.pdfCarga)) {
+        if (/^\d+$/.test(p)) for (let j = 0; j < Number(n || 0); j += 1) usadas.add(pdfKey(c.id, `nuevo.${p}.${j}`));
+      }
+    }
+  }
+  const huerfanas = [];
+  let cursor = '0';
+  do {
+    const [sig, claves] = await redis.scan(cursor, { match: waKey('cotzpdf', '*'), count: 500 });
+    cursor = String(sig);
+    for (const k of claves) if (!usadas.has(k)) huerfanas.push(k);
+  } while (cursor !== '0');
+  let borradas = 0;
+  if (borrar) {
+    for (let i = 0; i < huerfanas.length; i += 50) {
+      await redis.del(...huerfanas.slice(i, i + 50));
+      borradas += huerfanas.slice(i, i + 50).length;
+    }
+  }
+  return { huerfanas: huerfanas.length, borradas, ejemplos: huerfanas.slice(0, 10) };
+}
+
 export async function leerPdf(id) {
   const c = await getCotizacion(id);
   if (!c) return null;
-  if ((!c.pdf || !c.pdf.claves) && c.pdfUrl) {
+  if ((!c.pdf || (!c.pdf.claves && !c.pdf.blob)) && c.pdfUrl) {
     try {
       const r = await fetch(c.pdfUrl);
       if (r.ok && /pdf/i.test(r.headers.get('content-type') || '')) {
@@ -281,6 +433,15 @@ export async function leerPdf(id) {
       console.warn('[cotizaciones] pdfUrl', err?.message || err);
     }
     return null;
+  }
+  if (c.pdf && c.pdf.blob) {
+    try {
+      const buf = await leerBlob(c.pdf.blob.url || c.pdf.blob.pathname);
+      return buf ? { nombre: c.pdf.nombre, base64: buf.toString('base64') } : null;
+    } catch (err) {
+      console.warn('[cotizaciones] blob', err?.message || err);
+      return null;
+    }
   }
   if (!c.pdf || !c.pdf.claves) return null;
   const redis = getRedis();

@@ -28,7 +28,10 @@
  * POST op=item-bodega { id, idx, bodegaId } · POST op=item-proveedor { id, idx, agotado?:true, proveedor? } · POST op=envia-guia { id, bodegaId, items:[idx], paquetes, carrier, service, recogida?:{fecha,desde,hasta} } · POST op=envia-rastrear { id? }
  * POST op=cot-numero → { numero } siguiente número del consecutivo único CT-DDMMAA-### (también con el token limitado)
  * POST op=cot-save { numero, tipo: equipos|proyecto, cliente, total, items, … }   (también con el token limitado de los chats)
- * POST op=cot-pdf  { id|numero, nombre, base64, parte, total }                  (también con el token limitado)
+ * POST op=cot-pdf  { id|numero, nombre, base64, parte, total }                  (también con el token limitado; el PDF queda en Vercel Blob)
+ * POST op=cot-pdf-borrar { id } → quita el PDF guardado (la cotización se conserva)
+ * POST op=cot-pdf-migrar { limite? } → pasa a Vercel Blob los PDF que siguen en Redis y borra sus trozos (solo token de Claude)
+ * POST op=cot-pdf-huerfanos { borrar?: true } → cuenta (o borra) trozos cotzpdf:* que ninguna cotización usa (solo token de Claude)
  * POST op=cot-estado { id, estado: por_enviar|enviada|seguimiento|aceptada|rechazada, motivo?, proximo?, correo? } — aceptada crea la venta
  *   y envía al cliente "Compra confirmada" / "Proyecto confirmado" (una sola vez; correo:false lo omite)
  * POST op=cot-seguimiento { id, canal, nota, proximo? }
@@ -82,6 +85,9 @@ import {
   getCotizacion,
   guardarCotizacion,
   guardarPdfParte,
+  borrarPdf,
+  migrarPdfsABlob,
+  limpiarTrozosHuerfanos,
   leerPdf,
   listCotizaciones,
   registrarSeguimiento,
@@ -511,6 +517,20 @@ export default async function handler(req, res) {
       const r = await guardarPdfParte(id, { nombre: body.nombre, base64: body.base64, parte: body.parte, total: body.total }, by);
       if (!r) return send(res, 404, { ok: false, error: 'Registra primero la cotización (op=cot-save).' });
       return send(res, 200, { ok: true, id, completo: r.completo, recibidas: r.recibidas, total: r.total });
+    }
+    if (op === 'cot-pdf-borrar') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const r = await borrarPdf(String(body.id || ''), by);
+      if (!r) return send(res, 404, { ok: false, error: 'No existe.' });
+      return send(res, 200, { ok: true, id: r.cot.id, borrado: r.borrado, cotizacion: conResumenCot(r.cot) });
+    }
+    if (op === 'cot-pdf-migrar') {
+      if (by !== 'claude') return send(res, 403, { ok: false, error: 'Solo para el asistente.' });
+      return send(res, 200, { ok: true, ...(await migrarPdfsABlob({ limite: Math.min(30, Number(body.limite) || 10), by })) });
+    }
+    if (op === 'cot-pdf-huerfanos') {
+      if (by !== 'claude') return send(res, 403, { ok: false, error: 'Solo para el asistente.' });
+      return send(res, 200, { ok: true, ...(await limpiarTrozosHuerfanos({ borrar: body.borrar === true })) });
     }
     if (op === 'cot-importar-tienda') {
       const r = await importarDeTienda({ desde: String(body.desde || ''), listarVentas: listExpedientes });
