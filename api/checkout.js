@@ -13,6 +13,7 @@ import addiConfirmOrder from './_lib/handlers/addi-confirm-order.js';
 import orderPdf from './_lib/handlers/order-pdf.js';
 import orderStatus from './_lib/handlers/order-status.js';
 import seguimiento from './_lib/handlers/seguimiento.js';
+import encuesta from './_lib/handlers/encuesta.js';
 
 const HANDLERS = {
   register: registerCheckout,
@@ -21,6 +22,7 @@ const HANDLERS = {
   'order-pdf': orderPdf,
   'order-status': orderStatus,
   seguimiento,
+  encuesta,
 };
 
 export default async function handler(req, res) {

@@ -93,6 +93,7 @@
       stt.textContent = '';
       box.innerHTML = htmlInicio(j);
       enlazarInicio(box);
+      cargarEncuestas(box);
     } catch (err) {
       stt.textContent = 'No se pudo cargar el resumen: ' + err.message;
     }
@@ -257,8 +258,108 @@
       '</section>' +
       '<section class="in-card"><h2 class="in-h">Indicadores para mejorar</h2><p class="in-sub2">Qué medimos, la meta y por qué importa. Se calculan con las ventas registradas en el panel; entre más completo esté, más precisos son.</p>' +
       kpis +
-      '</section>'
+      '</section>' +
+      '<section class="in-card" data-encuestas><h2 class="in-h">Satisfacción de clientes</h2><p class="in-sub2">Cargando encuestas…</p></section>'
     );
+  }
+
+  /** Encuestas de satisfacción: NPS, aspectos, oportunidades de mejora y clientes por contactar. */
+  async function cargarEncuestas(box) {
+    var sec = box.querySelector('[data-encuestas]');
+    if (!sec) return;
+    var esc = S().esc;
+    try {
+      var j = await S().api('encuestas');
+      var npsTxt = j.nps === null ? '—' : (j.nps > 0 ? '+' : '') + j.nps;
+      var npsCls = j.nps === null ? '' : j.nps >= 50 ? 'ok' : j.nps >= 0 ? 'warn' : 'bad';
+      var tiles =
+        '<div class="enc-tiles">' +
+        '<div class="enc-tile enc-' + npsCls + '"><b>' + npsTxt + '</b><span>NPS (de −100 a +100)</span></div>' +
+        '<div class="enc-tile"><b>' + j.respondidas + ' / ' + j.enviadas + '</b><span>respondidas (' + j.tasaRespuesta + ' %)</span></div>' +
+        '<div class="enc-tile"><b>' + j.cuenta.promotor + ' · ' + j.cuenta.pasivo + ' · ' + j.cuenta.detractor + '</b><span>promotores · neutros · detractores</span></div>' +
+        '</div>';
+      var aspectos = j.aspectos.length
+        ? '<div class="enc-aspectos">' +
+          j.aspectos
+            .map(function (a) {
+              var w = Math.round((a.promedio / 5) * 100);
+              var cls = a.promedio >= 4.5 ? 'ok' : a.promedio >= 3.5 ? 'warn' : 'bad';
+              return '<div class="enc-asp"><span>' + esc(a.label) + '</span><div class="enc-barra"><i class="enc-' + cls + '" style="width:' + w + '%"></i></div><b>' + a.promedio.toFixed(1) + '</b></div>';
+            })
+            .join('') +
+          '</div>'
+        : '';
+      var oport = j.oportunidades.length
+        ? '<h3 class="enc-h3">Oportunidades de mejora</h3><ol class="enc-oport">' +
+          j.oportunidades
+            .map(function (o) {
+              return '<li><b>' + esc(o.label) + ' (' + o.promedio.toFixed(1) + '/5).</b> ' + esc(o.estrategia) + '</li>';
+            })
+            .join('') +
+          '</ol>'
+        : j.respondidas
+          ? '<p class="in-sub2">Todos los aspectos están en 4,5 o más. ¡Bien!</p>'
+          : '';
+      var fila = function (r, extra) {
+        return (
+          '<li><button type="button" class="enc-link" data-abrir="' + esc(r.id) + '">' + esc(r.cliente || r.referencia) + '</button>' +
+          (r.nps !== undefined && r.nps !== null ? ' <span class="oc-badge oc-badge--' + (r.categoria === 'promotor' ? 'ok' : r.categoria === 'pasivo' ? 'warn' : 'bad') + '">' + r.nps + '/10</span>' : '') +
+          (r.mejorar ? '<br><small>Mejorar: ' + esc(r.mejorar) + '</small>' : '') +
+          (r.gusto ? '<br><small>Le gustó: ' + esc(r.gusto) + '</small>' : '') +
+          (extra || '') +
+          '</li>'
+        );
+      };
+      var contactar = j.porContactar.length
+        ? '<h3 class="enc-h3">Clientes insatisfechos por contactar</h3><ul class="enc-lista">' +
+          j.porContactar
+            .map(function (r) {
+              var wa = r.celular ? 'https://wa.me/' + String(r.celular).replace(/\D/g, '').replace(/^(3\d{9})$/, '57$1') : '';
+              return fila(r, '<br>' + (wa ? '<a class="btn seg-mini pc-wa" target="_blank" rel="noopener" href="' + esc(wa) + '">WhatsApp</a> ' : '') + '<button type="button" class="btn btn-ghost seg-mini" data-enc-contactado="' + esc(r.id) + '">Ya lo contactamos</button>');
+            })
+            .join('') +
+          '</ul>'
+        : '';
+      var coments = j.comentarios.length
+        ? '<details class="enc-det"><summary>Comentarios de clientes (' + j.comentarios.length + ')</summary><ul class="enc-lista">' + j.comentarios.map(function (r) { return fila(r, r.publicar ? ' <small class="pc-muted">· autoriza publicar</small>' : ''); }).join('') + '</ul></details>'
+        : '';
+      var pend = j.sinResponder.length
+        ? '<details class="enc-det"><summary>Enviadas sin responder (' + j.sinResponder.length + ')</summary><ul class="enc-lista">' +
+          j.sinResponder
+            .map(function (r) {
+              return '<li><button type="button" class="enc-link" data-abrir="' + esc(r.id) + '">' + esc(r.cliente || r.referencia) + '</button> <small class="pc-muted">enviada ' + esc(S().fecha ? S().fecha(r.enviadaAt) : String(r.enviadaAt).slice(0, 10)) + '</small> <button type="button" class="btn btn-ghost seg-mini" data-enc-copiar="' + esc(r.url) + '">Copiar enlace</button> <button type="button" class="btn btn-ghost seg-mini" data-enc-reenviar="' + esc(r.id) + '">Reenviar correo</button></li>';
+            })
+            .join('') +
+          '</ul></details>'
+        : '';
+      sec.innerHTML =
+        '<h2 class="in-h">Satisfacción de clientes</h2><p class="in-sub2">La encuesta se envía sola con el correo de entrega (o sola, si el cliente retiró en bodega). Calificación de 1 a 5 por aspecto y NPS: cuántos nos recomendarían.</p>' +
+        (j.enviadas ? tiles + aspectos + oport + contactar + coments + pend : '<p class="in-sub2">Todavía no se ha enviado ninguna encuesta: la primera sale cuando se cierre una entrega.</p>');
+      sec.querySelectorAll('[data-abrir]').forEach(function (b) {
+        b.addEventListener('click', function () { S().abrir(b.getAttribute('data-abrir')); });
+      });
+      sec.querySelectorAll('[data-enc-copiar]').forEach(function (b) {
+        b.addEventListener('click', function () { copiar(b.getAttribute('data-enc-copiar')); b.textContent = 'Copiado'; });
+      });
+      sec.querySelectorAll('[data-enc-reenviar], [data-enc-contactado]').forEach(function (b) {
+        b.addEventListener('click', async function () {
+          var id = b.getAttribute('data-enc-reenviar') || b.getAttribute('data-enc-contactado');
+          var accion = b.hasAttribute('data-enc-contactado') ? 'contactado' : 'reenviar';
+          var nota = accion === 'contactado' ? prompt('¿Qué se habló con el cliente? (opcional)') || '' : '';
+          b.disabled = true;
+          try {
+            var r = await S().api('encuesta-accion', { id: id, accion: accion, nota: nota });
+            b.textContent = accion === 'contactado' ? 'Listo' : r.enviado ? 'Enviada' : 'No se envió: ' + (r.motivo || '');
+            if (accion === 'contactado') cargarEncuestas(box);
+          } catch (err) {
+            b.disabled = false;
+            b.textContent = 'Error: ' + err.message;
+          }
+        });
+      });
+    } catch (err) {
+      sec.innerHTML = '<h2 class="in-h">Satisfacción de clientes</h2><p class="in-sub2">No se pudieron cargar las encuestas: ' + esc(err.message) + '</p>';
+    }
   }
   function semaforos(cats) {
     if (!cats.length) return '';

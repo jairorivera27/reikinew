@@ -839,6 +839,35 @@ export async function prepararFacturaAlegra(id, by = 'panel') {
   return { exp, url: b.url, borrador: b };
 }
 
+/** Respuesta del cliente a la encuesta de satisfacción (enlace firmado). */
+export async function guardarEncuesta(id, body = {}) {
+  const exp = await getExpediente(id);
+  if (!exp) return null;
+  if (exp.encuesta?.respuesta) throw new Error('Esta encuesta ya fue respondida. ¡Gracias!');
+  const { normalizarRespuestas } = await import('./encuestas.js');
+  const respuesta = normalizarRespuestas(exp.tipo, body);
+  exp.encuesta = { ...(exp.encuesta || {}), respuesta, respondidaAt: nowIso() };
+  pushHist(exp, 'cliente', `Respondió la encuesta de satisfacción: ${respuesta.nps}/10${respuesta.mejorar ? ` · Mejorar: ${respuesta.mejorar.slice(0, 120)}` : ''}`);
+  return persist(exp);
+}
+
+/** Encuesta desde el panel: reenviar al cliente o marcar que ya se contactó a un cliente insatisfecho. */
+export async function accionEncuesta(id, accion, by = 'panel', nota = '') {
+  const exp = await getExpediente(id);
+  if (!exp) return null;
+  if (accion === 'contactado') {
+    exp.encuesta = { ...(exp.encuesta || {}), contactadoAt: nowIso(), contactadoPor: str(by, 40), notaContacto: str(nota, 300) };
+    pushHist(exp, by, `Cliente contactado por la encuesta${nota ? `: ${str(nota, 200)}` : ''}.`);
+    await persist(exp);
+    return { exp };
+  }
+  const { enviarEncuesta } = await import('./correos.js');
+  const r = await enviarEncuesta(exp, { forzar: true });
+  if (r.enviado) pushHist(exp, by, 'Encuesta de satisfacción enviada al cliente.');
+  await persist(exp);
+  return { exp, ...r };
+}
+
 /** ¿La venta ya puede facturarse? Datos completos + pago total verificado (tienda) y sin prefactura todavía. */
 export function listaParaFacturar(exp) {
   if (!exp || exp.tipo !== 'tienda' || exp.estado !== 'activo') return false;

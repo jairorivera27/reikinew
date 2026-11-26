@@ -19,6 +19,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import nodemailer from 'nodemailer';
+import { urlEncuesta } from './encuestas.js';
 
 let empresaCache = null;
 function empresa() {
@@ -113,7 +114,10 @@ export const CORREOS = {
       cuerpo: () => [
         'Confirmamos la entrega de tu pedido. ¡Gracias por confiar en Reiki Energía Solar!',
         'Si necesitas apoyo con la instalación, configuración o garantía de tus equipos, responde este correo o escríbenos por WhatsApp.',
+        'Queremos mejorar cada día: ¿nos regalas 2 minutos para contarnos cómo fue tu experiencia con nosotros?',
       ],
+      boton: (e) => ({ texto: 'Responder la encuesta (2 minutos)', url: urlEncuesta(e.id) }),
+      encuesta: true,
     },
     'factura:hecho': {
       requiere: (e) => (e.factura?.numero ? '' : 'falta el número de factura'),
@@ -191,7 +195,10 @@ export const CORREOS = {
       cuerpo: () => [
         'Hicimos la entrega final de tu sistema: manuales, garantías y acta de entrega.',
         'Recuerda limpiar los paneles con agua (sin químicos) cuando notes polvo acumulado y revisar la app de monitoreo. Ante cualquier novedad, escríbenos.',
+        'Queremos mejorar cada día: ¿nos regalas 2 minutos para contarnos cómo fue tu experiencia con nosotros?',
       ],
+      boton: (e) => ({ texto: 'Responder la encuesta (2 minutos)', url: urlEncuesta(e.id) }),
+      encuesta: true,
     },
   },
 };
@@ -217,7 +224,14 @@ function esEmpresa(cl = {}) {
   return /\b(s\.?\s?a\.?\s?s|ltda|s\.?a\.?|e\.?s\.?p|corporaci[oó]n|fundaci[oó]n|asociaci[oó]n|comunidad|cooperativa|inversiones|empresa)\b/i.test(cl.nombre || '') || /^9\d{8}/.test(String(cl.documento || '').replace(/\D/g, ''));
 }
 
-function html(e, parrafos) {
+function botonHtml(b) {
+  if (!b || !b.url) return '';
+  const esc = (x) => String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+  return `<table role="presentation" cellpadding="0" cellspacing="0" style="margin:18px 0 6px"><tr><td style="background:#6b2181;border-radius:10px">
+<a href="${esc(b.url)}" style="display:inline-block;padding:13px 22px;color:#fff;font-weight:bold;text-decoration:none;font-size:15px">${esc(b.texto)}</a></td></tr></table>`;
+}
+
+function html(e, parrafos, boton) {
   const em = empresa();
   const nombre = esEmpresa(e.cliente) ? '' : String(e.cliente?.nombre || '').split(' ')[0] || '';
   const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -228,6 +242,7 @@ function html(e, parrafos) {
 <tr><td style="padding:24px;font-size:15px;line-height:1.55">
 <p style="margin:0 0 14px">Hola${nombre ? ' ' + esc(nombre) : ''},</p>
 ${parrafos.map((p) => `<p style="margin:0 0 12px">${esc(p)}</p>`).join('')}
+${botonHtml(boton)}
 <p style="margin:18px 0 0;font-size:13px;color:#6b5f75">Referencia: ${esc(ref(e))}</p>
 </td></tr>
 <tr><td style="padding:16px 24px;background:#faf7fc;font-size:12px;color:#6b5f75;line-height:1.5">
@@ -237,10 +252,11 @@ Puedes responder este correo para hablar con nosotros.
 </td></tr></table></td></tr></table></body></html>`;
 }
 
-function texto(e, parrafos) {
+function texto(e, parrafos, boton) {
   const em = empresa();
   const nombre = esEmpresa(e.cliente) ? '' : String(e.cliente?.nombre || '').split(' ')[0] || '';
-  return [`Hola${nombre ? ' ' + nombre : ''},`, '', ...parrafos, '', `Referencia: ${ref(e)}`, '', `${em.razon_social} · WhatsApp ${em.telefono} · ${em.web}`].join('\n');
+  const b = boton && boton.url ? ['', `${boton.texto}: ${boton.url}`] : [];
+  return [`Hola${nombre ? ' ' + nombre : ''},`, '', ...parrafos, ...b, '', `Referencia: ${ref(e)}`, '', `${em.razon_social} · WhatsApp ${em.telefono} · ${em.web}`].join('\n');
 }
 
 export function correoConfigurado() {
@@ -406,7 +422,9 @@ export async function correoPorEtapa(exp, etapa, resumenExp) {
         console.warn('[correos] adjuntos', err?.message || err);
       }
     }
-    res = await enviar({ to: exp.cliente.correo, subject: asunto, htmlBody: html(exp, parrafos), textBody: texto(exp, parrafos), attachments });
+    const boton = regla.boton ? regla.boton(exp) : null;
+    res = await enviar({ to: exp.cliente.correo, subject: asunto, htmlBody: html(exp, parrafos, boton), textBody: texto(exp, parrafos, boton), attachments });
+    if (res.ok && regla.encuesta && boton?.url) exp.encuesta = { ...(exp.encuesta || {}), enviadaAt: new Date().toISOString(), via: clave };
   }
   exp.correos.unshift({
     clave,
@@ -418,7 +436,31 @@ export async function correoPorEtapa(exp, etapa, resumenExp) {
     at: new Date().toISOString(),
   });
   exp.correos = exp.correos.slice(0, 50);
+  // Entrega sin guía de transportadora (retiro en bodega o entrega directa): el correo de "pedido entregado" no sale,
+  // pero la encuesta sí, porque la etapa la cerró el equipo al entregar.
+  if (!res.ok && regla.encuesta && !(exp.envio?.despachos || []).length && !exp.encuesta?.enviadaAt && exp.correosActivos !== false) {
+    await enviarEncuesta(exp).catch((err) => console.warn('[correos] encuesta', err?.message || err));
+  }
   return { enviado: !!res.ok, motivo: res.ok ? '' : res.motivo, asunto };
+}
+
+/** Correo solo con la encuesta de satisfacción (entregas sin guía o reenvío desde el panel). */
+export async function enviarEncuesta(exp, { forzar = false } = {}) {
+  if (!exp.cliente?.correo || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(exp.cliente.correo)) return { enviado: false, motivo: 'el cliente no tiene correo' };
+  if (exp.encuesta?.respuesta) return { enviado: false, motivo: 'el cliente ya respondió la encuesta' };
+  if (exp.encuesta?.enviadaAt && !forzar) return { enviado: false, motivo: 'la encuesta ya se había enviado' };
+  const url = urlEncuesta(exp.id);
+  if (!url) return { enviado: false, motivo: 'falta la clave para firmar el enlace de la encuesta' };
+  const asunto = `¿Cómo fue tu experiencia con Reiki? — ${ref(exp)}`;
+  const parrafos = [
+    exp.tipo === 'proyecto' ? '¡Gracias por confiar en Reiki Energía Solar para tu proyecto!' : '¡Gracias por tu compra en Reiki Energía Solar!',
+    'Queremos mejorar cada día y tu opinión es clave: ¿nos regalas 2 minutos para contarnos cómo fue tu experiencia?',
+  ];
+  const boton = { texto: 'Responder la encuesta (2 minutos)', url };
+  const res = await enviar({ to: exp.cliente.correo, subject: asunto, htmlBody: html(exp, parrafos, boton), textBody: texto(exp, parrafos, boton) });
+  exp.correos = [{ clave: 'encuesta', etapa: 'Encuesta de satisfacción', para: exp.cliente.correo, asunto, estado: res.ok ? 'enviado' : 'no_enviado', motivo: res.ok ? '' : res.motivo, at: new Date().toISOString() }, ...(exp.correos || [])].slice(0, 50);
+  if (res.ok) exp.encuesta = { ...(exp.encuesta || {}), enviadaAt: new Date().toISOString(), via: 'encuesta' };
+  return { enviado: !!res.ok, motivo: res.ok ? '' : res.motivo };
 }
 
 /** Cuerpo libre (texto plano) → HTML con la misma plantilla de Reiki. Respeta párrafos, viñetas y saltos de línea. */

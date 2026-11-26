@@ -1,0 +1,182 @@
+---
+// Encuesta de satisfacción del cliente (enlace firmado que llega en el correo de entrega).
+---
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex, nofollow" />
+    <title>Encuesta de satisfacción | Reiki Energía Solar</title>
+    <link rel="icon" href="/favicon.ico" />
+    <style>
+      :root { --morado: #6b2181; --morado-claro: #f5eef8; --amarillo: #f6c400; --texto: #1f1230; --gris: #6b5f75; --borde: #e3d7ea; }
+      * { box-sizing: border-box; }
+      body { margin: 0; background: var(--morado-claro); font-family: Arial, Helvetica, sans-serif; color: var(--texto); }
+      header { background: var(--morado); padding: 16px; text-align: center; }
+      header img { height: 42px; }
+      main { max-width: 620px; margin: 0 auto; padding: 18px 16px 40px; }
+      .card { background: #fff; border-radius: 14px; padding: 20px 18px; margin-bottom: 14px; box-shadow: 0 1px 3px rgba(60, 20, 80, 0.07); }
+      h1 { font-size: 1.35rem; margin: 0 0 6px; }
+      h2 { font-size: 1.02rem; margin: 0 0 12px; }
+      p { line-height: 1.5; margin: 0 0 8px; }
+      .muted { color: var(--gris); font-size: 0.9rem; }
+      .nps { display: grid; grid-template-columns: repeat(11, 1fr); gap: 4px; }
+      .nps button { padding: 10px 0; border: 1px solid var(--borde); border-radius: 8px; background: #fff; font-size: 0.95rem; cursor: pointer; color: var(--texto); }
+      .nps button.sel { background: var(--morado); color: #fff; border-color: var(--morado); }
+      .nps-leyenda { display: flex; justify-content: space-between; font-size: 0.78rem; color: var(--gris); margin-top: 6px; }
+      .aspecto { padding: 10px 0; border-top: 1px solid #f0e8f4; }
+      .aspecto:first-of-type { border-top: 0; }
+      .aspecto span { display: block; margin-bottom: 6px; font-size: 0.95rem; }
+      .estrellas { display: flex; gap: 6px; }
+      .estrellas button { flex: 1; max-width: 52px; padding: 8px 0; font-size: 1.3rem; border: 1px solid var(--borde); border-radius: 8px; background: #fff; color: #c9bfd0; cursor: pointer; }
+      .estrellas button.on { color: var(--amarillo); border-color: #f1dc8a; background: #fffbea; }
+      textarea { width: 100%; min-height: 84px; padding: 10px; border: 1px solid var(--borde); border-radius: 10px; font: inherit; resize: vertical; }
+      label.check { display: flex; gap: 10px; align-items: flex-start; font-size: 0.95rem; line-height: 1.4; cursor: pointer; }
+      label.check input { margin-top: 3px; width: 18px; height: 18px; }
+      .enviar { width: 100%; padding: 15px; border: 0; border-radius: 12px; background: var(--morado); color: #fff; font-size: 1.05rem; font-weight: bold; cursor: pointer; }
+      .enviar:disabled { opacity: 0.6; cursor: default; }
+      .error { color: #b42318; font-size: 0.92rem; margin-top: 10px; }
+      .gracias { text-align: center; }
+      .gracias .icono { font-size: 2.6rem; }
+      @media (max-width: 420px) { .nps button { font-size: 0.85rem; padding: 9px 0; } }
+    </style>
+  </head>
+  <body>
+    <header><img src="/images/logo.png" alt="Reiki Energía Solar" /></header>
+    <main>
+      <div id="cargando" class="card"><p>Cargando la encuesta…</p></div>
+      <div id="mensaje" class="card" hidden></div>
+      <form id="form" hidden>
+        <div class="card">
+          <h1 id="saludo">¿Cómo fue tu experiencia?</h1>
+          <p class="muted">Pedido <b id="ref"></b> · Son 2 minutos. Tus respuestas nos ayudan a mejorar.</p>
+        </div>
+        <div class="card">
+          <h2>1. ¿Qué tan probable es que recomiendes a Reiki Energía Solar a un amigo o familiar?</h2>
+          <div class="nps" id="nps"></div>
+          <div class="nps-leyenda"><span>0 · Nada probable</span><span>10 · Muy probable</span></div>
+        </div>
+        <div class="card">
+          <h2>2. Califica cada aspecto de 1 a 5</h2>
+          <div id="aspectos"></div>
+        </div>
+        <div class="card">
+          <h2>3. ¿Qué fue lo que más te gustó?</h2>
+          <textarea id="gusto" maxlength="800" placeholder="Opcional"></textarea>
+        </div>
+        <div class="card">
+          <h2>4. ¿Qué deberíamos mejorar?</h2>
+          <textarea id="mejorar" maxlength="800" placeholder="Opcional, pero nos ayuda mucho"></textarea>
+        </div>
+        <div class="card">
+          <label class="check"><input type="checkbox" id="publicar" /> Autorizo a Reiki Energía Solar a publicar mi opinión (solo con mi nombre de pila).</label>
+        </div>
+        <button type="submit" class="enviar" id="btn">Enviar encuesta</button>
+        <p class="error" id="err" hidden></p>
+      </form>
+    </main>
+    <script is:inline>
+      (function () {
+        var q = new URLSearchParams(location.search);
+        var id = q.get('id') || '';
+        var t = q.get('t') || '';
+        var api = '/api/encuesta?id=' + encodeURIComponent(id) + '&t=' + encodeURIComponent(t);
+        var estado = { nps: null, calif: {} };
+        var $ = function (x) { return document.getElementById(x); };
+        function mostrar(htmlTxt) {
+          $('cargando').hidden = true;
+          $('form').hidden = true;
+          var m = $('mensaje');
+          m.hidden = false;
+          m.innerHTML = htmlTxt;
+          window.scrollTo(0, 0);
+        }
+        function gracias() {
+          mostrar('<div class="gracias"><div class="icono">☀️</div><h1>¡Gracias por tu opinión!</h1><p>La leemos personalmente para seguir mejorando. Si necesitas algo, escríbenos por <a href="https://wa.me/573004052638" style="color:#6b2181">WhatsApp</a>.</p></div>');
+        }
+        fetch(api)
+          .then(function (r) { return r.json(); })
+          .then(function (j) {
+            if (!j.ok) return mostrar('<p>' + (j.error || 'No pudimos abrir la encuesta.') + '</p>');
+            if (j.respondida) return gracias();
+            $('saludo').textContent = j.nombre ? 'Hola ' + j.nombre + ', ¿cómo fue tu experiencia?' : '¿Cómo fue su experiencia con nosotros?';
+            $('ref').textContent = j.referencia;
+            var nps = $('nps');
+            for (var i = 0; i <= 10; i++) {
+              (function (v) {
+                var b = document.createElement('button');
+                b.type = 'button';
+                b.textContent = v;
+                b.setAttribute('aria-label', v + ' de 10');
+                b.onclick = function () {
+                  estado.nps = v;
+                  Array.prototype.forEach.call(nps.children, function (x) { x.classList.toggle('sel', x === b); });
+                };
+                nps.appendChild(b);
+              })(i);
+            }
+            var cont = $('aspectos');
+            j.aspectos.forEach(function (a) {
+              var fila = document.createElement('div');
+              fila.className = 'aspecto';
+              var sp = document.createElement('span');
+              sp.textContent = a[1];
+              var est = document.createElement('div');
+              est.className = 'estrellas';
+              for (var k = 1; k <= 5; k++) {
+                (function (v) {
+                  var b = document.createElement('button');
+                  b.type = 'button';
+                  b.textContent = '★';
+                  b.setAttribute('aria-label', a[1] + ': ' + v + ' de 5');
+                  b.onclick = function () {
+                    estado.calif[a[0]] = v;
+                    Array.prototype.forEach.call(est.children, function (x, n) { x.classList.toggle('on', n < v); });
+                  };
+                  est.appendChild(b);
+                })(k);
+              }
+              fila.appendChild(sp);
+              fila.appendChild(est);
+              cont.appendChild(fila);
+            });
+            $('cargando').hidden = true;
+            $('form').hidden = false;
+          })
+          .catch(function () { mostrar('<p>No pudimos cargar la encuesta. Revisa tu conexión e inténtalo de nuevo.</p>'); });
+
+        $('form').addEventListener('submit', function (ev) {
+          ev.preventDefault();
+          var err = $('err');
+          err.hidden = true;
+          if (estado.nps === null) {
+            err.textContent = 'Por favor responde la pregunta 1 (de 0 a 10).';
+            err.hidden = false;
+            $('nps').scrollIntoView({ behavior: 'smooth', block: 'center' });
+            return;
+          }
+          var btn = $('btn');
+          btn.disabled = true;
+          btn.textContent = 'Enviando…';
+          fetch(api, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ id: id, t: t, nps: estado.nps, calificaciones: estado.calif, gusto: $('gusto').value, mejorar: $('mejorar').value, publicar: $('publicar').checked }),
+          })
+            .then(function (r) { return r.json(); })
+            .then(function (j) {
+              if (j.ok) return gracias();
+              throw new Error(j.error || 'No se pudo enviar.');
+            })
+            .catch(function (e) {
+              btn.disabled = false;
+              btn.textContent = 'Enviar encuesta';
+              err.textContent = e.message || 'No se pudo enviar. Inténtalo de nuevo.';
+              err.hidden = false;
+            });
+        });
+      })();
+    </script>
+  </body>
+</html>

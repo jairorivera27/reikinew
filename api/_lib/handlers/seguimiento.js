@@ -608,6 +608,18 @@ export default async function handler(req, res) {
         return send(res, 400, { ok: false, error: String(err?.message || err) });
       }
     }
+    if (op === 'encuestas') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const { resumenEncuestas } = await import('../encuestas.js');
+      return send(res, 200, { ok: true, ...resumenEncuestas(await listExpedientes()) });
+    }
+    if (op === 'encuesta-accion') {
+      if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
+      const { accionEncuesta } = await import('../seguimiento.js');
+      const r = await accionEncuesta(body.id, body.accion === 'contactado' ? 'contactado' : 'reenviar', by, body.nota);
+      if (!r) return send(res, 404, { ok: false, error: 'No existe.' });
+      return send(res, 200, { ok: true, enviado: r.enviado, motivo: r.motivo });
+    }
     if (op === 'factura-auto') {
       if (chat) return send(res, 403, { ok: false, error: 'No autorizado.' });
       const { facturasPendientesAuto } = await import('../seguimiento.js');
