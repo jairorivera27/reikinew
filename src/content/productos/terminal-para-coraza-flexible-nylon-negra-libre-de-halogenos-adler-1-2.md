@@ -13,7 +13,7 @@ specifications:
 brand: "Adler"
 model: "TERMINAL-1/2-IN"
 sku: "SNO-TERMINAL-1/2-IN"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: true

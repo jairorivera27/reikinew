@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-11-24 21:00",
+ "ultima_revision": "2026-11-25 20:59",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -794,7 +794,7 @@
    "consulta": "ok"
   },
   "deye-inversor-on-grid-15kw-sun-15k-g04-lv-trifasico-208vac-800voc": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -849,7 +849,7 @@
    "consulta": "ok"
   },
   "deye-microinversor-on-grid-2000w-bifasico-sun-m200g4-eu-q0-i220v": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -874,7 +874,7 @@
    "consulta": "ok"
   },
   "dps-supresor-suntree-40ka-dc-5504138": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -1435,7 +1435,7 @@
   },
   "netion-bateria-gel-12v-55ah-1600-ciclos-50-w-17-5kg": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "panel-solar-bifacial-n-type-ja-solar-625w-1002139": {
@@ -1459,11 +1459,6 @@
    "consulta": "ok"
   },
   "panel-solar-bifacial-n-type-tensite-710w-1002138": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "panel-solar-ja-solar-jam66d45-605-lb-605w-bifacial": {
    "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
@@ -1473,27 +1468,7 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "panel-solar-trina-vertex-n-tsm-ne19r-605w": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "panel-solar-trina-vertex-n-tsm-ne19r-620w": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "panel-solar-trina-vertex-n-tsm-neg19rc-20-600w-bifacial": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "panel-solar-trina-vertex-n-tsm-neg21c-20-710w-bifacial": {
-   "stock": "pre-orden",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "panel-solar-trina-vertex-n-tsm-neg21c-20-715w-bifacial": {
    "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
@@ -2204,7 +2179,7 @@
    "consulta": "ok"
   },
   "terminal-para-coraza-flexible-nylon-negra-libre-de-halogenos-adler-1-2": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -2349,7 +2324,7 @@
    "consulta": "ok"
   },
   "breaker-ac-siemens-230-400vac-3p-20a": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -3294,13 +3269,13 @@
    "consulta": "ok"
   },
   "soporte-de-bloque-de-terminales-n-y-pe-abb-12m": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "soporte-de-bloque-de-terminales-n-y-pe-abb-18m": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "tablero-de-sobreponer-abb-12-modulos-ip65-retie": {

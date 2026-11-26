@@ -15,7 +15,7 @@ specifications:
 brand: "Deye"
 model: "SUN-M200G4-EU-Q0"
 sku: "ING-INVOG07"
-stock: "pre-orden"
+stock: "disponible"
 order: 8000
 updatedAt: "2026-10-14"
 imagen_provisional: false

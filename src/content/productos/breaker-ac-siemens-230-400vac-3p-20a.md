@@ -13,7 +13,7 @@ specifications:
 brand: "Siemens"
 model: "5SL6320-7MB"
 sku: "SNO-5SL6320-7MB"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-11-10"
 imagen_provisional: false

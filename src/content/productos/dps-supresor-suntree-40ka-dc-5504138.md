@@ -18,7 +18,7 @@ specifications:
 brand: "Suntree"
 sku: "5504138"
 power: "40kA DC"
-stock: "disponible"
+stock: "pre-orden"
 order: 6555
 updatedAt: "2026-09-10"
 seoKeywords:
