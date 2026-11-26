@@ -109,7 +109,8 @@
           '<label class="seg-field"><span>Desde (h)</span><input inputmode="numeric" data-envia-desde value="' + esc(c.desde || 9) + '" /></label>' +
           '<label class="seg-field"><span>Hasta (h)</span><input inputmode="numeric" data-envia-hasta value="' + esc(c.hasta || 16) + '" /></label></div>' +
           '<label class="seg-check"><input type="checkbox" data-envia-sinrecogida' + (c.sinRecogida ? ' checked' : '') + ' /> No pedir recogida (se lleva a la oficina de la transportadora)</label>' +
-          '<div class="modal-actions"><button type="button" class="btn btn-primary seg-mini" data-envia-comprar' + (c.elegida == null ? ' disabled' : '') + '>' + (c.confirmar ? 'Confirmar: comprar guía por ' + cop(c.tarifas[c.elegida].precio) : 'Comprar guía') + '</button>' + (c.confirmar ? '<button type="button" class="btn btn-ghost seg-mini" data-envia-cancelar>No, volver</button>' : '') + '</div>'
+          (c.duplicada ? '<p class="seg-warn">' + S().esc(c.duplicada) + ' Si de verdad necesitas una guía nueva (por ejemplo, la anterior no se va a usar), confírmalo abajo: Envia cobra esta guía aparte, así que anula luego la que no se use.</p>' : '') +
+          '<div class="modal-actions"><button type="button" class="btn btn-primary seg-mini" data-envia-comprar' + (c.elegida == null ? ' disabled' : '') + '>' + (c.forzar ? 'Sí, generar OTRA guía por ' + cop(c.tarifas[c.elegida].precio) : c.confirmar ? 'Confirmar: comprar guía por ' + cop(c.tarifas[c.elegida].precio) : 'Comprar guía') + '</button>' + (c.confirmar ? '<button type="button" class="btn btn-ghost seg-mini" data-envia-cancelar>No, volver</button>' : '') + '</div>'
         : '<p class="seg-warn">Ninguna transportadora dio tarifa para esta ruta y estas cajas.' + (c.errores && c.errores.length ? ' ' + esc(c.errores.map(function (x) { return x.carrier + ': ' + x.error; }).join(' · ')) : '') + '</p>'
       : '';
     return (
@@ -134,13 +135,15 @@
     var despachos = (en.despachos || []).slice();
     if (!despachos.length && en.envia && en.guia) despachos.push({ bodega: en.bodega, transportadora: en.transportadora, guia: en.guia, trackUrl: en.trackUrl, rotulo: en.rotulo, costoFlete: en.costoFlete, recogida: en.envia.recogida, entorno: en.envia.entorno, estado: en.estadoEnvio });
     var hechas = despachos.map(function (x) { return x.bodegaId; });
-    var pend = grupos(e, bodegas).filter(function (g) { return !g.key || hechas.indexOf(g.key) < 0; });
+    var otra = !!(estado.otra && estado.otra[e.id]);
+    var pend = grupos(e, bodegas).filter(function (g) { return otra || !g.key || hechas.indexOf(g.key) < 0; });
     var badge = cfg.entorno === 'produccion' ? '' : ' <span class="oc-badge oc-badge--warn">Modo de prueba: guías sin validez</span>';
     return (
       '<section class="modal-block"><h3>Envío con transportadora' + badge + '</h3>' +
       '<p class="pc-muted">Va para: ' + esc((e.cliente && e.cliente.direccion) || '(sin dirección)') + ', ' + esc((e.cliente && e.cliente.ciudad) || '') + '</p>' +
       despachos.map(function (x) { return htmlDespacho(e, x, bodegas); }).join('') +
-      (despachos.length ? '<div class="modal-actions"><button type="button" class="btn btn-secondary seg-mini" data-envia-rastrear>Actualizar estado</button></div>' : '') +
+      (despachos.length ? '<div class="modal-actions"><button type="button" class="btn btn-secondary seg-mini" data-envia-rastrear>Actualizar estado</button><button type="button" class="btn btn-ghost seg-mini" data-envia-otra>' + (otra ? 'Cancelar guía nueva' : 'Generar otra guía') + '</button></div>' : '') +
+      (otra ? '<p class="seg-warn">Vas a generar una <b>guía adicional</b> para estos equipos. Envia la cobra aparte: si es para reemplazar una guía que no se va a usar, anula esa guía después para que te devuelvan el valor.</p>' : '') +
       (!Object.keys(bodegas).length ? '<p class="seg-warn">Registra primero las bodegas de donde salen los equipos (abajo, en "Bodegas de despacho").</p>' : '') +
       (pend.length > 1 ? '<p class="pc-muted">Los equipos salen de ' + pend.length + ' bodegas: se compra una guía por cada una.</p>' : '') +
       pend.map(function (g) { return htmlGrupo(e, g, cfg); }).join('') +
@@ -249,7 +252,10 @@
         });
         if (q('[data-envia-cancelar]'))
           q('[data-envia-cancelar]').addEventListener('click', function () {
-            leerGrupo(gbox, key).confirmar = false;
+            var cc = leerGrupo(gbox, key);
+            cc.confirmar = false;
+            cc.forzar = false;
+            cc.duplicada = '';
             pintar();
           });
         if (q('[data-envia-comprar]'))
@@ -271,14 +277,25 @@
                 carrier: t.carrier,
                 service: t.service,
                 recogida: c.sinRecogida ? null : { fecha: c.fecha || hoyMas(1), desde: Number(c.desde) || 9, hasta: Number(c.hasta) || 16 },
+                forzar: !!c.forzar || !!(estado.otra && estado.otra[e.id]),
               });
               delete estado.cotiz[key];
+              if (estado.otra) delete estado.otra[e.id];
               S().upsert(j.expediente);
               S().abrir(e.id);
             } catch (err) {
               ev.target.disabled = false;
               ev.target.textContent = 'Comprar guía';
+              if (/ya tienen? la gu[ií]a/i.test(err.message) && !c.forzar) {
+                // Ya hay una guía para estos equipos: ofrecer generar otra, con confirmación explícita
+                c.duplicada = err.message.replace(/\s*Si de verdad necesitas otra, anula primero la anterior\.?/, '');
+                c.forzar = true;
+                c.confirmar = true;
+                return pintar();
+              }
               c.confirmar = false;
+              c.forzar = false;
+              c.duplicada = '';
               error(err.message);
             }
           });
@@ -290,6 +307,13 @@
           p.textContent = t || '';
         }
       };
+      var bo = box.querySelector('[data-envia-otra]');
+      if (bo)
+        bo.addEventListener('click', function () {
+          estado.otra = estado.otra || {};
+          estado.otra[e.id] = !estado.otra[e.id];
+          S().abrir(e.id);
+        });
       var br = box.querySelector('[data-envia-rastrear]');
       if (br)
         br.addEventListener('click', async function () {
