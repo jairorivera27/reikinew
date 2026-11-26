@@ -268,6 +268,13 @@ export async function guardarPdfParte(id, { nombre, base64, parte = 1, total = 1
   return { cot: c, completo: recibidas >= t, recibidas, total: t };
 }
 
+/** Upstash limita cada respuesta a 10 MB: leer los trozos (600 KB c/u) de a 8. */
+async function mgetPorLotes(redis, claves) {
+  const out = [];
+  for (let i = 0; i < claves.length; i += 8) out.push(...(await redis.mget(...claves.slice(i, i + 8))));
+  return out;
+}
+
 /** Borra los trozos de Redis de un PDF antiguo (y los de una carga a medias). */
 async function borrarTrozosRedis(c) {
   const redis = getRedis();
@@ -356,7 +363,7 @@ export async function migrarPdfsABlob({ limite = 10, by = 'claude' } = {}) {
     try {
       const r = { id: c.id, numero: c.numero };
       if (c.pdf && c.pdf.claves && !c.pdf.blob) {
-        const vals = redis ? await redis.mget(...c.pdf.claves.map((k) => pdfKey(c.id, k))) : c.pdf.claves.map((k) => pdfMem.get(`${c.id}:${k}`));
+        const vals = redis ? await mgetPorLotes(redis, c.pdf.claves.map((k) => pdfKey(c.id, k))) : c.pdf.claves.map((k) => pdfMem.get(`${c.id}:${k}`));
         const b64 = vals.map((v) => String(v || '')).join('');
         const faltan = vals.filter((v) => !v).length;
         if (b64 && !faltan) {
@@ -447,7 +454,7 @@ export async function leerPdf(id) {
   const redis = getRedis();
   let b64 = '';
   if (redis) {
-    const vals = await redis.mget(...c.pdf.claves.map((k) => pdfKey(id, k)));
+    const vals = await mgetPorLotes(redis, c.pdf.claves.map((k) => pdfKey(id, k)));
     b64 = vals.map((v) => String(v || '')).join('');
   } else b64 = c.pdf.claves.map((k) => pdfMem.get(`${id}:${k}`) || '').join('');
   if (!b64) return null;
