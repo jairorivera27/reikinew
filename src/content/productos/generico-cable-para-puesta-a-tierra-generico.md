@@ -20,7 +20,6 @@ fichaPdf: "/fichas/proveedores/ingesolar-ACCC13.pdf"
 faqs:
   - pregunta: "¿Es compatible con mi equipo?"
     respuesta: "Revisa la referencia y la ficha técnica; si tienes dudas, envíanos la referencia de tu equipo y te confirmamos."
-stockBajo: true
 ---
 
 Proveedor: Ingesolar (ACCC13).

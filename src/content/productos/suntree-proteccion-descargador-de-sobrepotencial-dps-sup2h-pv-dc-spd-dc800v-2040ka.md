@@ -14,7 +14,7 @@ specifications:
 brand: "Suntree"
 model: "DPS-DC-800V"
 sku: "ING-PROTBD05"
-stock: "pre-orden"
+stock: "disponible"
 order: 8000
 updatedAt: "2026-10-14"
 imagen_provisional: true

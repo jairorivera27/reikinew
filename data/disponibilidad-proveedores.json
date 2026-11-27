@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-11-25 20:59",
+ "ultima_revision": "2026-11-26 21:00",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -308,46 +308,6 @@
    "stockBajo": false,
    "consulta": "ok"
   },
-  "allyce-inversor-cargador-1-2-kw-monofasico-110v-mppt-60ah-24v-100voc": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "allyce-inversor-cargador-ups-1kva-24v-1000w-salida-a-110v": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "allyce-inversor-on-grid-5-000w-trifasico-a-480voc-y-salida-220-208vac": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "allyce-inversor-onda-modificada-1000w-12vdc-a-110vac": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "allyce-inversor-onda-modificada-2000w-12vdc-a-110vac": {
-   "stock": "disponible",
-   "stockBajo": true,
-   "consulta": "ok"
-  },
-  "allyce-inversor-onda-modificada-2000w-24vdc-a-110vac": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "allyce-inversor-onda-pura-2000w-12v-a-220vac": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
-  "allyce-inversor-onda-pura-3000w-24v-a-110vac": {
-   "stock": "disponible",
-   "stockBajo": false,
-   "consulta": "ok"
-  },
   "allyce-luminaria-solar-todo-en-uno-10w": {
    "stock": "disponible",
    "stockBajo": false,
@@ -514,7 +474,7 @@
    "consulta": "ok"
   },
   "bateria-solar-litio-felicity-48v-11-8kwh-1880845": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -524,7 +484,7 @@
    "consulta": "no-encontrado"
   },
   "bateria-solar-litio-felicity-48v-16kwh-1880836": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -1125,7 +1085,7 @@
   },
   "generico-cable-para-puesta-a-tierra-generico": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "generico-caja-de-diodos-para-paneles-sy-jb4b": {
@@ -1454,12 +1414,12 @@
    "consulta": "ok"
   },
   "panel-solar-bifacial-n-type-tensite-620w-1002141": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
   "panel-solar-bifacial-n-type-tensite-710w-1002138": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -1480,7 +1440,7 @@
   },
   "restar-panel-monocristalino-100w-voc-21-4-isc-6-13": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "restar-panel-monocristalino-165w-voc-22-2-isc-9-78": {
@@ -1509,7 +1469,7 @@
    "consulta": "ok"
   },
   "smart-dongle-huawei-sdonglea-05-wlan-fe-para-monitoreo": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -1714,7 +1674,7 @@
    "consulta": "ok"
   },
   "suntree-proteccion-descargador-de-sobrepotencial-dps-sup2h-pv-dc-spd-dc800v-2040ka": {
-   "stock": "pre-orden",
+   "stock": "disponible",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -2639,8 +2599,8 @@
    "consulta": "ok"
   },
   "breaker-dc-suntree-600v-dc-retie-100a": {
-   "stock": "disponible",
-   "stockBajo": true,
+   "stock": "pre-orden",
+   "stockBajo": false,
    "consulta": "ok"
   },
   "breaker-dc-suntree-250v-dc-retie-32a": {
