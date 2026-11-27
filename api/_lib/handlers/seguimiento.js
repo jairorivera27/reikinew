@@ -402,9 +402,14 @@ export default async function handler(req, res) {
             cliente: e.cliente?.nombre,
             ciudad: e.cliente?.ciudad,
             celular: e.cliente?.celular,
+            documento: e.cliente?.documento,
+            direccion: e.cliente?.direccion,
+            contacto: e.cliente?.contacto,
+            correo: e.cliente?.correo,
             cotizacion: e.cotizacion?.numero,
+            creada: e.createdAt,
             siguienteEtapa: pendiente ? pendiente.label : 'completa',
-            equipos: (e.items || []).filter((it) => (it.compra || {}).estado !== 'no_aplica').map((it) => ({ nombre: it.nombre, cantidad: it.cantidad, proveedor: it.proveedor, bodega: it.bodega, compra: (it.compra || {}).estado, agotadoEn: it.agotadoEn })),
+            equipos: (e.items || []).filter((it) => (it.compra || {}).estado !== 'no_aplica').map((it) => ({ nombre: it.nombre, sku: it.sku, cantidad: it.cantidad, proveedor: it.proveedor, bodega: it.bodega, compra: (it.compra || {}).estado, agotadoEn: it.agotadoEn })),
             guias: ds.map((d) => ({ guia: d.guia, cajas: d.guiasCajas, transportadora: d.transportadora, estado: d.estado || 'sin rastrear', desde: d.estadoDesde, creada: d.fecha, bodega: d.bodegaId, entregado: !!d.entregado, recogida: d.recogida, reclamo: d.reclamo, rastreo: d.trackUrl })),
           });
         }
