@@ -1,5 +1,5 @@
 {
- "ultima_revision": "2026-11-26 21:00",
+ "ultima_revision": "2026-11-27 20:59",
  "autosolar_urls": {
   "1002138": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-710w-n-type-tensite",
   "1002139": "https://autosolar.co/paneles-solares-24v/panel-solar-bifacial-625w-deep-blue-40-n-type-ja-solar",
@@ -290,7 +290,7 @@
   },
   "allyce-controlador-pwm-con-display-24-12v-10a-50voc-eco-allyce-sin-garantia": {
    "stock": "disponible",
-   "stockBajo": true,
+   "stockBajo": false,
    "consulta": "ok"
   },
   "allyce-controlador-pwm-con-display-24-12v-20a-50voc-allyce-sin-garantia": {
@@ -1589,7 +1589,7 @@
    "consulta": "ok"
   },
   "suntree-proteccion-breaker-sl7n-125d-3p-25a-1500vdc": {
-   "stock": "disponible",
+   "stock": "pre-orden",
    "stockBajo": false,
    "consulta": "ok"
   },
@@ -2495,7 +2495,7 @@
   },
   "breaker-dc-chint-250vdc-retie-25a": {
    "stock": "disponible",
-   "stockBajo": false,
+   "stockBajo": true,
    "consulta": "ok"
   },
   "breaker-dc-chint-250vdc-retie-32a": {

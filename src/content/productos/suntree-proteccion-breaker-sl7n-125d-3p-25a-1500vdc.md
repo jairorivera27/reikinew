@@ -15,7 +15,7 @@ specifications:
 brand: "Suntree"
 model: "BR-DC-3P-25A-1500V"
 sku: "ING-PROTB118"
-stock: "disponible"
+stock: "pre-orden"
 order: 8000
 updatedAt: "2026-10-05"
 imagen_provisional: false
